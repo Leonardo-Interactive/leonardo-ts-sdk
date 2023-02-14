@@ -1,4 +1,4 @@
-# Leonardo TS SDK
+# Leonardo TypeScript SDK
 
 <div align="center">
    <p>The API for creating stunning game assets with AI.</p>
