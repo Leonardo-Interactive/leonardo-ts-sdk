@@ -1,4 +1,11 @@
-# @leonardo-ai/sdk
+# Leonardo TS SDK
+
+<div align="center">
+   <p>The API for creating stunning game assets with AI.</p>
+   <a href="https://github.com/speakeasy-sdks/leonardo-ts-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/leonardo-ts-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
+   <a href="https://docs.leonardo.ai/"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
+   <a href="https://discord.gg/leonardo-ai"><img src="https://img.shields.io/static/v1?label=Discord&message=Join&color=7289da&style=for-the-badge" /></a>
+</div>
 
 <!-- Start SDK Installation -->
 ## SDK Installation
@@ -15,6 +22,10 @@ npm add @leonardo-ai/sdk
 yarn add @leonardo-ai/sdk
 ```
 <!-- End SDK Installation -->
+
+## Authentication
+
+To get access to the API and fetch an API key, please sign up for [access](https://leonardo.ai/). 
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
