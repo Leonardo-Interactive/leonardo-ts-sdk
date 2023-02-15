@@ -2,7 +2,7 @@ import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-export class InitImages {
+export class InitImage {
   _defaultClient: AxiosInstance;
   _securityClient: AxiosInstance;
   _serverURL: string;
@@ -52,7 +52,7 @@ export class InitImages {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteInitImageId200ApplicationJSONAny = httpRes?.data;
+                res.deleteInitImageId200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
@@ -63,16 +63,16 @@ export class InitImages {
 
   
   /**
-   * getInitImageId - Get single init image
+   * getInitImageById - Get single init image
    *
    * This endpoint will return a single init image
   **/
-  getInitImageId(
-    req: operations.GetInitImageIdRequest,
+  getInitImageById(
+    req: operations.GetInitImageByIdRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.GetInitImageIdResponse> {
+  ): Promise<operations.GetInitImageByIdResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetInitImageIdRequest(req);
+      req = new operations.GetInitImageByIdRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -91,11 +91,11 @@ export class InitImages {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetInitImageIdResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.GetInitImageByIdResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getInitImageId200ApplicationJSONAny = httpRes?.data;
+                res.getInitImageById200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
@@ -106,16 +106,16 @@ export class InitImages {
 
   
   /**
-   * postInitImage - Upload init image
+   * uploadInitImage - Upload init image
    *
    * This endpoint returns presigned details to upload an init image to S3
   **/
-  postInitImage(
-    req: operations.PostInitImageRequest,
+  uploadInitImage(
+    req: operations.UploadInitImageRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.PostInitImageResponse> {
+  ): Promise<operations.UploadInitImageResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostInitImageRequest(req);
+      req = new operations.UploadInitImageRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -148,11 +148,11 @@ export class InitImages {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.PostInitImageResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.UploadInitImageResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.postInitImage200ApplicationJSONAny = httpRes?.data;
+                res.uploadInitImage200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }

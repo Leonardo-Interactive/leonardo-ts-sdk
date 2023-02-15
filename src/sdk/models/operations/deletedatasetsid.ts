@@ -11,6 +11,20 @@ export class DeleteDatasetsIdRequest extends SpeakeasyBase {
   pathParams: DeleteDatasetsIdPathParams;
 }
 
+// DeleteDatasetsId200ApplicationJSONDatasets
+/** 
+ * columns and relationships of "datasets"
+**/
+export class DeleteDatasetsId200ApplicationJSONDatasets extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=id" })
+  id?: string;
+}
+
+export class DeleteDatasetsId200ApplicationJSON extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=delete_datasets_by_pk" })
+  deleteDatasetsByPk?: DeleteDatasetsId200ApplicationJSONDatasets;
+}
+
 export class DeleteDatasetsIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
@@ -19,5 +33,5 @@ export class DeleteDatasetsIdResponse extends SpeakeasyBase {
   statusCode: number;
 
   @SpeakeasyMetadata()
-  deleteDatasetsId200ApplicationJSONAny?: any;
+  deleteDatasetsId200ApplicationJSONObject?: DeleteDatasetsId200ApplicationJSON;
 }

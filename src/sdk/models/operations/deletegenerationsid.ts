@@ -11,6 +11,20 @@ export class DeleteGenerationsIdRequest extends SpeakeasyBase {
   pathParams: DeleteGenerationsIdPathParams;
 }
 
+// DeleteGenerationsId200ApplicationJSONGenerations
+/** 
+ * columns and relationships of "generations"
+**/
+export class DeleteGenerationsId200ApplicationJSONGenerations extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=id" })
+  id?: string;
+}
+
+export class DeleteGenerationsId200ApplicationJSON extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=delete_generations_by_pk" })
+  deleteGenerationsByPk?: DeleteGenerationsId200ApplicationJSONGenerations;
+}
+
 export class DeleteGenerationsIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
@@ -19,5 +33,5 @@ export class DeleteGenerationsIdResponse extends SpeakeasyBase {
   statusCode: number;
 
   @SpeakeasyMetadata()
-  deleteGenerationsId200ApplicationJSONAny?: any;
+  deleteGenerationsId200ApplicationJSONObject?: DeleteGenerationsId200ApplicationJSON;
 }
