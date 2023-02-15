@@ -3,7 +3,7 @@ name: Generate
 on:
   workflow_dispatch: {} # Allows manual triggering of the workflow to generate SDK
   schedule:
-    - cron: 0 0 * * * # Runs every day at midnight
+    - cron: 0 * * * * # Runs every hour
 
 jobs:
   generate:
