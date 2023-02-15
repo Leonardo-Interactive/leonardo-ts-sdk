@@ -1,7 +1,6 @@
 
 
-## Version 1.1.0 
-
+## Version 1.1.0
 ### Changes
 Based on:
 - OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
