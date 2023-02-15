@@ -9,7 +9,7 @@ jobs:
   generate:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v7
     with:
-      speakeasy_version: latest
+      speakeasy_version: 1.3.0
       openapi_doc_location: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
       languages: |-
         - typescript: ./
