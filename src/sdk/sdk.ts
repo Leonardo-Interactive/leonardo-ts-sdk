@@ -1,11 +1,11 @@
 import * as utils from "../internal/utils";
-import { CreatingDatasets } from "./creatingdatasets";
-import { GeneratingImages } from "./generatingimages";
-import { ImageVariations } from "./imagevariations";
-import { InitImages } from "./initimages";
+import { Dataset } from "./dataset";
+import { Generation } from "./generation";
+import { InitImage } from "./initimage";
+import { Model } from "./model";
 import { Security } from "./models/shared";
-import { TrainingModels } from "./trainingmodels";
-import { UserInformation } from "./userinformation";
+import { User } from "./user";
+import { Variation } from "./variation";
 import axios, { AxiosInstance } from "axios";
 
 export const ServerList = [
@@ -24,18 +24,18 @@ export type SDKProps = {
 
 
 export class Leonardo {
-  public creatingDatasets: CreatingDatasets;
-  public generatingImages: GeneratingImages;
-  public imageVariations: ImageVariations;
-  public initImages: InitImages;
-  public trainingModels: TrainingModels;
-  public userInformation: UserInformation;
+  public dataset: Dataset;
+  public generation: Generation;
+  public initImage: InitImage;
+  public model: Model;
+  public user: User;
+  public variation: Variation;
 
   public _defaultClient: AxiosInstance;
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.1.1";
+  private _sdkVersion = "1.2.0";
   private _genVersion = "1.3.1";
 
   constructor(props: SDKProps) {
@@ -54,7 +54,7 @@ export class Leonardo {
       this._securityClient = this._defaultClient;
     }
     
-    this.creatingDatasets = new CreatingDatasets(
+    this.dataset = new Dataset(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
@@ -63,7 +63,7 @@ export class Leonardo {
       this._genVersion
     );
     
-    this.generatingImages = new GeneratingImages(
+    this.generation = new Generation(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
@@ -72,7 +72,7 @@ export class Leonardo {
       this._genVersion
     );
     
-    this.imageVariations = new ImageVariations(
+    this.initImage = new InitImage(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
@@ -81,7 +81,7 @@ export class Leonardo {
       this._genVersion
     );
     
-    this.initImages = new InitImages(
+    this.model = new Model(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
@@ -90,7 +90,7 @@ export class Leonardo {
       this._genVersion
     );
     
-    this.trainingModels = new TrainingModels(
+    this.user = new User(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
@@ -99,7 +99,7 @@ export class Leonardo {
       this._genVersion
     );
     
-    this.userInformation = new UserInformation(
+    this.variation = new Variation(
       this._defaultClient,
       this._securityClient,
       this._serverURL,

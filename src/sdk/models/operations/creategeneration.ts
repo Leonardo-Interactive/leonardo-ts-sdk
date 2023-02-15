@@ -1,7 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 
-export class PostGenerationsRequestBody extends SpeakeasyBase {
+export class CreateGenerationRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=guidance_scale" })
   guidanceScale?: number;
 
@@ -51,12 +51,22 @@ export class PostGenerationsRequestBody extends SpeakeasyBase {
   width?: number;
 }
 
-export class PostGenerationsRequest extends SpeakeasyBase {
+export class CreateGenerationRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: PostGenerationsRequestBody;
+  request: CreateGenerationRequestBody;
 }
 
-export class PostGenerationsResponse extends SpeakeasyBase {
+export class CreateGeneration200ApplicationJSONSDGenerationOutput extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=generationId" })
+  generationId?: string;
+}
+
+export class CreateGeneration200ApplicationJSON extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=sdGenerationJob" })
+  sdGenerationJob?: CreateGeneration200ApplicationJSONSDGenerationOutput;
+}
+
+export class CreateGenerationResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
 
@@ -64,5 +74,5 @@ export class PostGenerationsResponse extends SpeakeasyBase {
   statusCode: number;
 
   @SpeakeasyMetadata()
-  postGenerations200ApplicationJSONAny?: any;
+  createGeneration200ApplicationJSONObject?: CreateGeneration200ApplicationJSON;
 }

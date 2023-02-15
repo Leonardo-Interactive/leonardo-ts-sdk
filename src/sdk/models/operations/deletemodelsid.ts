@@ -11,6 +11,20 @@ export class DeleteModelsIdRequest extends SpeakeasyBase {
   pathParams: DeleteModelsIdPathParams;
 }
 
+// DeleteModelsId200ApplicationJSONCustomModels
+/** 
+ * columns and relationships of "custom_models"
+**/
+export class DeleteModelsId200ApplicationJSONCustomModels extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=id" })
+  id?: string;
+}
+
+export class DeleteModelsId200ApplicationJSON extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "json, name=delete_custom_models_by_pk" })
+  deleteCustomModelsByPk?: DeleteModelsId200ApplicationJSONCustomModels;
+}
+
 export class DeleteModelsIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
@@ -19,5 +33,5 @@ export class DeleteModelsIdResponse extends SpeakeasyBase {
   statusCode: number;
 
   @SpeakeasyMetadata()
-  deleteModelsId200ApplicationJSONAny?: any;
+  deleteModelsId200ApplicationJSONObject?: DeleteModelsId200ApplicationJSON;
 }

@@ -2,7 +2,7 @@ import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-export class TrainingModels {
+export class Model {
   _defaultClient: AxiosInstance;
   _securityClient: AxiosInstance;
   _serverURL: string;
@@ -18,6 +18,63 @@ export class TrainingModels {
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
   }
+  
+  /**
+   * createModel - Train a Custom Model
+   *
+   * This endpoint will train a new custom model
+  **/
+  createModel(
+    req: operations.CreateModelRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.CreateModelResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.CreateModelRequest(req);
+    }
+    
+    const baseURL: string = this._serverURL;
+    const url: string = baseURL.replace(/\/$/, "") + "/models";
+
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+    
+    const client: AxiosInstance = this._securityClient!;
+    
+    const headers = {...reqBodyHeaders, ...config?.headers};
+    if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
+    
+    const r = client.request({
+      url: url,
+      method: "post",
+      headers: headers,
+      data: reqBody, 
+      ...config,
+    });
+    
+    return r.then((httpRes: AxiosResponse) => {
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
+        const res: operations.CreateModelResponse = {statusCode: httpRes.status, contentType: contentType};
+        switch (true) {
+          case httpRes?.status == 200:
+            if (utils.matchContentType(contentType, `application/json`)) {
+                res.createModel200ApplicationJSONObject = httpRes?.data;
+            }
+            break;
+        }
+
+        return res;
+      })
+  }
+
   
   /**
    * deleteModelsId - Delete a Single Custom Model by ID
@@ -52,7 +109,7 @@ export class TrainingModels {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteModelsId200ApplicationJSONAny = httpRes?.data;
+                res.deleteModelsId200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
@@ -63,16 +120,16 @@ export class TrainingModels {
 
   
   /**
-   * getModelsId - Get a Single Custom Model by ID
+   * getModelById - Get a Single Custom Model by ID
    *
    * This endpoint gets the specific custom model
   **/
-  getModelsId(
-    req: operations.GetModelsIdRequest,
+  getModelById(
+    req: operations.GetModelByIdRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.GetModelsIdResponse> {
+  ): Promise<operations.GetModelByIdResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetModelsIdRequest(req);
+      req = new operations.GetModelByIdRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -91,68 +148,11 @@ export class TrainingModels {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetModelsIdResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.GetModelByIdResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getModelsId200ApplicationJSONAny = httpRes?.data;
-            }
-            break;
-        }
-
-        return res;
-      })
-  }
-
-  
-  /**
-   * postModels - Train a Custom Model
-   *
-   * This endpoint will train a new custom model
-  **/
-  postModels(
-    req: operations.PostModelsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostModelsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostModelsRequest(req);
-    }
-    
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/models";
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-    
-    const client: AxiosInstance = this._securityClient!;
-    
-    const headers = {...reqBodyHeaders, ...config?.headers};
-    if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
-    
-    const r = client.request({
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody, 
-      ...config,
-    });
-    
-    return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.PostModelsResponse = {statusCode: httpRes.status, contentType: contentType};
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-                res.postModels200ApplicationJSONAny = httpRes?.data;
+                res.getModelById200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
