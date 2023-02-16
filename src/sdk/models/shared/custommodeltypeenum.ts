@@ -14,6 +14,5 @@ export enum CustomModelTypeEnum {
     ProductDesign = "PRODUCT_DESIGN",
     Textures = "TEXTURES",
     UiElements = "UI_ELEMENTS",
-    Vector = "VECTOR",
-    Null = "null"
+    Vector = "VECTOR"
 }

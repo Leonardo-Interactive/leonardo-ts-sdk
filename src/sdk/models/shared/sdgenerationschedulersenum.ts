@@ -6,6 +6,5 @@ export enum SdGenerationSchedulersEnum {
     EulerDiscrete = "EULER_DISCRETE",
     Ddim = "DDIM",
     DpmSolver = "DPM_SOLVER",
-    Pndm = "PNDM",
-    Null = "null"
+    Pndm = "PNDM"
 }

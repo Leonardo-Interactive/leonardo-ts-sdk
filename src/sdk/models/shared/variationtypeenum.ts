@@ -5,6 +5,5 @@ export enum VARIATIONTYPEEnum {
     Inpaint = "INPAINT",
     Upscale = "UPSCALE",
     Unzoom = "UNZOOM",
-    Nobg = "NOBG",
-    Null = "null"
+    Nobg = "NOBG"
 }
