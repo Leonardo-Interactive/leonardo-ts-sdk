@@ -17,7 +17,7 @@ export class GetInitImageByIdRequest extends SpeakeasyBase {
 **/
 export class GetInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=createdAt" })
-  createdAt?: any;
+  createdAt?: string;
 
   @SpeakeasyMetadata({ data: "json, name=id" })
   id?: string;

@@ -20,16 +20,16 @@ export class InitImage {
   }
   
   /**
-   * deleteInitImageId - Delete init image
+   * deleteInitImageById - Delete init image
    *
    * This endpoint deletes an init image
   **/
-  deleteInitImageId(
-    req: operations.DeleteInitImageIdRequest,
+  deleteInitImageById(
+    req: operations.DeleteInitImageByIdRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.DeleteInitImageIdResponse> {
+  ): Promise<operations.DeleteInitImageByIdResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteInitImageIdRequest(req);
+      req = new operations.DeleteInitImageByIdRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -48,11 +48,11 @@ export class InitImage {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteInitImageIdResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.DeleteInitImageByIdResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteInitImageId200ApplicationJSONObject = httpRes?.data;
+                res.deleteInitImageById200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }

@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 
 
 export class GetGenerationsByUserIdPathParams extends SpeakeasyBase {
@@ -31,10 +32,10 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesG
   id?: string;
 
   @SpeakeasyMetadata({ data: "json, name=status" })
-  status?: any;
+  status?: shared.JobStatusEnum;
 
   @SpeakeasyMetadata({ data: "json, name=transformType" })
-  transformType?: any;
+  transformType?: shared.VARIATIONTYPEEnum;
 
   @SpeakeasyMetadata({ data: "json, name=url" })
   url?: string;
@@ -70,7 +71,7 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
   generatedImages?: GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages[];
 
   @SpeakeasyMetadata({ data: "json, name=guidanceScale" })
-  guidanceScale?: any;
+  guidanceScale?: number;
 
   @SpeakeasyMetadata({ data: "json, name=id" })
   id?: string;
@@ -85,7 +86,7 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
   inferenceSteps?: number;
 
   @SpeakeasyMetadata({ data: "json, name=initStrength" })
-  initStrength?: any;
+  initStrength?: number;
 
   @SpeakeasyMetadata({ data: "json, name=modelId" })
   modelId?: string;
@@ -94,7 +95,7 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
   negativePrompt?: string;
 
   @SpeakeasyMetadata({ data: "json, name=presetStyle" })
-  presetStyle?: any;
+  presetStyle?: shared.SdGenerationStyleEnum;
 
   @SpeakeasyMetadata({ data: "json, name=prompt" })
   prompt?: string;
@@ -103,16 +104,16 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
   public?: boolean;
 
   @SpeakeasyMetadata({ data: "json, name=scheduler" })
-  scheduler?: any;
+  scheduler?: shared.SdGenerationSchedulersEnum;
 
   @SpeakeasyMetadata({ data: "json, name=sdVersion" })
-  sdVersion?: any;
+  sdVersion?: shared.SdVersionsEnum;
 
   @SpeakeasyMetadata({ data: "json, name=seed" })
-  seed?: any;
+  seed?: number;
 
   @SpeakeasyMetadata({ data: "json, name=status" })
-  status?: any;
+  status?: shared.JobStatusEnum;
 }
 
 export class GetGenerationsByUserId200ApplicationJSON extends SpeakeasyBase {

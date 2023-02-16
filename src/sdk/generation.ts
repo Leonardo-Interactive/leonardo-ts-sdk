@@ -77,16 +77,16 @@ export class Generation {
 
   
   /**
-   * deleteGenerationsId - Delete a Single Generation
+   * deleteGenerationById - Delete a Single Generation
    *
    * This endpoint deletes a specific generation
   **/
-  deleteGenerationsId(
-    req: operations.DeleteGenerationsIdRequest,
+  deleteGenerationById(
+    req: operations.DeleteGenerationByIdRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.DeleteGenerationsIdResponse> {
+  ): Promise<operations.DeleteGenerationByIdResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteGenerationsIdRequest(req);
+      req = new operations.DeleteGenerationByIdRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -105,11 +105,11 @@ export class Generation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteGenerationsIdResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.DeleteGenerationByIdResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteGenerationsId200ApplicationJSONObject = httpRes?.data;
+                res.deleteGenerationById200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
