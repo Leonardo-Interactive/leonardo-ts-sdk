@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 
 
 export class GetModelByIdPathParams extends SpeakeasyBase {
@@ -17,7 +18,7 @@ export class GetModelByIdRequest extends SpeakeasyBase {
 **/
 export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=createdAt" })
-  createdAt?: any;
+  createdAt?: string;
 
   @SpeakeasyMetadata({ data: "json, name=description" })
   description?: string;
@@ -41,16 +42,16 @@ export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
   public?: boolean;
 
   @SpeakeasyMetadata({ data: "json, name=sdVersion" })
-  sdVersion?: any;
+  sdVersion?: shared.SdVersionsEnum;
 
   @SpeakeasyMetadata({ data: "json, name=status" })
-  status?: any;
+  status?: shared.JobStatusEnum;
 
   @SpeakeasyMetadata({ data: "json, name=type" })
-  type?: any;
+  type?: shared.CustomModelTypeEnum;
 
   @SpeakeasyMetadata({ data: "json, name=updatedAt" })
-  updatedAt?: any;
+  updatedAt?: string;
 }
 
 export class GetModelById200ApplicationJSON extends SpeakeasyBase {

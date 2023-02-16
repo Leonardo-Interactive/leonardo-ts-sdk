@@ -17,7 +17,7 @@ export class GetDatasetByIdRequest extends SpeakeasyBase {
 **/
 export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=createdAt" })
-  createdAt?: any;
+  createdAt?: string;
 
   @SpeakeasyMetadata({ data: "json, name=id" })
   id?: string;
@@ -32,7 +32,7 @@ export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends Speak
 **/
 export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=createdAt" })
-  createdAt?: any;
+  createdAt?: string;
 
   @SpeakeasyMetadata({ data: "json, name=dataset_images", elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages })
   datasetImages?: GetDatasetById200ApplicationJSONDatasetsDatasetImages[];
@@ -47,7 +47,7 @@ export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
   name?: string;
 
   @SpeakeasyMetadata({ data: "json, name=updatedAt" })
-  updatedAt?: any;
+  updatedAt?: string;
 }
 
 export class GetDatasetById200ApplicationJSON extends SpeakeasyBase {

@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 
 
 export class CreateModelRequestBody extends SpeakeasyBase {
@@ -12,7 +13,7 @@ export class CreateModelRequestBody extends SpeakeasyBase {
   instancePrompt: string;
 
   @SpeakeasyMetadata({ data: "json, name=modelType" })
-  modelType?: any;
+  modelType?: shared.CustomModelTypeEnum;
 
   @SpeakeasyMetadata({ data: "json, name=name" })
   name: string;
@@ -24,10 +25,10 @@ export class CreateModelRequestBody extends SpeakeasyBase {
   resolution?: number;
 
   @SpeakeasyMetadata({ data: "json, name=sd_Version" })
-  sdVersion?: any;
+  sdVersion?: shared.SdVersionsEnum;
 
   @SpeakeasyMetadata({ data: "json, name=strength" })
-  strength?: any;
+  strength?: shared.StrengthEnum;
 }
 
 export class CreateModelRequest extends SpeakeasyBase {

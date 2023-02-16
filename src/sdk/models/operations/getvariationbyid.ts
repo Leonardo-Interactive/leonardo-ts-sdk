@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 
 
 export class GetVariationByIdPathParams extends SpeakeasyBase {
@@ -17,16 +18,16 @@ export class GetVariationByIdRequest extends SpeakeasyBase {
 **/
 export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=createdAt" })
-  createdAt?: any;
+  createdAt?: string;
 
   @SpeakeasyMetadata({ data: "json, name=id" })
   id?: string;
 
   @SpeakeasyMetadata({ data: "json, name=status" })
-  status?: any;
+  status?: shared.JobStatusEnum;
 
   @SpeakeasyMetadata({ data: "json, name=transformType" })
-  transformType?: any;
+  transformType?: shared.VARIATIONTYPEEnum;
 
   @SpeakeasyMetadata({ data: "json, name=url" })
   url?: string;

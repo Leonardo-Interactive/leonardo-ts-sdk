@@ -62,7 +62,7 @@ sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) =>
 ### dataset
 
 * `createDataset` - Create a Dataset
-* `deleteDatasetsId` - Delete a Single Dataset by ID
+* `deleteDatasetById` - Delete a Single Dataset by ID
 * `getDatasetById` - Get a Single Dataset by ID
 * `uploadDatasetImage` - Upload dataset image
 * `uploadDatasetImageFromGen` - Upload a Single Generated Image to a Dataset
@@ -70,20 +70,20 @@ sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) =>
 ### generation
 
 * `createGeneration` - Create a Generation of Images
-* `deleteGenerationsId` - Delete a Single Generation
+* `deleteGenerationById` - Delete a Single Generation
 * `getGenerationById` - Get a Single Generation
 * `getGenerationsByUserId` - Get generations by user ID
 
 ### initImage
 
-* `deleteInitImageId` - Delete init image
+* `deleteInitImageById` - Delete init image
 * `getInitImageById` - Get single init image
 * `uploadInitImage` - Upload init image
 
 ### model
 
 * `createModel` - Train a Custom Model
-* `deleteModelsId` - Delete a Single Custom Model by ID
+* `deleteModelById` - Delete a Single Custom Model by ID
 * `getModelById` - Get a Single Custom Model by ID
 
 ### user

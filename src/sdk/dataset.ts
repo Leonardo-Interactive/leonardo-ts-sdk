@@ -77,16 +77,16 @@ export class Dataset {
 
   
   /**
-   * deleteDatasetsId - Delete a Single Dataset by ID
+   * deleteDatasetById - Delete a Single Dataset by ID
    *
    * This endpoint deletes the specific dataset
   **/
-  deleteDatasetsId(
-    req: operations.DeleteDatasetsIdRequest,
+  deleteDatasetById(
+    req: operations.DeleteDatasetByIdRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.DeleteDatasetsIdResponse> {
+  ): Promise<operations.DeleteDatasetByIdResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteDatasetsIdRequest(req);
+      req = new operations.DeleteDatasetByIdRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -105,11 +105,11 @@ export class Dataset {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteDatasetsIdResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.DeleteDatasetByIdResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteDatasetsId200ApplicationJSONObject = httpRes?.data;
+                res.deleteDatasetById200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }

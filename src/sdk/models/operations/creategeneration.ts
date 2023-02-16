@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 
 
 export class CreateGenerationRequestBody extends SpeakeasyBase {
@@ -30,7 +31,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
   numInferenceSteps?: number;
 
   @SpeakeasyMetadata({ data: "json, name=presetStyle" })
-  presetStyle?: any;
+  presetStyle?: shared.SdGenerationStyleEnum;
 
   @SpeakeasyMetadata({ data: "json, name=prompt" })
   prompt: string;
@@ -39,10 +40,10 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
   public?: boolean;
 
   @SpeakeasyMetadata({ data: "json, name=scheduler" })
-  scheduler?: any;
+  scheduler?: shared.SdGenerationSchedulersEnum;
 
   @SpeakeasyMetadata({ data: "json, name=sd_version" })
-  sdVersion?: any;
+  sdVersion?: shared.SdVersionsEnum;
 
   @SpeakeasyMetadata({ data: "json, name=tiling" })
   tiling?: boolean;

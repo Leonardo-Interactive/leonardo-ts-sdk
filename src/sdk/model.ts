@@ -77,16 +77,16 @@ export class Model {
 
   
   /**
-   * deleteModelsId - Delete a Single Custom Model by ID
+   * deleteModelById - Delete a Single Custom Model by ID
    *
    * This endpoint will delete a specific custom model
   **/
-  deleteModelsId(
-    req: operations.DeleteModelsIdRequest,
+  deleteModelById(
+    req: operations.DeleteModelByIdRequest,
     config?: AxiosRequestConfig
-  ): Promise<operations.DeleteModelsIdResponse> {
+  ): Promise<operations.DeleteModelByIdResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteModelsIdRequest(req);
+      req = new operations.DeleteModelByIdRequest(req);
     }
     
     const baseURL: string = this._serverURL;
@@ -105,11 +105,11 @@ export class Model {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteModelsIdResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.DeleteModelByIdResponse = {statusCode: httpRes.status, contentType: contentType};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteModelsId200ApplicationJSONObject = httpRes?.data;
+                res.deleteModelById200ApplicationJSONObject = httpRes?.data;
             }
             break;
         }
