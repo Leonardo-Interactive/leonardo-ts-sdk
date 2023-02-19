@@ -1,13 +1,18 @@
 name: Generate
 
 on:
-  workflow_dispatch: {} # Allows manual triggering of the workflow to generate SDK
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force the generation of the SDKs"
+        type: boolean
+        default: false
   schedule:
     - cron: 0 * * * * # Runs every hour
 
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v9
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v10
     with:
       speakeasy_version: latest
       openapi_doc_location: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
@@ -15,6 +20,7 @@ jobs:
         - typescript: ./
       publish_typescript: true
       mode: pr
+      force: ${{ github.event.inputs.force }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
