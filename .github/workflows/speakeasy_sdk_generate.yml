@@ -12,7 +12,7 @@ on:
 
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v10
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v13
     with:
       speakeasy_version: latest
       openapi_doc_location: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
