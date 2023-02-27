@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Type } from "class-transformer";
 
 
 export class GetDatasetByIdPathParams extends SpeakeasyBase {
@@ -16,13 +17,16 @@ export class GetDatasetByIdRequest extends SpeakeasyBase {
  * columns and relationships of "dataset_images"
 **/
 export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
   createdAt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=url" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
   url?: string;
 }
 
@@ -31,27 +35,36 @@ export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends Speak
  * columns and relationships of "datasets"
 **/
 export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
   createdAt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=dataset_images", elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages })
+  @SpeakeasyMetadata({ elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages })
+  @Expose({ name: "dataset_images" })
+  @Type(() => GetDatasetById200ApplicationJSONDatasetsDatasetImages)
   datasetImages?: GetDatasetById200ApplicationJSONDatasetsDatasetImages[];
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=updatedAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "updatedAt" })
   updatedAt?: string;
 }
 
 export class GetDatasetById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=datasets_by_pk" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "datasets_by_pk" })
+  @Type(() => GetDatasetById200ApplicationJSONDatasets)
   datasetsByPk?: GetDatasetById200ApplicationJSONDatasets;
 }
 

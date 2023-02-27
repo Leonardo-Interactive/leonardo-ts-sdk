@@ -1,10 +1,6 @@
 import "reflect-metadata";
 
-import {
-  ParamDecorator,
-  getSimplePathParams,
-  ppMetadataKey,
-} from "./pathparams";
+import { getSimplePathParams, ppMetadataKey } from "./pathparams";
 
 interface propInfo {
   key: string | symbol;
@@ -98,6 +94,27 @@ export class SpeakeasyBase {
   }
 }
 
+export class ParamDecorator {
+  Style: string;
+  Explode: boolean;
+  ParamName: string;
+  Serialization?: string;
+  DateTimeFormat?: string;
+  constructor(
+    Style: string,
+    Explode: boolean,
+    ParamName: string,
+    Serialization?: string,
+    DateTimeFormat?: string
+  ) {
+    this.Style = Style;
+    this.Explode = Explode;
+    this.ParamName = ParamName;
+    this.Serialization = Serialization;
+    this.DateTimeFormat = DateTimeFormat;
+  }
+}
+
 export function SpeakeasyMetadata<
   T extends SpeakeasyBase = Record<string | symbol, unknown>
 >(params?: {
@@ -137,10 +154,10 @@ export function SpeakeasyMetadata<
 
 export function replaceParameters(
   stringWithParams: string,
-  params: Map<string, string>
+  params: Record<string, string>
 ): string {
   let res: string = stringWithParams;
-  params.forEach((value, key) => {
+  Object.entries(params).forEach(([key, value]) => {
     const match: string = "{" + key + "}";
     res = res.replaceAll(match, value);
   });
@@ -153,7 +170,7 @@ export function generateURL(
   pathParams: any
 ): string {
   const url: string = serverURL.replace(/\/$/, "") + path;
-  const parsedParameters: Map<string, string> = new Map<string, string>();
+  const parsedParameters: Record<string, string> = {};
   const fieldNames: string[] = Object.getOwnPropertyNames(pathParams);
   fieldNames.forEach((fname) => {
     const ppAnn: string = Reflect.getMetadata(ppMetadataKey, pathParams, fname);
@@ -170,10 +187,11 @@ export function generateURL(
         const simpleParams: Map<string, string> = getSimplePathParams(
           ppDecorator.ParamName,
           pathParams[fname],
-          ppDecorator.Explode
+          ppDecorator.Explode,
+          ppDecorator.DateTimeFormat
         );
         simpleParams.forEach((value, key) => {
-          parsedParameters.set(key, value);
+          parsedParameters[key] = value;
         });
     }
   });
@@ -193,6 +211,7 @@ export function parseParamDecorator(
     fName.toLowerCase()
   );
 
+  if (ann == null) return decorator;
   ann.split(";").forEach((annPart) => {
     const [paramKey, paramVal]: string[] = annPart.split("=");
     switch (paramKey) {
@@ -207,42 +226,42 @@ export function parseParamDecorator(
         break;
       case "serialization":
         decorator.Serialization = paramVal;
+        break;
+      case "dateTimeFormat":
+        decorator.DateTimeFormat = paramVal;
     }
   });
   return decorator;
 }
 
 export function isStringRecord(obj: any): obj is Record<string, string> {
-  if (typeof obj !== "object")
-    return false
+  if (typeof obj !== "object") return false;
 
-  if (Object.getOwnPropertySymbols(obj).length > 0)
-    return false
+  if (Object.getOwnPropertySymbols(obj).length > 0) return false;
 
-  return Object.getOwnPropertyNames(obj)
-      .every(prop => typeof obj[prop] === "string")
+  return Object.getOwnPropertyNames(obj).every(
+    (prop) => typeof obj[prop] === "string"
+  );
 }
 
 export function isNumberRecord(obj: any): obj is Record<string, number> {
-  if (typeof obj !== "object")
-    return false
+  if (typeof obj !== "object") return false;
 
-  if (Object.getOwnPropertySymbols(obj).length > 0)
-    return false
+  if (Object.getOwnPropertySymbols(obj).length > 0) return false;
 
-  return Object.getOwnPropertyNames(obj)
-      .every(prop => typeof obj[prop] === "number")
+  return Object.getOwnPropertyNames(obj).every(
+    (prop) => typeof obj[prop] === "number"
+  );
 }
 
 export function isBooleanRecord(obj: any): obj is Record<string, boolean> {
-  if (typeof obj !== "object")
-    return false
+  if (typeof obj !== "object") return false;
 
-  if (Object.getOwnPropertySymbols(obj).length > 0)
-    return false
+  if (Object.getOwnPropertySymbols(obj).length > 0) return false;
 
-  return Object.getOwnPropertyNames(obj)
-      .every(prop => typeof obj[prop] === "boolean")
+  return Object.getOwnPropertyNames(obj).every(
+    (prop) => typeof obj[prop] === "boolean"
+  );
 }
 
 export function isEmpty(value: any): boolean {
@@ -251,4 +270,34 @@ export function isEmpty(value: any): boolean {
   if (typeof value === "number") res = Number.isNaN(value);
   else if (typeof value === "string") res = value === "";
   return res || value == null;
+}
+
+// If value is Date type, serialize as ISO string since Date constructor creates from system clock
+export function convertIfDateObjectToISOString(
+  value: any,
+  dateTimeFormat?: string
+): any {
+  const dtFormat = dateTimeFormat ?? "YYYY-MM-DDThh:mm:ss.sssZ";
+  if (value instanceof Date) {
+    if (dtFormat === "YYYY-MM-DD") {
+      const dateRegex = /^(\d{4})-(\d{2})-(\d{2})/;
+      const [_, year, month, day]: RegExpMatchArray = value
+        .toISOString()
+        .match(dateRegex)!;
+      return `${year}-${month}-${day}`;
+    }
+    if (dtFormat === "YYYY-MM-DDThh:mm:ss.sssZ") {
+      return value.toISOString();
+    }
+  }
+  return value;
+}
+
+export function encodeAndConvertPrimitiveVal(
+  value: any,
+  dateTimeFormat?: string
+): any {
+  return encodeURIComponent(
+    convertIfDateObjectToISOString(value, dateTimeFormat)
+  );
 }

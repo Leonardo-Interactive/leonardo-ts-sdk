@@ -1,11 +1,14 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Type } from "class-transformer";
 
 
 export class CreateDatasetRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name: string;
 }
 
@@ -19,12 +22,15 @@ export class CreateDatasetRequest extends SpeakeasyBase {
  * columns and relationships of "datasets"
 **/
 export class CreateDataset200ApplicationJSONDatasets extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 }
 
 export class CreateDataset200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=insert_datasets_one" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "insert_datasets_one" })
+  @Type(() => CreateDataset200ApplicationJSONDatasets)
   insertDatasetsOne?: CreateDataset200ApplicationJSONDatasets;
 }
 

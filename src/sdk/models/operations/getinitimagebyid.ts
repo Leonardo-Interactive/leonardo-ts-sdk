@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Type } from "class-transformer";
 
 
 export class GetInitImageByIdPathParams extends SpeakeasyBase {
@@ -16,18 +17,23 @@ export class GetInitImageByIdRequest extends SpeakeasyBase {
  * columns and relationships of "init_images"
 **/
 export class GetInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
   createdAt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=url" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
   url?: string;
 }
 
 export class GetInitImageById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=init_images_by_pk" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "init_images_by_pk" })
+  @Type(() => GetInitImageById200ApplicationJSONInitImages)
   initImagesByPk?: GetInitImageById200ApplicationJSONInitImages;
 }
 

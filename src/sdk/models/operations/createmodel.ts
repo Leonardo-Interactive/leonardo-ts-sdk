@@ -1,33 +1,43 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Expose, Type } from "class-transformer";
 
 
 export class CreateModelRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=datasetId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "datasetId" })
   datasetId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=description" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "description" })
   description?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=instance_prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "instance_prompt" })
   instancePrompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=modelType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modelType" })
   modelType?: shared.CustomModelTypeEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=name" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "name" })
   name: string;
 
-  @SpeakeasyMetadata({ data: "json, name=nsfw" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "nsfw" })
   nsfw?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=resolution" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "resolution" })
   resolution?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=sd_Version" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sd_Version" })
   sdVersion?: shared.SdVersionsEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=strength" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "strength" })
   strength?: shared.StrengthEnum;
 }
 
@@ -37,12 +47,15 @@ export class CreateModelRequest extends SpeakeasyBase {
 }
 
 export class CreateModel200ApplicationJSONSDTrainingOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=customModelId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "customModelId" })
   customModelId?: string;
 }
 
 export class CreateModel200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=sdTrainingJob" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sdTrainingJob" })
+  @Type(() => CreateModel200ApplicationJSONSDTrainingOutput)
   sdTrainingJob?: CreateModel200ApplicationJSONSDTrainingOutput;
 }
 

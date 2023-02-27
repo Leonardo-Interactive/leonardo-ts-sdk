@@ -1,6 +1,7 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Variation {
   _defaultClient: AxiosInstance;
@@ -65,7 +66,11 @@ export class Variation {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.createVariationUpscale200ApplicationJSONObject = httpRes?.data;
+              res.createVariationUpscale200ApplicationJSONObject = plainToInstance(
+                operations.CreateVariationUpscale200ApplicationJSON,
+                httpRes?.data as operations.CreateVariationUpscale200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -108,7 +113,11 @@ export class Variation {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getVariationById200ApplicationJSONObject = httpRes?.data;
+              res.getVariationById200ApplicationJSONObject = plainToInstance(
+                operations.GetVariationById200ApplicationJSON,
+                httpRes?.data as operations.GetVariationById200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

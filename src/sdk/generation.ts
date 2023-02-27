@@ -1,6 +1,7 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Generation {
   _defaultClient: AxiosInstance;
@@ -66,7 +67,11 @@ export class Generation {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.createGeneration200ApplicationJSONObject = httpRes?.data;
+              res.createGeneration200ApplicationJSONObject = plainToInstance(
+                operations.CreateGeneration200ApplicationJSON,
+                httpRes?.data as operations.CreateGeneration200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -109,7 +114,11 @@ export class Generation {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteGenerationById200ApplicationJSONObject = httpRes?.data;
+              res.deleteGenerationById200ApplicationJSONObject = plainToInstance(
+                operations.DeleteGenerationById200ApplicationJSON,
+                httpRes?.data as operations.DeleteGenerationById200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -152,7 +161,11 @@ export class Generation {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getGenerationById200ApplicationJSONObject = httpRes?.data;
+              res.getGenerationById200ApplicationJSONObject = plainToInstance(
+                operations.GetGenerationById200ApplicationJSON,
+                httpRes?.data as operations.GetGenerationById200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -180,19 +193,12 @@ export class Generation {
     
     const client: AxiosInstance = this._securityClient!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -203,7 +209,11 @@ export class Generation {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getGenerationsByUserId200ApplicationJSONObject = httpRes?.data;
+              res.getGenerationsByUserId200ApplicationJSONObject = plainToInstance(
+                operations.GetGenerationsByUserId200ApplicationJSON,
+                httpRes?.data as operations.GetGenerationsByUserId200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

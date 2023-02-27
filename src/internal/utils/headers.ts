@@ -5,15 +5,17 @@ import {
   isNumberRecord,
   isStringRecord,
   parseParamDecorator,
+  ParamDecorator,
+  convertIfDateObjectToISOString,
 } from "./utils";
-
-import { ParamDecorator } from "./pathparams";
 
 export const headerMetadataKey = "header";
 
 export function getHeadersFromRequest(headerParams: any): any {
   if (headerParams == null) return;
+
   let headers: any = {};
+
   const fieldNames: string[] = Object.getOwnPropertyNames(headerParams);
   fieldNames.forEach((fname) => {
     const headerAnn: string = Reflect.getMetadata(
@@ -21,20 +23,27 @@ export function getHeadersFromRequest(headerParams: any): any {
       headerParams,
       fname
     );
+
     if (headerAnn == null) return;
+
     const headerDecorator: ParamDecorator = parseParamDecorator(
       headerAnn,
       fname,
       "simple",
       false
     );
+
     if (headerDecorator == null) return;
+
     const value: string = serializeHeader(
       headerParams[fname],
-      headerDecorator.Explode
+      headerDecorator.Explode,
+      headerDecorator.DateTimeFormat
     );
+
     if (value != "") headers[headerDecorator.ParamName] = value;
   });
+
   return headers;
 }
 
@@ -66,11 +75,16 @@ export function getHeadersFromResponse(
   return reponseHeaders;
 }
 
-function serializeHeader(header: any, explode: boolean): string {
+function serializeHeader(
+  header: any,
+  explode: boolean,
+  dateTimeFormat?: string
+): string {
   const headerVals: string[] = [];
+
   if (Array.isArray(header)) {
     header.forEach((val: any) => {
-      headerVals.push(String(val));
+      headerVals.push(convertIfDateObjectToISOString(val, dateTimeFormat));
     });
   } else if (
     isStringRecord(header) ||
@@ -88,16 +102,23 @@ function serializeHeader(header: any, explode: boolean): string {
         header,
         headerKey
       );
+
       if (headerAnn == null) return;
+
       const headerDecorator: ParamDecorator = parseParamDecorator(
         headerAnn,
         headerKey,
         "simple",
         explode
       );
+
       if (headerDecorator == null) return;
 
-      const headerFieldValue = header[headerKey];
+      const headerFieldValue = convertIfDateObjectToISOString(
+        header[headerKey],
+        headerDecorator.DateTimeFormat
+      );
+
       if (isEmpty(headerFieldValue)) return;
       else if (explode)
         headerVals.push(`${headerDecorator.ParamName}=${headerFieldValue}`);

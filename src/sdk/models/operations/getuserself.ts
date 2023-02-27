@@ -1,4 +1,5 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Type } from "class-transformer";
 
 
 // GetUserSelf200ApplicationJSONUserDetailsUsers
@@ -6,10 +7,12 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
  * columns and relationships of "users"
 **/
 export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=username" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "username" })
   username?: string;
 }
 
@@ -18,15 +21,20 @@ export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase
  * columns and relationships of "user_details"
 **/
 export class GetUserSelf200ApplicationJSONUserDetails extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=showNsfw" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "showNsfw" })
   showNsfw?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=user" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "user" })
+  @Type(() => GetUserSelf200ApplicationJSONUserDetailsUsers)
   user?: GetUserSelf200ApplicationJSONUserDetailsUsers;
 }
 
 export class GetUserSelf200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=user_details", elemType: GetUserSelf200ApplicationJSONUserDetails })
+  @SpeakeasyMetadata({ elemType: GetUserSelf200ApplicationJSONUserDetails })
+  @Expose({ name: "user_details" })
+  @Type(() => GetUserSelf200ApplicationJSONUserDetails)
   userDetails?: GetUserSelf200ApplicationJSONUserDetails[];
 }
 

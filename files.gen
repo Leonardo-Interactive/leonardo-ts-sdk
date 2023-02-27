@@ -5,6 +5,7 @@ src/sdk/model.ts
 src/sdk/user.ts
 src/sdk/variation.ts
 src/sdk/sdk.ts
+jest.config.js
 package-lock.json
 package.json
 src/index.ts

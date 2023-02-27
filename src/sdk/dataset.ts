@@ -1,6 +1,7 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class Dataset {
   _defaultClient: AxiosInstance;
@@ -66,7 +67,11 @@ export class Dataset {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.createDataset200ApplicationJSONObject = httpRes?.data;
+              res.createDataset200ApplicationJSONObject = plainToInstance(
+                operations.CreateDataset200ApplicationJSON,
+                httpRes?.data as operations.CreateDataset200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -109,7 +114,11 @@ export class Dataset {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.deleteDatasetById200ApplicationJSONObject = httpRes?.data;
+              res.deleteDatasetById200ApplicationJSONObject = plainToInstance(
+                operations.DeleteDatasetById200ApplicationJSON,
+                httpRes?.data as operations.DeleteDatasetById200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -152,7 +161,11 @@ export class Dataset {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getDatasetById200ApplicationJSONObject = httpRes?.data;
+              res.getDatasetById200ApplicationJSONObject = plainToInstance(
+                operations.GetDatasetById200ApplicationJSON,
+                httpRes?.data as operations.GetDatasetById200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -209,7 +222,11 @@ export class Dataset {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.uploadDatasetImage200ApplicationJSONObject = httpRes?.data;
+              res.uploadDatasetImage200ApplicationJSONObject = plainToInstance(
+                operations.UploadDatasetImage200ApplicationJSON,
+                httpRes?.data as operations.UploadDatasetImage200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -266,7 +283,11 @@ export class Dataset {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.uploadDatasetImageFromGen200ApplicationJSONObject = httpRes?.data;
+              res.uploadDatasetImageFromGen200ApplicationJSONObject = plainToInstance(
+                operations.UploadDatasetImageFromGen200ApplicationJSON,
+                httpRes?.data as operations.UploadDatasetImageFromGen200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
