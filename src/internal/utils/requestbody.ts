@@ -56,7 +56,7 @@ export function serializeRequestBody(request: any): [object, any] {
       case "text/json":
         [requestHeaders, requestBody] = [
           { "Content-Type": `${requestDecorator.MediaType}` },
-          { ...requestBodyObj[fname] },
+          requestBodyObj[fname],
         ];
         break;
 
