@@ -61,10 +61,17 @@ function parseSecurityClass(
     const securityDecorator: SecurityDecorator =
       parseSecurityDecorator(securityAnn);
     if (securityDecorator == null) return;
+
+    const value = security[fname];
+
     if (securityDecorator.Option) {
-      return parseSecurityOption(client, security[fname]);
+      return parseSecurityOption(client, value);
     } else if (securityDecorator.Scheme) {
-      return parseSecurityScheme(client, securityDecorator, security[fname]);
+      if (securityDecorator.SubType === "basic" && value !== Object(value)) {
+        return parseSecurityScheme(client, securityDecorator, security);
+      } else {
+        client = parseSecurityScheme(client, securityDecorator, value);
+      }
     }
   });
 
@@ -85,10 +92,8 @@ function parseSecurityOption(
     if (securityAnn == null) return;
     const securityDecorator: SecurityDecorator =
       parseSecurityDecorator(securityAnn);
-    if (securityDecorator != null && securityDecorator.Scheme) return;
-    if (securityDecorator.Scheme) {
-      return parseSecurityScheme(client, securityDecorator, optionType[fname]);
-    }
+    if (securityDecorator == null || !securityDecorator.Scheme) return;
+    return parseSecurityScheme(client, securityDecorator, optionType[fname]);
   });
 
   return client;
@@ -99,65 +104,91 @@ function parseSecurityScheme(
   schemeDecorator: SecurityDecorator,
   scheme: any
 ): AxiosInstance {
-  if (schemeDecorator.Type === "http" && schemeDecorator.SubType === "basic") {
-    return parseBasicAuthScheme(client, scheme);
+  if (scheme === Object(scheme)) {
+    if (
+      schemeDecorator.Type === "http" &&
+      schemeDecorator.SubType === "basic"
+    ) {
+      return parseBasicAuthScheme(client, scheme);
+    }
+
+    const fieldNames: string[] = Object.getOwnPropertyNames(scheme);
+    fieldNames.forEach((fname) => {
+      const securityAnn: string = Reflect.getMetadata(
+        securityMetadataKey,
+        scheme,
+        fname
+      );
+      if (securityAnn == null) return;
+      const securityDecorator: SecurityDecorator =
+        parseSecurityDecorator(securityAnn);
+      if (securityDecorator == null || securityDecorator.Name === "") return;
+
+      client = parseSecuritySchemeValue(
+        client,
+        schemeDecorator,
+        securityDecorator,
+        scheme[fname]
+      );
+    });
+  } else {
+    client = parseSecuritySchemeValue(
+      client,
+      schemeDecorator,
+      schemeDecorator,
+      scheme
+    );
   }
 
-  const fieldNames: string[] = Object.getOwnPropertyNames(scheme);
-  fieldNames.forEach((fname) => {
-    const securityAnn: string = Reflect.getMetadata(
-      securityMetadataKey,
-      scheme,
-      fname
-    );
-    if (securityAnn == null) return;
-    const securityDecorator: SecurityDecorator =
-      parseSecurityDecorator(securityAnn);
-    if (securityDecorator == null || securityDecorator.Name === "") return;
+  return client;
+}
 
-    switch (schemeDecorator.Type) {
-      case "apiKey":
-        switch (schemeDecorator.SubType) {
-          case "header":
-            client.defaults.headers.common[securityDecorator.Name] =
-              scheme[fname];
-            break;
-          case "query":
-            client.defaults.params[securityDecorator.Name] = scheme[fname];
-            break;
-          case "cookie":
-            const securityDecoratorName: string = securityDecorator.Name;
-            const val: string = scheme[fname];
-            client.defaults.headers.common[
-              "Cookie"
-            ] = `${securityDecoratorName}=${val}`;
-            break;
-          default:
-            throw new Error("not supported");
-        }
-        break;
-      case "openIdConnect":
-        client.defaults.headers.common[securityDecorator.Name] = scheme[fname];
-        break;
-      case "oauth2":
-        client.defaults.headers.common[securityDecorator.Name] = scheme[fname];
-        break;
-      case "http":
-        switch (schemeDecorator.SubType) {
-          case "basic":
-            break;
-          case "bearer":
-            client.defaults.headers.common[securityDecorator.Name] =
-              scheme[fname];
-            break;
-          default:
-            throw new Error("not supported");
-        }
-        break;
-      default:
-        throw new Error("not supported");
-    }
-  });
+function parseSecuritySchemeValue(
+  client: AxiosInstance,
+  schemeDecorator: SecurityDecorator,
+  securityDecorator: SecurityDecorator,
+  value: any
+): AxiosInstance {
+  switch (schemeDecorator.Type) {
+    case "apiKey":
+      switch (schemeDecorator.SubType) {
+        case "header":
+          client.defaults.headers.common[securityDecorator.Name] = value;
+          break;
+        case "query":
+          client.defaults.params[securityDecorator.Name] = value;
+          break;
+        case "cookie":
+          const securityDecoratorName: string = securityDecorator.Name;
+          const val: string = value;
+          client.defaults.headers.common[
+            "Cookie"
+          ] = `${securityDecoratorName}=${val}`;
+          break;
+        default:
+          throw new Error("not supported");
+      }
+      break;
+    case "openIdConnect":
+      client.defaults.headers.common[securityDecorator.Name] = value;
+      break;
+    case "oauth2":
+      client.defaults.headers.common[securityDecorator.Name] = value;
+      break;
+    case "http":
+      switch (schemeDecorator.SubType) {
+        case "basic":
+          break;
+        case "bearer":
+          client.defaults.headers.common[securityDecorator.Name] = value;
+          break;
+        default:
+          throw new Error("not supported");
+      }
+      break;
+    default:
+      throw new Error("not supported");
+  }
 
   return client;
 }
