@@ -152,7 +152,7 @@ export function SpeakeasyMetadata<
   };
 }
 
-export function replaceParameters(
+export function templateUrl(
   stringWithParams: string,
   params: Record<string, string>
 ): string {
@@ -195,7 +195,7 @@ export function generateURL(
         });
     }
   });
-  return replaceParameters(url, parsedParameters);
+  return templateUrl(url, parsedParameters);
 }
 
 export function parseParamDecorator(
