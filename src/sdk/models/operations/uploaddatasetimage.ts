@@ -1,4 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class UploadDatasetImagePathParams extends SpeakeasyBase {
@@ -7,7 +9,8 @@ export class UploadDatasetImagePathParams extends SpeakeasyBase {
 }
 
 export class UploadDatasetImageRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=extension" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "extension" })
   extension: string;
 }
 
@@ -20,21 +23,27 @@ export class UploadDatasetImageRequest extends SpeakeasyBase {
 }
 
 export class UploadDatasetImage200ApplicationJSONDatasetUploadOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=fields" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "fields" })
   fields?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=key" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "key" })
   key?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=url" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
   url?: string;
 }
 
 export class UploadDatasetImage200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=uploadDatasetImage" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "uploadDatasetImage" })
+  @Type(() => UploadDatasetImage200ApplicationJSONDatasetUploadOutput)
   uploadDatasetImage?: UploadDatasetImage200ApplicationJSONDatasetUploadOutput;
 }
 
@@ -44,6 +53,9 @@ export class UploadDatasetImageResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   uploadDatasetImage200ApplicationJSONObject?: UploadDatasetImage200ApplicationJSON;

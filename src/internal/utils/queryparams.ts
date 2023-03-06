@@ -1,98 +1,277 @@
-import {ParamDecorator} from "./pathparams";
-import {ParamsSerializerOptions} from "axios";
-import {parseParamDecorator} from "./utils";
-import qs from "qs";
+import { ParamDecorator } from "./utils";
+import {
+  convertIfDateObjectToISOString,
+  encodeAndConvertPrimitiveVal,
+  parseParamDecorator,
+} from "./utils";
 
 export const qpMetadataKey = "queryParam";
+const queryStringPrefix = "?";
 
-export function getQueryParamSerializer(
-    queryParams: any
-): ParamsSerializerOptions {
-    let paramsSerializer: ParamsSerializerOptions = {
-        serialize: formSerializerExplode,
-    };
-    if (!queryParams) return paramsSerializer;
-    const fieldNames: string[] = Object.getOwnPropertyNames(queryParams);
-    fieldNames.forEach((fname) => {
+export function serializeQueryParams(queryParams: any): string {
+  let queryStringParts: string[] = [];
+  if (!queryParams) return queryStringParts.join("&");
+
+  const fieldNames: string[] = Object.getOwnPropertyNames(queryParams);
+  fieldNames.forEach((fname) => {
+    const qpAnn: string = Reflect.getMetadata(
+      qpMetadataKey,
+      queryParams,
+      fname
+    );
+
+    if (!qpAnn) return { serialize: (params: any) => "" };
+
+    const qpDecorator: ParamDecorator = parseParamDecorator(
+      qpAnn,
+      fname,
+      "form",
+      true
+    );
+
+    if (!qpDecorator) return;
+
+    if (qpDecorator.Serialization === "json")
+      queryStringParts.push(jsonSerializer({ [fname]: queryParams[fname] }));
+    else {
+      switch (qpDecorator.Style) {
+        case "deepObject":
+          queryStringParts.push(
+            deepObjectSerializer(
+              { [fname]: queryParams[fname] },
+              qpDecorator.DateTimeFormat
+            )
+          );
+          return;
+        case "form":
+          if (!qpDecorator.Explode)
+            queryStringParts.push(
+              formSerializer(
+                { [fname]: queryParams[fname] },
+                qpDecorator.DateTimeFormat
+              )
+            );
+          else
+            queryStringParts.push(
+              formSerializerExplode(
+                { [fname]: queryParams[fname] },
+                qpDecorator.DateTimeFormat
+              )
+            );
+          return;
+        default:
+          queryStringParts.push(
+            formSerializerExplode(
+              { [fname]: queryParams[fname] },
+              qpDecorator.DateTimeFormat
+            )
+          );
+      }
+    }
+  });
+  return queryStringPrefix + queryStringParts.join("&");
+}
+
+// TODO: Add support for disabling percent encoding for reserved characters
+function jsonSerializer(params: Record<string, any>): string {
+  const query: string[] = [];
+
+  Object.entries(Object.assign({}, params)).forEach(([key, value]) => {
+    const values: string = Object.getOwnPropertyNames(value)
+      .map((paramKey: string) => {
         const qpAnn: string = Reflect.getMetadata(
-            qpMetadataKey,
-            queryParams,
-            fname
+          qpMetadataKey,
+          value,
+          paramKey
         );
-        if (!qpAnn) return {serialize: (params: any) => ""};
+
         const qpDecorator: ParamDecorator = parseParamDecorator(
+          qpAnn,
+          paramKey,
+          "form",
+          true
+        );
+
+        if (qpDecorator == null) return;
+
+        return `"${paramKey}":${JSON.stringify(
+          convertIfDateObjectToISOString(
+            value[paramKey],
+            qpDecorator.DateTimeFormat
+          )
+        )}`;
+      })
+      .join(",");
+    query.push(`${key}={${encodeURIComponent(values)}}`);
+  });
+  return query.join("&");
+}
+
+// TODO: Add support for disabling percent encoding for reserved characters
+function formSerializer(
+  params: Record<string, any>,
+  dateTimeFormat?: string
+): string {
+  const query: string[] = [];
+
+  Object.entries(Object.assign({}, params)).forEach(([key, value]) => {
+    if (!value) return;
+    if (value !== Object(value))
+      query.push(
+        `${key}=${encodeAndConvertPrimitiveVal(value, dateTimeFormat)}`
+      );
+    else if (Array.isArray(value)) {
+      const values: string = value
+        .map((aValue) => convertIfDateObjectToISOString(aValue, dateTimeFormat))
+        .join(",");
+
+      query.push(`${key}=${encodeURIComponent(values)}`);
+    } else {
+      const values: string = Object.getOwnPropertyNames(value)
+        .map((paramKey: string) => {
+          const qpAnn: string = Reflect.getMetadata(
+            qpMetadataKey,
+            value,
+            paramKey
+          );
+
+          const qpDecorator: ParamDecorator = parseParamDecorator(
             qpAnn,
-            fname,
+            paramKey,
             "form",
             true
-        );
-        if (!qpDecorator) return;
-        if (qpDecorator.Serialization === "json")
-            paramsSerializer = {
-                serialize: (params: any) => Object.keys(params).map(key =>
-                    `${key}=${JSON.stringify(params[key])}`
-                ).join("&"),
-            };
-        else {
-            switch (qpDecorator.Style) {
-                case "deepObject":
-                    paramsSerializer = {
-                        serialize: (params: any) => {
-                            return qs.stringify(params);
-                        },
-                    };
-                    break;
-                case "form":
-                    if (qpDecorator.Explode) {
-                        paramsSerializer = {
-                            serialize: formSerializerExplode,
-                        };
-                    } else {
-                        paramsSerializer = {
-                            serialize: formSerializer,
-                        };
-                    }
-                    break;
-                default:
-                    // go to next query parameter field, assume first implemented serializer will serialize all query parameters for this request
-                    return;
-            }
-        }
-    });
-    return paramsSerializer;
+          );
+
+          if (qpDecorator == null) return;
+
+          return `${paramKey},${convertIfDateObjectToISOString(
+            value[paramKey],
+            qpDecorator.DateTimeFormat
+          )}`;
+        })
+        .join(",");
+      query.push(`${key}=${encodeURIComponent(values)}`);
+    }
+  });
+  return query.join("&");
 }
 
-function formSerializer(params: any): string {
-    const query: string[] = [];
-    Object.entries(Object.assign({}, params)).forEach(([key, value]) => {
-        if (!value) return;
-        if (value !== Object(value)) query.push(`${key}=${value}`);
-        else if (Array.isArray(value)) {
-            const values: string = value.join(",");
-            query.push(`${key}=${values}`);
-        } else {
-            const values: string = Object.entries(Object.assign({}, value))
-                .map(([objKey, objValue]) => `${objKey},${objValue}`)
-                .join(",");
-            query.push(`${key}=${values}`);
-        }
-    });
-    return query.join("&");
-}
+// TODO: Add support for disabling percent encoding for reserved characters
+function formSerializerExplode(
+  params: Record<string, any>,
+  dateTimeFormat?: string
+): string {
+  const query: string[] = [];
 
-function formSerializerExplode(params: any): string {
-    const query: string[] = [];
-    Object.entries(Object.assign({}, params)).forEach(([key, value]) => {
-        if (!value) return;
-        if (value !== Object(value)) query.push(`${key}=${value}`);
-        else if (Array.isArray(value)) {
-            query.push(value.map((aValue) => `${key}=${aValue}`).join("&"));
-        } else
-            query.push(
-                Object.entries(Object.assign({}, value))
-                    .map(([objKey, objValue]) => `${objKey}=${objValue}`)
-                    .join("&")
+  Object.entries(Object.assign({}, params)).forEach(([key, value]) => {
+    if (!value) return;
+    if (value !== Object(value))
+      query.push(
+        `${key}=${encodeAndConvertPrimitiveVal(value, dateTimeFormat)}`
+      );
+    else if (Array.isArray(value)) {
+      query.push(
+        value
+          .map(
+            (aValue) =>
+              `${key}=${encodeAndConvertPrimitiveVal(aValue, dateTimeFormat)}`
+          )
+          .join("&")
+      );
+    } else
+      query.push(
+        Object.getOwnPropertyNames(value)
+          .map((paramKey: string) => {
+
+            const qpAnn: string = Reflect.getMetadata(
+              qpMetadataKey,
+              value,
+              paramKey
             );
-    });
-    return query.join("&");
+
+            const qpDecorator: ParamDecorator = parseParamDecorator(
+              qpAnn,
+              paramKey,
+              "form",
+              true
+            );
+
+            if (qpDecorator == null) return;
+
+            return `${paramKey}=${encodeAndConvertPrimitiveVal(
+              value[paramKey],
+              qpDecorator.DateTimeFormat
+            )}`;
+          })
+          .join("&")
+      );
+  });
+  return query.join("&");
+}
+
+// TODO: Add support for disabling percent encoding for reserved characters
+function deepObjectSerializer(
+  params: Record<string, any>,
+  dateTimeFormat?: string
+): string {
+  const query: string[] = [];
+
+  Object.entries(Object.assign({}, params)).forEach(([key, value]) => {
+    if (!value) return;
+    if (value !== Object(value))
+      query.push(
+        `${key}=${encodeAndConvertPrimitiveVal(value, dateTimeFormat)}`
+      );
+    else if (Array.isArray(value)) {
+      query.push(
+        value
+          .map(
+            ([objKey, objValue]) =>
+              `${key}[${objKey}]=${encodeAndConvertPrimitiveVal(
+                objValue,
+                dateTimeFormat
+              )}`
+          )
+          .join("&")
+      );
+    } else
+      query.push(
+        Object.getOwnPropertyNames(value)
+          .map((paramKey: string) => {
+
+            const qpAnn: string = Reflect.getMetadata(
+              qpMetadataKey,
+              value,
+              paramKey
+            );
+
+            const qpDecorator: ParamDecorator = parseParamDecorator(
+              qpAnn,
+              paramKey,
+              "form",
+              true
+            );
+
+            if (qpDecorator == null) return;
+
+            // For deep objects, arr is wrapped inside object
+            if (Array.isArray(value[paramKey]))
+              return value[paramKey]
+                .map(
+                  (arrValue: any) =>
+                    `${key}[${paramKey}]=${encodeAndConvertPrimitiveVal(
+                      arrValue,
+                      qpDecorator.DateTimeFormat
+                    )}`
+                )
+                .join("&");
+            return `${key}[${paramKey}]=${encodeAndConvertPrimitiveVal(
+              value[paramKey],
+              qpDecorator.DateTimeFormat
+            )}`;
+          })
+          .join("&")
+      );
+  });
+  return query.join("&");
 }

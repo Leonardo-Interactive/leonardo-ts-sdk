@@ -1,54 +1,72 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class CreateGenerationRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=guidance_scale" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "guidance_scale" })
   guidanceScale?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=height" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "height" })
   height?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=init_generation_image_id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "init_generation_image_id" })
   initGenerationImageId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=init_image_id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "init_image_id" })
   initImageId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=init_strength" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "init_strength" })
   initStrength?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=modelId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modelId" })
   modelId?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=negative_prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "negative_prompt" })
   negativePrompt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=num_images" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "num_images" })
   numImages?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=num_inference_steps" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "num_inference_steps" })
   numInferenceSteps?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=presetStyle" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "presetStyle" })
   presetStyle?: shared.SdGenerationStyleEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "prompt" })
   prompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=public" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "public" })
   public?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=scheduler" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "scheduler" })
   scheduler?: shared.SdGenerationSchedulersEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=sd_version" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sd_version" })
   sdVersion?: shared.SdVersionsEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=tiling" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "tiling" })
   tiling?: boolean;
 
-  @SpeakeasyMetadata({ data: "json, name=width" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "width" })
   width?: number;
 }
 
@@ -58,12 +76,15 @@ export class CreateGenerationRequest extends SpeakeasyBase {
 }
 
 export class CreateGeneration200ApplicationJSONSDGenerationOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=generationId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "generationId" })
   generationId?: string;
 }
 
 export class CreateGeneration200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=sdGenerationJob" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sdGenerationJob" })
+  @Type(() => CreateGeneration200ApplicationJSONSDGenerationOutput)
   sdGenerationJob?: CreateGeneration200ApplicationJSONSDGenerationOutput;
 }
 
@@ -73,6 +94,9 @@ export class CreateGenerationResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   createGeneration200ApplicationJSONObject?: CreateGeneration200ApplicationJSON;

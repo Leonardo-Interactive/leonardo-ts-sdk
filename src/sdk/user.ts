@@ -1,6 +1,7 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class User {
   _defaultClient: AxiosInstance;
@@ -43,11 +44,15 @@ export class User {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetUserSelfResponse = {statusCode: httpRes.status, contentType: contentType};
+        const res: operations.GetUserSelfResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.getUserSelf200ApplicationJSONObject = httpRes?.data;
+              res.getUserSelf200ApplicationJSONObject = plainToInstance(
+                operations.GetUserSelf200ApplicationJSON,
+                httpRes?.data as operations.GetUserSelf200ApplicationJSON,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

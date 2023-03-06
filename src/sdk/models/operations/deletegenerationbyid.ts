@@ -1,4 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class DeleteGenerationByIdPathParams extends SpeakeasyBase {
@@ -16,12 +18,15 @@ export class DeleteGenerationByIdRequest extends SpeakeasyBase {
  * columns and relationships of "generations"
 **/
 export class DeleteGenerationById200ApplicationJSONGenerations extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 }
 
 export class DeleteGenerationById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=delete_generations_by_pk" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "delete_generations_by_pk" })
+  @Type(() => DeleteGenerationById200ApplicationJSONGenerations)
   deleteGenerationsByPk?: DeleteGenerationById200ApplicationJSONGenerations;
 }
 
@@ -31,6 +36,9 @@ export class DeleteGenerationByIdResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   deleteGenerationById200ApplicationJSONObject?: DeleteGenerationById200ApplicationJSON;

@@ -1,4 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class DeleteModelByIdPathParams extends SpeakeasyBase {
@@ -16,12 +18,15 @@ export class DeleteModelByIdRequest extends SpeakeasyBase {
  * columns and relationships of "custom_models"
 **/
 export class DeleteModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 }
 
 export class DeleteModelById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=delete_custom_models_by_pk" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "delete_custom_models_by_pk" })
+  @Type(() => DeleteModelById200ApplicationJSONCustomModels)
   deleteCustomModelsByPk?: DeleteModelById200ApplicationJSONCustomModels;
 }
 
@@ -31,6 +36,9 @@ export class DeleteModelByIdResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   deleteModelById200ApplicationJSONObject?: DeleteModelById200ApplicationJSON;

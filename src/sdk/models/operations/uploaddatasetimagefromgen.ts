@@ -1,4 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class UploadDatasetImageFromGenPathParams extends SpeakeasyBase {
@@ -7,7 +9,8 @@ export class UploadDatasetImageFromGenPathParams extends SpeakeasyBase {
 }
 
 export class UploadDatasetImageFromGenRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=generatedImageId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "generatedImageId" })
   generatedImageId: string;
 }
 
@@ -20,12 +23,15 @@ export class UploadDatasetImageFromGenRequest extends SpeakeasyBase {
 }
 
 export class UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 }
 
 export class UploadDatasetImageFromGen200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=uploadDatasetImageFromGen" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "uploadDatasetImageFromGen" })
+  @Type(() => UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput)
   uploadDatasetImageFromGen?: UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput;
 }
 
@@ -35,6 +41,9 @@ export class UploadDatasetImageFromGenResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   uploadDatasetImageFromGen200ApplicationJSONObject?: UploadDatasetImageFromGen200ApplicationJSON;

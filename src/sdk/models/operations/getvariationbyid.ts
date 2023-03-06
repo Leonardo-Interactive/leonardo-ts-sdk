@@ -1,5 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class GetVariationByIdPathParams extends SpeakeasyBase {
@@ -17,24 +19,31 @@ export class GetVariationByIdRequest extends SpeakeasyBase {
  * columns and relationships of "generated_image_variation_generic"
 **/
 export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
   createdAt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status?: shared.JobStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=transformType" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "transformType" })
   transformType?: shared.VARIATIONTYPEEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=url" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
   url?: string;
 }
 
 export class GetVariationById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=generated_image_variation_generic", elemType: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric })
+  @SpeakeasyMetadata({ elemType: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric })
+  @Expose({ name: "generated_image_variation_generic" })
+  @Type(() => GetVariationById200ApplicationJSONGeneratedImageVariationGeneric)
   generatedImageVariationGeneric?: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric[];
 }
 
@@ -44,6 +53,9 @@ export class GetVariationByIdResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   getVariationById200ApplicationJSONObject?: GetVariationById200ApplicationJSON;

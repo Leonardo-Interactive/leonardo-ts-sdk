@@ -1,8 +1,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class CreateVariationUpscaleRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 }
 
@@ -12,12 +15,15 @@ export class CreateVariationUpscaleRequest extends SpeakeasyBase {
 }
 
 export class CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 }
 
 export class CreateVariationUpscale200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=sdUpscaleJob" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sdUpscaleJob" })
+  @Type(() => CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput)
   sdUpscaleJob?: CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput;
 }
 
@@ -27,6 +33,9 @@ export class CreateVariationUpscaleResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   createVariationUpscale200ApplicationJSONObject?: CreateVariationUpscale200ApplicationJSON;

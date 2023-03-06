@@ -1,4 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AxiosResponse } from "axios";
+import { Expose, Type } from "class-transformer";
 
 
 export class DeleteDatasetByIdPathParams extends SpeakeasyBase {
@@ -16,12 +18,15 @@ export class DeleteDatasetByIdRequest extends SpeakeasyBase {
  * columns and relationships of "datasets"
 **/
 export class DeleteDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id?: string;
 }
 
 export class DeleteDatasetById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=delete_datasets_by_pk" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "delete_datasets_by_pk" })
+  @Type(() => DeleteDatasetById200ApplicationJSONDatasets)
   deleteDatasetsByPk?: DeleteDatasetById200ApplicationJSONDatasets;
 }
 
@@ -31,6 +36,9 @@ export class DeleteDatasetByIdResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   statusCode: number;
+
+  @SpeakeasyMetadata()
+  rawResponse?: AxiosResponse;
 
   @SpeakeasyMetadata()
   deleteDatasetById200ApplicationJSONObject?: DeleteDatasetById200ApplicationJSON;
