@@ -63,14 +63,18 @@ export class Dataset {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateDatasetResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateDatasetResponse =
+            new operations.CreateDatasetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createDataset200ApplicationJSONObject = plainToInstance(
+              res.createDataset200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.CreateDataset200ApplicationJSON,
-                httpRes?.data as operations.CreateDataset200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -110,14 +114,18 @@ export class Dataset {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteDatasetByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteDatasetByIdResponse =
+            new operations.DeleteDatasetByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.deleteDatasetById200ApplicationJSONObject = plainToInstance(
+              res.deleteDatasetById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.DeleteDatasetById200ApplicationJSON,
-                httpRes?.data as operations.DeleteDatasetById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -157,14 +165,18 @@ export class Dataset {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetDatasetByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetDatasetByIdResponse =
+            new operations.GetDatasetByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getDatasetById200ApplicationJSONObject = plainToInstance(
+              res.getDatasetById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.GetDatasetById200ApplicationJSON,
-                httpRes?.data as operations.GetDatasetById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -218,14 +230,18 @@ export class Dataset {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UploadDatasetImageResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UploadDatasetImageResponse =
+            new operations.UploadDatasetImageResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.uploadDatasetImage200ApplicationJSONObject = plainToInstance(
+              res.uploadDatasetImage200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.UploadDatasetImage200ApplicationJSON,
-                httpRes?.data as operations.UploadDatasetImage200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -279,14 +295,18 @@ export class Dataset {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UploadDatasetImageFromGenResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UploadDatasetImageFromGenResponse =
+            new operations.UploadDatasetImageFromGenResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.uploadDatasetImageFromGen200ApplicationJSONObject = plainToInstance(
+              res.uploadDatasetImageFromGen200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.UploadDatasetImageFromGen200ApplicationJSON,
-                httpRes?.data as operations.UploadDatasetImageFromGen200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;

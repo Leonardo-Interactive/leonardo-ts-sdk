@@ -63,14 +63,18 @@ export class Generation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateGenerationResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateGenerationResponse =
+            new operations.CreateGenerationResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createGeneration200ApplicationJSONObject = plainToInstance(
+              res.createGeneration200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.CreateGeneration200ApplicationJSON,
-                httpRes?.data as operations.CreateGeneration200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -110,14 +114,18 @@ export class Generation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteGenerationByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteGenerationByIdResponse =
+            new operations.DeleteGenerationByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.deleteGenerationById200ApplicationJSONObject = plainToInstance(
+              res.deleteGenerationById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.DeleteGenerationById200ApplicationJSON,
-                httpRes?.data as operations.DeleteGenerationById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -157,14 +165,18 @@ export class Generation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetGenerationByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetGenerationByIdResponse =
+            new operations.GetGenerationByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getGenerationById200ApplicationJSONObject = plainToInstance(
+              res.getGenerationById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.GetGenerationById200ApplicationJSON,
-                httpRes?.data as operations.GetGenerationById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -205,14 +217,18 @@ export class Generation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetGenerationsByUserIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetGenerationsByUserIdResponse =
+            new operations.GetGenerationsByUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getGenerationsByUserId200ApplicationJSONObject = plainToInstance(
+              res.getGenerationsByUserId200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.GetGenerationsByUserId200ApplicationJSON,
-                httpRes?.data as operations.GetGenerationsByUserId200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;

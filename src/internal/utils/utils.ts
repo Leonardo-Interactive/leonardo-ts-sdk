@@ -1,6 +1,7 @@
 import "reflect-metadata";
 
 import { getSimplePathParams, ppMetadataKey } from "./pathparams";
+import { plainToInstance } from "class-transformer";
 
 interface propInfo {
   key: string | symbol;
@@ -300,4 +301,55 @@ export function encodeAndConvertPrimitiveVal(
   return encodeURIComponent(
     convertIfDateObjectToISOString(value, dateTimeFormat)
   );
+}
+
+export function deserializeJSONResponse<T>(
+  value: T,
+  klass?: any,
+  elemDepth: number = 0): any {
+
+  if (value !== Object(value)) {
+    return value;
+  }
+
+  if (elemDepth === 0 && klass != null) {
+    return plainToInstance(klass, value, { excludeExtraneousValues: true }) as typeof klass;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((v) => deserializeJSONResponse(v, klass, elemDepth-1));
+  }
+
+  if (typeof value === 'object' && value != null) {
+    let copiedRecord: Record<string, any> = {};
+    for (const key in value) {
+      copiedRecord[key] = deserializeJSONResponse(value[key], klass, elemDepth-1);
+    }
+    return copiedRecord;
+  }
+
+  return plainToInstance(klass, value, { excludeExtraneousValues: true }) as typeof klass;
+}
+
+export function getResFieldDepth(res: any): number {
+  const props = res["__props__"];
+  let resFieldDepth = 1;
+
+  if (props) {
+    for (const prop of props) {
+      if (res && res.hasOwnProperty(prop.key)) {
+        if (
+          (prop.type.name == "Array" || prop.type.name == "Object") &&
+          isSpeakeasyBase(prop.elemType)
+        ) {
+          if (prop.elemDepth > resFieldDepth) {
+            resFieldDepth = prop.elemDepth;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return resFieldDepth;
 }

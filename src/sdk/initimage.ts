@@ -49,14 +49,18 @@ export class InitImage {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteInitImageByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteInitImageByIdResponse =
+            new operations.DeleteInitImageByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.deleteInitImageById200ApplicationJSONObject = plainToInstance(
+              res.deleteInitImageById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.DeleteInitImageById200ApplicationJSON,
-                httpRes?.data as operations.DeleteInitImageById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -96,14 +100,18 @@ export class InitImage {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetInitImageByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetInitImageByIdResponse =
+            new operations.GetInitImageByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getInitImageById200ApplicationJSONObject = plainToInstance(
+              res.getInitImageById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.GetInitImageById200ApplicationJSON,
-                httpRes?.data as operations.GetInitImageById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -157,14 +165,18 @@ export class InitImage {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.UploadInitImageResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.UploadInitImageResponse =
+            new operations.UploadInitImageResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.uploadInitImage200ApplicationJSONObject = plainToInstance(
+              res.uploadInitImage200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.UploadInitImage200ApplicationJSON,
-                httpRes?.data as operations.UploadInitImage200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
