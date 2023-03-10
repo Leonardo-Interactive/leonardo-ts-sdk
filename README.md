@@ -32,7 +32,7 @@ To get access to the API and fetch an API key, please sign up for [access](https
 ```typescript
 import {
   CreateDatasetRequest,
-  CreateDatasetResponse 
+  CreateDatasetResponse
 } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";
