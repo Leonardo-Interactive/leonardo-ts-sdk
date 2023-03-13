@@ -2,7 +2,7 @@
 ```typescript
 import {
   CreateDatasetRequest,
-  CreateDatasetResponse 
+  CreateDatasetResponse
 } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";

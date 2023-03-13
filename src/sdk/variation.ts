@@ -62,14 +62,18 @@ export class Variation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateVariationUpscaleResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateVariationUpscaleResponse =
+            new operations.CreateVariationUpscaleResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createVariationUpscale200ApplicationJSONObject = plainToInstance(
+              res.createVariationUpscale200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.CreateVariationUpscale200ApplicationJSON,
-                httpRes?.data as operations.CreateVariationUpscale200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -109,14 +113,18 @@ export class Variation {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetVariationByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetVariationByIdResponse =
+            new operations.GetVariationByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getVariationById200ApplicationJSONObject = plainToInstance(
+              res.getVariationById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.GetVariationById200ApplicationJSON,
-                httpRes?.data as operations.GetVariationById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;

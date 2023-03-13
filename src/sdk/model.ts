@@ -63,14 +63,18 @@ export class Model {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateModelResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.CreateModelResponse =
+            new operations.CreateModelResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.createModel200ApplicationJSONObject = plainToInstance(
+              res.createModel200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.CreateModel200ApplicationJSON,
-                httpRes?.data as operations.CreateModel200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -110,14 +114,18 @@ export class Model {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteModelByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.DeleteModelByIdResponse =
+            new operations.DeleteModelByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.deleteModelById200ApplicationJSONObject = plainToInstance(
+              res.deleteModelById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.DeleteModelById200ApplicationJSON,
-                httpRes?.data as operations.DeleteModelById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
@@ -157,14 +165,18 @@ export class Model {
         const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetModelByIdResponse = {statusCode: httpRes.status, contentType: contentType, rawResponse: httpRes};
+        const res: operations.GetModelByIdResponse =
+            new operations.GetModelByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes
+            });
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-              res.getModelById200ApplicationJSONObject = plainToInstance(
+              res.getModelById200ApplicationJSONObject = utils.deserializeJSONResponse(
+                httpRes?.data,
                 operations.GetModelById200ApplicationJSON,
-                httpRes?.data as operations.GetModelById200ApplicationJSON,
-                { excludeExtraneousValues: true }
               );
             }
             break;
