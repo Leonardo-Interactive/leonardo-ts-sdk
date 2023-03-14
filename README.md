@@ -37,11 +37,10 @@ import {
 
 import { AxiosError } from "axios";
 import { Leonardo } from "@leonardo-ai/sdk";
-
 const sdk = new Leonardo({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
-  }
+  },
 });
     
 const req: CreateDatasetRequest = {

@@ -15,14 +15,13 @@ export const ServerList = [
 
 
 export type SDKProps = {
-  defaultClient?: AxiosInstance;
-
   security?: shared.Security;
-
+  defaultClient?: AxiosInstance;
   serverUrl?: string;
 }
 
-/* SDK Documentation: Leonardo.Ai API OpenAPI specification.*/
+/* SDK Documentation: Leonardo.Ai API OpenAPI specification.
+ */
 export class Leonardo {
   public dataset: Dataset;
   public generation: Generation;
@@ -35,8 +34,9 @@ export class Leonardo {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.8.4";
-  private _genVersion = "1.9.3";
+  private _sdkVersion = "1.9.0";
+  private _genVersion = "1.10.0";
+  private _globals: any;
 
   constructor(props?: SDKProps) {
     this._serverURL = props?.serverUrl ?? ServerList[0];
@@ -53,6 +53,7 @@ export class Leonardo {
     } else {
       this._securityClient = this._defaultClient;
     }
+    
     
     this.dataset = new Dataset(
       this._defaultClient,

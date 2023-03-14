@@ -1,9 +1,10 @@
 import "reflect-metadata";
 
 import { getSimplePathParams, ppMetadataKey } from "./pathparams";
+
 import { plainToInstance } from "class-transformer";
 
-interface propInfo {
+export interface PropInfo {
   key: string | symbol;
   type: any;
   elemType: any;
@@ -61,7 +62,7 @@ function handleObject(value: any, elemType: any, elemDepth: number): any {
 
 export class SpeakeasyBase {
   constructor(payload?: Record<string | symbol, unknown>) {
-    const props: propInfo[] = (this as any)["__props__"];
+    const props: PropInfo[] = (this as any)["__props__"];
     if (props) {
       for (const prop of props) {
         if (payload && payload.hasOwnProperty(prop.key)) {
@@ -132,7 +133,7 @@ export function SpeakeasyMetadata<
       }
     }
 
-    let props: propInfo[];
+    let props: PropInfo[];
     if (target.hasOwnProperty("__props__")) {
       props = (target as any)["__props__"];
     } else {
@@ -142,7 +143,7 @@ export function SpeakeasyMetadata<
     const prop = {
       key: propertyKey,
       type: Reflect.getMetadata("design:type", target, propertyKey),
-    } as propInfo;
+    } as PropInfo;
 
     if (params?.elemType) {
       prop.elemType = params.elemType;
@@ -168,11 +169,16 @@ export function templateUrl(
 export function generateURL(
   serverURL: string,
   path: string,
-  pathParams: any
+  pathParams: any,
+  globals?: any
 ): string {
   const url: string = serverURL.replace(/\/$/, "") + path;
   const parsedParameters: Record<string, string> = {};
-  const fieldNames: string[] = Object.getOwnPropertyNames(pathParams);
+
+  const fieldNames: string[] =
+    "__props__" in pathParams
+      ? pathParams["__props__"].map((prop: any) => prop.key)
+      : Object.getOwnPropertyNames(pathParams);
   fieldNames.forEach((fname) => {
     const ppAnn: string = Reflect.getMetadata(ppMetadataKey, pathParams, fname);
     if (ppAnn == null) return;
@@ -183,11 +189,15 @@ export function generateURL(
       false
     );
     if (ppDecorator == null) return;
+
+    let value = pathParams[fname];
+    value = populateFromGlobals(value, fname, "pathParam", globals);
+
     switch (ppDecorator.Style) {
       case "simple":
         const simpleParams: Map<string, string> = getSimplePathParams(
           ppDecorator.ParamName,
-          pathParams[fname],
+          value,
           ppDecorator.Explode,
           ppDecorator.DateTimeFormat
         );
@@ -306,29 +316,37 @@ export function encodeAndConvertPrimitiveVal(
 export function deserializeJSONResponse<T>(
   value: T,
   klass?: any,
-  elemDepth: number = 0): any {
-
+  elemDepth: number = 0
+): any {
   if (value !== Object(value)) {
     return value;
   }
 
   if (elemDepth === 0 && klass != null) {
-    return plainToInstance(klass, value, { excludeExtraneousValues: true }) as typeof klass;
+    return plainToInstance(klass, value, {
+      excludeExtraneousValues: true,
+    }) as typeof klass;
   }
 
   if (Array.isArray(value)) {
-    return value.map((v) => deserializeJSONResponse(v, klass, elemDepth-1));
+    return value.map((v) => deserializeJSONResponse(v, klass, elemDepth - 1));
   }
 
-  if (typeof value === 'object' && value != null) {
+  if (typeof value === "object" && value != null) {
     let copiedRecord: Record<string, any> = {};
     for (const key in value) {
-      copiedRecord[key] = deserializeJSONResponse(value[key], klass, elemDepth-1);
+      copiedRecord[key] = deserializeJSONResponse(
+        value[key],
+        klass,
+        elemDepth - 1
+      );
     }
     return copiedRecord;
   }
 
-  return plainToInstance(klass, value, { excludeExtraneousValues: true }) as typeof klass;
+  return plainToInstance(klass, value, {
+    excludeExtraneousValues: true,
+  }) as typeof klass;
 }
 
 export function getResFieldDepth(res: any): number {
@@ -352,4 +370,22 @@ export function getResFieldDepth(res: any): number {
   }
 
   return resFieldDepth;
+}
+
+export function populateFromGlobals(
+  value: any,
+  fieldName: string,
+  paramType: string,
+  globals: any
+): any {
+  if (globals && value === undefined) {
+    if ("parameters" in globals && paramType in globals.parameters) {
+      let globalValue = globals.parameters[paramType][fieldName];
+      if (globalValue !== undefined) {
+        value = globalValue;
+      }
+    }
+  }
+
+  return value;
 }
