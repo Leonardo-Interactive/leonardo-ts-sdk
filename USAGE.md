@@ -10,9 +10,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: {
-      authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
-    },
+    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   }
 });
     
