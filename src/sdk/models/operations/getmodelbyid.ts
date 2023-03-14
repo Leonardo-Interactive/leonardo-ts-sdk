@@ -3,7 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class GetModelByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -15,9 +14,9 @@ export class GetModelByIdRequest extends SpeakeasyBase {
 }
 
 // GetModelById200ApplicationJSONCustomModels
-/** 
+/**
  * columns and relationships of "custom_models"
-**/
+ **/
 export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "createdAt" })

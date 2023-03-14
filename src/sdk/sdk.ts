@@ -8,17 +8,13 @@ import { User } from "./user";
 import { Variation } from "./variation";
 import axios, { AxiosInstance } from "axios";
 
-export const ServerList = [
-	"https://cloud.leonardo.ai/api/rest/v1",
-] as const;
-
-
+export const ServerList = ["https://cloud.leonardo.ai/api/rest/v1"] as const;
 
 export type SDKProps = {
   security?: shared.Security;
   defaultClient?: AxiosInstance;
   serverUrl?: string;
-}
+};
 
 /* SDK Documentation: Leonardo.Ai API OpenAPI specification.
  */
@@ -34,14 +30,15 @@ export class Leonardo {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.9.0";
-  private _genVersion = "1.10.0";
+  private _sdkVersion = "1.10.0";
+  private _genVersion = "1.11.0";
   private _globals: any;
 
   constructor(props?: SDKProps) {
     this._serverURL = props?.serverUrl ?? ServerList[0];
 
-    this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
+    this._defaultClient =
+      props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
     if (props?.security) {
       let security: shared.Security = props.security;
       if (!(props.security instanceof utils.SpeakeasyBase))
@@ -53,8 +50,7 @@ export class Leonardo {
     } else {
       this._securityClient = this._defaultClient;
     }
-    
-    
+
     this.dataset = new Dataset(
       this._defaultClient,
       this._securityClient,
@@ -63,7 +59,7 @@ export class Leonardo {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.generation = new Generation(
       this._defaultClient,
       this._securityClient,
@@ -72,7 +68,7 @@ export class Leonardo {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.initImage = new InitImage(
       this._defaultClient,
       this._securityClient,
@@ -81,7 +77,7 @@ export class Leonardo {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.model = new Model(
       this._defaultClient,
       this._securityClient,
@@ -90,7 +86,7 @@ export class Leonardo {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.user = new User(
       this._defaultClient,
       this._securityClient,
@@ -99,7 +95,7 @@ export class Leonardo {
       this._sdkVersion,
       this._genVersion
     );
-    
+
     this.variation = new Variation(
       this._defaultClient,
       this._securityClient,
@@ -109,5 +105,4 @@ export class Leonardo {
       this._genVersion
     );
   }
-  
 }

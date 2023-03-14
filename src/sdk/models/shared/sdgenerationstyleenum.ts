@@ -1,6 +1,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export enum SdGenerationStyleEnum {
-    Leonardo = "LEONARDO",
-    None = "NONE"
+  Leonardo = "LEONARDO",
+  None = "NONE",
 }

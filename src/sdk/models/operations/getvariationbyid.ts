@@ -3,7 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class GetVariationByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -15,9 +14,9 @@ export class GetVariationByIdRequest extends SpeakeasyBase {
 }
 
 // GetVariationById200ApplicationJSONGeneratedImageVariationGeneric
-/** 
+/**
  * columns and relationships of "generated_image_variation_generic"
-**/
+ **/
 export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "createdAt" })
@@ -41,7 +40,9 @@ export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric ex
 }
 
 export class GetVariationById200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric })
+  @SpeakeasyMetadata({
+    elemType: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric,
+  })
   @Expose({ name: "generated_image_variation_generic" })
   @Type(() => GetVariationById200ApplicationJSONGeneratedImageVariationGeneric)
   generatedImageVariationGeneric?: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric[];

@@ -11,7 +11,14 @@ export class Generation {
   _sdkVersion: string;
   _genVersion: string;
 
-  constructor(defaultClient: AxiosInstance, securityClient: AxiosInstance, serverURL: string, language: string, sdkVersion: string, genVersion: string) {
+  constructor(
+    defaultClient: AxiosInstance,
+    securityClient: AxiosInstance,
+    serverURL: string,
+    language: string,
+    sdkVersion: string,
+    genVersion: string
+  ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
     this._serverURL = serverURL;
@@ -19,12 +26,12 @@ export class Generation {
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
   }
-  
+
   /**
    * createGeneration - Create a Generation of Images
    *
    * This endpoint will generate images
-  **/
+   **/
   createGeneration(
     req: operations.CreateGenerationRequest,
     config?: AxiosRequestConfig
@@ -32,7 +39,7 @@ export class Generation {
     if (!(req instanceof utils.SpeakeasyBase)) {
       req = new operations.CreateGenerationRequest(req);
     }
-    
+
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/generations";
 
@@ -45,51 +52,53 @@ export class Generation {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
       }
     }
-    
+
     const client: AxiosInstance = this._securityClient!;
-    
-    const headers = {...reqBodyHeaders, ...config?.headers};
-    if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
-    
+
+    const headers = { ...reqBodyHeaders, ...config?.headers };
+    if (reqBody == null || Object.keys(reqBody).length === 0)
+      throw new Error("request body is required");
+
     const r = client.request({
       url: url,
       method: "post",
       headers: headers,
-      data: reqBody, 
+      data: reqBody,
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.CreateGenerationResponse =
-            new operations.CreateGenerationResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.createGeneration200ApplicationJSONObject = utils.deserializeJSONResponse(
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.CreateGenerationResponse =
+        new operations.CreateGenerationResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.createGeneration200ApplicationJSONObject =
+              utils.deserializeJSONResponse(
                 httpRes?.data,
-                operations.CreateGeneration200ApplicationJSON,
+                operations.CreateGeneration200ApplicationJSON
               );
-            }
-            break;
-        }
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
-  
   /**
    * deleteGenerationById - Delete a Single Generation
    *
    * This endpoint deletes a specific generation
-  **/
+   **/
   deleteGenerationById(
     req: operations.DeleteGenerationByIdRequest,
     config?: AxiosRequestConfig
@@ -97,50 +106,54 @@ export class Generation {
     if (!(req instanceof utils.SpeakeasyBase)) {
       req = new operations.DeleteGenerationByIdRequest(req);
     }
-    
+
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/generations/{id}", req.pathParams);
-    
+    const url: string = utils.generateURL(
+      baseURL,
+      "/generations/{id}",
+      req.pathParams
+    );
+
     const client: AxiosInstance = this._securityClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "delete",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.DeleteGenerationByIdResponse =
-            new operations.DeleteGenerationByIdResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.deleteGenerationById200ApplicationJSONObject = utils.deserializeJSONResponse(
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.DeleteGenerationByIdResponse =
+        new operations.DeleteGenerationByIdResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.deleteGenerationById200ApplicationJSONObject =
+              utils.deserializeJSONResponse(
                 httpRes?.data,
-                operations.DeleteGenerationById200ApplicationJSON,
+                operations.DeleteGenerationById200ApplicationJSON
               );
-            }
-            break;
-        }
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
-  
   /**
    * getGenerationById - Get a Single Generation
    *
    * This endpoint will provide information about a specific generation
-  **/
+   **/
   getGenerationById(
     req: operations.GetGenerationByIdRequest,
     config?: AxiosRequestConfig
@@ -148,50 +161,54 @@ export class Generation {
     if (!(req instanceof utils.SpeakeasyBase)) {
       req = new operations.GetGenerationByIdRequest(req);
     }
-    
+
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/generations/{id}", req.pathParams);
-    
+    const url: string = utils.generateURL(
+      baseURL,
+      "/generations/{id}",
+      req.pathParams
+    );
+
     const client: AxiosInstance = this._securityClient!;
-    
-    
+
     const r = client.request({
       url: url,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetGenerationByIdResponse =
-            new operations.GetGenerationByIdResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.getGenerationById200ApplicationJSONObject = utils.deserializeJSONResponse(
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.GetGenerationByIdResponse =
+        new operations.GetGenerationByIdResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.getGenerationById200ApplicationJSONObject =
+              utils.deserializeJSONResponse(
                 httpRes?.data,
-                operations.GetGenerationById200ApplicationJSON,
+                operations.GetGenerationById200ApplicationJSON
               );
-            }
-            break;
-        }
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
 
-  
   /**
    * getGenerationsByUserId - Get generations by user ID
    *
    * This endpoint returns all generations by a specific user
-  **/
+   **/
   getGenerationsByUserId(
     req: operations.GetGenerationsByUserIdRequest,
     config?: AxiosRequestConfig
@@ -199,43 +216,48 @@ export class Generation {
     if (!(req instanceof utils.SpeakeasyBase)) {
       req = new operations.GetGenerationsByUserIdRequest(req);
     }
-    
+
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/generations/user/{userId}", req.pathParams);
-    
+    const url: string = utils.generateURL(
+      baseURL,
+      "/generations/user/{userId}",
+      req.pathParams
+    );
+
     const client: AxiosInstance = this._securityClient!;
-    
+
     const queryParams: string = utils.serializeQueryParams(req.queryParams);
-    
+
     const r = client.request({
       url: url + queryParams,
       method: "get",
       ...config,
     });
-    
+
     return r.then((httpRes: AxiosResponse) => {
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
-        const res: operations.GetGenerationsByUserIdResponse =
-            new operations.GetGenerationsByUserIdResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes
-            });
-        switch (true) {
-          case httpRes?.status == 200:
-            if (utils.matchContentType(contentType, `application/json`)) {
-              res.getGenerationsByUserId200ApplicationJSONObject = utils.deserializeJSONResponse(
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.GetGenerationsByUserIdResponse =
+        new operations.GetGenerationsByUserIdResponse({
+          statusCode: httpRes.status,
+          contentType: contentType,
+          rawResponse: httpRes,
+        });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.getGenerationsByUserId200ApplicationJSONObject =
+              utils.deserializeJSONResponse(
                 httpRes?.data,
-                operations.GetGenerationsByUserId200ApplicationJSON,
+                operations.GetGenerationsByUserId200ApplicationJSON
               );
-            }
-            break;
-        }
+          }
+          break;
+      }
 
-        return res;
-      })
+      return res;
+    });
   }
-
 }

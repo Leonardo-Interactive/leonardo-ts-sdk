@@ -2,11 +2,10 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 // GetUserSelf200ApplicationJSONUserDetailsUsers
-/** 
+/**
  * columns and relationships of "users"
-**/
+ **/
 export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })
@@ -18,9 +17,9 @@ export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase
 }
 
 // GetUserSelf200ApplicationJSONUserDetails
-/** 
+/**
  * columns and relationships of "user_details"
-**/
+ **/
 export class GetUserSelf200ApplicationJSONUserDetails extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "showNsfw" })

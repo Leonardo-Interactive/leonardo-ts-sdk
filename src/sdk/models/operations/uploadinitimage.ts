@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class UploadInitImageRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "extension" })

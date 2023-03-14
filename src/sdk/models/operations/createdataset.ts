@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class CreateDatasetRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "description" })
@@ -19,9 +18,9 @@ export class CreateDatasetRequest extends SpeakeasyBase {
 }
 
 // CreateDataset200ApplicationJSONDatasets
-/** 
+/**
  * columns and relationships of "datasets"
-**/
+ **/
 export class CreateDataset200ApplicationJSONDatasets extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })
