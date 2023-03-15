@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class GetDatasetByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -14,9 +13,9 @@ export class GetDatasetByIdRequest extends SpeakeasyBase {
 }
 
 // GetDatasetById200ApplicationJSONDatasetsDatasetImages
-/** 
+/**
  * columns and relationships of "dataset_images"
-**/
+ **/
 export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "createdAt" })
@@ -32,15 +31,17 @@ export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends Speak
 }
 
 // GetDatasetById200ApplicationJSONDatasets
-/** 
+/**
  * columns and relationships of "datasets"
-**/
+ **/
 export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "createdAt" })
   createdAt?: string;
 
-  @SpeakeasyMetadata({ elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages })
+  @SpeakeasyMetadata({
+    elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages,
+  })
   @Expose({ name: "dataset_images" })
   @Type(() => GetDatasetById200ApplicationJSONDatasetsDatasetImages)
   datasetImages?: GetDatasetById200ApplicationJSONDatasetsDatasetImages[];

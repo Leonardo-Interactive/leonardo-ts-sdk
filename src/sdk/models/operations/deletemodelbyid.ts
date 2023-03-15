@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class DeleteModelByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -14,9 +13,9 @@ export class DeleteModelByIdRequest extends SpeakeasyBase {
 }
 
 // DeleteModelById200ApplicationJSONCustomModels
-/** 
+/**
  * columns and relationships of "custom_models"
-**/
+ **/
 export class DeleteModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })

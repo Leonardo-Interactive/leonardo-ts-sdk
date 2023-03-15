@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class DeleteInitImageByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -14,9 +13,9 @@ export class DeleteInitImageByIdRequest extends SpeakeasyBase {
 }
 
 // DeleteInitImageById200ApplicationJSONInitImages
-/** 
+/**
  * columns and relationships of "init_images"
-**/
+ **/
 export class DeleteInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })

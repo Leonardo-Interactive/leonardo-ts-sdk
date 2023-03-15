@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class DeleteGenerationByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -14,9 +13,9 @@ export class DeleteGenerationByIdRequest extends SpeakeasyBase {
 }
 
 // DeleteGenerationById200ApplicationJSONGenerations
-/** 
+/**
  * columns and relationships of "generations"
-**/
+ **/
 export class DeleteGenerationById200ApplicationJSONGenerations extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })

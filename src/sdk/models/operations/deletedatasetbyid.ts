@@ -2,7 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class DeleteDatasetByIdPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
@@ -14,9 +13,9 @@ export class DeleteDatasetByIdRequest extends SpeakeasyBase {
 }
 
 // DeleteDatasetById200ApplicationJSONDatasets
-/** 
+/**
  * columns and relationships of "datasets"
-**/
+ **/
 export class DeleteDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })

@@ -3,7 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-
 export class CreateModelRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "datasetId" })
