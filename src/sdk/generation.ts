@@ -33,11 +33,11 @@ export class Generation {
    * This endpoint will generate images
    **/
   createGeneration(
-    req: operations.CreateGenerationRequest,
+    req: operations.CreateGenerationRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateGenerationResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateGenerationRequest(req);
+      req = new operations.CreateGenerationRequestBody(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -46,7 +46,11 @@ export class Generation {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -108,11 +112,7 @@ export class Generation {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/generations/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/generations/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -163,11 +163,7 @@ export class Generation {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/generations/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/generations/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -221,12 +217,12 @@ export class Generation {
     const url: string = utils.generateURL(
       baseURL,
       "/generations/user/{userId}",
-      req.pathParams
+      req
     );
 
     const client: AxiosInstance = this._securityClient!;
 
-    const queryParams: string = utils.serializeQueryParams(req.queryParams);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const r = client.request({
       url: url + queryParams,

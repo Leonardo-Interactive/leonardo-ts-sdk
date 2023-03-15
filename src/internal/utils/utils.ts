@@ -3,6 +3,15 @@ import "reflect-metadata";
 import { getSimplePathParams, ppMetadataKey } from "./pathparams";
 
 import { plainToInstance } from "class-transformer";
+import {requestMetadataKey} from "./requestbody";
+
+export const SerializationMethodToContentType: Record<string, string> = {
+  "json":      "application/json",
+  "form":      "application/x-www-form-urlencoded",
+  "multipart": "multipart/form-data",
+  "raw":       "application/octet-stream",
+  "string":    "text/plain",
+}
 
 export interface PropInfo {
   key: string | symbol;
@@ -180,8 +189,22 @@ export function generateURL(
       ? pathParams["__props__"].map((prop: any) => prop.key)
       : Object.getOwnPropertyNames(pathParams);
   fieldNames.forEach((fname) => {
-    const ppAnn: string = Reflect.getMetadata(ppMetadataKey, pathParams, fname);
+    const requestBodyAnn: string = Reflect.getMetadata(
+      requestMetadataKey,
+      pathParams,
+      fname
+    );
+
+    if (requestBodyAnn) return;
+
+    const ppAnn: string = Reflect.getMetadata(
+      ppMetadataKey,
+      pathParams,
+      fname
+    );
+
     if (ppAnn == null) return;
+
     const ppDecorator: ParamDecorator = parseParamDecorator(
       ppAnn,
       fname,

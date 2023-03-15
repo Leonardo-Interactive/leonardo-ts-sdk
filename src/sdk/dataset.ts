@@ -33,11 +33,11 @@ export class Dataset {
    * This endpoint creates a new dataset
    **/
   createDataset(
-    req: operations.CreateDatasetRequest,
+    req: operations.CreateDatasetRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateDatasetResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateDatasetRequest(req);
+      req = new operations.CreateDatasetRequestBody(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -46,7 +46,11 @@ export class Dataset {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -108,11 +112,7 @@ export class Dataset {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/datasets/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/datasets/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -163,11 +163,7 @@ export class Dataset {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/datasets/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/datasets/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -221,13 +217,17 @@ export class Dataset {
     const url: string = utils.generateURL(
       baseURL,
       "/datasets/{datasetId}/upload",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -292,13 +292,17 @@ export class Dataset {
     const url: string = utils.generateURL(
       baseURL,
       "/datasets/{datasetId}/upload/gen",
-      req.pathParams
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);

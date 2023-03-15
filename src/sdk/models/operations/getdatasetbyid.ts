@@ -2,14 +2,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class GetDatasetByIdPathParams extends SpeakeasyBase {
+export class GetDatasetByIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
-}
-
-export class GetDatasetByIdRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetDatasetByIdPathParams;
 }
 
 // GetDatasetById200ApplicationJSONDatasetsDatasetImages

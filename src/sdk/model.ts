@@ -33,11 +33,11 @@ export class Model {
    * This endpoint will train a new custom model
    **/
   createModel(
-    req: operations.CreateModelRequest,
+    req: operations.CreateModelRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateModelResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateModelRequest(req);
+      req = new operations.CreateModelRequestBody(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -46,7 +46,11 @@ export class Model {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -108,11 +112,7 @@ export class Model {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/models/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/models/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -163,11 +163,7 @@ export class Model {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/models/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/models/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 

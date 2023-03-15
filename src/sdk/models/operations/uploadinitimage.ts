@@ -8,11 +8,6 @@ export class UploadInitImageRequestBody extends SpeakeasyBase {
   extension: string;
 }
 
-export class UploadInitImageRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: UploadInitImageRequestBody;
-}
-
 export class UploadInitImage200ApplicationJSONInitImageUploadOutput extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "__typename" })

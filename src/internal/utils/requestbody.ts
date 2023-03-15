@@ -3,78 +3,69 @@ import {
   convertIfDateObjectToISOString,
   isBooleanRecord,
   isNumberRecord,
-  isStringRecord,
+  isStringRecord, SerializationMethodToContentType,
 } from "./utils";
 
-const requestMetadataKey = "request";
+export const requestMetadataKey = "request";
 const mpFormMetadataKey = "multipart_form";
 
-export function serializeRequestBody(request: any): [object, any] {
-  if (!request.hasOwnProperty(requestMetadataKey)) {
-    throw new Error("request body not found");
+export function serializeRequestBody(request: any, requestFieldName: string, serializationMethod: string): [object, any] {
+  if (request !== Object(request) || !request.hasOwnProperty(requestFieldName)) {
+    return serializeContentType(SerializationMethodToContentType[serializationMethod], request);
   }
 
-  let requestBodyObj = request;
-
-  const firstLevelRequestAnn: string = Reflect.getMetadata(
+  const requestBodyAnn: string = Reflect.getMetadata(
     requestMetadataKey,
     request,
-    requestMetadataKey
+    requestFieldName
   );
-  if (firstLevelRequestAnn == null)
-    requestBodyObj = request[requestMetadataKey];
+  if (!requestBodyAnn) {
+    throw new Error("invalid request type");
+  }
 
+  const requestDecorator: RequestDecorator = parseRequestDecorator(requestBodyAnn);
+  return serializeContentType(requestDecorator.MediaType, request[requestFieldName]);
+}
+
+const serializeContentType = (contentType: string, reqBody: any): [object, any] => {
   let [requestHeaders, requestBody]: [object, any] = [{}, {}];
 
-  const fieldNames: string[] = Object.getOwnPropertyNames(requestBodyObj);
-  fieldNames.forEach((fname) => {
-    const requestAnn: string = Reflect.getMetadata(
-      requestMetadataKey,
-      requestBodyObj,
-      fname
-    );
-    if (requestAnn == null) return;
+  switch (contentType) {
+    case "multipart/form-data":
+    case "multipart/mixed":
+      requestBody = encodeMultipartFormData(reqBody);
+      requestHeaders = (requestBody as FormData).getHeaders();
+      break;
 
-    const requestDecorator: RequestDecorator =
-      parseRequestDecorator(requestAnn);
+    case "application/x-www-form-urlencoded":
+      [requestHeaders, requestBody] = [
+        { "Content-Type": `${contentType}` },
+        encodeFormUrlEncodeData(reqBody),
+      ];
+      break;
 
-    switch (requestDecorator.MediaType) {
-      case "multipart/form-data":
-      case "multipart/mixed":
-        requestBody = encodeMultipartFormData(requestBodyObj[fname]);
-        requestHeaders = (requestBody as FormData).getHeaders();
-        break;
+    case "application/json":
+    case "text/json":
+      [requestHeaders, requestBody] = [
+        { "Content-Type": `${contentType}` },
+        reqBody,
+      ];
+      break;
 
-      case "application/x-www-form-urlencoded":
-        [requestHeaders, requestBody] = [
-          { "Content-Type": `${requestDecorator.MediaType}` },
-          encodeFormUrlEncodeData(requestBodyObj[fname]),
-        ];
-        break;
-
-      case "application/json":
-      case "text/json":
-        [requestHeaders, requestBody] = [
-          { "Content-Type": `${requestDecorator.MediaType}` },
-          requestBodyObj[fname],
-        ];
-        break;
-
-      default:
-        requestBody = requestBodyObj[fname];
-        const requestBodyType: string = typeof requestBody;
-        if (
-          requestBodyType === "string" ||
-          requestBody instanceof String ||
-          requestBody instanceof Uint8Array
-        )
-          requestHeaders = { "Content-Type": `${requestDecorator.MediaType}` };
-        else
-          throw new Error(
-            `invalid request body type ${requestBodyType} for mediaType ${requestDecorator.MediaType}`
-          );
-    }
-  });
+    default:
+      requestBody = reqBody;
+      const requestBodyType: string = typeof requestBody;
+      if (
+        requestBodyType === "string" ||
+        requestBody instanceof String ||
+        requestBody instanceof Uint8Array
+      )
+        requestHeaders = { "Content-Type": `${contentType}` };
+      else
+        throw new Error(
+          `invalid request body type ${requestBodyType} for mediaType ${contentType}`
+        );
+  }
   return [requestHeaders, requestBody];
 }
 
