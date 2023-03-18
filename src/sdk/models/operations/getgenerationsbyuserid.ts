@@ -3,14 +3,7 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class GetGenerationsByUserIdPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=userId",
-  })
-  userId: string;
-}
-
-export class GetGenerationsByUserIdQueryParams extends SpeakeasyBase {
+export class GetGenerationsByUserIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
   limit?: number;
 
@@ -18,14 +11,11 @@ export class GetGenerationsByUserIdQueryParams extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=offset",
   })
   offset?: number;
-}
 
-export class GetGenerationsByUserIdRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetGenerationsByUserIdPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: GetGenerationsByUserIdQueryParams;
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=userId",
+  })
+  userId: string;
 }
 
 // GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric

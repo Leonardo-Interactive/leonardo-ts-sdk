@@ -2,14 +2,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class DeleteGenerationByIdPathParams extends SpeakeasyBase {
+export class DeleteGenerationByIdRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
   id: string;
-}
-
-export class DeleteGenerationByIdRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: DeleteGenerationByIdPathParams;
 }
 
 // DeleteGenerationById200ApplicationJSONGenerations

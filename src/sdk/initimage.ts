@@ -41,11 +41,7 @@ export class InitImage {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/init-image/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -96,11 +92,7 @@ export class InitImage {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/init-image/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 
@@ -143,11 +135,11 @@ export class InitImage {
    * This endpoint returns presigned details to upload an init image to S3
    **/
   uploadInitImage(
-    req: operations.UploadInitImageRequest,
+    req: operations.UploadInitImageRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadInitImageResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.UploadInitImageRequest(req);
+      req = new operations.UploadInitImageRequestBody(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -156,7 +148,11 @@ export class InitImage {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);

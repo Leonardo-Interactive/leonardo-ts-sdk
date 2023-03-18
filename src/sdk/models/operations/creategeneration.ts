@@ -69,11 +69,6 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
   width?: number;
 }
 
-export class CreateGenerationRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: CreateGenerationRequestBody;
-}
-
 export class CreateGeneration200ApplicationJSONSDGenerationOutput extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "generationId" })

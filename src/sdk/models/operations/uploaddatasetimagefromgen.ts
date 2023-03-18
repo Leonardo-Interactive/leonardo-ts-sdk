@@ -2,13 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class UploadDatasetImageFromGenPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=datasetId",
-  })
-  datasetId: string;
-}
-
 export class UploadDatasetImageFromGenRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "generatedImageId" })
@@ -16,11 +9,13 @@ export class UploadDatasetImageFromGenRequestBody extends SpeakeasyBase {
 }
 
 export class UploadDatasetImageFromGenRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: UploadDatasetImageFromGenPathParams;
-
   @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: UploadDatasetImageFromGenRequestBody;
+  requestBody: UploadDatasetImageFromGenRequestBody;
+
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=datasetId",
+  })
+  datasetId: string;
 }
 
 export class UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput extends SpeakeasyBase {

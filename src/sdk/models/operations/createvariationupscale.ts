@@ -8,11 +8,6 @@ export class CreateVariationUpscaleRequestBody extends SpeakeasyBase {
   id: string;
 }
 
-export class CreateVariationUpscaleRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request?: CreateVariationUpscaleRequestBody;
-}
-
 export class CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "id" })

@@ -33,11 +33,11 @@ export class Variation {
    * This endpoint will create an upscale for the provided image ID
    **/
   createVariationUpscale(
-    req: operations.CreateVariationUpscaleRequest,
+    req: operations.CreateVariationUpscaleRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateVariationUpscaleResponse> {
     if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.CreateVariationUpscaleRequest(req);
+      req = new operations.CreateVariationUpscaleRequestBody(req);
     }
 
     const baseURL: string = this._serverURL;
@@ -46,7 +46,11 @@ export class Variation {
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
     try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "request",
+        "json"
+      );
     } catch (e: unknown) {
       if (e instanceof Error) {
         throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -106,11 +110,7 @@ export class Variation {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/variations/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/variations/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 

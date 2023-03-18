@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage -->
 ```typescript
 import {
-  CreateDatasetRequest,
+  CreateDatasetRequestBody,
   CreateDatasetResponse
 } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
@@ -12,12 +12,10 @@ const sdk = new Leonardo({
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
 });
-    
-const req: CreateDatasetRequest = {
-  request: {
-    description: "unde",
-    name: "deserunt",
-  },
+
+const req: CreateDatasetRequestBody = {
+  description: "unde",
+  name: "deserunt",
 };
 
 sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) => {

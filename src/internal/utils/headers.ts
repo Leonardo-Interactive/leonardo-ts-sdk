@@ -8,6 +8,7 @@ import {
   ParamDecorator,
   convertIfDateObjectToISOString,
 } from "./utils";
+import {requestMetadataKey} from "./requestbody";
 
 export const headerMetadataKey = "header";
 
@@ -18,6 +19,14 @@ export function getHeadersFromRequest(headerParams: any): any {
 
   const fieldNames: string[] = Object.getOwnPropertyNames(headerParams);
   fieldNames.forEach((fname) => {
+    const requestBodyAnn: string = Reflect.getMetadata(
+      requestMetadataKey,
+      headerParams,
+      fname
+    );
+
+    if (requestBodyAnn) return;
+
     const headerAnn: string = Reflect.getMetadata(
       headerMetadataKey,
       headerParams,

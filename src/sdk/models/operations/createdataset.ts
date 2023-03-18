@@ -12,11 +12,6 @@ export class CreateDatasetRequestBody extends SpeakeasyBase {
   name: string;
 }
 
-export class CreateDatasetRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: CreateDatasetRequestBody;
-}
-
 // CreateDataset200ApplicationJSONDatasets
 /**
  * columns and relationships of "datasets"

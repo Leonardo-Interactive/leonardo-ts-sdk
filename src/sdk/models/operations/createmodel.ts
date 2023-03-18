@@ -41,11 +41,6 @@ export class CreateModelRequestBody extends SpeakeasyBase {
   strength?: shared.StrengthEnum;
 }
 
-export class CreateModelRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: CreateModelRequestBody;
-}
-
 export class CreateModel200ApplicationJSONSDTrainingOutput extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "customModelId" })
