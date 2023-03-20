@@ -30,8 +30,8 @@ export class Leonardo {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.11.3";
-  private _genVersion = "1.12.3";
+  private _sdkVersion = "1.11.4";
+  private _genVersion = "1.12.4";
   private _globals: any;
 
   constructor(props?: SDKProps) {
