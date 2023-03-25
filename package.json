@@ -1,6 +1,6 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "1.17.1",
+  "version": "1.17.2",
   "author": "leonardoai",
   "scripts": {
     "prepare": "tsc --build"
@@ -13,7 +13,10 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.5",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0"
   },
   "main": "dist/index.js",
   "files": [

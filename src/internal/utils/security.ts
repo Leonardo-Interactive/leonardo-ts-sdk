@@ -162,13 +162,14 @@ function parseSecuritySchemeValue(
         case "query":
           client.defaults.params[securityDecorator.Name] = value;
           break;
-        case "cookie":
+        case "cookie": {
           const securityDecoratorName: string = securityDecorator.Name;
           const val: string = value;
           client.defaults.headers.common[
             "Cookie"
           ] = `${securityDecoratorName}=${val}`;
           break;
+        }
         default:
           throw new Error("not supported");
       }

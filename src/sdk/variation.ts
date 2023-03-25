@@ -61,7 +61,7 @@ export class Variation {
       }
     }
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
@@ -117,7 +117,7 @@ export class Variation {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/variations/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,

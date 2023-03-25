@@ -10,13 +10,13 @@ import {
 } from "./utils";
 
 import { ParamDecorator } from "./utils";
-import {requestMetadataKey} from "./requestbody";
+import { requestMetadataKey } from "./requestbody";
 
 export const qpMetadataKey = "queryParam";
 const queryStringPrefix = "?";
 
 export function serializeQueryParams(queryParams: any, globals?: any): string {
-  let queryStringParts: string[] = [];
+  const queryStringParts: string[] = [];
   if (!queryParams) return queryStringParts.join("&");
 
   const fieldNames: string[] =
@@ -39,7 +39,7 @@ export function serializeQueryParams(queryParams: any, globals?: any): string {
       fname
     );
 
-    if (!qpAnn) return { serialize: (params: any) => "" };
+    if (!qpAnn) return { serialize: () => "" };
 
     const qpDecorator: ParamDecorator = parseParamDecorator(
       qpAnn,
@@ -59,13 +59,19 @@ export function serializeQueryParams(queryParams: any, globals?: any): string {
       switch (qpDecorator.Style) {
         case "deepObject":
           queryStringParts.push(
-            deepObjectSerializer({ [qpDecorator.ParamName]: value }, qpDecorator.DateTimeFormat)
+            deepObjectSerializer(
+              { [qpDecorator.ParamName]: value },
+              qpDecorator.DateTimeFormat
+            )
           );
           return;
         case "form":
           if (!qpDecorator.Explode)
             queryStringParts.push(
-              formSerializer({ [qpDecorator.ParamName]: value }, qpDecorator.DateTimeFormat)
+              formSerializer(
+                { [qpDecorator.ParamName]: value },
+                qpDecorator.DateTimeFormat
+              )
             );
           else
             queryStringParts.push(
