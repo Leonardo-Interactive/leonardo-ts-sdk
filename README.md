@@ -13,13 +13,13 @@
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add @leonardo-ai/sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET>
+yarn add @leonardo-ai/sdk
 ```
 <!-- End SDK Installation -->
 
