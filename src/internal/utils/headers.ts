@@ -4,22 +4,23 @@
 
 import { AxiosResponseHeaders, RawAxiosResponseHeaders } from "axios";
 import {
+  ParamDecorator,
+  convertIfDateObjectToISOString,
   isBooleanRecord,
   isEmpty,
   isNumberRecord,
   isStringRecord,
   parseParamDecorator,
-  ParamDecorator,
-  convertIfDateObjectToISOString,
 } from "./utils";
-import {requestMetadataKey} from "./requestbody";
+
+import { requestMetadataKey } from "./requestbody";
 
 export const headerMetadataKey = "header";
 
 export function getHeadersFromRequest(headerParams: any): any {
   if (headerParams == null) return;
 
-  let headers: any = {};
+  const headers: any = {};
 
   const fieldNames: string[] = Object.getOwnPropertyNames(headerParams);
   fieldNames.forEach((fname) => {

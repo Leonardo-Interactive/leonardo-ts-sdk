@@ -7,15 +7,15 @@ import "reflect-metadata";
 import { getSimplePathParams, ppMetadataKey } from "./pathparams";
 
 import { plainToInstance } from "class-transformer";
-import {requestMetadataKey} from "./requestbody";
+import { requestMetadataKey } from "./requestbody";
 
 export const SerializationMethodToContentType: Record<string, string> = {
-  "json":      "application/json",
-  "form":      "application/x-www-form-urlencoded",
-  "multipart": "multipart/form-data",
-  "raw":       "application/octet-stream",
-  "string":    "text/plain",
-}
+  json: "application/json",
+  form: "application/x-www-form-urlencoded",
+  multipart: "multipart/form-data",
+  raw: "application/octet-stream",
+  string: "text/plain",
+};
 
 export interface PropInfo {
   key: string | symbol;
@@ -201,11 +201,7 @@ export function generateURL(
 
     if (requestBodyAnn) return;
 
-    const ppAnn: string = Reflect.getMetadata(
-      ppMetadataKey,
-      pathParams,
-      fname
-    );
+    const ppAnn: string = Reflect.getMetadata(ppMetadataKey, pathParams, fname);
 
     if (ppAnn == null) return;
 
@@ -221,7 +217,7 @@ export function generateURL(
     value = populateFromGlobals(value, fname, "pathParam", globals);
 
     switch (ppDecorator.Style) {
-      case "simple":
+      case "simple": {
         const simpleParams: Map<string, string> = getSimplePathParams(
           ppDecorator.ParamName,
           value,
@@ -231,6 +227,7 @@ export function generateURL(
         simpleParams.forEach((value, key) => {
           parsedParameters[key] = value;
         });
+      }
     }
   });
   return templateUrl(url, parsedParameters);
@@ -304,7 +301,7 @@ export function isBooleanRecord(obj: any): obj is Record<string, boolean> {
 
 export function isEmpty(value: any): boolean {
   // check for undefined, null, and NaN
-  let res: boolean = false;
+  let res = false;
   if (typeof value === "number") res = Number.isNaN(value);
   else if (typeof value === "string") res = value === "";
   return res || value == null;
@@ -319,9 +316,13 @@ export function convertIfDateObjectToISOString(
   if (value instanceof Date) {
     if (dtFormat === "YYYY-MM-DD") {
       const dateRegex = /^(\d{4})-(\d{2})-(\d{2})/;
-      const [_, year, month, day]: RegExpMatchArray = value
-        .toISOString()
-        .match(dateRegex)!;
+
+      const matches = value.toISOString().match(dateRegex);
+      if (matches == null) {
+        throw new Error("Date format is not valid");
+      }
+
+      const [, year, month, day]: RegExpMatchArray = matches;
       return `${year}-${month}-${day}`;
     }
     if (dtFormat === "YYYY-MM-DDThh:mm:ss.sssZ") {
@@ -343,7 +344,7 @@ export function encodeAndConvertPrimitiveVal(
 export function deserializeJSONResponse<T>(
   value: T,
   klass?: any,
-  elemDepth: number = 0
+  elemDepth = 0
 ): any {
   if (value !== Object(value)) {
     return value;
@@ -360,7 +361,7 @@ export function deserializeJSONResponse<T>(
   }
 
   if (typeof value === "object" && value != null) {
-    let copiedRecord: Record<string, any> = {};
+    const copiedRecord: Record<string, any> = {};
     for (const key in value) {
       copiedRecord[key] = deserializeJSONResponse(
         value[key],
@@ -407,7 +408,7 @@ export function populateFromGlobals(
 ): any {
   if (globals && value === undefined) {
     if ("parameters" in globals && paramType in globals.parameters) {
-      let globalValue = globals.parameters[paramType][fieldName];
+      const globalValue = globals.parameters[paramType][fieldName];
       if (globalValue !== undefined) {
         value = globalValue;
       }

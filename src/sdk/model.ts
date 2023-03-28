@@ -61,7 +61,7 @@ export class Model {
       }
     }
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -119,7 +119,7 @@ export class Model {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/models/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -171,7 +171,7 @@ export class Model {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/models/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,

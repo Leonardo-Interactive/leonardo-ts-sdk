@@ -28,7 +28,7 @@ export class RetryConfig {
   backoff?: BackoffStrategy;
   retryConnectionErrors: boolean;
 
-  constructor(strategy: string, retryConnectionErrors: boolean = true) {
+  constructor(strategy: string, retryConnectionErrors = true) {
     this.strategy = strategy;
     this.retryConnectionErrors = retryConnectionErrors;
   }
@@ -139,7 +139,7 @@ async function retryBackoff(
   const start = Date.now();
   let x = 0;
 
-  while (true) {
+  while (true) { /* eslint-disable-line no-constant-condition */
     try {
       return await fn();
     } catch (err) {

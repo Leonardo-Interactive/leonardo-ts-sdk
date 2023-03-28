@@ -61,7 +61,7 @@ export class Generation {
       }
     }
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -119,7 +119,7 @@ export class Generation {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/generations/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -171,7 +171,7 @@ export class Generation {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/generations/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -227,7 +227,7 @@ export class Generation {
       req
     );
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const queryParams: string = utils.serializeQueryParams(req);
 

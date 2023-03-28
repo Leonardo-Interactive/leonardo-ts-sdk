@@ -47,7 +47,7 @@ export class InitImage {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -99,7 +99,7 @@ export class InitImage {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -165,7 +165,7 @@ export class InitImage {
       }
     }
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
