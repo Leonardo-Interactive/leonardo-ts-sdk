@@ -13,13 +13,13 @@
 ### NPM
 
 ```bash
-npm add @leonardo-ai/sdk
+npm add <UNSET>
 ```
 
 ### Yarn
 
 ```bash
-yarn add @leonardo-ai/sdk
+yarn add <UNSET>
 ```
 <!-- End SDK Installation -->
 
@@ -44,8 +44,8 @@ const sdk = new Leonardo({
 });
 
 const req: CreateDatasetRequestBody = {
-  description: "unde",
-  name: "deserunt",
+  description: "corrupti",
+  name: "provident",
 };
 
 sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) => {
@@ -55,7 +55,7 @@ sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) =>
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### dataset
