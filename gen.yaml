@@ -3,11 +3,13 @@ management:
   docChecksum: ec35af645c1616d5d3e36a4a0289831a
   docVersion: v1.0.0
   speakeasyVersion: 1.19.3
+  generationVersion: 2.16.7
 generation:
   telemetryEnabled: false
   sdkClassName: Leonardo
   sdkFlattening: true
+  singleTagPerOp: false
 typescript:
-  version: 1.18.2
+  version: 1.18.3
   author: leonardoai
   packageName: '@leonardo-ai/sdk'
