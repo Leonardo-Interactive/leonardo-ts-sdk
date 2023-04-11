@@ -89,11 +89,10 @@ export class Model {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.createModel200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.CreateModel200ApplicationJSON
-              );
+            res.createModel200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.CreateModel200ApplicationJSON
+            );
           }
           break;
       }
@@ -141,11 +140,10 @@ export class Model {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.deleteModelById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.DeleteModelById200ApplicationJSON
-              );
+            res.deleteModelById200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.DeleteModelById200ApplicationJSON
+            );
           }
           break;
       }
@@ -193,11 +191,10 @@ export class Model {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getModelById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.GetModelById200ApplicationJSON
-              );
+            res.getModelById200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.GetModelById200ApplicationJSON
+            );
           }
           break;
       }

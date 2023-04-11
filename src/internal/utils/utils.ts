@@ -341,11 +341,7 @@ export function encodeAndConvertPrimitiveVal(
   );
 }
 
-export function deserializeJSONResponse<T>(
-  value: T,
-  klass?: any,
-  elemDepth = 0
-): any {
+export function objectToClass<T>(value: T, klass?: any, elemDepth = 0): any {
   if (value !== Object(value)) {
     return value;
   }
@@ -353,27 +349,25 @@ export function deserializeJSONResponse<T>(
   if (elemDepth === 0 && klass != null) {
     return plainToInstance(klass, value, {
       excludeExtraneousValues: true,
+      exposeUnsetFields: false,
     }) as typeof klass;
   }
 
   if (Array.isArray(value)) {
-    return value.map((v) => deserializeJSONResponse(v, klass, elemDepth - 1));
+    return value.map((v) => objectToClass(v, klass, elemDepth - 1));
   }
 
   if (typeof value === "object" && value != null) {
     const copiedRecord: Record<string, any> = {};
     for (const key in value) {
-      copiedRecord[key] = deserializeJSONResponse(
-        value[key],
-        klass,
-        elemDepth - 1
-      );
+      copiedRecord[key] = objectToClass(value[key], klass, elemDepth - 1);
     }
     return copiedRecord;
   }
 
   return plainToInstance(klass, value, {
     excludeExtraneousValues: true,
+    exposeUnsetFields: false,
   }) as typeof klass;
 }
 

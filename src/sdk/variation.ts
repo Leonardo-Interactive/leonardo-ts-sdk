@@ -88,7 +88,7 @@ export class Variation {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
             res.createVariationUpscale200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
+              utils.objectToClass(
                 httpRes?.data,
                 operations.CreateVariationUpscale200ApplicationJSON
               );
@@ -139,11 +139,10 @@ export class Variation {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getVariationById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.GetVariationById200ApplicationJSON
-              );
+            res.getVariationById200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.GetVariationById200ApplicationJSON
+            );
           }
           break;
       }

@@ -89,11 +89,10 @@ export class Generation {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.createGeneration200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.CreateGeneration200ApplicationJSON
-              );
+            res.createGeneration200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.CreateGeneration200ApplicationJSON
+            );
           }
           break;
       }
@@ -142,7 +141,7 @@ export class Generation {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
             res.deleteGenerationById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
+              utils.objectToClass(
                 httpRes?.data,
                 operations.DeleteGenerationById200ApplicationJSON
               );
@@ -193,11 +192,10 @@ export class Generation {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getGenerationById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.GetGenerationById200ApplicationJSON
-              );
+            res.getGenerationById200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.GetGenerationById200ApplicationJSON
+            );
           }
           break;
       }
@@ -252,7 +250,7 @@ export class Generation {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
             res.getGenerationsByUserId200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
+              utils.objectToClass(
                 httpRes?.data,
                 operations.GetGenerationsByUserId200ApplicationJSON
               );
