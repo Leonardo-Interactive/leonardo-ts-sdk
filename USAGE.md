@@ -15,7 +15,7 @@ const sdk = new Leonardo({
 
 const req: CreateDatasetRequestBody = {
   description: "corrupti",
-  name: "provident",
+  name: "Kelvin Sporer",
 };
 
 sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) => {
