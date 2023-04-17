@@ -89,11 +89,10 @@ export class Dataset {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.createDataset200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.CreateDataset200ApplicationJSON
-              );
+            res.createDataset200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.CreateDataset200ApplicationJSON
+            );
           }
           break;
       }
@@ -141,11 +140,10 @@ export class Dataset {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.deleteDatasetById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.DeleteDatasetById200ApplicationJSON
-              );
+            res.deleteDatasetById200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.DeleteDatasetById200ApplicationJSON
+            );
           }
           break;
       }
@@ -193,11 +191,10 @@ export class Dataset {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getDatasetById200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.GetDatasetById200ApplicationJSON
-              );
+            res.getDatasetById200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.GetDatasetById200ApplicationJSON
+            );
           }
           break;
       }
@@ -270,7 +267,7 @@ export class Dataset {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
             res.uploadDatasetImage200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
+              utils.objectToClass(
                 httpRes?.data,
                 operations.UploadDatasetImage200ApplicationJSON
               );
@@ -346,7 +343,7 @@ export class Dataset {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
             res.uploadDatasetImageFromGen200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
+              utils.objectToClass(
                 httpRes?.data,
                 operations.UploadDatasetImageFromGen200ApplicationJSON
               );

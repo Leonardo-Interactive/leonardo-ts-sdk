@@ -4,13 +4,14 @@
 
 import {
   SerializationMethodToContentType,
-  convertIfDateObjectToISOString,
   isBooleanRecord,
   isNumberRecord,
   isStringRecord,
+  valToString,
 } from "./utils";
 
 import FormData from "form-data";
+import { RFCDate } from "../../sdk/types";
 
 export const requestMetadataKey = "request";
 const mpFormMetadataKey = "multipart_form";
@@ -120,17 +121,9 @@ const encodeFormUrlEncodeData = (data: any): FormData => {
       if (formDecorator.Style === "form") {
         let parsed: Record<string, string[]>;
         if (formDecorator.Explode === true) {
-          parsed = formExplode(
-            fname,
-            data[fname],
-            formDecorator.DateTimeFormat
-          );
+          parsed = formExplode(fname, data[fname]);
         } else {
-          parsed = formNotExplode(
-            fname,
-            data[fname],
-            formDecorator.DateTimeFormat
-          );
+          parsed = formNotExplode(fname, data[fname]);
         }
 
         Object.keys(parsed).forEach((key) => {
@@ -143,11 +136,7 @@ const encodeFormUrlEncodeData = (data: any): FormData => {
   return formData;
 };
 
-const formExplode = (
-  fname: string,
-  data: any,
-  dateTimeFormat?: string
-): Record<string, string[]> => {
+const formExplode = (fname: string, data: any): Record<string, string[]> => {
   const exploded: Record<string, string[]> = {};
 
   if (Array.isArray(data)) {
@@ -157,38 +146,30 @@ const formExplode = (
       }
       exploded[fname].push(value);
     });
-  } else {
-    if (typeof data === "object") {
-      if (data instanceof Date) {
-        if (!exploded[fname]) {
-          exploded[fname] = [];
-        }
-        exploded[fname].push(
-          convertIfDateObjectToISOString(data, dateTimeFormat)
-        );
-        return exploded;
+  } else if (typeof data === "object") {
+    if (data instanceof Date || data instanceof RFCDate) {
+      if (!exploded[fname]) {
+        exploded[fname] = [];
       }
+      exploded[fname].push(valToString(data));
+    } else {
       Object.keys(data).forEach((key) => {
         if (!exploded[key]) {
           exploded[key] = [];
         }
         exploded[key].push(data[key]);
       });
-    } else {
-      if (!exploded[fname]) {
-        exploded[fname] = [];
-      }
-      exploded[fname].push(data.toString());
     }
+  } else {
+    if (!exploded[fname]) {
+      exploded[fname] = [];
+    }
+    exploded[fname].push(valToString(data));
   }
   return exploded;
 };
 
-const formNotExplode = (
-  fname: string,
-  data: any,
-  dateTimeFormat?: string
-): Record<string, string[]> => {
+const formNotExplode = (fname: string, data: any): Record<string, string[]> => {
   const notExploded: Record<string, string[]> = {};
 
   if (Array.isArray(data)) {
@@ -196,29 +177,25 @@ const formNotExplode = (
       notExploded[fname] = [];
     }
     notExploded[fname].push(data.map((item) => item.toString()).join(","));
-  } else {
-    if (typeof data === "object") {
-      if (data instanceof Date) {
-        if (!notExploded[fname]) {
-          notExploded[fname] = [];
-        }
-        notExploded[fname].push(
-          convertIfDateObjectToISOString(data, dateTimeFormat)
-        );
-        return notExploded;
+  } else if (typeof data === "object") {
+    if (data instanceof Date || data instanceof RFCDate) {
+      if (!notExploded[fname]) {
+        notExploded[fname] = [];
       }
+      notExploded[fname].push(valToString(data));
+    } else {
       Object.keys(data).forEach((key) => {
         if (!notExploded[key]) {
           notExploded[key] = [];
         }
         notExploded[fname].push(`${key}=${data[key]}`);
       });
-    } else {
-      if (!notExploded[fname]) {
-        notExploded[fname] = [];
-      }
-      notExploded[fname].push(data.toString());
     }
+  } else {
+    if (!notExploded[fname]) {
+      notExploded[fname] = [];
+    }
+    notExploded[fname].push(valToString(data));
   }
   return notExploded;
 };
@@ -245,8 +222,6 @@ function parseFormDecorator(formAnn: string): FormDecorator {
       case "json":
         formDecorator.JSON = formVal === "true";
         break;
-      case "dateTimeFormat":
-        formDecorator.DateTimeFormat = formVal;
     }
   });
 
@@ -258,7 +233,6 @@ class FormDecorator {
   Style?: string;
   Explode?: boolean;
   JSON?: boolean;
-  DateTimeFormat?: string;
 
   constructor(
     Name?: string,
@@ -292,38 +266,14 @@ function encodeMultipartFormData(form: any): FormData {
     if (mpFormDecorator.File)
       return encodeMultipartFormDataFile(formData, form[fname]);
     else if (mpFormDecorator.JSON) {
-      formData.append(
-        mpFormDecorator.Name,
-        JSON.stringify(form[fname], (key, value) => {
-          return convertIfDateObjectToISOString(
-            value,
-            mpFormDecorator.DateTimeFormat
-          );
-        })
-      );
+      formData.append(mpFormDecorator.Name, JSON.stringify(form[fname]));
     } else {
       if (Array.isArray(form[fname])) {
         form[fname].forEach((val: any) => {
-          formData.append(
-            mpFormDecorator.Name + "[]",
-            String(
-              convertIfDateObjectToISOString(
-                val,
-                mpFormDecorator.DateTimeFormat
-              )
-            )
-          );
+          formData.append(mpFormDecorator.Name + "[]", valToString(val));
         });
       } else {
-        formData.append(
-          mpFormDecorator.Name,
-          String(
-            convertIfDateObjectToISOString(
-              form[fname],
-              mpFormDecorator.DateTimeFormat
-            )
-          )
-        );
+        formData.append(mpFormDecorator.Name, valToString(form[fname]));
       }
     }
   });
@@ -391,8 +341,6 @@ function parseMultipartFormDecorator(
       case "json":
         mpFormDecorator.JSON = mpFormVal == "true";
         break;
-      case "dateTimeFormat":
-        mpFormDecorator.DateTimeFormat = mpFormVal;
     }
   });
 
@@ -404,7 +352,6 @@ class MultipartFormDecorator {
   Content: boolean;
   JSON: boolean;
   Name: string;
-  DateTimeFormat?: string;
 
   constructor(File: boolean, Content: boolean, JSON: boolean, Name: string) {
     this.File = File;

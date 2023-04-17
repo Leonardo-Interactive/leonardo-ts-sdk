@@ -10,7 +10,8 @@ import { Model } from "./model";
 import * as shared from "./models/shared";
 import { User } from "./user";
 import { Variation } from "./variation";
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
+import { AxiosInstance } from "axios";
 
 /**
  * Contains the list of servers available to the SDK
@@ -55,8 +56,8 @@ export class Leonardo {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.19.0";
-  private _genVersion = "2.17.8";
+  private _sdkVersion = "1.20.0";
+  private _genVersion = "2.18.0";
   private _globals: any;
 
   constructor(props?: SDKProps) {

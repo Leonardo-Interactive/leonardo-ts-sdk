@@ -7,6 +7,7 @@ import "reflect-metadata";
 import { getSimplePathParams, ppMetadataKey } from "./pathparams";
 
 import { plainToInstance } from "class-transformer";
+import { RFCDate } from "../../sdk/types";
 import { requestMetadataKey } from "./requestbody";
 
 export const SerializationMethodToContentType: Record<string, string> = {
@@ -100,6 +101,12 @@ export class SpeakeasyBase {
               prop.elemType,
               prop.elemDepth
             );
+          } else if (prop.type.name == "RFCDate") {
+            if (value instanceof Date) {
+              (this as any)[prop.key] = new RFCDate(value);
+            } else {
+              (this as any)[prop.key] = value;
+            }
           } else {
             (this as any)[prop.key] = value;
           }
@@ -114,19 +121,16 @@ export class ParamDecorator {
   Explode: boolean;
   ParamName: string;
   Serialization?: string;
-  DateTimeFormat?: string;
   constructor(
     Style: string,
     Explode: boolean,
     ParamName: string,
-    Serialization?: string,
-    DateTimeFormat?: string
+    Serialization?: string
   ) {
     this.Style = Style;
     this.Explode = Explode;
     this.ParamName = ParamName;
     this.Serialization = Serialization;
-    this.DateTimeFormat = DateTimeFormat;
   }
 }
 
@@ -216,17 +220,26 @@ export function generateURL(
     let value = pathParams[fname];
     value = populateFromGlobals(value, fname, "pathParam", globals);
 
-    switch (ppDecorator.Style) {
-      case "simple": {
-        const simpleParams: Map<string, string> = getSimplePathParams(
-          ppDecorator.ParamName,
-          value,
-          ppDecorator.Explode,
-          ppDecorator.DateTimeFormat
-        );
-        simpleParams.forEach((value, key) => {
-          parsedParameters[key] = value;
-        });
+    if (ppDecorator.Serialization) {
+      switch (ppDecorator.Serialization) {
+        case "json":
+          parsedParameters[ppDecorator.ParamName] = encodeURIComponent(
+            JSON.stringify(value)
+          );
+          break;
+      }
+    } else {
+      switch (ppDecorator.Style) {
+        case "simple": {
+          const simpleParams: Map<string, string> = getSimplePathParams(
+            ppDecorator.ParamName,
+            value,
+            ppDecorator.Explode
+          );
+          simpleParams.forEach((value, key) => {
+            parsedParameters[key] = value;
+          });
+        }
       }
     }
   });
@@ -262,8 +275,6 @@ export function parseParamDecorator(
       case "serialization":
         decorator.Serialization = paramVal;
         break;
-      case "dateTimeFormat":
-        decorator.DateTimeFormat = paramVal;
     }
   });
   return decorator;
@@ -307,45 +318,7 @@ export function isEmpty(value: any): boolean {
   return res || value == null;
 }
 
-// If value is Date type, serialize as ISO string since Date constructor creates from system clock
-export function convertIfDateObjectToISOString(
-  value: any,
-  dateTimeFormat?: string
-): any {
-  const dtFormat = dateTimeFormat ?? "YYYY-MM-DDThh:mm:ss.sssZ";
-  if (value instanceof Date) {
-    if (dtFormat === "YYYY-MM-DD") {
-      const dateRegex = /^(\d{4})-(\d{2})-(\d{2})/;
-
-      const matches = value.toISOString().match(dateRegex);
-      if (matches == null) {
-        throw new Error("Date format is not valid");
-      }
-
-      const [, year, month, day]: RegExpMatchArray = matches;
-      return `${year}-${month}-${day}`;
-    }
-    if (dtFormat === "YYYY-MM-DDThh:mm:ss.sssZ") {
-      return value.toISOString();
-    }
-  }
-  return value;
-}
-
-export function encodeAndConvertPrimitiveVal(
-  value: any,
-  dateTimeFormat?: string
-): any {
-  return encodeURIComponent(
-    convertIfDateObjectToISOString(value, dateTimeFormat)
-  );
-}
-
-export function deserializeJSONResponse<T>(
-  value: T,
-  klass?: any,
-  elemDepth = 0
-): any {
+export function objectToClass<T>(value: T, klass?: any, elemDepth = 0): any {
   if (value !== Object(value)) {
     return value;
   }
@@ -353,27 +326,25 @@ export function deserializeJSONResponse<T>(
   if (elemDepth === 0 && klass != null) {
     return plainToInstance(klass, value, {
       excludeExtraneousValues: true,
+      exposeUnsetFields: false,
     }) as typeof klass;
   }
 
   if (Array.isArray(value)) {
-    return value.map((v) => deserializeJSONResponse(v, klass, elemDepth - 1));
+    return value.map((v) => objectToClass(v, klass, elemDepth - 1));
   }
 
   if (typeof value === "object" && value != null) {
     const copiedRecord: Record<string, any> = {};
     for (const key in value) {
-      copiedRecord[key] = deserializeJSONResponse(
-        value[key],
-        klass,
-        elemDepth - 1
-      );
+      copiedRecord[key] = objectToClass(value[key], klass, elemDepth - 1);
     }
     return copiedRecord;
   }
 
   return plainToInstance(klass, value, {
     excludeExtraneousValues: true,
+    exposeUnsetFields: false,
   }) as typeof klass;
 }
 
@@ -416,4 +387,12 @@ export function populateFromGlobals(
   }
 
   return value;
+}
+
+export function valToString(value: any): string {
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
+
+  return value.toString();
 }

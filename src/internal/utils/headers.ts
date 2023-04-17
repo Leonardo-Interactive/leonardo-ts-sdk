@@ -5,12 +5,12 @@
 import { AxiosResponseHeaders, RawAxiosResponseHeaders } from "axios";
 import {
   ParamDecorator,
-  convertIfDateObjectToISOString,
   isBooleanRecord,
   isEmpty,
   isNumberRecord,
   isStringRecord,
   parseParamDecorator,
+  valToString,
 } from "./utils";
 
 import { requestMetadataKey } from "./requestbody";
@@ -51,8 +51,7 @@ export function getHeadersFromRequest(headerParams: any): any {
 
     const value: string = serializeHeader(
       headerParams[fname],
-      headerDecorator.Explode,
-      headerDecorator.DateTimeFormat
+      headerDecorator.Explode
     );
 
     if (value != "") headers[headerDecorator.ParamName] = value;
@@ -89,16 +88,12 @@ export function getHeadersFromResponse(
   return reponseHeaders;
 }
 
-function serializeHeader(
-  header: any,
-  explode: boolean,
-  dateTimeFormat?: string
-): string {
+function serializeHeader(header: any, explode: boolean): string {
   const headerVals: string[] = [];
 
   if (Array.isArray(header)) {
     header.forEach((val: any) => {
-      headerVals.push(convertIfDateObjectToISOString(val, dateTimeFormat));
+      headerVals.push(valToString(val));
     });
   } else if (
     isStringRecord(header) ||
@@ -106,8 +101,9 @@ function serializeHeader(
     isBooleanRecord(header)
   ) {
     Object.getOwnPropertyNames(header).forEach((headerKey: string) => {
-      if (explode) headerVals.push(`${headerKey}=${header[headerKey]}`);
-      else headerVals.push(`${headerKey},${header[headerKey]}`);
+      if (explode)
+        headerVals.push(`${headerKey}=${valToString(header[headerKey])}`);
+      else headerVals.push(`${headerKey},${valToString(header[headerKey])}`);
     });
   } else if (header instanceof Object) {
     Object.getOwnPropertyNames(header).forEach((headerKey: string) => {
@@ -128,10 +124,7 @@ function serializeHeader(
 
       if (headerDecorator == null) return;
 
-      const headerFieldValue = convertIfDateObjectToISOString(
-        header[headerKey],
-        headerDecorator.DateTimeFormat
-      );
+      const headerFieldValue = valToString(header[headerKey]);
 
       if (isEmpty(headerFieldValue)) return;
       else if (explode)

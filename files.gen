@@ -20,6 +20,8 @@ src/internal/utils/retries.ts
 src/internal/utils/security.ts
 src/internal/utils/utils.ts
 src/sdk/index.ts
+src/sdk/types/index.ts
+src/sdk/types/rfcdate.ts
 tsconfig.json
 src/sdk/models/operations/createdataset.ts
 src/sdk/models/operations/deletedatasetbyid.ts

@@ -95,6 +95,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
   prompt: string;
 
   /**
+   * Enable to use Prompt Magic.
+   */
+  @SpeakeasyMetadata()
+  @Expose({ name: "promptMagic" })
+  promptMagic?: boolean;
+
+  /**
    * Whether the generated images should show in the community feed.
    */
   @SpeakeasyMetadata()

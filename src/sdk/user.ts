@@ -64,11 +64,10 @@ export class User {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getUserSelf200ApplicationJSONObject =
-              utils.deserializeJSONResponse(
-                httpRes?.data,
-                operations.GetUserSelf200ApplicationJSON
-              );
+            res.getUserSelf200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.GetUserSelf200ApplicationJSON
+            );
           }
           break;
       }

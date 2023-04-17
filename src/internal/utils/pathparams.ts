@@ -3,15 +3,13 @@
  */
 
 import {
-  encodeAndConvertPrimitiveVal,
   ParamDecorator,
-  parseParamDecorator,
-} from "./utils";
-import {
-  isStringRecord,
-  isNumberRecord,
   isBooleanRecord,
   isEmpty,
+  isNumberRecord,
+  isStringRecord,
+  parseParamDecorator,
+  valToString,
 } from "./utils";
 
 export const ppMetadataKey = "pathParam";
@@ -19,15 +17,14 @@ export const ppMetadataKey = "pathParam";
 export function getSimplePathParams(
   paramName: string,
   paramValue: any,
-  explode: boolean,
-  dateTimeFormat?: string
+  explode: boolean
 ): Map<string, string> {
   const pathParams: Map<string, string> = new Map<string, string>();
   const ppVals: string[] = [];
 
   if (Array.isArray(paramValue)) {
     paramValue.forEach((param) => {
-      ppVals.push(encodeAndConvertPrimitiveVal(param, dateTimeFormat));
+      ppVals.push(encodeURIComponent(valToString(param)));
     });
     pathParams.set(paramName, ppVals.join(","));
   } else if (
@@ -36,9 +33,8 @@ export function getSimplePathParams(
     isBooleanRecord(paramValue)
   ) {
     Object.getOwnPropertyNames(paramValue).forEach((paramKey: string) => {
-      const paramFieldValue = encodeAndConvertPrimitiveVal(
-        paramValue[paramKey],
-        dateTimeFormat
+      const paramFieldValue = encodeURIComponent(
+        valToString(paramValue[paramKey])
       );
 
       if (explode) ppVals.push(`${paramKey}=${paramFieldValue}`);
@@ -65,9 +61,8 @@ export function getSimplePathParams(
 
       if (ppDecorator == null) return;
 
-      const paramFieldValue = encodeAndConvertPrimitiveVal(
-        paramValue[paramKey],
-        ppDecorator.DateTimeFormat
+      const paramFieldValue = encodeURIComponent(
+        valToString(paramValue[paramKey])
       );
 
       if (isEmpty(paramFieldValue)) return;
@@ -78,10 +73,7 @@ export function getSimplePathParams(
 
     pathParams.set(paramName, ppVals.join(","));
   } else {
-    pathParams.set(
-      paramName,
-      encodeAndConvertPrimitiveVal(paramValue, dateTimeFormat)
-    );
+    pathParams.set(paramName, encodeURIComponent(valToString(paramValue)));
   }
   return pathParams;
 }
