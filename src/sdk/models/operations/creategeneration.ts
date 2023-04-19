@@ -12,6 +12,20 @@ import { Expose, Type } from "class-transformer";
  */
 export class CreateGenerationRequestBody extends SpeakeasyBase {
   /**
+   * Enable to use ControlNet. Requires an init image to be provided. Requires a model based on SD v1.5
+   */
+  @SpeakeasyMetadata()
+  @Expose({ name: "controlNet" })
+  controlNet?: boolean;
+
+  /**
+   * The type of ControlNet to use.
+   */
+  @SpeakeasyMetadata()
+  @Expose({ name: "controlNetType" })
+  controlNetType?: shared.ControlnetTypeEnum;
+
+  /**
    * How strongly the generation should reflect the prompt. 7 is recommended. Must be between 1 and 20.
    */
   @SpeakeasyMetadata()

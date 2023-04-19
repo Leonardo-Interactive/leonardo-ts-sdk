@@ -45,6 +45,7 @@ src/sdk/models/operations/index.ts
 src/sdk/models/shared/sdversionsenum.ts
 src/sdk/models/shared/sdgenerationschedulersenum.ts
 src/sdk/models/shared/sdgenerationstyleenum.ts
+src/sdk/models/shared/controlnettypeenum.ts
 src/sdk/models/shared/jobstatusenum.ts
 src/sdk/models/shared/variationtypeenum.ts
 src/sdk/models/shared/strengthenum.ts
