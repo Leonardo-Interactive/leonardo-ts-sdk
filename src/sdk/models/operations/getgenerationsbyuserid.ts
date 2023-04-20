@@ -85,6 +85,10 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages 
  * columns and relationships of "generations"
  */
 export class GetGenerationsByUserId200ApplicationJSONGenerations extends SpeakeasyBase {
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
+  createdAt?: string;
+
   @SpeakeasyMetadata({
     elemType:
       GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages,
