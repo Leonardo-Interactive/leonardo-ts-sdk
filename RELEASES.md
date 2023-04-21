@@ -546,3 +546,11 @@ Based on:
 - Speakeasy CLI 1.21.5 (2.19.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v1.21.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.21.1 - .
+
+## 2023-04-21 22:01:12
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.22.0 (2.20.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.22.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.22.0 - .
