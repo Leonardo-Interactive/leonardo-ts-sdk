@@ -1,4 +1,9 @@
-<!-- Start SDK Example Usage -->
+# createDataset
+Available in: `dataset`
+
+This endpoint creates a new dataset
+
+## Example Usage
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateDatasetRequestBody, CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
@@ -12,7 +17,7 @@ const sdk = new Leonardo({
 
 const req: CreateDatasetRequestBody = {
   description: "corrupti",
-  name: "Kelvin Sporer",
+  name: "Ben Mueller",
 };
 
 sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) => {
@@ -21,4 +26,3 @@ sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) =>
   }
 });
 ```
-<!-- End SDK Example Usage -->
