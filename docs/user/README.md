@@ -22,7 +22,7 @@ const sdk = new Leonardo({
 });
 
 sdk.user.getUserSelf().then((res: GetUserSelfResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  if (res instanceof GetUserSelfResponse && res.statusCode == 200) {
     // handle response
   }
 });

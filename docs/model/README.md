@@ -14,7 +14,7 @@ This endpoint will train a new custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateModelRequestBody, CreateModelResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { CreateModelResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { CustomModelTypeEnum, SdVersionsEnum, StrengthEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 import { AxiosError } from "axios";
 
@@ -24,7 +24,7 @@ const sdk = new Leonardo({
   },
 });
 
-const req: CreateModelRequestBody = {
+sdk.model.createModel({
   datasetId: "in",
   description: "illum",
   instancePrompt: "maiores",
@@ -34,10 +34,8 @@ const req: CreateModelRequestBody = {
   resolution: 396506,
   sdVersion: SdVersionsEnum.V2,
   strength: StrengthEnum.High,
-};
-
-sdk.model.createModel(req).then((res: CreateModelResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateModelResponse | AxiosError) => {
+  if (res instanceof CreateModelResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -51,7 +49,7 @@ This endpoint will delete a specific custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteModelByIdRequest, DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -60,12 +58,10 @@ const sdk = new Leonardo({
   },
 });
 
-const req: DeleteModelByIdRequest = {
+sdk.model.deleteModelById({
   id: "395efb9b-a88f-43a6-a997-074ba4469b6e",
-};
-
-sdk.model.deleteModelById(req).then((res: DeleteModelByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteModelByIdResponse | AxiosError) => {
+  if (res instanceof DeleteModelByIdResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -79,7 +75,7 @@ This endpoint gets the specific custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetModelByIdRequest, GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { CustomModelTypeEnum, JobStatusEnum, SdVersionsEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 import { AxiosError } from "axios";
 
@@ -89,12 +85,10 @@ const sdk = new Leonardo({
   },
 });
 
-const req: GetModelByIdRequest = {
+sdk.model.getModelById({
   id: "21419598-90af-4a56-be25-16fe4c8b711e",
-};
-
-sdk.model.getModelById(req).then((res: GetModelByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetModelByIdResponse | AxiosError) => {
+  if (res instanceof GetModelByIdResponse && res.statusCode == 200) {
     // handle response
   }
 });

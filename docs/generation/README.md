@@ -15,7 +15,7 @@ This endpoint will generate images
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateGenerationRequestBody, CreateGenerationResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { CreateGenerationResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import {
   ControlnetTypeEnum,
   SdGenerationSchedulersEnum,
@@ -30,7 +30,7 @@ const sdk = new Leonardo({
   },
 });
 
-const req: CreateGenerationRequestBody = {
+sdk.generation.createGeneration({
   controlNet: false,
   controlNetType: ControlnetTypeEnum.Depth,
   guidanceScale: 449950,
@@ -50,10 +50,8 @@ const req: CreateGenerationRequestBody = {
   sdVersion: SdVersionsEnum.V15,
   tiling: false,
   width: 210382,
-};
-
-sdk.generation.createGeneration(req).then((res: CreateGenerationResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateGenerationResponse | AxiosError) => {
+  if (res instanceof CreateGenerationResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -67,7 +65,7 @@ This endpoint deletes a specific generation
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteGenerationByIdRequest, DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -76,12 +74,10 @@ const sdk = new Leonardo({
   },
 });
 
-const req: DeleteGenerationByIdRequest = {
+sdk.generation.deleteGenerationById({
   id: "52c59559-07af-4f1a-ba2f-a9467739251a",
-};
-
-sdk.generation.deleteGenerationById(req).then((res: DeleteGenerationByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteGenerationByIdResponse | AxiosError) => {
+  if (res instanceof DeleteGenerationByIdResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -95,7 +91,7 @@ This endpoint will provide information about a specific generation
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetGenerationByIdRequest, GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import {
   JobStatusEnum,
   SdGenerationSchedulersEnum,
@@ -111,12 +107,10 @@ const sdk = new Leonardo({
   },
 });
 
-const req: GetGenerationByIdRequest = {
+sdk.generation.getGenerationById({
   id: "a52c3f5a-d019-4da1-bfe7-8f097b0074f1",
-};
-
-sdk.generation.getGenerationById(req).then((res: GetGenerationByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetGenerationByIdResponse | AxiosError) => {
+  if (res instanceof GetGenerationByIdResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -130,7 +124,7 @@ This endpoint returns all generations by a specific user
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetGenerationsByUserIdRequest, GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import {
   JobStatusEnum,
   SdGenerationSchedulersEnum,
@@ -146,14 +140,12 @@ const sdk = new Leonardo({
   },
 });
 
-const req: GetGenerationsByUserIdRequest = {
+sdk.generation.getGenerationsByUserId({
   limit: 359444,
   offset: 296140,
   userId: "iusto",
-};
-
-sdk.generation.getGenerationsByUserId(req).then((res: GetGenerationsByUserIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetGenerationsByUserIdResponse | AxiosError) => {
+  if (res instanceof GetGenerationsByUserIdResponse && res.statusCode == 200) {
     // handle response
   }
 });

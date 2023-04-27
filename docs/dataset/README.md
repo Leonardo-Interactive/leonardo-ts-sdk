@@ -16,7 +16,7 @@ This endpoint creates a new dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateDatasetRequestBody, CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -25,13 +25,11 @@ const sdk = new Leonardo({
   },
 });
 
-const req: CreateDatasetRequestBody = {
+sdk.dataset.createDataset({
   description: "corrupti",
   name: "Ben Mueller",
-};
-
-sdk.dataset.createDataset(req).then((res: CreateDatasetResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CreateDatasetResponse | AxiosError) => {
+  if (res instanceof CreateDatasetResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -45,7 +43,7 @@ This endpoint deletes the specific dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteDatasetByIdRequest, DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -54,12 +52,10 @@ const sdk = new Leonardo({
   },
 });
 
-const req: DeleteDatasetByIdRequest = {
+sdk.dataset.deleteDatasetById({
   id: "74e0f467-cc87-496e-9151-a05dfc2ddf7c",
-};
-
-sdk.dataset.deleteDatasetById(req).then((res: DeleteDatasetByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: DeleteDatasetByIdResponse | AxiosError) => {
+  if (res instanceof DeleteDatasetByIdResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -73,7 +69,7 @@ This endpoint gets the specific dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetDatasetByIdRequest, GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -82,12 +78,10 @@ const sdk = new Leonardo({
   },
 });
 
-const req: GetDatasetByIdRequest = {
+sdk.dataset.getDatasetById({
   id: "c78ca1ba-928f-4c81-a742-cb7392059293",
-};
-
-sdk.dataset.getDatasetById(req).then((res: GetDatasetByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetDatasetByIdResponse | AxiosError) => {
+  if (res instanceof GetDatasetByIdResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -101,7 +95,7 @@ This endpoint returns presigned details to upload a dataset image to S3
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { UploadDatasetImageRequest, UploadDatasetImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { UploadDatasetImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -110,15 +104,13 @@ const sdk = new Leonardo({
   },
 });
 
-const req: UploadDatasetImageRequest = {
+sdk.dataset.uploadDatasetImage({
   requestBody: {
     extension: "natus",
   },
   datasetId: "laboriosam",
-};
-
-sdk.dataset.uploadDatasetImage(req).then((res: UploadDatasetImageResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UploadDatasetImageResponse | AxiosError) => {
+  if (res instanceof UploadDatasetImageResponse && res.statusCode == 200) {
     // handle response
   }
 });
@@ -132,7 +124,7 @@ This endpoint will upload a previously generated image to the dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { UploadDatasetImageFromGenRequest, UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
@@ -141,15 +133,13 @@ const sdk = new Leonardo({
   },
 });
 
-const req: UploadDatasetImageFromGenRequest = {
+sdk.dataset.uploadDatasetImageFromGen({
   requestBody: {
     generatedImageId: "hic",
   },
   datasetId: "saepe",
-};
-
-sdk.dataset.uploadDatasetImageFromGen(req).then((res: UploadDatasetImageFromGenResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UploadDatasetImageFromGenResponse | AxiosError) => {
+  if (res instanceof UploadDatasetImageFromGenResponse && res.statusCode == 200) {
     // handle response
   }
 });
