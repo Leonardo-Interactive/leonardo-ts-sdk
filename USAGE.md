@@ -2,7 +2,6 @@
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -13,8 +12,8 @@ const sdk = new Leonardo({
 sdk.dataset.createDataset({
   description: "corrupti",
   name: "Kelvin Sporer",
-}).then((res: CreateDatasetResponse | AxiosError) => {
-  if (res instanceof CreateDatasetResponse && res.statusCode == 200) {
+}).then((res: CreateDatasetResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

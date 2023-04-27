@@ -13,7 +13,6 @@ This endpoint will return your user information, including your user ID.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetUserSelfResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -21,8 +20,8 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.user.getUserSelf().then((res: GetUserSelfResponse | AxiosError) => {
-  if (res instanceof GetUserSelfResponse && res.statusCode == 200) {
+sdk.user.getUserSelf().then((res: GetUserSelfResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -36,7 +36,7 @@ export class Dataset {
    * @remarks
    * This endpoint creates a new dataset
    */
-  createDataset(
+  async createDataset(
     req: operations.CreateDatasetRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateDatasetResponse> {
@@ -67,7 +67,8 @@ export class Dataset {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -75,30 +76,30 @@ export class Dataset {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateDatasetResponse =
-        new operations.CreateDatasetResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createDataset200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.CreateDataset200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateDatasetResponse =
+      new operations.CreateDatasetResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createDataset200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.CreateDataset200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -107,7 +108,7 @@ export class Dataset {
    * @remarks
    * This endpoint deletes the specific dataset
    */
-  deleteDatasetById(
+  async deleteDatasetById(
     req: operations.DeleteDatasetByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteDatasetByIdResponse> {
@@ -120,36 +121,37 @@ export class Dataset {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteDatasetByIdResponse =
-        new operations.DeleteDatasetByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.deleteDatasetById200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.DeleteDatasetById200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteDatasetByIdResponse =
+      new operations.DeleteDatasetByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.deleteDatasetById200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.DeleteDatasetById200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -158,7 +160,7 @@ export class Dataset {
    * @remarks
    * This endpoint gets the specific dataset
    */
-  getDatasetById(
+  async getDatasetById(
     req: operations.GetDatasetByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetDatasetByIdResponse> {
@@ -171,36 +173,37 @@ export class Dataset {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetDatasetByIdResponse =
-        new operations.GetDatasetByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getDatasetById200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.GetDatasetById200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetDatasetByIdResponse =
+      new operations.GetDatasetByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getDatasetById200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetDatasetById200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -209,7 +212,7 @@ export class Dataset {
    * @remarks
    * This endpoint returns presigned details to upload a dataset image to S3
    */
-  uploadDatasetImage(
+  async uploadDatasetImage(
     req: operations.UploadDatasetImageRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadDatasetImageResponse> {
@@ -244,7 +247,8 @@ export class Dataset {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -252,31 +256,30 @@ export class Dataset {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UploadDatasetImageResponse =
-        new operations.UploadDatasetImageResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadDatasetImage200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.UploadDatasetImage200ApplicationJSON
-              );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UploadDatasetImageResponse =
+      new operations.UploadDatasetImageResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.uploadDatasetImage200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.UploadDatasetImage200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -285,7 +288,7 @@ export class Dataset {
    * @remarks
    * This endpoint will upload a previously generated image to the dataset
    */
-  uploadDatasetImageFromGen(
+  async uploadDatasetImageFromGen(
     req: operations.UploadDatasetImageFromGenRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadDatasetImageFromGenResponse> {
@@ -320,7 +323,8 @@ export class Dataset {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -328,30 +332,30 @@ export class Dataset {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UploadDatasetImageFromGenResponse =
-        new operations.UploadDatasetImageFromGenResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadDatasetImageFromGen200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.UploadDatasetImageFromGen200ApplicationJSON
-              );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UploadDatasetImageFromGenResponse =
+      new operations.UploadDatasetImageFromGenResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.uploadDatasetImageFromGen200ApplicationJSONObject =
+            utils.objectToClass(
+              httpRes?.data,
+              operations.UploadDatasetImageFromGen200ApplicationJSON
+            );
+        }
+        break;
+    }
+
+    return res;
   }
 }

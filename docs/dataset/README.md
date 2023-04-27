@@ -17,7 +17,6 @@ This endpoint creates a new dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -28,8 +27,8 @@ const sdk = new Leonardo({
 sdk.dataset.createDataset({
   description: "corrupti",
   name: "Ben Mueller",
-}).then((res: CreateDatasetResponse | AxiosError) => {
-  if (res instanceof CreateDatasetResponse && res.statusCode == 200) {
+}).then((res: CreateDatasetResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -44,7 +43,6 @@ This endpoint deletes the specific dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -54,8 +52,8 @@ const sdk = new Leonardo({
 
 sdk.dataset.deleteDatasetById({
   id: "74e0f467-cc87-496e-9151-a05dfc2ddf7c",
-}).then((res: DeleteDatasetByIdResponse | AxiosError) => {
-  if (res instanceof DeleteDatasetByIdResponse && res.statusCode == 200) {
+}).then((res: DeleteDatasetByIdResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -70,7 +68,6 @@ This endpoint gets the specific dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -80,8 +77,8 @@ const sdk = new Leonardo({
 
 sdk.dataset.getDatasetById({
   id: "c78ca1ba-928f-4c81-a742-cb7392059293",
-}).then((res: GetDatasetByIdResponse | AxiosError) => {
-  if (res instanceof GetDatasetByIdResponse && res.statusCode == 200) {
+}).then((res: GetDatasetByIdResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -96,7 +93,6 @@ This endpoint returns presigned details to upload a dataset image to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { UploadDatasetImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -109,8 +105,8 @@ sdk.dataset.uploadDatasetImage({
     extension: "natus",
   },
   datasetId: "laboriosam",
-}).then((res: UploadDatasetImageResponse | AxiosError) => {
-  if (res instanceof UploadDatasetImageResponse && res.statusCode == 200) {
+}).then((res: UploadDatasetImageResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -125,7 +121,6 @@ This endpoint will upload a previously generated image to the dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -138,8 +133,8 @@ sdk.dataset.uploadDatasetImageFromGen({
     generatedImageId: "hic",
   },
   datasetId: "saepe",
-}).then((res: UploadDatasetImageFromGenResponse | AxiosError) => {
-  if (res instanceof UploadDatasetImageFromGenResponse && res.statusCode == 200) {
+}).then((res: UploadDatasetImageFromGenResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

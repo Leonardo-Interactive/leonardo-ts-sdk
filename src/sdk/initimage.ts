@@ -36,7 +36,7 @@ export class InitImage {
    * @remarks
    * This endpoint deletes an init image
    */
-  deleteInitImageById(
+  async deleteInitImageById(
     req: operations.DeleteInitImageByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteInitImageByIdResponse> {
@@ -49,37 +49,37 @@ export class InitImage {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteInitImageByIdResponse =
-        new operations.DeleteInitImageByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.deleteInitImageById200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.DeleteInitImageById200ApplicationJSON
-              );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteInitImageByIdResponse =
+      new operations.DeleteInitImageByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.deleteInitImageById200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.DeleteInitImageById200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -88,7 +88,7 @@ export class InitImage {
    * @remarks
    * This endpoint will return a single init image
    */
-  getInitImageById(
+  async getInitImageById(
     req: operations.GetInitImageByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetInitImageByIdResponse> {
@@ -101,36 +101,37 @@ export class InitImage {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetInitImageByIdResponse =
-        new operations.GetInitImageByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getInitImageById200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.GetInitImageById200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetInitImageByIdResponse =
+      new operations.GetInitImageByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getInitImageById200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetInitImageById200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -139,7 +140,7 @@ export class InitImage {
    * @remarks
    * This endpoint returns presigned details to upload an init image to S3
    */
-  uploadInitImage(
+  async uploadInitImage(
     req: operations.UploadInitImageRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadInitImageResponse> {
@@ -170,7 +171,8 @@ export class InitImage {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -178,29 +180,29 @@ export class InitImage {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UploadInitImageResponse =
-        new operations.UploadInitImageResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadInitImage200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.UploadInitImage200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UploadInitImageResponse =
+      new operations.UploadInitImageResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.uploadInitImage200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.UploadInitImage200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

@@ -16,7 +16,6 @@ This endpoint will train a new custom model
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateModelResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { CustomModelTypeEnum, SdVersionsEnum, StrengthEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -34,8 +33,8 @@ sdk.model.createModel({
   resolution: 396506,
   sdVersion: SdVersionsEnum.V2,
   strength: StrengthEnum.High,
-}).then((res: CreateModelResponse | AxiosError) => {
-  if (res instanceof CreateModelResponse && res.statusCode == 200) {
+}).then((res: CreateModelResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -50,7 +49,6 @@ This endpoint will delete a specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -60,8 +58,8 @@ const sdk = new Leonardo({
 
 sdk.model.deleteModelById({
   id: "395efb9b-a88f-43a6-a997-074ba4469b6e",
-}).then((res: DeleteModelByIdResponse | AxiosError) => {
-  if (res instanceof DeleteModelByIdResponse && res.statusCode == 200) {
+}).then((res: DeleteModelByIdResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -77,7 +75,6 @@ This endpoint gets the specific custom model
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { CustomModelTypeEnum, JobStatusEnum, SdVersionsEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Leonardo({
   security: {
@@ -87,8 +84,8 @@ const sdk = new Leonardo({
 
 sdk.model.getModelById({
   id: "21419598-90af-4a56-be25-16fe4c8b711e",
-}).then((res: GetModelByIdResponse | AxiosError) => {
-  if (res instanceof GetModelByIdResponse && res.statusCode == 200) {
+}).then((res: GetModelByIdResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
