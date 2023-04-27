@@ -52,4 +52,11 @@ src/sdk/models/shared/strengthenum.ts
 src/sdk/models/shared/custommodeltypeenum.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
+docs/leonardo/README.md
+docs/dataset/README.md
+docs/generation/README.md
+docs/initimage/README.md
+docs/model/README.md
+docs/user/README.md
+docs/variation/README.md
 USAGE.md

@@ -36,7 +36,7 @@ export class Variation {
    * @remarks
    * This endpoint will create an upscale for the provided image ID
    */
-  createVariationUpscale(
+  async createVariationUpscale(
     req: operations.CreateVariationUpscaleRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateVariationUpscaleResponse> {
@@ -65,7 +65,8 @@ export class Variation {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -73,31 +74,31 @@ export class Variation {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateVariationUpscaleResponse =
-        new operations.CreateVariationUpscaleResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createVariationUpscale200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.CreateVariationUpscale200ApplicationJSON
-              );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateVariationUpscaleResponse =
+      new operations.CreateVariationUpscaleResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createVariationUpscale200ApplicationJSONObject =
+            utils.objectToClass(
+              httpRes?.data,
+              operations.CreateVariationUpscale200ApplicationJSON
+            );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -106,7 +107,7 @@ export class Variation {
    * @remarks
    * This endpoint will get the variation by ID
    */
-  getVariationById(
+  async getVariationById(
     req: operations.GetVariationByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetVariationByIdResponse> {
@@ -119,35 +120,36 @@ export class Variation {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetVariationByIdResponse =
-        new operations.GetVariationByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getVariationById200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.GetVariationById200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetVariationByIdResponse =
+      new operations.GetVariationByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getVariationById200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetVariationById200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

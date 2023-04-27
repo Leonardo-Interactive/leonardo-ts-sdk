@@ -1,6 +1,6 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "1.20.3",
+  "version": "1.25.2",
   "author": "leonardoai",
   "scripts": {
     "prepare": "tsc --build"
@@ -22,5 +22,10 @@
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git",
+    "directory": "."
+  }
 }

@@ -36,7 +36,7 @@ export class Generation {
    * @remarks
    * This endpoint will generate images
    */
-  createGeneration(
+  async createGeneration(
     req: operations.CreateGenerationRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CreateGenerationResponse> {
@@ -67,7 +67,8 @@ export class Generation {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -75,30 +76,30 @@ export class Generation {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateGenerationResponse =
-        new operations.CreateGenerationResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.createGeneration200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.CreateGeneration200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateGenerationResponse =
+      new operations.CreateGenerationResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.createGeneration200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.CreateGeneration200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -107,7 +108,7 @@ export class Generation {
    * @remarks
    * This endpoint deletes a specific generation
    */
-  deleteGenerationById(
+  async deleteGenerationById(
     req: operations.DeleteGenerationByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteGenerationByIdResponse> {
@@ -120,37 +121,38 @@ export class Generation {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DeleteGenerationByIdResponse =
-        new operations.DeleteGenerationByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.deleteGenerationById200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.DeleteGenerationById200ApplicationJSON
-              );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DeleteGenerationByIdResponse =
+      new operations.DeleteGenerationByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.deleteGenerationById200ApplicationJSONObject =
+            utils.objectToClass(
+              httpRes?.data,
+              operations.DeleteGenerationById200ApplicationJSON
+            );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -159,7 +161,7 @@ export class Generation {
    * @remarks
    * This endpoint will provide information about a specific generation
    */
-  getGenerationById(
+  async getGenerationById(
     req: operations.GetGenerationByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetGenerationByIdResponse> {
@@ -172,36 +174,37 @@ export class Generation {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetGenerationByIdResponse =
-        new operations.GetGenerationByIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getGenerationById200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.GetGenerationById200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetGenerationByIdResponse =
+      new operations.GetGenerationByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getGenerationById200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetGenerationById200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -210,7 +213,7 @@ export class Generation {
    * @remarks
    * This endpoint returns all generations by a specific user
    */
-  getGenerationsByUserId(
+  async getGenerationsByUserId(
     req: operations.GetGenerationsByUserIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetGenerationsByUserIdResponse> {
@@ -229,36 +232,37 @@ export class Generation {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetGenerationsByUserIdResponse =
-        new operations.GetGenerationsByUserIdResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getGenerationsByUserId200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.GetGenerationsByUserId200ApplicationJSON
-              );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetGenerationsByUserIdResponse =
+      new operations.GetGenerationsByUserIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getGenerationsByUserId200ApplicationJSONObject =
+            utils.objectToClass(
+              httpRes?.data,
+              operations.GetGenerationsByUserId200ApplicationJSON
+            );
+        }
+        break;
+    }
+
+    return res;
   }
 }

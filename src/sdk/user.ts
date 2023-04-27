@@ -36,7 +36,7 @@ export class User {
    * @remarks
    * This endpoint will return your user information, including your user ID.
    */
-  getUserSelf(
+  async getUserSelf(
     config?: AxiosRequestConfig
   ): Promise<operations.GetUserSelfResponse> {
     const baseURL: string = this._serverURL;
@@ -44,35 +44,36 @@ export class User {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetUserSelfResponse =
-        new operations.GetUserSelfResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getUserSelf200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.GetUserSelf200ApplicationJSON
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetUserSelfResponse =
+      new operations.GetUserSelfResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getUserSelf200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetUserSelf200ApplicationJSON
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

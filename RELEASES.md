@@ -530,3 +530,91 @@ Based on:
 - Speakeasy CLI 1.20.2 (2.18.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v1.20.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.20.3 - .
+
+## 2023-04-20 10:01:12
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.21.4 (2.19.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.21.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.21.0 - .
+
+## 2023-04-21 09:01:07
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.21.5 (2.19.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.21.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.21.1 - .
+
+## 2023-04-21 22:01:12
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.22.0 (2.20.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.22.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.22.0 - .
+
+## 2023-04-22 01:27:20
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.22.1 (2.20.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.22.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.22.1 - .
+
+## 2023-04-25 08:01:25
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.23.0 (2.21.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.23.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.23.0 - .
+
+## 2023-04-25 16:01:13
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.23.1 (2.21.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.23.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.23.1 - .
+
+## 2023-04-26 10:01:17
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.24.0 (2.21.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.23.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.23.2 - .
+
+## 2023-04-26 14:01:22
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.25.1 (2.22.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.24.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.24.0 - .
+
+## 2023-04-27 12:01:14
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.26.0 (2.23.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.25.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.25.0 - .
+
+## 2023-04-27 15:01:22
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.26.1 (2.23.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.25.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.25.1 - .
+
+## 2023-04-27 18:01:26
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.26.2 (2.23.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.25.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.25.2 - .
