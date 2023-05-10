@@ -37,13 +37,12 @@ export class InitImage {
    * This endpoint deletes an init image
    */
   async deleteInitImageById(
-    req: operations.DeleteInitImageByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteInitImageByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteInitImageByIdRequest(req);
-    }
-
+    const req = new operations.DeleteInitImageByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 
@@ -89,13 +88,12 @@ export class InitImage {
    * This endpoint will return a single init image
    */
   async getInitImageById(
-    req: operations.GetInitImageByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetInitImageByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetInitImageByIdRequest(req);
-    }
-
+    const req = new operations.GetInitImageByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 

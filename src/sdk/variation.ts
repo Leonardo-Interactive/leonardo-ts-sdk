@@ -108,13 +108,12 @@ export class Variation {
    * This endpoint will get the variation by ID
    */
   async getVariationById(
-    req: operations.GetVariationByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetVariationByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetVariationByIdRequest(req);
-    }
-
+    const req = new operations.GetVariationByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/variations/{id}", req);
 

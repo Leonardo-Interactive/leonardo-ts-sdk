@@ -50,9 +50,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.dataset.deleteDatasetById({
-  id: "74e0f467-cc87-496e-9151-a05dfc2ddf7c",
-}).then((res: DeleteDatasetByIdResponse) => {
+sdk.dataset.deleteDatasetById("iure").then((res: DeleteDatasetByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -75,9 +73,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.dataset.getDatasetById({
-  id: "c78ca1ba-928f-4c81-a742-cb7392059293",
-}).then((res: GetDatasetByIdResponse) => {
+sdk.dataset.getDatasetById("magnam").then((res: GetDatasetByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -101,11 +97,8 @@ const sdk = new Leonardo({
 });
 
 sdk.dataset.uploadDatasetImage({
-  requestBody: {
-    extension: "natus",
-  },
-  datasetId: "laboriosam",
-}).then((res: UploadDatasetImageResponse) => {
+  extension: "debitis",
+}, "ipsa").then((res: UploadDatasetImageResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -129,11 +122,8 @@ const sdk = new Leonardo({
 });
 
 sdk.dataset.uploadDatasetImageFromGen({
-  requestBody: {
-    generatedImageId: "hic",
-  },
-  datasetId: "saepe",
-}).then((res: UploadDatasetImageFromGenResponse) => {
+  generatedImageId: "delectus",
+}, "tempora").then((res: UploadDatasetImageFromGenResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

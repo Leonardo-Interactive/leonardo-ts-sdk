@@ -109,13 +109,12 @@ export class Model {
    * This endpoint will delete a specific custom model
    */
   async deleteModelById(
-    req: operations.DeleteModelByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteModelByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteModelByIdRequest(req);
-    }
-
+    const req = new operations.DeleteModelByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/models/{id}", req);
 
@@ -161,13 +160,12 @@ export class Model {
    * This endpoint gets the specific custom model
    */
   async getModelById(
-    req: operations.GetModelByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetModelByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetModelByIdRequest(req);
-    }
-
+    const req = new operations.GetModelByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/models/{id}", req);
 

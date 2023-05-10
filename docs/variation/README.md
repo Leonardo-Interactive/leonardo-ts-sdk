@@ -22,7 +22,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.createVariationUpscale({
-  id: "5b7fd2ed-0289-421c-9dc6-92601fb576b0",
+  id: "816742cb-7392-4059-a939-6fea7596eb10",
 }).then((res: CreateVariationUpscaleResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -47,9 +47,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.variation.getVariationById({
-  id: "d5f0d30c-5fbb-4258-b053-202c73d5fe9b",
-}).then((res: GetVariationByIdResponse) => {
+sdk.variation.getVariationById("reiciendis").then((res: GetVariationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

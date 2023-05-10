@@ -8,6 +8,11 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class GetGenerationsByUserIdRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=userId",
+  })
+  userId: string;
+
   @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
   limit?: number;
 
@@ -15,11 +20,6 @@ export class GetGenerationsByUserIdRequest extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=offset",
   })
   offset?: number;
-
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=userId",
-  })
-  userId: string;
 }
 
 /**

@@ -22,9 +22,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.initImage.deleteInitImageById({
-  id: "1b5e6e13-b99d-4488-a1e9-1e450ad2abd4",
-}).then((res: DeleteInitImageByIdResponse) => {
+sdk.initImage.deleteInitImageById("at").then((res: DeleteInitImageByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -47,9 +45,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.initImage.getInitImageById({
-  id: "4269802d-502a-494b-b4f6-3c969e9a3efa",
-}).then((res: GetInitImageByIdResponse) => {
+sdk.initImage.getInitImageById("at").then((res: GetInitImageByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -73,7 +69,7 @@ const sdk = new Leonardo({
 });
 
 sdk.initImage.uploadInitImage({
-  extension: "in",
+  extension: "maiores",
 }).then((res: UploadInitImageResponse) => {
   if (res.statusCode == 200) {
     // handle response

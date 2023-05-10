@@ -109,13 +109,12 @@ export class Generation {
    * This endpoint deletes a specific generation
    */
   async deleteGenerationById(
-    req: operations.DeleteGenerationByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteGenerationByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteGenerationByIdRequest(req);
-    }
-
+    const req = new operations.DeleteGenerationByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/generations/{id}", req);
 
@@ -162,13 +161,12 @@ export class Generation {
    * This endpoint will provide information about a specific generation
    */
   async getGenerationById(
-    req: operations.GetGenerationByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetGenerationByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetGenerationByIdRequest(req);
-    }
-
+    const req = new operations.GetGenerationByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/generations/{id}", req);
 
@@ -214,13 +212,16 @@ export class Generation {
    * This endpoint returns all generations by a specific user
    */
   async getGenerationsByUserId(
-    req: operations.GetGenerationsByUserIdRequest,
+    userId: string,
+    limit?: number,
+    offset?: number,
     config?: AxiosRequestConfig
   ): Promise<operations.GetGenerationsByUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetGenerationsByUserIdRequest(req);
-    }
-
+    const req = new operations.GetGenerationsByUserIdRequest({
+      userId: userId,
+      limit: limit,
+      offset: offset,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,

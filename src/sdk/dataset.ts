@@ -109,13 +109,12 @@ export class Dataset {
    * This endpoint deletes the specific dataset
    */
   async deleteDatasetById(
-    req: operations.DeleteDatasetByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeleteDatasetByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteDatasetByIdRequest(req);
-    }
-
+    const req = new operations.DeleteDatasetByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/datasets/{id}", req);
 
@@ -161,13 +160,12 @@ export class Dataset {
    * This endpoint gets the specific dataset
    */
   async getDatasetById(
-    req: operations.GetDatasetByIdRequest,
+    id: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetDatasetByIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetDatasetByIdRequest(req);
-    }
-
+    const req = new operations.GetDatasetByIdRequest({
+      id: id,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/datasets/{id}", req);
 
@@ -213,13 +211,14 @@ export class Dataset {
    * This endpoint returns presigned details to upload a dataset image to S3
    */
   async uploadDatasetImage(
-    req: operations.UploadDatasetImageRequest,
+    requestBody: operations.UploadDatasetImageRequestBody,
+    datasetId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadDatasetImageResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.UploadDatasetImageRequest(req);
-    }
-
+    const req = new operations.UploadDatasetImageRequest({
+      requestBody: requestBody,
+      datasetId: datasetId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -289,13 +288,14 @@ export class Dataset {
    * This endpoint will upload a previously generated image to the dataset
    */
   async uploadDatasetImageFromGen(
-    req: operations.UploadDatasetImageFromGenRequest,
+    requestBody: operations.UploadDatasetImageFromGenRequestBody,
+    datasetId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadDatasetImageFromGenResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.UploadDatasetImageFromGenRequest(req);
-    }
-
+    const req = new operations.UploadDatasetImageFromGenRequest({
+      requestBody: requestBody,
+      datasetId: datasetId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,

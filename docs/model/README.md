@@ -24,15 +24,15 @@ const sdk = new Leonardo({
 });
 
 sdk.model.createModel({
-  datasetId: "in",
-  description: "illum",
-  instancePrompt: "maiores",
-  modelType: CustomModelTypeEnum.PixelArt,
-  name: "Valerie Runolfsson",
+  datasetId: "molestiae",
+  description: "quod",
+  instancePrompt: "quod",
+  modelType: CustomModelTypeEnum.GameItems,
+  name: "Miss Lowell Parisian",
   nsfw: false,
-  resolution: 396506,
-  sdVersion: SdVersionsEnum.V2,
-  strength: StrengthEnum.High,
+  resolution: 582020,
+  sdVersion: SdVersionsEnum.V15,
+  strength: StrengthEnum.Medium,
 }).then((res: CreateModelResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -56,9 +56,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.model.deleteModelById({
-  id: "395efb9b-a88f-43a6-a997-074ba4469b6e",
-}).then((res: DeleteModelByIdResponse) => {
+sdk.model.deleteModelById("hic").then((res: DeleteModelByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -82,9 +80,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.model.getModelById({
-  id: "21419598-90af-4a56-be25-16fe4c8b711e",
-}).then((res: GetModelByIdResponse) => {
+sdk.model.getModelById("optio").then((res: GetModelByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

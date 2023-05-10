@@ -31,24 +31,24 @@ const sdk = new Leonardo({
 
 sdk.generation.createGeneration({
   controlNet: false,
-  controlNetType: ControlnetTypeEnum.Depth,
-  guidanceScale: 449950,
-  height: 359508,
-  initGenerationImageId: "iste",
-  initImageId: "iure",
-  initStrength: 9023.49,
-  modelId: "quidem",
-  negativePrompt: "architecto",
-  numImages: 60225,
-  numInferenceSteps: 969810,
-  presetStyle: SdGenerationStyleEnum.None,
-  prompt: "mollitia",
+  controlNetType: ControlnetTypeEnum.Canny,
+  guidanceScale: 477665,
+  height: 791725,
+  initGenerationImageId: "placeat",
+  initImageId: "voluptatum",
+  initStrength: 4799.77,
+  modelId: "excepturi",
+  negativePrompt: "nisi",
+  numImages: 925597,
+  numInferenceSteps: 836079,
+  presetStyle: SdGenerationStyleEnum.Leonardo,
+  prompt: "quis",
   promptMagic: false,
   public: false,
-  scheduler: SdGenerationSchedulersEnum.DpmSolver,
-  sdVersion: SdVersionsEnum.V15,
+  scheduler: SdGenerationSchedulersEnum.Klms,
+  sdVersion: SdVersionsEnum.V2,
   tiling: false,
-  width: 210382,
+  width: 20218,
 }).then((res: CreateGenerationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -72,9 +72,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.generation.deleteGenerationById({
-  id: "52c59559-07af-4f1a-ba2f-a9467739251a",
-}).then((res: DeleteGenerationByIdResponse) => {
+sdk.generation.deleteGenerationById("ipsam").then((res: DeleteGenerationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -104,9 +102,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.generation.getGenerationById({
-  id: "a52c3f5a-d019-4da1-bfe7-8f097b0074f1",
-}).then((res: GetGenerationByIdResponse) => {
+sdk.generation.getGenerationById("repellendus").then((res: GetGenerationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -136,11 +132,7 @@ const sdk = new Leonardo({
   },
 });
 
-sdk.generation.getGenerationsByUserId({
-  limit: 359444,
-  offset: 296140,
-  userId: "iusto",
-}).then((res: GetGenerationsByUserIdResponse) => {
+sdk.generation.getGenerationsByUserId("sapiente", 778157, 140350).then((res: GetGenerationsByUserIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
