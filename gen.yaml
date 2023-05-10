@@ -11,5 +11,5 @@ generation:
 typescript:
   version: 1.28.1
   author: leonardoai
-  maxMethodParams: 0
+  maxMethodParams: 5
   packageName: '@leonardo-ai/sdk'
