@@ -2,14 +2,14 @@ configVersion: 1.0.0
 management:
   docChecksum: 38b323346cb52894cc80cf3e85113196
   docVersion: v1.0.0
-  speakeasyVersion: 1.29.2
-  generationVersion: 2.26.2
+  speakeasyVersion: 1.29.3
+  generationVersion: 2.26.3
 generation:
   telemetryEnabled: false
   sdkClassName: Leonardo
   singleTagPerOp: false
 typescript:
-  version: 1.28.2
+  version: 1.28.3
   author: leonardoai
   maxMethodParams: 0
   packageName: '@leonardo-ai/sdk'
