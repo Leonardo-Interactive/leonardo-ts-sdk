@@ -127,9 +127,9 @@ function noExplodeSerializer(params: Record<string, any>, delimiter = ","): stri
 
           if (qpDecorator == null) return;
 
-          return `${paramKey},${valToString(value[paramKey])}`;
+          return `${paramKey}${delimiter}${valToString(value[paramKey])}`;
         })
-        .join(",");
+        .join(delimiter);
       query.push(`${key}=${encodeURIComponent(values)}`);
     }
   });

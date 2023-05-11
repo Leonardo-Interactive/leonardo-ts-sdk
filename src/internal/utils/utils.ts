@@ -26,7 +26,7 @@ export interface PropInfo {
 }
 
 function isSpeakeasyBase(type: any): boolean {
-  return type && Object.getPrototypeOf(type)?.name == "SpeakeasyBase";
+  return type && Object.getPrototypeOf(type)?.name == SpeakeasyBase.name;
 }
 
 function handleArray(value: any, elemType: any, elemDepth: number): any {
