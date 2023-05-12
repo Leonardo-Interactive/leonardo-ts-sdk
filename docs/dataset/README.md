@@ -20,7 +20,7 @@ import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operatio
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -46,7 +46,7 @@ import { DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/oper
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -69,7 +69,7 @@ import { GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operati
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -92,7 +92,7 @@ import { UploadDatasetImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/ope
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -117,7 +117,7 @@ import { UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/dist/sdk/mod
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
