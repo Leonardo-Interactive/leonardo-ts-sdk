@@ -4,11 +4,11 @@
 
 import "reflect-metadata";
 
-import { getSimplePathParams, ppMetadataKey } from "./pathparams";
+import {getSimplePathParams, ppMetadataKey} from "./pathparams";
 
-import { plainToInstance } from "class-transformer";
-import { RFCDate } from "../../sdk/types";
-import { requestMetadataKey } from "./requestbody";
+import {plainToInstance} from "class-transformer";
+import {RFCDate} from "../../sdk/types";
+import {requestMetadataKey} from "./requestbody";
 
 export const SerializationMethodToContentType: Record<string, string> = {
   json: "application/json",
@@ -395,4 +395,8 @@ export function valToString(value: any): string {
   }
 
   return value.toString();
+}
+
+export function shouldQueryParamSerialize(value: any): boolean {
+  return !(value === undefined || value === null || value === "")
 }
