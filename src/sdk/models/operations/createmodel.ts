@@ -37,7 +37,7 @@ export class CreateModelRequestBody extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "modelType" })
-  modelType?: shared.CustomModelTypeEnum;
+  modelType?: shared.CustomModelType;
 
   /**
    * The name of the model.
@@ -65,14 +65,14 @@ export class CreateModelRequestBody extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "sd_Version" })
-  sdVersion?: shared.SdVersionsEnum;
+  sdVersion?: shared.SdVersions;
 
   /**
    * When training using the PIXEL_ART model type, this influences the training strength.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "strength" })
-  strength?: shared.StrengthEnum;
+  strength?: shared.Strength;
 }
 
 export class CreateModel200ApplicationJSONSDTrainingOutput extends SpeakeasyBase {

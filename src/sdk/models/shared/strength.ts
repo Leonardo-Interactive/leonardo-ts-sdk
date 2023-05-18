@@ -5,7 +5,7 @@
 /**
  * When training using the PIXEL_ART model type, this influences the training strength.
  */
-export enum StrengthEnum {
+export enum Strength {
   VeryLow = "VERY_LOW",
   Low = "LOW",
   Medium = "MEDIUM",

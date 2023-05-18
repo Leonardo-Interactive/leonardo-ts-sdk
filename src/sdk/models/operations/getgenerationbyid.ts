@@ -28,14 +28,14 @@ export class GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGenera
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: shared.JobStatusEnum;
+  status?: shared.JobStatus;
 
   /**
    * The type of variation.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "transformType" })
-  transformType?: shared.VARIATIONTYPEEnum;
+  transformType?: shared.VariationType;
 
   @SpeakeasyMetadata()
   @Expose({ name: "url" })
@@ -126,7 +126,7 @@ export class GetGenerationById200ApplicationJSONGenerations extends SpeakeasyBas
    */
   @SpeakeasyMetadata()
   @Expose({ name: "presetStyle" })
-  presetStyle?: shared.SdGenerationStyleEnum;
+  presetStyle?: shared.SdGenerationStyle;
 
   @SpeakeasyMetadata()
   @Expose({ name: "prompt" })
@@ -141,14 +141,14 @@ export class GetGenerationById200ApplicationJSONGenerations extends SpeakeasyBas
    */
   @SpeakeasyMetadata()
   @Expose({ name: "scheduler" })
-  scheduler?: shared.SdGenerationSchedulersEnum;
+  scheduler?: shared.SdGenerationSchedulers;
 
   /**
    * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "sdVersion" })
-  sdVersion?: shared.SdVersionsEnum;
+  sdVersion?: shared.SdVersions;
 
   @SpeakeasyMetadata()
   @Expose({ name: "seed" })
@@ -159,7 +159,7 @@ export class GetGenerationById200ApplicationJSONGenerations extends SpeakeasyBas
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: shared.JobStatusEnum;
+  status?: shared.JobStatus;
 }
 
 /**

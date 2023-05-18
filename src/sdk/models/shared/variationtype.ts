@@ -5,7 +5,7 @@
 /**
  * The type of variation.
  */
-export enum VARIATIONTYPEEnum {
+export enum VariationType {
   Outpaint = "OUTPAINT",
   Inpaint = "INPAINT",
   Upscale = "UPSCALE",

@@ -15,7 +15,7 @@ This endpoint will train a new custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateModelResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { CustomModelTypeEnum, SdVersionsEnum, StrengthEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
@@ -27,12 +27,12 @@ sdk.model.createModel({
   datasetId: "molestiae",
   description: "quod",
   instancePrompt: "quod",
-  modelType: CustomModelTypeEnum.GameItems,
+  modelType: CustomModelType.GameItems,
   name: "Miss Lowell Parisian",
   nsfw: false,
   resolution: 582020,
-  sdVersion: SdVersionsEnum.V15,
-  strength: StrengthEnum.Medium,
+  sdVersion: SdVersions.V15,
+  strength: Strength.Medium,
 }).then((res: CreateModelResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -72,7 +72,7 @@ This endpoint gets the specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { CustomModelTypeEnum, JobStatusEnum, SdVersionsEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { CustomModelType, JobStatus, SdVersions } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {

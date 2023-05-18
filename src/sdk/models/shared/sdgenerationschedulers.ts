@@ -5,7 +5,7 @@
 /**
  * The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified.
  */
-export enum SdGenerationSchedulersEnum {
+export enum SdGenerationSchedulers {
   Klms = "KLMS",
   EulerAncestralDiscrete = "EULER_ANCESTRAL_DISCRETE",
   EulerDiscrete = "EULER_DISCRETE",

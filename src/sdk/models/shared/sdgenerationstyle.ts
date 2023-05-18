@@ -5,7 +5,7 @@
 /**
  * The style to generate images with.
  */
-export enum SdGenerationStyleEnum {
+export enum SdGenerationStyle {
   Leonardo = "LEONARDO",
   None = "NONE",
 }

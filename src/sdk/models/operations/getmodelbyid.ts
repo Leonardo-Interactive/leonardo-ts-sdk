@@ -56,21 +56,21 @@ export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "sdVersion" })
-  sdVersion?: shared.SdVersionsEnum;
+  sdVersion?: shared.SdVersions;
 
   /**
    * The status of the current task.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: shared.JobStatusEnum;
+  status?: shared.JobStatus;
 
   /**
    * The category the most accurately reflects the model.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type?: shared.CustomModelTypeEnum;
+  type?: shared.CustomModelType;
 
   @SpeakeasyMetadata()
   @Expose({ name: "updatedAt" })

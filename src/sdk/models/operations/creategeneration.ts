@@ -23,7 +23,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "controlNetType" })
-  controlNetType?: shared.ControlnetTypeEnum;
+  controlNetType?: shared.ControlnetType;
 
   /**
    * How strongly the generation should reflect the prompt. 7 is recommended. Must be between 1 and 20.
@@ -99,7 +99,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "presetStyle" })
-  presetStyle?: shared.SdGenerationStyleEnum;
+  presetStyle?: shared.SdGenerationStyle;
 
   /**
    * The prompt used to generate images
@@ -127,14 +127,14 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "scheduler" })
-  scheduler?: shared.SdGenerationSchedulersEnum;
+  scheduler?: shared.SdGenerationSchedulers;
 
   /**
    * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "sd_version" })
-  sdVersion?: shared.SdVersionsEnum;
+  sdVersion?: shared.SdVersions;
 
   /**
    * Whether the generated images should tile on all axis.

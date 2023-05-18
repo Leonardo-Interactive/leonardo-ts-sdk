@@ -32,14 +32,14 @@ export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric ex
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: shared.JobStatusEnum;
+  status?: shared.JobStatus;
 
   /**
    * The type of variation.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "transformType" })
-  transformType?: shared.VARIATIONTYPEEnum;
+  transformType?: shared.VariationType;
 
   @SpeakeasyMetadata()
   @Expose({ name: "url" })

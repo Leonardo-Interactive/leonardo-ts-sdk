@@ -5,7 +5,7 @@
 /**
  * The category the most accurately reflects the model.
  */
-export enum CustomModelTypeEnum {
+export enum CustomModelType {
   General = "GENERAL",
   Buildings = "BUILDINGS",
   Characters = "CHARACTERS",

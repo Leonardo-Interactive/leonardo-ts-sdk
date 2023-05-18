@@ -16,12 +16,7 @@ This endpoint will generate images
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateGenerationResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import {
-  ControlnetTypeEnum,
-  SdGenerationSchedulersEnum,
-  SdGenerationStyleEnum,
-  SdVersionsEnum,
-} from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
@@ -31,7 +26,7 @@ const sdk = new Leonardo({
 
 sdk.generation.createGeneration({
   controlNet: false,
-  controlNetType: ControlnetTypeEnum.Canny,
+  controlNetType: ControlnetType.Canny,
   guidanceScale: 477665,
   height: 791725,
   initGenerationImageId: "placeat",
@@ -41,12 +36,12 @@ sdk.generation.createGeneration({
   negativePrompt: "nisi",
   numImages: 925597,
   numInferenceSteps: 836079,
-  presetStyle: SdGenerationStyleEnum.Leonardo,
+  presetStyle: SdGenerationStyle.Leonardo,
   prompt: "quis",
   promptMagic: false,
   public: false,
-  scheduler: SdGenerationSchedulersEnum.Klms,
-  sdVersion: SdVersionsEnum.V2,
+  scheduler: SdGenerationSchedulers.Klms,
+  sdVersion: SdVersions.V2,
   tiling: false,
   width: 20218,
 }).then((res: CreateGenerationResponse) => {
@@ -88,13 +83,7 @@ This endpoint will provide information about a specific generation
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import {
-  JobStatusEnum,
-  SdGenerationSchedulersEnum,
-  SdGenerationStyleEnum,
-  SdVersionsEnum,
-  VARIATIONTYPEEnum,
-} from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
@@ -118,13 +107,7 @@ This endpoint returns all generations by a specific user
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import {
-  JobStatusEnum,
-  SdGenerationSchedulersEnum,
-  SdGenerationStyleEnum,
-  SdVersionsEnum,
-  VARIATIONTYPEEnum,
-} from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
