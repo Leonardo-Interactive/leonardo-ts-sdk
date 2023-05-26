@@ -8,101 +8,101 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class GetModelByIdRequest extends SpeakeasyBase {
-  /**
-   * The ID of the custom model to return.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * The ID of the custom model to return.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "custom_models"
  */
 export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "createdAt" })
-  createdAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdAt" })
+    createdAt?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "instancePrompt" })
-  instancePrompt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "instancePrompt" })
+    instancePrompt?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "modelHeight" })
-  modelHeight?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "modelHeight" })
+    modelHeight?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "modelWidth" })
-  modelWidth?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "modelWidth" })
+    modelWidth?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "public" })
-  public?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "public" })
+    public?: boolean;
 
-  /**
-   * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "sdVersion" })
-  sdVersion?: shared.SdVersions;
+    /**
+     * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "sdVersion" })
+    sdVersion?: shared.SdVersions;
 
-  /**
-   * The status of the current task.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: shared.JobStatus;
+    /**
+     * The status of the current task.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: shared.JobStatus;
 
-  /**
-   * The category the most accurately reflects the model.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type?: shared.CustomModelType;
+    /**
+     * The category the most accurately reflects the model.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type?: shared.CustomModelType;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "updatedAt" })
-  updatedAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "updatedAt" })
+    updatedAt?: string;
 }
 
 /**
  * Responses for GET /models/{id}
  */
 export class GetModelById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "custom_models"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "custom_models_by_pk" })
-  @Type(() => GetModelById200ApplicationJSONCustomModels)
-  customModelsByPk?: GetModelById200ApplicationJSONCustomModels;
+    /**
+     * columns and relationships of "custom_models"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "custom_models_by_pk" })
+    @Type(() => GetModelById200ApplicationJSONCustomModels)
+    customModelsByPk?: GetModelById200ApplicationJSONCustomModels;
 }
 
 export class GetModelByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for GET /models/{id}
-   */
-  @SpeakeasyMetadata()
-  getModelById200ApplicationJSONObject?: GetModelById200ApplicationJSON;
+    /**
+     * Responses for GET /models/{id}
+     */
+    @SpeakeasyMetadata()
+    getModelById200ApplicationJSONObject?: GetModelById200ApplicationJSON;
 }

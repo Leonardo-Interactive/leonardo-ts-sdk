@@ -7,48 +7,48 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class DeleteInitImageByIdRequest extends SpeakeasyBase {
-  /**
-   * _"id" is required_
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * _"id" is required_
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "init_images"
  */
 export class DeleteInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 }
 
 /**
  * Responses for DELETE /init-image/{id}
  */
 export class DeleteInitImageById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "init_images"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "delete_init_images_by_pk" })
-  @Type(() => DeleteInitImageById200ApplicationJSONInitImages)
-  deleteInitImagesByPk?: DeleteInitImageById200ApplicationJSONInitImages;
+    /**
+     * columns and relationships of "init_images"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "delete_init_images_by_pk" })
+    @Type(() => DeleteInitImageById200ApplicationJSONInitImages)
+    deleteInitImagesByPk?: DeleteInitImageById200ApplicationJSONInitImages;
 }
 
 export class DeleteInitImageByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for DELETE /init-image/{id}
-   */
-  @SpeakeasyMetadata()
-  deleteInitImageById200ApplicationJSONObject?: DeleteInitImageById200ApplicationJSON;
+    /**
+     * Responses for DELETE /init-image/{id}
+     */
+    @SpeakeasyMetadata()
+    deleteInitImageById200ApplicationJSONObject?: DeleteInitImageById200ApplicationJSON;
 }

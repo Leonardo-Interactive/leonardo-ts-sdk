@@ -6,7 +6,7 @@
  * The status of the current task.
  */
 export enum JobStatus {
-  Pending = "PENDING",
-  Complete = "COMPLETE",
-  Failed = "FAILED",
+    Pending = "PENDING",
+    Complete = "COMPLETE",
+    Failed = "FAILED",
 }

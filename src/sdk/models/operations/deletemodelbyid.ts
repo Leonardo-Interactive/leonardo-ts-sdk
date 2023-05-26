@@ -7,48 +7,48 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class DeleteModelByIdRequest extends SpeakeasyBase {
-  /**
-   * The ID of the model to delete.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * The ID of the model to delete.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "custom_models"
  */
 export class DeleteModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 }
 
 /**
  * Responses for DELETE /models/{id}
  */
 export class DeleteModelById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "custom_models"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "delete_custom_models_by_pk" })
-  @Type(() => DeleteModelById200ApplicationJSONCustomModels)
-  deleteCustomModelsByPk?: DeleteModelById200ApplicationJSONCustomModels;
+    /**
+     * columns and relationships of "custom_models"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "delete_custom_models_by_pk" })
+    @Type(() => DeleteModelById200ApplicationJSONCustomModels)
+    deleteCustomModelsByPk?: DeleteModelById200ApplicationJSONCustomModels;
 }
 
 export class DeleteModelByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for DELETE /models/{id}
-   */
-  @SpeakeasyMetadata()
-  deleteModelById200ApplicationJSONObject?: DeleteModelById200ApplicationJSON;
+    /**
+     * Responses for DELETE /models/{id}
+     */
+    @SpeakeasyMetadata()
+    deleteModelById200ApplicationJSONObject?: DeleteModelById200ApplicationJSON;
 }

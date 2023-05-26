@@ -7,48 +7,48 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class DeleteDatasetByIdRequest extends SpeakeasyBase {
-  /**
-   * The ID of the dataset to delete.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * The ID of the dataset to delete.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "datasets"
  */
 export class DeleteDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 }
 
 /**
  * Responses for DELETE /datasets/{id}
  */
 export class DeleteDatasetById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "datasets"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "delete_datasets_by_pk" })
-  @Type(() => DeleteDatasetById200ApplicationJSONDatasets)
-  deleteDatasetsByPk?: DeleteDatasetById200ApplicationJSONDatasets;
+    /**
+     * columns and relationships of "datasets"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "delete_datasets_by_pk" })
+    @Type(() => DeleteDatasetById200ApplicationJSONDatasets)
+    deleteDatasetsByPk?: DeleteDatasetById200ApplicationJSONDatasets;
 }
 
 export class DeleteDatasetByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for DELETE /datasets/{id}
-   */
-  @SpeakeasyMetadata()
-  deleteDatasetById200ApplicationJSONObject?: DeleteDatasetById200ApplicationJSON;
+    /**
+     * Responses for DELETE /datasets/{id}
+     */
+    @SpeakeasyMetadata()
+    deleteDatasetById200ApplicationJSONObject?: DeleteDatasetById200ApplicationJSON;
 }

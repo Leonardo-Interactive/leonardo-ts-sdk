@@ -10,71 +10,69 @@ import { Expose, Type } from "class-transformer";
  * Query parameters provided in the request body as a JSON object
  */
 export class UploadDatasetImageRequestBody extends SpeakeasyBase {
-  /**
-   * Has to be png, jpg, jpeg, or webp.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "extension" })
-  extension: string;
+    /**
+     * Has to be png, jpg, jpeg, or webp.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "extension" })
+    extension: string;
 }
 
 export class UploadDatasetImageRequest extends SpeakeasyBase {
-  /**
-   * Query parameters provided in the request body as a JSON object
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody: UploadDatasetImageRequestBody;
+    /**
+     * Query parameters provided in the request body as a JSON object
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody: UploadDatasetImageRequestBody;
 
-  /**
-   * _"datasetId" is required
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=datasetId",
-  })
-  datasetId: string;
+    /**
+     * _"datasetId" is required
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=datasetId" })
+    datasetId: string;
 }
 
 export class UploadDatasetImage200ApplicationJSONDatasetUploadOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "fields" })
-  fields?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "fields" })
+    fields?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "key" })
-  key?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "key" })
+    key?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 /**
  * Responses for POST /datasets/{datasetId}/upload
  */
 export class UploadDatasetImage200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "uploadDatasetImage" })
-  @Type(() => UploadDatasetImage200ApplicationJSONDatasetUploadOutput)
-  uploadDatasetImage?: UploadDatasetImage200ApplicationJSONDatasetUploadOutput;
+    @SpeakeasyMetadata()
+    @Expose({ name: "uploadDatasetImage" })
+    @Type(() => UploadDatasetImage200ApplicationJSONDatasetUploadOutput)
+    uploadDatasetImage?: UploadDatasetImage200ApplicationJSONDatasetUploadOutput;
 }
 
 export class UploadDatasetImageResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for POST /datasets/{datasetId}/upload
-   */
-  @SpeakeasyMetadata()
-  uploadDatasetImage200ApplicationJSONObject?: UploadDatasetImage200ApplicationJSON;
+    /**
+     * Responses for POST /datasets/{datasetId}/upload
+     */
+    @SpeakeasyMetadata()
+    uploadDatasetImage200ApplicationJSONObject?: UploadDatasetImage200ApplicationJSON;
 }

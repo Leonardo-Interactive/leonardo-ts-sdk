@@ -7,88 +7,86 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class GetDatasetByIdRequest extends SpeakeasyBase {
-  /**
-   * The ID of the dataset to return.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * The ID of the dataset to return.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "dataset_images"
  */
 export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "createdAt" })
-  createdAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdAt" })
+    createdAt?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 /**
  * columns and relationships of "datasets"
  */
 export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "createdAt" })
-  createdAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdAt" })
+    createdAt?: string;
 
-  @SpeakeasyMetadata({
-    elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages,
-  })
-  @Expose({ name: "dataset_images" })
-  @Type(() => GetDatasetById200ApplicationJSONDatasetsDatasetImages)
-  datasetImages?: GetDatasetById200ApplicationJSONDatasetsDatasetImages[];
+    @SpeakeasyMetadata({ elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages })
+    @Expose({ name: "dataset_images" })
+    @Type(() => GetDatasetById200ApplicationJSONDatasetsDatasetImages)
+    datasetImages?: GetDatasetById200ApplicationJSONDatasetsDatasetImages[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "updatedAt" })
-  updatedAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "updatedAt" })
+    updatedAt?: string;
 }
 
 /**
  * Responses for GET /datasets/{id}
  */
 export class GetDatasetById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "datasets"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "datasets_by_pk" })
-  @Type(() => GetDatasetById200ApplicationJSONDatasets)
-  datasetsByPk?: GetDatasetById200ApplicationJSONDatasets;
+    /**
+     * columns and relationships of "datasets"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "datasets_by_pk" })
+    @Type(() => GetDatasetById200ApplicationJSONDatasets)
+    datasetsByPk?: GetDatasetById200ApplicationJSONDatasets;
 }
 
 export class GetDatasetByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for GET /datasets/{id}
-   */
-  @SpeakeasyMetadata()
-  getDatasetById200ApplicationJSONObject?: GetDatasetById200ApplicationJSON;
+    /**
+     * Responses for GET /datasets/{id}
+     */
+    @SpeakeasyMetadata()
+    getDatasetById200ApplicationJSONObject?: GetDatasetById200ApplicationJSON;
 }

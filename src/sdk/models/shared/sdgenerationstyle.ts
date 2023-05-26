@@ -6,6 +6,6 @@
  * The style to generate images with.
  */
 export enum SdGenerationStyle {
-  Leonardo = "LEONARDO",
-  None = "NONE",
+    Leonardo = "LEONARDO",
+    None = "NONE",
 }

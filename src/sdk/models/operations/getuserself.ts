@@ -10,55 +10,55 @@ import { Expose, Type } from "class-transformer";
  * columns and relationships of "users"
  */
 export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "username" })
-  username?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "username" })
+    username?: string;
 }
 
 /**
  * columns and relationships of "user_details"
  */
 export class GetUserSelf200ApplicationJSONUserDetails extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "showNsfw" })
-  showNsfw?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "showNsfw" })
+    showNsfw?: boolean;
 
-  /**
-   * columns and relationships of "users"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "user" })
-  @Type(() => GetUserSelf200ApplicationJSONUserDetailsUsers)
-  user?: GetUserSelf200ApplicationJSONUserDetailsUsers;
+    /**
+     * columns and relationships of "users"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "user" })
+    @Type(() => GetUserSelf200ApplicationJSONUserDetailsUsers)
+    user?: GetUserSelf200ApplicationJSONUserDetailsUsers;
 }
 
 /**
  * Responses for GET /me
  */
 export class GetUserSelf200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: GetUserSelf200ApplicationJSONUserDetails })
-  @Expose({ name: "user_details" })
-  @Type(() => GetUserSelf200ApplicationJSONUserDetails)
-  userDetails?: GetUserSelf200ApplicationJSONUserDetails[];
+    @SpeakeasyMetadata({ elemType: GetUserSelf200ApplicationJSONUserDetails })
+    @Expose({ name: "user_details" })
+    @Type(() => GetUserSelf200ApplicationJSONUserDetails)
+    userDetails?: GetUserSelf200ApplicationJSONUserDetails[];
 }
 
 export class GetUserSelfResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for GET /me
-   */
-  @SpeakeasyMetadata()
-  getUserSelf200ApplicationJSONObject?: GetUserSelf200ApplicationJSON;
+    /**
+     * Responses for GET /me
+     */
+    @SpeakeasyMetadata()
+    getUserSelf200ApplicationJSONObject?: GetUserSelf200ApplicationJSON;
 }

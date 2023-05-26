@@ -6,9 +6,9 @@
  * The type of variation.
  */
 export enum VariationType {
-  Outpaint = "OUTPAINT",
-  Inpaint = "INPAINT",
-  Upscale = "UPSCALE",
-  Unzoom = "UNZOOM",
-  Nobg = "NOBG",
+    Outpaint = "OUTPAINT",
+    Inpaint = "INPAINT",
+    Upscale = "UPSCALE",
+    Unzoom = "UNZOOM",
+    Nobg = "NOBG",
 }

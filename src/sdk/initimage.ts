@@ -7,218 +7,212 @@ import * as operations from "./models/operations";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class InitImage {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Delete init image
-   *
-   * @remarks
-   * This endpoint deletes an init image
-   */
-  async deleteInitImageById(
-    id: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteInitImageByIdResponse> {
-    const req = new operations.DeleteInitImageByIdRequest({
-      id: id,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const res: operations.DeleteInitImageByIdResponse =
-      new operations.DeleteInitImageByIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.deleteInitImageById200ApplicationJSONObject = utils.objectToClass(
-            httpRes?.data,
-            operations.DeleteInitImageById200ApplicationJSON
-          );
+    /**
+     * Delete init image
+     *
+     * @remarks
+     * This endpoint deletes an init image
+     */
+    async deleteInitImageById(
+        id: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteInitImageByIdResponse> {
+        const req = new operations.DeleteInitImageByIdRequest({
+            id: id,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get single init image
-   *
-   * @remarks
-   * This endpoint will return a single init image
-   */
-  async getInitImageById(
-    id: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetInitImageByIdResponse> {
-    const req = new operations.GetInitImageByIdRequest({
-      id: id,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetInitImageByIdResponse =
-      new operations.GetInitImageByIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getInitImageById200ApplicationJSONObject = utils.objectToClass(
-            httpRes?.data,
-            operations.GetInitImageById200ApplicationJSON
-          );
+        const res: operations.DeleteInitImageByIdResponse =
+            new operations.DeleteInitImageByIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deleteInitImageById200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.DeleteInitImageById200ApplicationJSON
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get single init image
+     *
+     * @remarks
+     * This endpoint will return a single init image
+     */
+    async getInitImageById(
+        id: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetInitImageByIdResponse> {
+        const req = new operations.GetInitImageByIdRequest({
+            id: id,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
 
-  /**
-   * Upload init image
-   *
-   * @remarks
-   * This endpoint returns presigned details to upload an init image to S3
-   */
-  async uploadInitImage(
-    req: operations.UploadInitImageRequestBody,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UploadInitImageResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.UploadInitImageRequestBody(req);
-    }
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/init-image";
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "request",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UploadInitImageResponse =
-      new operations.UploadInitImageResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.uploadInitImage200ApplicationJSONObject = utils.objectToClass(
-            httpRes?.data,
-            operations.UploadInitImage200ApplicationJSON
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.GetInitImageByIdResponse = new operations.GetInitImageByIdResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getInitImageById200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.GetInitImageById200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Upload init image
+     *
+     * @remarks
+     * This endpoint returns presigned details to upload an init image to S3
+     */
+    async uploadInitImage(
+        req: operations.UploadInitImageRequestBody,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UploadInitImageResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.UploadInitImageRequestBody(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/init-image";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.UploadInitImageResponse = new operations.UploadInitImageResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.uploadInitImage200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.UploadInitImage200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

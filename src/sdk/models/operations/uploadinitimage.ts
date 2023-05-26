@@ -10,59 +10,59 @@ import { Expose, Type } from "class-transformer";
  * Query parameters provided in the request body as a JSON object
  */
 export class UploadInitImageRequestBody extends SpeakeasyBase {
-  /**
-   * Has to be png, jpg, jpeg, or webp.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "extension" })
-  extension: string;
+    /**
+     * Has to be png, jpg, jpeg, or webp.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "extension" })
+    extension: string;
 }
 
 export class UploadInitImage200ApplicationJSONInitImageUploadOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "__typename" })
-  typename?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "__typename" })
+    typename?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "fields" })
-  fields?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "fields" })
+    fields?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "key" })
-  key?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "key" })
+    key?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 /**
  * Responses for POST /init-image
  */
 export class UploadInitImage200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "uploadInitImage" })
-  @Type(() => UploadInitImage200ApplicationJSONInitImageUploadOutput)
-  uploadInitImage?: UploadInitImage200ApplicationJSONInitImageUploadOutput;
+    @SpeakeasyMetadata()
+    @Expose({ name: "uploadInitImage" })
+    @Type(() => UploadInitImage200ApplicationJSONInitImageUploadOutput)
+    uploadInitImage?: UploadInitImage200ApplicationJSONInitImageUploadOutput;
 }
 
 export class UploadInitImageResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for POST /init-image
-   */
-  @SpeakeasyMetadata()
-  uploadInitImage200ApplicationJSONObject?: UploadInitImage200ApplicationJSON;
+    /**
+     * Responses for POST /init-image
+     */
+    @SpeakeasyMetadata()
+    uploadInitImage200ApplicationJSONObject?: UploadInitImage200ApplicationJSON;
 }
