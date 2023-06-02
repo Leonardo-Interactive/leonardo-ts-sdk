@@ -53,8 +53,8 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "1.36.0";
-    genVersion = "2.35.0";
+    sdkVersion = "1.36.1";
+    genVersion = "2.35.1";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -76,12 +76,10 @@ export class Leonardo {
 
     constructor(props?: SDKProps) {
         let serverURL = props?.serverURL;
-        let defaults: any = {};
         const serverIdx = props?.serverIdx ?? 0;
 
         if (!serverURL) {
             serverURL = ServerList[serverIdx];
-            defaults = serverDefaults[serverIdx];
         }
 
         const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
@@ -99,7 +97,6 @@ export class Leonardo {
             defaultClient: defaultClient,
             securityClient: securityClient,
             serverURL: serverURL,
-            serverDefaults: defaults,
         });
 
         this.dataset = new Dataset(this.sdkConfiguration);
