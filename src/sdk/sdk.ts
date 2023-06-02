@@ -53,8 +53,8 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "1.36.1";
-    genVersion = "2.35.1";
+    sdkVersion = "1.36.2";
+    genVersion = "2.35.2";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
