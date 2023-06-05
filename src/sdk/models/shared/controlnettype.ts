@@ -5,8 +5,8 @@
 /**
  * The type of ControlNet to use.
  */
-export enum ControlnetTypeEnum {
-  Pose = "POSE",
-  Canny = "CANNY",
-  Depth = "DEPTH",
+export enum ControlnetType {
+    Pose = "POSE",
+    Canny = "CANNY",
+    Depth = "DEPTH",
 }

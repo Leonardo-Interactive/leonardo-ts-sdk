@@ -185,7 +185,7 @@ function parseSecuritySchemeValue(
         case "basic":
           break;
         case "bearer":
-          client.defaults.headers.common[securityDecorator.Name] = value;
+          client.defaults.headers.common[securityDecorator.Name] = value.toLowerCase().startsWith("bearer ") ? value : `Bearer ${value}`;
           break;
         default:
           throw new Error("not supported");

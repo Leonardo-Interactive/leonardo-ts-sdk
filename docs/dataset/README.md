@@ -20,7 +20,7 @@ import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operatio
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -46,13 +46,11 @@ import { DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/oper
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-sdk.dataset.deleteDatasetById({
-  id: "74e0f467-cc87-496e-9151-a05dfc2ddf7c",
-}).then((res: DeleteDatasetByIdResponse) => {
+sdk.dataset.deleteDatasetById("iure").then((res: DeleteDatasetByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -71,13 +69,11 @@ import { GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operati
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-sdk.dataset.getDatasetById({
-  id: "c78ca1ba-928f-4c81-a742-cb7392059293",
-}).then((res: GetDatasetByIdResponse) => {
+sdk.dataset.getDatasetById("magnam").then((res: GetDatasetByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -96,16 +92,13 @@ import { UploadDatasetImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/ope
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
 sdk.dataset.uploadDatasetImage({
-  requestBody: {
-    extension: "natus",
-  },
-  datasetId: "laboriosam",
-}).then((res: UploadDatasetImageResponse) => {
+  extension: "debitis",
+}, "ipsa").then((res: UploadDatasetImageResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -124,16 +117,13 @@ import { UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/dist/sdk/mod
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
 sdk.dataset.uploadDatasetImageFromGen({
-  requestBody: {
-    generatedImageId: "hic",
-  },
-  datasetId: "saepe",
-}).then((res: UploadDatasetImageFromGenResponse) => {
+  generatedImageId: "delectus",
+}, "tempora").then((res: UploadDatasetImageFromGenResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

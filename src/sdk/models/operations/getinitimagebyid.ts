@@ -7,56 +7,56 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class GetInitImageByIdRequest extends SpeakeasyBase {
-  /**
-   * _"id" is required_
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * _"id" is required_
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "init_images"
  */
 export class GetInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "createdAt" })
-  createdAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdAt" })
+    createdAt?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 /**
  * Responses for GET /init-image/{id}
  */
 export class GetInitImageById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "init_images"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "init_images_by_pk" })
-  @Type(() => GetInitImageById200ApplicationJSONInitImages)
-  initImagesByPk?: GetInitImageById200ApplicationJSONInitImages;
+    /**
+     * columns and relationships of "init_images"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "init_images_by_pk" })
+    @Type(() => GetInitImageById200ApplicationJSONInitImages)
+    initImagesByPk?: GetInitImageById200ApplicationJSONInitImages;
 }
 
 export class GetInitImageByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for GET /init-image/{id}
-   */
-  @SpeakeasyMetadata()
-  getInitImageById200ApplicationJSONObject?: GetInitImageById200ApplicationJSON;
+    /**
+     * Responses for GET /init-image/{id}
+     */
+    @SpeakeasyMetadata()
+    getInitImageById200ApplicationJSONObject?: GetInitImageById200ApplicationJSON;
 }

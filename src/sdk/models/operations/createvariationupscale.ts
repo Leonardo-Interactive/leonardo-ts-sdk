@@ -10,40 +10,40 @@ import { Expose, Type } from "class-transformer";
  * Query parameters are provided in the request body as a JSON object
  */
 export class CreateVariationUpscaleRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 }
 
 export class CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 }
 
 /**
  * Responses for POST /variations/upscale
  */
 export class CreateVariationUpscale200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "sdUpscaleJob" })
-  @Type(() => CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput)
-  sdUpscaleJob?: CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput;
+    @SpeakeasyMetadata()
+    @Expose({ name: "sdUpscaleJob" })
+    @Type(() => CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput)
+    sdUpscaleJob?: CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput;
 }
 
 export class CreateVariationUpscaleResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for POST /variations/upscale
-   */
-  @SpeakeasyMetadata()
-  createVariationUpscale200ApplicationJSONObject?: CreateVariationUpscale200ApplicationJSON;
+    /**
+     * Responses for POST /variations/upscale
+     */
+    @SpeakeasyMetadata()
+    createVariationUpscale200ApplicationJSONObject?: CreateVariationUpscale200ApplicationJSON;
 }

@@ -16,39 +16,34 @@ This endpoint will generate images
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CreateGenerationResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import {
-  ControlnetTypeEnum,
-  SdGenerationSchedulersEnum,
-  SdGenerationStyleEnum,
-  SdVersionsEnum,
-} from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
 sdk.generation.createGeneration({
   controlNet: false,
-  controlNetType: ControlnetTypeEnum.Depth,
-  guidanceScale: 449950,
-  height: 359508,
-  initGenerationImageId: "iste",
-  initImageId: "iure",
-  initStrength: 9023.49,
-  modelId: "quidem",
-  negativePrompt: "architecto",
-  numImages: 60225,
-  numInferenceSteps: 969810,
-  presetStyle: SdGenerationStyleEnum.None,
-  prompt: "mollitia",
+  controlNetType: ControlnetType.Canny,
+  guidanceScale: 477665,
+  height: 791725,
+  initGenerationImageId: "placeat",
+  initImageId: "voluptatum",
+  initStrength: 4799.77,
+  modelId: "excepturi",
+  negativePrompt: "nisi",
+  numImages: 925597,
+  numInferenceSteps: 836079,
+  presetStyle: SdGenerationStyle.Leonardo,
+  prompt: "quis",
   promptMagic: false,
   public: false,
-  scheduler: SdGenerationSchedulersEnum.DpmSolver,
-  sdVersion: SdVersionsEnum.V15,
+  scheduler: SdGenerationSchedulers.Klms,
+  sdVersion: SdVersions.V2,
   tiling: false,
-  width: 210382,
+  width: 20218,
 }).then((res: CreateGenerationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -68,13 +63,11 @@ import { DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/o
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-sdk.generation.deleteGenerationById({
-  id: "52c59559-07af-4f1a-ba2f-a9467739251a",
-}).then((res: DeleteGenerationByIdResponse) => {
+sdk.generation.deleteGenerationById("ipsam").then((res: DeleteGenerationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -90,23 +83,15 @@ This endpoint will provide information about a specific generation
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import {
-  JobStatusEnum,
-  SdGenerationSchedulersEnum,
-  SdGenerationStyleEnum,
-  SdVersionsEnum,
-  VARIATIONTYPEEnum,
-} from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-sdk.generation.getGenerationById({
-  id: "a52c3f5a-d019-4da1-bfe7-8f097b0074f1",
-}).then((res: GetGenerationByIdResponse) => {
+sdk.generation.getGenerationById("repellendus").then((res: GetGenerationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -122,25 +107,15 @@ This endpoint returns all generations by a specific user
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import {
-  JobStatusEnum,
-  SdGenerationSchedulersEnum,
-  SdGenerationStyleEnum,
-  SdVersionsEnum,
-  VARIATIONTYPEEnum,
-} from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-sdk.generation.getGenerationsByUserId({
-  limit: 359444,
-  offset: 296140,
-  userId: "iusto",
-}).then((res: GetGenerationsByUserIdResponse) => {
+sdk.generation.getGenerationsByUserId("sapiente", 778157, 140350).then((res: GetGenerationsByUserIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

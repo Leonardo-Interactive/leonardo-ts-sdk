@@ -35,7 +35,7 @@ import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operatio
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 

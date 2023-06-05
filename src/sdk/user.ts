@@ -4,76 +4,68 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class User {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    private sdkConfiguration: SDKConfiguration;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Get user information
-   *
-   * @remarks
-   * This endpoint will return your user information, including your user ID.
-   */
-  async getUserSelf(
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetUserSelfResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/me";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+    constructor(sdkConfig: SDKConfiguration) {
+        this.sdkConfiguration = sdkConfig;
     }
 
-    const res: operations.GetUserSelfResponse =
-      new operations.GetUserSelfResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getUserSelf200ApplicationJSONObject = utils.objectToClass(
-            httpRes?.data,
-            operations.GetUserSelf200ApplicationJSON
-          );
+    /**
+     * Get user information
+     *
+     * @remarks
+     * This endpoint will return your user such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, model training tokens and api credit (which is used via a production api key). Please note that the api credit unit is the millicent, ie. 100,000 credits = $1
+     */
+    async getUserSelf(config?: AxiosRequestConfig): Promise<operations.GetUserSelfResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/me";
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
+        const res: operations.GetUserSelfResponse = new operations.GetUserSelfResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getUserSelf200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.GetUserSelf200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

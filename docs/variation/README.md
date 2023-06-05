@@ -17,12 +17,12 @@ import { CreateVariationUpscaleResponse } from "@leonardo-ai/sdk/dist/sdk/models
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
 sdk.variation.createVariationUpscale({
-  id: "5b7fd2ed-0289-421c-9dc6-92601fb576b0",
+  id: "816742cb-7392-4059-a939-6fea7596eb10",
 }).then((res: CreateVariationUpscaleResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -39,17 +39,15 @@ This endpoint will get the variation by ID
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetVariationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { JobStatusEnum, VARIATIONTYPEEnum } from "@leonardo-ai/sdk/dist/sdk/models/shared";
+import { JobStatus, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-sdk.variation.getVariationById({
-  id: "d5f0d30c-5fbb-4258-b053-202c73d5fe9b",
-}).then((res: GetVariationByIdResponse) => {
+sdk.variation.getVariationById("reiciendis").then((res: GetVariationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

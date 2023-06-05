@@ -8,186 +8,184 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class GetGenerationByIdRequest extends SpeakeasyBase {
-  /**
-   * The ID of the generation to return.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * The ID of the generation to return.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 /**
  * columns and relationships of "generated_image_variation_generic"
  */
 export class GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  /**
-   * The status of the current task.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: shared.JobStatusEnum;
+    /**
+     * The status of the current task.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: shared.JobStatus;
 
-  /**
-   * The type of variation.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "transformType" })
-  transformType?: shared.VARIATIONTYPEEnum;
+    /**
+     * The type of variation.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "transformType" })
+    transformType?: shared.VariationType;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 /**
  * columns and relationships of "generated_images"
  */
 export class GetGenerationById200ApplicationJSONGenerationsGeneratedImages extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    elemType:
-      GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric,
-  })
-  @Expose({ name: "generated_image_variation_generics" })
-  @Type(
-    () =>
-      GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric
-  )
-  generatedImageVariationGenerics?: GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric[];
+    @SpeakeasyMetadata({
+        elemType:
+            GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric,
+    })
+    @Expose({ name: "generated_image_variation_generics" })
+    @Type(
+        () =>
+            GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric
+    )
+    generatedImageVariationGenerics?: GetGenerationById200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "likeCount" })
-  likeCount?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "likeCount" })
+    likeCount?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "nsfw" })
-  nsfw?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "nsfw" })
+    nsfw?: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 /**
  * columns and relationships of "generations"
  */
 export class GetGenerationById200ApplicationJSONGenerations extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "createdAt" })
-  createdAt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "createdAt" })
+    createdAt?: string;
 
-  @SpeakeasyMetadata({
-    elemType: GetGenerationById200ApplicationJSONGenerationsGeneratedImages,
-  })
-  @Expose({ name: "generated_images" })
-  @Type(() => GetGenerationById200ApplicationJSONGenerationsGeneratedImages)
-  generatedImages?: GetGenerationById200ApplicationJSONGenerationsGeneratedImages[];
+    @SpeakeasyMetadata({ elemType: GetGenerationById200ApplicationJSONGenerationsGeneratedImages })
+    @Expose({ name: "generated_images" })
+    @Type(() => GetGenerationById200ApplicationJSONGenerationsGeneratedImages)
+    generatedImages?: GetGenerationById200ApplicationJSONGenerationsGeneratedImages[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "guidanceScale" })
-  guidanceScale?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "guidanceScale" })
+    guidanceScale?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "imageHeight" })
-  imageHeight?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "imageHeight" })
+    imageHeight?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "imageWidth" })
-  imageWidth?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "imageWidth" })
+    imageWidth?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "inferenceSteps" })
-  inferenceSteps?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "inferenceSteps" })
+    inferenceSteps?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "initStrength" })
-  initStrength?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "initStrength" })
+    initStrength?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "modelId" })
-  modelId?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "modelId" })
+    modelId?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "negativePrompt" })
-  negativePrompt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "negativePrompt" })
+    negativePrompt?: string;
 
-  /**
-   * The style to generate images with.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "presetStyle" })
-  presetStyle?: shared.SdGenerationStyleEnum;
+    /**
+     * The style to generate images with.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "presetStyle" })
+    presetStyle?: shared.SdGenerationStyle;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "prompt" })
-  prompt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "prompt" })
+    prompt?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "public" })
-  public?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "public" })
+    public?: boolean;
 
-  /**
-   * The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "scheduler" })
-  scheduler?: shared.SdGenerationSchedulersEnum;
+    /**
+     * The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "scheduler" })
+    scheduler?: shared.SdGenerationSchedulers;
 
-  /**
-   * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "sdVersion" })
-  sdVersion?: shared.SdVersionsEnum;
+    /**
+     * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "sdVersion" })
+    sdVersion?: shared.SdVersions;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "seed" })
-  seed?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "seed" })
+    seed?: number;
 
-  /**
-   * The status of the current task.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: shared.JobStatusEnum;
+    /**
+     * The status of the current task.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: shared.JobStatus;
 }
 
 /**
  * Responses for GET /generations/{id}
  */
 export class GetGenerationById200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * columns and relationships of "generations"
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "generations_by_pk" })
-  @Type(() => GetGenerationById200ApplicationJSONGenerations)
-  generationsByPk?: GetGenerationById200ApplicationJSONGenerations;
+    /**
+     * columns and relationships of "generations"
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "generations_by_pk" })
+    @Type(() => GetGenerationById200ApplicationJSONGenerations)
+    generationsByPk?: GetGenerationById200ApplicationJSONGenerations;
 }
 
 export class GetGenerationByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for GET /generations/{id}
-   */
-  @SpeakeasyMetadata()
-  getGenerationById200ApplicationJSONObject?: GetGenerationById200ApplicationJSON;
+    /**
+     * Responses for GET /generations/{id}
+     */
+    @SpeakeasyMetadata()
+    getGenerationById200ApplicationJSONObject?: GetGenerationById200ApplicationJSON;
 }

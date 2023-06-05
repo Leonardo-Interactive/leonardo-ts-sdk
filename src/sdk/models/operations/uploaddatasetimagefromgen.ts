@@ -10,59 +10,57 @@ import { Expose, Type } from "class-transformer";
  * Query parameters to be provided in the request body as a JSON object
  */
 export class UploadDatasetImageFromGenRequestBody extends SpeakeasyBase {
-  /**
-   * The ID of the image to upload to the dataset.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "generatedImageId" })
-  generatedImageId: string;
+    /**
+     * The ID of the image to upload to the dataset.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "generatedImageId" })
+    generatedImageId: string;
 }
 
 export class UploadDatasetImageFromGenRequest extends SpeakeasyBase {
-  /**
-   * Query parameters to be provided in the request body as a JSON object
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody: UploadDatasetImageFromGenRequestBody;
+    /**
+     * Query parameters to be provided in the request body as a JSON object
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody: UploadDatasetImageFromGenRequestBody;
 
-  /**
-   * The ID of the dataset to upload the image to.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=datasetId",
-  })
-  datasetId: string;
+    /**
+     * The ID of the dataset to upload the image to.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=datasetId" })
+    datasetId: string;
 }
 
 export class UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 }
 
 /**
  * Responses for POST /datasets/{datasetId}/upload/gen
  */
 export class UploadDatasetImageFromGen200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "uploadDatasetImageFromGen" })
-  @Type(() => UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput)
-  uploadDatasetImageFromGen?: UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput;
+    @SpeakeasyMetadata()
+    @Expose({ name: "uploadDatasetImageFromGen" })
+    @Type(() => UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput)
+    uploadDatasetImageFromGen?: UploadDatasetImageFromGen200ApplicationJSONDatasetGenUploadOutput;
 }
 
 export class UploadDatasetImageFromGenResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Responses for POST /datasets/{datasetId}/upload/gen
-   */
-  @SpeakeasyMetadata()
-  uploadDatasetImageFromGen200ApplicationJSONObject?: UploadDatasetImageFromGen200ApplicationJSON;
+    /**
+     * Responses for POST /datasets/{datasetId}/upload/gen
+     */
+    @SpeakeasyMetadata()
+    uploadDatasetImageFromGen200ApplicationJSONObject?: UploadDatasetImageFromGen200ApplicationJSON;
 }
