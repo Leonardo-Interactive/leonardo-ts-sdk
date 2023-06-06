@@ -2,7 +2,7 @@
 
 ## Overview
 
-Leonardo.Ai API OpenAPI specification.
+Rest Endpoints: Leonardo.Ai API OpenAPI specification.
 
 ### Available Operations
 
