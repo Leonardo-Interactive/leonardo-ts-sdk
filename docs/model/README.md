@@ -19,7 +19,7 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -52,7 +52,7 @@ import { DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operat
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -76,7 +76,7 @@ import { CustomModelType, JobStatus, SdVersions } from "@leonardo-ai/sdk/dist/sd
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

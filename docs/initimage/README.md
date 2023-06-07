@@ -18,7 +18,7 @@ import { DeleteInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/op
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -41,7 +41,7 @@ import { GetInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/opera
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -64,7 +64,7 @@ import { UploadInitImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/operat
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

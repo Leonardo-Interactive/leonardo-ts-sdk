@@ -17,7 +17,7 @@ import { CreateVariationUpscaleResponse } from "@leonardo-ai/sdk/dist/sdk/models
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -43,7 +43,7 @@ import { JobStatus, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/share
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

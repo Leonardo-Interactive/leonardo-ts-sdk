@@ -20,7 +20,7 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -63,7 +63,7 @@ import { DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/o
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -87,7 +87,7 @@ import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, Varia
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -111,7 +111,7 @@ import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, Varia
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

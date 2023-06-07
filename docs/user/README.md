@@ -16,7 +16,7 @@ import { GetUserSelfResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations
 
 const sdk = new Leonardo({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
