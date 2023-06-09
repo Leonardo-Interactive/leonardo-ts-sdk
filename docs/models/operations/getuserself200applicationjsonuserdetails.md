@@ -1,0 +1,11 @@
+# GetUserSelf200ApplicationJSONUserDetails
+
+columns and relationships of "user_details"
+
+
+## Fields
+
+| Field                                                                                                                     | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `showNsfw`                                                                                                                | *boolean*                                                                                                                 | :heavy_minus_sign:                                                                                                        | N/A                                                                                                                       |
+| `user`                                                                                                                    | [GetUserSelf200ApplicationJSONUserDetailsUsers](../../models/operations/getuserself200applicationjsonuserdetailsusers.md) | :heavy_minus_sign:                                                                                                        | columns and relationships of "users"                                                                                      |
