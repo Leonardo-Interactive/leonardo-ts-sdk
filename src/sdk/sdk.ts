@@ -53,8 +53,9 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "1.36.3";
-    genVersion = "2.35.3";
+    openapiDocVersion = "v1.0.0";
+    sdkVersion = "1.39.1";
+    genVersion = "2.39.2";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -62,7 +63,7 @@ export class SDKConfiguration {
 }
 
 /**
- * Leonardo.Ai API OpenAPI specification.
+ * Rest Endpoints: Leonardo.Ai API OpenAPI specification.
  */
 export class Leonardo {
     public dataset: Dataset;
