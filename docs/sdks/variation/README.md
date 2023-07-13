@@ -52,7 +52,6 @@ This endpoint will get the variation by ID
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetVariationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { JobStatus, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
