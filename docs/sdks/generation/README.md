@@ -109,7 +109,6 @@ This endpoint will provide information about a specific generation
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
@@ -146,7 +145,6 @@ This endpoint returns all generations by a specific user
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { JobStatus, SdGenerationSchedulers, SdGenerationStyle, SdVersions, VariationType } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {

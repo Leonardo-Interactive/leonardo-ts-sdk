@@ -98,7 +98,6 @@ This endpoint gets the specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
-import { CustomModelType, JobStatus, SdVersions } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
 const sdk = new Leonardo({
   security: {
