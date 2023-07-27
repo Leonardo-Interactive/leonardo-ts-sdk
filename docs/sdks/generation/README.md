@@ -72,15 +72,16 @@ This endpoint deletes a specific generation
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteGenerationByIdRequest, DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "ipsam";
 
-sdk.generation.deleteGenerationById("ipsam").then((res: DeleteGenerationByIdResponse) => {
+sdk.generation.deleteGenerationById(id).then((res: DeleteGenerationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -108,15 +109,16 @@ This endpoint will provide information about a specific generation
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetGenerationByIdRequest, GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "repellendus";
 
-sdk.generation.getGenerationById("repellendus").then((res: GetGenerationByIdResponse) => {
+sdk.generation.getGenerationById(id).then((res: GetGenerationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -144,15 +146,18 @@ This endpoint returns all generations by a specific user
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetGenerationsByUserIdRequest, GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const userId: string = "sapiente";
+const limit: number = 778157;
+const offset: number = 140350;
 
-sdk.generation.getGenerationsByUserId("sapiente", 778157, 140350).then((res: GetGenerationsByUserIdResponse) => {
+sdk.generation.getGenerationsByUserId(userId, limit, offset).then((res: GetGenerationsByUserIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

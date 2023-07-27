@@ -55,15 +55,16 @@ This endpoint deletes the specific dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteDatasetByIdRequest, DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "iure";
 
-sdk.dataset.deleteDatasetById("iure").then((res: DeleteDatasetByIdResponse) => {
+sdk.dataset.deleteDatasetById(id).then((res: DeleteDatasetByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -91,15 +92,16 @@ This endpoint gets the specific dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetDatasetByIdRequest, GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "magnam";
 
-sdk.dataset.getDatasetById("magnam").then((res: GetDatasetByIdResponse) => {
+sdk.dataset.getDatasetById(id).then((res: GetDatasetByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -127,17 +129,23 @@ This endpoint returns presigned details to upload a dataset image to S3
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { UploadDatasetImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import {
+  UploadDatasetImageRequest,
+  UploadDatasetImageRequestBody,
+  UploadDatasetImageResponse,
+} from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.dataset.uploadDatasetImage({
+const requestBody: UploadDatasetImageRequestBody = {
   extension: "debitis",
-}, "ipsa").then((res: UploadDatasetImageResponse) => {
+};
+const datasetId: string = "ipsa";
+
+sdk.dataset.uploadDatasetImage(requestBody, datasetId).then((res: UploadDatasetImageResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -166,17 +174,23 @@ This endpoint will upload a previously generated image to the dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import {
+  UploadDatasetImageFromGenRequest,
+  UploadDatasetImageFromGenRequestBody,
+  UploadDatasetImageFromGenResponse,
+} from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.dataset.uploadDatasetImageFromGen({
+const requestBody: UploadDatasetImageFromGenRequestBody = {
   generatedImageId: "delectus",
-}, "tempora").then((res: UploadDatasetImageFromGenResponse) => {
+};
+const datasetId: string = "tempora";
+
+sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId).then((res: UploadDatasetImageFromGenResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
