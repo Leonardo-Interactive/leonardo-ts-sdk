@@ -51,15 +51,16 @@ This endpoint will get the variation by ID
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetVariationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetVariationByIdRequest, GetVariationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "reiciendis";
 
-sdk.variation.getVariationById("reiciendis").then((res: GetVariationByIdResponse) => {
+sdk.variation.getVariationById(id).then((res: GetVariationByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

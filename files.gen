@@ -20,6 +20,7 @@ src/internal/utils/retries.ts
 src/internal/utils/security.ts
 src/internal/utils/utils.ts
 src/sdk/index.ts
+src/sdk/models/errors/sdkerror.ts
 src/sdk/types/index.ts
 src/sdk/types/rfcdate.ts
 tsconfig.json
@@ -52,6 +53,7 @@ src/sdk/models/shared/strength.ts
 src/sdk/models/shared/custommodeltype.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
+src/sdk/models/errors/index.ts
 docs/sdks/leonardo/README.md
 docs/sdks/dataset/README.md
 docs/sdks/generation/README.md
