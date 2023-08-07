@@ -14,15 +14,16 @@ This endpoint deletes an init image
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteInitImageByIdRequest, DeleteInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "at";
 
-sdk.initImage.deleteInitImageById("at").then((res: DeleteInitImageByIdResponse) => {
+sdk.initImage.deleteInitImageById(id).then((res: DeleteInitImageByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -50,15 +51,16 @@ This endpoint will return a single init image
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetInitImageByIdRequest, GetInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "at";
 
-sdk.initImage.getInitImageById("at").then((res: GetInitImageByIdResponse) => {
+sdk.initImage.getInitImageById(id).then((res: GetInitImageByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

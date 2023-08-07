@@ -61,15 +61,16 @@ This endpoint will delete a specific custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteModelByIdRequest, DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "hic";
 
-sdk.model.deleteModelById("hic").then((res: DeleteModelByIdResponse) => {
+sdk.model.deleteModelById(id).then((res: DeleteModelByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -97,15 +98,16 @@ This endpoint gets the specific custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetModelByIdRequest, GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 const sdk = new Leonardo({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "optio";
 
-sdk.model.getModelById("optio").then((res: GetModelByIdResponse) => {
+sdk.model.getModelById(id).then((res: GetModelByIdResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
