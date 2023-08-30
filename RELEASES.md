@@ -1060,3 +1060,13 @@ Based on:
 - [typescript v1.52.0] .
 ### Releases
 - [NPM v1.52.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.52.0 - .
+
+## 2023-08-30 10:01:22
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.75.0 (2.89.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.53.0] .
+### Releases
+- [NPM v1.53.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/1.53.0 - .
