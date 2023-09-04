@@ -12,6 +12,20 @@ import { Expose, Type } from "class-transformer";
  */
 export class CreateGenerationRequestBody extends SpeakeasyBase {
     /**
+     * Enable to use Alchemy.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "alchemy" })
+    alchemy?: boolean;
+
+    /**
+     * Contrast Ratio to use with Alchemy.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "contrastRatio" })
+    contrastRatio?: number;
+
+    /**
      * Enable to use ControlNet. Requires an init image to be provided. Requires a model based on SD v1.5
      */
     @SpeakeasyMetadata()
@@ -26,6 +40,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     controlNetType?: shared.ControlnetType;
 
     /**
+     * Enable to use the Expanded Domain feature of Alchemy.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expandedDomain" })
+    expandedDomain?: boolean;
+
+    /**
      * How strongly the generation should reflect the prompt. 7 is recommended. Must be between 1 and 20.
      */
     @SpeakeasyMetadata()
@@ -38,6 +59,28 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "height" })
     height?: number;
+
+    /**
+     * Enable to use the High Contrast feature of Prompt Magic.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "highContrast" })
+    highContrast?: boolean;
+
+    /**
+     * Enable to use the High Resolution feature of Prompt Magic.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "highResolution" })
+    highResolution?: boolean;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "imagePromptWeight" })
+    imagePromptWeight?: number;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "imagePrompts" })
+    imagePrompts?: string[];
 
     /**
      * The ID of an existing image to use in image2image.
@@ -81,6 +124,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     negativePrompt?: string;
 
     /**
+     * Not Safe For Work Flag.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "nsfw" })
+    nsfw?: boolean;
+
+    /**
      * The number of images to generate. Must be between 1 and 8. If either width or height is over 768, must be between 1 and 4.
      */
     @SpeakeasyMetadata()
@@ -116,6 +166,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     promptMagic?: boolean;
 
     /**
+     * Prompt magic version v2 or v3, for use when promptMagic: true
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "promptMagicVersion" })
+    promptMagicVersion?: string;
+
+    /**
      * Whether the generated images should show in the community feed.
      */
     @SpeakeasyMetadata()
@@ -136,12 +193,44 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     @Expose({ name: "sd_version" })
     sdVersion?: shared.SdVersions;
 
+    @SpeakeasyMetadata()
+    @Expose({ name: "seed" })
+    seed?: number;
+
     /**
      * Whether the generated images should tile on all axis.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "tiling" })
     tiling?: boolean;
+
+    /**
+     * Whether the generated images should be unzoomed.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "unzoom" })
+    unzoom?: boolean;
+
+    /**
+     * How much the image should be unzoomed.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "unzoomAmount" })
+    unzoomAmount?: number;
+
+    /**
+     * How much the image should be upscaled. (Enterprise Only)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "upscaleRatio" })
+    upscaleRatio?: number;
+
+    /**
+     * How much weighting to use for generation.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "weighting" })
+    weighting?: number;
 
     /**
      * The width of the images. Must be between 32 and 1024 and be a multiple of 8.

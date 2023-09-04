@@ -4,7 +4,10 @@
 
 * [createModel](#createmodel) - Train a Custom Model
 * [deleteModelById](#deletemodelbyid) - Delete a Single Custom Model by ID
+* [deleteModels3dId](#deletemodels3did) - Delete 3D Model by ID
 * [getModelById](#getmodelbyid) - Get a Single Custom Model by ID
+* [getPlatformModels](#getplatformmodels) - List Platform Models
+* [postModels3dUpload](#postmodels3dupload) - Upload 3D Model
 
 ## createModel
 
@@ -24,15 +27,15 @@ const sdk = new Leonardo({
 });
 
 sdk.model.createModel({
-  datasetId: "molestiae",
-  description: "quod",
-  instancePrompt: "quod",
-  modelType: CustomModelType.GameItems,
-  name: "Miss Lowell Parisian",
+  datasetId: "laborum",
+  description: "dolores",
+  instancePrompt: "dolorem",
+  modelType: CustomModelType.Illustrations,
+  name: "Della Halvorson",
   nsfw: false,
-  resolution: 582020,
-  sdVersion: SdVersions.V15,
-  strength: Strength.Medium,
+  resolution: 325047,
+  sdVersion: SdVersions.V2,
+  strength: Strength.VeryLow,
 }).then((res: CreateModelResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -68,7 +71,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "hic";
+const id: string = "iure";
 
 sdk.model.deleteModelById(id).then((res: DeleteModelByIdResponse) => {
   if (res.statusCode == 200) {
@@ -90,6 +93,47 @@ sdk.model.deleteModelById(id).then((res: DeleteModelByIdResponse) => {
 **Promise<[operations.DeleteModelByIdResponse](../../models/operations/deletemodelbyidresponse.md)>**
 
 
+## deleteModels3dId
+
+This endpoint deletes the specific 3D Model
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+import { DeleteModels3dIdRequest, DeleteModels3dIdRequestBody, DeleteModels3dIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+
+const sdk = new Leonardo({
+  security: {
+    bearerAuth: "",
+  },
+});
+const id: string = "culpa";
+const requestBody: DeleteModels3dIdRequestBody = {
+  id: "ff1a3a2f-a946-4773-9251-aa52c3f5ad01",
+};
+
+sdk.model.deleteModels3dId(id, requestBody).then((res: DeleteModels3dIdResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `id`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | _"id" is required (enter it either in parameters or request body)_                               |
+| `requestBody`                                                                                    | [operations.DeleteModels3dIdRequestBody](../../models/operations/deletemodels3didrequestbody.md) | :heavy_minus_sign:                                                                               | Query parameters can also be provided in the request body as a JSON object                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+
+
+### Response
+
+**Promise<[operations.DeleteModels3dIdResponse](../../models/operations/deletemodels3didresponse.md)>**
+
+
 ## getModelById
 
 This endpoint gets the specific custom model
@@ -105,7 +149,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "optio";
+const id: string = "error";
 
 sdk.model.getModelById(id).then((res: GetModelByIdResponse) => {
   if (res.statusCode == 200) {
@@ -125,4 +169,82 @@ sdk.model.getModelById(id).then((res: GetModelByIdResponse) => {
 ### Response
 
 **Promise<[operations.GetModelByIdResponse](../../models/operations/getmodelbyidresponse.md)>**
+
+
+## getPlatformModels
+
+Get a list of public Platform Models available for use with generations.
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+import { GetPlatformModelsRequest, GetPlatformModelsResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+
+const sdk = new Leonardo({
+  security: {
+    bearerAuth: "",
+  },
+});
+const limit: number = 837945;
+const offset: number = 673660;
+
+sdk.model.getPlatformModels(limit, offset).then((res: GetPlatformModelsResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `limit`                                                      | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `offset`                                                     | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.GetPlatformModelsResponse](../../models/operations/getplatformmodelsresponse.md)>**
+
+
+## postModels3dUpload
+
+This endpoint returns presigned details to upload a 3D model to S3
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+import { PostModels3dUploadResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+
+const sdk = new Leonardo({
+  security: {
+    bearerAuth: "",
+  },
+});
+
+sdk.model.postModels3dUpload({
+  modelExtension: "quasi",
+  name: "Jan Thiel",
+}).then((res: PostModels3dUploadResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.PostModels3dUploadRequestBody](../../models/operations/postmodels3duploadrequestbody.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
+
+
+### Response
+
+**Promise<[operations.PostModels3dUploadResponse](../../models/operations/postmodels3duploadresponse.md)>**
 
