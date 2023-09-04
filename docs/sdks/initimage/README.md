@@ -21,7 +21,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "at";
+const id: string = "reiciendis";
 
 sdk.initImage.deleteInitImageById(id).then((res: DeleteInitImageByIdResponse) => {
   if (res.statusCode == 200) {
@@ -58,7 +58,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "at";
+const id: string = "est";
 
 sdk.initImage.getInitImageById(id).then((res: GetInitImageByIdResponse) => {
   if (res.statusCode == 200) {
@@ -97,7 +97,7 @@ const sdk = new Leonardo({
 });
 
 sdk.initImage.uploadInitImage({
-  extension: "maiores",
+  extension: "mollitia",
 }).then((res: UploadInitImageResponse) => {
   if (res.statusCode == 200) {
     // handle response

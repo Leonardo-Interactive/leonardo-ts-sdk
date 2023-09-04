@@ -20,10 +20,6 @@ export class UploadInitImageRequestBody extends SpeakeasyBase {
 
 export class UploadInitImage200ApplicationJSONInitImageUploadOutput extends SpeakeasyBase {
     @SpeakeasyMetadata()
-    @Expose({ name: "__typename" })
-    typename?: string;
-
-    @SpeakeasyMetadata()
     @Expose({ name: "fields" })
     fields?: string;
 
