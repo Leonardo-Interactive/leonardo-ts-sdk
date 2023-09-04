@@ -15,7 +15,7 @@ export function serializeRequestBody(
   request: any,
   requestFieldName: string,
   serializationMethod: string
-): [object, any] {
+): [Record<string, any>, any] {
   if (
     request !== Object(request) ||
     !request.hasOwnProperty(requestFieldName)
@@ -46,8 +46,8 @@ export function serializeRequestBody(
 const serializeContentType = (
   contentType: string,
   reqBody: any
-): [object, any] => {
-  let [requestHeaders, requestBody]: [object, any] = [{}, {}];
+): [Record<string, any>, any] => {
+  let [requestHeaders, requestBody]: [Record<string, string>, any] = [{}, {}];
 
   switch (contentType) {
     case "multipart/form-data":
