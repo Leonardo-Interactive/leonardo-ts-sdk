@@ -38,31 +38,30 @@ sdk.generation.createGeneration({
   highResolution: false,
   imagePromptWeight: 5288.95,
   imagePrompts: [
-    "excepturi",
-    "nisi",
+    "iusto",
   ],
-  initGenerationImageId: "recusandae",
-  initImageId: "temporibus",
-  initStrength: 710.36,
-  modelId: "quis",
-  negativePrompt: "veritatis",
+  initGenerationImageId: "excepturi",
+  initImageId: "nisi",
+  initStrength: 9255.97,
+  modelId: "temporibus",
+  negativePrompt: "ab",
   nsfw: false,
-  numImages: 648172,
-  numInferenceSteps: 20218,
-  presetStyle: SdGenerationStyle.Leonardo,
-  prompt: "repellendus",
+  numImages: 337396,
+  numInferenceSteps: 87129,
+  presetStyle: SdGenerationStyle.None,
+  prompt: "perferendis",
   promptMagic: false,
-  promptMagicVersion: "sapiente",
+  promptMagicVersion: "ipsam",
   public: false,
   scheduler: SdGenerationSchedulers.DpmSolver,
-  sdVersion: SdVersions.V15,
-  seed: 870013,
+  sdVersion: SdVersions.V2,
+  seed: 778157,
   tiling: false,
   unzoom: false,
-  unzoomAmount: 8700.88,
-  upscaleRatio: 9786.19,
-  weighting: 4736.08,
-  width: 799159,
+  unzoomAmount: 1403.5,
+  upscaleRatio: 8700.13,
+  weighting: 8700.88,
+  width: 978619,
 }).then((res: CreateGenerationResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -98,7 +97,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "quod";
+const id: string = "molestiae";
 
 sdk.generation.deleteGenerationById(id).then((res: DeleteGenerationByIdResponse) => {
   if (res.statusCode == 200) {
@@ -139,9 +138,9 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "esse";
+const id: string = "quod";
 const requestBody: DeleteGenerationsTextureIdRequestBody = {
-  id: "8ca1ba92-8fc8-4167-82cb-739205929396",
+  id: "c78ca1ba-928f-4c81-a742-cb7392059293",
 };
 
 sdk.generation.deleteGenerationsTextureId(id, requestBody).then((res: DeleteGenerationsTextureIdResponse) => {
@@ -180,7 +179,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "hic";
+const id: string = "natus";
 
 sdk.generation.getGenerationById(id).then((res: GetGenerationByIdResponse) => {
   if (res.statusCode == 200) {
@@ -217,9 +216,9 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const userId: string = "saepe";
-const limit: number = 681820;
-const offset: number = 449950;
+const userId: string = "laboriosam";
+const limit: number = 943749;
+const offset: number = 902599;
 
 sdk.generation.getGenerationsByUserId(userId, limit, offset).then((res: GetGenerationsByUserIdResponse) => {
   if (res.statusCode == 200) {
@@ -260,14 +259,14 @@ const sdk = new Leonardo({
 });
 
 sdk.generation.postGenerationsTexture({
-  frontRotationOffset: 359508,
-  modelAssetId: "iste",
-  negativePrompt: "iure",
+  frontRotationOffset: 681820,
+  modelAssetId: "in",
+  negativePrompt: "corporis",
   preview: false,
-  previewDirection: "saepe",
-  prompt: "quidem",
-  sdVersion: "architecto",
-  seed: 60225,
+  previewDirection: "iste",
+  prompt: "iure",
+  sdVersion: "saepe",
+  seed: 697631,
 }).then((res: PostGenerationsTextureResponse) => {
   if (res.statusCode == 200) {
     // handle response

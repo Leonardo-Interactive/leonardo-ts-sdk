@@ -27,15 +27,15 @@ const sdk = new Leonardo({
 });
 
 sdk.model.createModel({
-  datasetId: "laborum",
-  description: "dolores",
-  instancePrompt: "dolorem",
-  modelType: CustomModelType.Illustrations,
-  name: "Della Halvorson",
+  datasetId: "est",
+  description: "mollitia",
+  instancePrompt: "laborum",
+  modelType: CustomModelType.Characters,
+  name: "Stacy Champlin",
   nsfw: false,
-  resolution: 325047,
-  sdVersion: SdVersions.V2,
-  strength: Strength.VeryLow,
+  resolution: 607831,
+  sdVersion: SdVersions.V15,
+  strength: Strength.Low,
 }).then((res: CreateModelResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -71,7 +71,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "iure";
+const id: string = "excepturi";
 
 sdk.model.deleteModelById(id).then((res: DeleteModelByIdResponse) => {
   if (res.statusCode == 200) {
@@ -108,9 +108,9 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "culpa";
+const id: string = "accusantium";
 const requestBody: DeleteModels3dIdRequestBody = {
-  id: "ff1a3a2f-a946-4773-9251-aa52c3f5ad01",
+  id: "7aff1a3a-2fa9-4467-b392-51aa52c3f5ad",
 };
 
 sdk.model.deleteModels3dId(id, requestBody).then((res: DeleteModels3dIdResponse) => {
@@ -149,7 +149,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "error";
+const id: string = "aut";
 
 sdk.model.getModelById(id).then((res: GetModelByIdResponse) => {
   if (res.statusCode == 200) {
@@ -186,8 +186,8 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const limit: number = 837945;
-const offset: number = 673660;
+const limit: number = 97101;
+const offset: number = 622846;
 
 sdk.model.getPlatformModels(limit, offset).then((res: GetPlatformModelsResponse) => {
   if (res.statusCode == 200) {
@@ -227,8 +227,8 @@ const sdk = new Leonardo({
 });
 
 sdk.model.postModels3dUpload({
-  modelExtension: "quasi",
-  name: "Jan Thiel",
+  modelExtension: "temporibus",
+  name: "Ryan Witting",
 }).then((res: PostModels3dUploadResponse) => {
   if (res.statusCode == 200) {
     // handle response

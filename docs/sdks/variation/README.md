@@ -23,7 +23,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.createVariationUpscale({
-  id: "f097b007-4f15-4471-b5e6-e13b99d488e1",
+  id: "78f097b0-074f-4154-b1b5-e6e13b99d488",
 }).then((res: CreateVariationUpscaleResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -59,7 +59,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "repudiandae";
+const id: string = "voluptates";
 
 sdk.variation.getVariationById(id).then((res: GetVariationByIdResponse) => {
   if (res.statusCode == 200) {
@@ -98,7 +98,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.postVariationsUnzoom({
-  id: "91e450ad-2abd-4442-a980-2d502a94bb4f",
+  id: "1e91e450-ad2a-4bd4-8269-802d502a94bb",
   isVariation: false,
 }).then((res: PostVariationsUnzoomResponse) => {
   if (res.statusCode == 200) {
