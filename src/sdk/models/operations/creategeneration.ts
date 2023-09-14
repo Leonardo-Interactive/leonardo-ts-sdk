@@ -145,6 +145,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     numInferenceSteps?: number;
 
     /**
+     * Enable the photoReal feature
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "photoReal" })
+    photoReal?: boolean;
+
+    /**
      * The style to generate images with.
      */
     @SpeakeasyMetadata()

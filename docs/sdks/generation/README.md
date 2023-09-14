@@ -48,6 +48,7 @@ sdk.generation.createGeneration({
   nsfw: false,
   numImages: 337396,
   numInferenceSteps: 87129,
+  photoReal: false,
   presetStyle: SdGenerationStyle.None,
   prompt: "perferendis",
   promptMagic: false,
