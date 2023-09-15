@@ -1,4 +1,4 @@
-# model
+# Model
 
 ### Available Operations
 

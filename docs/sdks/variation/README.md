@@ -1,4 +1,4 @@
-# variation
+# Variation
 
 ### Available Operations
 

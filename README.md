@@ -56,7 +56,7 @@ sdk.dataset.createDataset({
 ## Available Resources and Operations
 
 
-### [dataset](docs/sdks/dataset/README.md)
+### [Dataset](docs/sdks/dataset/README.md)
 
 * [createDataset](docs/sdks/dataset/README.md#createdataset) - Create a Dataset
 * [deleteDatasetById](docs/sdks/dataset/README.md#deletedatasetbyid) - Delete a Single Dataset by ID
@@ -64,7 +64,7 @@ sdk.dataset.createDataset({
 * [uploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
 * [uploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
 
-### [generation](docs/sdks/generation/README.md)
+### [Generation](docs/sdks/generation/README.md)
 
 * [createGeneration](docs/sdks/generation/README.md#creategeneration) - Create a Generation of Images
 * [deleteGenerationById](docs/sdks/generation/README.md#deletegenerationbyid) - Delete a Single Generation
@@ -73,13 +73,13 @@ sdk.dataset.createDataset({
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
 * [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
 
-### [initImage](docs/sdks/initimage/README.md)
+### [InitImage](docs/sdks/initimage/README.md)
 
 * [deleteInitImageById](docs/sdks/initimage/README.md#deleteinitimagebyid) - Delete init image
 * [getInitImageById](docs/sdks/initimage/README.md#getinitimagebyid) - Get single init image
 * [uploadInitImage](docs/sdks/initimage/README.md#uploadinitimage) - Upload init image
 
-### [model](docs/sdks/model/README.md)
+### [Model](docs/sdks/model/README.md)
 
 * [createModel](docs/sdks/model/README.md#createmodel) - Train a Custom Model
 * [deleteModelById](docs/sdks/model/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
@@ -88,11 +88,11 @@ sdk.dataset.createDataset({
 * [getPlatformModels](docs/sdks/model/README.md#getplatformmodels) - List Platform Models
 * [postModels3dUpload](docs/sdks/model/README.md#postmodels3dupload) - Upload 3D Model
 
-### [user](docs/sdks/user/README.md)
+### [User](docs/sdks/user/README.md)
 
 * [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
 
-### [variation](docs/sdks/variation/README.md)
+### [Variation](docs/sdks/variation/README.md)
 
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
