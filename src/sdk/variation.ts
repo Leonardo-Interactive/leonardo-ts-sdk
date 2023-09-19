@@ -36,7 +36,7 @@ export class Variation {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/variations/upscale";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -201,7 +201,7 @@ export class Variation {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/variations/unzoom";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");

@@ -163,7 +163,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "prompt" })
-    prompt: string;
+    prompt?: string;
 
     /**
      * Enable to use Prompt Magic.
