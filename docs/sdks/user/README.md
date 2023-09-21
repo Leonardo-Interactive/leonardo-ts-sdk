@@ -1,4 +1,4 @@
-# user
+# User
 
 ### Available Operations
 

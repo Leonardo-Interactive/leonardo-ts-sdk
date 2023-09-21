@@ -1,4 +1,4 @@
-# initImage
+# InitImage
 
 ### Available Operations
 
@@ -21,7 +21,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "reiciendis";
+const id: string = "dolores";
 
 sdk.initImage.deleteInitImageById(id).then((res: DeleteInitImageByIdResponse) => {
   if (res.statusCode == 200) {
@@ -58,7 +58,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "est";
+const id: string = "dolorem";
 
 sdk.initImage.getInitImageById(id).then((res: GetInitImageByIdResponse) => {
   if (res.statusCode == 200) {
@@ -97,7 +97,7 @@ const sdk = new Leonardo({
 });
 
 sdk.initImage.uploadInitImage({
-  extension: "mollitia",
+  extension: "corporis",
 }).then((res: UploadInitImageResponse) => {
   if (res.statusCode == 200) {
     // handle response
