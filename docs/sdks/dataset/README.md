@@ -1,4 +1,4 @@
-# dataset
+# Dataset
 
 ### Available Operations
 
@@ -25,8 +25,8 @@ const sdk = new Leonardo({
 });
 
 sdk.dataset.createDataset({
-  description: "corrupti",
-  name: "Ben Mueller",
+  description: "iure",
+  name: "Raquel Bednar",
 }).then((res: CreateDatasetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -62,7 +62,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "iure";
+const id: string = "suscipit";
 
 sdk.dataset.deleteDatasetById(id).then((res: DeleteDatasetByIdResponse) => {
   if (res.statusCode == 200) {
@@ -99,7 +99,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "magnam";
+const id: string = "molestiae";
 
 sdk.dataset.getDatasetById(id).then((res: GetDatasetByIdResponse) => {
   if (res.statusCode == 200) {
@@ -141,9 +141,9 @@ const sdk = new Leonardo({
   },
 });
 const requestBody: UploadDatasetImageRequestBody = {
-  extension: "debitis",
+  extension: "minus",
 };
-const datasetId: string = "ipsa";
+const datasetId: string = "placeat";
 
 sdk.dataset.uploadDatasetImage(requestBody, datasetId).then((res: UploadDatasetImageResponse) => {
   if (res.statusCode == 200) {
@@ -186,9 +186,9 @@ const sdk = new Leonardo({
   },
 });
 const requestBody: UploadDatasetImageFromGenRequestBody = {
-  generatedImageId: "delectus",
+  generatedImageId: "voluptatum",
 };
-const datasetId: string = "tempora";
+const datasetId: string = "iusto";
 
 sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId).then((res: UploadDatasetImageFromGenResponse) => {
   if (res.statusCode == 200) {

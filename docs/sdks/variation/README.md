@@ -1,4 +1,4 @@
-# variation
+# Variation
 
 ### Available Operations
 
@@ -23,7 +23,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.createVariationUpscale({
-  id: "f097b007-4f15-4471-b5e6-e13b99d488e1",
+  id: "0074f154-71b5-4e6e-93b9-9d488e1e91e4",
 }).then((res: CreateVariationUpscaleResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -59,7 +59,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "repudiandae";
+const id: string = "enim";
 
 sdk.variation.getVariationById(id).then((res: GetVariationByIdResponse) => {
   if (res.statusCode == 200) {
@@ -98,7 +98,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.postVariationsUnzoom({
-  id: "91e450ad-2abd-4442-a980-2d502a94bb4f",
+  id: "0ad2abd4-4269-4802-9502-a94bb4f63c96",
   isVariation: false,
 }).then((res: PostVariationsUnzoomResponse) => {
   if (res.statusCode == 200) {

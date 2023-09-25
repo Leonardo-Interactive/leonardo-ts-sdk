@@ -60,13 +60,6 @@ src/sdk/models/shared/custommodeltype.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/errors/index.ts
-docs/sdks/leonardo/README.md
-docs/sdks/dataset/README.md
-docs/sdks/generation/README.md
-docs/sdks/initimage/README.md
-docs/sdks/model/README.md
-docs/sdks/user/README.md
-docs/sdks/variation/README.md
 USAGE.md
 docs/models/operations/createdatasetrequestbody.md
 docs/models/operations/createdataset200applicationjsondatasets.md
@@ -183,4 +176,11 @@ docs/models/shared/variationtype.md
 docs/models/shared/strength.md
 docs/models/shared/custommodeltype.md
 docs/models/shared/security.md
+docs/sdks/leonardo/README.md
+docs/sdks/dataset/README.md
+docs/sdks/generation/README.md
+docs/sdks/initimage/README.md
+docs/sdks/model/README.md
+docs/sdks/user/README.md
+docs/sdks/variation/README.md
 .gitattributes

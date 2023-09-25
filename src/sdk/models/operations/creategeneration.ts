@@ -145,6 +145,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     numInferenceSteps?: number;
 
     /**
+     * Enable the photoReal feature
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "photoReal" })
+    photoReal?: boolean;
+
+    /**
      * The style to generate images with.
      */
     @SpeakeasyMetadata()
@@ -156,7 +163,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "prompt" })
-    prompt: string;
+    prompt?: string;
 
     /**
      * Enable to use Prompt Magic.
@@ -257,12 +264,21 @@ export class CreateGeneration200ApplicationJSON extends SpeakeasyBase {
 }
 
 export class CreateGenerationResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 
