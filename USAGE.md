@@ -12,8 +12,8 @@ const sdk = new Leonardo({
 });
 
 sdk.dataset.createDataset({
-  description: "corrupti",
-  name: "Kelvin Sporer",
+  description: "Synchronised multi-tasking projection",
+  name: "Quetzal South",
 }).then((res: CreateDatasetResponse) => {
   if (res.statusCode == 200) {
     // handle response
