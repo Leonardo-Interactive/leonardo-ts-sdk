@@ -2,20 +2,20 @@ configVersion: 1.0.0
 management:
   docChecksum: cda9d251429324050f2eeb530d3369ff
   docVersion: v1.0.0
-  speakeasyVersion: 1.92.2
-  generationVersion: 2.142.2
+  speakeasyVersion: 1.92.3
+  generationVersion: 2.143.2
 generation:
   sdkClassName: Leonardo
   singleTagPerOp: false
   telemetryEnabled: false
 features:
   typescript:
-    core: 2.90.0
+    core: 2.90.1
     flattening: 2.81.1
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
 typescript:
-  version: 1.58.0
+  version: 1.58.1
   author: leonardoai
   maxMethodParams: 5
   packageName: '@leonardo-ai/sdk'
