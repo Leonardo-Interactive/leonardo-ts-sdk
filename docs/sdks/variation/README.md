@@ -1,4 +1,5 @@
 # Variation
+(*variation*)
 
 ### Available Operations
 
@@ -23,7 +24,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.createVariationUpscale({
-  id: "0074f154-71b5-4e6e-93b9-9d488e1e91e4",
+  id: "<ID>",
 }).then((res: CreateVariationUpscaleResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -59,7 +60,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "enim";
+const id: string = "walker";
 
 sdk.variation.getVariationById(id).then((res: GetVariationByIdResponse) => {
   if (res.statusCode == 200) {
@@ -98,7 +99,7 @@ const sdk = new Leonardo({
 });
 
 sdk.variation.postVariationsUnzoom({
-  id: "0ad2abd4-4269-4802-9502-a94bb4f63c96",
+  id: "<ID>",
   isVariation: false,
 }).then((res: PostVariationsUnzoomResponse) => {
   if (res.statusCode == 200) {

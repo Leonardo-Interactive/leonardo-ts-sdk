@@ -1,4 +1,5 @@
 # Model
+(*model*)
 
 ### Available Operations
 
@@ -27,15 +28,15 @@ const sdk = new Leonardo({
 });
 
 sdk.model.createModel({
-  datasetId: "explicabo",
-  description: "nobis",
-  instancePrompt: "enim",
-  modelType: CustomModelType.Photography,
-  name: "Ms. Cathy Marks",
+  datasetId: "24/7",
+  description: "Proactive transitional function",
+  instancePrompt: "Des",
+  modelType: CustomModelType.PixelArt,
+  name: "Officer female",
   nsfw: false,
-  resolution: 988374,
+  resolution: 451662,
   sdVersion: SdVersions.V2,
-  strength: Strength.VeryLow,
+  strength: Strength.High,
 }).then((res: CreateModelResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -71,7 +72,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "mollitia";
+const id: string = "Mills";
 
 sdk.model.deleteModelById(id).then((res: DeleteModelByIdResponse) => {
   if (res.statusCode == 200) {
@@ -108,9 +109,9 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "dolorem";
+const id: string = "Electronics";
 const requestBody: DeleteModels3dIdRequestBody = {
-  id: "a2fa9467-7392-451a-a52c-3f5ad019da1f",
+  id: "<ID>",
 };
 
 sdk.model.deleteModels3dId(id, requestBody).then((res: DeleteModels3dIdResponse) => {
@@ -149,7 +150,7 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const id: string = "voluptatibus";
+const id: string = "protocol";
 
 sdk.model.getModelById(id).then((res: GetModelByIdResponse) => {
   if (res.statusCode == 200) {
@@ -186,8 +187,8 @@ const sdk = new Leonardo({
     bearerAuth: "",
   },
 });
-const limit: number = 878194;
-const offset: number = 468651;
+const limit: number = 419487;
+const offset: number = 472174;
 
 sdk.model.getPlatformModels(limit, offset).then((res: GetPlatformModelsResponse) => {
   if (res.statusCode == 200) {
@@ -227,8 +228,8 @@ const sdk = new Leonardo({
 });
 
 sdk.model.postModels3dUpload({
-  modelExtension: "praesentium",
-  name: "Jose Moen",
+  modelExtension: "Bromine",
+  name: "Electric Berkshire",
 }).then((res: PostModels3dUploadResponse) => {
   if (res.statusCode == 200) {
     // handle response

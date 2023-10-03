@@ -40,8 +40,8 @@ const sdk = new Leonardo({
 });
 
 sdk.dataset.createDataset({
-  description: "corrupti",
-  name: "Ben Mueller",
+  description: "Synchronised multi-tasking projection",
+  name: "Quetzal South",
 }).then((res: CreateDatasetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -54,7 +54,7 @@ sdk.dataset.createDataset({
 ## Available Resources and Operations
 
 
-### [Dataset](docs/sdks/dataset/README.md)
+### [dataset](docs/sdks/dataset/README.md)
 
 * [createDataset](docs/sdks/dataset/README.md#createdataset) - Create a Dataset
 * [deleteDatasetById](docs/sdks/dataset/README.md#deletedatasetbyid) - Delete a Single Dataset by ID
@@ -62,7 +62,7 @@ sdk.dataset.createDataset({
 * [uploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
 * [uploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
 
-### [Generation](docs/sdks/generation/README.md)
+### [generation](docs/sdks/generation/README.md)
 
 * [createGeneration](docs/sdks/generation/README.md#creategeneration) - Create a Generation of Images
 * [deleteGenerationById](docs/sdks/generation/README.md#deletegenerationbyid) - Delete a Single Generation
@@ -71,13 +71,13 @@ sdk.dataset.createDataset({
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
 * [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
 
-### [InitImage](docs/sdks/initimage/README.md)
+### [initImage](docs/sdks/initimage/README.md)
 
 * [deleteInitImageById](docs/sdks/initimage/README.md#deleteinitimagebyid) - Delete init image
 * [getInitImageById](docs/sdks/initimage/README.md#getinitimagebyid) - Get single init image
 * [uploadInitImage](docs/sdks/initimage/README.md#uploadinitimage) - Upload init image
 
-### [Model](docs/sdks/model/README.md)
+### [model](docs/sdks/model/README.md)
 
 * [createModel](docs/sdks/model/README.md#createmodel) - Train a Custom Model
 * [deleteModelById](docs/sdks/model/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
@@ -86,11 +86,11 @@ sdk.dataset.createDataset({
 * [getPlatformModels](docs/sdks/model/README.md#getplatformmodels) - List Platform Models
 * [postModels3dUpload](docs/sdks/model/README.md#postmodels3dupload) - Upload 3D Model
 
-### [User](docs/sdks/user/README.md)
+### [user](docs/sdks/user/README.md)
 
 * [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
 
-### [Variation](docs/sdks/variation/README.md)
+### [variation](docs/sdks/variation/README.md)
 
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
