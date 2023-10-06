@@ -18,30 +18,25 @@ This endpoint will train a new custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateModelResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.model.createModel({
-  datasetId: "24/7",
-  description: "Proactive transitional function",
-  instancePrompt: "Des",
-  modelType: CustomModelType.PixelArt,
-  name: "Officer female",
-  nsfw: false,
-  resolution: 451662,
-  sdVersion: SdVersions.V2,
-  strength: Strength.High,
-}).then((res: CreateModelResponse) => {
+  const res = await sdk.model.createModel({
+    datasetId: "24/7",
+    instancePrompt: "instead Anchorage",
+    name: "Ohio",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -65,20 +60,22 @@ This endpoint will delete a specific custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteModelByIdRequest, DeleteModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Mills";
 
-sdk.model.deleteModelById(id).then((res: DeleteModelByIdResponse) => {
+  const res = await sdk.model.deleteModelById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -102,23 +99,23 @@ This endpoint deletes the specific 3D Model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteModels3dIdRequest, DeleteModels3dIdRequestBody, DeleteModels3dIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteModels3dIdRequest, DeleteModels3dIdRequestBody } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Electronics";
-const requestBody: DeleteModels3dIdRequestBody = {
-  id: "<ID>",
-};
+const requestBody: DeleteModels3dIdRequestBody = {};
 
-sdk.model.deleteModels3dId(id, requestBody).then((res: DeleteModels3dIdResponse) => {
+  const res = await sdk.model.deleteModels3dId(id, requestBody);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -143,20 +140,22 @@ This endpoint gets the specific custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetModelByIdRequest, GetModelByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "protocol";
 
-sdk.model.getModelById(id).then((res: GetModelByIdResponse) => {
+  const res = await sdk.model.getModelById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -180,21 +179,23 @@ Get a list of public Platform Models available for use with generations.
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetPlatformModelsRequest, GetPlatformModelsResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetPlatformModelsRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const limit: number = 419487;
 const offset: number = 472174;
 
-sdk.model.getPlatformModels(limit, offset).then((res: GetPlatformModelsResponse) => {
+  const res = await sdk.model.getPlatformModels(limit, offset);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -219,22 +220,20 @@ This endpoint returns presigned details to upload a 3D model to S3
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { PostModels3dUploadResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.model.postModels3dUpload({
-  modelExtension: "Bromine",
-  name: "Electric Berkshire",
-}).then((res: PostModels3dUploadResponse) => {
+  const res = await sdk.model.postModels3dUpload({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

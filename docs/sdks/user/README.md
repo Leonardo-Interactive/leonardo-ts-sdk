@@ -13,19 +13,20 @@ This endpoint will return your user such as your user id, username, token renewa
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetUserSelfResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.user.getUserSelf().then((res: GetUserSelfResponse) => {
+  const res = await sdk.user.getUserSelf();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -15,21 +15,22 @@ This endpoint will create an upscale for the provided image ID
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateVariationUpscaleResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.variation.createVariationUpscale({
-  id: "<ID>",
-}).then((res: CreateVariationUpscaleResponse) => {
+  const res = await sdk.variation.createVariationUpscale({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -53,20 +54,22 @@ This endpoint will get the variation by ID
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetVariationByIdRequest, GetVariationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetVariationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "walker";
 
-sdk.variation.getVariationById(id).then((res: GetVariationByIdResponse) => {
+  const res = await sdk.variation.getVariationById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -90,22 +93,20 @@ This endpoint will create an unzoom variation for the provided image ID
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { PostVariationsUnzoomResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.variation.postVariationsUnzoom({
-  id: "<ID>",
-  isVariation: false,
-}).then((res: PostVariationsUnzoomResponse) => {
+  const res = await sdk.variation.postVariationsUnzoom({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -18,57 +18,25 @@ This endpoint will generate images
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateGenerationResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.generation.createGeneration({
-  alchemy: false,
-  contrastRatio: 4444.14,
-  controlNet: false,
-  controlNetType: ControlnetType.Canny,
-  expandedDomain: false,
-  guidanceScale: 784343,
-  height: 244808,
-  highContrast: false,
-  highResolution: false,
-  imagePromptWeight: 2793,
-  imagePrompts: [
-    "Product",
-  ],
-  initGenerationImageId: "actuating DNS",
-  initImageId: "salmon wireless rarely",
-  initStrength: 1502.38,
-  modelId: "emulation Country",
-  negativePrompt: "Kentucky MTF",
-  nsfw: false,
-  numImages: 649224,
-  numInferenceSteps: 895539,
-  photoReal: false,
-  presetStyle: SdGenerationStyle.Leonardo,
-  prompt: "aggregate",
-  promptMagic: false,
-  promptMagicVersion: "visionary which",
-  public: false,
-  scheduler: SdGenerationSchedulers.Ddim,
-  sdVersion: SdVersions.V2,
-  seed: 262328,
-  tiling: false,
-  unzoom: false,
-  unzoomAmount: 371.25,
-  upscaleRatio: 485.82,
-  weighting: 9968.92,
-  width: 152007,
-}).then((res: CreateGenerationResponse) => {
+  const res = await sdk.generation.createGeneration({
+    imagePrompts: [
+      "payment",
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -92,20 +60,22 @@ This endpoint deletes a specific generation
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteGenerationByIdRequest, DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Sports";
 
-sdk.generation.deleteGenerationById(id).then((res: DeleteGenerationByIdResponse) => {
+  const res = await sdk.generation.deleteGenerationById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -129,27 +99,23 @@ This endpoint deletes the specific texture generation.
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import {
-  DeleteGenerationsTextureIdRequest,
-  DeleteGenerationsTextureIdRequestBody,
-  DeleteGenerationsTextureIdResponse,
-} from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteGenerationsTextureIdRequest, DeleteGenerationsTextureIdRequestBody } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Lodge";
-const requestBody: DeleteGenerationsTextureIdRequestBody = {
-  id: "<ID>",
-};
+const requestBody: DeleteGenerationsTextureIdRequestBody = {};
 
-sdk.generation.deleteGenerationsTextureId(id, requestBody).then((res: DeleteGenerationsTextureIdResponse) => {
+  const res = await sdk.generation.deleteGenerationsTextureId(id, requestBody);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -174,20 +140,22 @@ This endpoint will provide information about a specific generation
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetGenerationByIdRequest, GetGenerationByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "male";
 
-sdk.generation.getGenerationById(id).then((res: GetGenerationByIdResponse) => {
+  const res = await sdk.generation.getGenerationById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -211,22 +179,24 @@ This endpoint returns all generations by a specific user
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetGenerationsByUserIdRequest, GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetGenerationsByUserIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const userId: string = "Oriental";
 const limit: number = 135536;
 const offset: number = 934375;
 
-sdk.generation.getGenerationsByUserId(userId, limit, offset).then((res: GetGenerationsByUserIdResponse) => {
+  const res = await sdk.generation.getGenerationsByUserId(userId, limit, offset);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -252,28 +222,20 @@ This endpoint will generate a texture generation.
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { PostGenerationsTextureResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.generation.postGenerationsTexture({
-  frontRotationOffset: 854632,
-  modelAssetId: "West",
-  negativePrompt: "quantifying pink ah",
-  preview: false,
-  previewDirection: "Auto",
-  prompt: "Coupe North Steel",
-  sdVersion: "Market parsing inasmuch",
-  seed: 895868,
-}).then((res: PostGenerationsTextureResponse) => {
+  const res = await sdk.generation.postGenerationsTexture({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
