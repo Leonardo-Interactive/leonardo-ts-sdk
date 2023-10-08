@@ -17,22 +17,22 @@ This endpoint creates a new dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.dataset.createDataset({
-  description: "Synchronised multi-tasking projection",
-  name: "Quetzal South",
-}).then((res: CreateDatasetResponse) => {
+  const res = await sdk.dataset.createDataset({
+    name: "Forward South uselessly",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -56,20 +56,22 @@ This endpoint deletes the specific dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteDatasetByIdRequest, DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Lucia";
 
-sdk.dataset.deleteDatasetById(id).then((res: DeleteDatasetByIdResponse) => {
+  const res = await sdk.dataset.deleteDatasetById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -93,20 +95,22 @@ This endpoint gets the specific dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetDatasetByIdRequest, GetDatasetByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "red";
 
-sdk.dataset.getDatasetById(id).then((res: GetDatasetByIdResponse) => {
+  const res = await sdk.dataset.getDatasetById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -130,27 +134,25 @@ This endpoint returns presigned details to upload a dataset image to S3
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import {
-  UploadDatasetImageRequest,
-  UploadDatasetImageRequestBody,
-  UploadDatasetImageResponse,
-} from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { UploadDatasetImageRequest, UploadDatasetImageRequestBody } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const requestBody: UploadDatasetImageRequestBody = {
   extension: "mpg4",
 };
 const datasetId: string = "deposit";
 
-sdk.dataset.uploadDatasetImage(requestBody, datasetId).then((res: UploadDatasetImageResponse) => {
+  const res = await sdk.dataset.uploadDatasetImage(requestBody, datasetId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -175,27 +177,25 @@ This endpoint will upload a previously generated image to the dataset
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import {
-  UploadDatasetImageFromGenRequest,
-  UploadDatasetImageFromGenRequestBody,
-  UploadDatasetImageFromGenResponse,
-} from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { UploadDatasetImageFromGenRequest, UploadDatasetImageFromGenRequestBody } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const requestBody: UploadDatasetImageFromGenRequestBody = {
   generatedImageId: "navigate programming evolve",
 };
 const datasetId: string = "finally";
 
-sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId).then((res: UploadDatasetImageFromGenResponse) => {
+  const res = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

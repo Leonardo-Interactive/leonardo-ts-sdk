@@ -31,22 +31,22 @@ To get access to the API and fetch an API key, please sign up for [access](https
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CreateDatasetResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.dataset.createDataset({
-  description: "Synchronised multi-tasking projection",
-  name: "Quetzal South",
-}).then((res: CreateDatasetResponse) => {
+  const res = await sdk.dataset.createDataset({
+    name: "Forward South uselessly",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 <!-- End SDK Example Usage -->
 

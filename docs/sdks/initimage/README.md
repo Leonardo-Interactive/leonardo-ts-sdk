@@ -15,20 +15,22 @@ This endpoint deletes an init image
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { DeleteInitImageByIdRequest, DeleteInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { DeleteInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Woman";
 
-sdk.initImage.deleteInitImageById(id).then((res: DeleteInitImageByIdResponse) => {
+  const res = await sdk.initImage.deleteInitImageById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -52,20 +54,22 @@ This endpoint will return a single init image
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetInitImageByIdRequest, GetInitImageByIdResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
+import { GetInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "Namibia";
 
-sdk.initImage.getInitImageById(id).then((res: GetInitImageByIdResponse) => {
+  const res = await sdk.initImage.getInitImageById(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -89,21 +93,22 @@ This endpoint returns presigned details to upload an init image to S3
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { UploadInitImageResponse } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-const sdk = new Leonardo({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Leonardo({
+    security: {
+      bearerAuth: "",
+    },
+  });
 
-sdk.initImage.uploadInitImage({
-  extension: "png",
-}).then((res: UploadInitImageResponse) => {
+  const res = await sdk.initImage.uploadInitImage({
+    extension: "png",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
