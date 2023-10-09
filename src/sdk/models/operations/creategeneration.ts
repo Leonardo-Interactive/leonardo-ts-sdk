@@ -104,13 +104,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     initStrength?: number;
 
     /**
-     * The model ID used for the image generation. If not provided uses sd_version to determine the version of Stable Diffusion to use.
-     *
-     * @remarks
-     *
-     * _Leonardo Creative_: 6bef9f1b-29cb-40c7-b9df-32b51c1f67d3
-     * _Leonardo Select_: cd2b2a15-9760-4174-a5ff-4d2925057376
-     * _Leonardo Signature_: 291be633-cb24-434f-898f-e662799936ad
+     * The model ID used for image generation. If not provided, uses sd_version to determine the version of Stable Diffusion to use. In-app, model IDs are under the Finetune Models menu. Click on the platform model or your custom model, then click View More. For platform models, you can also use the List Platform Models API.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "modelId" })
@@ -145,14 +139,14 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     numInferenceSteps?: number;
 
     /**
-     * Enable the photoReal feature
+     * Enable the photoReal feature. Requires enabling alchemy and unspecifying modelId.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "photoReal" })
     photoReal?: boolean;
 
     /**
-     * The style to generate images with.
+     * The style to generate images with. When photoReal is enabled, use CINEMATIC, CREATIVE, VIBRANT, or NONE. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "presetStyle" })
@@ -212,14 +206,14 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     tiling?: boolean;
 
     /**
-     * Whether the generated images should be unzoomed.
+     * Whether the generated images should be unzoomed (requires unzoomAmount and init_image_id to be set).
      */
     @SpeakeasyMetadata()
     @Expose({ name: "unzoom" })
     unzoom?: boolean;
 
     /**
-     * How much the image should be unzoomed.
+     * How much the image should be unzoomed (requires an init_image_id and unzoom to be set to true).
      */
     @SpeakeasyMetadata()
     @Expose({ name: "unzoomAmount" })

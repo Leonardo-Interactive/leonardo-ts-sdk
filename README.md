@@ -35,7 +35,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    security: {
+      bearerAuth: "",
+    },
   });
 
   const res = await sdk.dataset.createDataset({

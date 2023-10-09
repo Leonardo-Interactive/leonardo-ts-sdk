@@ -13,3 +13,4 @@ The scheduler to generate images with. Defaults to EULER_DISCRETE if not specifi
 | `Ddim`                   | DDIM                     |
 | `DpmSolver`              | DPM_SOLVER               |
 | `Pndm`                   | PNDM                     |
+| `Leonardo`               | LEONARDO                 |

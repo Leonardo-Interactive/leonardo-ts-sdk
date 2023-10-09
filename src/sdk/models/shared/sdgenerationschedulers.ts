@@ -12,4 +12,5 @@ export enum SdGenerationSchedulers {
     Ddim = "DDIM",
     DpmSolver = "DPM_SOLVER",
     Pndm = "PNDM",
+    Leonardo = "LEONARDO",
 }
