@@ -19,7 +19,7 @@ jobs:
       languages: |-
         - typescript: ./
       publish_typescript: true
-      mode: pr
+      mode: direct
       force: ${{ github.event.inputs.force }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
