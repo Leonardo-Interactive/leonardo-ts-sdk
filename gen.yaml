@@ -2,23 +2,24 @@ configVersion: 1.0.0
 management:
   docChecksum: cda9d251429324050f2eeb530d3369ff
   docVersion: v1.0.0
-  speakeasyVersion: 1.96.1
-  generationVersion: 2.150.0
+  speakeasyVersion: 1.96.2
+  generationVersion: 2.150.1
 generation:
-  sdkClassName: Leonardo
-  singleTagPerOp: false
-  telemetryEnabled: false
   devContainers:
     enabled: true
     schemaPath: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+  sdkClassName: Leonardo
+  singleTagPerOp: false
+  telemetryEnabled: false
 features:
   typescript:
     core: 2.90.4
+    devContainers: 2.88.0
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 1.59.0
+  version: 1.60.0
   author: leonardoai
   flattenGlobalSecurity: true
   maxMethodParams: 5

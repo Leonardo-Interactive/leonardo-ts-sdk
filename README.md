@@ -100,7 +100,15 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 
 <!-- Start Dev Containers -->
+# Dev Containers
+<div align="left">
+    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
+    
+</div>
 
+Experience our SDK in an enhanced sandbox environment. Try it now in **GitHub Codespaces**!
+
+* [Explore Dev Containers](.devcontainer/README.md)
 <!-- End Dev Containers -->
 
 

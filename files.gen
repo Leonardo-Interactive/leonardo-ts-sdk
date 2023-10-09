@@ -184,3 +184,6 @@ docs/sdks/model/README.md
 docs/sdks/user/README.md
 docs/sdks/variation/README.md
 .gitattributes
+.devcontainer/README.md
+.devcontainer/devcontainer.json
+.devcontainer/setup.sh
