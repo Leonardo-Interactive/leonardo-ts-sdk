@@ -120,7 +120,7 @@ export class GetGenerationById200ApplicationJSONGenerations extends SpeakeasyBas
     negativePrompt?: string;
 
     /**
-     * The style to generate images with.
+     * The style to generate images with. When photoReal is enabled, use CINEMATIC, CREATIVE, VIBRANT, or NONE. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "presetStyle" })
