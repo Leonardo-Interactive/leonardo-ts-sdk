@@ -5,6 +5,7 @@
    <a href="https://github.com/Leonardo-Interactive/leonardo-ts-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/Leonardo-Interactive/leonardo-ts-sdk/speakeasy_sdk_generate.yml?style=for-the-badge" /></a>
    <a href="https://docs.leonardo.ai/"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
    <a href="https://discord.gg/leonardo-ai"><img src="https://img.shields.io/static/v1?label=Discord&message=Join&color=7289da&style=for-the-badge" /></a>
+   <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
 </div>
 
 <!-- Start SDK Installation -->
@@ -34,9 +35,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.dataset.createDataset({
@@ -100,7 +99,15 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 
 <!-- Start Dev Containers -->
+# Dev Containers
+<div align="left">
+    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
+    
+</div>
 
+Experience our SDK in an enhanced sandbox environment. Try it now in **GitHub Codespaces**!
+
+* [Explore Dev Containers](.devcontainer/README.md)
 <!-- End Dev Containers -->
 
 

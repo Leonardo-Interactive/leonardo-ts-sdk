@@ -27,10 +27,7 @@ export const ServerList = [
  * The available configuration options for the SDK
  */
 export type SDKProps = {
-    /**
-     * The security details required to authenticate the SDK
-     */
-    security?: shared.Security | (() => Promise<shared.Security>);
+    bearerAuth?: string;
 
     /**
      * Allows overriding the default axios client used by the SDK
@@ -59,9 +56,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.0";
-    sdkVersion = "1.59.0";
-    genVersion = "2.150.0";
-    userAgent = "speakeasy-sdk/typescript 1.59.0 2.150.0 v1.0.0 @leonardo-ai/sdk";
+    sdkVersion = "1.61.0";
+    genVersion = "2.150.1";
+    userAgent = "speakeasy-sdk/typescript 1.61.0 2.150.1 v1.0.0 @leonardo-ai/sdk";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -92,7 +89,8 @@ export class Leonardo {
         const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
-            security: props?.security,
+            security: new shared.Security({ bearerAuth: props?.bearerAuth }),
+
             serverURL: serverURL,
             retryConfig: props?.retryConfig,
         });
