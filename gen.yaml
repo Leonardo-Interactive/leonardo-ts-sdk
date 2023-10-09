@@ -21,6 +21,6 @@ features:
 typescript:
   version: 1.59.0
   author: leonardoai
-  flattenGlobalSecurity: false
+  flattenGlobalSecurity: true
   maxMethodParams: 5
   packageName: '@leonardo-ai/sdk'
