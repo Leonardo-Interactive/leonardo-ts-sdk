@@ -8,6 +8,10 @@ generation:
   sdkClassName: Leonardo
   singleTagPerOp: false
   telemetryEnabled: false
+  flattenGlobalSecurity: true
+  devContainers:
+    enabled: true
+    schemaPath: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
 features:
   typescript:
     core: 2.90.4
