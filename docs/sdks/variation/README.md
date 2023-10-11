@@ -18,9 +18,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.variation.createVariationUpscale({
@@ -58,9 +56,7 @@ import { GetVariationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operat
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "walker";
 
@@ -96,9 +92,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.variation.postVariationsUnzoom({});

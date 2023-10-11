@@ -33,21 +33,20 @@ To get access to the API and fetch an API key, please sign up for [access](https
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async() => {
-  const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
-  });
+(async () => {
+    const sdk = new Leonardo({
+        bearerAuth: "",
+    });
 
-  const res = await sdk.dataset.createDataset({
-    name: "Forward South uselessly",
-  });
+    const res = await sdk.dataset.createDataset({
+        name: "Forward South uselessly",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -62,6 +61,10 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [getDatasetById](docs/sdks/dataset/README.md#getdatasetbyid) - Get a Single Dataset by ID
 * [uploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
 * [uploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
+
+### [element](docs/sdks/element/README.md)
+
+* [getElements](docs/sdks/element/README.md#getelements) - List Elements
 
 ### [generation](docs/sdks/generation/README.md)
 

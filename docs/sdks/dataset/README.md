@@ -20,9 +20,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.dataset.createDataset({
@@ -60,9 +58,7 @@ import { DeleteDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/opera
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Lucia";
 
@@ -99,9 +95,7 @@ import { GetDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operatio
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "red";
 
@@ -138,9 +132,7 @@ import { UploadDatasetImageRequest, UploadDatasetImageRequestBody } from "@leona
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const requestBody: UploadDatasetImageRequestBody = {
   extension: "mpg4",
@@ -181,9 +173,7 @@ import { UploadDatasetImageFromGenRequest, UploadDatasetImageFromGenRequestBody 
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const requestBody: UploadDatasetImageFromGenRequestBody = {
   generatedImageId: "navigate programming evolve",

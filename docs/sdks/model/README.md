@@ -22,9 +22,7 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.model.createModel({
@@ -64,9 +62,7 @@ import { DeleteModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operati
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Mills";
 
@@ -103,9 +99,7 @@ import { DeleteModels3dIdRequest, DeleteModels3dIdRequestBody } from "@leonardo-
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Electronics";
 const requestBody: DeleteModels3dIdRequestBody = {};
@@ -144,9 +138,7 @@ import { GetModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "protocol";
 
@@ -183,9 +175,7 @@ import { GetPlatformModelsRequest } from "@leonardo-ai/sdk/dist/sdk/models/opera
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const limit: number = 419487;
 const offset: number = 472174;
@@ -223,9 +213,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.model.postModels3dUpload({});

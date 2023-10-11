@@ -1,13 +1,13 @@
-# User
-(*user*)
+# Element
+(*element*)
 
 ### Available Operations
 
-* [getUserSelf](#getuserself) - Get user information
+* [getElements](#getelements) - List Elements
 
-## getUserSelf
+## getElements
 
-This endpoint will return your user such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, model training tokens and api credit (which is used via a production api key). Please note that the api credit unit is the millicent, ie. 100,000 credits = $1
+Get a list of public Elements available for use with generations.
 
 ### Example Usage
 
@@ -19,7 +19,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
     bearerAuth: "",
   });
 
-  const res = await sdk.user.getUserSelf();
+  const res = await sdk.element.getElements();
 
   if (res.statusCode == 200) {
     // handle response
@@ -36,5 +36,5 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Response
 
-**Promise<[operations.GetUserSelfResponse](../../models/operations/getuserselfresponse.md)>**
+**Promise<[operations.GetElementsResponse](../../models/operations/getelementsresponse.md)>**
 

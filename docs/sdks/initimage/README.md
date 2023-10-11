@@ -19,9 +19,7 @@ import { DeleteInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/ope
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Woman";
 
@@ -58,9 +56,7 @@ import { GetInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operat
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Namibia";
 
@@ -96,9 +92,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.initImage.uploadInitImage({

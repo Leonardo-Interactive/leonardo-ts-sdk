@@ -22,12 +22,13 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.generation.createGeneration({
+    elements: [
+      {},
+    ],
     imagePrompts: [
       "payment",
     ],
@@ -64,9 +65,7 @@ import { DeleteGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/op
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Sports";
 
@@ -103,9 +102,7 @@ import { DeleteGenerationsTextureIdRequest, DeleteGenerationsTextureIdRequestBod
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "Lodge";
 const requestBody: DeleteGenerationsTextureIdRequestBody = {};
@@ -144,9 +141,7 @@ import { GetGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/opera
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const id: string = "male";
 
@@ -183,9 +178,7 @@ import { GetGenerationsByUserIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 const userId: string = "Oriental";
 const limit: number = 135536;
@@ -225,9 +218,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 (async() => {
   const sdk = new Leonardo({
-    security: {
-      bearerAuth: "",
-    },
+    bearerAuth: "",
   });
 
   const res = await sdk.generation.postGenerationsTexture({});
