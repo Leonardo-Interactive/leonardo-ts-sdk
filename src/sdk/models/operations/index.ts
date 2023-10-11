@@ -13,7 +13,6 @@ export * from "./deleteinitimagebyid";
 export * from "./deletemodelbyid";
 export * from "./deletemodels3did";
 export * from "./getdatasetbyid";
-export * from "./getelements";
 export * from "./getgenerationbyid";
 export * from "./getgenerationsbyuserid";
 export * from "./getinitimagebyid";

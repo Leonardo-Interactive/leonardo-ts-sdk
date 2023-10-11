@@ -62,10 +62,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [uploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
 * [uploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
 
-### [element](docs/sdks/element/README.md)
-
-* [getElements](docs/sdks/element/README.md#getelements) - List Elements
-
 ### [generation](docs/sdks/generation/README.md)
 
 * [createGeneration](docs/sdks/generation/README.md#creategeneration) - Create a Generation of Images

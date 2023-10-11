@@ -4,7 +4,6 @@
 
 import * as utils from "../internal/utils";
 import { Dataset } from "./dataset";
-import { Element } from "./element";
 import { Generation } from "./generation";
 import { InitImage } from "./initimage";
 import { Model } from "./model";
@@ -57,9 +56,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.0";
-    sdkVersion = "1.61.2";
+    sdkVersion = "1.61.3";
     genVersion = "2.152.1";
-    userAgent = "speakeasy-sdk/typescript 1.61.2 2.152.1 v1.0.0 @leonardo-ai/sdk";
+    userAgent = "speakeasy-sdk/typescript 1.61.3 2.152.1 v1.0.0 @leonardo-ai/sdk";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -71,7 +70,6 @@ export class SDKConfiguration {
  */
 export class Leonardo {
     public dataset: Dataset;
-    public element: Element;
     public generation: Generation;
     public initImage: InitImage;
     public model: Model;
@@ -98,7 +96,6 @@ export class Leonardo {
         });
 
         this.dataset = new Dataset(this.sdkConfiguration);
-        this.element = new Element(this.sdkConfiguration);
         this.generation = new Generation(this.sdkConfiguration);
         this.initImage = new InitImage(this.sdkConfiguration);
         this.model = new Model(this.sdkConfiguration);

@@ -1,5 +1,4 @@
 src/sdk/dataset.ts
-src/sdk/element.ts
 src/sdk/generation.ts
 src/sdk/initimage.ts
 src/sdk/model.ts
@@ -30,7 +29,6 @@ src/sdk/models/operations/deletedatasetbyid.ts
 src/sdk/models/operations/getdatasetbyid.ts
 src/sdk/models/operations/uploaddatasetimage.ts
 src/sdk/models/operations/uploaddatasetimagefromgen.ts
-src/sdk/models/operations/getelements.ts
 src/sdk/models/operations/creategeneration.ts
 src/sdk/models/operations/deletegenerationbyid.ts
 src/sdk/models/operations/deletegenerationstextureid.ts
@@ -54,7 +52,6 @@ src/sdk/models/operations/index.ts
 src/sdk/models/shared/sdversions.ts
 src/sdk/models/shared/sdgenerationschedulers.ts
 src/sdk/models/shared/sdgenerationstyle.ts
-src/sdk/models/shared/elementinput.ts
 src/sdk/models/shared/controlnettype.ts
 src/sdk/models/shared/jobstatus.ts
 src/sdk/models/shared/variationtype.ts
@@ -87,9 +84,6 @@ docs/models/operations/uploaddatasetimagefromgenrequest.md
 docs/models/operations/uploaddatasetimagefromgen200applicationjsondatasetgenuploadoutput.md
 docs/models/operations/uploaddatasetimagefromgen200applicationjson.md
 docs/models/operations/uploaddatasetimagefromgenresponse.md
-docs/models/operations/getelements200applicationjsonloras.md
-docs/models/operations/getelements200applicationjson.md
-docs/models/operations/getelementsresponse.md
 docs/models/operations/creategenerationrequestbody.md
 docs/models/operations/creategeneration200applicationjsonsdgenerationoutput.md
 docs/models/operations/creategeneration200applicationjson.md
@@ -106,16 +100,12 @@ docs/models/operations/deletegenerationstextureidresponse.md
 docs/models/operations/getgenerationbyidrequest.md
 docs/models/operations/getgenerationbyid200applicationjsongenerationsgeneratedimagesgeneratedimagevariationgeneric.md
 docs/models/operations/getgenerationbyid200applicationjsongenerationsgeneratedimages.md
-docs/models/operations/getgenerationbyid200applicationjsongenerationsgenerationelementsloras.md
-docs/models/operations/getgenerationbyid200applicationjsongenerationsgenerationelements.md
 docs/models/operations/getgenerationbyid200applicationjsongenerations.md
 docs/models/operations/getgenerationbyid200applicationjson.md
 docs/models/operations/getgenerationbyidresponse.md
 docs/models/operations/getgenerationsbyuseridrequest.md
 docs/models/operations/getgenerationsbyuserid200applicationjsongenerationsgeneratedimagesgeneratedimagevariationgeneric.md
 docs/models/operations/getgenerationsbyuserid200applicationjsongenerationsgeneratedimages.md
-docs/models/operations/getgenerationsbyuserid200applicationjsongenerationsgenerationelementselements.md
-docs/models/operations/getgenerationsbyuserid200applicationjsongenerationsgenerationelements.md
 docs/models/operations/getgenerationsbyuserid200applicationjsongenerations.md
 docs/models/operations/getgenerationsbyuserid200applicationjson.md
 docs/models/operations/getgenerationsbyuseridresponse.md
@@ -180,7 +170,6 @@ docs/models/operations/postvariationsunzoomresponse.md
 docs/models/shared/sdversions.md
 docs/models/shared/sdgenerationschedulers.md
 docs/models/shared/sdgenerationstyle.md
-docs/models/shared/elementinput.md
 docs/models/shared/controlnettype.md
 docs/models/shared/jobstatus.md
 docs/models/shared/variationtype.md
@@ -189,7 +178,6 @@ docs/models/shared/custommodeltype.md
 docs/models/shared/security.md
 docs/sdks/leonardo/README.md
 docs/sdks/dataset/README.md
-docs/sdks/element/README.md
 docs/sdks/generation/README.md
 docs/sdks/initimage/README.md
 docs/sdks/model/README.md
