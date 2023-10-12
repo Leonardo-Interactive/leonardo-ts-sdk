@@ -4,6 +4,7 @@
 
 export * from "./controlnettype";
 export * from "./custommodeltype";
+export * from "./elementinput";
 export * from "./jobstatus";
 export * from "./sdgenerationschedulers";
 export * from "./sdgenerationstyle";

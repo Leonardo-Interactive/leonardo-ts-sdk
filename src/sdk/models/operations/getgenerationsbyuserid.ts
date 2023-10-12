@@ -78,6 +78,88 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages 
 }
 
 /**
+ * Element used for the generation.
+ */
+export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElementsElements extends SpeakeasyBase {
+    /**
+     * Unique identifier for the element. Elements can be found from the List Elements endpoint.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "akUUID" })
+    akUUID?: string;
+
+    /**
+     * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "baseModel" })
+    baseModel?: shared.SdVersions;
+
+    /**
+     * Description for the element
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
+
+    /**
+     * Name of the element
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
+
+    /**
+     * URL of the element image
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "urlImage" })
+    urlImage?: string;
+
+    /**
+     * Default weight for the element
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "weightDefault" })
+    weightDefault?: number;
+
+    /**
+     * Maximum weight for the element
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "weightMax" })
+    weightMax?: number;
+
+    /**
+     * Minimum weight for the element
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "weightMin" })
+    weightMin?: number;
+}
+
+/**
+ * This table captures the elements that are applied to a Generations, also the order and weightings used when applied.
+ */
+export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: number;
+
+    /**
+     * Element used for the generation.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "lora" })
+    @Type(() => GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElementsElements)
+    lora?: GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElementsElements;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "weightApplied" })
+    weightApplied?: number;
+}
+
+/**
  * columns and relationships of "generations"
  */
 export class GetGenerationsByUserId200ApplicationJSONGenerations extends SpeakeasyBase {
@@ -91,6 +173,13 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
     @Expose({ name: "generated_images" })
     @Type(() => GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages)
     generatedImages?: GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages[];
+
+    @SpeakeasyMetadata({
+        elemType: GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements,
+    })
+    @Expose({ name: "generation_elements" })
+    @Type(() => GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements)
+    generationElements?: GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "guidanceScale" })

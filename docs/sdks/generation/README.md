@@ -26,6 +26,9 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
   });
 
   const res = await sdk.generation.createGeneration({
+    elements: [
+      {},
+    ],
     imagePrompts: [
       "payment",
     ],

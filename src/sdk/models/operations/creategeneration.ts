@@ -39,6 +39,11 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     @Expose({ name: "controlNetType" })
     controlNetType?: shared.ControlnetType;
 
+    @SpeakeasyMetadata({ elemType: shared.ElementInput })
+    @Expose({ name: "elements" })
+    @Type(() => shared.ElementInput)
+    elements?: shared.ElementInput[];
+
     /**
      * Enable to use the Expanded Domain feature of Alchemy.
      */
