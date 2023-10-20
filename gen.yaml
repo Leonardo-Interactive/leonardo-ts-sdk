@@ -2,25 +2,29 @@ configVersion: 1.0.0
 management:
   docChecksum: 8a48a6b4e868f2448b4e40722c2a64c9
   docVersion: v1.0.0
-  speakeasyVersion: 1.101.0
-  generationVersion: 2.161.0
+  speakeasyVersion: 1.102.0
+  generationVersion: 2.166.0
 generation:
   devContainers:
     enabled: true
     schemaPath: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+  repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   sdkClassName: Leonardo
   singleTagPerOp: false
   telemetryEnabled: false
 features:
   typescript:
-    core: 2.90.4
+    core: 2.92.4
     devContainers: 2.88.0
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 1.61.6
+  version: 1.62.0
   author: leonardoai
   flattenGlobalSecurity: true
+  installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
   maxMethodParams: 5
   packageName: '@leonardo-ai/sdk'
+  published: true
+  repoSubDirectory: .
