@@ -24,8 +24,24 @@ export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase
  */
 export class GetUserSelf200ApplicationJSONUserDetails extends SpeakeasyBase {
     @SpeakeasyMetadata()
-    @Expose({ name: "showNsfw" })
-    showNsfw?: boolean;
+    @Expose({ name: "apiConcurrencySlots" })
+    apiConcurrencySlots?: number;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "subscriptionGptTokens" })
+    subscriptionGptTokens?: number;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "subscriptionModelTokens" })
+    subscriptionModelTokens?: number;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "subscriptionTokens" })
+    subscriptionTokens?: number;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "tokenRenewalDate" })
+    tokenRenewalDate?: string;
 
     /**
      * columns and relationships of "users"

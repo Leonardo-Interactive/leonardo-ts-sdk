@@ -10,7 +10,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
     });
 
     const res = await sdk.dataset.createDataset({
-        name: "Forward South uselessly",
+        name: "Van",
     });
 
     if (res.statusCode == 200) {

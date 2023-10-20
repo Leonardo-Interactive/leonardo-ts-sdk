@@ -3,9 +3,47 @@
 
 ### Available Operations
 
+* [createVariationNoBG](#createvariationnobg) - Create no background
 * [createVariationUpscale](#createvariationupscale) - Create upscale
 * [getVariationById](#getvariationbyid) - Get variation by ID
 * [postVariationsUnzoom](#postvariationsunzoom) - Create unzoom
+
+## createVariationNoBG
+
+This endpoint will create a no background variation of the provided image ID
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+(async() => {
+  const sdk = new Leonardo({
+    bearerAuth: "",
+  });
+
+  const res = await sdk.variation.createVariationNoBG({
+    id: "<ID>",
+  });
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                              | [operations.CreateVariationNoBGRequestBody](../../models/operations/createvariationnobgrequestbody.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
+
+
+### Response
+
+**Promise<[operations.CreateVariationNoBGResponse](../../models/operations/createvariationnobgresponse.md)>**
+
 
 ## createVariationUpscale
 

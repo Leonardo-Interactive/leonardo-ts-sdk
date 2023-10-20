@@ -22,14 +22,14 @@ ts-node root.ts
 
 The speakeasy CLI allows you to generate more usage snippets. Here's how:
 
-- For a specific OperationID, use:
+- To generate a sample for a specific operation by providing an operation ID, use:
 
 ```
-speakeasy generate usage -s https://api-docs-nine-delta.vercel.app/cloud/openapi.json -l typescript -i operation_id -o ./samples
+speakeasy generate usage -s https://api-docs-nine-delta.vercel.app/cloud/openapi.json -l typescript -i {INPUT_OPERATION_ID} -o ./samples
 ```
 
 - To generate samples for an entire namespace (like a tag or group name), use:
 
 ```
-speakeasy generate usage -s https://api-docs-nine-delta.vercel.app/cloud/openapi.json -l typescript -n namespace -o ./samples
+speakeasy generate usage -s https://api-docs-nine-delta.vercel.app/cloud/openapi.json -l typescript -n {INPUT_TAG_NAME} -o ./samples
 ```

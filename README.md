@@ -39,7 +39,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
     });
 
     const res = await sdk.dataset.createDataset({
-        name: "Forward South uselessly",
+        name: "Van",
     });
 
     if (res.statusCode == 200) {
@@ -96,6 +96,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### [variation](docs/sdks/variation/README.md)
 
+* [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
 * [postVariationsUnzoom](docs/sdks/variation/README.md#postvariationsunzoom) - Create unzoom

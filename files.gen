@@ -47,6 +47,7 @@ src/sdk/models/operations/getmodelbyid.ts
 src/sdk/models/operations/getplatformmodels.ts
 src/sdk/models/operations/postmodels3dupload.ts
 src/sdk/models/operations/getuserself.ts
+src/sdk/models/operations/createvariationnobg.ts
 src/sdk/models/operations/createvariationupscale.ts
 src/sdk/models/operations/getvariationbyid.ts
 src/sdk/models/operations/postvariationsunzoom.ts
@@ -165,6 +166,10 @@ docs/models/operations/getuserself200applicationjsonuserdetailsusers.md
 docs/models/operations/getuserself200applicationjsonuserdetails.md
 docs/models/operations/getuserself200applicationjson.md
 docs/models/operations/getuserselfresponse.md
+docs/models/operations/createvariationnobgrequestbody.md
+docs/models/operations/createvariationnobg200applicationjsonsdupscalejoboutput.md
+docs/models/operations/createvariationnobg200applicationjson.md
+docs/models/operations/createvariationnobgresponse.md
 docs/models/operations/createvariationupscalerequestbody.md
 docs/models/operations/createvariationupscale200applicationjsonsdupscalejoboutput.md
 docs/models/operations/createvariationupscale200applicationjson.md

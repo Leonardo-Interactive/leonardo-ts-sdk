@@ -5,6 +5,7 @@
 export * from "./createdataset";
 export * from "./creategeneration";
 export * from "./createmodel";
+export * from "./createvariationnobg";
 export * from "./createvariationupscale";
 export * from "./deletedatasetbyid";
 export * from "./deletegenerationbyid";

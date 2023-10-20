@@ -24,7 +24,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   });
 
   const res = await sdk.dataset.createDataset({
-    name: "Forward South uselessly",
+    name: "Van",
   });
 
   if (res.statusCode == 200) {
@@ -176,9 +176,9 @@ import { UploadDatasetImageFromGenRequest, UploadDatasetImageFromGenRequestBody 
     bearerAuth: "",
   });
 const requestBody: UploadDatasetImageFromGenRequestBody = {
-  generatedImageId: "navigate programming evolve",
+  generatedImageId: "Gasoline",
 };
-const datasetId: string = "finally";
+const datasetId: string = "convergence";
 
   const res = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
 

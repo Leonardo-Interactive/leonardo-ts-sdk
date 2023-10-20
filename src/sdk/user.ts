@@ -20,7 +20,7 @@ export class User {
      * Get user information
      *
      * @remarks
-     * This endpoint will return your user such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, model training tokens and api credit (which is used via a production api key). Please note that the api credit unit is the millicent, ie. 100,000 credits = $1
+     * This endpoint will return your user information such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, and model training tokens
      */
     async getUserSelf(config?: AxiosRequestConfig): Promise<operations.GetUserSelfResponse> {
         const baseURL: string = utils.templateUrl(

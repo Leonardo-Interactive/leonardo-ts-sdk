@@ -26,9 +26,9 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
   });
 
   const res = await sdk.model.createModel({
-    datasetId: "24/7",
-    instancePrompt: "instead Anchorage",
-    name: "Ohio",
+    datasetId: "Northwest",
+    instancePrompt: "Generic",
+    name: "instead",
   });
 
   if (res.statusCode == 200) {
