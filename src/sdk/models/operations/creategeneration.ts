@@ -151,6 +151,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     photoReal?: boolean;
 
     /**
+     * Strength of photoReal. Must be a float between 0.1 and 1.0.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "photoRealStrength" })
+    photoRealStrength?: number;
+
+    /**
      * The style to generate images with. When photoReal is enabled, use CINEMATIC, CREATIVE, VIBRANT, or NONE. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
      */
     @SpeakeasyMetadata()
@@ -170,6 +177,13 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "promptMagic" })
     promptMagic?: boolean;
+
+    /**
+     * Strength of prompt magic. Must be a float between 0.1 and 1.0
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "promptMagicStrength" })
+    promptMagicStrength?: number;
 
     /**
      * Prompt magic version v2 or v3, for use when promptMagic: true

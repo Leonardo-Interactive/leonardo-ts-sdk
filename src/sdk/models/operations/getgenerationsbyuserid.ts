@@ -214,6 +214,20 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
     negativePrompt?: string;
 
     /**
+     * If photoReal feature was used.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "photoReal" })
+    photoReal?: boolean;
+
+    /**
+     * Strength of photoReal used.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "photoRealStrength" })
+    photoRealStrength?: number;
+
+    /**
      * The style to generate images with. When photoReal is enabled, use CINEMATIC, CREATIVE, VIBRANT, or NONE. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
      */
     @SpeakeasyMetadata()
@@ -223,6 +237,27 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
     @SpeakeasyMetadata()
     @Expose({ name: "prompt" })
     prompt?: string;
+
+    /**
+     * If prompt magic was used.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "promptMagic" })
+    promptMagic?: boolean;
+
+    /**
+     * Strength of prompt magic used.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "promptMagicStrength" })
+    promptMagicStrength?: number;
+
+    /**
+     * Version of prompt magic used.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "promptMagicVersion" })
+    promptMagicVersion?: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "public" })

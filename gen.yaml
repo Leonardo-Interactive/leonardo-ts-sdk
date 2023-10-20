@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: c39eaf0bd633c31c6ccf5e2ecbe5804b
+  docChecksum: 8a48a6b4e868f2448b4e40722c2a64c9
   docVersion: v1.0.0
   speakeasyVersion: 1.101.0
   generationVersion: 2.161.0
@@ -19,7 +19,7 @@ features:
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 1.61.5
+  version: 1.61.6
   author: leonardoai
   flattenGlobalSecurity: true
   maxMethodParams: 5
