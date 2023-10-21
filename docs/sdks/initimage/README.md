@@ -21,7 +21,7 @@ import { DeleteInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/ope
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Woman";
+const id: string = "string";
 
   const res = await sdk.initImage.deleteInitImageById(id);
 
@@ -58,7 +58,7 @@ import { GetInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operat
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Namibia";
+const id: string = "string";
 
   const res = await sdk.initImage.getInitImageById(id);
 

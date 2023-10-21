@@ -30,7 +30,7 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
       {},
     ],
     imagePrompts: [
-      "payment",
+      "string",
     ],
   });
 
@@ -67,7 +67,7 @@ import { DeleteGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/op
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Sports";
+const id: string = "string";
 
   const res = await sdk.generation.deleteGenerationById(id);
 
@@ -104,7 +104,7 @@ import { DeleteGenerationsTextureIdRequest, DeleteGenerationsTextureIdRequestBod
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Lodge";
+const id: string = "string";
 const requestBody: DeleteGenerationsTextureIdRequestBody = {};
 
   const res = await sdk.generation.deleteGenerationsTextureId(id, requestBody);
@@ -143,7 +143,7 @@ import { GetGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/opera
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "male";
+const id: string = "string";
 
   const res = await sdk.generation.getGenerationById(id);
 
@@ -180,9 +180,9 @@ import { GetGenerationsByUserIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const userId: string = "Oriental";
-const limit: number = 135536;
-const offset: number = 934375;
+const userId: string = "string";
+const limit: number = 270501;
+const offset: number = 770121;
 
   const res = await sdk.generation.getGenerationsByUserId(userId, limit, offset);
 

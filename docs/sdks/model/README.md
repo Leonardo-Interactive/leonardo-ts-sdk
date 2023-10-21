@@ -26,9 +26,9 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
   });
 
   const res = await sdk.model.createModel({
-    datasetId: "Northwest",
-    instancePrompt: "Generic",
-    name: "instead",
+    datasetId: "string",
+    instancePrompt: "string",
+    name: "string",
   });
 
   if (res.statusCode == 200) {
@@ -64,7 +64,7 @@ import { DeleteModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operati
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Mills";
+const id: string = "string";
 
   const res = await sdk.model.deleteModelById(id);
 
@@ -101,7 +101,7 @@ import { DeleteModels3dIdRequest, DeleteModels3dIdRequestBody } from "@leonardo-
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Electronics";
+const id: string = "string";
 const requestBody: DeleteModels3dIdRequestBody = {};
 
   const res = await sdk.model.deleteModels3dId(id, requestBody);
@@ -140,7 +140,7 @@ import { GetModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "protocol";
+const id: string = "string";
 
   const res = await sdk.model.getModelById(id);
 

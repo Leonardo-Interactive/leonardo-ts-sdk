@@ -39,7 +39,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
     });
 
     const res = await sdk.dataset.createDataset({
-        name: "Van",
+        name: "string",
     });
 
     if (res.statusCode == 200) {

@@ -96,7 +96,7 @@ import { GetVariationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operat
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "walker";
+const id: string = "string";
 
   const res = await sdk.variation.getVariationById(id);
 

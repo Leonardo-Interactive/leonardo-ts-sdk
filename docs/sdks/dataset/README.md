@@ -24,7 +24,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   });
 
   const res = await sdk.dataset.createDataset({
-    name: "Van",
+    name: "string",
   });
 
   if (res.statusCode == 200) {
@@ -60,7 +60,7 @@ import { DeleteDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/opera
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "Lucia";
+const id: string = "string";
 
   const res = await sdk.dataset.deleteDatasetById(id);
 
@@ -97,7 +97,7 @@ import { GetDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operatio
   const sdk = new Leonardo({
     bearerAuth: "",
   });
-const id: string = "red";
+const id: string = "string";
 
   const res = await sdk.dataset.getDatasetById(id);
 
@@ -137,7 +137,7 @@ import { UploadDatasetImageRequest, UploadDatasetImageRequestBody } from "@leona
 const requestBody: UploadDatasetImageRequestBody = {
   extension: "mpg4",
 };
-const datasetId: string = "deposit";
+const datasetId: string = "string";
 
   const res = await sdk.dataset.uploadDatasetImage(requestBody, datasetId);
 
@@ -176,9 +176,9 @@ import { UploadDatasetImageFromGenRequest, UploadDatasetImageFromGenRequestBody 
     bearerAuth: "",
   });
 const requestBody: UploadDatasetImageFromGenRequestBody = {
-  generatedImageId: "Gasoline",
+  generatedImageId: "string",
 };
-const datasetId: string = "convergence";
+const datasetId: string = "string";
 
   const res = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
 
