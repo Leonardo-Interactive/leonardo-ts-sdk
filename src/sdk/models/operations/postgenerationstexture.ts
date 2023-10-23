@@ -44,6 +44,13 @@ export class PostGenerationsTextureRequestBody extends SpeakeasyBase {
 }
 
 export class PostGenerationsTexture200ApplicationJSONTextureGenerationJobOutput extends SpeakeasyBase {
+    /**
+     * API Credits Cost for Texture Generation. Available for Production API Users
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "apiCreditCost" })
+    apiCreditCost?: number;
+
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;

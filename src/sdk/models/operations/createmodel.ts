@@ -76,6 +76,13 @@ export class CreateModelRequestBody extends SpeakeasyBase {
 }
 
 export class CreateModel200ApplicationJSONSDTrainingOutput extends SpeakeasyBase {
+    /**
+     * API Credits Cost for Model Training. Available for Production API Users.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "apiCreditCost" })
+    apiCreditCost?: number;
+
     @SpeakeasyMetadata()
     @Expose({ name: "customModelId" })
     customModelId?: string;

@@ -20,6 +20,13 @@ export class PostVariationsUnzoomRequestBody extends SpeakeasyBase {
 }
 
 export class PostVariationsUnzoom200ApplicationJSONSDUnzoomOutput extends SpeakeasyBase {
+    /**
+     * API Credits Cost for Unzoom Variation. Available for Production API Users
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "apiCreditCost" })
+    apiCreditCost?: number;
+
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;

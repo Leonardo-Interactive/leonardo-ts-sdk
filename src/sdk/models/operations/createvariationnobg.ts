@@ -20,6 +20,13 @@ export class CreateVariationNoBGRequestBody extends SpeakeasyBase {
 }
 
 export class CreateVariationNoBg200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
+    /**
+     * API Credits Cost for No Background Variation. Available for Production API Users
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "apiCreditCost" })
+    apiCreditCost?: number;
+
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
