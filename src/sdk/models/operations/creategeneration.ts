@@ -66,7 +66,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     height?: number;
 
     /**
-     * Enable to use the High Contrast feature of Prompt Magic.
+     * Enable to use the High Contrast feature of Prompt Magic. Note: Controls RAW mode. Set to false to enable RAW mode.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "highContrast" })
@@ -151,7 +151,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     photoReal?: boolean;
 
     /**
-     * Strength of photoReal. Must be a float between 0.1 and 1.0.
+     * Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "photoRealStrength" })
