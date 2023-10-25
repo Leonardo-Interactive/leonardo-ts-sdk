@@ -1,6 +1,6 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "1.63.1",
+  "version": "1.64.0",
   "author": "leonardoai",
   "scripts": {
     "prepare": "tsc --build",
