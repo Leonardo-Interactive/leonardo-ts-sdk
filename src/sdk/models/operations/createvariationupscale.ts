@@ -17,7 +17,7 @@ export class CreateVariationUpscaleRequestBody extends SpeakeasyBase {
 
 export class CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
     /**
-     * API Credits Cost for Upscale Variation. Available for Production API Users
+     * API Credits Cost for Upscale Variation. Available for Production API Users.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "apiCreditCost" })

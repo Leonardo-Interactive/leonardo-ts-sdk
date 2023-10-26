@@ -262,7 +262,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
 
 export class CreateGeneration200ApplicationJSONSDGenerationOutput extends SpeakeasyBase {
     /**
-     * API Credits Cost for Image Generation. Available for Production API Users
+     * API Credits Cost for Image Generation. Available for Production API Users.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "apiCreditCost" })
