@@ -1,4 +1,4 @@
-name: Generate
+name: Generate_And_Publish
 
 on:
   workflow_dispatch:
@@ -30,7 +30,6 @@ jobs:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v14 # Import the sdk publish workflow which will handle the publishing to the package managers
     with:
       publish_typescript: true
-      create_release: true
     secrets:
       npm_token: ${{secrets.NPM_TOKEN}}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
