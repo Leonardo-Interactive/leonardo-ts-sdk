@@ -22,6 +22,16 @@ jobs:
       mode: direct
       force: ${{ github.event.inputs.force }}
     secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+  publish:
+    needs: generate
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v14 # Import the sdk publish workflow which will handle the publishing to the package managers
+    with:
+      publish_typescript: true
+      create_release: true
+    secrets:
       npm_token: ${{secrets.NPM_TOKEN}}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
