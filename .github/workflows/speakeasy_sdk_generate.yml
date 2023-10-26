@@ -22,6 +22,7 @@ jobs:
       mode: direct
       force: ${{ github.event.inputs.force }}
     secrets:
+      npm_token: ${{secrets.NPM_TOKEN}}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
       slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
