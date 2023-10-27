@@ -221,7 +221,7 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
     photoReal?: boolean;
 
     /**
-     * Depth of field of photoReal used. 0.55 is low, 0.5 is medium, and 0.45 is high.
+     * Depth of field of photoReal used. 0.55 is low, 0.5 is medium, and 0.45 is high. Default is 0.55.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "photoRealStrength" })

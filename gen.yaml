@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 46ad48e241e614e90f160dea337b2711
+  docChecksum: 5c46d09a773b28588fedd4bb31a1647c
   docVersion: v1.0.0
-  speakeasyVersion: 1.108.0
-  generationVersion: 2.172.0
+  speakeasyVersion: 1.108.1
+  generationVersion: 2.172.4
 generation:
   devContainers:
     enabled: true
@@ -20,7 +20,7 @@ features:
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 1.64.2
+  version: 1.64.3
   author: leonardoai
   flattenGlobalSecurity: true
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk

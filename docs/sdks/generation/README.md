@@ -34,6 +34,7 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
     ],
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -70,6 +71,7 @@ import { DeleteGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/op
 const id: string = "string";
 
   const res = await sdk.generation.deleteGenerationById(id);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -109,6 +111,7 @@ const requestBody: DeleteGenerationsTextureIdRequestBody = {};
 
   const res = await sdk.generation.deleteGenerationsTextureId(id, requestBody);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -146,6 +149,7 @@ import { GetGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/opera
 const id: string = "string";
 
   const res = await sdk.generation.getGenerationById(id);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -186,6 +190,7 @@ const offset: number = 770121;
 
   const res = await sdk.generation.getGenerationsByUserId(userId, limit, offset);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -222,6 +227,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   });
 
   const res = await sdk.generation.postGenerationsTexture({});
+
 
   if (res.statusCode == 200) {
     // handle response

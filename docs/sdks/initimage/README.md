@@ -25,6 +25,7 @@ const id: string = "string";
 
   const res = await sdk.initImage.deleteInitImageById(id);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -62,6 +63,7 @@ const id: string = "string";
 
   const res = await sdk.initImage.getInitImageById(id);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -98,6 +100,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   const res = await sdk.initImage.uploadInitImage({
     extension: "png",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

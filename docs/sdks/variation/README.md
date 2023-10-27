@@ -26,6 +26,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -62,6 +63,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   const res = await sdk.variation.createVariationUpscale({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -100,6 +102,7 @@ const id: string = "string";
 
   const res = await sdk.variation.getVariationById(id);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -134,6 +137,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   });
 
   const res = await sdk.variation.postVariationsUnzoom({});
+
 
   if (res.statusCode == 200) {
     // handle response

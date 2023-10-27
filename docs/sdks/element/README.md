@@ -21,6 +21,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
   const res = await sdk.element.getElements();
 
+
   if (res.statusCode == 200) {
     // handle response
   }

@@ -59,7 +59,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     guidanceScale?: number;
 
     /**
-     * The height of the images. Must be between 32 and 1024 and be a multiple of 8.
+     * The input height of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "height" })
@@ -151,7 +151,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     photoReal?: boolean;
 
     /**
-     * Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high.
+     * Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "photoRealStrength" })
@@ -253,7 +253,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     weighting?: number;
 
     /**
-     * The width of the images. Must be between 32 and 1024 and be a multiple of 8.
+     * The input width of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "width" })

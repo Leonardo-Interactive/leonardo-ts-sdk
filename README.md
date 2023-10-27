@@ -134,8 +134,6 @@ Here's an example of one such pagination call:
 # Error Handling
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-
 <!-- End Error Handling -->
 
 
@@ -159,9 +157,70 @@ const httpClient = axios.create({
 
 const sdk = new Leonardo({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://cloud.leonardo.ai/api/rest/v1` | None |
+
+For example:
+
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+(async () => {
+    const sdk = new Leonardo({
+        bearerAuth: "",
+        serverIdx: 0,
+    });
+
+    const res = await sdk.dataset.createDataset({
+        name: "string",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+(async () => {
+    const sdk = new Leonardo({
+        bearerAuth: "",
+        serverURL: "https://cloud.leonardo.ai/api/rest/v1",
+    });
+
+    const res = await sdk.dataset.createDataset({
+        name: "string",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Server Selection -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

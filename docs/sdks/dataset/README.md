@@ -27,6 +27,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
     name: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -64,6 +65,7 @@ const id: string = "string";
 
   const res = await sdk.dataset.deleteDatasetById(id);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -100,6 +102,7 @@ import { GetDatasetByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operatio
 const id: string = "string";
 
   const res = await sdk.dataset.getDatasetById(id);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -141,6 +144,7 @@ const datasetId: string = "string";
 
   const res = await sdk.dataset.uploadDatasetImage(requestBody, datasetId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -181,6 +185,7 @@ const requestBody: UploadDatasetImageFromGenRequestBody = {
 const datasetId: string = "string";
 
   const res = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
+
 
   if (res.statusCode == 200) {
     // handle response

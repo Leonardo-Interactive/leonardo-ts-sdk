@@ -31,6 +31,7 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
     name: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -67,6 +68,7 @@ import { DeleteModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operati
 const id: string = "string";
 
   const res = await sdk.model.deleteModelById(id);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -106,6 +108,7 @@ const requestBody: DeleteModels3dIdRequestBody = {};
 
   const res = await sdk.model.deleteModels3dId(id, requestBody);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -143,6 +146,7 @@ import { GetModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations
 const id: string = "string";
 
   const res = await sdk.model.getModelById(id);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -182,6 +186,7 @@ const offset: number = 472174;
 
   const res = await sdk.model.getPlatformModels(limit, offset);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -217,6 +222,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
   });
 
   const res = await sdk.model.postModels3dUpload({});
+
 
   if (res.statusCode == 200) {
     // handle response
