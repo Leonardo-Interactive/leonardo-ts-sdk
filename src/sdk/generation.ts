@@ -89,9 +89,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createGeneration200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateGeneration200ApplicationJSON
+                        operations.CreateGenerationResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -164,9 +164,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteGenerationById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteGenerationById200ApplicationJSON
+                        operations.DeleteGenerationByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -256,9 +256,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteGenerationsTextureId200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteGenerationsTextureId200ApplicationJSON
+                        operations.DeleteGenerationsTextureIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -330,9 +330,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getGenerationById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetGenerationById200ApplicationJSON
+                        operations.GetGenerationByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -410,9 +410,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getGenerationsByUserId200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetGenerationsByUserId200ApplicationJSON
+                        operations.GetGenerationsByUserIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -501,9 +501,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.postGenerationsTexture200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.PostGenerationsTexture200ApplicationJSON
+                        operations.PostGenerationsTextureResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

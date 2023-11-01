@@ -1,5 +1,5 @@
 # Variation
-(*variation*)
+(*.variation*)
 
 ### Available Operations
 

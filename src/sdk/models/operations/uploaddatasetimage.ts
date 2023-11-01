@@ -32,7 +32,7 @@ export class UploadDatasetImageRequest extends SpeakeasyBase {
     datasetId: string;
 }
 
-export class UploadDatasetImage200ApplicationJSONDatasetUploadOutput extends SpeakeasyBase {
+export class DatasetUploadOutput extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "fields" })
     fields?: string;
@@ -53,11 +53,11 @@ export class UploadDatasetImage200ApplicationJSONDatasetUploadOutput extends Spe
 /**
  * Responses for POST /datasets/{datasetId}/upload
  */
-export class UploadDatasetImage200ApplicationJSON extends SpeakeasyBase {
+export class UploadDatasetImageResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "uploadDatasetImage" })
-    @Type(() => UploadDatasetImage200ApplicationJSONDatasetUploadOutput)
-    uploadDatasetImage?: UploadDatasetImage200ApplicationJSONDatasetUploadOutput;
+    @Type(() => DatasetUploadOutput)
+    uploadDatasetImage?: DatasetUploadOutput;
 }
 
 export class UploadDatasetImageResponse extends SpeakeasyBase {
@@ -83,5 +83,5 @@ export class UploadDatasetImageResponse extends SpeakeasyBase {
      * Responses for POST /datasets/{datasetId}/upload
      */
     @SpeakeasyMetadata()
-    uploadDatasetImage200ApplicationJSONObject?: UploadDatasetImage200ApplicationJSON;
+    object?: UploadDatasetImageResponseBody;
 }

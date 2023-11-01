@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+(*.generation*)
 
 ### Available Operations
 

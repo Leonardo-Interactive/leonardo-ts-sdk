@@ -19,7 +19,7 @@ export class PostVariationsUnzoomRequestBody extends SpeakeasyBase {
     isVariation?: boolean;
 }
 
-export class PostVariationsUnzoom200ApplicationJSONSDUnzoomOutput extends SpeakeasyBase {
+export class SDUnzoomOutput extends SpeakeasyBase {
     /**
      * API Credits Cost for Unzoom Variation. Available for Production API Users.
      */
@@ -35,11 +35,11 @@ export class PostVariationsUnzoom200ApplicationJSONSDUnzoomOutput extends Speake
 /**
  * Responses for POST /api/rest/v1/variations/unzoom
  */
-export class PostVariationsUnzoom200ApplicationJSON extends SpeakeasyBase {
+export class PostVariationsUnzoomResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "sdUnzoomJob" })
-    @Type(() => PostVariationsUnzoom200ApplicationJSONSDUnzoomOutput)
-    sdUnzoomJob?: PostVariationsUnzoom200ApplicationJSONSDUnzoomOutput;
+    @Type(() => SDUnzoomOutput)
+    sdUnzoomJob?: SDUnzoomOutput;
 }
 
 export class PostVariationsUnzoomResponse extends SpeakeasyBase {
@@ -65,5 +65,5 @@ export class PostVariationsUnzoomResponse extends SpeakeasyBase {
      * Responses for POST /api/rest/v1/variations/unzoom
      */
     @SpeakeasyMetadata()
-    postVariationsUnzoom200ApplicationJSONObject?: PostVariationsUnzoom200ApplicationJSON;
+    object?: PostVariationsUnzoomResponseBody;
 }

@@ -260,7 +260,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     width?: number;
 }
 
-export class CreateGeneration200ApplicationJSONSDGenerationOutput extends SpeakeasyBase {
+export class SDGenerationOutput extends SpeakeasyBase {
     /**
      * API Credits Cost for Image Generation. Available for Production API Users.
      */
@@ -276,11 +276,11 @@ export class CreateGeneration200ApplicationJSONSDGenerationOutput extends Speake
 /**
  * Responses for POST /generations
  */
-export class CreateGeneration200ApplicationJSON extends SpeakeasyBase {
+export class CreateGenerationResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "sdGenerationJob" })
-    @Type(() => CreateGeneration200ApplicationJSONSDGenerationOutput)
-    sdGenerationJob?: CreateGeneration200ApplicationJSONSDGenerationOutput;
+    @Type(() => SDGenerationOutput)
+    sdGenerationJob?: SDGenerationOutput;
 }
 
 export class CreateGenerationResponse extends SpeakeasyBase {
@@ -306,5 +306,5 @@ export class CreateGenerationResponse extends SpeakeasyBase {
      * Responses for POST /generations
      */
     @SpeakeasyMetadata()
-    createGeneration200ApplicationJSONObject?: CreateGeneration200ApplicationJSON;
+    object?: CreateGenerationResponseBody;
 }

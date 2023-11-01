@@ -17,7 +17,7 @@ export class DeleteDatasetByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "datasets"
  */
-export class DeleteDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
+export class DeleteDatasetByIdDatasets extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -26,14 +26,14 @@ export class DeleteDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
 /**
  * Responses for DELETE /datasets/{id}
  */
-export class DeleteDatasetById200ApplicationJSON extends SpeakeasyBase {
+export class DeleteDatasetByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "datasets"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "delete_datasets_by_pk" })
-    @Type(() => DeleteDatasetById200ApplicationJSONDatasets)
-    deleteDatasetsByPk?: DeleteDatasetById200ApplicationJSONDatasets;
+    @Type(() => DeleteDatasetByIdDatasets)
+    deleteDatasetsByPk?: DeleteDatasetByIdDatasets;
 }
 
 export class DeleteDatasetByIdResponse extends SpeakeasyBase {
@@ -59,5 +59,5 @@ export class DeleteDatasetByIdResponse extends SpeakeasyBase {
      * Responses for DELETE /datasets/{id}
      */
     @SpeakeasyMetadata()
-    deleteDatasetById200ApplicationJSONObject?: DeleteDatasetById200ApplicationJSON;
+    object?: DeleteDatasetByIdResponseBody;
 }

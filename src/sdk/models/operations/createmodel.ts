@@ -75,7 +75,7 @@ export class CreateModelRequestBody extends SpeakeasyBase {
     strength?: shared.Strength;
 }
 
-export class CreateModel200ApplicationJSONSDTrainingOutput extends SpeakeasyBase {
+export class SDTrainingOutput extends SpeakeasyBase {
     /**
      * API Credits Cost for Model Training. Available for Production API Users.
      */
@@ -91,11 +91,11 @@ export class CreateModel200ApplicationJSONSDTrainingOutput extends SpeakeasyBase
 /**
  * Responses for POST /models
  */
-export class CreateModel200ApplicationJSON extends SpeakeasyBase {
+export class CreateModelResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "sdTrainingJob" })
-    @Type(() => CreateModel200ApplicationJSONSDTrainingOutput)
-    sdTrainingJob?: CreateModel200ApplicationJSONSDTrainingOutput;
+    @Type(() => SDTrainingOutput)
+    sdTrainingJob?: SDTrainingOutput;
 }
 
 export class CreateModelResponse extends SpeakeasyBase {
@@ -121,5 +121,5 @@ export class CreateModelResponse extends SpeakeasyBase {
      * Responses for POST /models
      */
     @SpeakeasyMetadata()
-    createModel200ApplicationJSONObject?: CreateModel200ApplicationJSON;
+    object?: CreateModelResponseBody;
 }

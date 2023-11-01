@@ -19,7 +19,7 @@ export class PostModels3dUploadRequestBody extends SpeakeasyBase {
     name?: string;
 }
 
-export class PostModels3dUpload200ApplicationJSONModelAssetUploadOutput extends SpeakeasyBase {
+export class ModelAssetUploadOutput extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "modelFields" })
     modelFields?: string;
@@ -40,11 +40,11 @@ export class PostModels3dUpload200ApplicationJSONModelAssetUploadOutput extends 
 /**
  * Responses for POST /api/rest/v1/models-3d/upload
  */
-export class PostModels3dUpload200ApplicationJSON extends SpeakeasyBase {
+export class PostModels3dUploadResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "uploadModelAsset" })
-    @Type(() => PostModels3dUpload200ApplicationJSONModelAssetUploadOutput)
-    uploadModelAsset?: PostModels3dUpload200ApplicationJSONModelAssetUploadOutput;
+    @Type(() => ModelAssetUploadOutput)
+    uploadModelAsset?: ModelAssetUploadOutput;
 }
 
 export class PostModels3dUploadResponse extends SpeakeasyBase {
@@ -70,5 +70,5 @@ export class PostModels3dUploadResponse extends SpeakeasyBase {
      * Responses for POST /api/rest/v1/models-3d/upload
      */
     @SpeakeasyMetadata()
-    postModels3dUpload200ApplicationJSONObject?: PostModels3dUpload200ApplicationJSON;
+    object?: PostModels3dUploadResponseBody;
 }

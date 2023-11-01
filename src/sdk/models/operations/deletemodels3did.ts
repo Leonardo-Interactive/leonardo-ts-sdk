@@ -32,7 +32,7 @@ export class DeleteModels3dIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "model_assets"
  */
-export class DeleteModels3dId200ApplicationJSONModelAssets extends SpeakeasyBase {
+export class ModelAssets extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -41,14 +41,14 @@ export class DeleteModels3dId200ApplicationJSONModelAssets extends SpeakeasyBase
 /**
  * Responses for DELETE /api/rest/v1/models-3d/{id}
  */
-export class DeleteModels3dId200ApplicationJSON extends SpeakeasyBase {
+export class DeleteModels3dIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "model_assets"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "delete_model_assets_by_pk" })
-    @Type(() => DeleteModels3dId200ApplicationJSONModelAssets)
-    deleteModelAssetsByPk?: DeleteModels3dId200ApplicationJSONModelAssets;
+    @Type(() => ModelAssets)
+    deleteModelAssetsByPk?: ModelAssets;
 }
 
 export class DeleteModels3dIdResponse extends SpeakeasyBase {
@@ -74,5 +74,5 @@ export class DeleteModels3dIdResponse extends SpeakeasyBase {
      * Responses for DELETE /api/rest/v1/models-3d/{id}
      */
     @SpeakeasyMetadata()
-    deleteModels3dId200ApplicationJSONObject?: DeleteModels3dId200ApplicationJSON;
+    object?: DeleteModels3dIdResponseBody;
 }

@@ -89,9 +89,9 @@ export class Model {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createModel200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateModel200ApplicationJSON
+                        operations.CreateModelResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -163,9 +163,9 @@ export class Model {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteModelById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteModelById200ApplicationJSON
+                        operations.DeleteModelByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -254,9 +254,9 @@ export class Model {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteModels3dId200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteModels3dId200ApplicationJSON
+                        operations.DeleteModels3dIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -328,9 +328,9 @@ export class Model {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getModelById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetModelById200ApplicationJSON
+                        operations.GetModelByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -405,9 +405,9 @@ export class Model {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getPlatformModels200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetPlatformModels200ApplicationJSON
+                        operations.GetPlatformModelsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -496,9 +496,9 @@ export class Model {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.postModels3dUpload200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.PostModels3dUpload200ApplicationJSON
+                        operations.PostModels3dUploadResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

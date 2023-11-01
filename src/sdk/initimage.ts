@@ -73,9 +73,9 @@ export class InitImage {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteInitImageById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteInitImageById200ApplicationJSON
+                        operations.DeleteInitImageByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -147,9 +147,9 @@ export class InitImage {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getInitImageById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetInitImageById200ApplicationJSON
+                        operations.GetInitImageByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -238,9 +238,9 @@ export class InitImage {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.uploadInitImage200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UploadInitImage200ApplicationJSON
+                        operations.UploadInitImageResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

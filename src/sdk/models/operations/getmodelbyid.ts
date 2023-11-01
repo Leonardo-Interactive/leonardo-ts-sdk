@@ -18,7 +18,7 @@ export class GetModelByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "custom_models"
  */
-export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
+export class GetModelByIdCustomModels extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     createdAt?: string;
@@ -80,14 +80,14 @@ export class GetModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
 /**
  * Responses for GET /models/{id}
  */
-export class GetModelById200ApplicationJSON extends SpeakeasyBase {
+export class GetModelByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "custom_models"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "custom_models_by_pk" })
-    @Type(() => GetModelById200ApplicationJSONCustomModels)
-    customModelsByPk?: GetModelById200ApplicationJSONCustomModels;
+    @Type(() => GetModelByIdCustomModels)
+    customModelsByPk?: GetModelByIdCustomModels;
 }
 
 export class GetModelByIdResponse extends SpeakeasyBase {
@@ -113,5 +113,5 @@ export class GetModelByIdResponse extends SpeakeasyBase {
      * Responses for GET /models/{id}
      */
     @SpeakeasyMetadata()
-    getModelById200ApplicationJSONObject?: GetModelById200ApplicationJSON;
+    object?: GetModelByIdResponseBody;
 }

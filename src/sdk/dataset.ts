@@ -89,9 +89,9 @@ export class Dataset {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createDataset200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateDataset200ApplicationJSON
+                        operations.CreateDatasetResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -163,9 +163,9 @@ export class Dataset {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deleteDatasetById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeleteDatasetById200ApplicationJSON
+                        operations.DeleteDatasetByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -237,9 +237,9 @@ export class Dataset {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getDatasetById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetDatasetById200ApplicationJSON
+                        operations.GetDatasetByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -330,9 +330,9 @@ export class Dataset {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.uploadDatasetImage200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UploadDatasetImage200ApplicationJSON
+                        operations.UploadDatasetImageResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -423,9 +423,9 @@ export class Dataset {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.uploadDatasetImageFromGen200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UploadDatasetImageFromGen200ApplicationJSON
+                        operations.UploadDatasetImageFromGenResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

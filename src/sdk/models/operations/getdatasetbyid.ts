@@ -17,7 +17,7 @@ export class GetDatasetByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "dataset_images"
  */
-export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends SpeakeasyBase {
+export class DatasetImages extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     createdAt?: string;
@@ -34,15 +34,15 @@ export class GetDatasetById200ApplicationJSONDatasetsDatasetImages extends Speak
 /**
  * columns and relationships of "datasets"
  */
-export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
+export class GetDatasetByIdDatasets extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     createdAt?: string;
 
-    @SpeakeasyMetadata({ elemType: GetDatasetById200ApplicationJSONDatasetsDatasetImages })
+    @SpeakeasyMetadata({ elemType: DatasetImages })
     @Expose({ name: "dataset_images" })
-    @Type(() => GetDatasetById200ApplicationJSONDatasetsDatasetImages)
-    datasetImages?: GetDatasetById200ApplicationJSONDatasetsDatasetImages[];
+    @Type(() => DatasetImages)
+    datasetImages?: DatasetImages[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "description" })
@@ -64,14 +64,14 @@ export class GetDatasetById200ApplicationJSONDatasets extends SpeakeasyBase {
 /**
  * Responses for GET /datasets/{id}
  */
-export class GetDatasetById200ApplicationJSON extends SpeakeasyBase {
+export class GetDatasetByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "datasets"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "datasets_by_pk" })
-    @Type(() => GetDatasetById200ApplicationJSONDatasets)
-    datasetsByPk?: GetDatasetById200ApplicationJSONDatasets;
+    @Type(() => GetDatasetByIdDatasets)
+    datasetsByPk?: GetDatasetByIdDatasets;
 }
 
 export class GetDatasetByIdResponse extends SpeakeasyBase {
@@ -97,5 +97,5 @@ export class GetDatasetByIdResponse extends SpeakeasyBase {
      * Responses for GET /datasets/{id}
      */
     @SpeakeasyMetadata()
-    getDatasetById200ApplicationJSONObject?: GetDatasetById200ApplicationJSON;
+    object?: GetDatasetByIdResponseBody;
 }

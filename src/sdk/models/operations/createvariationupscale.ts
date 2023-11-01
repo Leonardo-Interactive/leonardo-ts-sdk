@@ -15,7 +15,7 @@ export class CreateVariationUpscaleRequestBody extends SpeakeasyBase {
     id: string;
 }
 
-export class CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
+export class CreateVariationUpscaleSDUpscaleJobOutput extends SpeakeasyBase {
     /**
      * API Credits Cost for Upscale Variation. Available for Production API Users.
      */
@@ -31,11 +31,11 @@ export class CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput extends 
 /**
  * Responses for POST /variations/upscale
  */
-export class CreateVariationUpscale200ApplicationJSON extends SpeakeasyBase {
+export class CreateVariationUpscaleResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "sdUpscaleJob" })
-    @Type(() => CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput)
-    sdUpscaleJob?: CreateVariationUpscale200ApplicationJSONSDUpscaleJobOutput;
+    @Type(() => CreateVariationUpscaleSDUpscaleJobOutput)
+    sdUpscaleJob?: CreateVariationUpscaleSDUpscaleJobOutput;
 }
 
 export class CreateVariationUpscaleResponse extends SpeakeasyBase {
@@ -61,5 +61,5 @@ export class CreateVariationUpscaleResponse extends SpeakeasyBase {
      * Responses for POST /variations/upscale
      */
     @SpeakeasyMetadata()
-    createVariationUpscale200ApplicationJSONObject?: CreateVariationUpscale200ApplicationJSON;
+    object?: CreateVariationUpscaleResponseBody;
 }

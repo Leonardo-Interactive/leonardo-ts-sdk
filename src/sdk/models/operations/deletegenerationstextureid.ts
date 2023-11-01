@@ -32,7 +32,7 @@ export class DeleteGenerationsTextureIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "model_asset_texture_generations"
  */
-export class DeleteGenerationsTextureId200ApplicationJSONModelAssetTextureGenerations extends SpeakeasyBase {
+export class ModelAssetTextureGenerations extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -41,14 +41,14 @@ export class DeleteGenerationsTextureId200ApplicationJSONModelAssetTextureGenera
 /**
  * Responses for DELETE /api/rest/v1/generations-texture/{id}
  */
-export class DeleteGenerationsTextureId200ApplicationJSON extends SpeakeasyBase {
+export class DeleteGenerationsTextureIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "model_asset_texture_generations"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "delete_model_asset_texture_generations_by_pk" })
-    @Type(() => DeleteGenerationsTextureId200ApplicationJSONModelAssetTextureGenerations)
-    deleteModelAssetTextureGenerationsByPk?: DeleteGenerationsTextureId200ApplicationJSONModelAssetTextureGenerations;
+    @Type(() => ModelAssetTextureGenerations)
+    deleteModelAssetTextureGenerationsByPk?: ModelAssetTextureGenerations;
 }
 
 export class DeleteGenerationsTextureIdResponse extends SpeakeasyBase {
@@ -74,5 +74,5 @@ export class DeleteGenerationsTextureIdResponse extends SpeakeasyBase {
      * Responses for DELETE /api/rest/v1/generations-texture/{id}
      */
     @SpeakeasyMetadata()
-    deleteGenerationsTextureId200ApplicationJSONObject?: DeleteGenerationsTextureId200ApplicationJSON;
+    object?: DeleteGenerationsTextureIdResponseBody;
 }

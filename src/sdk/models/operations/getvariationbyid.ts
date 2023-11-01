@@ -18,7 +18,7 @@ export class GetVariationByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "generated_image_variation_generic"
  */
-export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric extends SpeakeasyBase {
+export class GeneratedImageVariationGeneric extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     createdAt?: string;
@@ -49,13 +49,11 @@ export class GetVariationById200ApplicationJSONGeneratedImageVariationGeneric ex
 /**
  * Responses for GET /variations/{id}
  */
-export class GetVariationById200ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        elemType: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric,
-    })
+export class GetVariationByIdResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: GeneratedImageVariationGeneric })
     @Expose({ name: "generated_image_variation_generic" })
-    @Type(() => GetVariationById200ApplicationJSONGeneratedImageVariationGeneric)
-    generatedImageVariationGeneric?: GetVariationById200ApplicationJSONGeneratedImageVariationGeneric[];
+    @Type(() => GeneratedImageVariationGeneric)
+    generatedImageVariationGeneric?: GeneratedImageVariationGeneric[];
 }
 
 export class GetVariationByIdResponse extends SpeakeasyBase {
@@ -81,5 +79,5 @@ export class GetVariationByIdResponse extends SpeakeasyBase {
      * Responses for GET /variations/{id}
      */
     @SpeakeasyMetadata()
-    getVariationById200ApplicationJSONObject?: GetVariationById200ApplicationJSON;
+    object?: GetVariationByIdResponseBody;
 }

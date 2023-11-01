@@ -10,7 +10,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * columns and relationships of "elements"
  */
-export class GetElements200ApplicationJSONLoras extends SpeakeasyBase {
+export class Loras extends SpeakeasyBase {
     /**
      * Unique identifier for the element. Elements can be found from the List Elements endpoint.
      */
@@ -78,11 +78,11 @@ export class GetElements200ApplicationJSONLoras extends SpeakeasyBase {
 /**
  * Responses for GET /api/rest/v1/elements
  */
-export class GetElements200ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: GetElements200ApplicationJSONLoras })
+export class GetElementsResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: Loras })
     @Expose({ name: "loras" })
-    @Type(() => GetElements200ApplicationJSONLoras)
-    loras?: GetElements200ApplicationJSONLoras[];
+    @Type(() => Loras)
+    loras?: Loras[];
 }
 
 export class GetElementsResponse extends SpeakeasyBase {
@@ -108,5 +108,5 @@ export class GetElementsResponse extends SpeakeasyBase {
      * Responses for GET /api/rest/v1/elements
      */
     @SpeakeasyMetadata()
-    getElements200ApplicationJSONObject?: GetElements200ApplicationJSON;
+    object?: GetElementsResponseBody;
 }

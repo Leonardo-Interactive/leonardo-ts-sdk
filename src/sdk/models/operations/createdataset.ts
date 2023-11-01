@@ -28,7 +28,7 @@ export class CreateDatasetRequestBody extends SpeakeasyBase {
 /**
  * columns and relationships of "datasets"
  */
-export class CreateDataset200ApplicationJSONDatasets extends SpeakeasyBase {
+export class Datasets extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -37,14 +37,14 @@ export class CreateDataset200ApplicationJSONDatasets extends SpeakeasyBase {
 /**
  * Responses for POST /datasets
  */
-export class CreateDataset200ApplicationJSON extends SpeakeasyBase {
+export class CreateDatasetResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "datasets"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "insert_datasets_one" })
-    @Type(() => CreateDataset200ApplicationJSONDatasets)
-    insertDatasetsOne?: CreateDataset200ApplicationJSONDatasets;
+    @Type(() => Datasets)
+    insertDatasetsOne?: Datasets;
 }
 
 export class CreateDatasetResponse extends SpeakeasyBase {
@@ -70,5 +70,5 @@ export class CreateDatasetResponse extends SpeakeasyBase {
      * Responses for POST /datasets
      */
     @SpeakeasyMetadata()
-    createDataset200ApplicationJSONObject?: CreateDataset200ApplicationJSON;
+    object?: CreateDatasetResponseBody;
 }

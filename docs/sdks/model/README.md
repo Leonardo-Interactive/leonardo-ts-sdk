@@ -1,5 +1,5 @@
 # Model
-(*model*)
+(*.model*)
 
 ### Available Operations
 

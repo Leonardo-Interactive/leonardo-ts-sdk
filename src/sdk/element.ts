@@ -66,9 +66,9 @@ export class Element {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getElements200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetElements200ApplicationJSON
+                        operations.GetElementsResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

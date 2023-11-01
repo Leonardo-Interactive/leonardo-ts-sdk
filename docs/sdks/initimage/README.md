@@ -1,5 +1,5 @@
 # InitImage
-(*initImage*)
+(*.initImage*)
 
 ### Available Operations
 

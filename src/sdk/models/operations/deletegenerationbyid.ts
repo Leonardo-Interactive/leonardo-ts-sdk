@@ -17,7 +17,7 @@ export class DeleteGenerationByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "generations"
  */
-export class DeleteGenerationById200ApplicationJSONGenerations extends SpeakeasyBase {
+export class Generations extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -26,14 +26,14 @@ export class DeleteGenerationById200ApplicationJSONGenerations extends Speakeasy
 /**
  * Responses for DELETE /generations/{id}
  */
-export class DeleteGenerationById200ApplicationJSON extends SpeakeasyBase {
+export class DeleteGenerationByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "generations"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "delete_generations_by_pk" })
-    @Type(() => DeleteGenerationById200ApplicationJSONGenerations)
-    deleteGenerationsByPk?: DeleteGenerationById200ApplicationJSONGenerations;
+    @Type(() => Generations)
+    deleteGenerationsByPk?: Generations;
 }
 
 export class DeleteGenerationByIdResponse extends SpeakeasyBase {
@@ -59,5 +59,5 @@ export class DeleteGenerationByIdResponse extends SpeakeasyBase {
      * Responses for DELETE /generations/{id}
      */
     @SpeakeasyMetadata()
-    deleteGenerationById200ApplicationJSONObject?: DeleteGenerationById200ApplicationJSON;
+    object?: DeleteGenerationByIdResponseBody;
 }

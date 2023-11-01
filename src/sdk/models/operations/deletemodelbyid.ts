@@ -17,7 +17,7 @@ export class DeleteModelByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "custom_models"
  */
-export class DeleteModelById200ApplicationJSONCustomModels extends SpeakeasyBase {
+export class CustomModels extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -26,14 +26,14 @@ export class DeleteModelById200ApplicationJSONCustomModels extends SpeakeasyBase
 /**
  * Responses for DELETE /models/{id}
  */
-export class DeleteModelById200ApplicationJSON extends SpeakeasyBase {
+export class DeleteModelByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "custom_models"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "delete_custom_models_by_pk" })
-    @Type(() => DeleteModelById200ApplicationJSONCustomModels)
-    deleteCustomModelsByPk?: DeleteModelById200ApplicationJSONCustomModels;
+    @Type(() => CustomModels)
+    deleteCustomModelsByPk?: CustomModels;
 }
 
 export class DeleteModelByIdResponse extends SpeakeasyBase {
@@ -59,5 +59,5 @@ export class DeleteModelByIdResponse extends SpeakeasyBase {
      * Responses for DELETE /models/{id}
      */
     @SpeakeasyMetadata()
-    deleteModelById200ApplicationJSONObject?: DeleteModelById200ApplicationJSON;
+    object?: DeleteModelByIdResponseBody;
 }

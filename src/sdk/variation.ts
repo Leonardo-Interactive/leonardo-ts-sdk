@@ -90,9 +90,9 @@ export class Variation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createVariationNoBG200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateVariationNoBg200ApplicationJSON
+                        operations.CreateVariationNoBGResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -181,9 +181,9 @@ export class Variation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.createVariationUpscale200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.CreateVariationUpscale200ApplicationJSON
+                        operations.CreateVariationUpscaleResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -255,9 +255,9 @@ export class Variation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getVariationById200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetVariationById200ApplicationJSON
+                        operations.GetVariationByIdResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -346,9 +346,9 @@ export class Variation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.postVariationsUnzoom200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.PostVariationsUnzoom200ApplicationJSON
+                        operations.PostVariationsUnzoomResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

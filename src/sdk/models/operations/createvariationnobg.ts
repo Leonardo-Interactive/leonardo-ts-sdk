@@ -19,7 +19,7 @@ export class CreateVariationNoBGRequestBody extends SpeakeasyBase {
     isVariation?: boolean;
 }
 
-export class CreateVariationNoBg200ApplicationJSONSDUpscaleJobOutput extends SpeakeasyBase {
+export class SDUpscaleJobOutput extends SpeakeasyBase {
     /**
      * API Credits Cost for No Background Variation. Available for Production API Users.
      */
@@ -35,11 +35,11 @@ export class CreateVariationNoBg200ApplicationJSONSDUpscaleJobOutput extends Spe
 /**
  * Responses for POST /variations/nobg
  */
-export class CreateVariationNoBg200ApplicationJSON extends SpeakeasyBase {
+export class CreateVariationNoBGResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "sdNobgJob" })
-    @Type(() => CreateVariationNoBg200ApplicationJSONSDUpscaleJobOutput)
-    sdNobgJob?: CreateVariationNoBg200ApplicationJSONSDUpscaleJobOutput;
+    @Type(() => SDUpscaleJobOutput)
+    sdNobgJob?: SDUpscaleJobOutput;
 }
 
 export class CreateVariationNoBGResponse extends SpeakeasyBase {
@@ -65,5 +65,5 @@ export class CreateVariationNoBGResponse extends SpeakeasyBase {
      * Responses for POST /variations/nobg
      */
     @SpeakeasyMetadata()
-    createVariationNoBG200ApplicationJSONObject?: CreateVariationNoBg200ApplicationJSON;
+    object?: CreateVariationNoBGResponseBody;
 }

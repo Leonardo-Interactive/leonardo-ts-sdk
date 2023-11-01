@@ -17,7 +17,7 @@ export class GetPlatformModelsRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "generated_images"
  */
-export class GetPlatformModels200ApplicationJSONCustomModelsGeneratedImages extends SpeakeasyBase {
+export class GetPlatformModelsGeneratedImages extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -30,7 +30,7 @@ export class GetPlatformModels200ApplicationJSONCustomModelsGeneratedImages exte
 /**
  * columns and relationships of "custom_models"
  */
-export class GetPlatformModels200ApplicationJSONCustomModels extends SpeakeasyBase {
+export class GetPlatformModelsCustomModels extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "description" })
     description?: string;
@@ -44,8 +44,8 @@ export class GetPlatformModels200ApplicationJSONCustomModels extends SpeakeasyBa
      */
     @SpeakeasyMetadata()
     @Expose({ name: "generated_image" })
-    @Type(() => GetPlatformModels200ApplicationJSONCustomModelsGeneratedImages)
-    generatedImage?: GetPlatformModels200ApplicationJSONCustomModelsGeneratedImages;
+    @Type(() => GetPlatformModelsGeneratedImages)
+    generatedImage?: GetPlatformModelsGeneratedImages;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
@@ -63,11 +63,11 @@ export class GetPlatformModels200ApplicationJSONCustomModels extends SpeakeasyBa
 /**
  * Responses for GET /api/rest/v1/platformModels
  */
-export class GetPlatformModels200ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: GetPlatformModels200ApplicationJSONCustomModels })
+export class GetPlatformModelsResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: GetPlatformModelsCustomModels })
     @Expose({ name: "custom_models" })
-    @Type(() => GetPlatformModels200ApplicationJSONCustomModels)
-    customModels?: GetPlatformModels200ApplicationJSONCustomModels[];
+    @Type(() => GetPlatformModelsCustomModels)
+    customModels?: GetPlatformModelsCustomModels[];
 }
 
 export class GetPlatformModelsResponse extends SpeakeasyBase {
@@ -93,5 +93,5 @@ export class GetPlatformModelsResponse extends SpeakeasyBase {
      * Responses for GET /api/rest/v1/platformModels
      */
     @SpeakeasyMetadata()
-    getPlatformModels200ApplicationJSONObject?: GetPlatformModels200ApplicationJSON;
+    object?: GetPlatformModelsResponseBody;
 }

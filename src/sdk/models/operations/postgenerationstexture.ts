@@ -43,7 +43,7 @@ export class PostGenerationsTextureRequestBody extends SpeakeasyBase {
     seed?: number;
 }
 
-export class PostGenerationsTexture200ApplicationJSONTextureGenerationJobOutput extends SpeakeasyBase {
+export class TextureGenerationJobOutput extends SpeakeasyBase {
     /**
      * API Credits Cost for Texture Generation. Available for Production API Users.
      */
@@ -59,11 +59,11 @@ export class PostGenerationsTexture200ApplicationJSONTextureGenerationJobOutput 
 /**
  * Responses for POST /api/rest/v1/generations-texture
  */
-export class PostGenerationsTexture200ApplicationJSON extends SpeakeasyBase {
+export class PostGenerationsTextureResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "textureGenerationJob" })
-    @Type(() => PostGenerationsTexture200ApplicationJSONTextureGenerationJobOutput)
-    textureGenerationJob?: PostGenerationsTexture200ApplicationJSONTextureGenerationJobOutput;
+    @Type(() => TextureGenerationJobOutput)
+    textureGenerationJob?: TextureGenerationJobOutput;
 }
 
 export class PostGenerationsTextureResponse extends SpeakeasyBase {
@@ -89,5 +89,5 @@ export class PostGenerationsTextureResponse extends SpeakeasyBase {
      * Responses for POST /api/rest/v1/generations-texture
      */
     @SpeakeasyMetadata()
-    postGenerationsTexture200ApplicationJSONObject?: PostGenerationsTexture200ApplicationJSON;
+    object?: PostGenerationsTextureResponseBody;
 }

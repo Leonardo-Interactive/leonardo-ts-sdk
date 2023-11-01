@@ -1,5 +1,5 @@
 # Dataset
-(*dataset*)
+(*.dataset*)
 
 ### Available Operations
 

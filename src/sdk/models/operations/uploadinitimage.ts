@@ -18,7 +18,7 @@ export class UploadInitImageRequestBody extends SpeakeasyBase {
     extension: string;
 }
 
-export class UploadInitImage200ApplicationJSONInitImageUploadOutput extends SpeakeasyBase {
+export class InitImageUploadOutput extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "fields" })
     fields?: string;
@@ -39,11 +39,11 @@ export class UploadInitImage200ApplicationJSONInitImageUploadOutput extends Spea
 /**
  * Responses for POST /init-image
  */
-export class UploadInitImage200ApplicationJSON extends SpeakeasyBase {
+export class UploadInitImageResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "uploadInitImage" })
-    @Type(() => UploadInitImage200ApplicationJSONInitImageUploadOutput)
-    uploadInitImage?: UploadInitImage200ApplicationJSONInitImageUploadOutput;
+    @Type(() => InitImageUploadOutput)
+    uploadInitImage?: InitImageUploadOutput;
 }
 
 export class UploadInitImageResponse extends SpeakeasyBase {
@@ -69,5 +69,5 @@ export class UploadInitImageResponse extends SpeakeasyBase {
      * Responses for POST /init-image
      */
     @SpeakeasyMetadata()
-    uploadInitImage200ApplicationJSONObject?: UploadInitImage200ApplicationJSON;
+    object?: UploadInitImageResponseBody;
 }

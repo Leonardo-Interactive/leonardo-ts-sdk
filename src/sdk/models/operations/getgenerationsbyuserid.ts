@@ -21,7 +21,7 @@ export class GetGenerationsByUserIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "generated_image_variation_generic"
  */
-export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric extends SpeakeasyBase {
+export class GetGenerationsByUserIdGeneratedImageVariationGeneric extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -48,17 +48,11 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesG
 /**
  * columns and relationships of "generated_images"
  */
-export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        elemType:
-            GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric,
-    })
+export class GetGenerationsByUserIdGeneratedImages extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: GetGenerationsByUserIdGeneratedImageVariationGeneric })
     @Expose({ name: "generated_image_variation_generics" })
-    @Type(
-        () =>
-            GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric
-    )
-    generatedImageVariationGenerics?: GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImagesGeneratedImageVariationGeneric[];
+    @Type(() => GetGenerationsByUserIdGeneratedImageVariationGeneric)
+    generatedImageVariationGenerics?: GetGenerationsByUserIdGeneratedImageVariationGeneric[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
@@ -80,7 +74,7 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages 
 /**
  * Element used for the generation.
  */
-export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElementsElements extends SpeakeasyBase {
+export class Elements extends SpeakeasyBase {
     /**
      * Unique identifier for the element. Elements can be found from the List Elements endpoint.
      */
@@ -141,7 +135,7 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElemen
 /**
  * This table captures the elements that are applied to a Generations, also the order and weightings used when applied.
  */
-export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements extends SpeakeasyBase {
+export class GetGenerationsByUserIdGenerationElements extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: number;
@@ -151,8 +145,8 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElemen
      */
     @SpeakeasyMetadata()
     @Expose({ name: "lora" })
-    @Type(() => GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElementsElements)
-    lora?: GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElementsElements;
+    @Type(() => Elements)
+    lora?: Elements;
 
     @SpeakeasyMetadata()
     @Expose({ name: "weightApplied" })
@@ -162,24 +156,20 @@ export class GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElemen
 /**
  * columns and relationships of "generations"
  */
-export class GetGenerationsByUserId200ApplicationJSONGenerations extends SpeakeasyBase {
+export class GetGenerationsByUserIdGenerations extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     createdAt?: string;
 
-    @SpeakeasyMetadata({
-        elemType: GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages,
-    })
+    @SpeakeasyMetadata({ elemType: GetGenerationsByUserIdGeneratedImages })
     @Expose({ name: "generated_images" })
-    @Type(() => GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages)
-    generatedImages?: GetGenerationsByUserId200ApplicationJSONGenerationsGeneratedImages[];
+    @Type(() => GetGenerationsByUserIdGeneratedImages)
+    generatedImages?: GetGenerationsByUserIdGeneratedImages[];
 
-    @SpeakeasyMetadata({
-        elemType: GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements,
-    })
+    @SpeakeasyMetadata({ elemType: GetGenerationsByUserIdGenerationElements })
     @Expose({ name: "generation_elements" })
-    @Type(() => GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements)
-    generationElements?: GetGenerationsByUserId200ApplicationJSONGenerationsGenerationElements[];
+    @Type(() => GetGenerationsByUserIdGenerationElements)
+    generationElements?: GetGenerationsByUserIdGenerationElements[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "guidanceScale" })
@@ -292,11 +282,11 @@ export class GetGenerationsByUserId200ApplicationJSONGenerations extends Speakea
 /**
  * Responses for GET /generations/user/{userId}
  */
-export class GetGenerationsByUserId200ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: GetGenerationsByUserId200ApplicationJSONGenerations })
+export class GetGenerationsByUserIdResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: GetGenerationsByUserIdGenerations })
     @Expose({ name: "generations" })
-    @Type(() => GetGenerationsByUserId200ApplicationJSONGenerations)
-    generations?: GetGenerationsByUserId200ApplicationJSONGenerations[];
+    @Type(() => GetGenerationsByUserIdGenerations)
+    generations?: GetGenerationsByUserIdGenerations[];
 }
 
 export class GetGenerationsByUserIdResponse extends SpeakeasyBase {
@@ -322,5 +312,5 @@ export class GetGenerationsByUserIdResponse extends SpeakeasyBase {
      * Responses for GET /generations/user/{userId}
      */
     @SpeakeasyMetadata()
-    getGenerationsByUserId200ApplicationJSONObject?: GetGenerationsByUserId200ApplicationJSON;
+    object?: GetGenerationsByUserIdResponseBody;
 }

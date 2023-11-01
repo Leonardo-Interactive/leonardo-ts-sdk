@@ -9,7 +9,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * columns and relationships of "users"
  */
-export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase {
+export class Users extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -22,7 +22,7 @@ export class GetUserSelf200ApplicationJSONUserDetailsUsers extends SpeakeasyBase
 /**
  * columns and relationships of "user_details"
  */
-export class GetUserSelf200ApplicationJSONUserDetails extends SpeakeasyBase {
+export class UserDetails extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "apiConcurrencySlots" })
     apiConcurrencySlots?: number;
@@ -48,18 +48,18 @@ export class GetUserSelf200ApplicationJSONUserDetails extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "user" })
-    @Type(() => GetUserSelf200ApplicationJSONUserDetailsUsers)
-    user?: GetUserSelf200ApplicationJSONUserDetailsUsers;
+    @Type(() => Users)
+    user?: Users;
 }
 
 /**
  * Responses for GET /me
  */
-export class GetUserSelf200ApplicationJSON extends SpeakeasyBase {
-    @SpeakeasyMetadata({ elemType: GetUserSelf200ApplicationJSONUserDetails })
+export class GetUserSelfResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: UserDetails })
     @Expose({ name: "user_details" })
-    @Type(() => GetUserSelf200ApplicationJSONUserDetails)
-    userDetails?: GetUserSelf200ApplicationJSONUserDetails[];
+    @Type(() => UserDetails)
+    userDetails?: UserDetails[];
 }
 
 export class GetUserSelfResponse extends SpeakeasyBase {
@@ -85,5 +85,5 @@ export class GetUserSelfResponse extends SpeakeasyBase {
      * Responses for GET /me
      */
     @SpeakeasyMetadata()
-    getUserSelf200ApplicationJSONObject?: GetUserSelf200ApplicationJSON;
+    object?: GetUserSelfResponseBody;
 }

@@ -17,7 +17,7 @@ export class DeleteInitImageByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "init_images"
  */
-export class DeleteInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
+export class InitImages extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -26,14 +26,14 @@ export class DeleteInitImageById200ApplicationJSONInitImages extends SpeakeasyBa
 /**
  * Responses for DELETE /init-image/{id}
  */
-export class DeleteInitImageById200ApplicationJSON extends SpeakeasyBase {
+export class DeleteInitImageByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "init_images"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "delete_init_images_by_pk" })
-    @Type(() => DeleteInitImageById200ApplicationJSONInitImages)
-    deleteInitImagesByPk?: DeleteInitImageById200ApplicationJSONInitImages;
+    @Type(() => InitImages)
+    deleteInitImagesByPk?: InitImages;
 }
 
 export class DeleteInitImageByIdResponse extends SpeakeasyBase {
@@ -59,5 +59,5 @@ export class DeleteInitImageByIdResponse extends SpeakeasyBase {
      * Responses for DELETE /init-image/{id}
      */
     @SpeakeasyMetadata()
-    deleteInitImageById200ApplicationJSONObject?: DeleteInitImageById200ApplicationJSON;
+    object?: DeleteInitImageByIdResponseBody;
 }

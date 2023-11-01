@@ -17,7 +17,7 @@ export class GetInitImageByIdRequest extends SpeakeasyBase {
 /**
  * columns and relationships of "init_images"
  */
-export class GetInitImageById200ApplicationJSONInitImages extends SpeakeasyBase {
+export class GetInitImageByIdInitImages extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     createdAt?: string;
@@ -34,14 +34,14 @@ export class GetInitImageById200ApplicationJSONInitImages extends SpeakeasyBase 
 /**
  * Responses for GET /init-image/{id}
  */
-export class GetInitImageById200ApplicationJSON extends SpeakeasyBase {
+export class GetInitImageByIdResponseBody extends SpeakeasyBase {
     /**
      * columns and relationships of "init_images"
      */
     @SpeakeasyMetadata()
     @Expose({ name: "init_images_by_pk" })
-    @Type(() => GetInitImageById200ApplicationJSONInitImages)
-    initImagesByPk?: GetInitImageById200ApplicationJSONInitImages;
+    @Type(() => GetInitImageByIdInitImages)
+    initImagesByPk?: GetInitImageByIdInitImages;
 }
 
 export class GetInitImageByIdResponse extends SpeakeasyBase {
@@ -67,5 +67,5 @@ export class GetInitImageByIdResponse extends SpeakeasyBase {
      * Responses for GET /init-image/{id}
      */
     @SpeakeasyMetadata()
-    getInitImageById200ApplicationJSONObject?: GetInitImageById200ApplicationJSON;
+    object?: GetInitImageByIdResponseBody;
 }
