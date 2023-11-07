@@ -81,6 +81,10 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [getInitImageById](docs/sdks/initimage/README.md#getinitimagebyid) - Get single init image
 * [uploadInitImage](docs/sdks/initimage/README.md#uploadinitimage) - Upload init image
 
+### [.user](docs/sdks/user/README.md)
+
+* [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
+
 ### [.model](docs/sdks/model/README.md)
 
 * [createModel](docs/sdks/model/README.md#createmodel) - Train a Custom Model
@@ -89,10 +93,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [getModelById](docs/sdks/model/README.md#getmodelbyid) - Get a Single Custom Model by ID
 * [getPlatformModels](docs/sdks/model/README.md#getplatformmodels) - List Platform Models
 * [postModels3dUpload](docs/sdks/model/README.md#postmodels3dupload) - Upload 3D Model
-
-### [.user](docs/sdks/user/README.md)
-
-* [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
 
 ### [.variation](docs/sdks/variation/README.md)
 
@@ -174,14 +174,13 @@ You can override the default server globally by passing a server index to the `s
 
 For example:
 
-
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
 (async () => {
     const sdk = new Leonardo({
-        bearerAuth: "",
         serverIdx: 0,
+        bearerAuth: "",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -200,14 +199,13 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
 (async () => {
     const sdk = new Leonardo({
-        bearerAuth: "",
         serverURL: "https://cloud.leonardo.ai/api/rest/v1",
+        bearerAuth: "",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -221,6 +219,42 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ```
 <!-- End Server Selection -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `bearerAuth` | http         | HTTP Bearer  |
+
+To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+(async () => {
+    const sdk = new Leonardo({
+        bearerAuth: "",
+    });
+
+    const res = await sdk.dataset.createDataset({
+        name: "string",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

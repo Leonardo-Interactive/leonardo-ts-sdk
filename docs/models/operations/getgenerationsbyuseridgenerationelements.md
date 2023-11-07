@@ -5,8 +5,8 @@ This table captures the elements that are applied to a Generations, also the ord
 
 ## Fields
 
-| Field                                           | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `id`                                            | *number*                                        | :heavy_minus_sign:                              | N/A                                             |
-| `lora`                                          | [Elements](../../models/operations/elements.md) | :heavy_minus_sign:                              | Element used for the generation.                |
-| `weightApplied`                                 | *number*                                        | :heavy_minus_sign:                              | N/A                                             |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `id`                                                       | *number*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `lora`                                                     | [operations.Elements](../../models/operations/elements.md) | :heavy_minus_sign:                                         | Element used for the generation.                           |
+| `weightApplied`                                            | *number*                                                   | :heavy_minus_sign:                                         | N/A                                                        |

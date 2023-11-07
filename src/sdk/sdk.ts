@@ -3,12 +3,12 @@
  */
 
 import * as utils from "../internal/utils";
+import * as shared from "../sdk/models/shared";
 import { Dataset } from "./dataset";
 import { Element } from "./element";
 import { Generation } from "./generation";
 import { InitImage } from "./initimage";
 import { Model } from "./model";
-import * as shared from "./models/shared";
 import { User } from "./user";
 import { Variation } from "./variation";
 import axios from "axios";
@@ -57,9 +57,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.0";
-    sdkVersion = "2.0.0";
-    genVersion = "2.175.0";
-    userAgent = "speakeasy-sdk/typescript 2.0.0 2.175.0 v1.0.0 @leonardo-ai/sdk";
+    sdkVersion = "2.1.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 2.1.0 2.181.1 v1.0.0 @leonardo-ai/sdk";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -74,8 +74,8 @@ export class Leonardo {
     public element: Element;
     public generation: Generation;
     public initImage: InitImage;
-    public model: Model;
     public user: User;
+    public model: Model;
     public variation: Variation;
 
     private sdkConfiguration: SDKConfiguration;
@@ -101,8 +101,8 @@ export class Leonardo {
         this.element = new Element(this.sdkConfiguration);
         this.generation = new Generation(this.sdkConfiguration);
         this.initImage = new InitImage(this.sdkConfiguration);
-        this.model = new Model(this.sdkConfiguration);
         this.user = new User(this.sdkConfiguration);
+        this.model = new Model(this.sdkConfiguration);
         this.variation = new Variation(this.sdkConfiguration);
     }
 }
