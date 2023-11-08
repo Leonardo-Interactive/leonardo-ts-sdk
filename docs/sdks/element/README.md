@@ -1,5 +1,5 @@
 # Element
-(*.element*)
+(*element*)
 
 ### Available Operations
 
@@ -21,7 +21,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
   const res = await sdk.element.getElements();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -37,5 +36,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Response
 
-**Promise<[operations.GetElementsResponse](../../models/operations/getelementsresponse.md)>**
+**Promise<[operations.GetElementsResponse](../../sdk/models/operations/getelementsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

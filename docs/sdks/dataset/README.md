@@ -1,5 +1,5 @@
 # Dataset
-(*.dataset*)
+(*dataset*)
 
 ### Available Operations
 
@@ -27,7 +27,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -36,16 +35,20 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.CreateDatasetRequestBody](../../models/operations/createdatasetrequestbody.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CreateDatasetRequestBody](../../sdk/models/operations/createdatasetrequestbody.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.CreateDatasetResponse](../../models/operations/createdatasetresponse.md)>**
+**Promise<[operations.CreateDatasetResponse](../../sdk/models/operations/createdatasetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deleteDatasetById
 
@@ -65,7 +68,6 @@ const id: string = "string";
 
   const res = await sdk.dataset.deleteDatasetById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -82,8 +84,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.DeleteDatasetByIdResponse](../../models/operations/deletedatasetbyidresponse.md)>**
+**Promise<[operations.DeleteDatasetByIdResponse](../../sdk/models/operations/deletedatasetbyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getDatasetById
 
@@ -103,7 +109,6 @@ const id: string = "string";
 
   const res = await sdk.dataset.getDatasetById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -120,8 +125,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.GetDatasetByIdResponse](../../models/operations/getdatasetbyidresponse.md)>**
+**Promise<[operations.GetDatasetByIdResponse](../../sdk/models/operations/getdatasetbyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadDatasetImage
 
@@ -144,7 +153,6 @@ const datasetId: string = "string";
 
   const res = await sdk.dataset.uploadDatasetImage(requestBody, datasetId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -153,17 +161,21 @@ const datasetId: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                        | [operations.UploadDatasetImageRequestBody](../../models/operations/uploaddatasetimagerequestbody.md) | :heavy_check_mark:                                                                                   | Query parameters provided in the request body as a JSON object                                       |
-| `datasetId`                                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | _"datasetId" is required                                                                             |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                               | [operations.UploadDatasetImageRequestBody](../../../sdk/models/operations/uploaddatasetimagerequestbody.md) | :heavy_check_mark:                                                                                          | Query parameters provided in the request body as a JSON object                                              |
+| `datasetId`                                                                                                 | *string*                                                                                                    | :heavy_check_mark:                                                                                          | _"datasetId" is required                                                                                    |
+| `config`                                                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                | :heavy_minus_sign:                                                                                          | Available config options for making requests.                                                               |
 
 
 ### Response
 
-**Promise<[operations.UploadDatasetImageResponse](../../models/operations/uploaddatasetimageresponse.md)>**
+**Promise<[operations.UploadDatasetImageResponse](../../sdk/models/operations/uploaddatasetimageresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadDatasetImageFromGen
 
@@ -186,7 +198,6 @@ const datasetId: string = "string";
 
   const res = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -195,14 +206,18 @@ const datasetId: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `requestBody`                                                                                                      | [operations.UploadDatasetImageFromGenRequestBody](../../models/operations/uploaddatasetimagefromgenrequestbody.md) | :heavy_check_mark:                                                                                                 | Query parameters to be provided in the request body as a JSON object                                               |
-| `datasetId`                                                                                                        | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | The ID of the dataset to upload the image to.                                                                      |
-| `config`                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                       | :heavy_minus_sign:                                                                                                 | Available config options for making requests.                                                                      |
+| Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                             | [operations.UploadDatasetImageFromGenRequestBody](../../../sdk/models/operations/uploaddatasetimagefromgenrequestbody.md) | :heavy_check_mark:                                                                                                        | Query parameters to be provided in the request body as a JSON object                                                      |
+| `datasetId`                                                                                                               | *string*                                                                                                                  | :heavy_check_mark:                                                                                                        | The ID of the dataset to upload the image to.                                                                             |
+| `config`                                                                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                              | :heavy_minus_sign:                                                                                                        | Available config options for making requests.                                                                             |
 
 
 ### Response
 
-**Promise<[operations.UploadDatasetImageFromGenResponse](../../models/operations/uploaddatasetimagefromgenresponse.md)>**
+**Promise<[operations.UploadDatasetImageFromGenResponse](../../sdk/models/operations/uploaddatasetimagefromgenresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

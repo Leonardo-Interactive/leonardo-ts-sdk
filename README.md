@@ -54,7 +54,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 ## Available Resources and Operations
 
 
-### [.dataset](docs/sdks/dataset/README.md)
+### [dataset](docs/sdks/dataset/README.md)
 
 * [createDataset](docs/sdks/dataset/README.md#createdataset) - Create a Dataset
 * [deleteDatasetById](docs/sdks/dataset/README.md#deletedatasetbyid) - Delete a Single Dataset by ID
@@ -62,11 +62,11 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [uploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
 * [uploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
 
-### [.element](docs/sdks/element/README.md)
+### [element](docs/sdks/element/README.md)
 
 * [getElements](docs/sdks/element/README.md#getelements) - List Elements
 
-### [.generation](docs/sdks/generation/README.md)
+### [generation](docs/sdks/generation/README.md)
 
 * [createGeneration](docs/sdks/generation/README.md#creategeneration) - Create a Generation of Images
 * [deleteGenerationById](docs/sdks/generation/README.md#deletegenerationbyid) - Delete a Single Generation
@@ -75,17 +75,17 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
 * [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
 
-### [.initImage](docs/sdks/initimage/README.md)
+### [initImage](docs/sdks/initimage/README.md)
 
 * [deleteInitImageById](docs/sdks/initimage/README.md#deleteinitimagebyid) - Delete init image
 * [getInitImageById](docs/sdks/initimage/README.md#getinitimagebyid) - Get single init image
 * [uploadInitImage](docs/sdks/initimage/README.md#uploadinitimage) - Upload init image
 
-### [.user](docs/sdks/user/README.md)
+### [user](docs/sdks/user/README.md)
 
 * [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
 
-### [.model](docs/sdks/model/README.md)
+### [model](docs/sdks/model/README.md)
 
 * [createModel](docs/sdks/model/README.md#createmodel) - Train a Custom Model
 * [deleteModelById](docs/sdks/model/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
@@ -94,7 +94,7 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [getPlatformModels](docs/sdks/model/README.md#getplatformmodels) - List Platform Models
 * [postModels3dUpload](docs/sdks/model/README.md#postmodels3dupload) - Upload 3D Model
 
-### [.variation](docs/sdks/variation/README.md)
+### [variation](docs/sdks/variation/README.md)
 
 * [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
@@ -133,7 +133,36 @@ Here's an example of one such pagination call:
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
+
+
+## Example
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+(async () => {
+    const sdk = new Leonardo({
+        bearerAuth: "",
+    });
+
+    let res;
+    try {
+        res = await sdk.dataset.createDataset({
+            name: "string",
+        });
+    } catch (e) {}
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
 <!-- End Error Handling -->
 
 
@@ -223,12 +252,11 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security scheme globally:
+This SDK supports the following security scheme globally:
 
 | Name         | Type         | Scheme       |
 | ------------ | ------------ | ------------ |

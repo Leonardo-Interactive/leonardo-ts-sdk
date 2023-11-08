@@ -1,5 +1,5 @@
 # Model
-(*.model*)
+(*model*)
 
 ### Available Operations
 
@@ -31,7 +31,6 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
     name: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -40,16 +39,20 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.CreateModelRequestBody](../../models/operations/createmodelrequestbody.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [operations.CreateModelRequestBody](../../sdk/models/operations/createmodelrequestbody.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.CreateModelResponse](../../models/operations/createmodelresponse.md)>**
+**Promise<[operations.CreateModelResponse](../../sdk/models/operations/createmodelresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deleteModelById
 
@@ -69,7 +72,6 @@ const id: string = "string";
 
   const res = await sdk.model.deleteModelById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -86,8 +88,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.DeleteModelByIdResponse](../../models/operations/deletemodelbyidresponse.md)>**
+**Promise<[operations.DeleteModelByIdResponse](../../sdk/models/operations/deletemodelbyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deleteModels3dId
 
@@ -108,7 +114,6 @@ const requestBody: DeleteModels3dIdRequestBody = {};
 
   const res = await sdk.model.deleteModels3dId(id, requestBody);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -117,17 +122,21 @@ const requestBody: DeleteModels3dIdRequestBody = {};
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `id`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | _"id" is required (enter it either in parameters or request body)_                               |
-| `requestBody`                                                                                    | [operations.DeleteModels3dIdRequestBody](../../models/operations/deletemodels3didrequestbody.md) | :heavy_minus_sign:                                                                               | Query parameters can also be provided in the request body as a JSON object                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                    | *string*                                                                                                | :heavy_check_mark:                                                                                      | _"id" is required (enter it either in parameters or request body)_                                      |
+| `requestBody`                                                                                           | [operations.DeleteModels3dIdRequestBody](../../../sdk/models/operations/deletemodels3didrequestbody.md) | :heavy_minus_sign:                                                                                      | Query parameters can also be provided in the request body as a JSON object                              |
+| `config`                                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                            | :heavy_minus_sign:                                                                                      | Available config options for making requests.                                                           |
 
 
 ### Response
 
-**Promise<[operations.DeleteModels3dIdResponse](../../models/operations/deletemodels3didresponse.md)>**
+**Promise<[operations.DeleteModels3dIdResponse](../../sdk/models/operations/deletemodels3didresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getModelById
 
@@ -147,7 +156,6 @@ const id: string = "string";
 
   const res = await sdk.model.getModelById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -164,8 +172,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.GetModelByIdResponse](../../models/operations/getmodelbyidresponse.md)>**
+**Promise<[operations.GetModelByIdResponse](../../sdk/models/operations/getmodelbyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getPlatformModels
 
@@ -186,7 +198,6 @@ const offset: number = 472174;
 
   const res = await sdk.model.getPlatformModels(limit, offset);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -204,8 +215,12 @@ const offset: number = 472174;
 
 ### Response
 
-**Promise<[operations.GetPlatformModelsResponse](../../models/operations/getplatformmodelsresponse.md)>**
+**Promise<[operations.GetPlatformModelsResponse](../../sdk/models/operations/getplatformmodelsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## postModels3dUpload
 
@@ -223,7 +238,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
   const res = await sdk.model.postModels3dUpload({});
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -232,13 +246,17 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [operations.PostModels3dUploadRequestBody](../../models/operations/postmodels3duploadrequestbody.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [operations.PostModels3dUploadRequestBody](../../sdk/models/operations/postmodels3duploadrequestbody.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |
 
 
 ### Response
 
-**Promise<[operations.PostModels3dUploadResponse](../../models/operations/postmodels3duploadresponse.md)>**
+**Promise<[operations.PostModels3dUploadResponse](../../sdk/models/operations/postmodels3duploadresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

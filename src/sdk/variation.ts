@@ -34,7 +34,7 @@ export class Variation {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/variations/nobg";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/variations/nobg";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -66,7 +66,7 @@ export class Variation {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -126,7 +126,7 @@ export class Variation {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/variations/upscale";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/variations/upscale";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -157,7 +157,7 @@ export class Variation {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -216,7 +216,7 @@ export class Variation {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/variations/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/variations/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -233,7 +233,7 @@ export class Variation {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -291,7 +291,7 @@ export class Variation {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/variations/unzoom";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/variations/unzoom";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -322,7 +322,7 @@ export class Variation {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

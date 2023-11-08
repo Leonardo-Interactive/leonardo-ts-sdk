@@ -1,5 +1,5 @@
 # InitImage
-(*.initImage*)
+(*initImage*)
 
 ### Available Operations
 
@@ -25,7 +25,6 @@ const id: string = "string";
 
   const res = await sdk.initImage.deleteInitImageById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -42,8 +41,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.DeleteInitImageByIdResponse](../../models/operations/deleteinitimagebyidresponse.md)>**
+**Promise<[operations.DeleteInitImageByIdResponse](../../sdk/models/operations/deleteinitimagebyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getInitImageById
 
@@ -63,7 +66,6 @@ const id: string = "string";
 
   const res = await sdk.initImage.getInitImageById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -80,8 +82,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.GetInitImageByIdResponse](../../models/operations/getinitimagebyidresponse.md)>**
+**Promise<[operations.GetInitImageByIdResponse](../../sdk/models/operations/getinitimagebyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## uploadInitImage
 
@@ -101,7 +107,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
     extension: "png",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -110,13 +115,17 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.UploadInitImageRequestBody](../../models/operations/uploadinitimagerequestbody.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.UploadInitImageRequestBody](../../sdk/models/operations/uploadinitimagerequestbody.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.UploadInitImageResponse](../../models/operations/uploadinitimageresponse.md)>**
+**Promise<[operations.UploadInitImageResponse](../../sdk/models/operations/uploadinitimageresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

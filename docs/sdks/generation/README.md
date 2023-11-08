@@ -1,5 +1,5 @@
 # Generation
-(*.generation*)
+(*generation*)
 
 ### Available Operations
 
@@ -34,7 +34,6 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
     ],
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -43,16 +42,20 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.CreateGenerationRequestBody](../../models/operations/creategenerationrequestbody.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.CreateGenerationRequestBody](../../sdk/models/operations/creategenerationrequestbody.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.CreateGenerationResponse](../../models/operations/creategenerationresponse.md)>**
+**Promise<[operations.CreateGenerationResponse](../../sdk/models/operations/creategenerationresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deleteGenerationById
 
@@ -72,7 +75,6 @@ const id: string = "string";
 
   const res = await sdk.generation.deleteGenerationById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -89,8 +91,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.DeleteGenerationByIdResponse](../../models/operations/deletegenerationbyidresponse.md)>**
+**Promise<[operations.DeleteGenerationByIdResponse](../../sdk/models/operations/deletegenerationbyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deleteGenerationsTextureId
 
@@ -111,7 +117,6 @@ const requestBody: DeleteGenerationsTextureIdRequestBody = {};
 
   const res = await sdk.generation.deleteGenerationsTextureId(id, requestBody);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -120,17 +125,21 @@ const requestBody: DeleteGenerationsTextureIdRequestBody = {};
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                 | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | _"id" is required (enter it either in parameters or request body)_                                                   |
-| `requestBody`                                                                                                        | [operations.DeleteGenerationsTextureIdRequestBody](../../models/operations/deletegenerationstextureidrequestbody.md) | :heavy_minus_sign:                                                                                                   | Query parameters can also be provided in the request body as a JSON object                                           |
-| `config`                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                         | :heavy_minus_sign:                                                                                                   | Available config options for making requests.                                                                        |
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                        | *string*                                                                                                                    | :heavy_check_mark:                                                                                                          | _"id" is required (enter it either in parameters or request body)_                                                          |
+| `requestBody`                                                                                                               | [operations.DeleteGenerationsTextureIdRequestBody](../../../sdk/models/operations/deletegenerationstextureidrequestbody.md) | :heavy_minus_sign:                                                                                                          | Query parameters can also be provided in the request body as a JSON object                                                  |
+| `config`                                                                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                | :heavy_minus_sign:                                                                                                          | Available config options for making requests.                                                                               |
 
 
 ### Response
 
-**Promise<[operations.DeleteGenerationsTextureIdResponse](../../models/operations/deletegenerationstextureidresponse.md)>**
+**Promise<[operations.DeleteGenerationsTextureIdResponse](../../sdk/models/operations/deletegenerationstextureidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getGenerationById
 
@@ -150,7 +159,6 @@ const id: string = "string";
 
   const res = await sdk.generation.getGenerationById(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -167,8 +175,12 @@ const id: string = "string";
 
 ### Response
 
-**Promise<[operations.GetGenerationByIdResponse](../../models/operations/getgenerationbyidresponse.md)>**
+**Promise<[operations.GetGenerationByIdResponse](../../sdk/models/operations/getgenerationbyidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getGenerationsByUserId
 
@@ -190,7 +202,6 @@ const offset: number = 770121;
 
   const res = await sdk.generation.getGenerationsByUserId(userId, limit, offset);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -209,8 +220,12 @@ const offset: number = 770121;
 
 ### Response
 
-**Promise<[operations.GetGenerationsByUserIdResponse](../../models/operations/getgenerationsbyuseridresponse.md)>**
+**Promise<[operations.GetGenerationsByUserIdResponse](../../sdk/models/operations/getgenerationsbyuseridresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## postGenerationsTexture
 
@@ -228,7 +243,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
   const res = await sdk.generation.postGenerationsTexture({});
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -237,13 +251,17 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                    | [operations.PostGenerationsTextureRequestBody](../../models/operations/postgenerationstexturerequestbody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [operations.PostGenerationsTextureRequestBody](../../sdk/models/operations/postgenerationstexturerequestbody.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `config`                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                     | :heavy_minus_sign:                                                                                               | Available config options for making requests.                                                                    |
 
 
 ### Response
 
-**Promise<[operations.PostGenerationsTextureResponse](../../models/operations/postgenerationstextureresponse.md)>**
+**Promise<[operations.PostGenerationsTextureResponse](../../sdk/models/operations/postgenerationstextureresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

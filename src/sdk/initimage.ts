@@ -33,7 +33,7 @@ export class InitImage {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/init-image/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -50,7 +50,7 @@ export class InitImage {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -108,7 +108,7 @@ export class InitImage {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/init-image/{id}", req);
+        const operationUrl: string = utils.generateURL(baseURL, "/init-image/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -125,7 +125,7 @@ export class InitImage {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -183,7 +183,7 @@ export class InitImage {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/init-image";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/init-image";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -215,7 +215,7 @@ export class InitImage {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

@@ -1,5 +1,5 @@
 # User
-(*.user*)
+(*user*)
 
 ### Available Operations
 
@@ -21,7 +21,6 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
   const res = await sdk.user.getUserSelf();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -37,5 +36,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
 
 ### Response
 
-**Promise<[operations.GetUserSelfResponse](../../models/operations/getuserselfresponse.md)>**
+**Promise<[operations.GetUserSelfResponse](../../sdk/models/operations/getuserselfresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

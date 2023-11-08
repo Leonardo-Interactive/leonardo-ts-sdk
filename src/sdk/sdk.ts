@@ -57,9 +57,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "v1.0.0";
-    sdkVersion = "2.1.0";
-    genVersion = "2.181.1";
-    userAgent = "speakeasy-sdk/typescript 2.1.0 2.181.1 v1.0.0 @leonardo-ai/sdk";
+    sdkVersion = "2.1.1";
+    genVersion = "2.185.0";
+    userAgent = "speakeasy-sdk/typescript 2.1.1 2.185.0 v1.0.0 @leonardo-ai/sdk";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -88,7 +88,7 @@ export class Leonardo {
             serverURL = ServerList[serverIdx];
         }
 
-        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        const defaultClient = props?.defaultClient ?? axios.create();
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
             security: new shared.Security({ bearerAuth: props?.bearerAuth }),
