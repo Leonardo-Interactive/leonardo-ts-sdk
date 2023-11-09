@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 

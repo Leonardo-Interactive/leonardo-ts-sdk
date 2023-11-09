@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 5c46d09a773b28588fedd4bb31a1647c
   docVersion: v1.0.0
-  speakeasyVersion: 1.116.0
-  generationVersion: 2.185.0
+  speakeasyVersion: 1.118.0
+  generationVersion: 2.187.2
 generation:
   comments: {}
   devContainers:
@@ -11,15 +11,17 @@ generation:
     schemaPath: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
   sdkClassName: Leonardo
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.1.2
+    core: 3.1.3
     devContainers: 2.88.0
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 2.1.1
+  version: 2.1.2
   author: leonardoai
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
