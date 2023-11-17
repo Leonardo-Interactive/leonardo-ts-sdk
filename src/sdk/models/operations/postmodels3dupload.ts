@@ -64,7 +64,7 @@ export class PostModels3dUploadResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * Responses for POST /api/rest/v1/models-3d/upload

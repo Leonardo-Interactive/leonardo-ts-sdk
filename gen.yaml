@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 5c46d09a773b28588fedd4bb31a1647c
   docVersion: v1.0.0
-  speakeasyVersion: 1.120.2
-  generationVersion: 2.191.3
+  speakeasyVersion: 1.120.5
+  generationVersion: 2.192.6
 generation:
   comments: {}
   devContainers:
@@ -19,9 +19,9 @@ features:
     devContainers: 2.88.0
     flattening: 2.81.1
     globalSecurity: 2.82.0
-    globalServerURLs: 2.82.0
+    globalServerURLs: 2.82.1
 typescript:
-  version: 2.1.3
+  version: 2.1.4
   author: leonardoai
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
