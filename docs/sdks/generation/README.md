@@ -20,9 +20,9 @@ This endpoint will generate images
 import { Leonardo } from "@leonardo-ai/sdk";
 import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.generation.createGeneration({
@@ -37,7 +37,9 @@ import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions }
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -67,9 +69,9 @@ This endpoint deletes a specific generation
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -78,7 +80,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -108,9 +112,9 @@ This endpoint deletes the specific texture generation.
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteGenerationsTextureIdRequest, DeleteGenerationsTextureIdRequestBody } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 const requestBody: DeleteGenerationsTextureIdRequestBody = {};
@@ -120,16 +124,18 @@ const requestBody: DeleteGenerationsTextureIdRequestBody = {};
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                        | *string*                                                                                                                    | :heavy_check_mark:                                                                                                          | _"id" is required (enter it either in parameters or request body)_                                                          |
-| `requestBody`                                                                                                               | [operations.DeleteGenerationsTextureIdRequestBody](../../../sdk/models/operations/deletegenerationstextureidrequestbody.md) | :heavy_minus_sign:                                                                                                          | Query parameters can also be provided in the request body as a JSON object                                                  |
-| `config`                                                                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                | :heavy_minus_sign:                                                                                                          | Available config options for making requests.                                                                               |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                     | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | _"id" is required (enter it either in parameters or request body)_                                                       |
+| `requestBody`                                                                                                            | [operations.DeleteGenerationsTextureIdRequestBody](../../sdk/models/operations/deletegenerationstextureidrequestbody.md) | :heavy_minus_sign:                                                                                                       | Query parameters can also be provided in the request body as a JSON object                                               |
+| `config`                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                             | :heavy_minus_sign:                                                                                                       | Available config options for making requests.                                                                            |
 
 
 ### Response
@@ -151,9 +157,9 @@ This endpoint will provide information about a specific generation
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -162,7 +168,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -192,9 +200,9 @@ This endpoint returns all generations by a specific user
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetGenerationsByUserIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const userId: string = "string";
 const limit: number = 270501;
@@ -205,7 +213,9 @@ const offset: number = 770121;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -236,9 +246,9 @@ This endpoint will generate a texture generation.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.generation.postGenerationsTexture({});
@@ -246,7 +256,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

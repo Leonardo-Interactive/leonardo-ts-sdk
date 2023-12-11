@@ -20,9 +20,9 @@ This endpoint will train a new custom model
 import { Leonardo } from "@leonardo-ai/sdk";
 import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.model.createModel({
@@ -34,7 +34,9 @@ import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/dist/sdk
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -64,9 +66,9 @@ This endpoint will delete a specific custom model
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -75,7 +77,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -105,9 +109,9 @@ This endpoint deletes the specific 3D Model
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteModels3dIdRequest, DeleteModels3dIdRequestBody } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 const requestBody: DeleteModels3dIdRequestBody = {};
@@ -117,16 +121,18 @@ const requestBody: DeleteModels3dIdRequestBody = {};
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                    | *string*                                                                                                | :heavy_check_mark:                                                                                      | _"id" is required (enter it either in parameters or request body)_                                      |
-| `requestBody`                                                                                           | [operations.DeleteModels3dIdRequestBody](../../../sdk/models/operations/deletemodels3didrequestbody.md) | :heavy_minus_sign:                                                                                      | Query parameters can also be provided in the request body as a JSON object                              |
-| `config`                                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                            | :heavy_minus_sign:                                                                                      | Available config options for making requests.                                                           |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                 | *string*                                                                                             | :heavy_check_mark:                                                                                   | _"id" is required (enter it either in parameters or request body)_                                   |
+| `requestBody`                                                                                        | [operations.DeleteModels3dIdRequestBody](../../sdk/models/operations/deletemodels3didrequestbody.md) | :heavy_minus_sign:                                                                                   | Query parameters can also be provided in the request body as a JSON object                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
@@ -148,9 +154,9 @@ This endpoint gets the specific custom model
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetModelByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -159,7 +165,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -189,9 +197,9 @@ Get a list of public Platform Models available for use with generations.
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetPlatformModelsRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const limit: number = 419487;
 const offset: number = 472174;
@@ -201,7 +209,9 @@ const offset: number = 472174;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -231,9 +241,9 @@ This endpoint returns presigned details to upload a 3D model to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.model.postModels3dUpload({});
@@ -241,7 +251,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

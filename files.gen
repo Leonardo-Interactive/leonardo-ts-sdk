@@ -64,7 +64,6 @@ src/sdk/models/shared/security.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
-USAGE.md
 docs/sdk/models/operations/createdatasetrequestbody.md
 docs/sdk/models/operations/datasets.md
 docs/sdk/models/operations/createdatasetresponsebody.md
@@ -200,6 +199,7 @@ docs/sdks/initimage/README.md
 docs/sdks/user/README.md
 docs/sdks/model/README.md
 docs/sdks/variation/README.md
+USAGE.md
 .gitattributes
 .devcontainer/README.md
 .devcontainer/devcontainer.json

@@ -14,9 +14,9 @@ Get a list of public Elements available for use with generations.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.element.getElements();
@@ -24,7 +24,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

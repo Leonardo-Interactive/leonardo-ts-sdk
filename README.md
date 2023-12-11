@@ -8,7 +8,7 @@
    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
 </div>
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -22,22 +22,23 @@ npm add @leonardo-ai/sdk
 ```bash
 yarn add @leonardo-ai/sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Authentication
 
 To get access to the API and fetch an API key, please sign up for [access](https://leonardo.ai/). 
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Leonardo({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -47,14 +48,15 @@ import { Leonardo } from "@leonardo-ai/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [dataset](docs/sdks/dataset/README.md)
 
@@ -102,37 +104,15 @@ import { Leonardo } from "@leonardo-ai/sdk";
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
 * [postVariationsUnzoom](docs/sdks/variation/README.md#postvariationsunzoom) - Create unzoom
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-# Dev Containers
-<div align="left">
-    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
-    
-</div>
-
-Experience our SDK in an enhanced sandbox environment. Try it now in **GitHub Codespaces**!
-
-* [Explore Dev Containers](.devcontainer/README.md)
-<!-- End Dev Containers -->
 
 
 
-<!-- Start Pagination -->
-# Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. If the
-return value of `next` is `null`, then there are no more pages to be fetched.
-
-Here's an example of one such pagination call:
-<!-- End Pagination -->
-
-
-
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -146,9 +126,9 @@ Example
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Leonardo({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     let res;
@@ -156,28 +136,35 @@ import { Leonardo } from "@leonardo-ai/sdk";
         res = await sdk.dataset.createDataset({
             name: "string",
         });
-    } catch (e) {}
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
 
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from @leonardo-ai/sdk import Leonardo;
-import axios;
+import { @leonardo-ai/sdk } from "Leonardo";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -185,11 +172,11 @@ const httpClient = axios.create({
 
 const sdk = new Leonardo({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -205,10 +192,10 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Leonardo({
         serverIdx: 0,
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -218,7 +205,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -229,10 +218,10 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Leonardo({
         serverURL: "https://cloud.leonardo.ai/api/rest/v1",
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -242,14 +231,16 @@ import { Leonardo } from "@leonardo-ai/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -264,9 +255,9 @@ To authenticate with the API the `bearerAuth` parameter must be set when initial
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Leonardo({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -276,10 +267,12 @@ import { Leonardo } from "@leonardo-ai/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

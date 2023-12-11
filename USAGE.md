@@ -1,10 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async () => {
+async function run() {
     const sdk = new Leonardo({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     const res = await sdk.dataset.createDataset({
@@ -14,7 +14,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

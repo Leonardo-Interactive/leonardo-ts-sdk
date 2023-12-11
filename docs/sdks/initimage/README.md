@@ -17,9 +17,9 @@ This endpoint deletes an init image
 import { Leonardo } from "@leonardo-ai/sdk";
 import { DeleteInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -28,7 +28,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -58,9 +60,9 @@ This endpoint will return a single init image
 import { Leonardo } from "@leonardo-ai/sdk";
 import { GetInitImageByIdRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -69,7 +71,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -98,9 +102,9 @@ This endpoint returns presigned details to upload an init image to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-(async() => {
+async function run() {
   const sdk = new Leonardo({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.initImage.uploadInitImage({
@@ -110,7 +114,9 @@ import { Leonardo } from "@leonardo-ai/sdk";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
