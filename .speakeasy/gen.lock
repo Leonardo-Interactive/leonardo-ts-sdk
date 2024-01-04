@@ -5,8 +5,8 @@ management:
   docVersion: v1.0.0
   speakeasyVersion: internal
   generationVersion: 2.225.0
-  releaseVersion: 2.2.1
-  configChecksum: d189f0d3886f367f34e369f7065bf743
+  releaseVersion: 2.3.0
+  configChecksum: 82e4b07eecaf45bdb07da2fb7979bbbb
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -46,27 +46,6 @@ generatedFiles:
   - src/sdk/types/index.ts
   - src/sdk/types/rfcdate.ts
   - tsconfig.json
-  - __tests__/common_helpers.ts
-  - __tests__common/common_helpers.ts
-  - __tests__hoisted_security/auth.test.ts
-  - __tests__primary/auth.test.ts
-  - __tests__primary/errors.test.ts
-  - __tests__primary/flattening.test.ts
-  - __tests__primary/globals.test.ts
-  - __tests__primary/helpers.ts
-  - __tests__primary/multilevel.test.ts
-  - __tests__primary/pagination.test.ts
-  - __tests__primary/parameter.test.ts
-  - __tests__primary/requestbodies.test.ts
-  - __tests__primary/responsebodies.test.ts
-  - __tests__primary/retries.test.ts
-  - __tests__primary/servers.test.ts
-  - __tests__primary/telemetry.test.ts
-  - __tests__primary/testdata/testUpload.json
-  - __tests__simple_security/auth.test.ts
-  - ../../testprojects/typescript/.eslintrc.yml
-  - ../../testprojects/typescript/package.json
-  - ../../testprojects/typescript/tsconfig.json
   - src/sdk/models/operations/createdataset.ts
   - src/sdk/models/operations/deletedatasetbyid.ts
   - src/sdk/models/operations/getdatasetbyid.ts
