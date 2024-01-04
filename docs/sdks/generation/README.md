@@ -32,6 +32,7 @@ async function run() {
     imagePrompts: [
       "string",
     ],
+    prompt: "string",
   });
 
   if (res.statusCode == 200) {
