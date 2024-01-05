@@ -9,7 +9,7 @@ generation:
   fixes:
     nameResolutionDec2023: false
 typescript:
-  version: 2.27.0
+  version: 2.28.0
   author: leonardoai
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
