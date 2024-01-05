@@ -5,8 +5,8 @@ management:
   docVersion: v1.0.0
   speakeasyVersion: internal
   generationVersion: 2.225.2
-  releaseVersion: 2.22.0
-  configChecksum: dd61f58996754e278f48ed012f024569
+  releaseVersion: 2.23.0
+  configChecksum: 620ea0b226e06b21286ca468d4713dfb
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
