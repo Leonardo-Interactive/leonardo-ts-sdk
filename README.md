@@ -77,6 +77,7 @@ run();
 * [deleteGenerationsTextureId](docs/sdks/generation/README.md#deletegenerationstextureid) - Delete Texture Generation by ID
 * [getGenerationById](docs/sdks/generation/README.md#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
+* [postGenerationsMotionSvd](docs/sdks/generation/README.md#postgenerationsmotionsvd) - Create SVD Motion Generation
 * [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
 
 ### [initImage](docs/sdks/initimage/README.md)

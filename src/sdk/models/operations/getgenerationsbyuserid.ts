@@ -58,9 +58,44 @@ export class GetGenerationsByUserIdGeneratedImages extends SpeakeasyBase {
     @Expose({ name: "id" })
     id?: string;
 
+    /**
+     * If it is an image to video generation.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "imageToVideo" })
+    imageToVideo?: boolean;
+
     @SpeakeasyMetadata()
     @Expose({ name: "likeCount" })
     likeCount?: number;
+
+    /**
+     * If generation is of motion type.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "motion" })
+    motion?: boolean;
+
+    /**
+     * The URL of the motion MP4.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "motionMP4URL" })
+    motionMp4URL?: string;
+
+    /**
+     * The name of the motion model.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "motionModel" })
+    motionModel?: string;
+
+    /**
+     * The motion strength.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "motionStrength" })
+    motionStrength?: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "nsfw" })

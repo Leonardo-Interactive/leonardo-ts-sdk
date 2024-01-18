@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 5c46d09a773b28588fedd4bb31a1647c
+  docChecksum: ccf63003295d901d0e6d3cfdbb7481cf
   docVersion: v1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.227.1
-  releaseVersion: 2.30.0
-  configChecksum: b78c83bd62eb45165c2ef6e118eb60ea
+  generationVersion: 2.237.2
+  releaseVersion: 2.30.1
+  configChecksum: 240dd3b98a072aae899113fca11b0f12
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
   published: true
 features:
   typescript:
-    core: 3.4.2
+    core: 3.4.6
     devContainers: 2.88.0
     flattening: 2.81.1
     globalSecurity: 2.82.2
@@ -57,6 +57,7 @@ generatedFiles:
   - src/sdk/models/operations/deletegenerationstextureid.ts
   - src/sdk/models/operations/getgenerationbyid.ts
   - src/sdk/models/operations/getgenerationsbyuserid.ts
+  - src/sdk/models/operations/postgenerationsmotionsvd.ts
   - src/sdk/models/operations/postgenerationstexture.ts
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/getinitimagebyid.ts
@@ -140,6 +141,10 @@ generatedFiles:
   - docs/sdk/models/operations/getgenerationsbyuseridgenerations.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponsebody.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponse.md
+  - docs/sdk/models/operations/postgenerationsmotionsvdrequestbody.md
+  - docs/sdk/models/operations/motionsvdgenerationoutput.md
+  - docs/sdk/models/operations/postgenerationsmotionsvdresponsebody.md
+  - docs/sdk/models/operations/postgenerationsmotionsvdresponse.md
   - docs/sdk/models/operations/postgenerationstexturerequestbody.md
   - docs/sdk/models/operations/texturegenerationjoboutput.md
   - docs/sdk/models/operations/postgenerationstextureresponsebody.md

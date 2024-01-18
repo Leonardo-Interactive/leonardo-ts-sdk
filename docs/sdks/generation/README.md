@@ -8,6 +8,7 @@
 * [deleteGenerationsTextureId](#deletegenerationstextureid) - Delete Texture Generation by ID
 * [getGenerationById](#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](#getgenerationsbyuserid) - Get generations by user ID
+* [postGenerationsMotionSvd](#postgenerationsmotionsvd) - Create SVD Motion Generation
 * [postGenerationsTexture](#postgenerationstexture) - Create Texture Generation
 
 ## createGeneration
@@ -232,6 +233,49 @@ run();
 ### Response
 
 **Promise<[operations.GetGenerationsByUserIdResponse](../../sdk/models/operations/getgenerationsbyuseridresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## postGenerationsMotionSvd
+
+This endpoint will generate a SVD motion generation.
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const res = await sdk.generation.postGenerationsMotionSvd({
+    imageId: "string",
+  });
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                            | [operations.PostGenerationsMotionSvdRequestBody](../../sdk/models/operations/postgenerationsmotionsvdrequestbody.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `config`                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                         | :heavy_minus_sign:                                                                                                   | Available config options for making requests.                                                                        |
+
+
+### Response
+
+**Promise<[operations.PostGenerationsMotionSvdResponse](../../sdk/models/operations/postgenerationsmotionsvdresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
