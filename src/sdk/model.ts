@@ -353,14 +353,8 @@ export class Model {
      * Get a list of public Platform Models available for use with generations.
      */
     async getPlatformModels(
-        limit?: number,
-        offset?: number,
         config?: AxiosRequestConfig
     ): Promise<operations.GetPlatformModelsResponse> {
-        const req = new operations.GetPlatformModelsRequest({
-            limit: limit,
-            offset: offset,
-        });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -376,14 +370,13 @@ export class Model {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
         headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: operationUrl + queryParams,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",

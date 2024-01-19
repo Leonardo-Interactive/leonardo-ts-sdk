@@ -195,16 +195,13 @@ Get a list of public Platform Models available for use with generations.
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { GetPlatformModelsRequest } from "@leonardo-ai/sdk/dist/sdk/models/operations";
 
 async function run() {
   const sdk = new Leonardo({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const limit: number = 419487;
-const offset: number = 472174;
 
-  const res = await sdk.model.getPlatformModels(limit, offset);
+  const res = await sdk.model.getPlatformModels();
 
   if (res.statusCode == 200) {
     // handle response
@@ -218,8 +215,6 @@ run();
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `limit`                                                      | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `offset`                                                     | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 

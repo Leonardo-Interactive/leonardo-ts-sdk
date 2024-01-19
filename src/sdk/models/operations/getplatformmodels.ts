@@ -6,14 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class GetPlatformModelsRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-    limit?: number;
-
-    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=offset" })
-    offset?: number;
-}
-
 /**
  * columns and relationships of "generated_images"
  */
