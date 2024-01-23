@@ -19,7 +19,7 @@ export class CreateGenerationRequestBody extends SpeakeasyBase {
     alchemy?: boolean;
 
     /**
-     * Contrast Ratio to use with Alchemy.
+     * Contrast Ratio to use with Alchemy. Must be a float between 0 and 1 inclusive.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "contrastRatio" })
