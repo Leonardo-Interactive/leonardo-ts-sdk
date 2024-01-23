@@ -7,13 +7,12 @@ async function run() {
         bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.dataset.createDataset({
+    const result = await sdk.dataset.createDataset({
         name: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // Handle the result
+    console.log(result);
 }
 
 run();

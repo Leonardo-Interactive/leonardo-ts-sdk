@@ -5,16 +5,17 @@ management:
   docVersion: v1.0.0
   speakeasyVersion: internal
   generationVersion: 2.237.3
-  releaseVersion: 2.30.3
-  configChecksum: 4febdbe16ff72b707f84ba90dc0a9b12
+  releaseVersion: 3.0.0
+  configChecksum: 7af8434b9c8bbc7e8caee695375d37cd
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
   published: true
 features:
   typescript:
-    core: 3.4.6
-    devContainers: 2.88.0
+    constsAndDefaults: 0.1.1
+    core: 3.4.7
+    devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
@@ -27,23 +28,27 @@ generatedFiles:
   - src/sdk/model.ts
   - src/sdk/variation.ts
   - src/sdk/sdk.ts
-  - .eslintrc.yml
-  - jest.config.js
+  - .eslintrc.js
+  - .npmignore
+  - RUNTIMES.md
   - package-lock.json
   - package.json
   - src/index.ts
-  - src/internal/utils/contenttype.ts
-  - src/internal/utils/headers.ts
-  - src/internal/utils/index.ts
-  - src/internal/utils/pathparams.ts
-  - src/internal/utils/queryparams.ts
-  - src/internal/utils/requestbody.ts
-  - src/internal/utils/retries.ts
-  - src/internal/utils/security.ts
-  - src/internal/utils/utils.ts
+  - src/lib/base64.ts
+  - src/lib/config.ts
+  - src/lib/encodings.ts
+  - src/lib/event-streams.ts
+  - src/lib/http.ts
+  - src/lib/retries.ts
+  - src/lib/sdks.ts
+  - src/lib/security.ts
+  - src/lib/url.ts
   - src/sdk/index.ts
   - src/sdk/models/errors/sdkerror.ts
+  - src/sdk/types/blobs.ts
+  - src/sdk/types/decimal.ts
   - src/sdk/types/index.ts
+  - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
   - tsconfig.json
   - src/sdk/models/operations/createdataset.ts
