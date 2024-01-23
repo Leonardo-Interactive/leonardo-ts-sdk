@@ -25,4 +25,4 @@ typescript:
   maxMethodParams: 5
   outputModelSuffix: output
   packageName: '@leonardo-ai/sdk'
-  templateVersion: v1
+  templateVersion: v2
