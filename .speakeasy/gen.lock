@@ -1,20 +1,21 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 5c46d09a773b28588fedd4bb31a1647c
+  docChecksum: f44cbfdd8643f7b10165cb4138d184e0
   docVersion: v1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.227.1
-  releaseVersion: 2.30.0
-  configChecksum: b78c83bd62eb45165c2ef6e118eb60ea
+  generationVersion: 2.237.3
+  releaseVersion: 3.0.0
+  configChecksum: 7af8434b9c8bbc7e8caee695375d37cd
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
   published: true
 features:
   typescript:
-    core: 3.4.2
-    devContainers: 2.88.0
+    constsAndDefaults: 0.1.1
+    core: 3.4.7
+    devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
@@ -27,23 +28,27 @@ generatedFiles:
   - src/sdk/model.ts
   - src/sdk/variation.ts
   - src/sdk/sdk.ts
-  - .eslintrc.yml
-  - jest.config.js
+  - .eslintrc.js
+  - .npmignore
+  - RUNTIMES.md
   - package-lock.json
   - package.json
   - src/index.ts
-  - src/internal/utils/contenttype.ts
-  - src/internal/utils/headers.ts
-  - src/internal/utils/index.ts
-  - src/internal/utils/pathparams.ts
-  - src/internal/utils/queryparams.ts
-  - src/internal/utils/requestbody.ts
-  - src/internal/utils/retries.ts
-  - src/internal/utils/security.ts
-  - src/internal/utils/utils.ts
+  - src/lib/base64.ts
+  - src/lib/config.ts
+  - src/lib/encodings.ts
+  - src/lib/event-streams.ts
+  - src/lib/http.ts
+  - src/lib/retries.ts
+  - src/lib/sdks.ts
+  - src/lib/security.ts
+  - src/lib/url.ts
   - src/sdk/index.ts
   - src/sdk/models/errors/sdkerror.ts
+  - src/sdk/types/blobs.ts
+  - src/sdk/types/decimal.ts
   - src/sdk/types/index.ts
+  - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
   - tsconfig.json
   - src/sdk/models/operations/createdataset.ts
@@ -57,6 +62,7 @@ generatedFiles:
   - src/sdk/models/operations/deletegenerationstextureid.ts
   - src/sdk/models/operations/getgenerationbyid.ts
   - src/sdk/models/operations/getgenerationsbyuserid.ts
+  - src/sdk/models/operations/postgenerationsmotionsvd.ts
   - src/sdk/models/operations/postgenerationstexture.ts
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/getinitimagebyid.ts
@@ -140,6 +146,10 @@ generatedFiles:
   - docs/sdk/models/operations/getgenerationsbyuseridgenerations.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponsebody.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponse.md
+  - docs/sdk/models/operations/postgenerationsmotionsvdrequestbody.md
+  - docs/sdk/models/operations/motionsvdgenerationoutput.md
+  - docs/sdk/models/operations/postgenerationsmotionsvdresponsebody.md
+  - docs/sdk/models/operations/postgenerationsmotionsvdresponse.md
   - docs/sdk/models/operations/postgenerationstexturerequestbody.md
   - docs/sdk/models/operations/texturegenerationjoboutput.md
   - docs/sdk/models/operations/postgenerationstextureresponsebody.md
@@ -177,7 +187,6 @@ generatedFiles:
   - docs/sdk/models/operations/getmodelbyidcustommodels.md
   - docs/sdk/models/operations/getmodelbyidresponsebody.md
   - docs/sdk/models/operations/getmodelbyidresponse.md
-  - docs/sdk/models/operations/getplatformmodelsrequest.md
   - docs/sdk/models/operations/getplatformmodelsgeneratedimages.md
   - docs/sdk/models/operations/getplatformmodelscustommodels.md
   - docs/sdk/models/operations/getplatformmodelsresponsebody.md

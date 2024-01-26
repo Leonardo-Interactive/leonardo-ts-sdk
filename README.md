@@ -41,13 +41,12 @@ async function run() {
         bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.dataset.createDataset({
+    const result = await sdk.dataset.createDataset({
         name: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -77,6 +76,7 @@ run();
 * [deleteGenerationsTextureId](docs/sdks/generation/README.md#deletegenerationstextureid) - Delete Texture Generation by ID
 * [getGenerationById](docs/sdks/generation/README.md#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
+* [postGenerationsMotionSvd](docs/sdks/generation/README.md#postgenerationsmotionsvd) - Create SVD Motion Generation
 * [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
 
 ### [initImage](docs/sdks/initimage/README.md)
@@ -115,7 +115,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
@@ -131,21 +131,18 @@ async function run() {
         bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    let res;
+    let result;
     try {
-        res = await sdk.dataset.createDataset({
+        result = await sdk.dataset.createDataset({
             name: "string",
         });
     } catch (err) {
-        if (err instanceof errors.SDKError) {
-            console.error(err); // handle exception
-            throw err;
-        }
+        // Handle errors here
+        throw err;
     }
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -158,19 +155,49 @@ run();
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This
+client is a thin wrapper around `fetch` and provides the ability to attach hooks
+around the request lifecycle that can be used to modify the request or handle
+errors and response.
 
-For example, you could specify a header for every request that your sdk makes as follows:
+The `HTTPClient` constructor takes an optional `fetcher` argument that can be
+used to integrate a third-party HTTP client or when writing tests to mock out
+the HTTP client and feed in fixtures.
+
+The following example shows how to use the `"beforeRequest"` hook to to add a
+custom header and a timeout to requests and how to use the `"requestError"` hook
+to log errors:
 
 ```typescript
-import { @leonardo-ai/sdk } from "Leonardo";
-import axios from "axios";
+import { Leonardo } from "@leonardo-ai/sdk";
+import { HTTPClient } from "@leonardo-ai/sdk/lib/http";
 
-const httpClient = axios.create({
-    headers: {'x-custom-header': 'someValue'}
-})
+const httpClient = new HTTPClient({
+  // fetcher takes a function that has the same signature as native `fetch`.
+  fetcher: (request) => {
+    return fetch(request);
+  }
+});
 
-const sdk = new Leonardo({defaultClient: httpClient});
+httpClient.addHook("beforeRequest", (request) => {
+  const nextRequest = new Request(request, {
+    signal: request.signal || AbortSignal.timeout(5000);
+  });
+
+  nextRequest.headers.set("x-custom-header", "custom value");
+
+  return nextRequest;
+});
+
+httpClient.addHook("requestError", (error, request) => {
+  console.group("Request Error");
+  console.log("Reason:", `${error}`);
+  console.log("Endpoint:", `${request.method} ${request.url}`);
+  console.groupEnd();
+});
+
+const sdk = new Leonardo({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -181,13 +208,11 @@ const sdk = new Leonardo({defaultClient: httpClient});
 
 ### Select Server by Index
 
-You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
 | # | Server | Variables |
 | - | ------ | --------- |
 | 0 | `https://cloud.leonardo.ai/api/rest/v1` | None |
-
-#### Example
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
@@ -198,13 +223,12 @@ async function run() {
         bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.dataset.createDataset({
+    const result = await sdk.dataset.createDataset({
         name: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -214,7 +238,8 @@ run();
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
+
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -224,13 +249,12 @@ async function run() {
         bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.dataset.createDataset({
+    const result = await sdk.dataset.createDataset({
         name: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -260,19 +284,24 @@ async function run() {
         bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.dataset.createDataset({
+    const result = await sdk.dataset.createDataset({
         name: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Requirements [requirements] -->
+## Requirements
+
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+<!-- End Requirements [requirements] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

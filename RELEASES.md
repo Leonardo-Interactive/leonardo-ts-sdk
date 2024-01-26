@@ -1740,3 +1740,43 @@ Based on:
 - [typescript v2.30.0] .
 ### Releases
 - [NPM v2.30.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/2.30.0 - .
+
+## 2024-01-18 23:01:47
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.147.0 (2.237.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.30.1] .
+### Releases
+- [NPM v2.30.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/2.30.1 - .
+
+## 2024-01-19 01:26:35
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.147.0 (2.237.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.30.2] .
+### Releases
+- [NPM v2.30.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/2.30.2 - .
+
+## 2024-01-23 01:27:01
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.148.0 (2.237.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.30.3] .
+### Releases
+- [NPM v2.30.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/2.30.3 - .
+
+## 2024-01-23 02:13:50
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.148.0 (2.237.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v3.0.0] .
+### Releases
+- [NPM v3.0.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/3.0.0 - .

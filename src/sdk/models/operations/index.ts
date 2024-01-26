@@ -22,6 +22,7 @@ export * from "./getmodelbyid";
 export * from "./getplatformmodels";
 export * from "./getuserself";
 export * from "./getvariationbyid";
+export * from "./postgenerationsmotionsvd";
 export * from "./postgenerationstexture";
 export * from "./postmodels3dupload";
 export * from "./postvariationsunzoom";
