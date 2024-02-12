@@ -4,21 +4,21 @@ management:
   docChecksum: f44cbfdd8643f7b10165cb4138d184e0
   docVersion: v1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.250.19
-  releaseVersion: 4.0.0
-  configChecksum: 0e7c9e9d543a37b93a611843462c9e0c
+  generationVersion: 2.252.7
+  releaseVersion: 4.0.1
+  configChecksum: 3f94f71c3dd2c008acb84b76081f9ec8
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
   published: true
 features:
   typescript:
-    constsAndDefaults: 0.1.2
+    constsAndDefaults: 0.1.3
     core: 3.4.9
     devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.2
-    globalServerURLs: 2.82.2
+    globalServerURLs: 2.82.3
 generatedFiles:
   - src/sdk/dataset.ts
   - src/sdk/element.ts

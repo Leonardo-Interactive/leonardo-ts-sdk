@@ -209,8 +209,8 @@ export namespace GetGenerationsByUserIdRequest$ {
         .transform((v) => {
             return {
                 userId: v.userId,
-                ...(v.limit === undefined ? null : { limit: v.limit }),
-                ...(v.offset === undefined ? null : { offset: v.offset }),
+                limit: v.limit,
+                offset: v.offset,
             };
         });
 

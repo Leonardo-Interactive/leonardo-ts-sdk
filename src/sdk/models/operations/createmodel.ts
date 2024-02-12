@@ -110,14 +110,14 @@ export namespace CreateModelRequestBody$ {
         .transform((v) => {
             return {
                 datasetId: v.datasetId,
-                ...(v.description === undefined ? null : { description: v.description }),
+                description: v.description,
                 instancePrompt: v.instance_prompt,
-                ...(v.modelType === undefined ? null : { modelType: v.modelType }),
+                modelType: v.modelType,
                 name: v.name,
-                ...(v.nsfw === undefined ? null : { nsfw: v.nsfw }),
-                ...(v.resolution === undefined ? null : { resolution: v.resolution }),
+                nsfw: v.nsfw,
+                resolution: v.resolution,
                 ...(v.sd_Version === undefined ? null : { sdVersion: v.sd_Version }),
-                ...(v.strength === undefined ? null : { strength: v.strength }),
+                strength: v.strength,
             };
         });
 
