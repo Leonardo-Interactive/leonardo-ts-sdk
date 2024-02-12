@@ -24,11 +24,13 @@ type RequestConfig = {
 
 export class ClientSDK {
     private readonly client: HTTPClient;
-    protected readonly baseURL: URL;
+    protected readonly baseURL: URL | null;
 
-    constructor(init: { client: HTTPClient; baseURL: URL }) {
+    constructor(init: { client: HTTPClient; baseURL: URL | null }) {
         const url = init.baseURL;
-        url.pathname = url.pathname.replace(/\/+$/, "") + "/";
+        if (url) {
+            url.pathname = url.pathname.replace(/\/+$/, "") + "/";
+        }
 
         this.client = init.client;
         this.baseURL = url;
@@ -37,7 +39,11 @@ export class ClientSDK {
     protected async fetch$(conf: RequestConfig, options?: RequestOptions) {
         const { method, path, query, headers: opHeaders, security } = conf;
 
-        const reqURL = new URL(conf.baseURL ?? this.baseURL);
+        const base = conf.baseURL ?? this.baseURL;
+        if (!base) {
+            throw new TypeError("No base URL provided for operation");
+        }
+        const reqURL = new URL(base);
         const inputURL = new URL(path, reqURL);
 
         if (path) {
