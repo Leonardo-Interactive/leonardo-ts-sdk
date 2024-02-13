@@ -143,7 +143,7 @@ export namespace GetModelByIdCustomModels$ {
                 ...(v.public === undefined ? null : { public: v.public }),
                 ...(v.sdVersion === undefined ? null : { sdVersion: v.sdVersion }),
                 ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.type === undefined ? null : { type: v.type }),
+                type: v.type,
                 ...(v.updatedAt === undefined ? null : { updatedAt: v.updatedAt }),
             };
         });

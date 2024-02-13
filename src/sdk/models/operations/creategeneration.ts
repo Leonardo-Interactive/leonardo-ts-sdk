@@ -272,7 +272,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.elements === undefined ? null : { elements: v.elements }),
                 ...(v.expandedDomain === undefined ? null : { expandedDomain: v.expandedDomain }),
                 ...(v.guidance_scale === undefined ? null : { guidanceScale: v.guidance_scale }),
-                ...(v.height === undefined ? null : { height: v.height }),
+                height: v.height,
                 ...(v.highContrast === undefined ? null : { highContrast: v.highContrast }),
                 ...(v.highResolution === undefined ? null : { highResolution: v.highResolution }),
                 ...(v.imagePromptWeight === undefined
@@ -284,7 +284,7 @@ export namespace CreateGenerationRequestBody$ {
                     : { initGenerationImageId: v.init_generation_image_id }),
                 ...(v.init_image_id === undefined ? null : { initImageId: v.init_image_id }),
                 ...(v.init_strength === undefined ? null : { initStrength: v.init_strength }),
-                ...(v.modelId === undefined ? null : { modelId: v.modelId }),
+                modelId: v.modelId,
                 ...(v.negative_prompt === undefined ? null : { negativePrompt: v.negative_prompt }),
                 ...(v.nsfw === undefined ? null : { nsfw: v.nsfw }),
                 ...(v.num_images === undefined ? null : { numImages: v.num_images }),
@@ -296,7 +296,7 @@ export namespace CreateGenerationRequestBody$ {
                     ? null
                     : { photoRealStrength: v.photoRealStrength }),
                 ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
-                ...(v.prompt === undefined ? null : { prompt: v.prompt }),
+                prompt: v.prompt,
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
                 ...(v.promptMagicStrength === undefined
                     ? null
@@ -313,7 +313,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.unzoomAmount === undefined ? null : { unzoomAmount: v.unzoomAmount }),
                 ...(v.upscaleRatio === undefined ? null : { upscaleRatio: v.upscaleRatio }),
                 ...(v.weighting === undefined ? null : { weighting: v.weighting }),
-                ...(v.width === undefined ? null : { width: v.width }),
+                width: v.width,
             };
         });
 
