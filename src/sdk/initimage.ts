@@ -21,6 +21,7 @@ export class InitImage extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Delete init image
      *

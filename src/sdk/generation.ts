@@ -21,6 +21,7 @@ export class Generation extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create a Generation of Images
      *

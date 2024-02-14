@@ -23,7 +23,7 @@ async function run() {
   });
 
   const result = await sdk.variation.createVariationNoBG({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -66,7 +66,7 @@ async function run() {
   });
 
   const result = await sdk.variation.createVariationUpscale({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -108,7 +108,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.variation.getVariationById(id);
 

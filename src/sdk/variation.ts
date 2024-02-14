@@ -21,6 +21,7 @@ export class Variation extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create no background
      *

@@ -42,7 +42,7 @@ async function run() {
     });
 
     const result = await sdk.dataset.createDataset({
-        name: "string",
+        name: "<value>",
     });
 
     // Handle the result
@@ -134,7 +134,7 @@ async function run() {
     let result;
     try {
         result = await sdk.dataset.createDataset({
-            name: "string",
+            name: "<value>",
         });
     } catch (err) {
         // Handle errors here
@@ -224,7 +224,7 @@ async function run() {
     });
 
     const result = await sdk.dataset.createDataset({
-        name: "string",
+        name: "<value>",
     });
 
     // Handle the result
@@ -250,7 +250,7 @@ async function run() {
     });
 
     const result = await sdk.dataset.createDataset({
-        name: "string",
+        name: "<value>",
     });
 
     // Handle the result
@@ -285,7 +285,7 @@ async function run() {
     });
 
     const result = await sdk.dataset.createDataset({
-        name: "string",
+        name: "<value>",
     });
 
     // Handle the result

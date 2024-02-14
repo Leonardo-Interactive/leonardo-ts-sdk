@@ -18,7 +18,6 @@ This endpoint will train a new custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Leonardo({
@@ -26,9 +25,9 @@ async function run() {
   });
 
   const result = await sdk.model.createModel({
-    datasetId: "string",
-    instancePrompt: "string",
-    name: "string",
+    datasetId: "<value>",
+    instancePrompt: "<value>",
+    name: "<value>",
   });
 
   // Handle the result
@@ -70,7 +69,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.model.deleteModelById(id);
 
@@ -113,7 +112,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   const requestBody = {};
   
   const result = await sdk.model.deleteModels3dId(id, requestBody);
@@ -158,7 +157,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.model.getModelById(id);
 

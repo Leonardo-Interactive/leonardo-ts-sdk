@@ -20,6 +20,7 @@ export class User extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Get user information
      *

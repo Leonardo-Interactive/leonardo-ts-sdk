@@ -19,7 +19,6 @@ This endpoint will generate images
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { ControlnetType, SdGenerationSchedulers, SdGenerationStyle, SdVersions } from "@leonardo-ai/sdk/sdk/models/shared";
 
 async function run() {
   const sdk = new Leonardo({
@@ -31,7 +30,7 @@ async function run() {
       {},
     ],
     imagePrompts: [
-      "string",
+      "<value>",
     ],
   });
 
@@ -74,7 +73,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.generation.deleteGenerationById(id);
 
@@ -117,7 +116,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   const requestBody = {};
   
   const result = await sdk.generation.deleteGenerationsTextureId(id, requestBody);
@@ -162,7 +161,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.generation.getGenerationById(id);
 
@@ -205,7 +204,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const userId = "string";
+  const userId = "<value>";
   const limit = 270501;
   const offset = 770121;
   
@@ -253,7 +252,7 @@ async function run() {
   });
 
   const result = await sdk.generation.postGenerationsMotionSvd({
-    imageId: "string",
+    imageId: "<value>",
   });
 
   // Handle the result

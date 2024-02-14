@@ -20,6 +20,7 @@ export class Element extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * List Elements
      *

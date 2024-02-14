@@ -21,6 +21,7 @@ export class Model extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Train a Custom Model
      *

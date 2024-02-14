@@ -8,7 +8,7 @@ async function run() {
     });
 
     const result = await sdk.dataset.createDataset({
-        name: "string",
+        name: "<value>",
     });
 
     // Handle the result

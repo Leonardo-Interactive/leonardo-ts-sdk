@@ -21,7 +21,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.initImage.deleteInitImageById(id);
 
@@ -64,7 +64,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.initImage.getInitImageById(id);
 

@@ -24,7 +24,7 @@ async function run() {
   });
 
   const result = await sdk.dataset.createDataset({
-    name: "string",
+    name: "<value>",
   });
 
   // Handle the result
@@ -66,7 +66,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.dataset.deleteDatasetById(id);
 
@@ -109,7 +109,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const id = "string";
+  const id = "<value>";
   
   const result = await sdk.dataset.getDatasetById(id);
 
@@ -155,7 +155,7 @@ async function run() {
   const requestBody = {
     extension: "mpg4",
   };
-  const datasetId = "string";
+  const datasetId = "<value>";
   
   const result = await sdk.dataset.uploadDatasetImage(requestBody, datasetId);
 
@@ -200,9 +200,9 @@ async function run() {
   });
 
   const requestBody = {
-    generatedImageId: "string",
+    generatedImageId: "<value>",
   };
-  const datasetId = "string";
+  const datasetId = "<value>";
   
   const result = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
 
