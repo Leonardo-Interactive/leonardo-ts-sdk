@@ -191,10 +191,29 @@ async function retryBackoff(
         throw err;
       }
 
-      const d = Math.min(
-        initialInterval * Math.pow(x, exponent) + Math.random() * 1000,
-        maxInterval,
-      );
+      let retryInterval = 0;
+      if (err instanceof TemporaryError && err.res && err.res.headers) {
+        const retryVal = err.res.headers.get("retry-after") || "";
+        if (retryVal != "") {
+          const parsedNumber = Number(retryVal);
+          if (!isNaN(parsedNumber) && Number.isInteger(parsedNumber)) {
+            retryInterval = parsedNumber * 1000;
+          } else {
+            const parsedDate = Date.parse(retryVal);
+            if (!isNaN(parsedDate)) {
+              const deltaMS = parsedDate - Date.now();
+              retryInterval = deltaMS > 0 ? Math.ceil(deltaMS) : 0;
+            }
+          }
+        }
+      }
+
+      if (retryInterval == 0) {
+        retryInterval =
+          initialInterval * Math.pow(x, exponent) + Math.random() * 1000;
+      }
+
+      const d = Math.min(retryInterval, maxInterval);
 
       await delay(d);
       x++;

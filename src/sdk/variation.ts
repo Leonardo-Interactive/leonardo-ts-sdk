@@ -168,7 +168,6 @@ export class Variation extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/variations/{id}")(pathParams$);
 
         let security$;

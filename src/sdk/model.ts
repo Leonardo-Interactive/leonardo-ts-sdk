@@ -105,7 +105,6 @@ export class Model extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/models/{id}")(pathParams$);
 
         let security$;
@@ -175,7 +174,6 @@ export class Model extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/models-3d/{id}")(pathParams$);
 
         let security$;
@@ -241,7 +239,6 @@ export class Model extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/models/{id}")(pathParams$);
 
         let security$;

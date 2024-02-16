@@ -105,7 +105,6 @@ export class Dataset extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/datasets/{id}")(pathParams$);
 
         let security$;
@@ -171,7 +170,6 @@ export class Dataset extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/datasets/{id}")(pathParams$);
 
         let security$;
@@ -244,7 +242,6 @@ export class Dataset extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/datasets/{datasetId}/upload")(pathParams$);
 
         let security$;
@@ -317,7 +314,6 @@ export class Dataset extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/datasets/{datasetId}/upload/gen")(pathParams$);
 
         let security$;

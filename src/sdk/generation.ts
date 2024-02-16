@@ -105,7 +105,6 @@ export class Generation extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/generations/{id}")(pathParams$);
 
         let security$;
@@ -175,7 +174,6 @@ export class Generation extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/generations-texture/{id}")(pathParams$);
 
         let security$;
@@ -241,7 +239,6 @@ export class Generation extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/generations/{id}")(pathParams$);
 
         let security$;
@@ -314,7 +311,6 @@ export class Generation extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/generations/user/{userId}")(pathParams$);
 
         const query$ = [
