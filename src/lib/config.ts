@@ -51,7 +51,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = Object.freeze({
     language: "typescript",
     openapiDocVersion: "v1.0.0",
-    sdkVersion: "4.0.2",
-    genVersion: "2.262.1",
-    userAgent: "speakeasy-sdk/typescript 4.0.2 2.262.1 v1.0.0 @leonardo-ai/sdk",
+    sdkVersion: "4.1.0",
+    genVersion: "2.263.3",
+    userAgent: "speakeasy-sdk/typescript 4.1.0 2.263.3 v1.0.0 @leonardo-ai/sdk",
 });

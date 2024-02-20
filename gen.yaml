@@ -11,7 +11,11 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 typescript:
-  version: 4.0.2
+  version: 4.1.0
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
   author: leonardoai
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
