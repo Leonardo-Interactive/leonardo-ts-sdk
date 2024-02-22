@@ -11,7 +11,7 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 typescript:
-  version: 4.1.0
+  version: 4.2.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -31,4 +31,5 @@ typescript:
   maxMethodParams: 5
   outputModelSuffix: output
   packageName: '@leonardo-ai/sdk'
+  responseFormat: envelope
   templateVersion: v2

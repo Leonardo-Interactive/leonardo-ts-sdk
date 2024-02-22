@@ -272,7 +272,6 @@ export class Dataset extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UploadDatasetImageRequest$.outboundSchema.parse(input$);
-
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
         const pathParams$ = {
@@ -352,7 +351,6 @@ export class Dataset extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.UploadDatasetImageFromGenRequest$.outboundSchema.parse(input$);
-
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
         const pathParams$ = {

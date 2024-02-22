@@ -199,7 +199,6 @@ export class Generation extends ClientSDK {
         headers$.set("Accept", "application/json");
 
         const payload$ = operations.DeleteGenerationsTextureIdRequest$.outboundSchema.parse(input$);
-
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
         const pathParams$ = {
