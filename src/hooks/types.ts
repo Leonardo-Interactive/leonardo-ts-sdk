@@ -6,20 +6,26 @@ import { HTTPClient } from "../lib/http";
 
 export type HookContext = {
     operationID: string;
+    oAuth2Scopes?: string[];
+    security?: string | (() => Promise<string>);
 };
 
 export type Awaitable<T> = T | Promise<T>;
 
+export type SDKInitOptions = {
+    baseURL: URL | null;
+    client: HTTPClient;
+};
 export type BeforeRequestContext = HookContext & {};
 export type AfterSuccessContext = HookContext & {};
 export type AfterErrorContext = HookContext & {};
 
 /**
- * ClientInitHook is called when the SDK is initializing the HTTP client. The
- * hook can return a new HTTP client to be used by the SDK.
+ * SDKInitHook is called when the SDK is initializing. The
+ * hook can return a new baseURL and HTTP client to be used by the SDK.
  */
-export interface ClientInitHook {
-    clientInit: (client: HTTPClient) => HTTPClient;
+export interface SDKInitHook {
+    sdkInit: (opts: SDKInitOptions) => SDKInitOptions;
 }
 
 /**
@@ -57,8 +63,8 @@ export interface AfterErrorHook {
 }
 
 export interface Hooks {
-    /** Registers a hook to be used by the SDK for client initialization. */
-    registerClientInitHook(hook: ClientInitHook): void;
+    /** Registers a hook to be used by the SDK for initialization event. */
+    registerSDKInitHook(hook: SDKInitHook): void;
     /** Registers a hook to be used by the SDK for the before request event. */
     registerBeforeRequestHook(hook: BeforeRequestHook): void;
     /** Registers a hook to be used by the SDK for the after success event. */

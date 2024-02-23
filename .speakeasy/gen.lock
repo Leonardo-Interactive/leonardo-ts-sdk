@@ -4,9 +4,9 @@ management:
   docChecksum: f44cbfdd8643f7b10165cb4138d184e0
   docVersion: v1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.268.0
-  releaseVersion: 4.2.0
-  configChecksum: 6258753b1716085ac5a683dc6d12bc05
+  generationVersion: 2.272.1
+  releaseVersion: 4.3.0
+  configChecksum: 3f1e7012cac91ce5d57616ea6868924b
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,10 +14,10 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.3
-    core: 3.5.1
+    core: 3.6.0
     devContainers: 2.90.0
     flattening: 2.81.1
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.3
     responseFormat: 0.1.0
 generatedFiles:
@@ -40,11 +40,13 @@ generatedFiles:
   - src/lib/event-streams.ts
   - src/lib/http.ts
   - src/lib/retries.ts
+  - src/lib/schemas.ts
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
   - src/sdk/models/errors/sdkerror.ts
+  - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/decimal.ts
   - src/sdk/types/index.ts

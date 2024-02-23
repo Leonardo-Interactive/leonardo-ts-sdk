@@ -16,7 +16,6 @@ export type RequestOptions = {
 type RequestConfig = {
     method: string;
     path: string;
-    context: HookContext;
     baseURL?: string | URL;
     query?: string;
     body?: RequestInit["body"];
@@ -36,12 +35,13 @@ export class ClientSDK {
         }
 
         this.hooks$ = init.hooks;
-        this.client = this.hooks$.clientInit(init.client);
-        this.baseURL = url;
+        const { baseURL, client } = this.hooks$.sdkInit({ baseURL: url, client: init.client });
+        this.baseURL = baseURL;
+        this.client = client;
     }
 
-    protected async createRequest$(conf: RequestConfig, options?: RequestOptions) {
-        const { context, method, path, query, headers: opHeaders, security } = conf;
+    protected createRequest$(conf: RequestConfig, options?: RequestOptions) {
+        const { method, path, query, headers: opHeaders, security } = conf;
 
         const base = conf.baseURL ?? this.baseURL;
         if (!base) {
@@ -95,14 +95,12 @@ export class ClientSDK {
             headers.set(k, v);
         }
 
-        const req = new Request(reqURL, {
+        return new Request(reqURL, {
             ...options?.fetchOptions,
             body: conf.body ?? null,
             headers,
             method,
         });
-
-        return this.hooks$.beforeRequest(context, req);
     }
 
     protected async do$(
@@ -114,7 +112,7 @@ export class ClientSDK {
     ) {
         const { context, errorCodes } = options;
 
-        let response = await this.client.request(req);
+        let response = await this.client.request(await this.hooks$.beforeRequest(context, req));
 
         if (this.matchStatusCode(response, errorCodes)) {
             const result = await this.hooks$.afterError(context, response, null);

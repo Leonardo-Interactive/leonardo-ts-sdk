@@ -9,25 +9,21 @@ import {
     AfterSuccessHook,
     BeforeRequestContext,
     BeforeRequestHook,
-    ClientInitHook,
     Hooks,
+    SDKInitHook,
+    SDKInitOptions,
 } from "./types";
 
-import { HTTPClient } from "../lib/http";
-import { initHooks } from "./registration";
-
 export class SDKHooks implements Hooks {
-    clientInitHooks: ClientInitHook[] = [];
+    sdkInitHooks: SDKInitHook[] = [];
     beforeRequestHooks: BeforeRequestHook[] = [];
     afterSuccessHooks: AfterSuccessHook[] = [];
     afterErrorHooks: AfterErrorHook[] = [];
 
-    constructor() {
-        initHooks(this);
-    }
+    constructor() {}
 
-    registerClientInitHook(hook: ClientInitHook) {
-        this.clientInitHooks.push(hook);
+    registerSDKInitHook(hook: SDKInitHook) {
+        this.sdkInitHooks.push(hook);
     }
 
     registerBeforeRequestHook(hook: BeforeRequestHook) {
@@ -42,8 +38,8 @@ export class SDKHooks implements Hooks {
         this.afterErrorHooks.push(hook);
     }
 
-    clientInit(client: HTTPClient): HTTPClient {
-        return this.clientInitHooks.reduce((client, hook) => hook.clientInit(client), client);
+    sdkInit(opts: SDKInitOptions): SDKInitOptions {
+        return this.sdkInitHooks.reduce((opts, hook) => hook.sdkInit(opts), opts);
     }
 
     async beforeRequest(hookCtx: BeforeRequestContext, request: Request): Promise<Request> {
