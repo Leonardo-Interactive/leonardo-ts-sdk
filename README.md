@@ -75,8 +75,12 @@ run();
 * [deleteGenerationsTextureId](docs/sdks/generation/README.md#deletegenerationstextureid) - Delete Texture Generation by ID
 * [getGenerationById](docs/sdks/generation/README.md#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
+* [postGenerationsLcm](docs/sdks/generation/README.md#postgenerationslcm) - Create LCM Generation
 * [postGenerationsMotionSvd](docs/sdks/generation/README.md#postgenerationsmotionsvd) - Create SVD Motion Generation
 * [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
+* [postLcmInpainting](docs/sdks/generation/README.md#postlcminpainting) - Perform inpainting on a LCM image
+* [postLcmInstantRefine](docs/sdks/generation/README.md#postlcminstantrefine) - Perform instant refine on a LCM image
+* [postLcmUpscale](docs/sdks/generation/README.md#postlcmupscale) - Perform Alchemy Upscale on a LCM image
 
 ### [initImage](docs/sdks/initimage/README.md)
 

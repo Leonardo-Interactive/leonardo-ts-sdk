@@ -8,8 +8,12 @@
 * [deleteGenerationsTextureId](#deletegenerationstextureid) - Delete Texture Generation by ID
 * [getGenerationById](#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](#getgenerationsbyuserid) - Get generations by user ID
+* [postGenerationsLcm](#postgenerationslcm) - Create LCM Generation
 * [postGenerationsMotionSvd](#postgenerationsmotionsvd) - Create SVD Motion Generation
 * [postGenerationsTexture](#postgenerationstexture) - Create Texture Generation
+* [postLcmInpainting](#postlcminpainting) - Perform inpainting on a LCM image
+* [postLcmInstantRefine](#postlcminstantrefine) - Perform instant refine on a LCM image
+* [postLcmUpscale](#postlcmupscale) - Perform Alchemy Upscale on a LCM image
 
 ## createGeneration
 
@@ -237,6 +241,50 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## postGenerationsLcm
+
+This endpoint will generate a LCM image generation.
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.postGenerationsLcm({
+    imageDataUrl: "<value>",
+    prompt: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PostGenerationsLcmRequestBody](../../sdk/models/operations/postgenerationslcmrequestbody.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.PostGenerationsLcmResponse](../../sdk/models/operations/postgenerationslcmresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## postGenerationsMotionSvd
 
 This endpoint will generate a SVD motion generation.
@@ -315,6 +363,139 @@ run();
 ### Response
 
 **Promise<[operations.PostGenerationsTextureResponse](../../sdk/models/operations/postgenerationstextureresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## postLcmInpainting
+
+This endpoint will perform a inpainting on a LCM image
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.postLcmInpainting({
+    imageDataUrl: "<value>",
+    maskDataUrl: "<value>",
+    prompt: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PostLcmInpaintingRequestBody](../../sdk/models/operations/postlcminpaintingrequestbody.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.PostLcmInpaintingResponse](../../sdk/models/operations/postlcminpaintingresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## postLcmInstantRefine
+
+This endpoint will perform instant refine on a LCM image
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.postLcmInstantRefine({
+    imageDataUrl: "<value>",
+    prompt: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PostLcmInstantRefineRequestBody](../../sdk/models/operations/postlcminstantrefinerequestbody.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.PostLcmInstantRefineResponse](../../sdk/models/operations/postlcminstantrefineresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## postLcmUpscale
+
+This endpoint will perform Alchemy Upscale on a LCM image
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.postLcmUpscale({
+    imageDataUrl: "<value>",
+    prompt: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PostLcmUpscaleRequestBody](../../sdk/models/operations/postlcmupscalerequestbody.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.PostLcmUpscaleResponse](../../sdk/models/operations/postlcmupscaleresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -459,6 +459,85 @@ export class Generation extends ClientSDK {
     }
 
     /**
+     * Create LCM Generation
+     *
+     * @remarks
+     * This endpoint will generate a LCM image generation.
+     */
+    async postGenerationsLcm(
+        input: operations.PostGenerationsLcmRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.PostGenerationsLcmResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.PostGenerationsLcmRequestBody$.outboundSchema.optional().parse(value$),
+            "Input validation failed"
+        );
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/generations-lcm")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const context = { operationID: "post_/generations-lcm" };
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.PostGenerationsLcmResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Create SVD Motion Generation
      *
      * @remarks
@@ -607,6 +686,243 @@ export class Generation extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return operations.PostGenerationsTextureResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * Perform inpainting on a LCM image
+     *
+     * @remarks
+     * This endpoint will perform a inpainting on a LCM image
+     */
+    async postLcmInpainting(
+        input: operations.PostLcmInpaintingRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.PostLcmInpaintingResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.PostLcmInpaintingRequestBody$.outboundSchema.optional().parse(value$),
+            "Input validation failed"
+        );
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/lcm-inpainting")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const context = { operationID: "post_/lcm-inpainting" };
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.PostLcmInpaintingResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * Perform instant refine on a LCM image
+     *
+     * @remarks
+     * This endpoint will perform instant refine on a LCM image
+     */
+    async postLcmInstantRefine(
+        input: operations.PostLcmInstantRefineRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.PostLcmInstantRefineResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.PostLcmInstantRefineRequestBody$.outboundSchema.optional().parse(value$),
+            "Input validation failed"
+        );
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/lcm-instant-refine")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const context = { operationID: "post_/lcm-instant-refine" };
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.PostLcmInstantRefineResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * Perform Alchemy Upscale on a LCM image
+     *
+     * @remarks
+     * This endpoint will perform Alchemy Upscale on a LCM image
+     */
+    async postLcmUpscale(
+        input: operations.PostLcmUpscaleRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.PostLcmUpscaleResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.PostLcmUpscaleRequestBody$.outboundSchema.optional().parse(value$),
+            "Input validation failed"
+        );
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/lcm-upscale")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const context = { operationID: "post_/lcm-upscale" };
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.PostLcmUpscaleResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });

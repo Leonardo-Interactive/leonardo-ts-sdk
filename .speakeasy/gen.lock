@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: f44cbfdd8643f7b10165cb4138d184e0
+  docChecksum: 8571286cd4dd1d9d09ba99677375f886
   docVersion: v1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.272.1
-  releaseVersion: 4.3.0
-  configChecksum: 3f1e7012cac91ce5d57616ea6868924b
+  generationVersion: 2.272.7
+  releaseVersion: 4.3.1
+  configChecksum: d9f3304b154027d7ec1e7462db4a0c38
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,10 +14,10 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.3
-    core: 3.6.0
+    core: 3.6.1
     devContainers: 2.90.0
     flattening: 2.81.1
-    globalSecurity: 2.82.3
+    globalSecurity: 2.82.4
     globalServerURLs: 2.82.3
     responseFormat: 0.1.0
 generatedFiles:
@@ -64,8 +64,12 @@ generatedFiles:
   - src/sdk/models/operations/deletegenerationstextureid.ts
   - src/sdk/models/operations/getgenerationbyid.ts
   - src/sdk/models/operations/getgenerationsbyuserid.ts
+  - src/sdk/models/operations/postgenerationslcm.ts
   - src/sdk/models/operations/postgenerationsmotionsvd.ts
   - src/sdk/models/operations/postgenerationstexture.ts
+  - src/sdk/models/operations/postlcminpainting.ts
+  - src/sdk/models/operations/postlcminstantrefine.ts
+  - src/sdk/models/operations/postlcmupscale.ts
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/getinitimagebyid.ts
   - src/sdk/models/operations/uploadinitimage.ts
@@ -87,6 +91,7 @@ generatedFiles:
   - src/sdk/models/shared/controlnettype.ts
   - src/sdk/models/shared/jobstatus.ts
   - src/sdk/models/shared/variationtype.ts
+  - src/sdk/models/shared/lcmgenerationstyle.ts
   - src/sdk/models/shared/strength.ts
   - src/sdk/models/shared/custommodeltype.ts
   - src/sdk/models/shared/security.ts
@@ -148,6 +153,10 @@ generatedFiles:
   - docs/sdk/models/operations/getgenerationsbyuseridgenerations.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponsebody.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponse.md
+  - docs/sdk/models/operations/postgenerationslcmrequestbody.md
+  - docs/sdk/models/operations/lcmgenerationoutput.md
+  - docs/sdk/models/operations/postgenerationslcmresponsebody.md
+  - docs/sdk/models/operations/postgenerationslcmresponse.md
   - docs/sdk/models/operations/postgenerationsmotionsvdrequestbody.md
   - docs/sdk/models/operations/motionsvdgenerationoutput.md
   - docs/sdk/models/operations/postgenerationsmotionsvdresponsebody.md
@@ -156,6 +165,18 @@ generatedFiles:
   - docs/sdk/models/operations/texturegenerationjoboutput.md
   - docs/sdk/models/operations/postgenerationstextureresponsebody.md
   - docs/sdk/models/operations/postgenerationstextureresponse.md
+  - docs/sdk/models/operations/postlcminpaintingrequestbody.md
+  - docs/sdk/models/operations/postlcminpaintinglcmgenerationoutput.md
+  - docs/sdk/models/operations/postlcminpaintingresponsebody.md
+  - docs/sdk/models/operations/postlcminpaintingresponse.md
+  - docs/sdk/models/operations/postlcminstantrefinerequestbody.md
+  - docs/sdk/models/operations/postlcminstantrefinelcmgenerationoutput.md
+  - docs/sdk/models/operations/postlcminstantrefineresponsebody.md
+  - docs/sdk/models/operations/postlcminstantrefineresponse.md
+  - docs/sdk/models/operations/postlcmupscalerequestbody.md
+  - docs/sdk/models/operations/postlcmupscalelcmgenerationoutput.md
+  - docs/sdk/models/operations/postlcmupscaleresponsebody.md
+  - docs/sdk/models/operations/postlcmupscaleresponse.md
   - docs/sdk/models/operations/deleteinitimagebyidrequest.md
   - docs/sdk/models/operations/initimages.md
   - docs/sdk/models/operations/deleteinitimagebyidresponsebody.md
@@ -220,6 +241,7 @@ generatedFiles:
   - docs/sdk/models/shared/controlnettype.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/variationtype.md
+  - docs/sdk/models/shared/lcmgenerationstyle.md
   - docs/sdk/models/shared/strength.md
   - docs/sdk/models/shared/custommodeltype.md
   - docs/sdk/models/shared/security.md
