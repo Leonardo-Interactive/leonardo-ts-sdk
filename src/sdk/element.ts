@@ -60,9 +60,13 @@ export class Element extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "get_/elements",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "get_/elements" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {

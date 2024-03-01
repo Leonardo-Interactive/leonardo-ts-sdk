@@ -7,7 +7,7 @@ import { HTTPClient } from "../lib/http";
 export type HookContext = {
     operationID: string;
     oAuth2Scopes?: string[];
-    security?: string | (() => Promise<string>);
+    securitySource?: any | (() => Promise<any>);
 };
 
 export type Awaitable<T> = T | Promise<T>;

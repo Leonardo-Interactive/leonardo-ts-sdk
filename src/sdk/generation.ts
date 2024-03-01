@@ -72,9 +72,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createGeneration",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createGeneration" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -154,9 +158,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteGenerationById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteGenerationById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -239,9 +247,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "delete_/generations-texture/{id}",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "delete_/generations-texture/{id}" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -321,9 +333,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getGenerationById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getGenerationById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -415,9 +431,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getGenerationsByUserId",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getGenerationsByUserId" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -494,9 +514,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/generations-lcm",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/generations-lcm" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -575,9 +599,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/generations-motion-svd",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/generations-motion-svd" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -656,9 +684,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/generations-texture",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/generations-texture" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -735,9 +767,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/lcm-inpainting",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/lcm-inpainting" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -814,9 +850,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/lcm-instant-refine",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/lcm-instant-refine" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -893,9 +933,13 @@ export class Generation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/lcm-upscale",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/lcm-upscale" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {

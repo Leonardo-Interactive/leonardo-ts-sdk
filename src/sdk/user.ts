@@ -60,9 +60,13 @@ export class User extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getUserSelf",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getUserSelf" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {

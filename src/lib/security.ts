@@ -71,12 +71,19 @@ type SecurityInputOAuth2 = {
     fieldName: string;
 };
 
+type SecurityInputOAuth2ClientCredentials = {
+    type: "oauth2:client_credentials";
+    value: string | null | undefined;
+    fieldName: "clientID" | "clientSecret";
+};
+
 export type SecurityInput =
     | SecurityInputBasic
     | SecurityInputBasicPacked
     | SecurityInputBearer
     | SecurityInputAPIKey
     | SecurityInputOAuth2
+    | SecurityInputOAuth2ClientCredentials
     | SecurityInputOIDC;
 
 export function resolveSecurity(...options: SecurityInput[][]): SecurityState | null {
@@ -117,6 +124,8 @@ export function resolveSecurity(...options: SecurityInput[][]): SecurityState | 
                 break;
             case "oauth2":
                 applyBearer(state, spec);
+                break;
+            case "oauth2:client_credentials":
                 break;
             case "openIdConnect":
                 applyBearer(state, spec);

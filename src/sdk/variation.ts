@@ -72,9 +72,13 @@ export class Variation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createVariationNoBG",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createVariationNoBG" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -153,9 +157,13 @@ export class Variation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createVariationUpscale",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createVariationUpscale" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -235,9 +243,13 @@ export class Variation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getVariationById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getVariationById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -314,9 +326,13 @@ export class Variation extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/variations/unzoom",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/variations/unzoom" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {

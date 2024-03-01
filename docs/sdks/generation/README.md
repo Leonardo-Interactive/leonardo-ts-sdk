@@ -209,8 +209,8 @@ async function run() {
   });
 
   const userId = "<value>";
-  const limit = 270501;
-  const offset = 770121;
+  const limit = 10;
+  const offset = 0;
   
   const result = await sdk.generation.getGenerationsByUserId(userId, limit, offset);
 

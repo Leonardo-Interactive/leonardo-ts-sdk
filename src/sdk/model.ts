@@ -72,9 +72,13 @@ export class Model extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createModel",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createModel" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -154,9 +158,13 @@ export class Model extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteModelById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteModelById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -239,9 +247,13 @@ export class Model extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "delete_/models-3d/{id}",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "delete_/models-3d/{id}" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -321,9 +333,13 @@ export class Model extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getModelById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getModelById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -389,9 +405,13 @@ export class Model extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "get_/platformModels",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "get_/platformModels" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -467,9 +487,13 @@ export class Model extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "post_/models-3d/upload",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "post_/models-3d/upload" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {

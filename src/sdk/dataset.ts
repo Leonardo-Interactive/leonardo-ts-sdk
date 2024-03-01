@@ -72,9 +72,13 @@ export class Dataset extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "createDataset",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "createDataset" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -154,9 +158,13 @@ export class Dataset extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteDatasetById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteDatasetById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -236,9 +244,13 @@ export class Dataset extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getDatasetById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getDatasetById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -324,9 +336,13 @@ export class Dataset extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "uploadDatasetImage",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "uploadDatasetImage" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -412,9 +428,13 @@ export class Dataset extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "uploadDatasetImageFromGen",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "uploadDatasetImageFromGen" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {

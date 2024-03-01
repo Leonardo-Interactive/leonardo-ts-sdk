@@ -77,9 +77,13 @@ export class InitImage extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "deleteInitImageById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "deleteInitImageById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -159,9 +163,13 @@ export class InitImage extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "getInitImageById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "getInitImageById" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
@@ -236,9 +244,13 @@ export class InitImage extends ClientSDK {
         } else {
             security$ = {};
         }
+        const context = {
+            operationID: "uploadInitImage",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const context = { operationID: "uploadInitImage" };
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
             {
