@@ -1,6 +1,6 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "author": "leonardoai",
   "main": "./index.js",
   "sideEffects": false,
@@ -29,7 +29,6 @@
     "zod": "^3.22.4"
   },
   "dependencies": {
-    "decimal.js": "^10.4.3",
-    "jsonpath": "^1.1.1"
+    
   }
 }
