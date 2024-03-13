@@ -73,7 +73,7 @@ export class ClientSDK {
 
         const username = security?.basic.username || "";
         const password = security?.basic.password || "";
-        if (username) {
+        if (username || password) {
             const encoded = stringToBase64([username, password].join(":"));
             headers.set("Authorization", `Basic ${encoded}`);
         }

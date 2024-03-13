@@ -1,6 +1,6 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "4.4.1",
+  "version": "4.4.2",
   "author": "leonardoai",
   "main": "./index.js",
   "sideEffects": false,
