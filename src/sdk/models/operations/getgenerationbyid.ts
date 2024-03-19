@@ -32,6 +32,10 @@ export type GetGenerationByIdGeneratedImageVariationGeneric = {
  * columns and relationships of "generated_images"
  */
 export type GeneratedImages = {
+    /**
+     * If fantasyAvatar feature was used.
+     */
+    fantasyAvatar?: boolean | null | undefined;
     generatedImageVariationGenerics?:
         | Array<GetGenerationByIdGeneratedImageVariationGeneric>
         | undefined;
@@ -287,6 +291,7 @@ export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
 /** @internal */
 export namespace GeneratedImages$ {
     export type Inbound = {
+        fantasyAvatar?: boolean | null | undefined;
         generated_image_variation_generics?:
             | Array<GetGenerationByIdGeneratedImageVariationGeneric$.Inbound>
             | undefined;
@@ -303,6 +308,7 @@ export namespace GeneratedImages$ {
 
     export const inboundSchema: z.ZodType<GeneratedImages, z.ZodTypeDef, Inbound> = z
         .object({
+            fantasyAvatar: z.nullable(z.boolean()).optional(),
             generated_image_variation_generics: z
                 .array(z.lazy(() => GetGenerationByIdGeneratedImageVariationGeneric$.inboundSchema))
                 .optional(),
@@ -318,6 +324,7 @@ export namespace GeneratedImages$ {
         })
         .transform((v) => {
             return {
+                ...(v.fantasyAvatar === undefined ? null : { fantasyAvatar: v.fantasyAvatar }),
                 ...(v.generated_image_variation_generics === undefined
                     ? null
                     : { generatedImageVariationGenerics: v.generated_image_variation_generics }),
@@ -334,6 +341,7 @@ export namespace GeneratedImages$ {
         });
 
     export type Outbound = {
+        fantasyAvatar?: boolean | null | undefined;
         generated_image_variation_generics?:
             | Array<GetGenerationByIdGeneratedImageVariationGeneric$.Outbound>
             | undefined;
@@ -350,6 +358,7 @@ export namespace GeneratedImages$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GeneratedImages> = z
         .object({
+            fantasyAvatar: z.nullable(z.boolean()).optional(),
             generatedImageVariationGenerics: z
                 .array(
                     z.lazy(() => GetGenerationByIdGeneratedImageVariationGeneric$.outboundSchema)
@@ -367,6 +376,7 @@ export namespace GeneratedImages$ {
         })
         .transform((v) => {
             return {
+                ...(v.fantasyAvatar === undefined ? null : { fantasyAvatar: v.fantasyAvatar }),
                 ...(v.generatedImageVariationGenerics === undefined
                     ? null
                     : { generated_image_variation_generics: v.generatedImageVariationGenerics }),

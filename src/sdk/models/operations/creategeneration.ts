@@ -31,6 +31,10 @@ export type CreateGenerationRequestBody = {
      */
     expandedDomain?: boolean | null | undefined;
     /**
+     * Enable to use the Fantasy Avatar feature.
+     */
+    fantasyAvatar?: boolean | null | undefined;
+    /**
      * How strongly the generation should reflect the prompt. 7 is recommended. Must be between 1 and 20.
      */
     guidanceScale?: number | null | undefined;
@@ -190,6 +194,7 @@ export namespace CreateGenerationRequestBody$ {
         controlNetType?: shared.ControlnetType | undefined;
         elements?: Array<shared.ElementInput$.Inbound> | null | undefined;
         expandedDomain?: boolean | null | undefined;
+        fantasyAvatar?: boolean | null | undefined;
         guidance_scale?: number | null | undefined;
         height?: number | null | undefined;
         highContrast?: boolean | null | undefined;
@@ -231,6 +236,7 @@ export namespace CreateGenerationRequestBody$ {
             controlNetType: shared.ControlnetType$.optional(),
             elements: z.nullable(z.array(shared.ElementInput$.inboundSchema)).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
+            fantasyAvatar: z.nullable(z.boolean()).optional(),
             guidance_scale: z.nullable(z.number().int()).optional(),
             height: z.nullable(z.number().int().default(512)),
             highContrast: z.nullable(z.boolean()).optional(),
@@ -271,6 +277,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.controlNetType === undefined ? null : { controlNetType: v.controlNetType }),
                 ...(v.elements === undefined ? null : { elements: v.elements }),
                 ...(v.expandedDomain === undefined ? null : { expandedDomain: v.expandedDomain }),
+                ...(v.fantasyAvatar === undefined ? null : { fantasyAvatar: v.fantasyAvatar }),
                 ...(v.guidance_scale === undefined ? null : { guidanceScale: v.guidance_scale }),
                 height: v.height,
                 ...(v.highContrast === undefined ? null : { highContrast: v.highContrast }),
@@ -324,6 +331,7 @@ export namespace CreateGenerationRequestBody$ {
         controlNetType?: shared.ControlnetType | undefined;
         elements?: Array<shared.ElementInput$.Outbound> | null | undefined;
         expandedDomain?: boolean | null | undefined;
+        fantasyAvatar?: boolean | null | undefined;
         guidance_scale?: number | null | undefined;
         height: number | null;
         highContrast?: boolean | null | undefined;
@@ -365,6 +373,7 @@ export namespace CreateGenerationRequestBody$ {
             controlNetType: shared.ControlnetType$.optional(),
             elements: z.nullable(z.array(shared.ElementInput$.outboundSchema)).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
+            fantasyAvatar: z.nullable(z.boolean()).optional(),
             guidanceScale: z.nullable(z.number().int()).optional(),
             height: z.nullable(z.number().int().default(512)),
             highContrast: z.nullable(z.boolean()).optional(),
@@ -405,6 +414,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.controlNetType === undefined ? null : { controlNetType: v.controlNetType }),
                 ...(v.elements === undefined ? null : { elements: v.elements }),
                 ...(v.expandedDomain === undefined ? null : { expandedDomain: v.expandedDomain }),
+                ...(v.fantasyAvatar === undefined ? null : { fantasyAvatar: v.fantasyAvatar }),
                 ...(v.guidanceScale === undefined ? null : { guidance_scale: v.guidanceScale }),
                 height: v.height,
                 ...(v.highContrast === undefined ? null : { highContrast: v.highContrast }),
