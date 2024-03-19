@@ -8,8 +8,8 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
+import * as errors from "./models/errors";
+import * as operations from "./models/operations";
 
 export class Model extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
