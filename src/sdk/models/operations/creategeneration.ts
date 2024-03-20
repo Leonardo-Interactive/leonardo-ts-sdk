@@ -6,6 +6,14 @@ import * as shared from "../shared";
 import * as z from "zod";
 
 /**
+ * Which type of transparency this image should use
+ */
+export enum TransparencyType {
+    Disabled = "disabled",
+    ForegroundOnly = "foreground_only",
+}
+
+/**
  * Query parameters to be provided in the request body as a JSON object
  */
 export type CreateGenerationRequestBody = {
@@ -130,6 +138,10 @@ export type CreateGenerationRequestBody = {
      */
     tiling?: boolean | null | undefined;
     /**
+     * Which type of transparency this image should use
+     */
+    transparency?: TransparencyType | null | undefined;
+    /**
      * Whether the generated images should be unzoomed (requires unzoomAmount and init_image_id to be set).
      */
     unzoom?: boolean | null | undefined;
@@ -186,6 +198,9 @@ export type CreateGenerationResponse = {
 };
 
 /** @internal */
+export const TransparencyType$ = z.nativeEnum(TransparencyType);
+
+/** @internal */
 export namespace CreateGenerationRequestBody$ {
     export type Inbound = {
         alchemy?: boolean | null | undefined;
@@ -221,6 +236,7 @@ export namespace CreateGenerationRequestBody$ {
         sd_version?: shared.SdVersions | undefined;
         seed?: number | null | undefined;
         tiling?: boolean | null | undefined;
+        transparency?: TransparencyType | null | undefined;
         unzoom?: boolean | null | undefined;
         unzoomAmount?: number | null | undefined;
         upscaleRatio?: number | null | undefined;
@@ -263,6 +279,7 @@ export namespace CreateGenerationRequestBody$ {
             sd_version: shared.SdVersions$.optional(),
             seed: z.nullable(z.number().int()).optional(),
             tiling: z.nullable(z.boolean()).optional(),
+            transparency: z.nullable(TransparencyType$.default(TransparencyType.Disabled)),
             unzoom: z.nullable(z.boolean()).optional(),
             unzoomAmount: z.nullable(z.number()).optional(),
             upscaleRatio: z.nullable(z.number()).optional(),
@@ -316,6 +333,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.sd_version === undefined ? null : { sdVersion: v.sd_version }),
                 ...(v.seed === undefined ? null : { seed: v.seed }),
                 ...(v.tiling === undefined ? null : { tiling: v.tiling }),
+                transparency: v.transparency,
                 ...(v.unzoom === undefined ? null : { unzoom: v.unzoom }),
                 ...(v.unzoomAmount === undefined ? null : { unzoomAmount: v.unzoomAmount }),
                 ...(v.upscaleRatio === undefined ? null : { upscaleRatio: v.upscaleRatio }),
@@ -358,6 +376,7 @@ export namespace CreateGenerationRequestBody$ {
         sd_version?: shared.SdVersions | undefined;
         seed?: number | null | undefined;
         tiling?: boolean | null | undefined;
+        transparency: TransparencyType | null;
         unzoom?: boolean | null | undefined;
         unzoomAmount?: number | null | undefined;
         upscaleRatio?: number | null | undefined;
@@ -400,6 +419,7 @@ export namespace CreateGenerationRequestBody$ {
             sdVersion: shared.SdVersions$.optional(),
             seed: z.nullable(z.number().int()).optional(),
             tiling: z.nullable(z.boolean()).optional(),
+            transparency: z.nullable(TransparencyType$.default(TransparencyType.Disabled)),
             unzoom: z.nullable(z.boolean()).optional(),
             unzoomAmount: z.nullable(z.number()).optional(),
             upscaleRatio: z.nullable(z.number()).optional(),
@@ -453,6 +473,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.sdVersion === undefined ? null : { sd_version: v.sdVersion }),
                 ...(v.seed === undefined ? null : { seed: v.seed }),
                 ...(v.tiling === undefined ? null : { tiling: v.tiling }),
+                transparency: v.transparency,
                 ...(v.unzoom === undefined ? null : { unzoom: v.unzoom }),
                 ...(v.unzoomAmount === undefined ? null : { unzoomAmount: v.unzoomAmount }),
                 ...(v.upscaleRatio === undefined ? null : { upscaleRatio: v.upscaleRatio }),

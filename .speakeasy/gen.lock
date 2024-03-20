@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: cdcc022e9c8f497fdb1b5a8f0a516c6c
+  docChecksum: c6e01eef340658dd735b895efcca8c2d
   docVersion: v1.0.0
-  speakeasyVersion: 1.210.1
-  generationVersion: 2.283.0
-  releaseVersion: 4.4.4
-  configChecksum: e054122304ed83dd05096bee25002501
+  speakeasyVersion: 1.213.0
+  generationVersion: 2.283.1
+  releaseVersion: 4.4.5
+  configChecksum: dbf7302a5402521b10d035df48703d48
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -122,6 +122,7 @@ generatedFiles:
   - docs/sdk/models/operations/loras.md
   - docs/sdk/models/operations/getelementsresponsebody.md
   - docs/sdk/models/operations/getelementsresponse.md
+  - docs/sdk/models/operations/transparencytype.md
   - docs/sdk/models/operations/creategenerationrequestbody.md
   - docs/sdk/models/operations/sdgenerationoutput.md
   - docs/sdk/models/operations/creategenerationresponsebody.md
