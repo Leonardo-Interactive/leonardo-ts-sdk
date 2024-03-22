@@ -9,6 +9,9 @@ import * as z from "zod";
  */
 export type Users = {
     id?: string | null | undefined;
+    /**
+     * Username of the user.
+     */
     username?: string | null | undefined;
 };
 
@@ -16,10 +19,41 @@ export type Users = {
  * columns and relationships of "user_details"
  */
 export type UserDetails = {
+    /**
+     * API Concurrency Slots.
+     */
     apiConcurrencySlots?: number | undefined;
+    /**
+     * Current balance of API paid tokens the user has.
+     */
+    apiPaidTokens?: number | undefined;
+    /**
+     * API Plan Token Renewal Date.
+     */
+    apiPlanTokenRenewalDate?: string | null | undefined;
+    /**
+     * Current balance of Enterprise API subscriptions tokens the user has.
+     */
+    apiSubscriptionTokens?: number | undefined;
+    /**
+     * Current balance of paid tokens the user has.
+     */
+    paidTokens?: number | undefined;
+    /**
+     * Current balance of user plan GPT tokens the user has.
+     */
     subscriptionGptTokens?: number | undefined;
+    /**
+     * Current balance of model training tokens the user has.
+     */
     subscriptionModelTokens?: number | undefined;
+    /**
+     * Current balance of user plan subscription tokens the user has.
+     */
     subscriptionTokens?: number | undefined;
+    /**
+     * User Plan Token Renewal Date.
+     */
     tokenRenewalDate?: string | null | undefined;
     /**
      * columns and relationships of "users"
@@ -94,6 +128,10 @@ export namespace Users$ {
 export namespace UserDetails$ {
     export type Inbound = {
         apiConcurrencySlots?: number | undefined;
+        apiPaidTokens?: number | undefined;
+        apiPlanTokenRenewalDate?: string | null | undefined;
+        apiSubscriptionTokens?: number | undefined;
+        paidTokens?: number | undefined;
         subscriptionGptTokens?: number | undefined;
         subscriptionModelTokens?: number | undefined;
         subscriptionTokens?: number | undefined;
@@ -104,6 +142,10 @@ export namespace UserDetails$ {
     export const inboundSchema: z.ZodType<UserDetails, z.ZodTypeDef, Inbound> = z
         .object({
             apiConcurrencySlots: z.number().int().optional(),
+            apiPaidTokens: z.number().int().optional(),
+            apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
+            apiSubscriptionTokens: z.number().int().optional(),
+            paidTokens: z.number().int().optional(),
             subscriptionGptTokens: z.number().int().optional(),
             subscriptionModelTokens: z.number().int().optional(),
             subscriptionTokens: z.number().int().optional(),
@@ -115,6 +157,14 @@ export namespace UserDetails$ {
                 ...(v.apiConcurrencySlots === undefined
                     ? null
                     : { apiConcurrencySlots: v.apiConcurrencySlots }),
+                ...(v.apiPaidTokens === undefined ? null : { apiPaidTokens: v.apiPaidTokens }),
+                ...(v.apiPlanTokenRenewalDate === undefined
+                    ? null
+                    : { apiPlanTokenRenewalDate: v.apiPlanTokenRenewalDate }),
+                ...(v.apiSubscriptionTokens === undefined
+                    ? null
+                    : { apiSubscriptionTokens: v.apiSubscriptionTokens }),
+                ...(v.paidTokens === undefined ? null : { paidTokens: v.paidTokens }),
                 ...(v.subscriptionGptTokens === undefined
                     ? null
                     : { subscriptionGptTokens: v.subscriptionGptTokens }),
@@ -133,6 +183,10 @@ export namespace UserDetails$ {
 
     export type Outbound = {
         apiConcurrencySlots?: number | undefined;
+        apiPaidTokens?: number | undefined;
+        apiPlanTokenRenewalDate?: string | null | undefined;
+        apiSubscriptionTokens?: number | undefined;
+        paidTokens?: number | undefined;
         subscriptionGptTokens?: number | undefined;
         subscriptionModelTokens?: number | undefined;
         subscriptionTokens?: number | undefined;
@@ -143,6 +197,10 @@ export namespace UserDetails$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UserDetails> = z
         .object({
             apiConcurrencySlots: z.number().int().optional(),
+            apiPaidTokens: z.number().int().optional(),
+            apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
+            apiSubscriptionTokens: z.number().int().optional(),
+            paidTokens: z.number().int().optional(),
             subscriptionGptTokens: z.number().int().optional(),
             subscriptionModelTokens: z.number().int().optional(),
             subscriptionTokens: z.number().int().optional(),
@@ -154,6 +212,14 @@ export namespace UserDetails$ {
                 ...(v.apiConcurrencySlots === undefined
                     ? null
                     : { apiConcurrencySlots: v.apiConcurrencySlots }),
+                ...(v.apiPaidTokens === undefined ? null : { apiPaidTokens: v.apiPaidTokens }),
+                ...(v.apiPlanTokenRenewalDate === undefined
+                    ? null
+                    : { apiPlanTokenRenewalDate: v.apiPlanTokenRenewalDate }),
+                ...(v.apiSubscriptionTokens === undefined
+                    ? null
+                    : { apiSubscriptionTokens: v.apiSubscriptionTokens }),
+                ...(v.paidTokens === undefined ? null : { paidTokens: v.paidTokens }),
                 ...(v.subscriptionGptTokens === undefined
                     ? null
                     : { subscriptionGptTokens: v.subscriptionGptTokens }),
