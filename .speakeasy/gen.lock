@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: ec4a3648a1edb01d965ebcf477b9912b
+  docChecksum: 8d312a70ea34aa4d4152fb9f689f9b25
   docVersion: v1.0.0
-  speakeasyVersion: 1.222.0
-  generationVersion: 2.287.0
-  releaseVersion: 4.4.7
-  configChecksum: 3863cac0ede3d3e4cc3142844ebd5a6c
+  speakeasyVersion: 1.228.1
+  generationVersion: 2.292.0
+  releaseVersion: 4.5.0
+  configChecksum: fa95bb91913d2b714174997618b3439d
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,12 +14,12 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.6.3
+    core: 3.7.0
     devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.8
     globalServerURLs: 2.82.4
-    responseFormat: 0.2.2
+    responseFormat: 0.2.3
 generatedFiles:
   - src/sdk/dataset.ts
   - src/sdk/element.ts
@@ -56,40 +56,40 @@ generatedFiles:
   - src/sdk/models/operations/getdatasetbyid.ts
   - src/sdk/models/operations/uploaddatasetimage.ts
   - src/sdk/models/operations/uploaddatasetimagefromgen.ts
-  - src/sdk/models/operations/getelements.ts
+  - src/sdk/models/operations/listelements.ts
   - src/sdk/models/operations/creategeneration.ts
+  - src/sdk/models/operations/createlcmgeneration.ts
+  - src/sdk/models/operations/createsvdmotiongeneration.ts
+  - src/sdk/models/operations/createtexturegeneration.ts
   - src/sdk/models/operations/deletegenerationbyid.ts
-  - src/sdk/models/operations/deletegenerationstextureid.ts
+  - src/sdk/models/operations/deletetexturegenerationbyid.ts
   - src/sdk/models/operations/getgenerationbyid.ts
   - src/sdk/models/operations/getgenerationsbyuserid.ts
-  - src/sdk/models/operations/postgenerationslcm.ts
-  - src/sdk/models/operations/postgenerationsmotionsvd.ts
-  - src/sdk/models/operations/postgenerationstexture.ts
-  - src/sdk/models/operations/postlcminpainting.ts
-  - src/sdk/models/operations/postlcminstantrefine.ts
-  - src/sdk/models/operations/postlcmupscale.ts
+  - src/sdk/models/operations/performalchemyupscalelcm.ts
+  - src/sdk/models/operations/performinpaintinglcm.ts
+  - src/sdk/models/operations/performinstantrefine.ts
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/getinitimagebyid.ts
   - src/sdk/models/operations/uploadinitimage.ts
   - src/sdk/models/operations/getuserself.ts
   - src/sdk/models/operations/createmodel.ts
+  - src/sdk/models/operations/delete3dmodelbyid.ts
   - src/sdk/models/operations/deletemodelbyid.ts
-  - src/sdk/models/operations/deletemodels3did.ts
   - src/sdk/models/operations/getmodelbyid.ts
-  - src/sdk/models/operations/getplatformmodels.ts
-  - src/sdk/models/operations/postmodels3dupload.ts
+  - src/sdk/models/operations/listplatformmodels.ts
+  - src/sdk/models/operations/uploadmodelasset.ts
   - src/sdk/models/operations/createvariationnobg.ts
+  - src/sdk/models/operations/createvariationunzoom.ts
   - src/sdk/models/operations/createvariationupscale.ts
   - src/sdk/models/operations/getvariationbyid.ts
-  - src/sdk/models/operations/postvariationsunzoom.ts
   - src/sdk/models/shared/sdversions.ts
   - src/sdk/models/shared/sdgenerationschedulers.ts
   - src/sdk/models/shared/sdgenerationstyle.ts
   - src/sdk/models/shared/elementinput.ts
   - src/sdk/models/shared/controlnettype.ts
+  - src/sdk/models/shared/lcmgenerationstyle.ts
   - src/sdk/models/shared/jobstatus.ts
   - src/sdk/models/shared/variationtype.ts
-  - src/sdk/models/shared/lcmgenerationstyle.ts
   - src/sdk/models/shared/strength.ts
   - src/sdk/models/shared/custommodeltype.ts
   - src/sdk/models/shared/security.ts
@@ -120,22 +120,34 @@ generatedFiles:
   - docs/sdk/models/operations/uploaddatasetimagefromgenresponsebody.md
   - docs/sdk/models/operations/uploaddatasetimagefromgenresponse.md
   - docs/sdk/models/operations/loras.md
-  - docs/sdk/models/operations/getelementsresponsebody.md
-  - docs/sdk/models/operations/getelementsresponse.md
+  - docs/sdk/models/operations/listelementsresponsebody.md
+  - docs/sdk/models/operations/listelementsresponse.md
   - docs/sdk/models/operations/transparencytype.md
   - docs/sdk/models/operations/creategenerationrequestbody.md
   - docs/sdk/models/operations/sdgenerationoutput.md
   - docs/sdk/models/operations/creategenerationresponsebody.md
   - docs/sdk/models/operations/creategenerationresponse.md
+  - docs/sdk/models/operations/createlcmgenerationrequestbody.md
+  - docs/sdk/models/operations/lcmgenerationoutput.md
+  - docs/sdk/models/operations/createlcmgenerationresponsebody.md
+  - docs/sdk/models/operations/createlcmgenerationresponse.md
+  - docs/sdk/models/operations/createsvdmotiongenerationrequestbody.md
+  - docs/sdk/models/operations/motionsvdgenerationoutput.md
+  - docs/sdk/models/operations/createsvdmotiongenerationresponsebody.md
+  - docs/sdk/models/operations/createsvdmotiongenerationresponse.md
+  - docs/sdk/models/operations/createtexturegenerationrequestbody.md
+  - docs/sdk/models/operations/texturegenerationjoboutput.md
+  - docs/sdk/models/operations/createtexturegenerationresponsebody.md
+  - docs/sdk/models/operations/createtexturegenerationresponse.md
   - docs/sdk/models/operations/deletegenerationbyidrequest.md
   - docs/sdk/models/operations/generations.md
   - docs/sdk/models/operations/deletegenerationbyidresponsebody.md
   - docs/sdk/models/operations/deletegenerationbyidresponse.md
-  - docs/sdk/models/operations/deletegenerationstextureidrequestbody.md
-  - docs/sdk/models/operations/deletegenerationstextureidrequest.md
+  - docs/sdk/models/operations/deletetexturegenerationbyidrequestbody.md
+  - docs/sdk/models/operations/deletetexturegenerationbyidrequest.md
   - docs/sdk/models/operations/modelassettexturegenerations.md
-  - docs/sdk/models/operations/deletegenerationstextureidresponsebody.md
-  - docs/sdk/models/operations/deletegenerationstextureidresponse.md
+  - docs/sdk/models/operations/deletetexturegenerationbyidresponsebody.md
+  - docs/sdk/models/operations/deletetexturegenerationbyidresponse.md
   - docs/sdk/models/operations/getgenerationbyidrequest.md
   - docs/sdk/models/operations/getgenerationbyidgeneratedimagevariationgeneric.md
   - docs/sdk/models/operations/generatedimages.md
@@ -152,30 +164,18 @@ generatedFiles:
   - docs/sdk/models/operations/getgenerationsbyuseridgenerations.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponsebody.md
   - docs/sdk/models/operations/getgenerationsbyuseridresponse.md
-  - docs/sdk/models/operations/postgenerationslcmrequestbody.md
-  - docs/sdk/models/operations/lcmgenerationoutput.md
-  - docs/sdk/models/operations/postgenerationslcmresponsebody.md
-  - docs/sdk/models/operations/postgenerationslcmresponse.md
-  - docs/sdk/models/operations/postgenerationsmotionsvdrequestbody.md
-  - docs/sdk/models/operations/motionsvdgenerationoutput.md
-  - docs/sdk/models/operations/postgenerationsmotionsvdresponsebody.md
-  - docs/sdk/models/operations/postgenerationsmotionsvdresponse.md
-  - docs/sdk/models/operations/postgenerationstexturerequestbody.md
-  - docs/sdk/models/operations/texturegenerationjoboutput.md
-  - docs/sdk/models/operations/postgenerationstextureresponsebody.md
-  - docs/sdk/models/operations/postgenerationstextureresponse.md
-  - docs/sdk/models/operations/postlcminpaintingrequestbody.md
-  - docs/sdk/models/operations/postlcminpaintinglcmgenerationoutput.md
-  - docs/sdk/models/operations/postlcminpaintingresponsebody.md
-  - docs/sdk/models/operations/postlcminpaintingresponse.md
-  - docs/sdk/models/operations/postlcminstantrefinerequestbody.md
-  - docs/sdk/models/operations/postlcminstantrefinelcmgenerationoutput.md
-  - docs/sdk/models/operations/postlcminstantrefineresponsebody.md
-  - docs/sdk/models/operations/postlcminstantrefineresponse.md
-  - docs/sdk/models/operations/postlcmupscalerequestbody.md
-  - docs/sdk/models/operations/postlcmupscalelcmgenerationoutput.md
-  - docs/sdk/models/operations/postlcmupscaleresponsebody.md
-  - docs/sdk/models/operations/postlcmupscaleresponse.md
+  - docs/sdk/models/operations/performalchemyupscalelcmrequestbody.md
+  - docs/sdk/models/operations/performalchemyupscalelcmlcmgenerationoutput.md
+  - docs/sdk/models/operations/performalchemyupscalelcmresponsebody.md
+  - docs/sdk/models/operations/performalchemyupscalelcmresponse.md
+  - docs/sdk/models/operations/performinpaintinglcmrequestbody.md
+  - docs/sdk/models/operations/performinpaintinglcmlcmgenerationoutput.md
+  - docs/sdk/models/operations/performinpaintinglcmresponsebody.md
+  - docs/sdk/models/operations/performinpaintinglcmresponse.md
+  - docs/sdk/models/operations/performinstantrefinerequestbody.md
+  - docs/sdk/models/operations/performinstantrefinelcmgenerationoutput.md
+  - docs/sdk/models/operations/performinstantrefineresponsebody.md
+  - docs/sdk/models/operations/performinstantrefineresponse.md
   - docs/sdk/models/operations/deleteinitimagebyidrequest.md
   - docs/sdk/models/operations/initimages.md
   - docs/sdk/models/operations/deleteinitimagebyidresponsebody.md
@@ -196,31 +196,35 @@ generatedFiles:
   - docs/sdk/models/operations/sdtrainingoutput.md
   - docs/sdk/models/operations/createmodelresponsebody.md
   - docs/sdk/models/operations/createmodelresponse.md
+  - docs/sdk/models/operations/delete3dmodelbyidrequestbody.md
+  - docs/sdk/models/operations/delete3dmodelbyidrequest.md
+  - docs/sdk/models/operations/modelassets.md
+  - docs/sdk/models/operations/delete3dmodelbyidresponsebody.md
+  - docs/sdk/models/operations/delete3dmodelbyidresponse.md
   - docs/sdk/models/operations/deletemodelbyidrequest.md
   - docs/sdk/models/operations/custommodels.md
   - docs/sdk/models/operations/deletemodelbyidresponsebody.md
   - docs/sdk/models/operations/deletemodelbyidresponse.md
-  - docs/sdk/models/operations/deletemodels3didrequestbody.md
-  - docs/sdk/models/operations/deletemodels3didrequest.md
-  - docs/sdk/models/operations/modelassets.md
-  - docs/sdk/models/operations/deletemodels3didresponsebody.md
-  - docs/sdk/models/operations/deletemodels3didresponse.md
   - docs/sdk/models/operations/getmodelbyidrequest.md
   - docs/sdk/models/operations/getmodelbyidcustommodels.md
   - docs/sdk/models/operations/getmodelbyidresponsebody.md
   - docs/sdk/models/operations/getmodelbyidresponse.md
-  - docs/sdk/models/operations/getplatformmodelsgeneratedimages.md
-  - docs/sdk/models/operations/getplatformmodelscustommodels.md
-  - docs/sdk/models/operations/getplatformmodelsresponsebody.md
-  - docs/sdk/models/operations/getplatformmodelsresponse.md
-  - docs/sdk/models/operations/postmodels3duploadrequestbody.md
+  - docs/sdk/models/operations/listplatformmodelsgeneratedimages.md
+  - docs/sdk/models/operations/listplatformmodelscustommodels.md
+  - docs/sdk/models/operations/listplatformmodelsresponsebody.md
+  - docs/sdk/models/operations/listplatformmodelsresponse.md
+  - docs/sdk/models/operations/uploadmodelassetrequestbody.md
   - docs/sdk/models/operations/modelassetuploadoutput.md
-  - docs/sdk/models/operations/postmodels3duploadresponsebody.md
-  - docs/sdk/models/operations/postmodels3duploadresponse.md
+  - docs/sdk/models/operations/uploadmodelassetresponsebody.md
+  - docs/sdk/models/operations/uploadmodelassetresponse.md
   - docs/sdk/models/operations/createvariationnobgrequestbody.md
   - docs/sdk/models/operations/sdupscalejoboutput.md
   - docs/sdk/models/operations/createvariationnobgresponsebody.md
   - docs/sdk/models/operations/createvariationnobgresponse.md
+  - docs/sdk/models/operations/createvariationunzoomrequestbody.md
+  - docs/sdk/models/operations/sdunzoomoutput.md
+  - docs/sdk/models/operations/createvariationunzoomresponsebody.md
+  - docs/sdk/models/operations/createvariationunzoomresponse.md
   - docs/sdk/models/operations/createvariationupscalerequestbody.md
   - docs/sdk/models/operations/createvariationupscalesdupscalejoboutput.md
   - docs/sdk/models/operations/createvariationupscaleresponsebody.md
@@ -229,18 +233,14 @@ generatedFiles:
   - docs/sdk/models/operations/generatedimagevariationgeneric.md
   - docs/sdk/models/operations/getvariationbyidresponsebody.md
   - docs/sdk/models/operations/getvariationbyidresponse.md
-  - docs/sdk/models/operations/postvariationsunzoomrequestbody.md
-  - docs/sdk/models/operations/sdunzoomoutput.md
-  - docs/sdk/models/operations/postvariationsunzoomresponsebody.md
-  - docs/sdk/models/operations/postvariationsunzoomresponse.md
   - docs/sdk/models/shared/sdversions.md
   - docs/sdk/models/shared/sdgenerationschedulers.md
   - docs/sdk/models/shared/sdgenerationstyle.md
   - docs/sdk/models/shared/elementinput.md
   - docs/sdk/models/shared/controlnettype.md
+  - docs/sdk/models/shared/lcmgenerationstyle.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/variationtype.md
-  - docs/sdk/models/shared/lcmgenerationstyle.md
   - docs/sdk/models/shared/strength.md
   - docs/sdk/models/shared/custommodeltype.md
   - docs/sdk/models/shared/security.md

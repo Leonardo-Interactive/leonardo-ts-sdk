@@ -120,6 +120,95 @@ export class Model extends ClientSDK {
     }
 
     /**
+     * Delete 3D Model by ID
+     *
+     * @remarks
+     * This endpoint deletes the specific 3D Model
+     */
+    async delete3DModelById(
+        id: string,
+        requestBody?: operations.Delete3DModelByIdRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.Delete3DModelByIdResponse> {
+        const input$: operations.Delete3DModelByIdRequest = {
+            id: id,
+            requestBody: requestBody,
+        };
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.Delete3DModelByIdRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/models-3d/{id}")(pathParams$);
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "delete3DModelById",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "DELETE",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.Delete3DModelByIdResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Delete a Single Custom Model by ID
      *
      * @remarks
@@ -192,95 +281,6 @@ export class Model extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return operations.DeleteModelByIdResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        object: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
-        }
-    }
-
-    /**
-     * Delete 3D Model by ID
-     *
-     * @remarks
-     * This endpoint deletes the specific 3D Model
-     */
-    async deleteModels3dId(
-        id: string,
-        requestBody?: operations.DeleteModels3dIdRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.DeleteModels3dIdResponse> {
-        const input$: operations.DeleteModels3dIdRequest = {
-            id: id,
-            requestBody: requestBody,
-        };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => operations.DeleteModels3dIdRequest$.outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
-
-        const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-        };
-        const path$ = this.templateURLComponent("/models-3d/{id}")(pathParams$);
-
-        const query$ = "";
-
-        let security$;
-        if (typeof this.options$.bearerAuth === "function") {
-            security$ = { bearerAuth: await this.options$.bearerAuth() };
-        } else if (this.options$.bearerAuth) {
-            security$ = { bearerAuth: this.options$.bearerAuth };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "delete_/models-3d/{id}",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearerAuth,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
-            {
-                security: securitySettings$,
-                method: "DELETE",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request, doOptions);
-
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.DeleteModels3dIdResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });
@@ -386,9 +386,9 @@ export class Model extends ClientSDK {
      * @remarks
      * Get a list of public Platform Models available for use with generations.
      */
-    async getPlatformModels(
+    async listPlatformModels(
         options?: RequestOptions
-    ): Promise<operations.GetPlatformModelsResponse> {
+    ): Promise<operations.ListPlatformModelsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -406,7 +406,7 @@ export class Model extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/platformModels",
+            operationID: "listPlatformModels",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -437,7 +437,7 @@ export class Model extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetPlatformModelsResponse$.inboundSchema.parse({
+                    return operations.ListPlatformModelsResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });
@@ -457,10 +457,10 @@ export class Model extends ClientSDK {
      * @remarks
      * This endpoint returns presigned details to upload a 3D model to S3
      */
-    async postModels3dUpload(
-        input: operations.PostModels3dUploadRequestBody | undefined,
+    async uploadModelAsset(
+        input: operations.UploadModelAssetRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostModels3dUploadResponse> {
+    ): Promise<operations.UploadModelAssetResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
@@ -469,7 +469,7 @@ export class Model extends ClientSDK {
         const payload$ = schemas$.parse(
             input,
             (value$) =>
-                operations.PostModels3dUploadRequestBody$.outboundSchema.optional().parse(value$),
+                operations.UploadModelAssetRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -488,7 +488,7 @@ export class Model extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/models-3d/upload",
+            operationID: "uploadModelAsset",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -520,7 +520,7 @@ export class Model extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.PostModels3dUploadResponse$.inboundSchema.parse({
+                    return operations.UploadModelAssetResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });

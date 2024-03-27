@@ -120,6 +120,91 @@ export class Variation extends ClientSDK {
     }
 
     /**
+     * Create unzoom
+     *
+     * @remarks
+     * This endpoint will create an unzoom variation for the provided image ID
+     */
+    async createVariationUnzoom(
+        input: operations.CreateVariationUnzoomRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.CreateVariationUnzoomResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.CreateVariationUnzoomRequestBody$.outboundSchema
+                    .optional()
+                    .parse(value$),
+            "Input validation failed"
+        );
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/variations/unzoom")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "createVariationUnzoom",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.CreateVariationUnzoomResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Create upscale
      *
      * @remarks
@@ -277,89 +362,6 @@ export class Variation extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return operations.GetVariationByIdResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        object: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
-        }
-    }
-
-    /**
-     * Create unzoom
-     *
-     * @remarks
-     * This endpoint will create an unzoom variation for the provided image ID
-     */
-    async postVariationsUnzoom(
-        input: operations.PostVariationsUnzoomRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PostVariationsUnzoomResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
-
-        const payload$ = schemas$.parse(
-            input,
-            (value$) =>
-                operations.PostVariationsUnzoomRequestBody$.outboundSchema.optional().parse(value$),
-            "Input validation failed"
-        );
-        const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
-
-        const path$ = this.templateURLComponent("/variations/unzoom")();
-
-        const query$ = "";
-
-        let security$;
-        if (typeof this.options$.bearerAuth === "function") {
-            security$ = { bearerAuth: await this.options$.bearerAuth() };
-        } else if (this.options$.bearerAuth) {
-            security$ = { bearerAuth: this.options$.bearerAuth };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "post_/variations/unzoom",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearerAuth,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request, doOptions);
-
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.PostVariationsUnzoomResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });

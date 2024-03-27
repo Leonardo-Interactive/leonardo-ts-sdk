@@ -4,16 +4,16 @@
 ### Available Operations
 
 * [createGeneration](#creategeneration) - Create a Generation of Images
+* [createLCMGeneration](#createlcmgeneration) - Create LCM Generation
+* [createSVDMotionGeneration](#createsvdmotiongeneration) - Create SVD Motion Generation
+* [createTextureGeneration](#createtexturegeneration) - Create Texture Generation
 * [deleteGenerationById](#deletegenerationbyid) - Delete a Single Generation
-* [deleteGenerationsTextureId](#deletegenerationstextureid) - Delete Texture Generation by ID
+* [deleteTextureGenerationById](#deletetexturegenerationbyid) - Delete Texture Generation by ID
 * [getGenerationById](#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](#getgenerationsbyuserid) - Get generations by user ID
-* [postGenerationsLcm](#postgenerationslcm) - Create LCM Generation
-* [postGenerationsMotionSvd](#postgenerationsmotionsvd) - Create SVD Motion Generation
-* [postGenerationsTexture](#postgenerationstexture) - Create Texture Generation
-* [postLcmInpainting](#postlcminpainting) - Perform inpainting on a LCM image
-* [postLcmInstantRefine](#postlcminstantrefine) - Perform instant refine on a LCM image
-* [postLcmUpscale](#postlcmupscale) - Perform Alchemy Upscale on a LCM image
+* [performAlchemyUpscaleLCM](#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
+* [performInpaintingLCM](#performinpaintinglcm) - Perform inpainting on a LCM image
+* [performInstantRefine](#performinstantrefine) - Perform instant refine on a LCM image
 
 ## createGeneration
 
@@ -63,6 +63,134 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## createLCMGeneration
+
+This endpoint will generate a LCM image generation.
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.createLCMGeneration({
+    imageDataUrl: "<value>",
+    prompt: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateLCMGenerationRequestBody](../../sdk/models/operations/createlcmgenerationrequestbody.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.CreateLCMGenerationResponse](../../sdk/models/operations/createlcmgenerationresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## createSVDMotionGeneration
+
+This endpoint will generate a SVD motion generation.
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.createSVDMotionGeneration({
+    imageId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateSVDMotionGenerationRequestBody](../../sdk/models/operations/createsvdmotiongenerationrequestbody.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.CreateSVDMotionGenerationResponse](../../sdk/models/operations/createsvdmotiongenerationresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## createTextureGeneration
+
+This endpoint will generate a texture generation.
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+async function run() {
+  const sdk = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await sdk.generation.createTextureGeneration({});
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateTextureGenerationRequestBody](../../sdk/models/operations/createtexturegenerationrequestbody.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.CreateTextureGenerationResponse](../../sdk/models/operations/createtexturegenerationresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## deleteGenerationById
 
 This endpoint deletes a specific generation
@@ -106,7 +234,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## deleteGenerationsTextureId
+## deleteTextureGenerationById
 
 This endpoint deletes the specific texture generation.
 
@@ -123,7 +251,7 @@ async function run() {
   const id = "<value>";
   const requestBody = {};
   
-  const result = await sdk.generation.deleteGenerationsTextureId(id, requestBody);
+  const result = await sdk.generation.deleteTextureGenerationById(id, requestBody);
 
   // Handle the result
   console.log(result)
@@ -137,14 +265,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | _"id" is required (enter it either in parameters or request body)_                                                                                                             |
-| `requestBody`                                                                                                                                                                  | [operations.DeleteGenerationsTextureIdRequestBody](../../sdk/models/operations/deletegenerationstextureidrequestbody.md)                                                       | :heavy_minus_sign:                                                                                                                                                             | Query parameters can also be provided in the request body as a JSON object                                                                                                     |
+| `requestBody`                                                                                                                                                                  | [operations.DeleteTextureGenerationByIdRequestBody](../../sdk/models/operations/deletetexturegenerationbyidrequestbody.md)                                                     | :heavy_minus_sign:                                                                                                                                                             | Query parameters can also be provided in the request body as a JSON object                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[operations.DeleteGenerationsTextureIdResponse](../../sdk/models/operations/deletegenerationstextureidresponse.md)>**
+**Promise<[operations.DeleteTextureGenerationByIdResponse](../../sdk/models/operations/deletetexturegenerationbyidresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -241,9 +369,9 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## postGenerationsLcm
+## performAlchemyUpscaleLCM
 
-This endpoint will generate a LCM image generation.
+This endpoint will perform Alchemy Upscale on a LCM image
 
 ### Example Usage
 
@@ -255,7 +383,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.generation.postGenerationsLcm({
+  const result = await sdk.generation.performAlchemyUpscaleLCM({
     imageDataUrl: "<value>",
     prompt: "<value>",
   });
@@ -271,105 +399,21 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostGenerationsLcmRequestBody](../../sdk/models/operations/postgenerationslcmrequestbody.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PerformAlchemyUpscaleLCMRequestBody](../../sdk/models/operations/performalchemyupscalelcmrequestbody.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[operations.PostGenerationsLcmResponse](../../sdk/models/operations/postgenerationslcmresponse.md)>**
+**Promise<[operations.PerformAlchemyUpscaleLCMResponse](../../sdk/models/operations/performalchemyupscalelcmresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## postGenerationsMotionSvd
-
-This endpoint will generate a SVD motion generation.
-
-### Example Usage
-
-```typescript
-import { Leonardo } from "@leonardo-ai/sdk";
-
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.generation.postGenerationsMotionSvd({
-    imageId: "<value>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostGenerationsMotionSvdRequestBody](../../sdk/models/operations/postgenerationsmotionsvdrequestbody.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
-
-### Response
-
-**Promise<[operations.PostGenerationsMotionSvdResponse](../../sdk/models/operations/postgenerationsmotionsvdresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
-## postGenerationsTexture
-
-This endpoint will generate a texture generation.
-
-### Example Usage
-
-```typescript
-import { Leonardo } from "@leonardo-ai/sdk";
-
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.generation.postGenerationsTexture({});
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostGenerationsTextureRequestBody](../../sdk/models/operations/postgenerationstexturerequestbody.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
-
-### Response
-
-**Promise<[operations.PostGenerationsTextureResponse](../../sdk/models/operations/postgenerationstextureresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
-## postLcmInpainting
+## performInpaintingLCM
 
 This endpoint will perform a inpainting on a LCM image
 
@@ -383,7 +427,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.generation.postLcmInpainting({
+  const result = await sdk.generation.performInpaintingLCM({
     imageDataUrl: "<value>",
     maskDataUrl: "<value>",
     prompt: "<value>",
@@ -400,21 +444,21 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostLcmInpaintingRequestBody](../../sdk/models/operations/postlcminpaintingrequestbody.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PerformInpaintingLCMRequestBody](../../sdk/models/operations/performinpaintinglcmrequestbody.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[operations.PostLcmInpaintingResponse](../../sdk/models/operations/postlcminpaintingresponse.md)>**
+**Promise<[operations.PerformInpaintingLCMResponse](../../sdk/models/operations/performinpaintinglcmresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## postLcmInstantRefine
+## performInstantRefine
 
 This endpoint will perform instant refine on a LCM image
 
@@ -428,7 +472,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.generation.postLcmInstantRefine({
+  const result = await sdk.generation.performInstantRefine({
     imageDataUrl: "<value>",
     prompt: "<value>",
   });
@@ -444,58 +488,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostLcmInstantRefineRequestBody](../../sdk/models/operations/postlcminstantrefinerequestbody.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PerformInstantRefineRequestBody](../../sdk/models/operations/performinstantrefinerequestbody.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[operations.PostLcmInstantRefineResponse](../../sdk/models/operations/postlcminstantrefineresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
-## postLcmUpscale
-
-This endpoint will perform Alchemy Upscale on a LCM image
-
-### Example Usage
-
-```typescript
-import { Leonardo } from "@leonardo-ai/sdk";
-
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.generation.postLcmUpscale({
-    imageDataUrl: "<value>",
-    prompt: "<value>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostLcmUpscaleRequestBody](../../sdk/models/operations/postlcmupscalerequestbody.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
-
-### Response
-
-**Promise<[operations.PostLcmUpscaleResponse](../../sdk/models/operations/postlcmupscaleresponse.md)>**
+**Promise<[operations.PerformInstantRefineResponse](../../sdk/models/operations/performinstantrefineresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

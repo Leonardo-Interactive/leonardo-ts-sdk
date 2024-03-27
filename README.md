@@ -66,21 +66,21 @@ run();
 
 ### [element](docs/sdks/element/README.md)
 
-* [getElements](docs/sdks/element/README.md#getelements) - List Elements
+* [listElements](docs/sdks/element/README.md#listelements) - List Elements
 
 ### [generation](docs/sdks/generation/README.md)
 
 * [createGeneration](docs/sdks/generation/README.md#creategeneration) - Create a Generation of Images
+* [createLCMGeneration](docs/sdks/generation/README.md#createlcmgeneration) - Create LCM Generation
+* [createSVDMotionGeneration](docs/sdks/generation/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
+* [createTextureGeneration](docs/sdks/generation/README.md#createtexturegeneration) - Create Texture Generation
 * [deleteGenerationById](docs/sdks/generation/README.md#deletegenerationbyid) - Delete a Single Generation
-* [deleteGenerationsTextureId](docs/sdks/generation/README.md#deletegenerationstextureid) - Delete Texture Generation by ID
+* [deleteTextureGenerationById](docs/sdks/generation/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
 * [getGenerationById](docs/sdks/generation/README.md#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
-* [postGenerationsLcm](docs/sdks/generation/README.md#postgenerationslcm) - Create LCM Generation
-* [postGenerationsMotionSvd](docs/sdks/generation/README.md#postgenerationsmotionsvd) - Create SVD Motion Generation
-* [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
-* [postLcmInpainting](docs/sdks/generation/README.md#postlcminpainting) - Perform inpainting on a LCM image
-* [postLcmInstantRefine](docs/sdks/generation/README.md#postlcminstantrefine) - Perform instant refine on a LCM image
-* [postLcmUpscale](docs/sdks/generation/README.md#postlcmupscale) - Perform Alchemy Upscale on a LCM image
+* [performAlchemyUpscaleLCM](docs/sdks/generation/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
+* [performInpaintingLCM](docs/sdks/generation/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
+* [performInstantRefine](docs/sdks/generation/README.md#performinstantrefine) - Perform instant refine on a LCM image
 
 ### [initImage](docs/sdks/initimage/README.md)
 
@@ -95,18 +95,18 @@ run();
 ### [model](docs/sdks/model/README.md)
 
 * [createModel](docs/sdks/model/README.md#createmodel) - Train a Custom Model
+* [delete3DModelById](docs/sdks/model/README.md#delete3dmodelbyid) - Delete 3D Model by ID
 * [deleteModelById](docs/sdks/model/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
-* [deleteModels3dId](docs/sdks/model/README.md#deletemodels3did) - Delete 3D Model by ID
 * [getModelById](docs/sdks/model/README.md#getmodelbyid) - Get a Single Custom Model by ID
-* [getPlatformModels](docs/sdks/model/README.md#getplatformmodels) - List Platform Models
-* [postModels3dUpload](docs/sdks/model/README.md#postmodels3dupload) - Upload 3D Model
+* [listPlatformModels](docs/sdks/model/README.md#listplatformmodels) - List Platform Models
+* [uploadModelAsset](docs/sdks/model/README.md#uploadmodelasset) - Upload 3D Model
 
 ### [variation](docs/sdks/variation/README.md)
 
 * [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background
+* [createVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
-* [postVariationsUnzoom](docs/sdks/variation/README.md#postvariationsunzoom) - Create unzoom
 <!-- End Available Resources and Operations [operations] -->
 
 

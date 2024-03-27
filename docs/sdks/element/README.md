@@ -3,9 +3,9 @@
 
 ### Available Operations
 
-* [getElements](#getelements) - List Elements
+* [listElements](#listelements) - List Elements
 
-## getElements
+## listElements
 
 Get a list of public Elements available for use with generations.
 
@@ -19,7 +19,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await sdk.element.getElements();
+  const result = await sdk.element.listElements();
 
   // Handle the result
   console.log(result)
@@ -38,7 +38,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetElementsResponse](../../sdk/models/operations/getelementsresponse.md)>**
+**Promise<[operations.ListElementsResponse](../../sdk/models/operations/listelementsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

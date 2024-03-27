@@ -43,7 +43,7 @@ export class Element extends ClientSDK {
      * @remarks
      * Get a list of public Elements available for use with generations.
      */
-    async getElements(options?: RequestOptions): Promise<operations.GetElementsResponse> {
+    async listElements(options?: RequestOptions): Promise<operations.ListElementsResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -61,7 +61,7 @@ export class Element extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/elements",
+            operationID: "listElements",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -92,7 +92,7 @@ export class Element extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.GetElementsResponse$.inboundSchema.parse({
+                    return operations.ListElementsResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });
