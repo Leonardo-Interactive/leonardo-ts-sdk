@@ -93,13 +93,17 @@ export type CreateGenerationRequestBody = {
      */
     numInferenceSteps?: number | null | undefined;
     /**
-     * Enable the photoReal feature. Requires enabling alchemy and unspecifying modelId.
+     * Enable the photoReal feature. Requires enabling alchemy and unspecifying modelId (for photoRealVersion V1).
      */
     photoReal?: boolean | null | undefined;
     /**
      * Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified.
      */
     photoRealStrength?: number | null | undefined;
+    /**
+     * The version of photoReal to use. Must be v1 or v2.
+     */
+    photoRealVersion?: string | null | undefined;
     /**
      * The style to generate images with. When photoReal is enabled, use CINEMATIC, CREATIVE, VIBRANT, or NONE. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
      */
@@ -226,6 +230,7 @@ export namespace CreateGenerationRequestBody$ {
         num_inference_steps?: number | null | undefined;
         photoReal?: boolean | null | undefined;
         photoRealStrength?: number | null | undefined;
+        photoRealVersion?: string | null | undefined;
         presetStyle?: shared.SdGenerationStyle | null | undefined;
         prompt?: string | undefined;
         promptMagic?: boolean | null | undefined;
@@ -269,6 +274,7 @@ export namespace CreateGenerationRequestBody$ {
             num_inference_steps: z.nullable(z.number().int()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
+            photoRealVersion: z.nullable(z.string()).optional(),
             presetStyle: z.nullable(shared.SdGenerationStyle$).optional(),
             prompt: z.string().default("An oil painting of a cat"),
             promptMagic: z.nullable(z.boolean()).optional(),
@@ -319,6 +325,9 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.photoRealStrength === undefined
                     ? null
                     : { photoRealStrength: v.photoRealStrength }),
+                ...(v.photoRealVersion === undefined
+                    ? null
+                    : { photoRealVersion: v.photoRealVersion }),
                 ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
                 prompt: v.prompt,
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
@@ -366,6 +375,7 @@ export namespace CreateGenerationRequestBody$ {
         num_inference_steps?: number | null | undefined;
         photoReal?: boolean | null | undefined;
         photoRealStrength?: number | null | undefined;
+        photoRealVersion?: string | null | undefined;
         presetStyle?: shared.SdGenerationStyle | null | undefined;
         prompt: string;
         promptMagic?: boolean | null | undefined;
@@ -409,6 +419,7 @@ export namespace CreateGenerationRequestBody$ {
             numInferenceSteps: z.nullable(z.number().int()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
+            photoRealVersion: z.nullable(z.string()).optional(),
             presetStyle: z.nullable(shared.SdGenerationStyle$).optional(),
             prompt: z.string().default("An oil painting of a cat"),
             promptMagic: z.nullable(z.boolean()).optional(),
@@ -459,6 +470,9 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.photoRealStrength === undefined
                     ? null
                     : { photoRealStrength: v.photoRealStrength }),
+                ...(v.photoRealVersion === undefined
+                    ? null
+                    : { photoRealVersion: v.photoRealVersion }),
                 ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
                 prompt: v.prompt,
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
