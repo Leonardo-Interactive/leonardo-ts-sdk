@@ -38,7 +38,7 @@ export type CreateModelRequestBody = {
      */
     resolution?: number | null | undefined;
     /**
-     * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
+     * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
      */
     sdVersion?: shared.SdVersions | undefined;
     /**
