@@ -101,6 +101,11 @@ run();
 * [listPlatformModels](docs/sdks/model/README.md#listplatformmodels) - List Platform Models
 * [uploadModelAsset](docs/sdks/model/README.md#uploadmodelasset) - Upload 3D Model
 
+### [prompt](docs/sdks/prompt/README.md)
+
+* [promptImprove](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
+* [promptRandom](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
+
 ### [variation](docs/sdks/variation/README.md)
 
 * [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background

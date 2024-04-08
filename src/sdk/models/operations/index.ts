@@ -29,6 +29,8 @@ export * from "./listplatformmodels";
 export * from "./performalchemyupscalelcm";
 export * from "./performinpaintinglcm";
 export * from "./performinstantrefine";
+export * from "./promptimprove";
+export * from "./promptrandom";
 export * from "./uploaddatasetimage";
 export * from "./uploaddatasetimagefromgen";
 export * from "./uploadinitimage";

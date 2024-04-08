@@ -11,6 +11,7 @@ import { Element } from "./element";
 import { Generation } from "./generation";
 import { InitImage } from "./initimage";
 import { Model } from "./model";
+import { Prompt } from "./prompt";
 import { User } from "./user";
 import { Variation } from "./variation";
 
@@ -69,6 +70,11 @@ export class Leonardo extends ClientSDK {
     private _model?: Model;
     get model() {
         return (this._model ??= new Model(this.options$));
+    }
+
+    private _prompt?: Prompt;
+    get prompt() {
+        return (this._prompt ??= new Prompt(this.options$));
     }
 
     private _variation?: Variation;

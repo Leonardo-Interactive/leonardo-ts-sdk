@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 339173b7deb9a3222da893656355435c
+  docChecksum: 3bbd53494ed6e7e5f86367ecb9fb6ef9
   docVersion: v1.0.0
-  speakeasyVersion: 1.235.2
-  generationVersion: 2.298.2
-  releaseVersion: 4.5.3
-  configChecksum: d1606ce5d958b9dc2a3719b474e37196
+  speakeasyVersion: 1.241.0
+  generationVersion: 2.300.0
+  releaseVersion: 4.5.4
+  configChecksum: b8c0bb6be4da92d7caba03ead4bf89dd
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -27,6 +27,7 @@ generatedFiles:
   - src/sdk/initimage.ts
   - src/sdk/user.ts
   - src/sdk/model.ts
+  - src/sdk/prompt.ts
   - src/sdk/variation.ts
   - src/sdk/sdk.ts
   - .eslintrc.js
@@ -78,6 +79,8 @@ generatedFiles:
   - src/sdk/models/operations/getmodelbyid.ts
   - src/sdk/models/operations/listplatformmodels.ts
   - src/sdk/models/operations/uploadmodelasset.ts
+  - src/sdk/models/operations/promptimprove.ts
+  - src/sdk/models/operations/promptrandom.ts
   - src/sdk/models/operations/createvariationnobg.ts
   - src/sdk/models/operations/createvariationunzoom.ts
   - src/sdk/models/operations/createvariationupscale.ts
@@ -217,6 +220,13 @@ generatedFiles:
   - docs/sdk/models/operations/modelassetuploadoutput.md
   - docs/sdk/models/operations/uploadmodelassetresponsebody.md
   - docs/sdk/models/operations/uploadmodelassetresponse.md
+  - docs/sdk/models/operations/promptimproverequestbody.md
+  - docs/sdk/models/operations/promptgenerationoutput.md
+  - docs/sdk/models/operations/promptimproveresponsebody.md
+  - docs/sdk/models/operations/promptimproveresponse.md
+  - docs/sdk/models/operations/promptrandompromptgenerationoutput.md
+  - docs/sdk/models/operations/promptrandomresponsebody.md
+  - docs/sdk/models/operations/promptrandomresponse.md
   - docs/sdk/models/operations/createvariationnobgrequestbody.md
   - docs/sdk/models/operations/sdupscalejoboutput.md
   - docs/sdk/models/operations/createvariationnobgresponsebody.md
@@ -251,6 +261,7 @@ generatedFiles:
   - docs/sdks/initimage/README.md
   - docs/sdks/user/README.md
   - docs/sdks/model/README.md
+  - docs/sdks/prompt/README.md
   - docs/sdks/variation/README.md
   - USAGE.md
   - .gitattributes
