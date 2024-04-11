@@ -36,7 +36,7 @@ export type PerformInpaintingLCMRequestBody = {
      */
     steps?: number | null | undefined;
     /**
-     * How strongly the generated images should reflect the original image supplied in imageDataUrl. Must be a float between 0.1 and 1.
+     * Creativity strength of generation. Higher strength will deviate more from the original image supplied in imageDataUrl. Must be a float between 0.1 and 1.
      */
     strength?: number | null | undefined;
     /**

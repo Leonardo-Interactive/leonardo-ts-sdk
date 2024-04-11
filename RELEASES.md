@@ -2000,3 +2000,13 @@ Based on:
 - [typescript v4.5.4] .
 ### Releases
 - [NPM v4.5.4] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.5.4 - .
+
+## 2024-04-11 06:02:05
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.246.1 (2.302.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.5.5] .
+### Releases
+- [NPM v4.5.5] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.5.5 - .

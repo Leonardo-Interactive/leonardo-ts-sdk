@@ -18,7 +18,7 @@ export enum TransparencyType {
  */
 export type CreateGenerationRequestBody = {
     /**
-     * Enable to use Alchemy.
+     * Enable to use Alchemy. Note: The appropriate Alchemy version is selected for the specified model. For example, XL models will use Alchemy V2.
      */
     alchemy?: boolean | null | undefined;
     /**
@@ -81,10 +81,6 @@ export type CreateGenerationRequestBody = {
      */
     negativePrompt?: string | null | undefined;
     /**
-     * Not Safe For Work Flag.
-     */
-    nsfw?: boolean | null | undefined;
-    /**
      * The number of images to generate. Must be between 1 and 8. If either width or height is over 768, must be between 1 and 4.
      */
     numImages?: number | null | undefined;
@@ -105,7 +101,7 @@ export type CreateGenerationRequestBody = {
      */
     photoRealVersion?: string | null | undefined;
     /**
-     * The style to generate images with. When photoReal is enabled, use CINEMATIC, CREATIVE, VIBRANT, or NONE. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
+     * The style to generate images with. When photoReal is enabled, refer to the Guide section for a full list. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
      */
     presetStyle?: shared.SdGenerationStyle | null | undefined;
     /**
@@ -225,7 +221,6 @@ export namespace CreateGenerationRequestBody$ {
         init_strength?: number | null | undefined;
         modelId?: string | null | undefined;
         negative_prompt?: string | null | undefined;
-        nsfw?: boolean | null | undefined;
         num_images?: number | null | undefined;
         num_inference_steps?: number | null | undefined;
         photoReal?: boolean | null | undefined;
@@ -269,7 +264,6 @@ export namespace CreateGenerationRequestBody$ {
             init_strength: z.nullable(z.number()).optional(),
             modelId: z.nullable(z.string().default("6bef9f1b-29cb-40c7-b9df-32b51c1f67d3")),
             negative_prompt: z.nullable(z.string()).optional(),
-            nsfw: z.nullable(z.boolean()).optional(),
             num_images: z.nullable(z.number().int()).optional(),
             num_inference_steps: z.nullable(z.number().int()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
@@ -316,7 +310,6 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.init_strength === undefined ? null : { initStrength: v.init_strength }),
                 modelId: v.modelId,
                 ...(v.negative_prompt === undefined ? null : { negativePrompt: v.negative_prompt }),
-                ...(v.nsfw === undefined ? null : { nsfw: v.nsfw }),
                 ...(v.num_images === undefined ? null : { numImages: v.num_images }),
                 ...(v.num_inference_steps === undefined
                     ? null
@@ -370,7 +363,6 @@ export namespace CreateGenerationRequestBody$ {
         init_strength?: number | null | undefined;
         modelId: string | null;
         negative_prompt?: string | null | undefined;
-        nsfw?: boolean | null | undefined;
         num_images?: number | null | undefined;
         num_inference_steps?: number | null | undefined;
         photoReal?: boolean | null | undefined;
@@ -414,7 +406,6 @@ export namespace CreateGenerationRequestBody$ {
             initStrength: z.nullable(z.number()).optional(),
             modelId: z.nullable(z.string().default("6bef9f1b-29cb-40c7-b9df-32b51c1f67d3")),
             negativePrompt: z.nullable(z.string()).optional(),
-            nsfw: z.nullable(z.boolean()).optional(),
             numImages: z.nullable(z.number().int()).optional(),
             numInferenceSteps: z.nullable(z.number().int()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
@@ -461,7 +452,6 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.initStrength === undefined ? null : { init_strength: v.initStrength }),
                 modelId: v.modelId,
                 ...(v.negativePrompt === undefined ? null : { negative_prompt: v.negativePrompt }),
-                ...(v.nsfw === undefined ? null : { nsfw: v.nsfw }),
                 ...(v.numImages === undefined ? null : { num_images: v.numImages }),
                 ...(v.numInferenceSteps === undefined
                     ? null
