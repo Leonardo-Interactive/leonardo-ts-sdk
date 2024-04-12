@@ -35,12 +35,12 @@ To get access to the API and fetch an API key, please sign up for [access](https
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
+async function run() {
+    const result = await leonardo.dataset.createDataset({
         name: "<value>",
     });
 
@@ -136,14 +136,14 @@ Validation errors can also occur when either method arguments or data returned f
 import { Leonardo } from "@leonardo-ai/sdk";
 import * as errors from "@leonardo-ai/sdk/sdk/models/errors";
 
-async function run() {
-    const sdk = new Leonardo({
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
     let result;
     try {
-        result = await sdk.dataset.createDataset({
+        result = await leonardo.dataset.createDataset({
             name: "<value>",
         });
     } catch (err) {
@@ -237,13 +237,13 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        serverIdx: 0,
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    serverIdx: 0,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
+async function run() {
+    const result = await leonardo.dataset.createDataset({
         name: "<value>",
     });
 
@@ -263,13 +263,13 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        serverURL: "https://cloud.leonardo.ai/api/rest/v1",
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    serverURL: "https://cloud.leonardo.ai/api/rest/v1",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
+async function run() {
+    const result = await leonardo.dataset.createDataset({
         name: "<value>",
     });
 
@@ -299,12 +299,12 @@ To authenticate with the API the `bearerAuth` parameter must be set when initial
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
+async function run() {
+    const result = await leonardo.dataset.createDataset({
         name: "<value>",
     });
 

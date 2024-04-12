@@ -17,12 +17,12 @@ This endpoint will create a no background variation of the provided image ID
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.variation.createVariationNoBG({
+async function run() {
+  const result = await leonardo.variation.createVariationNoBG({
     id: "<id>",
   });
 
@@ -60,12 +60,12 @@ This endpoint will create an unzoom variation for the provided image ID
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.variation.createVariationUnzoom({});
+async function run() {
+  const result = await leonardo.variation.createVariationUnzoom({});
 
   // Handle the result
   console.log(result)
@@ -101,12 +101,12 @@ This endpoint will create an upscale for the provided image ID
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.variation.createVariationUpscale({
+async function run() {
+  const result = await leonardo.variation.createVariationUpscale({
     id: "<id>",
   });
 
@@ -144,14 +144,14 @@ This endpoint will get the variation by ID
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.variation.getVariationById(id);
+  const result = await leonardo.variation.getVariationById(id);
 
   // Handle the result
   console.log(result)

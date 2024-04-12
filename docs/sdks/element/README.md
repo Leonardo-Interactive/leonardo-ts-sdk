@@ -14,12 +14,12 @@ Get a list of public Elements available for use with generations.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.element.listElements();
+async function run() {
+  const result = await leonardo.element.listElements();
 
   // Handle the result
   console.log(result)

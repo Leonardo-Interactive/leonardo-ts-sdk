@@ -16,14 +16,14 @@ This endpoint deletes an init image
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.initImage.deleteInitImageById(id);
+  const result = await leonardo.initImage.deleteInitImageById(id);
 
   // Handle the result
   console.log(result)
@@ -59,14 +59,14 @@ This endpoint will return a single init image
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.initImage.getInitImageById(id);
+  const result = await leonardo.initImage.getInitImageById(id);
 
   // Handle the result
   console.log(result)
@@ -102,12 +102,12 @@ This endpoint returns presigned details to upload an init image to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.initImage.uploadInitImage({
+async function run() {
+  const result = await leonardo.initImage.uploadInitImage({
     extension: "png",
   });
 

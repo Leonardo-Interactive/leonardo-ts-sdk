@@ -14,12 +14,12 @@ This endpoint will return your user information such as your user id, username, 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.user.getUserSelf();
+async function run() {
+  const result = await leonardo.user.getUserSelf();
 
   // Handle the result
   console.log(result)

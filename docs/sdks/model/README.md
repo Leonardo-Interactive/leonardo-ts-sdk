@@ -19,12 +19,12 @@ This endpoint will train a new custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.model.createModel({
+async function run() {
+  const result = await leonardo.model.createModel({
     datasetId: "<value>",
     instancePrompt: "<value>",
     name: "<value>",
@@ -64,15 +64,15 @@ This endpoint deletes the specific 3D Model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   const requestBody = {};
   
-  const result = await sdk.model.delete3DModelById(id, requestBody);
+  const result = await leonardo.model.delete3DModelById(id, requestBody);
 
   // Handle the result
   console.log(result)
@@ -109,14 +109,14 @@ This endpoint will delete a specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.model.deleteModelById(id);
+  const result = await leonardo.model.deleteModelById(id);
 
   // Handle the result
   console.log(result)
@@ -152,14 +152,14 @@ This endpoint gets the specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.model.getModelById(id);
+  const result = await leonardo.model.getModelById(id);
 
   // Handle the result
   console.log(result)
@@ -195,12 +195,12 @@ Get a list of public Platform Models available for use with generations.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.model.listPlatformModels();
+async function run() {
+  const result = await leonardo.model.listPlatformModels();
 
   // Handle the result
   console.log(result)
@@ -235,12 +235,12 @@ This endpoint returns presigned details to upload a 3D model to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.model.uploadModelAsset({});
+async function run() {
+  const result = await leonardo.model.uploadModelAsset({});
 
   // Handle the result
   console.log(result)

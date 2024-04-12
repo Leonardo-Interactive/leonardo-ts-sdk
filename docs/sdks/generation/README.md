@@ -24,12 +24,12 @@ This endpoint will generate images
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.createGeneration({
+async function run() {
+  const result = await leonardo.generation.createGeneration({
     elements: [
       {},
     ],
@@ -72,12 +72,12 @@ This endpoint will generate a LCM image generation.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.createLCMGeneration({
+async function run() {
+  const result = await leonardo.generation.createLCMGeneration({
     imageDataUrl: "<value>",
     prompt: "<value>",
   });
@@ -116,12 +116,12 @@ This endpoint will generate a SVD motion generation.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.createSVDMotionGeneration({
+async function run() {
+  const result = await leonardo.generation.createSVDMotionGeneration({
     imageId: "<value>",
   });
 
@@ -159,12 +159,12 @@ This endpoint will generate a texture generation.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.createTextureGeneration({});
+async function run() {
+  const result = await leonardo.generation.createTextureGeneration({});
 
   // Handle the result
   console.log(result)
@@ -200,14 +200,14 @@ This endpoint deletes a specific generation
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.generation.deleteGenerationById(id);
+  const result = await leonardo.generation.deleteGenerationById(id);
 
   // Handle the result
   console.log(result)
@@ -243,15 +243,15 @@ This endpoint deletes the specific texture generation.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   const requestBody = {};
   
-  const result = await sdk.generation.deleteTextureGenerationById(id, requestBody);
+  const result = await leonardo.generation.deleteTextureGenerationById(id, requestBody);
 
   // Handle the result
   console.log(result)
@@ -288,14 +288,14 @@ This endpoint will provide information about a specific generation
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const id = "<value>";
   
-  const result = await sdk.generation.getGenerationById(id);
+  const result = await leonardo.generation.getGenerationById(id);
 
   // Handle the result
   console.log(result)
@@ -331,16 +331,16 @@ This endpoint returns all generations by a specific user
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const userId = "<value>";
   const limit = 10;
   const offset = 0;
   
-  const result = await sdk.generation.getGenerationsByUserId(userId, limit, offset);
+  const result = await leonardo.generation.getGenerationsByUserId(userId, limit, offset);
 
   // Handle the result
   console.log(result)
@@ -378,12 +378,12 @@ This endpoint will perform Alchemy Upscale on a LCM image
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.performAlchemyUpscaleLCM({
+async function run() {
+  const result = await leonardo.generation.performAlchemyUpscaleLCM({
     imageDataUrl: "<value>",
     prompt: "<value>",
   });
@@ -422,12 +422,12 @@ This endpoint will perform a inpainting on a LCM image
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.performInpaintingLCM({
+async function run() {
+  const result = await leonardo.generation.performInpaintingLCM({
     imageDataUrl: "<value>",
     maskDataUrl: "<value>",
     prompt: "<value>",
@@ -467,12 +467,12 @@ This endpoint will perform instant refine on a LCM image
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.generation.performInstantRefine({
+async function run() {
+  const result = await leonardo.generation.performInstantRefine({
     imageDataUrl: "<value>",
     prompt: "<value>",
   });

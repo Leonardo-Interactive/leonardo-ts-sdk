@@ -15,12 +15,12 @@ This endpoint returns a improved prompt
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.prompt.promptImprove({
+async function run() {
+  const result = await leonardo.prompt.promptImprove({
     prompt: "<value>",
   });
 
@@ -58,12 +58,12 @@ This endpoint returns a random prompt
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.prompt.promptRandom();
+async function run() {
+  const result = await leonardo.prompt.promptRandom();
 
   // Handle the result
   console.log(result)
