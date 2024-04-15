@@ -4,11 +4,11 @@
 ### Available Operations
 
 * [createModel](#createmodel) - Train a Custom Model
+* [delete3DModelById](#delete3dmodelbyid) - Delete 3D Model by ID
 * [deleteModelById](#deletemodelbyid) - Delete a Single Custom Model by ID
-* [deleteModels3dId](#deletemodels3did) - Delete 3D Model by ID
 * [getModelById](#getmodelbyid) - Get a Single Custom Model by ID
-* [getPlatformModels](#getplatformmodels) - List Platform Models
-* [postModels3dUpload](#postmodels3dupload) - Upload 3D Model
+* [listPlatformModels](#listplatformmodels) - List Platform Models
+* [uploadModelAsset](#uploadmodelasset) - Upload 3D Model
 
 ## createModel
 
@@ -18,17 +18,16 @@ This endpoint will train a new custom model
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { CustomModelType, SdVersions, Strength } from "@leonardo-ai/sdk/sdk/models/shared";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await sdk.model.createModel({
-    datasetId: "string",
-    instancePrompt: "string",
-    name: "string",
+  const result = await leonardo.model.createModel({
+    datasetId: "<value>",
+    instancePrompt: "<value>",
+    name: "<value>",
   });
 
   // Handle the result
@@ -56,6 +55,51 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## delete3DModelById
+
+This endpoint deletes the specific 3D Model
+
+### Example Usage
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const id = "<value>";
+  const requestBody = {};
+  
+  const result = await leonardo.model.delete3DModelById(id, requestBody);
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | _"id" is required (enter it either in parameters or request body)_                                                                                                             |
+| `requestBody`                                                                                                                                                                  | [operations.Delete3DModelByIdRequestBody](../../sdk/models/operations/delete3dmodelbyidrequestbody.md)                                                                         | :heavy_minus_sign:                                                                                                                                                             | Query parameters can also be provided in the request body as a JSON object                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.Delete3DModelByIdResponse](../../sdk/models/operations/delete3dmodelbyidresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## deleteModelById
 
 This endpoint will delete a specific custom model
@@ -65,14 +109,14 @@ This endpoint will delete a specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const id = "string";
+async function run() {
+  const id = "<value>";
   
-  const result = await sdk.model.deleteModelById(id);
+  const result = await leonardo.model.deleteModelById(id);
 
   // Handle the result
   console.log(result)
@@ -99,51 +143,6 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## deleteModels3dId
-
-This endpoint deletes the specific 3D Model
-
-### Example Usage
-
-```typescript
-import { Leonardo } from "@leonardo-ai/sdk";
-
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const id = "string";
-  const requestBody = {};
-  
-  const result = await sdk.model.deleteModels3dId(id, requestBody);
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | _"id" is required (enter it either in parameters or request body)_                                                                                                             |
-| `requestBody`                                                                                                                                                                  | [operations.DeleteModels3dIdRequestBody](../../sdk/models/operations/deletemodels3didrequestbody.md)                                                                           | :heavy_minus_sign:                                                                                                                                                             | Query parameters can also be provided in the request body as a JSON object                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
-
-### Response
-
-**Promise<[operations.DeleteModels3dIdResponse](../../sdk/models/operations/deletemodels3didresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
 ## getModelById
 
 This endpoint gets the specific custom model
@@ -153,14 +152,14 @@ This endpoint gets the specific custom model
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const id = "string";
+async function run() {
+  const id = "<value>";
   
-  const result = await sdk.model.getModelById(id);
+  const result = await leonardo.model.getModelById(id);
 
   // Handle the result
   console.log(result)
@@ -187,7 +186,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getPlatformModels
+## listPlatformModels
 
 Get a list of public Platform Models available for use with generations.
 
@@ -196,12 +195,12 @@ Get a list of public Platform Models available for use with generations.
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.model.getPlatformModels();
+async function run() {
+  const result = await leonardo.model.listPlatformModels();
 
   // Handle the result
   console.log(result)
@@ -220,14 +219,14 @@ run();
 
 ### Response
 
-**Promise<[operations.GetPlatformModelsResponse](../../sdk/models/operations/getplatformmodelsresponse.md)>**
+**Promise<[operations.ListPlatformModelsResponse](../../sdk/models/operations/listplatformmodelsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## postModels3dUpload
+## uploadModelAsset
 
 This endpoint returns presigned details to upload a 3D model to S3
 
@@ -236,12 +235,12 @@ This endpoint returns presigned details to upload a 3D model to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.model.postModels3dUpload({});
+async function run() {
+  const result = await leonardo.model.uploadModelAsset({});
 
   // Handle the result
   console.log(result)
@@ -254,14 +253,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostModels3dUploadRequestBody](../../sdk/models/operations/postmodels3duploadrequestbody.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UploadModelAssetRequestBody](../../sdk/models/operations/uploadmodelassetrequestbody.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
 
-**Promise<[operations.PostModels3dUploadResponse](../../sdk/models/operations/postmodels3duploadresponse.md)>**
+**Promise<[operations.UploadModelAssetResponse](../../sdk/models/operations/uploadmodelassetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

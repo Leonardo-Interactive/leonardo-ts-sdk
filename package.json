@@ -1,7 +1,6 @@
 {
-  "type": "commonjs",
   "name": "@leonardo-ai/sdk",
-  "version": "4.0.1",
+  "version": "4.5.6",
   "author": "leonardoai",
   "main": "./index.js",
   "sideEffects": false,
@@ -20,17 +19,16 @@
     "zod": ">= 3"
   },
   "devDependencies": {
+    "@types/jsonpath": "^0.2.4",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "eslint": "^8.55.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.0",
-    "@types/jsonpath": "^0.2.4",
     "typescript": "^5.3.3",
     "zod": "^3.22.4"
   },
   "dependencies": {
-    "decimal.js": "^10.4.3",
-    "jsonpath": "^1.1.1"
+    
   }
 }

@@ -18,13 +18,13 @@ This endpoint creates a new dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const result = await sdk.dataset.createDataset({
-    name: "string",
+async function run() {
+  const result = await leonardo.dataset.createDataset({
+    name: "<value>",
   });
 
   // Handle the result
@@ -61,14 +61,14 @@ This endpoint deletes the specific dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const id = "string";
+async function run() {
+  const id = "<value>";
   
-  const result = await sdk.dataset.deleteDatasetById(id);
+  const result = await leonardo.dataset.deleteDatasetById(id);
 
   // Handle the result
   console.log(result)
@@ -104,14 +104,14 @@ This endpoint gets the specific dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-  const id = "string";
+async function run() {
+  const id = "<value>";
   
-  const result = await sdk.dataset.getDatasetById(id);
+  const result = await leonardo.dataset.getDatasetById(id);
 
   // Handle the result
   console.log(result)
@@ -147,17 +147,17 @@ This endpoint returns presigned details to upload a dataset image to S3
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const requestBody = {
     extension: "mpg4",
   };
-  const datasetId = "string";
+  const datasetId = "<value>";
   
-  const result = await sdk.dataset.uploadDatasetImage(requestBody, datasetId);
+  const result = await leonardo.dataset.uploadDatasetImage(requestBody, datasetId);
 
   // Handle the result
   console.log(result)
@@ -194,17 +194,17 @@ This endpoint will upload a previously generated image to the dataset
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-  const sdk = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-  });
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
+async function run() {
   const requestBody = {
-    generatedImageId: "string",
+    generatedImageId: "<value>",
   };
-  const datasetId = "string";
+  const datasetId = "<value>";
   
-  const result = await sdk.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
+  const result = await leonardo.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
 
   // Handle the result
   console.log(result)

@@ -2,7 +2,6 @@
    <img src="https://user-images.githubusercontent.com/6267663/230025738-42a4980e-a5ea-4d00-a591-65e8de14de85.png" width="200">
    <h1>Leonardo Typescript SDK</h1>
    <p>The API for creating stunning game assets with AI.</p>
-   <a href="https://github.com/Leonardo-Interactive/leonardo-ts-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/Leonardo-Interactive/leonardo-ts-sdk/speakeasy_sdk_generate.yml?style=for-the-badge" /></a>
    <a href="https://docs.leonardo.ai/"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
    <a href="https://discord.gg/leonardo-ai"><img src="https://img.shields.io/static/v1?label=Discord&message=Join&color=7289da&style=for-the-badge" /></a>
    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
@@ -36,13 +35,13 @@ To get access to the API and fetch an API key, please sign up for [access](https
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
-        name: "string",
+async function run() {
+    const result = await leonardo.dataset.createDataset({
+        name: "<value>",
     });
 
     // Handle the result
@@ -67,17 +66,21 @@ run();
 
 ### [element](docs/sdks/element/README.md)
 
-* [getElements](docs/sdks/element/README.md#getelements) - List Elements
+* [listElements](docs/sdks/element/README.md#listelements) - List Elements
 
 ### [generation](docs/sdks/generation/README.md)
 
 * [createGeneration](docs/sdks/generation/README.md#creategeneration) - Create a Generation of Images
+* [createLCMGeneration](docs/sdks/generation/README.md#createlcmgeneration) - Create LCM Generation
+* [createSVDMotionGeneration](docs/sdks/generation/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
+* [createTextureGeneration](docs/sdks/generation/README.md#createtexturegeneration) - Create Texture Generation
 * [deleteGenerationById](docs/sdks/generation/README.md#deletegenerationbyid) - Delete a Single Generation
-* [deleteGenerationsTextureId](docs/sdks/generation/README.md#deletegenerationstextureid) - Delete Texture Generation by ID
+* [deleteTextureGenerationById](docs/sdks/generation/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
 * [getGenerationById](docs/sdks/generation/README.md#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](docs/sdks/generation/README.md#getgenerationsbyuserid) - Get generations by user ID
-* [postGenerationsMotionSvd](docs/sdks/generation/README.md#postgenerationsmotionsvd) - Create SVD Motion Generation
-* [postGenerationsTexture](docs/sdks/generation/README.md#postgenerationstexture) - Create Texture Generation
+* [performAlchemyUpscaleLCM](docs/sdks/generation/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
+* [performInpaintingLCM](docs/sdks/generation/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
+* [performInstantRefine](docs/sdks/generation/README.md#performinstantrefine) - Perform instant refine on a LCM image
 
 ### [initImage](docs/sdks/initimage/README.md)
 
@@ -92,18 +95,23 @@ run();
 ### [model](docs/sdks/model/README.md)
 
 * [createModel](docs/sdks/model/README.md#createmodel) - Train a Custom Model
+* [delete3DModelById](docs/sdks/model/README.md#delete3dmodelbyid) - Delete 3D Model by ID
 * [deleteModelById](docs/sdks/model/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
-* [deleteModels3dId](docs/sdks/model/README.md#deletemodels3did) - Delete 3D Model by ID
 * [getModelById](docs/sdks/model/README.md#getmodelbyid) - Get a Single Custom Model by ID
-* [getPlatformModels](docs/sdks/model/README.md#getplatformmodels) - List Platform Models
-* [postModels3dUpload](docs/sdks/model/README.md#postmodels3dupload) - Upload 3D Model
+* [listPlatformModels](docs/sdks/model/README.md#listplatformmodels) - List Platform Models
+* [uploadModelAsset](docs/sdks/model/README.md#uploadmodelasset) - Upload 3D Model
+
+### [prompt](docs/sdks/prompt/README.md)
+
+* [promptImprove](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
+* [promptRandom](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
 
 ### [variation](docs/sdks/variation/README.md)
 
 * [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background
+* [createVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
-* [postVariationsUnzoom](docs/sdks/variation/README.md#postvariationsunzoom) - Create unzoom
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -121,24 +129,36 @@ All SDK methods return a response object or throw an error. If Error objects are
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-Example
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
+
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
+import * as errors from "@leonardo-ai/sdk/sdk/models/errors";
+
+const leonardo = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-    const sdk = new Leonardo({
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
-
     let result;
     try {
-        result = await sdk.dataset.createDataset({
-            name: "string",
+        result = await leonardo.dataset.createDataset({
+            name: "<value>",
         });
     } catch (err) {
-        // Handle errors here
-        throw err;
+        switch (true) {
+            case err instanceof errors.SDKValidationError: {
+                // Validation errors can be pretty-printed
+                console.error(err.pretty());
+                // Raw value may also be inspected
+                console.error(err.rawValue);
+                return;
+            }
+            default: {
+                throw err;
+            }
+        }
     }
 
     // Handle the result
@@ -217,14 +237,14 @@ You can override the default server globally by passing a server index to the `s
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        serverIdx: 0,
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    serverIdx: 0,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
-        name: "string",
+async function run() {
+    const result = await leonardo.dataset.createDataset({
+        name: "<value>",
     });
 
     // Handle the result
@@ -243,14 +263,14 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        serverURL: "https://cloud.leonardo.ai/api/rest/v1",
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    serverURL: "https://cloud.leonardo.ai/api/rest/v1",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
-        name: "string",
+async function run() {
+    const result = await leonardo.dataset.createDataset({
+        name: "<value>",
     });
 
     // Handle the result
@@ -279,13 +299,13 @@ To authenticate with the API the `bearerAuth` parameter must be set when initial
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
-async function run() {
-    const sdk = new Leonardo({
-        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    });
+const leonardo = new Leonardo({
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
-    const result = await sdk.dataset.createDataset({
-        name: "string",
+async function run() {
+    const result = await leonardo.dataset.createDataset({
+        name: "<value>",
     });
 
     // Handle the result

@@ -1,0 +1,9 @@
+# Delete3DModelByIdRequest
+
+
+## Fields
+
+| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                      | *string*                                                                                                  | :heavy_check_mark:                                                                                        | _"id" is required (enter it either in parameters or request body)_                                        |
+| `requestBody`                                                                                             | [operations.Delete3DModelByIdRequestBody](../../../sdk/models/operations/delete3dmodelbyidrequestbody.md) | :heavy_minus_sign:                                                                                        | Query parameters can also be provided in the request body as a JSON object                                |
