@@ -14,4 +14,4 @@ export enum JobStatus {
 }
 
 /** @internal */
-export const JobStatus$ = z.nativeEnum(JobStatus);
+export const JobStatus$: z.ZodNativeEnum<typeof JobStatus> = z.nativeEnum(JobStatus);

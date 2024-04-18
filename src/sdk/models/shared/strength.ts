@@ -15,4 +15,4 @@ export enum Strength {
 }
 
 /** @internal */
-export const Strength$ = z.nativeEnum(Strength);
+export const Strength$: z.ZodNativeEnum<typeof Strength> = z.nativeEnum(Strength);

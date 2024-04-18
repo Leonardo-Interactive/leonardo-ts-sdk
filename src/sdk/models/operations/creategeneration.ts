@@ -198,7 +198,8 @@ export type CreateGenerationResponse = {
 };
 
 /** @internal */
-export const TransparencyType$ = z.nativeEnum(TransparencyType);
+export const TransparencyType$: z.ZodNativeEnum<typeof TransparencyType> =
+    z.nativeEnum(TransparencyType);
 
 /** @internal */
 export namespace CreateGenerationRequestBody$ {

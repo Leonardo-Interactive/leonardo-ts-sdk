@@ -43,42 +43,42 @@ export class Leonardo extends ClientSDK {
     }
 
     private _dataset?: Dataset;
-    get dataset() {
+    get dataset(): Dataset {
         return (this._dataset ??= new Dataset(this.options$));
     }
 
     private _element?: Element;
-    get element() {
+    get element(): Element {
         return (this._element ??= new Element(this.options$));
     }
 
     private _generation?: Generation;
-    get generation() {
+    get generation(): Generation {
         return (this._generation ??= new Generation(this.options$));
     }
 
     private _initImage?: InitImage;
-    get initImage() {
+    get initImage(): InitImage {
         return (this._initImage ??= new InitImage(this.options$));
     }
 
     private _user?: User;
-    get user() {
+    get user(): User {
         return (this._user ??= new User(this.options$));
     }
 
     private _model?: Model;
-    get model() {
+    get model(): Model {
         return (this._model ??= new Model(this.options$));
     }
 
     private _prompt?: Prompt;
-    get prompt() {
+    get prompt(): Prompt {
         return (this._prompt ??= new Prompt(this.options$));
     }
 
     private _variation?: Variation;
-    get variation() {
+    get variation(): Variation {
         return (this._variation ??= new Variation(this.options$));
     }
 }

@@ -25,4 +25,5 @@ export enum CustomModelType {
 }
 
 /** @internal */
-export const CustomModelType$ = z.nativeEnum(CustomModelType);
+export const CustomModelType$: z.ZodNativeEnum<typeof CustomModelType> =
+    z.nativeEnum(CustomModelType);

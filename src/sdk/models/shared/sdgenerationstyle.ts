@@ -42,4 +42,5 @@ export enum SdGenerationStyle {
 }
 
 /** @internal */
-export const SdGenerationStyle$ = z.nativeEnum(SdGenerationStyle);
+export const SdGenerationStyle$: z.ZodNativeEnum<typeof SdGenerationStyle> =
+    z.nativeEnum(SdGenerationStyle);

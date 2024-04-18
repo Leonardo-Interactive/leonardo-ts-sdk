@@ -14,4 +14,4 @@ export enum ControlnetType {
 }
 
 /** @internal */
-export const ControlnetType$ = z.nativeEnum(ControlnetType);
+export const ControlnetType$: z.ZodNativeEnum<typeof ControlnetType> = z.nativeEnum(ControlnetType);
