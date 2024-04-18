@@ -1,7 +1,7 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "4.5.6",
-  "author": "leonardoai",
+  "version": "4.5.8",
+  "author": "leonardoai",  
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -14,7 +14,6 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
   "peerDependencies": {
     "zod": ">= 3"
   },

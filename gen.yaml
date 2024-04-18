@@ -13,11 +13,12 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.5.6
+  version: 4.5.8
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
+  additionalPackageJSON: {}
   author: leonardoai
   clientServerStatusCodesAsErrors: false
   enumFormat: enum
