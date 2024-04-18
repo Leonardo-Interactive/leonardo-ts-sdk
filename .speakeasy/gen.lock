@@ -3,10 +3,10 @@ id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
   docChecksum: 7ed8337867845a822448a6a9ffcca211
   docVersion: v1.0.0
-  speakeasyVersion: 1.257.1
-  generationVersion: 2.308.2
-  releaseVersion: 4.5.7
-  configChecksum: 5f03f7a061f4ef780fa7e1d412cd0cd9
+  speakeasyVersion: 1.258.2
+  generationVersion: 2.309.2
+  releaseVersion: 4.5.8
+  configChecksum: 637c9243cc441abcb64f43cc37d0336b
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.7.2
+    core: 3.7.3
     devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.9
