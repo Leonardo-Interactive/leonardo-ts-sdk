@@ -247,7 +247,7 @@ export namespace CreateGenerationRequestBody$ {
 
     export const inboundSchema: z.ZodType<CreateGenerationRequestBody, z.ZodTypeDef, Inbound> = z
         .object({
-            alchemy: z.nullable(z.boolean()).optional(),
+            alchemy: z.nullable(z.boolean().default(true)),
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
             controlNetType: shared.ControlnetType$.optional(),
@@ -255,7 +255,7 @@ export namespace CreateGenerationRequestBody$ {
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
             guidance_scale: z.nullable(z.number().int()).optional(),
-            height: z.nullable(z.number().int().default(512)),
+            height: z.nullable(z.number().int().default(768)),
             highContrast: z.nullable(z.boolean()).optional(),
             highResolution: z.nullable(z.boolean()).optional(),
             imagePromptWeight: z.nullable(z.number()).optional(),
@@ -263,15 +263,17 @@ export namespace CreateGenerationRequestBody$ {
             init_generation_image_id: z.nullable(z.string()).optional(),
             init_image_id: z.nullable(z.string()).optional(),
             init_strength: z.nullable(z.number()).optional(),
-            modelId: z.nullable(z.string().default("6bef9f1b-29cb-40c7-b9df-32b51c1f67d3")),
+            modelId: z.nullable(z.string().default("b24e16ff-06e3-43eb-8d33-4416c2d75876")),
             negative_prompt: z.nullable(z.string()).optional(),
-            num_images: z.nullable(z.number().int()).optional(),
+            num_images: z.nullable(z.number().int().default(4)),
             num_inference_steps: z.nullable(z.number().int()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
             photoRealVersion: z.nullable(z.string()).optional(),
-            presetStyle: z.nullable(shared.SdGenerationStyle$).optional(),
-            prompt: z.string().default("An oil painting of a cat"),
+            presetStyle: z.nullable(
+                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+            ),
+            prompt: z.string().default("A majestic cat in the snow"),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
             promptMagicVersion: z.nullable(z.string()).optional(),
@@ -280,16 +282,16 @@ export namespace CreateGenerationRequestBody$ {
             sd_version: shared.SdVersions$.optional(),
             seed: z.nullable(z.number().int()).optional(),
             tiling: z.nullable(z.boolean()).optional(),
-            transparency: z.nullable(TransparencyType$.default(TransparencyType.Disabled)),
+            transparency: z.nullable(TransparencyType$).optional(),
             unzoom: z.nullable(z.boolean()).optional(),
             unzoomAmount: z.nullable(z.number()).optional(),
             upscaleRatio: z.nullable(z.number()).optional(),
             weighting: z.nullable(z.number()).optional(),
-            width: z.nullable(z.number().int().default(512)),
+            width: z.nullable(z.number().int().default(1024)),
         })
         .transform((v) => {
             return {
-                ...(v.alchemy === undefined ? null : { alchemy: v.alchemy }),
+                alchemy: v.alchemy,
                 ...(v.contrastRatio === undefined ? null : { contrastRatio: v.contrastRatio }),
                 ...(v.controlNet === undefined ? null : { controlNet: v.controlNet }),
                 ...(v.controlNetType === undefined ? null : { controlNetType: v.controlNetType }),
@@ -311,7 +313,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.init_strength === undefined ? null : { initStrength: v.init_strength }),
                 modelId: v.modelId,
                 ...(v.negative_prompt === undefined ? null : { negativePrompt: v.negative_prompt }),
-                ...(v.num_images === undefined ? null : { numImages: v.num_images }),
+                numImages: v.num_images,
                 ...(v.num_inference_steps === undefined
                     ? null
                     : { numInferenceSteps: v.num_inference_steps }),
@@ -322,7 +324,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.photoRealVersion === undefined
                     ? null
                     : { photoRealVersion: v.photoRealVersion }),
-                ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
+                presetStyle: v.presetStyle,
                 prompt: v.prompt,
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
                 ...(v.promptMagicStrength === undefined
@@ -336,7 +338,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.sd_version === undefined ? null : { sdVersion: v.sd_version }),
                 ...(v.seed === undefined ? null : { seed: v.seed }),
                 ...(v.tiling === undefined ? null : { tiling: v.tiling }),
-                transparency: v.transparency,
+                ...(v.transparency === undefined ? null : { transparency: v.transparency }),
                 ...(v.unzoom === undefined ? null : { unzoom: v.unzoom }),
                 ...(v.unzoomAmount === undefined ? null : { unzoomAmount: v.unzoomAmount }),
                 ...(v.upscaleRatio === undefined ? null : { upscaleRatio: v.upscaleRatio }),
@@ -346,7 +348,7 @@ export namespace CreateGenerationRequestBody$ {
         });
 
     export type Outbound = {
-        alchemy?: boolean | null | undefined;
+        alchemy: boolean | null;
         contrastRatio?: number | null | undefined;
         controlNet?: boolean | null | undefined;
         controlNetType?: shared.ControlnetType | undefined;
@@ -364,12 +366,12 @@ export namespace CreateGenerationRequestBody$ {
         init_strength?: number | null | undefined;
         modelId: string | null;
         negative_prompt?: string | null | undefined;
-        num_images?: number | null | undefined;
+        num_images: number | null;
         num_inference_steps?: number | null | undefined;
         photoReal?: boolean | null | undefined;
         photoRealStrength?: number | null | undefined;
         photoRealVersion?: string | null | undefined;
-        presetStyle?: shared.SdGenerationStyle | null | undefined;
+        presetStyle: shared.SdGenerationStyle | null;
         prompt: string;
         promptMagic?: boolean | null | undefined;
         promptMagicStrength?: number | null | undefined;
@@ -379,7 +381,7 @@ export namespace CreateGenerationRequestBody$ {
         sd_version?: shared.SdVersions | undefined;
         seed?: number | null | undefined;
         tiling?: boolean | null | undefined;
-        transparency: TransparencyType | null;
+        transparency?: TransparencyType | null | undefined;
         unzoom?: boolean | null | undefined;
         unzoomAmount?: number | null | undefined;
         upscaleRatio?: number | null | undefined;
@@ -389,7 +391,7 @@ export namespace CreateGenerationRequestBody$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateGenerationRequestBody> = z
         .object({
-            alchemy: z.nullable(z.boolean()).optional(),
+            alchemy: z.nullable(z.boolean().default(true)),
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
             controlNetType: shared.ControlnetType$.optional(),
@@ -397,7 +399,7 @@ export namespace CreateGenerationRequestBody$ {
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
             guidanceScale: z.nullable(z.number().int()).optional(),
-            height: z.nullable(z.number().int().default(512)),
+            height: z.nullable(z.number().int().default(768)),
             highContrast: z.nullable(z.boolean()).optional(),
             highResolution: z.nullable(z.boolean()).optional(),
             imagePromptWeight: z.nullable(z.number()).optional(),
@@ -405,15 +407,17 @@ export namespace CreateGenerationRequestBody$ {
             initGenerationImageId: z.nullable(z.string()).optional(),
             initImageId: z.nullable(z.string()).optional(),
             initStrength: z.nullable(z.number()).optional(),
-            modelId: z.nullable(z.string().default("6bef9f1b-29cb-40c7-b9df-32b51c1f67d3")),
+            modelId: z.nullable(z.string().default("b24e16ff-06e3-43eb-8d33-4416c2d75876")),
             negativePrompt: z.nullable(z.string()).optional(),
-            numImages: z.nullable(z.number().int()).optional(),
+            numImages: z.nullable(z.number().int().default(4)),
             numInferenceSteps: z.nullable(z.number().int()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
             photoRealVersion: z.nullable(z.string()).optional(),
-            presetStyle: z.nullable(shared.SdGenerationStyle$).optional(),
-            prompt: z.string().default("An oil painting of a cat"),
+            presetStyle: z.nullable(
+                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+            ),
+            prompt: z.string().default("A majestic cat in the snow"),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
             promptMagicVersion: z.nullable(z.string()).optional(),
@@ -422,16 +426,16 @@ export namespace CreateGenerationRequestBody$ {
             sdVersion: shared.SdVersions$.optional(),
             seed: z.nullable(z.number().int()).optional(),
             tiling: z.nullable(z.boolean()).optional(),
-            transparency: z.nullable(TransparencyType$.default(TransparencyType.Disabled)),
+            transparency: z.nullable(TransparencyType$).optional(),
             unzoom: z.nullable(z.boolean()).optional(),
             unzoomAmount: z.nullable(z.number()).optional(),
             upscaleRatio: z.nullable(z.number()).optional(),
             weighting: z.nullable(z.number()).optional(),
-            width: z.nullable(z.number().int().default(512)),
+            width: z.nullable(z.number().int().default(1024)),
         })
         .transform((v) => {
             return {
-                ...(v.alchemy === undefined ? null : { alchemy: v.alchemy }),
+                alchemy: v.alchemy,
                 ...(v.contrastRatio === undefined ? null : { contrastRatio: v.contrastRatio }),
                 ...(v.controlNet === undefined ? null : { controlNet: v.controlNet }),
                 ...(v.controlNetType === undefined ? null : { controlNetType: v.controlNetType }),
@@ -453,7 +457,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.initStrength === undefined ? null : { init_strength: v.initStrength }),
                 modelId: v.modelId,
                 ...(v.negativePrompt === undefined ? null : { negative_prompt: v.negativePrompt }),
-                ...(v.numImages === undefined ? null : { num_images: v.numImages }),
+                num_images: v.numImages,
                 ...(v.numInferenceSteps === undefined
                     ? null
                     : { num_inference_steps: v.numInferenceSteps }),
@@ -464,7 +468,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.photoRealVersion === undefined
                     ? null
                     : { photoRealVersion: v.photoRealVersion }),
-                ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
+                presetStyle: v.presetStyle,
                 prompt: v.prompt,
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
                 ...(v.promptMagicStrength === undefined
@@ -478,7 +482,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.sdVersion === undefined ? null : { sd_version: v.sdVersion }),
                 ...(v.seed === undefined ? null : { seed: v.seed }),
                 ...(v.tiling === undefined ? null : { tiling: v.tiling }),
-                transparency: v.transparency,
+                ...(v.transparency === undefined ? null : { transparency: v.transparency }),
                 ...(v.unzoom === undefined ? null : { unzoom: v.unzoom }),
                 ...(v.unzoomAmount === undefined ? null : { unzoomAmount: v.unzoomAmount }),
                 ...(v.upscaleRatio === undefined ? null : { upscaleRatio: v.upscaleRatio }),

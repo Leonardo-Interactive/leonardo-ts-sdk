@@ -581,7 +581,9 @@ export namespace GetGenerationsByUserIdGenerations$ {
             negativePrompt: z.nullable(z.string()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
-            presetStyle: z.nullable(shared.SdGenerationStyle$).optional(),
+            presetStyle: z.nullable(
+                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+            ),
             prompt: z.string().optional(),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
@@ -613,7 +615,7 @@ export namespace GetGenerationsByUserIdGenerations$ {
                 ...(v.photoRealStrength === undefined
                     ? null
                     : { photoRealStrength: v.photoRealStrength }),
-                ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
+                presetStyle: v.presetStyle,
                 ...(v.prompt === undefined ? null : { prompt: v.prompt }),
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
                 ...(v.promptMagicStrength === undefined
@@ -644,7 +646,7 @@ export namespace GetGenerationsByUserIdGenerations$ {
         negativePrompt?: string | null | undefined;
         photoReal?: boolean | null | undefined;
         photoRealStrength?: number | null | undefined;
-        presetStyle?: shared.SdGenerationStyle | null | undefined;
+        presetStyle: shared.SdGenerationStyle | null;
         prompt?: string | undefined;
         promptMagic?: boolean | null | undefined;
         promptMagicStrength?: number | null | undefined;
@@ -679,7 +681,9 @@ export namespace GetGenerationsByUserIdGenerations$ {
             negativePrompt: z.nullable(z.string()).optional(),
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
-            presetStyle: z.nullable(shared.SdGenerationStyle$).optional(),
+            presetStyle: z.nullable(
+                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+            ),
             prompt: z.string().optional(),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
@@ -711,7 +715,7 @@ export namespace GetGenerationsByUserIdGenerations$ {
                 ...(v.photoRealStrength === undefined
                     ? null
                     : { photoRealStrength: v.photoRealStrength }),
-                ...(v.presetStyle === undefined ? null : { presetStyle: v.presetStyle }),
+                presetStyle: v.presetStyle,
                 ...(v.prompt === undefined ? null : { prompt: v.prompt }),
                 ...(v.promptMagic === undefined ? null : { promptMagic: v.promptMagic }),
                 ...(v.promptMagicStrength === undefined
