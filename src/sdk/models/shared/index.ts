@@ -12,4 +12,5 @@ export * from "./sdgenerationstyle";
 export * from "./sdversions";
 export * from "./security";
 export * from "./strength";
+export * from "./universalupscalerstyle";
 export * from "./variationtype";

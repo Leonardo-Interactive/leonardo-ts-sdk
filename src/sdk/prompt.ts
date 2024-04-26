@@ -81,6 +81,7 @@ export class Prompt extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -151,6 +152,7 @@ export class Prompt extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",

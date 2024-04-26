@@ -69,6 +69,7 @@ export class User extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",

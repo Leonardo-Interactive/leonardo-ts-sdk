@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: adaf474fb2cf4cd9d0dde8179b470aab
+  docChecksum: 95b11bc5998044d3f9e7ccc0b8381149
   docVersion: v1.0.0
-  speakeasyVersion: 1.267.0
-  generationVersion: 2.312.0
-  releaseVersion: 4.6.1
-  configChecksum: 782c54a4ea2c306eafab9077233b9f56
+  speakeasyVersion: 1.274.1
+  generationVersion: 2.314.0
+  releaseVersion: 4.7.0
+  configChecksum: 4b031facee83273cc150636d35962e35
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.8.0
+    core: 3.9.0
     devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.9
@@ -82,6 +82,7 @@ generatedFiles:
   - src/sdk/models/operations/uploadmodelasset.ts
   - src/sdk/models/operations/promptimprove.ts
   - src/sdk/models/operations/promptrandom.ts
+  - src/sdk/models/operations/createuniversalupscalerjob.ts
   - src/sdk/models/operations/createvariationnobg.ts
   - src/sdk/models/operations/createvariationunzoom.ts
   - src/sdk/models/operations/createvariationupscale.ts
@@ -96,6 +97,7 @@ generatedFiles:
   - src/sdk/models/shared/variationtype.ts
   - src/sdk/models/shared/strength.ts
   - src/sdk/models/shared/custommodeltype.ts
+  - src/sdk/models/shared/universalupscalerstyle.ts
   - src/sdk/models/shared/security.ts
   - src/sdk/models/errors/index.ts
   - src/sdk/models/operations/index.ts
@@ -228,6 +230,10 @@ generatedFiles:
   - docs/sdk/models/operations/promptrandompromptgenerationoutput.md
   - docs/sdk/models/operations/promptrandomresponsebody.md
   - docs/sdk/models/operations/promptrandomresponse.md
+  - docs/sdk/models/operations/createuniversalupscalerjobrequestbody.md
+  - docs/sdk/models/operations/universalupscaleroutput.md
+  - docs/sdk/models/operations/createuniversalupscalerjobresponsebody.md
+  - docs/sdk/models/operations/createuniversalupscalerjobresponse.md
   - docs/sdk/models/operations/createvariationnobgrequestbody.md
   - docs/sdk/models/operations/sdupscalejoboutput.md
   - docs/sdk/models/operations/createvariationnobgresponsebody.md
@@ -254,6 +260,7 @@ generatedFiles:
   - docs/sdk/models/shared/variationtype.md
   - docs/sdk/models/shared/strength.md
   - docs/sdk/models/shared/custommodeltype.md
+  - docs/sdk/models/shared/universalupscalerstyle.md
   - docs/sdk/models/shared/security.md
   - docs/sdks/leonardo/README.md
   - docs/sdks/dataset/README.md

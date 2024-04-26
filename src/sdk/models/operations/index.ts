@@ -8,6 +8,7 @@ export * from "./createlcmgeneration";
 export * from "./createmodel";
 export * from "./createsvdmotiongeneration";
 export * from "./createtexturegeneration";
+export * from "./createuniversalupscalerjob";
 export * from "./createvariationnobg";
 export * from "./createvariationunzoom";
 export * from "./createvariationupscale";

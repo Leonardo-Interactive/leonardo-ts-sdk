@@ -1,6 +1,6 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "4.6.1",
+  "version": "4.7.0",
   "author": "leonardoai",  
   "main": "./index.js",
   "sideEffects": false,
@@ -19,13 +19,13 @@
   },
   "devDependencies": {
     "@types/jsonpath": "^0.2.4",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
-    "@typescript-eslint/parser": "^6.13.2",
-    "eslint": "^8.55.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.0",
-    "typescript": "^5.3.3",
-    "zod": "^3.22.4"
+    "eslint-plugin-import": "^2.29.1",
+    "typescript": "^5.4.5",
+    "zod": "^3.23.4"
   },
   "dependencies": {
     

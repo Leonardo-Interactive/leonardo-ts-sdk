@@ -81,6 +81,7 @@ export class Dataset extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -167,6 +168,7 @@ export class Dataset extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -253,6 +255,7 @@ export class Dataset extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -345,6 +348,7 @@ export class Dataset extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -437,6 +441,7 @@ export class Dataset extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",

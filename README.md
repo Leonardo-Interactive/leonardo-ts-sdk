@@ -108,6 +108,7 @@ run();
 
 ### [variation](docs/sdks/variation/README.md)
 
+* [createUniversalUpscalerJob](docs/sdks/variation/README.md#createuniversalupscalerjob) - Create using Universal Upscaler
 * [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background
 * [createVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale

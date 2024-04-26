@@ -39,6 +39,89 @@ export class Variation extends ClientSDK {
     }
 
     /**
+     * Create using Universal Upscaler
+     *
+     * @remarks
+     * This endpoint will create a high resolution image using Universal Upscaler
+     */
+    async createUniversalUpscalerJob(
+        input: operations.CreateUniversalUpscalerJobRequestBody,
+        options?: RequestOptions
+    ): Promise<operations.CreateUniversalUpscalerJobResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.CreateUniversalUpscalerJobRequestBody$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/variations/universal-upscaler")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "CreateUniversalUpscalerJob",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = { context, errorCodes: [] };
+        const request = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.CreateUniversalUpscalerJobResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        object: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Create no background
      *
      * @remarks
@@ -81,6 +164,7 @@ export class Variation extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -166,6 +250,7 @@ export class Variation extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -251,6 +336,7 @@ export class Variation extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -337,6 +423,7 @@ export class Variation extends ClientSDK {
 
         const doOptions = { context, errorCodes: [] };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
