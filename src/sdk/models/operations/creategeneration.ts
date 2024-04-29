@@ -85,7 +85,7 @@ export type CreateGenerationRequestBody = {
      */
     numImages?: number | null | undefined;
     /**
-     * The number of inference steps to use for the generation. Must be between 30 and 60.
+     * The Step Count to use for the generation. Must be between 10 and 60. Default is 15.
      */
     numInferenceSteps?: number | null | undefined;
     /**
@@ -154,7 +154,7 @@ export type CreateGenerationRequestBody = {
      */
     upscaleRatio?: number | null | undefined;
     /**
-     * How much weighting to use for generation.
+     * How much weighting to use for ControlNet. This parameter works with controlNet and controlNetType.
      */
     weighting?: number | null | undefined;
     /**
