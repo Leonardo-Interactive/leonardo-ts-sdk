@@ -29,14 +29,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.generation.createGeneration({
-    elements: [
-      {},
-    ],
-    imagePrompts: [
-      "<value>",
-    ],
-  });
+  const result = await leonardo.generation.createGeneration({});
 
   // Handle the result
   console.log(result)
