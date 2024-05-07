@@ -21,7 +21,9 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.initImage.deleteInitImageById("<value>");
+  const id = "<value>";
+  
+  const result = await leonardo.initImage.deleteInitImageById(id);
 
   // Handle the result
   console.log(result)
@@ -62,7 +64,9 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.initImage.getInitImageById("<value>");
+  const id = "<value>";
+  
+  const result = await leonardo.initImage.getInitImageById(id);
 
   // Handle the result
   console.log(result)

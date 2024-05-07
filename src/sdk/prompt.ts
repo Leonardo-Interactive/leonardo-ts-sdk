@@ -45,17 +45,16 @@ export class Prompt extends ClientSDK {
      * This endpoint returns a improved prompt
      */
     async promptImprove(
-        request: operations.PromptImproveRequestBody,
+        input: operations.PromptImproveRequestBody,
         options?: RequestOptions
     ): Promise<operations.PromptImproveResponse> {
-        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input$,
+            input,
             (value$) => operations.PromptImproveRequestBody$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -81,7 +80,7 @@ export class Prompt extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -94,7 +93,7 @@ export class Prompt extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -157,7 +156,7 @@ export class Prompt extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -169,7 +168,7 @@ export class Prompt extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

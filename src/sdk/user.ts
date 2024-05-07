@@ -68,7 +68,7 @@ export class User extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request$ = this.createRequest$(
+        const request = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -80,7 +80,7 @@ export class User extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
