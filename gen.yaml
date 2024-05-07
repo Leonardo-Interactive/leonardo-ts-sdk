@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.7.3
+  version: 4.8.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -33,6 +33,7 @@ typescript:
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
   maxMethodParams: 5
+  methodArguments: require-security-and-request
   outputModelSuffix: output
   packageName: '@leonardo-ai/sdk'
   responseFormat: envelope

@@ -69,10 +69,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  const requestBody = {};
-  
-  const result = await leonardo.model.delete3DModelById(id, requestBody);
+  const result = await leonardo.model.delete3DModelById("<value>", {});
 
   // Handle the result
   console.log(result)
@@ -114,9 +111,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.model.deleteModelById(id);
+  const result = await leonardo.model.deleteModelById("<value>");
 
   // Handle the result
   console.log(result)
@@ -157,9 +152,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.model.getModelById(id);
+  const result = await leonardo.model.getModelById("<value>");
 
   // Handle the result
   console.log(result)

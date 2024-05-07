@@ -198,9 +198,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.generation.deleteGenerationById(id);
+  const result = await leonardo.generation.deleteGenerationById("<value>");
 
   // Handle the result
   console.log(result)
@@ -241,10 +239,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  const requestBody = {};
-  
-  const result = await leonardo.generation.deleteTextureGenerationById(id, requestBody);
+  const result = await leonardo.generation.deleteTextureGenerationById("<value>", {});
 
   // Handle the result
   console.log(result)
@@ -286,9 +281,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.generation.getGenerationById(id);
+  const result = await leonardo.generation.getGenerationById("<value>");
 
   // Handle the result
   console.log(result)
@@ -329,11 +322,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const userId = "<value>";
-  const limit = 10;
-  const offset = 0;
-  
-  const result = await leonardo.generation.getGenerationsByUserId(userId, limit, offset);
+  const result = await leonardo.generation.getGenerationsByUserId("<value>", 10, 0);
 
   // Handle the result
   console.log(result)
