@@ -45,16 +45,17 @@ export class Generation extends ClientSDK {
      * This endpoint will generate images
      */
     async createGeneration(
-        input: operations.CreateGenerationRequestBody,
+        request: operations.CreateGenerationRequestBody,
         options?: RequestOptions
     ): Promise<operations.CreateGenerationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CreateGenerationRequestBody$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -80,7 +81,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -93,7 +94,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -132,16 +133,17 @@ export class Generation extends ClientSDK {
      * This endpoint will generate a LCM image generation.
      */
     async createLCMGeneration(
-        input: operations.CreateLCMGenerationRequestBody | undefined,
+        request?: operations.CreateLCMGenerationRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.CreateLCMGenerationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.CreateLCMGenerationRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
@@ -169,7 +171,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -182,7 +184,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -221,16 +223,17 @@ export class Generation extends ClientSDK {
      * This endpoint will generate a SVD motion generation.
      */
     async createSVDMotionGeneration(
-        input: operations.CreateSVDMotionGenerationRequestBody | undefined,
+        request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.CreateSVDMotionGenerationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.CreateSVDMotionGenerationRequestBody$.outboundSchema
                     .optional()
@@ -260,7 +263,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -273,7 +276,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -312,16 +315,17 @@ export class Generation extends ClientSDK {
      * This endpoint will generate a texture generation.
      */
     async createTextureGeneration(
-        input: operations.CreateTextureGenerationRequestBody | undefined,
+        request?: operations.CreateTextureGenerationRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.CreateTextureGenerationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.CreateTextureGenerationRequestBody$.outboundSchema
                     .optional()
@@ -351,7 +355,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -364,7 +368,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -443,7 +447,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -456,7 +460,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -538,7 +542,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -551,7 +555,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -630,7 +634,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -643,7 +647,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -734,7 +738,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -747,7 +751,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -786,16 +790,17 @@ export class Generation extends ClientSDK {
      * This endpoint will perform Alchemy Upscale on a LCM image
      */
     async performAlchemyUpscaleLCM(
-        input: operations.PerformAlchemyUpscaleLCMRequestBody | undefined,
+        request?: operations.PerformAlchemyUpscaleLCMRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.PerformAlchemyUpscaleLCMResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.PerformAlchemyUpscaleLCMRequestBody$.outboundSchema
                     .optional()
@@ -825,7 +830,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -838,7 +843,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -877,16 +882,17 @@ export class Generation extends ClientSDK {
      * This endpoint will perform a inpainting on a LCM image
      */
     async performInpaintingLCM(
-        input: operations.PerformInpaintingLCMRequestBody | undefined,
+        request?: operations.PerformInpaintingLCMRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.PerformInpaintingLCMResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.PerformInpaintingLCMRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
@@ -914,7 +920,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -927,7 +933,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -966,16 +972,17 @@ export class Generation extends ClientSDK {
      * This endpoint will perform instant refine on a LCM image
      */
     async performInstantRefine(
-        input: operations.PerformInstantRefineRequestBody | undefined,
+        request?: operations.PerformInstantRefineRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.PerformInstantRefineResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.PerformInstantRefineRequestBody$.outboundSchema.optional().parse(value$),
             "Input validation failed"
@@ -1003,7 +1010,7 @@ export class Generation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1016,7 +1023,7 @@ export class Generation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

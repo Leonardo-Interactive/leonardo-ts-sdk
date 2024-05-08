@@ -66,9 +66,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.dataset.deleteDatasetById(id);
+  const result = await leonardo.dataset.deleteDatasetById("<value>");
 
   // Handle the result
   console.log(result)
@@ -109,9 +107,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.dataset.getDatasetById(id);
+  const result = await leonardo.dataset.getDatasetById("<value>");
 
   // Handle the result
   console.log(result)
@@ -152,12 +148,9 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const requestBody = {
+  const result = await leonardo.dataset.uploadDatasetImage({
     extension: "mpg4",
-  };
-  const datasetId = "<value>";
-  
-  const result = await leonardo.dataset.uploadDatasetImage(requestBody, datasetId);
+  }, "<value>");
 
   // Handle the result
   console.log(result)
@@ -199,12 +192,9 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const requestBody = {
+  const result = await leonardo.dataset.uploadDatasetImageFromGen({
     generatedImageId: "<value>",
-  };
-  const datasetId = "<value>";
-  
-  const result = await leonardo.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
+  }, "<value>");
 
   // Handle the result
   console.log(result)

@@ -191,9 +191,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.variation.getVariationById(id);
+  const result = await leonardo.variation.getVariationById("<value>");
 
   // Handle the result
   console.log(result)

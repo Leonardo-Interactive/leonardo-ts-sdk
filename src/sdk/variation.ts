@@ -45,16 +45,17 @@ export class Variation extends ClientSDK {
      * This endpoint will create a high resolution image using Universal Upscaler
      */
     async createUniversalUpscalerJob(
-        input: operations.CreateUniversalUpscalerJobRequestBody,
+        request: operations.CreateUniversalUpscalerJobRequestBody,
         options?: RequestOptions
     ): Promise<operations.CreateUniversalUpscalerJobResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.CreateUniversalUpscalerJobRequestBody$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -81,7 +82,7 @@ export class Variation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -94,7 +95,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -133,16 +134,17 @@ export class Variation extends ClientSDK {
      * This endpoint will create a no background variation of the provided image ID
      */
     async createVariationNoBG(
-        input: operations.CreateVariationNoBGRequestBody,
+        request: operations.CreateVariationNoBGRequestBody,
         options?: RequestOptions
     ): Promise<operations.CreateVariationNoBGResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CreateVariationNoBGRequestBody$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -168,7 +170,7 @@ export class Variation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -181,7 +183,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -220,16 +222,17 @@ export class Variation extends ClientSDK {
      * This endpoint will create an unzoom variation for the provided image ID
      */
     async createVariationUnzoom(
-        input: operations.CreateVariationUnzoomRequestBody | undefined,
+        request?: operations.CreateVariationUnzoomRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.CreateVariationUnzoomResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.CreateVariationUnzoomRequestBody$.outboundSchema
                     .optional()
@@ -259,7 +262,7 @@ export class Variation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -272,7 +275,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -311,16 +314,17 @@ export class Variation extends ClientSDK {
      * This endpoint will create an upscale for the provided image ID
      */
     async createVariationUpscale(
-        input: operations.CreateVariationUpscaleRequestBody | undefined,
+        request?: operations.CreateVariationUpscaleRequestBody | undefined,
         options?: RequestOptions
     ): Promise<operations.CreateVariationUpscaleResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.CreateVariationUpscaleRequestBody$.outboundSchema
                     .optional()
@@ -350,7 +354,7 @@ export class Variation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -363,7 +367,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -442,7 +446,7 @@ export class Variation extends ClientSDK {
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const doOptions = { context, errorCodes: [] };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -455,7 +459,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
