@@ -33,6 +33,10 @@ export type CreateUniversalUpscalerJobRequestBody = {
      * The style to upscale images using universal upscaler with.
      */
     upscalerStyle?: shared.UniversalUpscalerStyle | null | undefined;
+    /**
+     * The ID of the variation image
+     */
+    variationId?: string | null | undefined;
 };
 
 export type UniversalUpscalerOutput = {
@@ -78,6 +82,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
         prompt?: string | null | undefined;
         upscaleMultiplier?: number | null | undefined;
         upscalerStyle?: shared.UniversalUpscalerStyle | null | undefined;
+        variationId?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -94,6 +99,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
             upscalerStyle: z.nullable(
                 shared.UniversalUpscalerStyle$.default(shared.UniversalUpscalerStyle.General)
             ),
+            variationId: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -105,6 +111,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
                 ...(v.prompt === undefined ? null : { prompt: v.prompt }),
                 upscaleMultiplier: v.upscaleMultiplier,
                 upscalerStyle: v.upscalerStyle,
+                ...(v.variationId === undefined ? null : { variationId: v.variationId }),
             };
         });
 
@@ -115,6 +122,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
         prompt?: string | null | undefined;
         upscaleMultiplier: number | null;
         upscalerStyle: shared.UniversalUpscalerStyle | null;
+        variationId?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -131,6 +139,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
             upscalerStyle: z.nullable(
                 shared.UniversalUpscalerStyle$.default(shared.UniversalUpscalerStyle.General)
             ),
+            variationId: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -142,6 +151,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
                 ...(v.prompt === undefined ? null : { prompt: v.prompt }),
                 upscaleMultiplier: v.upscaleMultiplier,
                 upscalerStyle: v.upscalerStyle,
+                ...(v.variationId === undefined ? null : { variationId: v.variationId }),
             };
         });
 }
