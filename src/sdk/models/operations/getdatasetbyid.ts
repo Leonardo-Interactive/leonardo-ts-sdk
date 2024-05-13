@@ -63,11 +63,7 @@ export type GetDatasetByIdResponse = {
 
 /** @internal */
 export namespace GetDatasetByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetDatasetByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetDatasetByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -94,13 +90,7 @@ export namespace GetDatasetByIdRequest$ {
 
 /** @internal */
 export namespace DatasetImages$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        id?: string | null | undefined;
-        url?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DatasetImages, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DatasetImages, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z.string().optional(),
             id: z.nullable(z.string()).optional(),
@@ -137,16 +127,7 @@ export namespace DatasetImages$ {
 
 /** @internal */
 export namespace GetDatasetByIdDatasets$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        dataset_images?: Array<DatasetImages$.Inbound> | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | undefined;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetDatasetByIdDatasets, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetDatasetByIdDatasets, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z.string().optional(),
             dataset_images: z.array(z.lazy(() => DatasetImages$.inboundSchema)).optional(),
@@ -198,11 +179,7 @@ export namespace GetDatasetByIdDatasets$ {
 
 /** @internal */
 export namespace GetDatasetByIdResponseBody$ {
-    export type Inbound = {
-        datasets_by_pk?: GetDatasetByIdDatasets$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetDatasetByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetDatasetByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             datasets_by_pk: z
                 .nullable(z.lazy(() => GetDatasetByIdDatasets$.inboundSchema))
@@ -233,14 +210,7 @@ export namespace GetDatasetByIdResponseBody$ {
 
 /** @internal */
 export namespace GetDatasetByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: GetDatasetByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetDatasetByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetDatasetByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

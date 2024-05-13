@@ -49,11 +49,7 @@ export type DeleteModelByIdResponse = {
 
 /** @internal */
 export namespace DeleteModelByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteModelByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteModelByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -80,11 +76,7 @@ export namespace DeleteModelByIdRequest$ {
 
 /** @internal */
 export namespace CustomModels$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CustomModels, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CustomModels, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -111,11 +103,7 @@ export namespace CustomModels$ {
 
 /** @internal */
 export namespace DeleteModelByIdResponseBody$ {
-    export type Inbound = {
-        delete_custom_models_by_pk?: CustomModels$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteModelByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteModelByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             delete_custom_models_by_pk: z
                 .nullable(z.lazy(() => CustomModels$.inboundSchema))
@@ -150,14 +138,7 @@ export namespace DeleteModelByIdResponseBody$ {
 
 /** @internal */
 export namespace DeleteModelByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: DeleteModelByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteModelByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteModelByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

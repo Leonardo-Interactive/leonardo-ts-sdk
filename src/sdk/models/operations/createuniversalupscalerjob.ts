@@ -75,20 +75,10 @@ export type CreateUniversalUpscalerJobResponse = {
 
 /** @internal */
 export namespace CreateUniversalUpscalerJobRequestBody$ {
-    export type Inbound = {
-        creativityStrength?: number | null | undefined;
-        generatedImageId?: string | null | undefined;
-        initImageId?: string | null | undefined;
-        prompt?: string | null | undefined;
-        upscaleMultiplier?: number | null | undefined;
-        upscalerStyle?: shared.UniversalUpscalerStyle | null | undefined;
-        variationId?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateUniversalUpscalerJobRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             creativityStrength: z.nullable(z.number().int().default(5)),
@@ -158,12 +148,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
 
 /** @internal */
 export namespace UniversalUpscalerOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UniversalUpscalerOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UniversalUpscalerOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             id: z.nullable(z.string()).optional(),
@@ -195,14 +180,10 @@ export namespace UniversalUpscalerOutput$ {
 
 /** @internal */
 export namespace CreateUniversalUpscalerJobResponseBody$ {
-    export type Inbound = {
-        universalUpscaler?: UniversalUpscalerOutput$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateUniversalUpscalerJobResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             universalUpscaler: z.lazy(() => UniversalUpscalerOutput$.inboundSchema).optional(),
@@ -238,17 +219,10 @@ export namespace CreateUniversalUpscalerJobResponseBody$ {
 
 /** @internal */
 export namespace CreateUniversalUpscalerJobResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateUniversalUpscalerJobResponseBody$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateUniversalUpscalerJobResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

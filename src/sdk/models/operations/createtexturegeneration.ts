@@ -54,21 +54,10 @@ export type CreateTextureGenerationResponse = {
 
 /** @internal */
 export namespace CreateTextureGenerationRequestBody$ {
-    export type Inbound = {
-        front_rotation_offset?: number | null | undefined;
-        modelAssetId?: string | undefined;
-        negative_prompt?: string | null | undefined;
-        preview?: boolean | null | undefined;
-        preview_direction?: string | null | undefined;
-        prompt?: string | undefined;
-        sd_version?: string | null | undefined;
-        seed?: number | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateTextureGenerationRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             front_rotation_offset: z.nullable(z.number().int()).optional(),
@@ -143,12 +132,7 @@ export namespace CreateTextureGenerationRequestBody$ {
 
 /** @internal */
 export namespace TextureGenerationJobOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TextureGenerationJobOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TextureGenerationJobOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             id: z.string().optional(),
@@ -180,14 +164,10 @@ export namespace TextureGenerationJobOutput$ {
 
 /** @internal */
 export namespace CreateTextureGenerationResponseBody$ {
-    export type Inbound = {
-        textureGenerationJob?: TextureGenerationJobOutput$.Inbound | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateTextureGenerationResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             textureGenerationJob: z
@@ -227,14 +207,7 @@ export namespace CreateTextureGenerationResponseBody$ {
 
 /** @internal */
 export namespace CreateTextureGenerationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateTextureGenerationResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateTextureGenerationResponse, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateTextureGenerationResponse, z.ZodTypeDef, unknown> =
         z
             .object({
                 ContentType: z.string(),

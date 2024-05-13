@@ -43,15 +43,10 @@ export type PromptRandomResponse = {
 
 /** @internal */
 export namespace PromptRandomPromptGenerationOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | undefined;
-        prompt?: string | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         PromptRandomPromptGenerationOutput,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             apiCreditCost: z.number().int().default(4),
@@ -88,11 +83,7 @@ export namespace PromptRandomPromptGenerationOutput$ {
 
 /** @internal */
 export namespace PromptRandomResponseBody$ {
-    export type Inbound = {
-        promptGeneration?: PromptRandomPromptGenerationOutput$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PromptRandomResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PromptRandomResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             promptGeneration: z
                 .lazy(() => PromptRandomPromptGenerationOutput$.inboundSchema)
@@ -127,14 +118,7 @@ export namespace PromptRandomResponseBody$ {
 
 /** @internal */
 export namespace PromptRandomResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: PromptRandomResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PromptRandomResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PromptRandomResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

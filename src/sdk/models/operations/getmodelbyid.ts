@@ -70,11 +70,7 @@ export type GetModelByIdResponse = {
 
 /** @internal */
 export namespace GetModelByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetModelByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetModelByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -101,22 +97,7 @@ export namespace GetModelByIdRequest$ {
 
 /** @internal */
 export namespace GetModelByIdCustomModels$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        description?: string | undefined;
-        id?: string | null | undefined;
-        instancePrompt?: string | null | undefined;
-        modelHeight?: number | undefined;
-        modelWidth?: number | undefined;
-        name?: string | undefined;
-        public?: boolean | undefined;
-        sdVersion?: shared.SdVersions | undefined;
-        status?: shared.JobStatus | undefined;
-        type?: shared.CustomModelType | undefined;
-        updatedAt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetModelByIdCustomModels, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetModelByIdCustomModels, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z.string().optional(),
             description: z.string().optional(),
@@ -198,11 +179,7 @@ export namespace GetModelByIdCustomModels$ {
 
 /** @internal */
 export namespace GetModelByIdResponseBody$ {
-    export type Inbound = {
-        custom_models_by_pk?: GetModelByIdCustomModels$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetModelByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetModelByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             custom_models_by_pk: z
                 .nullable(z.lazy(() => GetModelByIdCustomModels$.inboundSchema))
@@ -237,14 +214,7 @@ export namespace GetModelByIdResponseBody$ {
 
 /** @internal */
 export namespace GetModelByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: GetModelByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetModelByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetModelByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

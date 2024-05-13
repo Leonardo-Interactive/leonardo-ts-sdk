@@ -17,12 +17,7 @@ export type ElementInput = {
 
 /** @internal */
 export namespace ElementInput$ {
-    export type Inbound = {
-        akUUID?: string | null | undefined;
-        weight?: number | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ElementInput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ElementInput, z.ZodTypeDef, unknown> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
             weight: z.nullable(z.number()).optional(),

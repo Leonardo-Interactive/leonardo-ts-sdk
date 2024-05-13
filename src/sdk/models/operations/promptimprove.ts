@@ -53,11 +53,7 @@ export type PromptImproveResponse = {
 
 /** @internal */
 export namespace PromptImproveRequestBody$ {
-    export type Inbound = {
-        prompt: string;
-    };
-
-    export const inboundSchema: z.ZodType<PromptImproveRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PromptImproveRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             prompt: z.string(),
         })
@@ -84,12 +80,7 @@ export namespace PromptImproveRequestBody$ {
 
 /** @internal */
 export namespace PromptGenerationOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | undefined;
-        prompt?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PromptGenerationOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PromptGenerationOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.number().int().default(4),
             prompt: z.string().default("The improved prompt."),
@@ -121,11 +112,7 @@ export namespace PromptGenerationOutput$ {
 
 /** @internal */
 export namespace PromptImproveResponseBody$ {
-    export type Inbound = {
-        promptGeneration?: PromptGenerationOutput$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PromptImproveResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PromptImproveResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             promptGeneration: z.lazy(() => PromptGenerationOutput$.inboundSchema).optional(),
         })
@@ -156,14 +143,7 @@ export namespace PromptImproveResponseBody$ {
 
 /** @internal */
 export namespace PromptImproveResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: PromptImproveResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PromptImproveResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PromptImproveResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -49,11 +49,7 @@ export type DeleteDatasetByIdResponse = {
 
 /** @internal */
 export namespace DeleteDatasetByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteDatasetByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -80,11 +76,7 @@ export namespace DeleteDatasetByIdRequest$ {
 
 /** @internal */
 export namespace DeleteDatasetByIdDatasets$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdDatasets, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteDatasetByIdDatasets, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -111,11 +103,7 @@ export namespace DeleteDatasetByIdDatasets$ {
 
 /** @internal */
 export namespace DeleteDatasetByIdResponseBody$ {
-    export type Inbound = {
-        delete_datasets_by_pk?: DeleteDatasetByIdDatasets$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteDatasetByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             delete_datasets_by_pk: z
                 .nullable(z.lazy(() => DeleteDatasetByIdDatasets$.inboundSchema))
@@ -151,14 +139,7 @@ export namespace DeleteDatasetByIdResponseBody$ {
 
 /** @internal */
 export namespace DeleteDatasetByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: DeleteDatasetByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteDatasetByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

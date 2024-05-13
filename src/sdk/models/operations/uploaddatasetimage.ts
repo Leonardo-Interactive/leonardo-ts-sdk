@@ -60,11 +60,7 @@ export type UploadDatasetImageResponse = {
 
 /** @internal */
 export namespace UploadDatasetImageRequestBody$ {
-    export type Inbound = {
-        extension: string;
-    };
-
-    export const inboundSchema: z.ZodType<UploadDatasetImageRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadDatasetImageRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             extension: z.string(),
         })
@@ -92,12 +88,7 @@ export namespace UploadDatasetImageRequestBody$ {
 
 /** @internal */
 export namespace UploadDatasetImageRequest$ {
-    export type Inbound = {
-        RequestBody: UploadDatasetImageRequestBody$.Inbound;
-        datasetId: string;
-    };
-
-    export const inboundSchema: z.ZodType<UploadDatasetImageRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadDatasetImageRequest, z.ZodTypeDef, unknown> = z
         .object({
             RequestBody: z.lazy(() => UploadDatasetImageRequestBody$.inboundSchema),
             datasetId: z.string(),
@@ -129,14 +120,7 @@ export namespace UploadDatasetImageRequest$ {
 
 /** @internal */
 export namespace DatasetUploadOutput$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id?: string | null | undefined;
-        key?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DatasetUploadOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DatasetUploadOutput, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
@@ -178,11 +162,7 @@ export namespace DatasetUploadOutput$ {
 
 /** @internal */
 export namespace UploadDatasetImageResponseBody$ {
-    export type Inbound = {
-        uploadDatasetImage?: DatasetUploadOutput$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadDatasetImageResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadDatasetImageResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             uploadDatasetImage: z
                 .nullable(z.lazy(() => DatasetUploadOutput$.inboundSchema))
@@ -218,14 +198,7 @@ export namespace UploadDatasetImageResponseBody$ {
 
 /** @internal */
 export namespace UploadDatasetImageResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: UploadDatasetImageResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadDatasetImageResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadDatasetImageResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -49,11 +49,7 @@ export type DeleteGenerationByIdResponse = {
 
 /** @internal */
 export namespace DeleteGenerationByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteGenerationByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteGenerationByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -80,11 +76,7 @@ export namespace DeleteGenerationByIdRequest$ {
 
 /** @internal */
 export namespace Generations$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Generations, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Generations, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -111,11 +103,7 @@ export namespace Generations$ {
 
 /** @internal */
 export namespace DeleteGenerationByIdResponseBody$ {
-    export type Inbound = {
-        delete_generations_by_pk?: Generations$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteGenerationByIdResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<DeleteGenerationByIdResponseBody, z.ZodTypeDef, unknown> =
         z
             .object({
                 delete_generations_by_pk: z
@@ -153,14 +141,7 @@ export namespace DeleteGenerationByIdResponseBody$ {
 
 /** @internal */
 export namespace DeleteGenerationByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: DeleteGenerationByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteGenerationByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteGenerationByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

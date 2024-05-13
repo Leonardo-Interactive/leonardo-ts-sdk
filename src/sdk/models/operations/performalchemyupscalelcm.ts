@@ -93,25 +93,10 @@ export type PerformAlchemyUpscaleLCMResponse = {
 
 /** @internal */
 export namespace PerformAlchemyUpscaleLCMRequestBody$ {
-    export type Inbound = {
-        guidance?: number | null | undefined;
-        height?: number | null | undefined;
-        imageDataUrl: string;
-        prompt: string;
-        refineCreative?: boolean | null | undefined;
-        refineStrength?: number | null | undefined;
-        requestTimestamp?: string | undefined;
-        seed?: number | null | undefined;
-        steps?: number | null | undefined;
-        strength?: number | null | undefined;
-        style?: shared.LcmGenerationStyle | null | undefined;
-        width?: number | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         PerformAlchemyUpscaleLCMRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             guidance: z.nullable(z.number()).optional(),
@@ -202,19 +187,10 @@ export namespace PerformAlchemyUpscaleLCMRequestBody$ {
 
 /** @internal */
 export namespace PerformAlchemyUpscaleLCMLCMGenerationOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        generatedImageId?: string | undefined;
-        generationId?: Array<string> | undefined;
-        imageDataUrl?: Array<string> | undefined;
-        requestTimestamp?: string | undefined;
-        variationId?: Array<string> | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         PerformAlchemyUpscaleLCMLCMGenerationOutput,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
@@ -279,14 +255,10 @@ export namespace PerformAlchemyUpscaleLCMLCMGenerationOutput$ {
 
 /** @internal */
 export namespace PerformAlchemyUpscaleLCMResponseBody$ {
-    export type Inbound = {
-        lcmGenerationJob?: PerformAlchemyUpscaleLCMLCMGenerationOutput$.Inbound | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         PerformAlchemyUpscaleLCMResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             lcmGenerationJob: z
@@ -326,14 +298,7 @@ export namespace PerformAlchemyUpscaleLCMResponseBody$ {
 
 /** @internal */
 export namespace PerformAlchemyUpscaleLCMResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: PerformAlchemyUpscaleLCMResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PerformAlchemyUpscaleLCMResponse, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<PerformAlchemyUpscaleLCMResponse, z.ZodTypeDef, unknown> =
         z
             .object({
                 ContentType: z.string(),

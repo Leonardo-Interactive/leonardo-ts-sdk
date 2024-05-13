@@ -66,18 +66,10 @@ export type CreateSVDMotionGenerationResponse = {
 
 /** @internal */
 export namespace CreateSVDMotionGenerationRequestBody$ {
-    export type Inbound = {
-        imageId: string;
-        isInitImage?: boolean | null | undefined;
-        isPublic?: boolean | null | undefined;
-        isVariation?: boolean | null | undefined;
-        motionStrength?: number | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateSVDMotionGenerationRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             imageId: z.string(),
@@ -129,12 +121,7 @@ export namespace CreateSVDMotionGenerationRequestBody$ {
 
 /** @internal */
 export namespace MotionSvdGenerationOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        generationId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<MotionSvdGenerationOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MotionSvdGenerationOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             generationId: z.string().optional(),
@@ -166,14 +153,10 @@ export namespace MotionSvdGenerationOutput$ {
 
 /** @internal */
 export namespace CreateSVDMotionGenerationResponseBody$ {
-    export type Inbound = {
-        sdGenerationJob?: MotionSvdGenerationOutput$.Inbound | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateSVDMotionGenerationResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             sdGenerationJob: z
@@ -213,17 +196,10 @@ export namespace CreateSVDMotionGenerationResponseBody$ {
 
 /** @internal */
 export namespace CreateSVDMotionGenerationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateSVDMotionGenerationResponseBody$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateSVDMotionGenerationResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

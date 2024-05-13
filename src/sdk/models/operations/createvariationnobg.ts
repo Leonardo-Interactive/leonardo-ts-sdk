@@ -48,12 +48,7 @@ export type CreateVariationNoBGResponse = {
 
 /** @internal */
 export namespace CreateVariationNoBGRequestBody$ {
-    export type Inbound = {
-        id: string;
-        isVariation?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateVariationNoBGRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateVariationNoBGRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             isVariation: z.boolean().optional(),
@@ -86,12 +81,7 @@ export namespace CreateVariationNoBGRequestBody$ {
 
 /** @internal */
 export namespace SDUpscaleJobOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SDUpscaleJobOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SDUpscaleJobOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             id: z.nullable(z.string()).optional(),
@@ -123,11 +113,7 @@ export namespace SDUpscaleJobOutput$ {
 
 /** @internal */
 export namespace CreateVariationNoBGResponseBody$ {
-    export type Inbound = {
-        sdNobgJob?: SDUpscaleJobOutput$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateVariationNoBGResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateVariationNoBGResponseBody, z.ZodTypeDef, unknown> =
         z
             .object({
                 sdNobgJob: z.lazy(() => SDUpscaleJobOutput$.inboundSchema).optional(),
@@ -159,14 +145,7 @@ export namespace CreateVariationNoBGResponseBody$ {
 
 /** @internal */
 export namespace CreateVariationNoBGResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateVariationNoBGResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateVariationNoBGResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateVariationNoBGResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

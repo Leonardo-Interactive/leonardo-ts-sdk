@@ -202,11 +202,7 @@ export type GetGenerationByIdResponse = {
 
 /** @internal */
 export namespace GetGenerationByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetGenerationByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetGenerationByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -233,17 +229,10 @@ export namespace GetGenerationByIdRequest$ {
 
 /** @internal */
 export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        status?: shared.JobStatus | undefined;
-        transformType?: shared.VariationType | undefined;
-        url?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         GetGenerationByIdGeneratedImageVariationGeneric,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.nullable(z.string()).optional(),
@@ -290,23 +279,7 @@ export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
 
 /** @internal */
 export namespace GeneratedImages$ {
-    export type Inbound = {
-        fantasyAvatar?: boolean | null | undefined;
-        generated_image_variation_generics?:
-            | Array<GetGenerationByIdGeneratedImageVariationGeneric$.Inbound>
-            | undefined;
-        id?: string | null | undefined;
-        imageToVideo?: boolean | null | undefined;
-        likeCount?: number | undefined;
-        motion?: boolean | null | undefined;
-        motionMP4URL?: string | null | undefined;
-        motionModel?: string | null | undefined;
-        motionStrength?: number | null | undefined;
-        nsfw?: boolean | undefined;
-        url?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GeneratedImages, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GeneratedImages, z.ZodTypeDef, unknown> = z
         .object({
             fantasyAvatar: z.nullable(z.boolean()).optional(),
             generated_image_variation_generics: z
@@ -395,18 +368,7 @@ export namespace GeneratedImages$ {
 
 /** @internal */
 export namespace GetGenerationByIdLoras$ {
-    export type Inbound = {
-        akUUID?: string | null | undefined;
-        baseModel?: shared.SdVersions | undefined;
-        description?: string | null | undefined;
-        name?: string | null | undefined;
-        urlImage?: string | null | undefined;
-        weightDefault?: number | null | undefined;
-        weightMax?: number | null | undefined;
-        weightMin?: number | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetGenerationByIdLoras, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetGenerationByIdLoras, z.ZodTypeDef, unknown> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
             baseModel: shared.SdVersions$.optional(),
@@ -468,13 +430,7 @@ export namespace GetGenerationByIdLoras$ {
 
 /** @internal */
 export namespace GenerationElements$ {
-    export type Inbound = {
-        id?: number | null | undefined;
-        lora?: GetGenerationByIdLoras$.Inbound | null | undefined;
-        weightApplied?: number | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GenerationElements, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GenerationElements, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.number().int()).optional(),
             lora: z.nullable(z.lazy(() => GetGenerationByIdLoras$.inboundSchema)).optional(),
@@ -511,33 +467,7 @@ export namespace GenerationElements$ {
 
 /** @internal */
 export namespace GetGenerationByIdGenerations$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        generated_images?: Array<GeneratedImages$.Inbound> | undefined;
-        generation_elements?: Array<GenerationElements$.Inbound> | undefined;
-        guidanceScale?: number | null | undefined;
-        id?: string | null | undefined;
-        imageHeight?: number | undefined;
-        imageWidth?: number | undefined;
-        inferenceSteps?: number | null | undefined;
-        initStrength?: number | null | undefined;
-        modelId?: string | null | undefined;
-        negativePrompt?: string | null | undefined;
-        photoReal?: boolean | null | undefined;
-        photoRealStrength?: number | null | undefined;
-        presetStyle?: shared.SdGenerationStyle | null | undefined;
-        prompt?: string | undefined;
-        promptMagic?: boolean | null | undefined;
-        promptMagicStrength?: number | null | undefined;
-        promptMagicVersion?: string | null | undefined;
-        public?: boolean | undefined;
-        scheduler?: shared.SdGenerationSchedulers | undefined;
-        sdVersion?: shared.SdVersions | undefined;
-        seed?: number | null | undefined;
-        status?: shared.JobStatus | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetGenerationByIdGenerations, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetGenerationByIdGenerations, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z.string().optional(),
             generated_images: z.array(z.lazy(() => GeneratedImages$.inboundSchema)).optional(),
@@ -702,11 +632,7 @@ export namespace GetGenerationByIdGenerations$ {
 
 /** @internal */
 export namespace GetGenerationByIdResponseBody$ {
-    export type Inbound = {
-        generations_by_pk?: GetGenerationByIdGenerations$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetGenerationByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetGenerationByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             generations_by_pk: z
                 .nullable(z.lazy(() => GetGenerationByIdGenerations$.inboundSchema))
@@ -742,14 +668,7 @@ export namespace GetGenerationByIdResponseBody$ {
 
 /** @internal */
 export namespace GetGenerationByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: GetGenerationByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetGenerationByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetGenerationByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

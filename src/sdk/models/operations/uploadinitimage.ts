@@ -49,11 +49,7 @@ export type UploadInitImageResponse = {
 
 /** @internal */
 export namespace UploadInitImageRequestBody$ {
-    export type Inbound = {
-        extension: string;
-    };
-
-    export const inboundSchema: z.ZodType<UploadInitImageRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadInitImageRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             extension: z.string(),
         })
@@ -80,14 +76,7 @@ export namespace UploadInitImageRequestBody$ {
 
 /** @internal */
 export namespace InitImageUploadOutput$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id?: string | null | undefined;
-        key?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<InitImageUploadOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InitImageUploadOutput, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
@@ -129,11 +118,7 @@ export namespace InitImageUploadOutput$ {
 
 /** @internal */
 export namespace UploadInitImageResponseBody$ {
-    export type Inbound = {
-        uploadInitImage?: InitImageUploadOutput$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadInitImageResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadInitImageResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             uploadInitImage: z
                 .nullable(z.lazy(() => InitImageUploadOutput$.inboundSchema))
@@ -168,14 +153,7 @@ export namespace UploadInitImageResponseBody$ {
 
 /** @internal */
 export namespace UploadInitImageResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: UploadInitImageResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadInitImageResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadInitImageResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -48,12 +48,7 @@ export type CreateVariationUnzoomResponse = {
 
 /** @internal */
 export namespace CreateVariationUnzoomRequestBody$ {
-    export type Inbound = {
-        id?: string | undefined;
-        isVariation?: boolean | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateVariationUnzoomRequestBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateVariationUnzoomRequestBody, z.ZodTypeDef, unknown> =
         z
             .object({
                 id: z.string().optional(),
@@ -90,12 +85,7 @@ export namespace CreateVariationUnzoomRequestBody$ {
 
 /** @internal */
 export namespace SDUnzoomOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SDUnzoomOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SDUnzoomOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             id: z.string().optional(),
@@ -127,14 +117,10 @@ export namespace SDUnzoomOutput$ {
 
 /** @internal */
 export namespace CreateVariationUnzoomResponseBody$ {
-    export type Inbound = {
-        sdUnzoomJob?: SDUnzoomOutput$.Inbound | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateVariationUnzoomResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             sdUnzoomJob: z.nullable(z.lazy(() => SDUnzoomOutput$.inboundSchema)).optional(),
@@ -166,14 +152,7 @@ export namespace CreateVariationUnzoomResponseBody$ {
 
 /** @internal */
 export namespace CreateVariationUnzoomResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateVariationUnzoomResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateVariationUnzoomResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateVariationUnzoomResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

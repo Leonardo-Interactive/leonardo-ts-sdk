@@ -75,19 +75,7 @@ export type ListElementsResponse = {
 
 /** @internal */
 export namespace Loras$ {
-    export type Inbound = {
-        akUUID?: string | null | undefined;
-        baseModel?: shared.SdVersions | undefined;
-        creatorName?: string | null | undefined;
-        description?: string | null | undefined;
-        name?: string | null | undefined;
-        urlImage?: string | null | undefined;
-        weightDefault?: number | null | undefined;
-        weightMax?: number | null | undefined;
-        weightMin?: number | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Loras, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Loras, z.ZodTypeDef, unknown> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
             baseModel: shared.SdVersions$.optional(),
@@ -154,11 +142,7 @@ export namespace Loras$ {
 
 /** @internal */
 export namespace ListElementsResponseBody$ {
-    export type Inbound = {
-        loras?: Array<Loras$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListElementsResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListElementsResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             loras: z.array(z.lazy(() => Loras$.inboundSchema)).optional(),
         })
@@ -185,14 +169,7 @@ export namespace ListElementsResponseBody$ {
 
 /** @internal */
 export namespace ListElementsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: ListElementsResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListElementsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListElementsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

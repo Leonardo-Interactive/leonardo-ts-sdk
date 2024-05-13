@@ -47,12 +47,7 @@ export type UploadModelAssetResponse = {
 
 /** @internal */
 export namespace UploadModelAssetRequestBody$ {
-    export type Inbound = {
-        modelExtension?: string | undefined;
-        name?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadModelAssetRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadModelAssetRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             modelExtension: z.string().optional(),
             name: z.nullable(z.string()).optional(),
@@ -84,14 +79,7 @@ export namespace UploadModelAssetRequestBody$ {
 
 /** @internal */
 export namespace ModelAssetUploadOutput$ {
-    export type Inbound = {
-        modelFields?: string | null | undefined;
-        modelId?: string | null | undefined;
-        modelKey?: string | null | undefined;
-        modelUrl?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ModelAssetUploadOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ModelAssetUploadOutput, z.ZodTypeDef, unknown> = z
         .object({
             modelFields: z.nullable(z.string()).optional(),
             modelId: z.nullable(z.string()).optional(),
@@ -133,11 +121,7 @@ export namespace ModelAssetUploadOutput$ {
 
 /** @internal */
 export namespace UploadModelAssetResponseBody$ {
-    export type Inbound = {
-        uploadModelAsset?: ModelAssetUploadOutput$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadModelAssetResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadModelAssetResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             uploadModelAsset: z
                 .nullable(z.lazy(() => ModelAssetUploadOutput$.inboundSchema))
@@ -172,14 +156,7 @@ export namespace UploadModelAssetResponseBody$ {
 
 /** @internal */
 export namespace UploadModelAssetResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: UploadModelAssetResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UploadModelAssetResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UploadModelAssetResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

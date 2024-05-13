@@ -203,49 +203,7 @@ export const TransparencyType$: z.ZodNativeEnum<typeof TransparencyType> =
 
 /** @internal */
 export namespace CreateGenerationRequestBody$ {
-    export type Inbound = {
-        alchemy?: boolean | null | undefined;
-        contrastRatio?: number | null | undefined;
-        controlNet?: boolean | null | undefined;
-        controlNetType?: shared.ControlnetType | undefined;
-        elements?: Array<shared.ElementInput$.Inbound> | null | undefined;
-        expandedDomain?: boolean | null | undefined;
-        fantasyAvatar?: boolean | null | undefined;
-        guidance_scale?: number | null | undefined;
-        height?: number | null | undefined;
-        highContrast?: boolean | null | undefined;
-        highResolution?: boolean | null | undefined;
-        imagePromptWeight?: number | null | undefined;
-        imagePrompts?: Array<string> | null | undefined;
-        init_generation_image_id?: string | null | undefined;
-        init_image_id?: string | null | undefined;
-        init_strength?: number | null | undefined;
-        modelId?: string | null | undefined;
-        negative_prompt?: string | null | undefined;
-        num_images?: number | null | undefined;
-        num_inference_steps?: number | null | undefined;
-        photoReal?: boolean | null | undefined;
-        photoRealStrength?: number | null | undefined;
-        photoRealVersion?: string | null | undefined;
-        presetStyle?: shared.SdGenerationStyle | null | undefined;
-        prompt?: string | undefined;
-        promptMagic?: boolean | null | undefined;
-        promptMagicStrength?: number | null | undefined;
-        promptMagicVersion?: string | null | undefined;
-        public?: boolean | null | undefined;
-        scheduler?: shared.SdGenerationSchedulers | undefined;
-        sd_version?: shared.SdVersions | undefined;
-        seed?: number | null | undefined;
-        tiling?: boolean | null | undefined;
-        transparency?: TransparencyType | null | undefined;
-        unzoom?: boolean | null | undefined;
-        unzoomAmount?: number | null | undefined;
-        upscaleRatio?: number | null | undefined;
-        weighting?: number | null | undefined;
-        width?: number | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateGenerationRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateGenerationRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             alchemy: z.nullable(z.boolean().default(true)),
             contrastRatio: z.nullable(z.number()).optional(),
@@ -494,12 +452,7 @@ export namespace CreateGenerationRequestBody$ {
 
 /** @internal */
 export namespace SDGenerationOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        generationId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SDGenerationOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SDGenerationOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             generationId: z.string().optional(),
@@ -531,11 +484,7 @@ export namespace SDGenerationOutput$ {
 
 /** @internal */
 export namespace CreateGenerationResponseBody$ {
-    export type Inbound = {
-        sdGenerationJob?: SDGenerationOutput$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateGenerationResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateGenerationResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             sdGenerationJob: z.nullable(z.lazy(() => SDGenerationOutput$.inboundSchema)).optional(),
         })
@@ -568,14 +517,7 @@ export namespace CreateGenerationResponseBody$ {
 
 /** @internal */
 export namespace CreateGenerationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateGenerationResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateGenerationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateGenerationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

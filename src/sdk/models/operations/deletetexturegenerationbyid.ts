@@ -60,14 +60,10 @@ export type DeleteTextureGenerationByIdResponse = {
 
 /** @internal */
 export namespace DeleteTextureGenerationByIdRequestBody$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         DeleteTextureGenerationByIdRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.nullable(z.string()).optional(),
@@ -99,15 +95,10 @@ export namespace DeleteTextureGenerationByIdRequestBody$ {
 
 /** @internal */
 export namespace DeleteTextureGenerationByIdRequest$ {
-    export type Inbound = {
-        id: string;
-        RequestBody?: DeleteTextureGenerationByIdRequestBody$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         DeleteTextureGenerationByIdRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.string(),
@@ -148,11 +139,7 @@ export namespace DeleteTextureGenerationByIdRequest$ {
 
 /** @internal */
 export namespace ModelAssetTextureGenerations$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ModelAssetTextureGenerations, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ModelAssetTextureGenerations, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -179,17 +166,10 @@ export namespace ModelAssetTextureGenerations$ {
 
 /** @internal */
 export namespace DeleteTextureGenerationByIdResponseBody$ {
-    export type Inbound = {
-        delete_model_asset_texture_generations_by_pk?:
-            | ModelAssetTextureGenerations$.Inbound
-            | null
-            | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         DeleteTextureGenerationByIdResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             delete_model_asset_texture_generations_by_pk: z
@@ -238,17 +218,10 @@ export namespace DeleteTextureGenerationByIdResponseBody$ {
 
 /** @internal */
 export namespace DeleteTextureGenerationByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: DeleteTextureGenerationByIdResponseBody$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         DeleteTextureGenerationByIdResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

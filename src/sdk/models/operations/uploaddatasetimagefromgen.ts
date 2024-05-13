@@ -57,14 +57,10 @@ export type UploadDatasetImageFromGenResponse = {
 
 /** @internal */
 export namespace UploadDatasetImageFromGenRequestBody$ {
-    export type Inbound = {
-        generatedImageId: string;
-    };
-
     export const inboundSchema: z.ZodType<
         UploadDatasetImageFromGenRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             generatedImageId: z.string(),
@@ -96,12 +92,7 @@ export namespace UploadDatasetImageFromGenRequestBody$ {
 
 /** @internal */
 export namespace UploadDatasetImageFromGenRequest$ {
-    export type Inbound = {
-        RequestBody: UploadDatasetImageFromGenRequestBody$.Inbound;
-        datasetId: string;
-    };
-
-    export const inboundSchema: z.ZodType<UploadDatasetImageFromGenRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UploadDatasetImageFromGenRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 RequestBody: z.lazy(() => UploadDatasetImageFromGenRequestBody$.inboundSchema),
@@ -138,11 +129,7 @@ export namespace UploadDatasetImageFromGenRequest$ {
 
 /** @internal */
 export namespace DatasetGenUploadOutput$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DatasetGenUploadOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DatasetGenUploadOutput, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -169,14 +156,10 @@ export namespace DatasetGenUploadOutput$ {
 
 /** @internal */
 export namespace UploadDatasetImageFromGenResponseBody$ {
-    export type Inbound = {
-        uploadDatasetImageFromGen?: DatasetGenUploadOutput$.Inbound | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         UploadDatasetImageFromGenResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             uploadDatasetImageFromGen: z
@@ -216,17 +199,10 @@ export namespace UploadDatasetImageFromGenResponseBody$ {
 
 /** @internal */
 export namespace UploadDatasetImageFromGenResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: UploadDatasetImageFromGenResponseBody$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         UploadDatasetImageFromGenResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

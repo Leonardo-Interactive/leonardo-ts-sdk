@@ -56,12 +56,7 @@ export type CreateDatasetResponse = {
 
 /** @internal */
 export namespace CreateDatasetRequestBody$ {
-    export type Inbound = {
-        description?: string | null | undefined;
-        name: string;
-    };
-
-    export const inboundSchema: z.ZodType<CreateDatasetRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateDatasetRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             description: z.nullable(z.string()).optional(),
             name: z.string(),
@@ -93,11 +88,7 @@ export namespace CreateDatasetRequestBody$ {
 
 /** @internal */
 export namespace Datasets$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Datasets, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Datasets, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -124,11 +115,7 @@ export namespace Datasets$ {
 
 /** @internal */
 export namespace CreateDatasetResponseBody$ {
-    export type Inbound = {
-        insert_datasets_one?: Datasets$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateDatasetResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateDatasetResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             insert_datasets_one: z.nullable(z.lazy(() => Datasets$.inboundSchema)).optional(),
         })
@@ -159,14 +146,7 @@ export namespace CreateDatasetResponseBody$ {
 
 /** @internal */
 export namespace CreateDatasetResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateDatasetResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateDatasetResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateDatasetResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

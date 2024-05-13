@@ -60,11 +60,7 @@ export type Delete3DModelByIdResponse = {
 
 /** @internal */
 export namespace Delete3DModelByIdRequestBody$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Delete3DModelByIdRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Delete3DModelByIdRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -91,12 +87,7 @@ export namespace Delete3DModelByIdRequestBody$ {
 
 /** @internal */
 export namespace Delete3DModelByIdRequest$ {
-    export type Inbound = {
-        id: string;
-        RequestBody?: Delete3DModelByIdRequestBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Delete3DModelByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Delete3DModelByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
             RequestBody: z.lazy(() => Delete3DModelByIdRequestBody$.inboundSchema).optional(),
@@ -128,11 +119,7 @@ export namespace Delete3DModelByIdRequest$ {
 
 /** @internal */
 export namespace ModelAssets$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ModelAssets, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ModelAssets, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -159,11 +146,7 @@ export namespace ModelAssets$ {
 
 /** @internal */
 export namespace Delete3DModelByIdResponseBody$ {
-    export type Inbound = {
-        delete_model_assets_by_pk?: ModelAssets$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Delete3DModelByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Delete3DModelByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             delete_model_assets_by_pk: z
                 .nullable(z.lazy(() => ModelAssets$.inboundSchema))
@@ -199,14 +182,7 @@ export namespace Delete3DModelByIdResponseBody$ {
 
 /** @internal */
 export namespace Delete3DModelByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: Delete3DModelByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Delete3DModelByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Delete3DModelByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

@@ -55,15 +55,10 @@ export type ListPlatformModelsResponse = {
 
 /** @internal */
 export namespace ListPlatformModelsGeneratedImages$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        url?: string | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         ListPlatformModelsGeneratedImages,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.nullable(z.string()).optional(),
@@ -100,16 +95,7 @@ export namespace ListPlatformModelsGeneratedImages$ {
 
 /** @internal */
 export namespace ListPlatformModelsCustomModels$ {
-    export type Inbound = {
-        description?: string | undefined;
-        featured?: boolean | undefined;
-        generated_image?: ListPlatformModelsGeneratedImages$.Inbound | null | undefined;
-        id?: string | null | undefined;
-        name?: string | undefined;
-        nsfw?: boolean | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListPlatformModelsCustomModels, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListPlatformModelsCustomModels, z.ZodTypeDef, unknown> = z
         .object({
             description: z.string().optional(),
             featured: z.boolean().optional(),
@@ -168,11 +154,7 @@ export namespace ListPlatformModelsCustomModels$ {
 
 /** @internal */
 export namespace ListPlatformModelsResponseBody$ {
-    export type Inbound = {
-        custom_models?: Array<ListPlatformModelsCustomModels$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListPlatformModelsResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListPlatformModelsResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             custom_models: z
                 .array(z.lazy(() => ListPlatformModelsCustomModels$.inboundSchema))
@@ -204,14 +186,7 @@ export namespace ListPlatformModelsResponseBody$ {
 
 /** @internal */
 export namespace ListPlatformModelsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: ListPlatformModelsResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListPlatformModelsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListPlatformModelsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

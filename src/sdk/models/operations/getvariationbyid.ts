@@ -57,11 +57,7 @@ export type GetVariationByIdResponse = {
 
 /** @internal */
 export namespace GetVariationByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetVariationByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetVariationByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -88,15 +84,7 @@ export namespace GetVariationByIdRequest$ {
 
 /** @internal */
 export namespace GeneratedImageVariationGeneric$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        id?: string | null | undefined;
-        status?: shared.JobStatus | undefined;
-        transformType?: shared.VariationType | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GeneratedImageVariationGeneric, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GeneratedImageVariationGeneric, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z.string().optional(),
             id: z.nullable(z.string()).optional(),
@@ -144,13 +132,7 @@ export namespace GeneratedImageVariationGeneric$ {
 
 /** @internal */
 export namespace GetVariationByIdResponseBody$ {
-    export type Inbound = {
-        generated_image_variation_generic?:
-            | Array<GeneratedImageVariationGeneric$.Inbound>
-            | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetVariationByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetVariationByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             generated_image_variation_generic: z
                 .array(z.lazy(() => GeneratedImageVariationGeneric$.inboundSchema))
@@ -187,14 +169,7 @@ export namespace GetVariationByIdResponseBody$ {
 
 /** @internal */
 export namespace GetVariationByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: GetVariationByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetVariationByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetVariationByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

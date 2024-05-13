@@ -49,11 +49,7 @@ export type DeleteInitImageByIdResponse = {
 
 /** @internal */
 export namespace DeleteInitImageByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteInitImageByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteInitImageByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -80,11 +76,7 @@ export namespace DeleteInitImageByIdRequest$ {
 
 /** @internal */
 export namespace InitImages$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<InitImages, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InitImages, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
         })
@@ -111,11 +103,7 @@ export namespace InitImages$ {
 
 /** @internal */
 export namespace DeleteInitImageByIdResponseBody$ {
-    export type Inbound = {
-        delete_init_images_by_pk?: InitImages$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteInitImageByIdResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<DeleteInitImageByIdResponseBody, z.ZodTypeDef, unknown> =
         z
             .object({
                 delete_init_images_by_pk: z
@@ -153,14 +141,7 @@ export namespace DeleteInitImageByIdResponseBody$ {
 
 /** @internal */
 export namespace DeleteInitImageByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: DeleteInitImageByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<DeleteInitImageByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<DeleteInitImageByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

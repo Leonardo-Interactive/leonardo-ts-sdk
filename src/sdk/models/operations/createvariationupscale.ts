@@ -47,14 +47,10 @@ export type CreateVariationUpscaleResponse = {
 
 /** @internal */
 export namespace CreateVariationUpscaleRequestBody$ {
-    export type Inbound = {
-        id: string;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateVariationUpscaleRequestBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.string(),
@@ -86,15 +82,10 @@ export namespace CreateVariationUpscaleRequestBody$ {
 
 /** @internal */
 export namespace CreateVariationUpscaleSDUpscaleJobOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateVariationUpscaleSDUpscaleJobOutput,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
@@ -131,14 +122,10 @@ export namespace CreateVariationUpscaleSDUpscaleJobOutput$ {
 
 /** @internal */
 export namespace CreateVariationUpscaleResponseBody$ {
-    export type Inbound = {
-        sdUpscaleJob?: CreateVariationUpscaleSDUpscaleJobOutput$.Inbound | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         CreateVariationUpscaleResponseBody,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             sdUpscaleJob: z
@@ -174,14 +161,7 @@ export namespace CreateVariationUpscaleResponseBody$ {
 
 /** @internal */
 export namespace CreateVariationUpscaleResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateVariationUpscaleResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateVariationUpscaleResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateVariationUpscaleResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

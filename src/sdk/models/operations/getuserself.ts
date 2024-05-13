@@ -89,12 +89,7 @@ export type GetUserSelfResponse = {
 
 /** @internal */
 export namespace Users$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        username?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Users, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             username: z.nullable(z.string()).optional(),
@@ -126,20 +121,7 @@ export namespace Users$ {
 
 /** @internal */
 export namespace UserDetails$ {
-    export type Inbound = {
-        apiConcurrencySlots?: number | undefined;
-        apiPaidTokens?: number | null | undefined;
-        apiPlanTokenRenewalDate?: string | null | undefined;
-        apiSubscriptionTokens?: number | undefined;
-        paidTokens?: number | null | undefined;
-        subscriptionGptTokens?: number | undefined;
-        subscriptionModelTokens?: number | undefined;
-        subscriptionTokens?: number | undefined;
-        tokenRenewalDate?: string | null | undefined;
-        user?: Users$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UserDetails, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UserDetails, z.ZodTypeDef, unknown> = z
         .object({
             apiConcurrencySlots: z.number().int().optional(),
             apiPaidTokens: z.nullable(z.number().int()).optional(),
@@ -239,11 +221,7 @@ export namespace UserDetails$ {
 
 /** @internal */
 export namespace GetUserSelfResponseBody$ {
-    export type Inbound = {
-        user_details?: Array<UserDetails$.Inbound> | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetUserSelfResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetUserSelfResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             user_details: z.array(z.lazy(() => UserDetails$.inboundSchema)).optional(),
         })
@@ -270,14 +248,7 @@ export namespace GetUserSelfResponseBody$ {
 
 /** @internal */
 export namespace GetUserSelfResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: GetUserSelfResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetUserSelfResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetUserSelfResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

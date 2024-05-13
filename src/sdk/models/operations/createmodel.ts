@@ -83,19 +83,7 @@ export type CreateModelResponse = {
 
 /** @internal */
 export namespace CreateModelRequestBody$ {
-    export type Inbound = {
-        datasetId: string;
-        description?: string | null | undefined;
-        instance_prompt: string;
-        modelType?: shared.CustomModelType | undefined;
-        name: string;
-        nsfw?: boolean | null | undefined;
-        resolution?: number | null | undefined;
-        sd_Version?: shared.SdVersions | undefined;
-        strength?: shared.Strength | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateModelRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateModelRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             datasetId: z.string(),
             description: z.nullable(z.string().default("")),
@@ -162,12 +150,7 @@ export namespace CreateModelRequestBody$ {
 
 /** @internal */
 export namespace SDTrainingOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        customModelId?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SDTrainingOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SDTrainingOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             customModelId: z.string().optional(),
@@ -199,11 +182,7 @@ export namespace SDTrainingOutput$ {
 
 /** @internal */
 export namespace CreateModelResponseBody$ {
-    export type Inbound = {
-        sdTrainingJob?: SDTrainingOutput$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateModelResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateModelResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             sdTrainingJob: z.nullable(z.lazy(() => SDTrainingOutput$.inboundSchema)).optional(),
         })
@@ -230,14 +209,7 @@ export namespace CreateModelResponseBody$ {
 
 /** @internal */
 export namespace CreateModelResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateModelResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateModelResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateModelResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

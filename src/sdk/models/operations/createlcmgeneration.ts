@@ -82,20 +82,7 @@ export type CreateLCMGenerationResponse = {
 
 /** @internal */
 export namespace CreateLCMGenerationRequestBody$ {
-    export type Inbound = {
-        guidance?: number | null | undefined;
-        height?: number | null | undefined;
-        imageDataUrl: string;
-        prompt: string;
-        requestTimestamp?: string | undefined;
-        seed?: number | null | undefined;
-        steps?: number | null | undefined;
-        strength?: number | null | undefined;
-        style?: shared.LcmGenerationStyle | null | undefined;
-        width?: number | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLCMGenerationRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLCMGenerationRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             guidance: z.nullable(z.number()).optional(),
             height: z.nullable(z.number().int().default(512)),
@@ -172,13 +159,7 @@ export namespace CreateLCMGenerationRequestBody$ {
 
 /** @internal */
 export namespace LcmGenerationOutput$ {
-    export type Inbound = {
-        apiCreditCost?: number | null | undefined;
-        imageDataUrl?: Array<string> | undefined;
-        requestTimestamp?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<LcmGenerationOutput, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LcmGenerationOutput, z.ZodTypeDef, unknown> = z
         .object({
             apiCreditCost: z.nullable(z.number().int()).optional(),
             imageDataUrl: z.array(z.string()).optional(),
@@ -219,11 +200,7 @@ export namespace LcmGenerationOutput$ {
 
 /** @internal */
 export namespace CreateLCMGenerationResponseBody$ {
-    export type Inbound = {
-        lcmGenerationJob?: LcmGenerationOutput$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLCMGenerationResponseBody, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CreateLCMGenerationResponseBody, z.ZodTypeDef, unknown> =
         z
             .object({
                 lcmGenerationJob: z
@@ -263,14 +240,7 @@ export namespace CreateLCMGenerationResponseBody$ {
 
 /** @internal */
 export namespace CreateLCMGenerationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: CreateLCMGenerationResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CreateLCMGenerationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateLCMGenerationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

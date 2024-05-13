@@ -51,11 +51,7 @@ export type GetInitImageByIdResponse = {
 
 /** @internal */
 export namespace GetInitImageByIdRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<GetInitImageByIdRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetInitImageByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -82,13 +78,7 @@ export namespace GetInitImageByIdRequest$ {
 
 /** @internal */
 export namespace GetInitImageByIdInitImages$ {
-    export type Inbound = {
-        createdAt?: string | undefined;
-        id?: string | null | undefined;
-        url?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetInitImageByIdInitImages, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetInitImageByIdInitImages, z.ZodTypeDef, unknown> = z
         .object({
             createdAt: z.string().optional(),
             id: z.nullable(z.string()).optional(),
@@ -125,11 +115,7 @@ export namespace GetInitImageByIdInitImages$ {
 
 /** @internal */
 export namespace GetInitImageByIdResponseBody$ {
-    export type Inbound = {
-        init_images_by_pk?: GetInitImageByIdInitImages$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetInitImageByIdResponseBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetInitImageByIdResponseBody, z.ZodTypeDef, unknown> = z
         .object({
             init_images_by_pk: z
                 .nullable(z.lazy(() => GetInitImageByIdInitImages$.inboundSchema))
@@ -164,14 +150,7 @@ export namespace GetInitImageByIdResponseBody$ {
 
 /** @internal */
 export namespace GetInitImageByIdResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        object?: GetInitImageByIdResponseBody$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<GetInitImageByIdResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<GetInitImageByIdResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),
