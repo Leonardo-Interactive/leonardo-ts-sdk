@@ -92,7 +92,7 @@ export namespace CreateLCMGenerationRequestBody$ {
             seed: z.nullable(z.number().int()).optional(),
             steps: z.nullable(z.number().int()).optional(),
             strength: z.nullable(z.number()).optional(),
-            style: z.nullable(shared.LcmGenerationStyle$).optional(),
+            style: z.nullable(shared.LcmGenerationStyle$.inboundSchema).optional(),
             width: z.nullable(z.number().int().default(512)),
         })
         .transform((v) => {
@@ -121,7 +121,7 @@ export namespace CreateLCMGenerationRequestBody$ {
         seed?: number | null | undefined;
         steps?: number | null | undefined;
         strength?: number | null | undefined;
-        style?: shared.LcmGenerationStyle | null | undefined;
+        style?: string | null | undefined;
         width: number | null;
     };
 
@@ -136,7 +136,7 @@ export namespace CreateLCMGenerationRequestBody$ {
                 seed: z.nullable(z.number().int()).optional(),
                 steps: z.nullable(z.number().int()).optional(),
                 strength: z.nullable(z.number()).optional(),
-                style: z.nullable(shared.LcmGenerationStyle$).optional(),
+                style: z.nullable(shared.LcmGenerationStyle$.outboundSchema).optional(),
                 width: z.nullable(z.number().int().default(512)),
             })
             .transform((v) => {

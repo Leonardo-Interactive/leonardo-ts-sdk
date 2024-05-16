@@ -11,6 +11,7 @@ import { Element } from "./element";
 import { Generation } from "./generation";
 import { InitImage } from "./initimage";
 import { Model } from "./model";
+import { PricingCalculator } from "./pricingcalculator";
 import { Prompt } from "./prompt";
 import { User } from "./user";
 import { Variation } from "./variation";
@@ -70,6 +71,11 @@ export class Leonardo extends ClientSDK {
     private _model?: Model;
     get model(): Model {
         return (this._model ??= new Model(this.options$));
+    }
+
+    private _pricingCalculator?: PricingCalculator;
+    get pricingCalculator(): PricingCalculator {
+        return (this._pricingCalculator ??= new PricingCalculator(this.options$));
     }
 
     private _prompt?: Prompt;

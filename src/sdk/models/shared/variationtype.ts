@@ -16,4 +16,7 @@ export enum VariationType {
 }
 
 /** @internal */
-export const VariationType$: z.ZodNativeEnum<typeof VariationType> = z.nativeEnum(VariationType);
+export namespace VariationType$ {
+    export const inboundSchema = z.nativeEnum(VariationType);
+    export const outboundSchema = inboundSchema;
+}

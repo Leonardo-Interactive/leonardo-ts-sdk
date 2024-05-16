@@ -30,6 +30,7 @@ export * from "./listplatformmodels";
 export * from "./performalchemyupscalelcm";
 export * from "./performinpaintinglcm";
 export * from "./performinstantrefine";
+export * from "./pricingcalculator";
 export * from "./promptimprove";
 export * from "./promptrandom";
 export * from "./uploaddatasetimage";

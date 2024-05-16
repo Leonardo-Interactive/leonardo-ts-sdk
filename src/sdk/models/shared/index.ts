@@ -7,6 +7,7 @@ export * from "./custommodeltype";
 export * from "./elementinput";
 export * from "./jobstatus";
 export * from "./lcmgenerationstyle";
+export * from "./pricingcalculatorservices";
 export * from "./sdgenerationschedulers";
 export * from "./sdgenerationstyle";
 export * from "./sdversions";

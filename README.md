@@ -101,6 +101,10 @@ run();
 * [listPlatformModels](docs/sdks/model/README.md#listplatformmodels) - List Platform Models
 * [uploadModelAsset](docs/sdks/model/README.md#uploadmodelasset) - Upload 3D Model
 
+### [pricingCalculator](docs/sdks/pricingcalculator/README.md)
+
+* [pricingCalculator](docs/sdks/pricingcalculator/README.md#pricingcalculator) - Calculating API Cost
+
 ### [prompt](docs/sdks/prompt/README.md)
 
 * [promptImprove](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt

@@ -88,8 +88,8 @@ export namespace GeneratedImageVariationGeneric$ {
         .object({
             createdAt: z.string().optional(),
             id: z.nullable(z.string()).optional(),
-            status: shared.JobStatus$.optional(),
-            transformType: shared.VariationType$.optional(),
+            status: shared.JobStatus$.inboundSchema.optional(),
+            transformType: shared.VariationType$.inboundSchema.optional(),
             url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
@@ -105,8 +105,8 @@ export namespace GeneratedImageVariationGeneric$ {
     export type Outbound = {
         createdAt?: string | undefined;
         id?: string | null | undefined;
-        status?: shared.JobStatus | undefined;
-        transformType?: shared.VariationType | undefined;
+        status?: string | undefined;
+        transformType?: string | undefined;
         url?: string | null | undefined;
     };
 
@@ -115,8 +115,8 @@ export namespace GeneratedImageVariationGeneric$ {
             .object({
                 createdAt: z.string().optional(),
                 id: z.nullable(z.string()).optional(),
-                status: shared.JobStatus$.optional(),
-                transformType: shared.VariationType$.optional(),
+                status: shared.JobStatus$.outboundSchema.optional(),
+                transformType: shared.VariationType$.outboundSchema.optional(),
                 url: z.nullable(z.string()).optional(),
             })
             .transform((v) => {

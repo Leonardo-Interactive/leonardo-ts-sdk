@@ -18,5 +18,7 @@ export enum SdGenerationSchedulers {
 }
 
 /** @internal */
-export const SdGenerationSchedulers$: z.ZodNativeEnum<typeof SdGenerationSchedulers> =
-    z.nativeEnum(SdGenerationSchedulers);
+export namespace SdGenerationSchedulers$ {
+    export const inboundSchema = z.nativeEnum(SdGenerationSchedulers);
+    export const outboundSchema = inboundSchema;
+}

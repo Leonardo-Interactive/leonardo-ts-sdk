@@ -198,8 +198,10 @@ export type CreateGenerationResponse = {
 };
 
 /** @internal */
-export const TransparencyType$: z.ZodNativeEnum<typeof TransparencyType> =
-    z.nativeEnum(TransparencyType);
+export namespace TransparencyType$ {
+    export const inboundSchema = z.nativeEnum(TransparencyType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CreateGenerationRequestBody$ {
@@ -208,7 +210,7 @@ export namespace CreateGenerationRequestBody$ {
             alchemy: z.nullable(z.boolean().default(true)),
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
-            controlNetType: shared.ControlnetType$.optional(),
+            controlNetType: shared.ControlnetType$.inboundSchema.optional(),
             elements: z.nullable(z.array(shared.ElementInput$.inboundSchema)).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
@@ -229,18 +231,18 @@ export namespace CreateGenerationRequestBody$ {
             photoRealStrength: z.nullable(z.number()).optional(),
             photoRealVersion: z.nullable(z.string()).optional(),
             presetStyle: z.nullable(
-                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+                shared.SdGenerationStyle$.inboundSchema.default(shared.SdGenerationStyle.Dynamic)
             ),
             prompt: z.string().default("A majestic cat in the snow"),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
             promptMagicVersion: z.nullable(z.string()).optional(),
             public: z.nullable(z.boolean()).optional(),
-            scheduler: shared.SdGenerationSchedulers$.optional(),
-            sd_version: shared.SdVersions$.optional(),
+            scheduler: shared.SdGenerationSchedulers$.inboundSchema.optional(),
+            sd_version: shared.SdVersions$.inboundSchema.optional(),
             seed: z.nullable(z.number().int()).optional(),
             tiling: z.nullable(z.boolean()).optional(),
-            transparency: z.nullable(TransparencyType$).optional(),
+            transparency: z.nullable(TransparencyType$.inboundSchema).optional(),
             unzoom: z.nullable(z.boolean()).optional(),
             unzoomAmount: z.nullable(z.number()).optional(),
             upscaleRatio: z.nullable(z.number()).optional(),
@@ -309,7 +311,7 @@ export namespace CreateGenerationRequestBody$ {
         alchemy: boolean | null;
         contrastRatio?: number | null | undefined;
         controlNet?: boolean | null | undefined;
-        controlNetType?: shared.ControlnetType | undefined;
+        controlNetType?: string | undefined;
         elements?: Array<shared.ElementInput$.Outbound> | null | undefined;
         expandedDomain?: boolean | null | undefined;
         fantasyAvatar?: boolean | null | undefined;
@@ -329,17 +331,17 @@ export namespace CreateGenerationRequestBody$ {
         photoReal?: boolean | null | undefined;
         photoRealStrength?: number | null | undefined;
         photoRealVersion?: string | null | undefined;
-        presetStyle: shared.SdGenerationStyle | null;
+        presetStyle: string | null;
         prompt: string;
         promptMagic?: boolean | null | undefined;
         promptMagicStrength?: number | null | undefined;
         promptMagicVersion?: string | null | undefined;
         public?: boolean | null | undefined;
-        scheduler?: shared.SdGenerationSchedulers | undefined;
-        sd_version?: shared.SdVersions | undefined;
+        scheduler?: string | undefined;
+        sd_version?: string | undefined;
         seed?: number | null | undefined;
         tiling?: boolean | null | undefined;
-        transparency?: TransparencyType | null | undefined;
+        transparency?: string | null | undefined;
         unzoom?: boolean | null | undefined;
         unzoomAmount?: number | null | undefined;
         upscaleRatio?: number | null | undefined;
@@ -352,7 +354,7 @@ export namespace CreateGenerationRequestBody$ {
             alchemy: z.nullable(z.boolean().default(true)),
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
-            controlNetType: shared.ControlnetType$.optional(),
+            controlNetType: shared.ControlnetType$.outboundSchema.optional(),
             elements: z.nullable(z.array(shared.ElementInput$.outboundSchema)).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
@@ -373,18 +375,18 @@ export namespace CreateGenerationRequestBody$ {
             photoRealStrength: z.nullable(z.number()).optional(),
             photoRealVersion: z.nullable(z.string()).optional(),
             presetStyle: z.nullable(
-                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+                shared.SdGenerationStyle$.outboundSchema.default(shared.SdGenerationStyle.Dynamic)
             ),
             prompt: z.string().default("A majestic cat in the snow"),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
             promptMagicVersion: z.nullable(z.string()).optional(),
             public: z.nullable(z.boolean()).optional(),
-            scheduler: shared.SdGenerationSchedulers$.optional(),
-            sdVersion: shared.SdVersions$.optional(),
+            scheduler: shared.SdGenerationSchedulers$.outboundSchema.optional(),
+            sdVersion: shared.SdVersions$.outboundSchema.optional(),
             seed: z.nullable(z.number().int()).optional(),
             tiling: z.nullable(z.boolean()).optional(),
-            transparency: z.nullable(TransparencyType$).optional(),
+            transparency: z.nullable(TransparencyType$.outboundSchema).optional(),
             unzoom: z.nullable(z.boolean()).optional(),
             unzoomAmount: z.nullable(z.number()).optional(),
             upscaleRatio: z.nullable(z.number()).optional(),

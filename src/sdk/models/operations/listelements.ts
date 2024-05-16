@@ -78,7 +78,7 @@ export namespace Loras$ {
     export const inboundSchema: z.ZodType<Loras, z.ZodTypeDef, unknown> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
-            baseModel: shared.SdVersions$.optional(),
+            baseModel: shared.SdVersions$.inboundSchema.optional(),
             creatorName: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
@@ -103,7 +103,7 @@ export namespace Loras$ {
 
     export type Outbound = {
         akUUID?: string | null | undefined;
-        baseModel?: shared.SdVersions | undefined;
+        baseModel?: string | undefined;
         creatorName?: string | null | undefined;
         description?: string | null | undefined;
         name?: string | null | undefined;
@@ -116,7 +116,7 @@ export namespace Loras$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Loras> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
-            baseModel: shared.SdVersions$.optional(),
+            baseModel: shared.SdVersions$.outboundSchema.optional(),
             creatorName: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),

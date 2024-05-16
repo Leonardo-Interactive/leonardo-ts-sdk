@@ -25,5 +25,7 @@ export enum LcmGenerationStyle {
 }
 
 /** @internal */
-export const LcmGenerationStyle$: z.ZodNativeEnum<typeof LcmGenerationStyle> =
-    z.nativeEnum(LcmGenerationStyle);
+export namespace LcmGenerationStyle$ {
+    export const inboundSchema = z.nativeEnum(LcmGenerationStyle);
+    export const outboundSchema = inboundSchema;
+}

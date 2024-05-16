@@ -107,9 +107,9 @@ export namespace GetModelByIdCustomModels$ {
             modelWidth: z.number().int().optional(),
             name: z.string().optional(),
             public: z.boolean().optional(),
-            sdVersion: shared.SdVersions$.optional(),
-            status: shared.JobStatus$.optional(),
-            type: shared.CustomModelType$.default(shared.CustomModelType.General),
+            sdVersion: shared.SdVersions$.inboundSchema.optional(),
+            status: shared.JobStatus$.inboundSchema.optional(),
+            type: shared.CustomModelType$.inboundSchema.default(shared.CustomModelType.General),
             updatedAt: z.string().optional(),
         })
         .transform((v) => {
@@ -138,9 +138,9 @@ export namespace GetModelByIdCustomModels$ {
         modelWidth?: number | undefined;
         name?: string | undefined;
         public?: boolean | undefined;
-        sdVersion?: shared.SdVersions | undefined;
-        status?: shared.JobStatus | undefined;
-        type: shared.CustomModelType;
+        sdVersion?: string | undefined;
+        status?: string | undefined;
+        type: string;
         updatedAt?: string | undefined;
     };
 
@@ -154,9 +154,9 @@ export namespace GetModelByIdCustomModels$ {
             modelWidth: z.number().int().optional(),
             name: z.string().optional(),
             public: z.boolean().optional(),
-            sdVersion: shared.SdVersions$.optional(),
-            status: shared.JobStatus$.optional(),
-            type: shared.CustomModelType$.default(shared.CustomModelType.General),
+            sdVersion: shared.SdVersions$.outboundSchema.optional(),
+            status: shared.JobStatus$.outboundSchema.optional(),
+            type: shared.CustomModelType$.outboundSchema.default(shared.CustomModelType.General),
             updatedAt: z.string().optional(),
         })
         .transform((v) => {

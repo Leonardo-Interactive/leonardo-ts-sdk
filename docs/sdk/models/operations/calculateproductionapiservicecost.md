@@ -1,0 +1,8 @@
+# CalculateProductionApiServiceCost
+
+
+## Fields
+
+| Field                                   | Type                                    | Required                                | Description                             |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `cost`                                  | *number*                                | :heavy_minus_sign:                      | API service cost to generate the image. |

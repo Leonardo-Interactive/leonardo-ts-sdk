@@ -87,7 +87,9 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
             prompt: z.nullable(z.string()).optional(),
             upscaleMultiplier: z.nullable(z.number().default(1.5)),
             upscalerStyle: z.nullable(
-                shared.UniversalUpscalerStyle$.default(shared.UniversalUpscalerStyle.General)
+                shared.UniversalUpscalerStyle$.inboundSchema.default(
+                    shared.UniversalUpscalerStyle.General
+                )
             ),
             variationId: z.nullable(z.string()).optional(),
         })
@@ -111,7 +113,7 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
         initImageId?: string | null | undefined;
         prompt?: string | null | undefined;
         upscaleMultiplier: number | null;
-        upscalerStyle: shared.UniversalUpscalerStyle | null;
+        upscalerStyle: string | null;
         variationId?: string | null | undefined;
     };
 
@@ -127,7 +129,9 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
             prompt: z.nullable(z.string()).optional(),
             upscaleMultiplier: z.nullable(z.number().default(1.5)),
             upscalerStyle: z.nullable(
-                shared.UniversalUpscalerStyle$.default(shared.UniversalUpscalerStyle.General)
+                shared.UniversalUpscalerStyle$.outboundSchema.default(
+                    shared.UniversalUpscalerStyle.General
+                )
             ),
             variationId: z.nullable(z.string()).optional(),
         })

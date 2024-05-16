@@ -88,12 +88,14 @@ export namespace CreateModelRequestBody$ {
             datasetId: z.string(),
             description: z.nullable(z.string().default("")),
             instance_prompt: z.string(),
-            modelType: shared.CustomModelType$.default(shared.CustomModelType.General),
+            modelType: shared.CustomModelType$.inboundSchema.default(
+                shared.CustomModelType.General
+            ),
             name: z.string(),
             nsfw: z.nullable(z.boolean().default(false)),
             resolution: z.nullable(z.number().int().default(512)),
-            sd_Version: shared.SdVersions$.optional(),
-            strength: shared.Strength$.default(shared.Strength.Medium),
+            sd_Version: shared.SdVersions$.inboundSchema.optional(),
+            strength: shared.Strength$.inboundSchema.default(shared.Strength.Medium),
         })
         .transform((v) => {
             return {
@@ -113,12 +115,12 @@ export namespace CreateModelRequestBody$ {
         datasetId: string;
         description: string | null;
         instance_prompt: string;
-        modelType: shared.CustomModelType;
+        modelType: string;
         name: string;
         nsfw: boolean | null;
         resolution: number | null;
-        sd_Version?: shared.SdVersions | undefined;
-        strength: shared.Strength;
+        sd_Version?: string | undefined;
+        strength: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateModelRequestBody> = z
@@ -126,12 +128,14 @@ export namespace CreateModelRequestBody$ {
             datasetId: z.string(),
             description: z.nullable(z.string().default("")),
             instancePrompt: z.string(),
-            modelType: shared.CustomModelType$.default(shared.CustomModelType.General),
+            modelType: shared.CustomModelType$.outboundSchema.default(
+                shared.CustomModelType.General
+            ),
             name: z.string(),
             nsfw: z.nullable(z.boolean().default(false)),
             resolution: z.nullable(z.number().int().default(512)),
-            sdVersion: shared.SdVersions$.optional(),
-            strength: shared.Strength$.default(shared.Strength.Medium),
+            sdVersion: shared.SdVersions$.outboundSchema.optional(),
+            strength: shared.Strength$.outboundSchema.default(shared.Strength.Medium),
         })
         .transform((v) => {
             return {

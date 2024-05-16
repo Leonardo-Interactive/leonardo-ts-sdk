@@ -236,8 +236,8 @@ export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
     > = z
         .object({
             id: z.nullable(z.string()).optional(),
-            status: shared.JobStatus$.optional(),
-            transformType: shared.VariationType$.optional(),
+            status: shared.JobStatus$.inboundSchema.optional(),
+            transformType: shared.VariationType$.inboundSchema.optional(),
             url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
@@ -251,8 +251,8 @@ export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
 
     export type Outbound = {
         id?: string | null | undefined;
-        status?: shared.JobStatus | undefined;
-        transformType?: shared.VariationType | undefined;
+        status?: string | undefined;
+        transformType?: string | undefined;
         url?: string | null | undefined;
     };
 
@@ -263,8 +263,8 @@ export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
     > = z
         .object({
             id: z.nullable(z.string()).optional(),
-            status: shared.JobStatus$.optional(),
-            transformType: shared.VariationType$.optional(),
+            status: shared.JobStatus$.outboundSchema.optional(),
+            transformType: shared.VariationType$.outboundSchema.optional(),
             url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
@@ -371,7 +371,7 @@ export namespace GetGenerationByIdLoras$ {
     export const inboundSchema: z.ZodType<GetGenerationByIdLoras, z.ZodTypeDef, unknown> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
-            baseModel: shared.SdVersions$.optional(),
+            baseModel: shared.SdVersions$.inboundSchema.optional(),
             description: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             urlImage: z.nullable(z.string()).optional(),
@@ -394,7 +394,7 @@ export namespace GetGenerationByIdLoras$ {
 
     export type Outbound = {
         akUUID?: string | null | undefined;
-        baseModel?: shared.SdVersions | undefined;
+        baseModel?: string | undefined;
         description?: string | null | undefined;
         name?: string | null | undefined;
         urlImage?: string | null | undefined;
@@ -406,7 +406,7 @@ export namespace GetGenerationByIdLoras$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetGenerationByIdLoras> = z
         .object({
             akUUID: z.nullable(z.string()).optional(),
-            baseModel: shared.SdVersions$.optional(),
+            baseModel: shared.SdVersions$.outboundSchema.optional(),
             description: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             urlImage: z.nullable(z.string()).optional(),
@@ -485,17 +485,17 @@ export namespace GetGenerationByIdGenerations$ {
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
             presetStyle: z.nullable(
-                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+                shared.SdGenerationStyle$.inboundSchema.default(shared.SdGenerationStyle.Dynamic)
             ),
             prompt: z.string().optional(),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
             promptMagicVersion: z.nullable(z.string()).optional(),
             public: z.boolean().optional(),
-            scheduler: shared.SdGenerationSchedulers$.optional(),
-            sdVersion: shared.SdVersions$.optional(),
+            scheduler: shared.SdGenerationSchedulers$.inboundSchema.optional(),
+            sdVersion: shared.SdVersions$.inboundSchema.optional(),
             seed: z.nullable(z.number().int()).optional(),
-            status: shared.JobStatus$.optional(),
+            status: shared.JobStatus$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
@@ -549,16 +549,16 @@ export namespace GetGenerationByIdGenerations$ {
         negativePrompt?: string | null | undefined;
         photoReal?: boolean | null | undefined;
         photoRealStrength?: number | null | undefined;
-        presetStyle: shared.SdGenerationStyle | null;
+        presetStyle: string | null;
         prompt?: string | undefined;
         promptMagic?: boolean | null | undefined;
         promptMagicStrength?: number | null | undefined;
         promptMagicVersion?: string | null | undefined;
         public?: boolean | undefined;
-        scheduler?: shared.SdGenerationSchedulers | undefined;
-        sdVersion?: shared.SdVersions | undefined;
+        scheduler?: string | undefined;
+        sdVersion?: string | undefined;
         seed?: number | null | undefined;
-        status?: shared.JobStatus | undefined;
+        status?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetGenerationByIdGenerations> = z
@@ -579,17 +579,17 @@ export namespace GetGenerationByIdGenerations$ {
             photoReal: z.nullable(z.boolean()).optional(),
             photoRealStrength: z.nullable(z.number()).optional(),
             presetStyle: z.nullable(
-                shared.SdGenerationStyle$.default(shared.SdGenerationStyle.Dynamic)
+                shared.SdGenerationStyle$.outboundSchema.default(shared.SdGenerationStyle.Dynamic)
             ),
             prompt: z.string().optional(),
             promptMagic: z.nullable(z.boolean()).optional(),
             promptMagicStrength: z.nullable(z.number()).optional(),
             promptMagicVersion: z.nullable(z.string()).optional(),
             public: z.boolean().optional(),
-            scheduler: shared.SdGenerationSchedulers$.optional(),
-            sdVersion: shared.SdVersions$.optional(),
+            scheduler: shared.SdGenerationSchedulers$.outboundSchema.optional(),
+            sdVersion: shared.SdVersions$.outboundSchema.optional(),
             seed: z.nullable(z.number().int()).optional(),
-            status: shared.JobStatus$.optional(),
+            status: shared.JobStatus$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {

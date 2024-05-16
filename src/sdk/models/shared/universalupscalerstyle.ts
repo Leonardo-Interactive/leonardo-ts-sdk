@@ -15,5 +15,7 @@ export enum UniversalUpscalerStyle {
 }
 
 /** @internal */
-export const UniversalUpscalerStyle$: z.ZodNativeEnum<typeof UniversalUpscalerStyle> =
-    z.nativeEnum(UniversalUpscalerStyle);
+export namespace UniversalUpscalerStyle$ {
+    export const inboundSchema = z.nativeEnum(UniversalUpscalerStyle);
+    export const outboundSchema = inboundSchema;
+}

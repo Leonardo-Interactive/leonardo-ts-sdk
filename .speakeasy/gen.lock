@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 7d5f612ea48bf680a174c1f469139678
+  docChecksum: 6329760d390ebefaeaedd5096bece325
   docVersion: v1.0.0
-  speakeasyVersion: 1.286.1
-  generationVersion: 2.329.0
-  releaseVersion: 4.10.2
-  configChecksum: 0c0ac3675752502cc12979d46c037a89
+  speakeasyVersion: 1.291.0
+  generationVersion: 2.332.4
+  releaseVersion: 4.10.3
+  configChecksum: 918fc83694826cb3980db480bce68a43
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -32,6 +32,7 @@ generatedFiles:
   - src/sdk/initimage.ts
   - src/sdk/user.ts
   - src/sdk/model.ts
+  - src/sdk/pricingcalculator.ts
   - src/sdk/prompt.ts
   - src/sdk/variation.ts
   - src/sdk/sdk.ts
@@ -54,6 +55,7 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
+  - src/sdk/types/enums.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
@@ -85,6 +87,7 @@ generatedFiles:
   - src/sdk/models/operations/getmodelbyid.ts
   - src/sdk/models/operations/listplatformmodels.ts
   - src/sdk/models/operations/uploadmodelasset.ts
+  - src/sdk/models/operations/pricingcalculator.ts
   - src/sdk/models/operations/promptimprove.ts
   - src/sdk/models/operations/promptrandom.ts
   - src/sdk/models/operations/createuniversalupscalerjob.ts
@@ -102,6 +105,7 @@ generatedFiles:
   - src/sdk/models/shared/variationtype.ts
   - src/sdk/models/shared/strength.ts
   - src/sdk/models/shared/custommodeltype.ts
+  - src/sdk/models/shared/pricingcalculatorservices.ts
   - src/sdk/models/shared/universalupscalerstyle.ts
   - src/sdk/models/shared/security.ts
   - src/sdk/models/errors/index.ts
@@ -228,6 +232,18 @@ generatedFiles:
   - docs/sdk/models/operations/modelassetuploadoutput.md
   - docs/sdk/models/operations/uploadmodelassetresponsebody.md
   - docs/sdk/models/operations/uploadmodelassetresponse.md
+  - docs/sdk/models/operations/pricingcalculatorobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamstexturegenerationobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsuniversalupscalerobject.md
+  - docs/sdk/models/operations/objectt.md
+  - docs/sdk/models/operations/pricingcalculatorrequestbody.md
+  - docs/sdk/models/operations/calculateproductionapiservicecost.md
+  - docs/sdk/models/operations/pricingcalculatorresponsebody.md
+  - docs/sdk/models/operations/pricingcalculatorresponse.md
   - docs/sdk/models/operations/promptimproverequestbody.md
   - docs/sdk/models/operations/promptgenerationoutput.md
   - docs/sdk/models/operations/promptimproveresponsebody.md
@@ -265,6 +281,7 @@ generatedFiles:
   - docs/sdk/models/shared/variationtype.md
   - docs/sdk/models/shared/strength.md
   - docs/sdk/models/shared/custommodeltype.md
+  - docs/sdk/models/shared/pricingcalculatorservices.md
   - docs/sdk/models/shared/universalupscalerstyle.md
   - docs/sdk/models/shared/security.md
   - docs/sdks/leonardo/README.md
@@ -274,6 +291,7 @@ generatedFiles:
   - docs/sdks/initimage/README.md
   - docs/sdks/user/README.md
   - docs/sdks/model/README.md
+  - docs/sdks/pricingcalculator/README.md
   - docs/sdks/prompt/README.md
   - docs/sdks/variation/README.md
   - USAGE.md
