@@ -1,6 +1,19 @@
-speakeasyVersion: 1.291.0
-sources: {}
-targets: {}
+speakeasyVersion: 1.294.0
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:43052b0fd986e50c60abf3fba3dec5667083305523764122f159c7e77b0f724e
+        sourceBlobDigest: sha256:84fe15c209bec529973c5c6d32c3d260d8f2b0d2fd6112e1b0611f72218e954f
+        tags:
+            - latest
+            - main
+targets:
+    leonardo-ts-sdk:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:43052b0fd986e50c60abf3fba3dec5667083305523764122f159c7e77b0f724e
+        sourceBlobDigest: sha256:84fe15c209bec529973c5c6d32c3d260d8f2b0d2fd6112e1b0611f72218e954f
+        outLocation: ./
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -8,6 +21,8 @@ workflow:
         my-source:
             inputs:
                 - location: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+            registry:
+                location: registry.speakeasyapi.dev/leonardo-ai/leonardo-ai/my-source
     targets:
         leonardo-ts-sdk:
             target: typescript

@@ -11,7 +11,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
-export class Model extends ClientSDK {
+export class Models extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
 
     constructor(options: SDKOptions = {}) {
@@ -109,101 +109,6 @@ export class Model extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return operations.CreateModelResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        object: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
-    }
-
-    /**
-     * Delete 3D Model by ID
-     *
-     * @remarks
-     * This endpoint deletes the specific 3D Model
-     */
-    async delete3DModelById(
-        id: string,
-        requestBody?: operations.Delete3DModelByIdRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.Delete3DModelByIdResponse> {
-        const input$: operations.Delete3DModelByIdRequest = {
-            id: id,
-            requestBody: requestBody,
-        };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => operations.Delete3DModelByIdRequest$.outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
-
-        const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-        };
-        const path$ = this.templateURLComponent("/models-3d/{id}")(pathParams$);
-
-        const query$ = "";
-
-        let security$;
-        if (typeof this.options$.bearerAuth === "function") {
-            security$ = { bearerAuth: await this.options$.bearerAuth() };
-        } else if (this.options$.bearerAuth) {
-            security$ = { bearerAuth: this.options$.bearerAuth };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "delete3DModelById",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearerAuth,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = { context, errorCodes: [] };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "DELETE",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
-
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-            Headers: {},
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.Delete3DModelByIdResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });
@@ -465,96 +370,6 @@ export class Model extends ClientSDK {
                 responseBody,
                 (val$) => {
                     return operations.ListPlatformModelsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        object: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
-    }
-
-    /**
-     * Upload 3D Model
-     *
-     * @remarks
-     * This endpoint returns presigned details to upload a 3D model to S3
-     */
-    async uploadModelAsset(
-        request?: operations.UploadModelAssetRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.UploadModelAssetResponse> {
-        const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) =>
-                operations.UploadModelAssetRequestBody$.outboundSchema.optional().parse(value$),
-            "Input validation failed"
-        );
-        const body$ =
-            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
-
-        const path$ = this.templateURLComponent("/models-3d/upload")();
-
-        const query$ = "";
-
-        let security$;
-        if (typeof this.options$.bearerAuth === "function") {
-            security$ = { bearerAuth: await this.options$.bearerAuth() };
-        } else if (this.options$.bearerAuth) {
-            security$ = { bearerAuth: this.options$.bearerAuth };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "uploadModelAsset",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearerAuth,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = { context, errorCodes: [] };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
-
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-            Headers: {},
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.UploadModelAssetResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });

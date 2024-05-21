@@ -1,5 +1,5 @@
-# Element
-(*element*)
+# Elements
+(*elements*)
 
 ### Available Operations
 
@@ -19,7 +19,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.element.listElements();
+  const result = await leonardo.elements.listElements();
 
   // Handle the result
   console.log(result)

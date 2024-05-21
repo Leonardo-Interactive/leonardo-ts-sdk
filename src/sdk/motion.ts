@@ -4,13 +4,14 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
+import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
-export class Element extends ClientSDK {
+export class Motion extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
 
     constructor(options: SDKOptions = {}) {
@@ -38,17 +39,33 @@ export class Element extends ClientSDK {
     }
 
     /**
-     * List Elements
+     * Create SVD Motion Generation
      *
      * @remarks
-     * Get a list of public Elements available for use with generations.
+     * This endpoint will generate a SVD motion generation.
      */
-    async listElements(options?: RequestOptions): Promise<operations.ListElementsResponse> {
+    async createSVDMotionGeneration(
+        request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
+        options?: RequestOptions
+    ): Promise<operations.CreateSVDMotionGenerationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const path$ = this.templateURLComponent("/elements")();
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) =>
+                operations.CreateSVDMotionGenerationRequestBody$.outboundSchema
+                    .optional()
+                    .parse(value$),
+            "Input validation failed"
+        );
+        const body$ =
+            payload$ === undefined ? null : enc$.encodeJSON("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/generations-motion-svd")();
 
         const query$ = "";
 
@@ -61,7 +78,7 @@ export class Element extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "listElements",
+            operationID: "createSVDMotionGeneration",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -72,10 +89,11 @@ export class Element extends ClientSDK {
             context,
             {
                 security: securitySettings$,
-                method: "GET",
+                method: "POST",
                 path: path$,
                 headers: headers$,
                 query: query$,
+                body: body$,
             },
             options
         );
@@ -94,7 +112,7 @@ export class Element extends ClientSDK {
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
-                    return operations.ListElementsResponse$.inboundSchema.parse({
+                    return operations.CreateSVDMotionGenerationResponse$.inboundSchema.parse({
                         ...responseFields$,
                         object: val$,
                     });

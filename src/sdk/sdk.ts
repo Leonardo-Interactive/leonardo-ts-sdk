@@ -7,12 +7,16 @@ import { SDKOptions, serverURLFromOptions } from "../lib/config";
 import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
 import { Dataset } from "./dataset";
-import { Element } from "./element";
-import { Generation } from "./generation";
-import { InitImage } from "./initimage";
-import { Model } from "./model";
+import { Elements } from "./elements";
+import { Image } from "./image";
+import { InitImages } from "./initimages";
+import { Models } from "./models";
+import { Motion } from "./motion";
 import { PricingCalculator } from "./pricingcalculator";
 import { Prompt } from "./prompt";
+import { RealtimeCanvas } from "./realtimecanvas";
+import { Texture } from "./texture";
+import { ThreeDModelAssets } from "./threedmodelassets";
 import { User } from "./user";
 import { Variation } from "./variation";
 
@@ -48,19 +52,34 @@ export class Leonardo extends ClientSDK {
         return (this._dataset ??= new Dataset(this.options$));
     }
 
-    private _element?: Element;
-    get element(): Element {
-        return (this._element ??= new Element(this.options$));
+    private _elements?: Elements;
+    get elements(): Elements {
+        return (this._elements ??= new Elements(this.options$));
     }
 
-    private _generation?: Generation;
-    get generation(): Generation {
-        return (this._generation ??= new Generation(this.options$));
+    private _image?: Image;
+    get image(): Image {
+        return (this._image ??= new Image(this.options$));
     }
 
-    private _initImage?: InitImage;
-    get initImage(): InitImage {
-        return (this._initImage ??= new InitImage(this.options$));
+    private _realtimeCanvas?: RealtimeCanvas;
+    get realtimeCanvas(): RealtimeCanvas {
+        return (this._realtimeCanvas ??= new RealtimeCanvas(this.options$));
+    }
+
+    private _motion?: Motion;
+    get motion(): Motion {
+        return (this._motion ??= new Motion(this.options$));
+    }
+
+    private _texture?: Texture;
+    get texture(): Texture {
+        return (this._texture ??= new Texture(this.options$));
+    }
+
+    private _initImages?: InitImages;
+    get initImages(): InitImages {
+        return (this._initImages ??= new InitImages(this.options$));
     }
 
     private _user?: User;
@@ -68,9 +87,14 @@ export class Leonardo extends ClientSDK {
         return (this._user ??= new User(this.options$));
     }
 
-    private _model?: Model;
-    get model(): Model {
-        return (this._model ??= new Model(this.options$));
+    private _models?: Models;
+    get models(): Models {
+        return (this._models ??= new Models(this.options$));
+    }
+
+    private _threeDModelAssets?: ThreeDModelAssets;
+    get threeDModelAssets(): ThreeDModelAssets {
+        return (this._threeDModelAssets ??= new ThreeDModelAssets(this.options$));
     }
 
     private _pricingCalculator?: PricingCalculator;
