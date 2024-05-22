@@ -41,7 +41,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteInitImageByIdResponse](../../sdk/models/operations/deleteinitimagebyidresponse.md)>**
+**Promise\<[operations.DeleteInitImageByIdResponse](../../sdk/models/operations/deleteinitimagebyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -82,7 +82,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetInitImageByIdResponse](../../sdk/models/operations/getinitimagebyidresponse.md)>**
+**Promise\<[operations.GetInitImageByIdResponse](../../sdk/models/operations/getinitimagebyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -125,7 +125,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadInitImageResponse](../../sdk/models/operations/uploadinitimageresponse.md)>**
+**Promise\<[operations.UploadInitImageResponse](../../sdk/models/operations/uploadinitimageresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

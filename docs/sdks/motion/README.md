@@ -41,7 +41,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateSVDMotionGenerationResponse](../../sdk/models/operations/createsvdmotiongenerationresponse.md)>**
+**Promise\<[operations.CreateSVDMotionGenerationResponse](../../sdk/models/operations/createsvdmotiongenerationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

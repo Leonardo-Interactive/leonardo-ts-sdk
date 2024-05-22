@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
 export class ThreeDModelAssets extends ClientSDK {
@@ -50,8 +49,8 @@ export class ThreeDModelAssets extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.Delete3DModelByIdResponse> {
         const input$: operations.Delete3DModelByIdRequest = {
-            id: id,
             requestBody: requestBody,
+            id: id,
         };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
@@ -110,27 +109,11 @@ export class ThreeDModelAssets extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.Delete3DModelByIdResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        object: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.Delete3DModelByIdResponse>()
+            .json(200, operations.Delete3DModelByIdResponse$, { key: "object" })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -200,26 +183,10 @@ export class ThreeDModelAssets extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.UploadModelAssetResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        object: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.UploadModelAssetResponse>()
+            .json(200, operations.UploadModelAssetResponse$, { key: "object" })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

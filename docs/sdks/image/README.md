@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateGenerationResponse](../../sdk/models/operations/creategenerationresponse.md)>**
+**Promise\<[operations.CreateGenerationResponse](../../sdk/models/operations/creategenerationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -83,7 +83,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteGenerationByIdResponse](../../sdk/models/operations/deletegenerationbyidresponse.md)>**
+**Promise\<[operations.DeleteGenerationByIdResponse](../../sdk/models/operations/deletegenerationbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -124,7 +124,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetGenerationByIdResponse](../../sdk/models/operations/getgenerationbyidresponse.md)>**
+**Promise\<[operations.GetGenerationByIdResponse](../../sdk/models/operations/getgenerationbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -167,7 +167,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetGenerationsByUserIdResponse](../../sdk/models/operations/getgenerationsbyuseridresponse.md)>**
+**Promise\<[operations.GetGenerationsByUserIdResponse](../../sdk/models/operations/getgenerationsbyuseridresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

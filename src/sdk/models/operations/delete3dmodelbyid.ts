@@ -13,13 +13,13 @@ export type Delete3DModelByIdRequestBody = {
 
 export type Delete3DModelByIdRequest = {
     /**
-     * _"id" is required (enter it either in parameters or request body)_
-     */
-    id: string;
-    /**
      * Query parameters can also be provided in the request body as a JSON object
      */
     requestBody?: Delete3DModelByIdRequestBody | undefined;
+    /**
+     * _"id" is required (enter it either in parameters or request body)_
+     */
+    id: string;
 };
 
 /**
@@ -89,30 +89,30 @@ export namespace Delete3DModelByIdRequestBody$ {
 export namespace Delete3DModelByIdRequest$ {
     export const inboundSchema: z.ZodType<Delete3DModelByIdRequest, z.ZodTypeDef, unknown> = z
         .object({
-            id: z.string(),
             RequestBody: z.lazy(() => Delete3DModelByIdRequestBody$.inboundSchema).optional(),
+            id: z.string(),
         })
         .transform((v) => {
             return {
-                id: v.id,
                 ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
+                id: v.id,
             };
         });
 
     export type Outbound = {
-        id: string;
         RequestBody?: Delete3DModelByIdRequestBody$.Outbound | undefined;
+        id: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Delete3DModelByIdRequest> = z
         .object({
-            id: z.string(),
             requestBody: z.lazy(() => Delete3DModelByIdRequestBody$.outboundSchema).optional(),
+            id: z.string(),
         })
         .transform((v) => {
             return {
-                id: v.id,
                 ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
+                id: v.id,
             };
         });
 }

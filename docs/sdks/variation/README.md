@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateUniversalUpscalerJobResponse](../../sdk/models/operations/createuniversalupscalerjobresponse.md)>**
+**Promise\<[operations.CreateUniversalUpscalerJobResponse](../../sdk/models/operations/createuniversalupscalerjobresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -86,7 +86,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateVariationNoBGResponse](../../sdk/models/operations/createvariationnobgresponse.md)>**
+**Promise\<[operations.CreateVariationNoBGResponse](../../sdk/models/operations/createvariationnobgresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -127,7 +127,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateVariationUnzoomResponse](../../sdk/models/operations/createvariationunzoomresponse.md)>**
+**Promise\<[operations.CreateVariationUnzoomResponse](../../sdk/models/operations/createvariationunzoomresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -170,7 +170,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateVariationUpscaleResponse](../../sdk/models/operations/createvariationupscaleresponse.md)>**
+**Promise\<[operations.CreateVariationUpscaleResponse](../../sdk/models/operations/createvariationupscaleresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -211,7 +211,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetVariationByIdResponse](../../sdk/models/operations/getvariationbyidresponse.md)>**
+**Promise\<[operations.GetVariationByIdResponse](../../sdk/models/operations/getvariationbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

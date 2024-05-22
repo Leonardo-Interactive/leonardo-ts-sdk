@@ -39,7 +39,7 @@ run();
 
 ### Response
 
-**Promise<[operations.PricingCalculatorResponse](../../sdk/models/operations/pricingcalculatorresponse.md)>**
+**Promise\<[operations.PricingCalculatorResponse](../../sdk/models/operations/pricingcalculatorresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

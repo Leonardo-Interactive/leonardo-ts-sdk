@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateDatasetResponse](../../sdk/models/operations/createdatasetresponse.md)>**
+**Promise\<[operations.CreateDatasetResponse](../../sdk/models/operations/createdatasetresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -86,7 +86,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteDatasetByIdResponse](../../sdk/models/operations/deletedatasetbyidresponse.md)>**
+**Promise\<[operations.DeleteDatasetByIdResponse](../../sdk/models/operations/deletedatasetbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -127,7 +127,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetDatasetByIdResponse](../../sdk/models/operations/getdatasetbyidresponse.md)>**
+**Promise\<[operations.GetDatasetByIdResponse](../../sdk/models/operations/getdatasetbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -171,7 +171,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadDatasetImageResponse](../../sdk/models/operations/uploaddatasetimageresponse.md)>**
+**Promise\<[operations.UploadDatasetImageResponse](../../sdk/models/operations/uploaddatasetimageresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -215,7 +215,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadDatasetImageFromGenResponse](../../sdk/models/operations/uploaddatasetimagefromgenresponse.md)>**
+**Promise\<[operations.UploadDatasetImageFromGenResponse](../../sdk/models/operations/uploaddatasetimagefromgenresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

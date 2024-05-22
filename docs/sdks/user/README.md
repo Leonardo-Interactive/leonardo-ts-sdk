@@ -38,7 +38,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetUserSelfResponse](../../sdk/models/operations/getuserselfresponse.md)>**
+**Promise\<[operations.GetUserSelfResponse](../../sdk/models/operations/getuserselfresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

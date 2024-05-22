@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise<[operations.PromptImproveResponse](../../sdk/models/operations/promptimproveresponse.md)>**
+**Promise\<[operations.PromptImproveResponse](../../sdk/models/operations/promptimproveresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -82,7 +82,7 @@ run();
 
 ### Response
 
-**Promise<[operations.PromptRandomResponse](../../sdk/models/operations/promptrandomresponse.md)>**
+**Promise\<[operations.PromptRandomResponse](../../sdk/models/operations/promptrandomresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

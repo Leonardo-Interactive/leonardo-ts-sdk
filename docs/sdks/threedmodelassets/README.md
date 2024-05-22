@@ -41,7 +41,7 @@ run();
 
 ### Response
 
-**Promise<[operations.Delete3DModelByIdResponse](../../sdk/models/operations/delete3dmodelbyidresponse.md)>**
+**Promise\<[operations.Delete3DModelByIdResponse](../../sdk/models/operations/delete3dmodelbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -82,7 +82,7 @@ run();
 
 ### Response
 
-**Promise<[operations.UploadModelAssetResponse](../../sdk/models/operations/uploadmodelassetresponse.md)>**
+**Promise\<[operations.UploadModelAssetResponse](../../sdk/models/operations/uploadmodelassetresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

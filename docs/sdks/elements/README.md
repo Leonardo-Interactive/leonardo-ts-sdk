@@ -38,7 +38,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ListElementsResponse](../../sdk/models/operations/listelementsresponse.md)>**
+**Promise\<[operations.ListElementsResponse](../../sdk/models/operations/listelementsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

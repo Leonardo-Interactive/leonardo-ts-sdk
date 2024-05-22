@@ -46,7 +46,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateModelResponse](../../sdk/models/operations/createmodelresponse.md)>**
+**Promise\<[operations.CreateModelResponse](../../sdk/models/operations/createmodelresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -87,7 +87,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteModelByIdResponse](../../sdk/models/operations/deletemodelbyidresponse.md)>**
+**Promise\<[operations.DeleteModelByIdResponse](../../sdk/models/operations/deletemodelbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -128,7 +128,7 @@ run();
 
 ### Response
 
-**Promise<[operations.GetModelByIdResponse](../../sdk/models/operations/getmodelbyidresponse.md)>**
+**Promise\<[operations.GetModelByIdResponse](../../sdk/models/operations/getmodelbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -168,7 +168,7 @@ run();
 
 ### Response
 
-**Promise<[operations.ListPlatformModelsResponse](../../sdk/models/operations/listplatformmodelsresponse.md)>**
+**Promise\<[operations.ListPlatformModelsResponse](../../sdk/models/operations/listplatformmodelsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

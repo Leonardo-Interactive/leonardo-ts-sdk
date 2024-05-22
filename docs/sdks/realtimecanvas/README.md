@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateLCMGenerationResponse](../../sdk/models/operations/createlcmgenerationresponse.md)>**
+**Promise\<[operations.CreateLCMGenerationResponse](../../sdk/models/operations/createlcmgenerationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise<[operations.PerformAlchemyUpscaleLCMResponse](../../sdk/models/operations/performalchemyupscalelcmresponse.md)>**
+**Promise\<[operations.PerformAlchemyUpscaleLCMResponse](../../sdk/models/operations/performalchemyupscalelcmresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise<[operations.PerformInpaintingLCMResponse](../../sdk/models/operations/performinpaintinglcmresponse.md)>**
+**Promise\<[operations.PerformInpaintingLCMResponse](../../sdk/models/operations/performinpaintinglcmresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -178,7 +178,7 @@ run();
 
 ### Response
 
-**Promise<[operations.PerformInstantRefineResponse](../../sdk/models/operations/performinstantrefineresponse.md)>**
+**Promise\<[operations.PerformInstantRefineResponse](../../sdk/models/operations/performinstantrefineresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

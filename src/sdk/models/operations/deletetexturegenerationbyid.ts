@@ -13,13 +13,13 @@ export type DeleteTextureGenerationByIdRequestBody = {
 
 export type DeleteTextureGenerationByIdRequest = {
     /**
-     * _"id" is required (enter it either in parameters or request body)_
-     */
-    id: string;
-    /**
      * Query parameters can also be provided in the request body as a JSON object
      */
     requestBody?: DeleteTextureGenerationByIdRequestBody | undefined;
+    /**
+     * _"id" is required (enter it either in parameters or request body)_
+     */
+    id: string;
 };
 
 /**
@@ -101,21 +101,21 @@ export namespace DeleteTextureGenerationByIdRequest$ {
         unknown
     > = z
         .object({
-            id: z.string(),
             RequestBody: z
                 .lazy(() => DeleteTextureGenerationByIdRequestBody$.inboundSchema)
                 .optional(),
+            id: z.string(),
         })
         .transform((v) => {
             return {
-                id: v.id,
                 ...(v.RequestBody === undefined ? null : { requestBody: v.RequestBody }),
+                id: v.id,
             };
         });
 
     export type Outbound = {
-        id: string;
         RequestBody?: DeleteTextureGenerationByIdRequestBody$.Outbound | undefined;
+        id: string;
     };
 
     export const outboundSchema: z.ZodType<
@@ -124,15 +124,15 @@ export namespace DeleteTextureGenerationByIdRequest$ {
         DeleteTextureGenerationByIdRequest
     > = z
         .object({
-            id: z.string(),
             requestBody: z
                 .lazy(() => DeleteTextureGenerationByIdRequestBody$.outboundSchema)
                 .optional(),
+            id: z.string(),
         })
         .transform((v) => {
             return {
-                id: v.id,
                 ...(v.requestBody === undefined ? null : { RequestBody: v.requestBody }),
+                id: v.id,
             };
         });
 }

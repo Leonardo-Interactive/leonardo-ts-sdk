@@ -40,7 +40,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateTextureGenerationResponse](../../sdk/models/operations/createtexturegenerationresponse.md)>**
+**Promise\<[operations.CreateTextureGenerationResponse](../../sdk/models/operations/createtexturegenerationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -82,7 +82,7 @@ run();
 
 ### Response
 
-**Promise<[operations.DeleteTextureGenerationByIdResponse](../../sdk/models/operations/deletetexturegenerationbyidresponse.md)>**
+**Promise\<[operations.DeleteTextureGenerationByIdResponse](../../sdk/models/operations/deletetexturegenerationbyidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

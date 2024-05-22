@@ -6,9 +6,9 @@ import * as shared from "../shared";
 import * as z from "zod";
 
 export type GetGenerationsByUserIdRequest = {
-    userId: string;
     limit?: number | undefined;
     offset?: number | undefined;
+    userId: string;
 };
 
 /**
@@ -196,36 +196,36 @@ export type GetGenerationsByUserIdResponse = {
 export namespace GetGenerationsByUserIdRequest$ {
     export const inboundSchema: z.ZodType<GetGenerationsByUserIdRequest, z.ZodTypeDef, unknown> = z
         .object({
-            userId: z.string(),
             limit: z.number().int().default(10),
             offset: z.number().int().default(0),
+            userId: z.string(),
         })
         .transform((v) => {
             return {
-                userId: v.userId,
                 limit: v.limit,
                 offset: v.offset,
+                userId: v.userId,
             };
         });
 
     export type Outbound = {
-        userId: string;
         limit: number;
         offset: number;
+        userId: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetGenerationsByUserIdRequest> =
         z
             .object({
-                userId: z.string(),
                 limit: z.number().int().default(10),
                 offset: z.number().int().default(0),
+                userId: z.string(),
             })
             .transform((v) => {
                 return {
-                    userId: v.userId,
                     limit: v.limit,
                     offset: v.offset,
+                    userId: v.userId,
                 };
             });
 }
