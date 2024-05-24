@@ -44,6 +44,5 @@ export enum SdGenerationStyle {
 /** @internal */
 export namespace SdGenerationStyle$ {
     export const inboundSchema = z.nativeEnum(SdGenerationStyle);
-
     export const outboundSchema = inboundSchema;
 }

@@ -18,6 +18,5 @@ export enum VariationType {
 /** @internal */
 export namespace VariationType$ {
     export const inboundSchema = z.nativeEnum(VariationType);
-
     export const outboundSchema = inboundSchema;
 }

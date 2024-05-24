@@ -20,6 +20,5 @@ export enum SdVersions {
 /** @internal */
 export namespace SdVersions$ {
     export const inboundSchema = z.nativeEnum(SdVersions);
-
     export const outboundSchema = inboundSchema;
 }
