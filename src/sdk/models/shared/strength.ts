@@ -17,5 +17,6 @@ export enum Strength {
 /** @internal */
 export namespace Strength$ {
     export const inboundSchema = z.nativeEnum(Strength);
+
     export const outboundSchema = inboundSchema;
 }

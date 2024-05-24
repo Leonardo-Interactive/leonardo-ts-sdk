@@ -16,5 +16,6 @@ export enum ControlnetType {
 /** @internal */
 export namespace ControlnetType$ {
     export const inboundSchema = z.nativeEnum(ControlnetType);
+
     export const outboundSchema = inboundSchema;
 }

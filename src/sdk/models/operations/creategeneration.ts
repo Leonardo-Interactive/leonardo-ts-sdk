@@ -200,6 +200,7 @@ export type CreateGenerationResponse = {
 /** @internal */
 export namespace TransparencyType$ {
     export const inboundSchema = z.nativeEnum(TransparencyType);
+
     export const outboundSchema = inboundSchema;
 }
 
