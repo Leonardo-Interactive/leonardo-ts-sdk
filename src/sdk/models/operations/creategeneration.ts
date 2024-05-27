@@ -26,13 +26,18 @@ export type CreateGenerationRequestBody = {
      */
     contrastRatio?: number | null | undefined;
     /**
-     * Enable to use ControlNet. Requires an init image to be provided. Requires a model based on SD v1.5
+     * This parameter will be deprecated in September 2024. Please use the controlnets array instead.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     controlNet?: boolean | null | undefined;
     /**
-     * The type of ControlNet to use.
+     * This parameter will be deprecated in September 2024. Please use the controlnets array instead.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     controlNetType?: shared.ControlnetType | undefined;
+    controlnets?: Array<shared.ControlnetInput> | null | undefined;
     elements?: Array<shared.ElementInput> | null | undefined;
     /**
      * Enable to use the Expanded Domain feature of Alchemy.
@@ -154,7 +159,9 @@ export type CreateGenerationRequestBody = {
      */
     upscaleRatio?: number | null | undefined;
     /**
-     * How much weighting to use for ControlNet. This parameter works with controlNet and controlNetType.
+     * This parameter will be deprecated in September 2024. Please use the controlnets array instead.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     weighting?: number | null | undefined;
     /**
@@ -211,6 +218,7 @@ export namespace CreateGenerationRequestBody$ {
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
             controlNetType: shared.ControlnetType$.inboundSchema.optional(),
+            controlnets: z.nullable(z.array(shared.ControlnetInput$.inboundSchema)).optional(),
             elements: z.nullable(z.array(shared.ElementInput$.inboundSchema)).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
@@ -255,6 +263,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.contrastRatio === undefined ? null : { contrastRatio: v.contrastRatio }),
                 ...(v.controlNet === undefined ? null : { controlNet: v.controlNet }),
                 ...(v.controlNetType === undefined ? null : { controlNetType: v.controlNetType }),
+                ...(v.controlnets === undefined ? null : { controlnets: v.controlnets }),
                 ...(v.elements === undefined ? null : { elements: v.elements }),
                 ...(v.expandedDomain === undefined ? null : { expandedDomain: v.expandedDomain }),
                 ...(v.fantasyAvatar === undefined ? null : { fantasyAvatar: v.fantasyAvatar }),
@@ -312,6 +321,7 @@ export namespace CreateGenerationRequestBody$ {
         contrastRatio?: number | null | undefined;
         controlNet?: boolean | null | undefined;
         controlNetType?: string | undefined;
+        controlnets?: Array<shared.ControlnetInput$.Outbound> | null | undefined;
         elements?: Array<shared.ElementInput$.Outbound> | null | undefined;
         expandedDomain?: boolean | null | undefined;
         fantasyAvatar?: boolean | null | undefined;
@@ -355,6 +365,7 @@ export namespace CreateGenerationRequestBody$ {
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
             controlNetType: shared.ControlnetType$.outboundSchema.optional(),
+            controlnets: z.nullable(z.array(shared.ControlnetInput$.outboundSchema)).optional(),
             elements: z.nullable(z.array(shared.ElementInput$.outboundSchema)).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
@@ -399,6 +410,7 @@ export namespace CreateGenerationRequestBody$ {
                 ...(v.contrastRatio === undefined ? null : { contrastRatio: v.contrastRatio }),
                 ...(v.controlNet === undefined ? null : { controlNet: v.controlNet }),
                 ...(v.controlNetType === undefined ? null : { controlNetType: v.controlNetType }),
+                ...(v.controlnets === undefined ? null : { controlnets: v.controlnets }),
                 ...(v.elements === undefined ? null : { elements: v.elements }),
                 ...(v.expandedDomain === undefined ? null : { expandedDomain: v.expandedDomain }),
                 ...(v.fantasyAvatar === undefined ? null : { fantasyAvatar: v.fantasyAvatar }),

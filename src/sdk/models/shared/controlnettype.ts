@@ -5,7 +5,9 @@
 import * as z from "zod";
 
 /**
- * The type of ControlNet to use.
+ * This parameter will be deprecated in September 2024. Please use the controlnets array instead.
+ *
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export enum ControlnetType {
     Pose = "POSE",

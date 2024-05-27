@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 7b2ad4afc01fdd9efa952567fa3b247f
+  docChecksum: 8446f60bbfe4ceae9f7f4945e95ff557
   docVersion: v1.0.0
   speakeasyVersion: 1.296.1
   generationVersion: 2.338.1
-  releaseVersion: 4.10.7
-  configChecksum: 3a853f82dbe61b5554633e7f5fa1a972
+  releaseVersion: 4.11.0
+  configChecksum: 42835bad83be95707541767be6b76b4b
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -16,6 +16,7 @@ features:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
     core: 3.9.9
+    deprecations: 2.81.1
     devContainers: 2.90.0
     flattening: 2.81.1
     globalSecurity: 2.82.9
@@ -104,6 +105,7 @@ generatedFiles:
   - src/sdk/models/shared/sdgenerationschedulers.ts
   - src/sdk/models/shared/sdgenerationstyle.ts
   - src/sdk/models/shared/elementinput.ts
+  - src/sdk/models/shared/controlnetinput.ts
   - src/sdk/models/shared/controlnettype.ts
   - src/sdk/models/shared/jobstatus.ts
   - src/sdk/models/shared/variationtype.ts
@@ -280,6 +282,9 @@ generatedFiles:
   - docs/sdk/models/shared/sdgenerationschedulers.md
   - docs/sdk/models/shared/sdgenerationstyle.md
   - docs/sdk/models/shared/elementinput.md
+  - docs/sdk/models/shared/initimagetype.md
+  - docs/sdk/models/shared/strengthtype.md
+  - docs/sdk/models/shared/controlnetinput.md
   - docs/sdk/models/shared/controlnettype.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/variationtype.md
