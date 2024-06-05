@@ -17,32 +17,18 @@ export type ElementInput = {
 
 /** @internal */
 export namespace ElementInput$ {
-    export const inboundSchema: z.ZodType<ElementInput, z.ZodTypeDef, unknown> = z
-        .object({
-            akUUID: z.nullable(z.string()).optional(),
-            weight: z.nullable(z.number()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.akUUID === undefined ? null : { akUUID: v.akUUID }),
-                ...(v.weight === undefined ? null : { weight: v.weight }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ElementInput, z.ZodTypeDef, unknown> = z.object({
+        akUUID: z.nullable(z.string()).optional(),
+        weight: z.nullable(z.number()).optional(),
+    });
 
     export type Outbound = {
         akUUID?: string | null | undefined;
         weight?: number | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ElementInput> = z
-        .object({
-            akUUID: z.nullable(z.string()).optional(),
-            weight: z.nullable(z.number()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.akUUID === undefined ? null : { akUUID: v.akUUID }),
-                ...(v.weight === undefined ? null : { weight: v.weight }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ElementInput> = z.object({
+        akUUID: z.nullable(z.string()).optional(),
+        weight: z.nullable(z.number()).optional(),
+    });
 }

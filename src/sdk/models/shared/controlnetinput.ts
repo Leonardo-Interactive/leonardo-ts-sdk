@@ -60,23 +60,13 @@ export namespace StrengthType$ {
 
 /** @internal */
 export namespace ControlnetInput$ {
-    export const inboundSchema: z.ZodType<ControlnetInput, z.ZodTypeDef, unknown> = z
-        .object({
-            initImageId: z.string().optional(),
-            initImageType: InitImageType$.inboundSchema.optional(),
-            preprocessorId: z.number().optional(),
-            strengthType: z.nullable(StrengthType$.inboundSchema).optional(),
-            weight: z.nullable(z.number()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.initImageId === undefined ? null : { initImageId: v.initImageId }),
-                ...(v.initImageType === undefined ? null : { initImageType: v.initImageType }),
-                ...(v.preprocessorId === undefined ? null : { preprocessorId: v.preprocessorId }),
-                ...(v.strengthType === undefined ? null : { strengthType: v.strengthType }),
-                ...(v.weight === undefined ? null : { weight: v.weight }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ControlnetInput, z.ZodTypeDef, unknown> = z.object({
+        initImageId: z.string().optional(),
+        initImageType: InitImageType$.inboundSchema.optional(),
+        preprocessorId: z.number().optional(),
+        strengthType: z.nullable(StrengthType$.inboundSchema).optional(),
+        weight: z.nullable(z.number()).optional(),
+    });
 
     export type Outbound = {
         initImageId?: string | undefined;
@@ -86,21 +76,11 @@ export namespace ControlnetInput$ {
         weight?: number | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ControlnetInput> = z
-        .object({
-            initImageId: z.string().optional(),
-            initImageType: InitImageType$.outboundSchema.optional(),
-            preprocessorId: z.number().optional(),
-            strengthType: z.nullable(StrengthType$.outboundSchema).optional(),
-            weight: z.nullable(z.number()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.initImageId === undefined ? null : { initImageId: v.initImageId }),
-                ...(v.initImageType === undefined ? null : { initImageType: v.initImageType }),
-                ...(v.preprocessorId === undefined ? null : { preprocessorId: v.preprocessorId }),
-                ...(v.strengthType === undefined ? null : { strengthType: v.strengthType }),
-                ...(v.weight === undefined ? null : { weight: v.weight }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ControlnetInput> = z.object({
+        initImageId: z.string().optional(),
+        initImageType: InitImageType$.outboundSchema.optional(),
+        preprocessorId: z.number().optional(),
+        strengthType: z.nullable(StrengthType$.outboundSchema).optional(),
+        weight: z.nullable(z.number()).optional(),
+    });
 }
