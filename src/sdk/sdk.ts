@@ -47,6 +47,11 @@ export class Leonardo extends ClientSDK {
         void this.options$;
     }
 
+    private _initImages?: InitImages;
+    get initImages(): InitImages {
+        return (this._initImages ??= new InitImages(this.options$));
+    }
+
     private _dataset?: Dataset;
     get dataset(): Dataset {
         return (this._dataset ??= new Dataset(this.options$));
@@ -75,11 +80,6 @@ export class Leonardo extends ClientSDK {
     private _texture?: Texture;
     get texture(): Texture {
         return (this._texture ??= new Texture(this.options$));
-    }
-
-    private _initImages?: InitImages;
-    get initImages(): InitImages {
-        return (this._initImages ??= new InitImages(this.options$));
     }
 
     private _user?: User;

@@ -23,6 +23,22 @@ export type CreateGenerationRequestBody = {
      */
     alchemy?: boolean | null | undefined;
     /**
+     * The ID of an initial image to use in Canvas Editor request.
+     */
+    canvasInitId?: string | null | undefined;
+    /**
+     * The ID of a mask image to use in Canvas Editor request.
+     */
+    canvasMaskId?: string | null | undefined;
+    /**
+     * Whether the generation is for the Canvas Editor feature.
+     */
+    canvasRequest?: boolean | null | undefined;
+    /**
+     * The type of request for the Canvas Editor.
+     */
+    canvasRequestType?: shared.CanvasRequestType | null | undefined;
+    /**
      * Contrast Ratio to use with Alchemy. Must be a float between 0 and 1 inclusive.
      */
     contrastRatio?: number | null | undefined;
@@ -216,6 +232,10 @@ export namespace CreateGenerationRequestBody$ {
     export const inboundSchema: z.ZodType<CreateGenerationRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             alchemy: z.nullable(z.boolean().default(true)),
+            canvasInitId: z.nullable(z.string()).optional(),
+            canvasMaskId: z.nullable(z.string()).optional(),
+            canvasRequest: z.nullable(z.boolean()).optional(),
+            canvasRequestType: z.nullable(shared.CanvasRequestType$.inboundSchema).optional(),
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
             controlNetType: shared.ControlnetType$.inboundSchema.optional(),
@@ -273,6 +293,10 @@ export namespace CreateGenerationRequestBody$ {
 
     export type Outbound = {
         alchemy: boolean | null;
+        canvasInitId?: string | null | undefined;
+        canvasMaskId?: string | null | undefined;
+        canvasRequest?: boolean | null | undefined;
+        canvasRequestType?: string | null | undefined;
         contrastRatio?: number | null | undefined;
         controlNet?: boolean | null | undefined;
         controlNetType?: string | undefined;
@@ -317,6 +341,10 @@ export namespace CreateGenerationRequestBody$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateGenerationRequestBody> = z
         .object({
             alchemy: z.nullable(z.boolean().default(true)),
+            canvasInitId: z.nullable(z.string()).optional(),
+            canvasMaskId: z.nullable(z.string()).optional(),
+            canvasRequest: z.nullable(z.boolean()).optional(),
+            canvasRequestType: z.nullable(shared.CanvasRequestType$.outboundSchema).optional(),
             contrastRatio: z.nullable(z.number()).optional(),
             controlNet: z.nullable(z.boolean()).optional(),
             controlNetType: shared.ControlnetType$.outboundSchema.optional(),

@@ -7,9 +7,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.dataset.createDataset({
-        name: "<value>",
-    });
+    const result = await leonardo.initImages.deleteInitImageById("<value>");
 
     // Handle the result
     console.log(result);

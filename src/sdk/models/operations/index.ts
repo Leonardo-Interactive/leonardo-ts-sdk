@@ -33,6 +33,7 @@ export * from "./performinstantrefine";
 export * from "./pricingcalculator";
 export * from "./promptimprove";
 export * from "./promptrandom";
+export * from "./uploadcanvasinitimage";
 export * from "./uploaddatasetimage";
 export * from "./uploaddatasetimagefromgen";
 export * from "./uploadinitimage";

@@ -190,6 +190,78 @@ export class InitImages extends ClientSDK {
     }
 
     /**
+     * Upload Canvas Editor init and mask image
+     *
+     * @remarks
+     * This endpoint returns presigned details to upload an init image and a mask image to S3
+     */
+    async uploadCanvasInitImage(
+        request: operations.UploadCanvasInitImageRequestBody,
+        options?: RequestOptions
+    ): Promise<operations.UploadCanvasInitImageResponse> {
+        const input$ = request;
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.UploadCanvasInitImageRequestBody$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/canvas-init-image")();
+
+        const query$ = "";
+
+        let security$;
+        if (typeof this.options$.bearerAuth === "function") {
+            security$ = { bearerAuth: await this.options$.bearerAuth() };
+        } else if (this.options$.bearerAuth) {
+            security$ = { bearerAuth: this.options$.bearerAuth };
+        } else {
+            security$ = {};
+        }
+        const context = {
+            operationID: "uploadCanvasInitImage",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearerAuth,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = { context, errorCodes: [] };
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.UploadCanvasInitImageResponse>()
+            .json(200, operations.UploadCanvasInitImageResponse$, { key: "object" })
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * Upload init image
      *
      * @remarks

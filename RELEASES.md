@@ -2300,3 +2300,13 @@ Based on:
 - [typescript v4.11.5] ./
 ### Releases
 - [NPM v4.11.5] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.5 - ./
+
+## 2024-06-12 03:02:02
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.305.0 (2.340.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.6] ./
+### Releases
+- [NPM v4.11.6] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.6 - ./

@@ -40,9 +40,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.dataset.createDataset({
-        name: "<value>",
-    });
+    const result = await leonardo.initImages.deleteInitImageById("<value>");
 
     // Handle the result
     console.log(result);
@@ -55,6 +53,13 @@ run();
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
+
+### [initImages](docs/sdks/initimages/README.md)
+
+* [deleteInitImageById](docs/sdks/initimages/README.md#deleteinitimagebyid) - Delete init image
+* [getInitImageById](docs/sdks/initimages/README.md#getinitimagebyid) - Get single init image
+* [uploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
+* [uploadInitImage](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
 
 ### [dataset](docs/sdks/dataset/README.md)
 
@@ -90,12 +95,6 @@ run();
 
 * [createTextureGeneration](docs/sdks/texture/README.md#createtexturegeneration) - Create Texture Generation
 * [deleteTextureGenerationById](docs/sdks/texture/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
-
-### [initImages](docs/sdks/initimages/README.md)
-
-* [deleteInitImageById](docs/sdks/initimages/README.md#deleteinitimagebyid) - Delete init image
-* [getInitImageById](docs/sdks/initimages/README.md#getinitimagebyid) - Get single init image
-* [uploadInitImage](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
 
 ### [user](docs/sdks/user/README.md)
 
@@ -160,9 +159,7 @@ const leonardo = new Leonardo({
 async function run() {
     let result;
     try {
-        result = await leonardo.dataset.createDataset({
-            name: "<value>",
-        });
+        result = await leonardo.initImages.deleteInitImageById("<value>");
     } catch (err) {
         switch (true) {
             case err instanceof errors.SDKValidationError: {
@@ -260,9 +257,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.dataset.createDataset({
-        name: "<value>",
-    });
+    const result = await leonardo.initImages.deleteInitImageById("<value>");
 
     // Handle the result
     console.log(result);
@@ -286,9 +281,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.dataset.createDataset({
-        name: "<value>",
-    });
+    const result = await leonardo.initImages.deleteInitImageById("<value>");
 
     // Handle the result
     console.log(result);
@@ -321,9 +314,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.dataset.createDataset({
-        name: "<value>",
-    });
+    const result = await leonardo.initImages.deleteInitImageById("<value>");
 
     // Handle the result
     console.log(result);

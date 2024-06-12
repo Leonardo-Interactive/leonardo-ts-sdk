@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 82c7ac42c922a46aa5fc8804655d02bc
+  docChecksum: ccea4d36ebd5eea281cd3bd2e9664c26
   docVersion: v1.0.0
-  speakeasyVersion: 1.303.4
-  generationVersion: 2.340.2
-  releaseVersion: 4.11.5
-  configChecksum: 66b87d8715c8d2af8de0e40d757a9046
+  speakeasyVersion: 1.305.0
+  generationVersion: 2.340.3
+  releaseVersion: 4.11.6
+  configChecksum: 709417f21241e9f36f818bea19303f28
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -27,13 +27,13 @@ features:
     responseFormat: 0.2.3
     sdkHooks: 0.1.0
 generatedFiles:
+  - src/sdk/initimages.ts
   - src/sdk/dataset.ts
   - src/sdk/elements.ts
   - src/sdk/image.ts
   - src/sdk/realtimecanvas.ts
   - src/sdk/motion.ts
   - src/sdk/texture.ts
-  - src/sdk/initimages.ts
   - src/sdk/user.ts
   - src/sdk/models.ts
   - src/sdk/threedmodelassets.ts
@@ -67,6 +67,10 @@ generatedFiles:
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
   - tsconfig.json
+  - src/sdk/models/operations/deleteinitimagebyid.ts
+  - src/sdk/models/operations/getinitimagebyid.ts
+  - src/sdk/models/operations/uploadcanvasinitimage.ts
+  - src/sdk/models/operations/uploadinitimage.ts
   - src/sdk/models/operations/createdataset.ts
   - src/sdk/models/operations/deletedatasetbyid.ts
   - src/sdk/models/operations/getdatasetbyid.ts
@@ -84,9 +88,6 @@ generatedFiles:
   - src/sdk/models/operations/createsvdmotiongeneration.ts
   - src/sdk/models/operations/createtexturegeneration.ts
   - src/sdk/models/operations/deletetexturegenerationbyid.ts
-  - src/sdk/models/operations/deleteinitimagebyid.ts
-  - src/sdk/models/operations/getinitimagebyid.ts
-  - src/sdk/models/operations/uploadinitimage.ts
   - src/sdk/models/operations/getuserself.ts
   - src/sdk/models/operations/createmodel.ts
   - src/sdk/models/operations/deletemodelbyid.ts
@@ -108,6 +109,7 @@ generatedFiles:
   - src/sdk/models/shared/elementinput.ts
   - src/sdk/models/shared/controlnetinput.ts
   - src/sdk/models/shared/controlnettype.ts
+  - src/sdk/models/shared/canvasrequesttype.ts
   - src/sdk/models/shared/jobstatus.ts
   - src/sdk/models/shared/variationtype.ts
   - src/sdk/models/shared/lcmgenerationstyle.ts
@@ -119,6 +121,22 @@ generatedFiles:
   - src/sdk/models/errors/index.ts
   - src/sdk/models/operations/index.ts
   - src/sdk/models/shared/index.ts
+  - docs/sdk/models/operations/deleteinitimagebyidrequest.md
+  - docs/sdk/models/operations/initimages.md
+  - docs/sdk/models/operations/deleteinitimagebyidresponsebody.md
+  - docs/sdk/models/operations/deleteinitimagebyidresponse.md
+  - docs/sdk/models/operations/getinitimagebyidrequest.md
+  - docs/sdk/models/operations/getinitimagebyidinitimages.md
+  - docs/sdk/models/operations/getinitimagebyidresponsebody.md
+  - docs/sdk/models/operations/getinitimagebyidresponse.md
+  - docs/sdk/models/operations/uploadcanvasinitimagerequestbody.md
+  - docs/sdk/models/operations/canvasinitimageuploadoutput.md
+  - docs/sdk/models/operations/uploadcanvasinitimageresponsebody.md
+  - docs/sdk/models/operations/uploadcanvasinitimageresponse.md
+  - docs/sdk/models/operations/uploadinitimagerequestbody.md
+  - docs/sdk/models/operations/initimageuploadoutput.md
+  - docs/sdk/models/operations/uploadinitimageresponsebody.md
+  - docs/sdk/models/operations/uploadinitimageresponse.md
   - docs/sdk/models/operations/createdatasetrequestbody.md
   - docs/sdk/models/operations/datasets.md
   - docs/sdk/models/operations/createdatasetresponsebody.md
@@ -199,18 +217,6 @@ generatedFiles:
   - docs/sdk/models/operations/modelassettexturegenerations.md
   - docs/sdk/models/operations/deletetexturegenerationbyidresponsebody.md
   - docs/sdk/models/operations/deletetexturegenerationbyidresponse.md
-  - docs/sdk/models/operations/deleteinitimagebyidrequest.md
-  - docs/sdk/models/operations/initimages.md
-  - docs/sdk/models/operations/deleteinitimagebyidresponsebody.md
-  - docs/sdk/models/operations/deleteinitimagebyidresponse.md
-  - docs/sdk/models/operations/getinitimagebyidrequest.md
-  - docs/sdk/models/operations/getinitimagebyidinitimages.md
-  - docs/sdk/models/operations/getinitimagebyidresponsebody.md
-  - docs/sdk/models/operations/getinitimagebyidresponse.md
-  - docs/sdk/models/operations/uploadinitimagerequestbody.md
-  - docs/sdk/models/operations/initimageuploadoutput.md
-  - docs/sdk/models/operations/uploadinitimageresponsebody.md
-  - docs/sdk/models/operations/uploadinitimageresponse.md
   - docs/sdk/models/operations/users.md
   - docs/sdk/models/operations/userdetails.md
   - docs/sdk/models/operations/getuserselfresponsebody.md
@@ -287,6 +293,7 @@ generatedFiles:
   - docs/sdk/models/shared/strengthtype.md
   - docs/sdk/models/shared/controlnetinput.md
   - docs/sdk/models/shared/controlnettype.md
+  - docs/sdk/models/shared/canvasrequesttype.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/variationtype.md
   - docs/sdk/models/shared/lcmgenerationstyle.md
@@ -296,13 +303,13 @@ generatedFiles:
   - docs/sdk/models/shared/universalupscalerstyle.md
   - docs/sdk/models/shared/security.md
   - docs/sdks/leonardo/README.md
+  - docs/sdks/initimages/README.md
   - docs/sdks/dataset/README.md
   - docs/sdks/elements/README.md
   - docs/sdks/image/README.md
   - docs/sdks/realtimecanvas/README.md
   - docs/sdks/motion/README.md
   - docs/sdks/texture/README.md
-  - docs/sdks/initimages/README.md
   - docs/sdks/user/README.md
   - docs/sdks/models/README.md
   - docs/sdks/threedmodelassets/README.md
