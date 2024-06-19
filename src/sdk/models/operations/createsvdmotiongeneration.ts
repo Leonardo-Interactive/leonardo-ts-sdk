@@ -43,7 +43,7 @@ export type MotionSvdGenerationOutput = {
  * Responses for POST /generations-motion-svd
  */
 export type CreateSVDMotionGenerationResponseBody = {
-    sdGenerationJob?: MotionSvdGenerationOutput | null | undefined;
+    motionSvdGenerationJob?: MotionSvdGenerationOutput | null | undefined;
 };
 
 export type CreateSVDMotionGenerationResponse = {
