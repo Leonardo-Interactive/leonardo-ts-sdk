@@ -16,10 +16,25 @@
 npm add @leonardo-ai/sdk
 ```
 
+### PNPM
+
+```bash
+pnpm add @leonardo-ai/sdk
+```
+
+### Bun
+
+```bash
+bun add @leonardo-ai/sdk
+```
+
 ### Yarn
 
 ```bash
-yarn add @leonardo-ai/sdk
+yarn add @leonardo-ai/sdk zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -150,7 +165,7 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import * as errors from "@leonardo-ai/sdk/sdk/models/errors";
+import { SDKValidationError } from "@leonardo-ai/sdk/sdk/models/errors";
 
 const leonardo = new Leonardo({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -162,7 +177,7 @@ async function run() {
         result = await leonardo.initImages.deleteInitImageById("<value>");
     } catch (err) {
         switch (true) {
-            case err instanceof errors.SDKValidationError: {
+            case err instanceof SDKValidationError: {
                 // Validation errors can be pretty-printed
                 console.error(err.pretty());
                 // Raw value may also be inspected

@@ -26,6 +26,7 @@ export enum CustomModelType {
 
 /** @internal */
 export namespace CustomModelType$ {
-    export const inboundSchema = z.nativeEnum(CustomModelType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof CustomModelType> =
+        z.nativeEnum(CustomModelType);
+    export const outboundSchema: z.ZodNativeEnum<typeof CustomModelType> = inboundSchema;
 }

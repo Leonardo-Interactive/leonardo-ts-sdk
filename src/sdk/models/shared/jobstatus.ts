@@ -15,6 +15,6 @@ export enum JobStatus {
 
 /** @internal */
 export namespace JobStatus$ {
-    export const inboundSchema = z.nativeEnum(JobStatus);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof JobStatus> = z.nativeEnum(JobStatus);
+    export const outboundSchema: z.ZodNativeEnum<typeof JobStatus> = inboundSchema;
 }

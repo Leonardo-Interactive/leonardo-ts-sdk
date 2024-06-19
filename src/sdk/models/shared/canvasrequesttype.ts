@@ -16,6 +16,7 @@ export enum CanvasRequestType {
 
 /** @internal */
 export namespace CanvasRequestType$ {
-    export const inboundSchema = z.nativeEnum(CanvasRequestType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof CanvasRequestType> =
+        z.nativeEnum(CanvasRequestType);
+    export const outboundSchema: z.ZodNativeEnum<typeof CanvasRequestType> = inboundSchema;
 }

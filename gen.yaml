@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.11.7
+  version: 4.12.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -38,3 +38,4 @@ typescript:
   packageName: '@leonardo-ai/sdk'
   responseFormat: envelope
   templateVersion: v2
+  useIndexModules: true

@@ -48,14 +48,14 @@ export type ControlnetInput = {
 
 /** @internal */
 export namespace InitImageType$ {
-    export const inboundSchema = z.nativeEnum(InitImageType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof InitImageType> = z.nativeEnum(InitImageType);
+    export const outboundSchema: z.ZodNativeEnum<typeof InitImageType> = inboundSchema;
 }
 
 /** @internal */
 export namespace StrengthType$ {
-    export const inboundSchema = z.nativeEnum(StrengthType);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof StrengthType> = z.nativeEnum(StrengthType);
+    export const outboundSchema: z.ZodNativeEnum<typeof StrengthType> = inboundSchema;
 }
 
 /** @internal */

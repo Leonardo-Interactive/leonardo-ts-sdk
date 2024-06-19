@@ -43,6 +43,7 @@ export enum SdGenerationStyle {
 
 /** @internal */
 export namespace SdGenerationStyle$ {
-    export const inboundSchema = z.nativeEnum(SdGenerationStyle);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof SdGenerationStyle> =
+        z.nativeEnum(SdGenerationStyle);
+    export const outboundSchema: z.ZodNativeEnum<typeof SdGenerationStyle> = inboundSchema;
 }

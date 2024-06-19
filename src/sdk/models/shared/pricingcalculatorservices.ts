@@ -19,6 +19,7 @@ export enum PricingCalculatorServices {
 
 /** @internal */
 export namespace PricingCalculatorServices$ {
-    export const inboundSchema = z.nativeEnum(PricingCalculatorServices);
-    export const outboundSchema = inboundSchema;
+    export const inboundSchema: z.ZodNativeEnum<typeof PricingCalculatorServices> =
+        z.nativeEnum(PricingCalculatorServices);
+    export const outboundSchema: z.ZodNativeEnum<typeof PricingCalculatorServices> = inboundSchema;
 }
