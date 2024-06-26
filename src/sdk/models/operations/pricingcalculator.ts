@@ -73,17 +73,17 @@ export type PricingCalculatorPricingCalculatorObject = {
      */
     numImages?: number | undefined;
     /**
-     * Enable to use prompt magic.
+     * Enable to use Prompt Magic.
      */
-    promptMagic?: boolean | undefined;
+    promptMagic?: boolean | null | undefined;
     /**
      * Strength of prompt magic. Must be a float between 0.1 and 1.0
      */
     promptMagicStrength?: number | null | undefined;
     /**
-     * Strength of prompt magic.
+     * Prompt magic version v2 or v3, for use when promptMagic: true
      */
-    promptMagicStrengthArg?: number | null | undefined;
+    promptMagicVersion?: string | null | undefined;
 };
 
 /**
@@ -275,9 +275,9 @@ export namespace PricingCalculatorPricingCalculatorObject$ {
         isSDXLLightning: z.nullable(z.boolean()).optional(),
         loraCount: z.nullable(z.number().int()).optional(),
         numImages: z.number().int().optional(),
-        promptMagic: z.boolean().optional(),
+        promptMagic: z.nullable(z.boolean()).optional(),
         promptMagicStrength: z.nullable(z.number()).optional(),
-        promptMagicStrengthArg: z.nullable(z.number().int()).optional(),
+        promptMagicVersion: z.nullable(z.string()).optional(),
     });
 
     export type Outbound = {
@@ -292,9 +292,9 @@ export namespace PricingCalculatorPricingCalculatorObject$ {
         isSDXLLightning?: boolean | null | undefined;
         loraCount?: number | null | undefined;
         numImages?: number | undefined;
-        promptMagic?: boolean | undefined;
+        promptMagic?: boolean | null | undefined;
         promptMagicStrength?: number | null | undefined;
-        promptMagicStrengthArg?: number | null | undefined;
+        promptMagicVersion?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -313,9 +313,9 @@ export namespace PricingCalculatorPricingCalculatorObject$ {
         isSDXLLightning: z.nullable(z.boolean()).optional(),
         loraCount: z.nullable(z.number().int()).optional(),
         numImages: z.number().int().optional(),
-        promptMagic: z.boolean().optional(),
+        promptMagic: z.nullable(z.boolean()).optional(),
         promptMagicStrength: z.nullable(z.number()).optional(),
-        promptMagicStrengthArg: z.nullable(z.number().int()).optional(),
+        promptMagicVersion: z.nullable(z.string()).optional(),
     });
 }
 
