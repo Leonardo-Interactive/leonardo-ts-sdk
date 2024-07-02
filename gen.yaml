@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.12.3
+  version: 4.13.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -34,6 +34,7 @@ typescript:
   inputModelSuffix: input
   maxMethodParams: 5
   methodArguments: require-security-and-request
+  moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@leonardo-ai/sdk'
   responseFormat: envelope

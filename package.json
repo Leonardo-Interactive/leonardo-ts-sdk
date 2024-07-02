@@ -1,7 +1,7 @@
 {
   "name": "@leonardo-ai/sdk",
-  "version": "4.12.3",
-  "author": "leonardoai",  
+  "version": "4.13.0",
+  "author": "leonardoai",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
