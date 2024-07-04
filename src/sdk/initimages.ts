@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -50,9 +50,6 @@ export class InitImages extends ClientSDK {
         const input$: operations.DeleteInitImageByIdRequest = {
             id: id,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -67,6 +64,10 @@ export class InitImages extends ClientSDK {
         const path$ = this.templateURLComponent("/init-image/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -83,7 +84,6 @@ export class InitImages extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -97,7 +97,7 @@ export class InitImages extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -126,9 +126,6 @@ export class InitImages extends ClientSDK {
         const input$: operations.GetInitImageByIdRequest = {
             id: id,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -143,6 +140,10 @@ export class InitImages extends ClientSDK {
         const path$ = this.templateURLComponent("/init-image/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -159,7 +160,6 @@ export class InitImages extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -173,7 +173,7 @@ export class InitImages extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -200,10 +200,6 @@ export class InitImages extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UploadCanvasInitImageResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -215,6 +211,11 @@ export class InitImages extends ClientSDK {
         const path$ = this.templateURLComponent("/canvas-init-image")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -231,7 +232,6 @@ export class InitImages extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -245,7 +245,7 @@ export class InitImages extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -272,10 +272,6 @@ export class InitImages extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.UploadInitImageResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -287,6 +283,11 @@ export class InitImages extends ClientSDK {
         const path$ = this.templateURLComponent("/init-image")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -303,7 +304,6 @@ export class InitImages extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -317,7 +317,7 @@ export class InitImages extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

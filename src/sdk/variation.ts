@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -48,10 +48,6 @@ export class Variation extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateUniversalUpscalerJobResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -64,6 +60,11 @@ export class Variation extends ClientSDK {
         const path$ = this.templateURLComponent("/variations/universal-upscaler")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -80,7 +81,6 @@ export class Variation extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -94,7 +94,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -121,10 +121,6 @@ export class Variation extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateVariationNoBGResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -136,6 +132,11 @@ export class Variation extends ClientSDK {
         const path$ = this.templateURLComponent("/variations/nobg")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -152,7 +153,6 @@ export class Variation extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -166,7 +166,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -193,10 +193,6 @@ export class Variation extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateVariationUnzoomResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -213,6 +209,11 @@ export class Variation extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
             security$ = { bearerAuth: await this.options$.bearerAuth() };
@@ -228,7 +229,6 @@ export class Variation extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -242,7 +242,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -269,10 +269,6 @@ export class Variation extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateVariationUpscaleResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -289,6 +285,11 @@ export class Variation extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
             security$ = { bearerAuth: await this.options$.bearerAuth() };
@@ -304,7 +305,6 @@ export class Variation extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -318,7 +318,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -347,9 +347,6 @@ export class Variation extends ClientSDK {
         const input$: operations.GetVariationByIdRequest = {
             id: id,
         };
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -364,6 +361,10 @@ export class Variation extends ClientSDK {
         const path$ = this.templateURLComponent("/variations/{id}")(pathParams$);
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearerAuth === "function") {
@@ -380,7 +381,6 @@ export class Variation extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: [] };
         const request$ = this.createRequest$(
             context,
             {
@@ -394,7 +394,7 @@ export class Variation extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, { context, errorCodes: [] });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
