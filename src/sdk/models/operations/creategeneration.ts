@@ -57,6 +57,14 @@ export type CreateGenerationRequestBody = {
     controlnets?: Array<shared.ControlnetInput> | null | undefined;
     elements?: Array<shared.ElementInput> | null | undefined;
     /**
+     * When enabled, your prompt is expanded to include more detail.
+     */
+    enhancePrompt?: boolean | null | undefined;
+    /**
+     * When enhancePrompt is enabled, the prompt is enhanced based on the given instructions.
+     */
+    enhancePromptInstruction?: string | null | undefined;
+    /**
      * Enable to use the Expanded Domain feature of Alchemy.
      */
     expandedDomain?: boolean | null | undefined;
@@ -242,6 +250,8 @@ export namespace CreateGenerationRequestBody$ {
             controlNetType: shared.ControlnetType$.inboundSchema.optional(),
             controlnets: z.nullable(z.array(shared.ControlnetInput$.inboundSchema)).optional(),
             elements: z.nullable(z.array(shared.ElementInput$.inboundSchema)).optional(),
+            enhancePrompt: z.nullable(z.boolean()).optional(),
+            enhancePromptInstruction: z.nullable(z.string()).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
             guidance_scale: z.nullable(z.number().int()).optional(),
@@ -303,6 +313,8 @@ export namespace CreateGenerationRequestBody$ {
         controlNetType?: string | undefined;
         controlnets?: Array<shared.ControlnetInput$.Outbound> | null | undefined;
         elements?: Array<shared.ElementInput$.Outbound> | null | undefined;
+        enhancePrompt?: boolean | null | undefined;
+        enhancePromptInstruction?: string | null | undefined;
         expandedDomain?: boolean | null | undefined;
         fantasyAvatar?: boolean | null | undefined;
         guidance_scale?: number | null | undefined;
@@ -351,6 +363,8 @@ export namespace CreateGenerationRequestBody$ {
             controlNetType: shared.ControlnetType$.outboundSchema.optional(),
             controlnets: z.nullable(z.array(shared.ControlnetInput$.outboundSchema)).optional(),
             elements: z.nullable(z.array(shared.ElementInput$.outboundSchema)).optional(),
+            enhancePrompt: z.nullable(z.boolean()).optional(),
+            enhancePromptInstruction: z.nullable(z.string()).optional(),
             expandedDomain: z.nullable(z.boolean()).optional(),
             fantasyAvatar: z.nullable(z.boolean()).optional(),
             guidanceScale: z.nullable(z.number().int()).optional(),
