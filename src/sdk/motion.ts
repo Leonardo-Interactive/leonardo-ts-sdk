@@ -52,9 +52,9 @@ export class Motion extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.CreateSVDMotionGenerationRequestBody$.outboundSchema
-                    .optional()
-                    .parse(value$),
+                operations.CreateSVDMotionGenerationRequestBody$outboundSchema.optional().parse(
+                    value$
+                ),
             "Input validation failed"
         );
         const body$ =
@@ -107,7 +107,9 @@ export class Motion extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateSVDMotionGenerationResponse>()
-            .json(200, operations.CreateSVDMotionGenerationResponse$, { key: "object" })
+            .json(200, operations.CreateSVDMotionGenerationResponse$inboundSchema, {
+                key: "object",
+            })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

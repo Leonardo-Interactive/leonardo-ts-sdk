@@ -52,7 +52,7 @@ export class RealtimeCanvas extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.CreateLCMGenerationRequestBody$.outboundSchema.optional().parse(value$),
+                operations.CreateLCMGenerationRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -105,7 +105,7 @@ export class RealtimeCanvas extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateLCMGenerationResponse>()
-            .json(200, operations.CreateLCMGenerationResponse$, { key: "object" })
+            .json(200, operations.CreateLCMGenerationResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -126,9 +126,9 @@ export class RealtimeCanvas extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PerformAlchemyUpscaleLCMRequestBody$.outboundSchema
-                    .optional()
-                    .parse(value$),
+                operations.PerformAlchemyUpscaleLCMRequestBody$outboundSchema.optional().parse(
+                    value$
+                ),
             "Input validation failed"
         );
         const body$ =
@@ -181,7 +181,7 @@ export class RealtimeCanvas extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.PerformAlchemyUpscaleLCMResponse>()
-            .json(200, operations.PerformAlchemyUpscaleLCMResponse$, { key: "object" })
+            .json(200, operations.PerformAlchemyUpscaleLCMResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -202,7 +202,7 @@ export class RealtimeCanvas extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PerformInpaintingLCMRequestBody$.outboundSchema.optional().parse(value$),
+                operations.PerformInpaintingLCMRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -255,7 +255,7 @@ export class RealtimeCanvas extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.PerformInpaintingLCMResponse>()
-            .json(200, operations.PerformInpaintingLCMResponse$, { key: "object" })
+            .json(200, operations.PerformInpaintingLCMResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -276,7 +276,7 @@ export class RealtimeCanvas extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PerformInstantRefineRequestBody$.outboundSchema.optional().parse(value$),
+                operations.PerformInstantRefineRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -329,7 +329,7 @@ export class RealtimeCanvas extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.PerformInstantRefineResponse>()
-            .json(200, operations.PerformInstantRefineResponse$, { key: "object" })
+            .json(200, operations.PerformInstantRefineResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

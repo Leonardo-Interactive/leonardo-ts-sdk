@@ -53,7 +53,7 @@ export class InitImages extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteInitImageByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteInitImageByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -107,7 +107,7 @@ export class InitImages extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteInitImageByIdResponse>()
-            .json(200, operations.DeleteInitImageByIdResponse$, { key: "object" })
+            .json(200, operations.DeleteInitImageByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -129,7 +129,7 @@ export class InitImages extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetInitImageByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetInitImageByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -183,7 +183,7 @@ export class InitImages extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetInitImageByIdResponse>()
-            .json(200, operations.GetInitImageByIdResponse$, { key: "object" })
+            .json(200, operations.GetInitImageByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -203,7 +203,7 @@ export class InitImages extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UploadCanvasInitImageRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.UploadCanvasInitImageRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -255,7 +255,7 @@ export class InitImages extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadCanvasInitImageResponse>()
-            .json(200, operations.UploadCanvasInitImageResponse$, { key: "object" })
+            .json(200, operations.UploadCanvasInitImageResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -275,7 +275,7 @@ export class InitImages extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UploadInitImageRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.UploadInitImageRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -327,7 +327,7 @@ export class InitImages extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadInitImageResponse>()
-            .json(200, operations.UploadInitImageResponse$, { key: "object" })
+            .json(200, operations.UploadInitImageResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

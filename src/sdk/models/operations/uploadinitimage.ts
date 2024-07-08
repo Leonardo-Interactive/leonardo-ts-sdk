@@ -49,106 +49,181 @@ export type UploadInitImageResponse = {
 };
 
 /** @internal */
+export const UploadInitImageRequestBody$inboundSchema: z.ZodType<
+    UploadInitImageRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    extension: z.string(),
+});
+
+/** @internal */
+export type UploadInitImageRequestBody$Outbound = {
+    extension: string;
+};
+
+/** @internal */
+export const UploadInitImageRequestBody$outboundSchema: z.ZodType<
+    UploadInitImageRequestBody$Outbound,
+    z.ZodTypeDef,
+    UploadInitImageRequestBody
+> = z.object({
+    extension: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadInitImageRequestBody$ {
-    export const inboundSchema: z.ZodType<UploadInitImageRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            extension: z.string(),
-        });
-
-    export type Outbound = {
-        extension: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadInitImageRequestBody> =
-        z.object({
-            extension: z.string(),
-        });
+    /** @deprecated use `UploadInitImageRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UploadInitImageRequestBody$inboundSchema;
+    /** @deprecated use `UploadInitImageRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UploadInitImageRequestBody$outboundSchema;
+    /** @deprecated use `UploadInitImageRequestBody$Outbound` instead. */
+    export type Outbound = UploadInitImageRequestBody$Outbound;
 }
 
 /** @internal */
+export const InitImageUploadOutput$inboundSchema: z.ZodType<
+    InitImageUploadOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    fields: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    key: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type InitImageUploadOutput$Outbound = {
+    fields?: string | null | undefined;
+    id?: string | null | undefined;
+    key?: string | null | undefined;
+    url?: string | null | undefined;
+};
+
+/** @internal */
+export const InitImageUploadOutput$outboundSchema: z.ZodType<
+    InitImageUploadOutput$Outbound,
+    z.ZodTypeDef,
+    InitImageUploadOutput
+> = z.object({
+    fields: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    key: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InitImageUploadOutput$ {
-    export const inboundSchema: z.ZodType<InitImageUploadOutput, z.ZodTypeDef, unknown> = z.object({
-        fields: z.nullable(z.string()).optional(),
-        id: z.nullable(z.string()).optional(),
-        key: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
+    /** @deprecated use `InitImageUploadOutput$inboundSchema` instead. */
+    export const inboundSchema = InitImageUploadOutput$inboundSchema;
+    /** @deprecated use `InitImageUploadOutput$outboundSchema` instead. */
+    export const outboundSchema = InitImageUploadOutput$outboundSchema;
+    /** @deprecated use `InitImageUploadOutput$Outbound` instead. */
+    export type Outbound = InitImageUploadOutput$Outbound;
+}
+
+/** @internal */
+export const UploadInitImageResponseBody$inboundSchema: z.ZodType<
+    UploadInitImageResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    uploadInitImage: z.nullable(z.lazy(() => InitImageUploadOutput$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type UploadInitImageResponseBody$Outbound = {
+    uploadInitImage?: InitImageUploadOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const UploadInitImageResponseBody$outboundSchema: z.ZodType<
+    UploadInitImageResponseBody$Outbound,
+    z.ZodTypeDef,
+    UploadInitImageResponseBody
+> = z.object({
+    uploadInitImage: z.nullable(z.lazy(() => InitImageUploadOutput$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UploadInitImageResponseBody$ {
+    /** @deprecated use `UploadInitImageResponseBody$inboundSchema` instead. */
+    export const inboundSchema = UploadInitImageResponseBody$inboundSchema;
+    /** @deprecated use `UploadInitImageResponseBody$outboundSchema` instead. */
+    export const outboundSchema = UploadInitImageResponseBody$outboundSchema;
+    /** @deprecated use `UploadInitImageResponseBody$Outbound` instead. */
+    export type Outbound = UploadInitImageResponseBody$Outbound;
+}
+
+/** @internal */
+export const UploadInitImageResponse$inboundSchema: z.ZodType<
+    UploadInitImageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => UploadInitImageResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
     });
 
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id?: string | null | undefined;
-        key?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InitImageUploadOutput> =
-        z.object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            key: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        });
-}
+/** @internal */
+export type UploadInitImageResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: UploadInitImageResponseBody$Outbound | undefined;
+};
 
 /** @internal */
-export namespace UploadInitImageResponseBody$ {
-    export const inboundSchema: z.ZodType<UploadInitImageResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            uploadInitImage: z
-                .nullable(z.lazy(() => InitImageUploadOutput$.inboundSchema))
-                .optional(),
+export const UploadInitImageResponse$outboundSchema: z.ZodType<
+    UploadInitImageResponse$Outbound,
+    z.ZodTypeDef,
+    UploadInitImageResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => UploadInitImageResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
 
-    export type Outbound = {
-        uploadInitImage?: InitImageUploadOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadInitImageResponseBody> =
-        z.object({
-            uploadInitImage: z
-                .nullable(z.lazy(() => InitImageUploadOutput$.outboundSchema))
-                .optional(),
-        });
-}
-
-/** @internal */
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadInitImageResponse$ {
-    export const inboundSchema: z.ZodType<UploadInitImageResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => UploadInitImageResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: UploadInitImageResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadInitImageResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => UploadInitImageResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `UploadInitImageResponse$inboundSchema` instead. */
+    export const inboundSchema = UploadInitImageResponse$inboundSchema;
+    /** @deprecated use `UploadInitImageResponse$outboundSchema` instead. */
+    export const outboundSchema = UploadInitImageResponse$outboundSchema;
+    /** @deprecated use `UploadInitImageResponse$Outbound` instead. */
+    export type Outbound = UploadInitImageResponse$Outbound;
 }

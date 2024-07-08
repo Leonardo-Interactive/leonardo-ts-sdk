@@ -52,7 +52,7 @@ export class PricingCalculator extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PricingCalculatorRequestBody$.outboundSchema.optional().parse(value$),
+                operations.PricingCalculatorRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -105,7 +105,7 @@ export class PricingCalculator extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.PricingCalculatorResponse>()
-            .json(200, operations.PricingCalculatorResponse$, { key: "object" })
+            .json(200, operations.PricingCalculatorResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

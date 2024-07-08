@@ -18,8 +18,22 @@ export enum PricingCalculatorServices {
 }
 
 /** @internal */
+export const PricingCalculatorServices$inboundSchema: z.ZodNativeEnum<
+    typeof PricingCalculatorServices
+> = z.nativeEnum(PricingCalculatorServices);
+
+/** @internal */
+export const PricingCalculatorServices$outboundSchema: z.ZodNativeEnum<
+    typeof PricingCalculatorServices
+> = PricingCalculatorServices$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorServices$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof PricingCalculatorServices> =
-        z.nativeEnum(PricingCalculatorServices);
-    export const outboundSchema: z.ZodNativeEnum<typeof PricingCalculatorServices> = inboundSchema;
+    /** @deprecated use `PricingCalculatorServices$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorServices$inboundSchema;
+    /** @deprecated use `PricingCalculatorServices$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorServices$outboundSchema;
 }

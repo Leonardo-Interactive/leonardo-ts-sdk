@@ -51,114 +51,194 @@ export type GetInitImageByIdResponse = {
 };
 
 /** @internal */
+export const GetInitImageByIdRequest$inboundSchema: z.ZodType<
+    GetInitImageByIdRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type GetInitImageByIdRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const GetInitImageByIdRequest$outboundSchema: z.ZodType<
+    GetInitImageByIdRequest$Outbound,
+    z.ZodTypeDef,
+    GetInitImageByIdRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetInitImageByIdRequest$ {
-    export const inboundSchema: z.ZodType<GetInitImageByIdRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.string(),
-        });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetInitImageByIdRequest> =
-        z.object({
-            id: z.string(),
-        });
+    /** @deprecated use `GetInitImageByIdRequest$inboundSchema` instead. */
+    export const inboundSchema = GetInitImageByIdRequest$inboundSchema;
+    /** @deprecated use `GetInitImageByIdRequest$outboundSchema` instead. */
+    export const outboundSchema = GetInitImageByIdRequest$outboundSchema;
+    /** @deprecated use `GetInitImageByIdRequest$Outbound` instead. */
+    export type Outbound = GetInitImageByIdRequest$Outbound;
 }
 
 /** @internal */
+export const GetInitImageByIdInitImages$inboundSchema: z.ZodType<
+    GetInitImageByIdInitImages,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    createdAt: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+});
+
+/** @internal */
+export type GetInitImageByIdInitImages$Outbound = {
+    createdAt?: string | undefined;
+    id?: string | null | undefined;
+    url?: string | undefined;
+};
+
+/** @internal */
+export const GetInitImageByIdInitImages$outboundSchema: z.ZodType<
+    GetInitImageByIdInitImages$Outbound,
+    z.ZodTypeDef,
+    GetInitImageByIdInitImages
+> = z.object({
+    createdAt: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetInitImageByIdInitImages$ {
-    export const inboundSchema: z.ZodType<GetInitImageByIdInitImages, z.ZodTypeDef, unknown> =
-        z.object({
-            createdAt: z.string().optional(),
-            id: z.nullable(z.string()).optional(),
-            url: z.string().optional(),
-        });
-
-    export type Outbound = {
-        createdAt?: string | undefined;
-        id?: string | null | undefined;
-        url?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetInitImageByIdInitImages> =
-        z.object({
-            createdAt: z.string().optional(),
-            id: z.nullable(z.string()).optional(),
-            url: z.string().optional(),
-        });
+    /** @deprecated use `GetInitImageByIdInitImages$inboundSchema` instead. */
+    export const inboundSchema = GetInitImageByIdInitImages$inboundSchema;
+    /** @deprecated use `GetInitImageByIdInitImages$outboundSchema` instead. */
+    export const outboundSchema = GetInitImageByIdInitImages$outboundSchema;
+    /** @deprecated use `GetInitImageByIdInitImages$Outbound` instead. */
+    export type Outbound = GetInitImageByIdInitImages$Outbound;
 }
 
 /** @internal */
+export const GetInitImageByIdResponseBody$inboundSchema: z.ZodType<
+    GetInitImageByIdResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        init_images_by_pk: z
+            .nullable(z.lazy(() => GetInitImageByIdInitImages$inboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            init_images_by_pk: "initImagesByPk",
+        });
+    });
+
+/** @internal */
+export type GetInitImageByIdResponseBody$Outbound = {
+    init_images_by_pk?: GetInitImageByIdInitImages$Outbound | null | undefined;
+};
+
+/** @internal */
+export const GetInitImageByIdResponseBody$outboundSchema: z.ZodType<
+    GetInitImageByIdResponseBody$Outbound,
+    z.ZodTypeDef,
+    GetInitImageByIdResponseBody
+> = z
+    .object({
+        initImagesByPk: z
+            .nullable(z.lazy(() => GetInitImageByIdInitImages$outboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            initImagesByPk: "init_images_by_pk",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetInitImageByIdResponseBody$ {
-    export const inboundSchema: z.ZodType<GetInitImageByIdResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            init_images_by_pk: z
-                .nullable(z.lazy(() => GetInitImageByIdInitImages$.inboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                init_images_by_pk: "initImagesByPk",
-            });
-        });
-
-    export type Outbound = {
-        init_images_by_pk?: GetInitImageByIdInitImages$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetInitImageByIdResponseBody> = z
-        .object({
-            initImagesByPk: z
-                .nullable(z.lazy(() => GetInitImageByIdInitImages$.outboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                initImagesByPk: "init_images_by_pk",
-            });
-        });
+    /** @deprecated use `GetInitImageByIdResponseBody$inboundSchema` instead. */
+    export const inboundSchema = GetInitImageByIdResponseBody$inboundSchema;
+    /** @deprecated use `GetInitImageByIdResponseBody$outboundSchema` instead. */
+    export const outboundSchema = GetInitImageByIdResponseBody$outboundSchema;
+    /** @deprecated use `GetInitImageByIdResponseBody$Outbound` instead. */
+    export type Outbound = GetInitImageByIdResponseBody$Outbound;
 }
 
 /** @internal */
+export const GetInitImageByIdResponse$inboundSchema: z.ZodType<
+    GetInitImageByIdResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => GetInitImageByIdResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetInitImageByIdResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: GetInitImageByIdResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const GetInitImageByIdResponse$outboundSchema: z.ZodType<
+    GetInitImageByIdResponse$Outbound,
+    z.ZodTypeDef,
+    GetInitImageByIdResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => GetInitImageByIdResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetInitImageByIdResponse$ {
-    export const inboundSchema: z.ZodType<GetInitImageByIdResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => GetInitImageByIdResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: GetInitImageByIdResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetInitImageByIdResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => GetInitImageByIdResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetInitImageByIdResponse$inboundSchema` instead. */
+    export const inboundSchema = GetInitImageByIdResponse$inboundSchema;
+    /** @deprecated use `GetInitImageByIdResponse$outboundSchema` instead. */
+    export const outboundSchema = GetInitImageByIdResponse$outboundSchema;
+    /** @deprecated use `GetInitImageByIdResponse$Outbound` instead. */
+    export type Outbound = GetInitImageByIdResponse$Outbound;
 }

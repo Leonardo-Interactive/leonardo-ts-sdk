@@ -55,148 +55,222 @@ export type ListPlatformModelsResponse = {
 };
 
 /** @internal */
+export const ListPlatformModelsGeneratedImages$inboundSchema: z.ZodType<
+    ListPlatformModelsGeneratedImages,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+});
+
+/** @internal */
+export type ListPlatformModelsGeneratedImages$Outbound = {
+    id?: string | null | undefined;
+    url?: string | undefined;
+};
+
+/** @internal */
+export const ListPlatformModelsGeneratedImages$outboundSchema: z.ZodType<
+    ListPlatformModelsGeneratedImages$Outbound,
+    z.ZodTypeDef,
+    ListPlatformModelsGeneratedImages
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListPlatformModelsGeneratedImages$ {
-    export const inboundSchema: z.ZodType<
-        ListPlatformModelsGeneratedImages,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        id: z.nullable(z.string()).optional(),
-        url: z.string().optional(),
-    });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        url?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListPlatformModelsGeneratedImages
-    > = z.object({
-        id: z.nullable(z.string()).optional(),
-        url: z.string().optional(),
-    });
+    /** @deprecated use `ListPlatformModelsGeneratedImages$inboundSchema` instead. */
+    export const inboundSchema = ListPlatformModelsGeneratedImages$inboundSchema;
+    /** @deprecated use `ListPlatformModelsGeneratedImages$outboundSchema` instead. */
+    export const outboundSchema = ListPlatformModelsGeneratedImages$outboundSchema;
+    /** @deprecated use `ListPlatformModelsGeneratedImages$Outbound` instead. */
+    export type Outbound = ListPlatformModelsGeneratedImages$Outbound;
 }
 
 /** @internal */
+export const ListPlatformModelsCustomModels$inboundSchema: z.ZodType<
+    ListPlatformModelsCustomModels,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        description: z.string().optional(),
+        featured: z.boolean().optional(),
+        generated_image: z
+            .nullable(z.lazy(() => ListPlatformModelsGeneratedImages$inboundSchema))
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.string().optional(),
+        nsfw: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            generated_image: "generatedImage",
+        });
+    });
+
+/** @internal */
+export type ListPlatformModelsCustomModels$Outbound = {
+    description?: string | undefined;
+    featured?: boolean | undefined;
+    generated_image?: ListPlatformModelsGeneratedImages$Outbound | null | undefined;
+    id?: string | null | undefined;
+    name?: string | undefined;
+    nsfw?: boolean | undefined;
+};
+
+/** @internal */
+export const ListPlatformModelsCustomModels$outboundSchema: z.ZodType<
+    ListPlatformModelsCustomModels$Outbound,
+    z.ZodTypeDef,
+    ListPlatformModelsCustomModels
+> = z
+    .object({
+        description: z.string().optional(),
+        featured: z.boolean().optional(),
+        generatedImage: z
+            .nullable(z.lazy(() => ListPlatformModelsGeneratedImages$outboundSchema))
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.string().optional(),
+        nsfw: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            generatedImage: "generated_image",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListPlatformModelsCustomModels$ {
-    export const inboundSchema: z.ZodType<ListPlatformModelsCustomModels, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.string().optional(),
-            featured: z.boolean().optional(),
-            generated_image: z
-                .nullable(z.lazy(() => ListPlatformModelsGeneratedImages$.inboundSchema))
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.string().optional(),
-            nsfw: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                generated_image: "generatedImage",
-            });
-        });
-
-    export type Outbound = {
-        description?: string | undefined;
-        featured?: boolean | undefined;
-        generated_image?: ListPlatformModelsGeneratedImages$.Outbound | null | undefined;
-        id?: string | null | undefined;
-        name?: string | undefined;
-        nsfw?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListPlatformModelsCustomModels> =
-        z
-            .object({
-                description: z.string().optional(),
-                featured: z.boolean().optional(),
-                generatedImage: z
-                    .nullable(z.lazy(() => ListPlatformModelsGeneratedImages$.outboundSchema))
-                    .optional(),
-                id: z.nullable(z.string()).optional(),
-                name: z.string().optional(),
-                nsfw: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    generatedImage: "generated_image",
-                });
-            });
+    /** @deprecated use `ListPlatformModelsCustomModels$inboundSchema` instead. */
+    export const inboundSchema = ListPlatformModelsCustomModels$inboundSchema;
+    /** @deprecated use `ListPlatformModelsCustomModels$outboundSchema` instead. */
+    export const outboundSchema = ListPlatformModelsCustomModels$outboundSchema;
+    /** @deprecated use `ListPlatformModelsCustomModels$Outbound` instead. */
+    export type Outbound = ListPlatformModelsCustomModels$Outbound;
 }
 
 /** @internal */
+export const ListPlatformModelsResponseBody$inboundSchema: z.ZodType<
+    ListPlatformModelsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        custom_models: z
+            .array(z.lazy(() => ListPlatformModelsCustomModels$inboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            custom_models: "customModels",
+        });
+    });
+
+/** @internal */
+export type ListPlatformModelsResponseBody$Outbound = {
+    custom_models?: Array<ListPlatformModelsCustomModels$Outbound> | undefined;
+};
+
+/** @internal */
+export const ListPlatformModelsResponseBody$outboundSchema: z.ZodType<
+    ListPlatformModelsResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListPlatformModelsResponseBody
+> = z
+    .object({
+        customModels: z
+            .array(z.lazy(() => ListPlatformModelsCustomModels$outboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            customModels: "custom_models",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListPlatformModelsResponseBody$ {
-    export const inboundSchema: z.ZodType<ListPlatformModelsResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            custom_models: z
-                .array(z.lazy(() => ListPlatformModelsCustomModels$.inboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                custom_models: "customModels",
-            });
-        });
-
-    export type Outbound = {
-        custom_models?: Array<ListPlatformModelsCustomModels$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListPlatformModelsResponseBody> =
-        z
-            .object({
-                customModels: z
-                    .array(z.lazy(() => ListPlatformModelsCustomModels$.outboundSchema))
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    customModels: "custom_models",
-                });
-            });
+    /** @deprecated use `ListPlatformModelsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListPlatformModelsResponseBody$inboundSchema;
+    /** @deprecated use `ListPlatformModelsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListPlatformModelsResponseBody$outboundSchema;
+    /** @deprecated use `ListPlatformModelsResponseBody$Outbound` instead. */
+    export type Outbound = ListPlatformModelsResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListPlatformModelsResponse$inboundSchema: z.ZodType<
+    ListPlatformModelsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => ListPlatformModelsResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type ListPlatformModelsResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: ListPlatformModelsResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListPlatformModelsResponse$outboundSchema: z.ZodType<
+    ListPlatformModelsResponse$Outbound,
+    z.ZodTypeDef,
+    ListPlatformModelsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => ListPlatformModelsResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListPlatformModelsResponse$ {
-    export const inboundSchema: z.ZodType<ListPlatformModelsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => ListPlatformModelsResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: ListPlatformModelsResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListPlatformModelsResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => ListPlatformModelsResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `ListPlatformModelsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListPlatformModelsResponse$inboundSchema;
+    /** @deprecated use `ListPlatformModelsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListPlatformModelsResponse$outboundSchema;
+    /** @deprecated use `ListPlatformModelsResponse$Outbound` instead. */
+    export type Outbound = ListPlatformModelsResponse$Outbound;
 }

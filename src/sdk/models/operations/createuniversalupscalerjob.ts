@@ -75,143 +75,197 @@ export type CreateUniversalUpscalerJobResponse = {
 };
 
 /** @internal */
+export const CreateUniversalUpscalerJobRequestBody$inboundSchema: z.ZodType<
+    CreateUniversalUpscalerJobRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    creativityStrength: z.nullable(z.number().int().default(5)),
+    generatedImageId: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    prompt: z.nullable(z.string()).optional(),
+    upscaleMultiplier: z.nullable(z.number().default(1.5)),
+    upscalerStyle: z.nullable(
+        shared.UniversalUpscalerStyle$inboundSchema.default(shared.UniversalUpscalerStyle.General)
+    ),
+    variationId: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type CreateUniversalUpscalerJobRequestBody$Outbound = {
+    creativityStrength: number | null;
+    generatedImageId?: string | null | undefined;
+    initImageId?: string | null | undefined;
+    prompt?: string | null | undefined;
+    upscaleMultiplier: number | null;
+    upscalerStyle: string | null;
+    variationId?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateUniversalUpscalerJobRequestBody$outboundSchema: z.ZodType<
+    CreateUniversalUpscalerJobRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateUniversalUpscalerJobRequestBody
+> = z.object({
+    creativityStrength: z.nullable(z.number().int().default(5)),
+    generatedImageId: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    prompt: z.nullable(z.string()).optional(),
+    upscaleMultiplier: z.nullable(z.number().default(1.5)),
+    upscalerStyle: z.nullable(
+        shared.UniversalUpscalerStyle$outboundSchema.default(shared.UniversalUpscalerStyle.General)
+    ),
+    variationId: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateUniversalUpscalerJobRequestBody$ {
-    export const inboundSchema: z.ZodType<
-        CreateUniversalUpscalerJobRequestBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        creativityStrength: z.nullable(z.number().int().default(5)),
-        generatedImageId: z.nullable(z.string()).optional(),
-        initImageId: z.nullable(z.string()).optional(),
-        prompt: z.nullable(z.string()).optional(),
-        upscaleMultiplier: z.nullable(z.number().default(1.5)),
-        upscalerStyle: z.nullable(
-            shared.UniversalUpscalerStyle$.inboundSchema.default(
-                shared.UniversalUpscalerStyle.General
-            )
-        ),
-        variationId: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        creativityStrength: number | null;
-        generatedImageId?: string | null | undefined;
-        initImageId?: string | null | undefined;
-        prompt?: string | null | undefined;
-        upscaleMultiplier: number | null;
-        upscalerStyle: string | null;
-        variationId?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateUniversalUpscalerJobRequestBody
-    > = z.object({
-        creativityStrength: z.nullable(z.number().int().default(5)),
-        generatedImageId: z.nullable(z.string()).optional(),
-        initImageId: z.nullable(z.string()).optional(),
-        prompt: z.nullable(z.string()).optional(),
-        upscaleMultiplier: z.nullable(z.number().default(1.5)),
-        upscalerStyle: z.nullable(
-            shared.UniversalUpscalerStyle$.outboundSchema.default(
-                shared.UniversalUpscalerStyle.General
-            )
-        ),
-        variationId: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `CreateUniversalUpscalerJobRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateUniversalUpscalerJobRequestBody$inboundSchema;
+    /** @deprecated use `CreateUniversalUpscalerJobRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateUniversalUpscalerJobRequestBody$outboundSchema;
+    /** @deprecated use `CreateUniversalUpscalerJobRequestBody$Outbound` instead. */
+    export type Outbound = CreateUniversalUpscalerJobRequestBody$Outbound;
 }
 
 /** @internal */
+export const UniversalUpscalerOutput$inboundSchema: z.ZodType<
+    UniversalUpscalerOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    id: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type UniversalUpscalerOutput$Outbound = {
+    apiCreditCost?: number | null | undefined;
+    id?: string | null | undefined;
+};
+
+/** @internal */
+export const UniversalUpscalerOutput$outboundSchema: z.ZodType<
+    UniversalUpscalerOutput$Outbound,
+    z.ZodTypeDef,
+    UniversalUpscalerOutput
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    id: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UniversalUpscalerOutput$ {
-    export const inboundSchema: z.ZodType<UniversalUpscalerOutput, z.ZodTypeDef, unknown> =
-        z.object({
-            apiCreditCost: z.nullable(z.number().int()).optional(),
-            id: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UniversalUpscalerOutput> =
-        z.object({
-            apiCreditCost: z.nullable(z.number().int()).optional(),
-            id: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `UniversalUpscalerOutput$inboundSchema` instead. */
+    export const inboundSchema = UniversalUpscalerOutput$inboundSchema;
+    /** @deprecated use `UniversalUpscalerOutput$outboundSchema` instead. */
+    export const outboundSchema = UniversalUpscalerOutput$outboundSchema;
+    /** @deprecated use `UniversalUpscalerOutput$Outbound` instead. */
+    export type Outbound = UniversalUpscalerOutput$Outbound;
 }
 
 /** @internal */
+export const CreateUniversalUpscalerJobResponseBody$inboundSchema: z.ZodType<
+    CreateUniversalUpscalerJobResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    universalUpscaler: z.lazy(() => UniversalUpscalerOutput$inboundSchema).optional(),
+});
+
+/** @internal */
+export type CreateUniversalUpscalerJobResponseBody$Outbound = {
+    universalUpscaler?: UniversalUpscalerOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateUniversalUpscalerJobResponseBody$outboundSchema: z.ZodType<
+    CreateUniversalUpscalerJobResponseBody$Outbound,
+    z.ZodTypeDef,
+    CreateUniversalUpscalerJobResponseBody
+> = z.object({
+    universalUpscaler: z.lazy(() => UniversalUpscalerOutput$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateUniversalUpscalerJobResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        CreateUniversalUpscalerJobResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        universalUpscaler: z.lazy(() => UniversalUpscalerOutput$.inboundSchema).optional(),
-    });
-
-    export type Outbound = {
-        universalUpscaler?: UniversalUpscalerOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateUniversalUpscalerJobResponseBody
-    > = z.object({
-        universalUpscaler: z.lazy(() => UniversalUpscalerOutput$.outboundSchema).optional(),
-    });
+    /** @deprecated use `CreateUniversalUpscalerJobResponseBody$inboundSchema` instead. */
+    export const inboundSchema = CreateUniversalUpscalerJobResponseBody$inboundSchema;
+    /** @deprecated use `CreateUniversalUpscalerJobResponseBody$outboundSchema` instead. */
+    export const outboundSchema = CreateUniversalUpscalerJobResponseBody$outboundSchema;
+    /** @deprecated use `CreateUniversalUpscalerJobResponseBody$Outbound` instead. */
+    export type Outbound = CreateUniversalUpscalerJobResponseBody$Outbound;
 }
 
 /** @internal */
+export const CreateUniversalUpscalerJobResponse$inboundSchema: z.ZodType<
+    CreateUniversalUpscalerJobResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => CreateUniversalUpscalerJobResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CreateUniversalUpscalerJobResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: CreateUniversalUpscalerJobResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateUniversalUpscalerJobResponse$outboundSchema: z.ZodType<
+    CreateUniversalUpscalerJobResponse$Outbound,
+    z.ZodTypeDef,
+    CreateUniversalUpscalerJobResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => CreateUniversalUpscalerJobResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateUniversalUpscalerJobResponse$ {
-    export const inboundSchema: z.ZodType<
-        CreateUniversalUpscalerJobResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => CreateUniversalUpscalerJobResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: CreateUniversalUpscalerJobResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateUniversalUpscalerJobResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => CreateUniversalUpscalerJobResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CreateUniversalUpscalerJobResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateUniversalUpscalerJobResponse$inboundSchema;
+    /** @deprecated use `CreateUniversalUpscalerJobResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateUniversalUpscalerJobResponse$outboundSchema;
+    /** @deprecated use `CreateUniversalUpscalerJobResponse$Outbound` instead. */
+    export type Outbound = CreateUniversalUpscalerJobResponse$Outbound;
 }

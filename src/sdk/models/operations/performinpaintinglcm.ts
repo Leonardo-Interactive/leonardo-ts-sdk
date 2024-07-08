@@ -86,146 +86,212 @@ export type PerformInpaintingLCMResponse = {
 };
 
 /** @internal */
+export const PerformInpaintingLCMRequestBody$inboundSchema: z.ZodType<
+    PerformInpaintingLCMRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    maskDataUrl: z.string(),
+    prompt: z.string(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$inboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/** @internal */
+export type PerformInpaintingLCMRequestBody$Outbound = {
+    guidance?: number | null | undefined;
+    height: number | null;
+    imageDataUrl: string;
+    maskDataUrl: string;
+    prompt: string;
+    requestTimestamp?: string | undefined;
+    seed?: number | null | undefined;
+    steps?: number | null | undefined;
+    strength?: number | null | undefined;
+    style?: string | null | undefined;
+    width: number | null;
+};
+
+/** @internal */
+export const PerformInpaintingLCMRequestBody$outboundSchema: z.ZodType<
+    PerformInpaintingLCMRequestBody$Outbound,
+    z.ZodTypeDef,
+    PerformInpaintingLCMRequestBody
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    maskDataUrl: z.string(),
+    prompt: z.string(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$outboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInpaintingLCMRequestBody$ {
-    export const inboundSchema: z.ZodType<PerformInpaintingLCMRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            guidance: z.nullable(z.number()).optional(),
-            height: z.nullable(z.number().int().default(512)),
-            imageDataUrl: z.string(),
-            maskDataUrl: z.string(),
-            prompt: z.string(),
-            requestTimestamp: z.string().optional(),
-            seed: z.nullable(z.number().int()).optional(),
-            steps: z.nullable(z.number().int()).optional(),
-            strength: z.nullable(z.number()).optional(),
-            style: z.nullable(shared.LcmGenerationStyle$.inboundSchema).optional(),
-            width: z.nullable(z.number().int().default(512)),
-        });
-
-    export type Outbound = {
-        guidance?: number | null | undefined;
-        height: number | null;
-        imageDataUrl: string;
-        maskDataUrl: string;
-        prompt: string;
-        requestTimestamp?: string | undefined;
-        seed?: number | null | undefined;
-        steps?: number | null | undefined;
-        strength?: number | null | undefined;
-        style?: string | null | undefined;
-        width: number | null;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformInpaintingLCMRequestBody
-    > = z.object({
-        guidance: z.nullable(z.number()).optional(),
-        height: z.nullable(z.number().int().default(512)),
-        imageDataUrl: z.string(),
-        maskDataUrl: z.string(),
-        prompt: z.string(),
-        requestTimestamp: z.string().optional(),
-        seed: z.nullable(z.number().int()).optional(),
-        steps: z.nullable(z.number().int()).optional(),
-        strength: z.nullable(z.number()).optional(),
-        style: z.nullable(shared.LcmGenerationStyle$.outboundSchema).optional(),
-        width: z.nullable(z.number().int().default(512)),
-    });
+    /** @deprecated use `PerformInpaintingLCMRequestBody$inboundSchema` instead. */
+    export const inboundSchema = PerformInpaintingLCMRequestBody$inboundSchema;
+    /** @deprecated use `PerformInpaintingLCMRequestBody$outboundSchema` instead. */
+    export const outboundSchema = PerformInpaintingLCMRequestBody$outboundSchema;
+    /** @deprecated use `PerformInpaintingLCMRequestBody$Outbound` instead. */
+    export type Outbound = PerformInpaintingLCMRequestBody$Outbound;
 }
 
 /** @internal */
+export const PerformInpaintingLCMLCMGenerationOutput$inboundSchema: z.ZodType<
+    PerformInpaintingLCMLCMGenerationOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+});
+
+/** @internal */
+export type PerformInpaintingLCMLCMGenerationOutput$Outbound = {
+    apiCreditCost?: number | null | undefined;
+    imageDataUrl?: Array<string> | undefined;
+    requestTimestamp?: string | undefined;
+};
+
+/** @internal */
+export const PerformInpaintingLCMLCMGenerationOutput$outboundSchema: z.ZodType<
+    PerformInpaintingLCMLCMGenerationOutput$Outbound,
+    z.ZodTypeDef,
+    PerformInpaintingLCMLCMGenerationOutput
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInpaintingLCMLCMGenerationOutput$ {
-    export const inboundSchema: z.ZodType<
-        PerformInpaintingLCMLCMGenerationOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-    });
-
-    export type Outbound = {
-        apiCreditCost?: number | null | undefined;
-        imageDataUrl?: Array<string> | undefined;
-        requestTimestamp?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformInpaintingLCMLCMGenerationOutput
-    > = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-    });
+    /** @deprecated use `PerformInpaintingLCMLCMGenerationOutput$inboundSchema` instead. */
+    export const inboundSchema = PerformInpaintingLCMLCMGenerationOutput$inboundSchema;
+    /** @deprecated use `PerformInpaintingLCMLCMGenerationOutput$outboundSchema` instead. */
+    export const outboundSchema = PerformInpaintingLCMLCMGenerationOutput$outboundSchema;
+    /** @deprecated use `PerformInpaintingLCMLCMGenerationOutput$Outbound` instead. */
+    export type Outbound = PerformInpaintingLCMLCMGenerationOutput$Outbound;
 }
 
 /** @internal */
+export const PerformInpaintingLCMResponseBody$inboundSchema: z.ZodType<
+    PerformInpaintingLCMResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    lcmGenerationJob: z
+        .nullable(z.lazy(() => PerformInpaintingLCMLCMGenerationOutput$inboundSchema))
+        .optional(),
+});
+
+/** @internal */
+export type PerformInpaintingLCMResponseBody$Outbound = {
+    lcmGenerationJob?: PerformInpaintingLCMLCMGenerationOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const PerformInpaintingLCMResponseBody$outboundSchema: z.ZodType<
+    PerformInpaintingLCMResponseBody$Outbound,
+    z.ZodTypeDef,
+    PerformInpaintingLCMResponseBody
+> = z.object({
+    lcmGenerationJob: z
+        .nullable(z.lazy(() => PerformInpaintingLCMLCMGenerationOutput$outboundSchema))
+        .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInpaintingLCMResponseBody$ {
-    export const inboundSchema: z.ZodType<PerformInpaintingLCMResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            lcmGenerationJob: z
-                .nullable(z.lazy(() => PerformInpaintingLCMLCMGenerationOutput$.inboundSchema))
-                .optional(),
-        });
-
-    export type Outbound = {
-        lcmGenerationJob?: PerformInpaintingLCMLCMGenerationOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformInpaintingLCMResponseBody
-    > = z.object({
-        lcmGenerationJob: z
-            .nullable(z.lazy(() => PerformInpaintingLCMLCMGenerationOutput$.outboundSchema))
-            .optional(),
-    });
+    /** @deprecated use `PerformInpaintingLCMResponseBody$inboundSchema` instead. */
+    export const inboundSchema = PerformInpaintingLCMResponseBody$inboundSchema;
+    /** @deprecated use `PerformInpaintingLCMResponseBody$outboundSchema` instead. */
+    export const outboundSchema = PerformInpaintingLCMResponseBody$outboundSchema;
+    /** @deprecated use `PerformInpaintingLCMResponseBody$Outbound` instead. */
+    export type Outbound = PerformInpaintingLCMResponseBody$Outbound;
 }
 
 /** @internal */
+export const PerformInpaintingLCMResponse$inboundSchema: z.ZodType<
+    PerformInpaintingLCMResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => PerformInpaintingLCMResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type PerformInpaintingLCMResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: PerformInpaintingLCMResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const PerformInpaintingLCMResponse$outboundSchema: z.ZodType<
+    PerformInpaintingLCMResponse$Outbound,
+    z.ZodTypeDef,
+    PerformInpaintingLCMResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => PerformInpaintingLCMResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInpaintingLCMResponse$ {
-    export const inboundSchema: z.ZodType<PerformInpaintingLCMResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => PerformInpaintingLCMResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: PerformInpaintingLCMResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PerformInpaintingLCMResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => PerformInpaintingLCMResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `PerformInpaintingLCMResponse$inboundSchema` instead. */
+    export const inboundSchema = PerformInpaintingLCMResponse$inboundSchema;
+    /** @deprecated use `PerformInpaintingLCMResponse$outboundSchema` instead. */
+    export const outboundSchema = PerformInpaintingLCMResponse$outboundSchema;
+    /** @deprecated use `PerformInpaintingLCMResponse$Outbound` instead. */
+    export type Outbound = PerformInpaintingLCMResponse$Outbound;
 }

@@ -25,8 +25,20 @@ export enum CustomModelType {
 }
 
 /** @internal */
+export const CustomModelType$inboundSchema: z.ZodNativeEnum<typeof CustomModelType> =
+    z.nativeEnum(CustomModelType);
+
+/** @internal */
+export const CustomModelType$outboundSchema: z.ZodNativeEnum<typeof CustomModelType> =
+    CustomModelType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CustomModelType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof CustomModelType> =
-        z.nativeEnum(CustomModelType);
-    export const outboundSchema: z.ZodNativeEnum<typeof CustomModelType> = inboundSchema;
+    /** @deprecated use `CustomModelType$inboundSchema` instead. */
+    export const inboundSchema = CustomModelType$inboundSchema;
+    /** @deprecated use `CustomModelType$outboundSchema` instead. */
+    export const outboundSchema = CustomModelType$outboundSchema;
 }

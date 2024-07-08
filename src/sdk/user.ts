@@ -87,7 +87,7 @@ export class User extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetUserSelfResponse>()
-            .json(200, operations.GetUserSelfResponse$, { key: "object" })
+            .json(200, operations.GetUserSelfResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

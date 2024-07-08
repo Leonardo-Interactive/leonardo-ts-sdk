@@ -51,7 +51,7 @@ export class Models extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateModelRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.CreateModelRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -103,7 +103,7 @@ export class Models extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateModelResponse>()
-            .json(200, operations.CreateModelResponse$, { key: "object" })
+            .json(200, operations.CreateModelResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -125,7 +125,7 @@ export class Models extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteModelByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteModelByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -179,7 +179,7 @@ export class Models extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteModelByIdResponse>()
-            .json(200, operations.DeleteModelByIdResponse$, { key: "object" })
+            .json(200, operations.DeleteModelByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -201,7 +201,7 @@ export class Models extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetModelByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetModelByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -255,7 +255,7 @@ export class Models extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetModelByIdResponse>()
-            .json(200, operations.GetModelByIdResponse$, { key: "object" })
+            .json(200, operations.GetModelByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -315,7 +315,7 @@ export class Models extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ListPlatformModelsResponse>()
-            .json(200, operations.ListPlatformModelsResponse$, { key: "object" })
+            .json(200, operations.ListPlatformModelsResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

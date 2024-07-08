@@ -47,111 +47,184 @@ export type UploadModelAssetResponse = {
 };
 
 /** @internal */
+export const UploadModelAssetRequestBody$inboundSchema: z.ZodType<
+    UploadModelAssetRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    modelExtension: z.string().optional(),
+    name: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type UploadModelAssetRequestBody$Outbound = {
+    modelExtension?: string | undefined;
+    name?: string | null | undefined;
+};
+
+/** @internal */
+export const UploadModelAssetRequestBody$outboundSchema: z.ZodType<
+    UploadModelAssetRequestBody$Outbound,
+    z.ZodTypeDef,
+    UploadModelAssetRequestBody
+> = z.object({
+    modelExtension: z.string().optional(),
+    name: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadModelAssetRequestBody$ {
-    export const inboundSchema: z.ZodType<UploadModelAssetRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            modelExtension: z.string().optional(),
-            name: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        modelExtension?: string | undefined;
-        name?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadModelAssetRequestBody> =
-        z.object({
-            modelExtension: z.string().optional(),
-            name: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `UploadModelAssetRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UploadModelAssetRequestBody$inboundSchema;
+    /** @deprecated use `UploadModelAssetRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UploadModelAssetRequestBody$outboundSchema;
+    /** @deprecated use `UploadModelAssetRequestBody$Outbound` instead. */
+    export type Outbound = UploadModelAssetRequestBody$Outbound;
 }
 
 /** @internal */
+export const ModelAssetUploadOutput$inboundSchema: z.ZodType<
+    ModelAssetUploadOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    modelFields: z.nullable(z.string()).optional(),
+    modelId: z.nullable(z.string()).optional(),
+    modelKey: z.nullable(z.string()).optional(),
+    modelUrl: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type ModelAssetUploadOutput$Outbound = {
+    modelFields?: string | null | undefined;
+    modelId?: string | null | undefined;
+    modelKey?: string | null | undefined;
+    modelUrl?: string | null | undefined;
+};
+
+/** @internal */
+export const ModelAssetUploadOutput$outboundSchema: z.ZodType<
+    ModelAssetUploadOutput$Outbound,
+    z.ZodTypeDef,
+    ModelAssetUploadOutput
+> = z.object({
+    modelFields: z.nullable(z.string()).optional(),
+    modelId: z.nullable(z.string()).optional(),
+    modelKey: z.nullable(z.string()).optional(),
+    modelUrl: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ModelAssetUploadOutput$ {
-    export const inboundSchema: z.ZodType<ModelAssetUploadOutput, z.ZodTypeDef, unknown> = z.object(
-        {
-            modelFields: z.nullable(z.string()).optional(),
-            modelId: z.nullable(z.string()).optional(),
-            modelKey: z.nullable(z.string()).optional(),
-            modelUrl: z.nullable(z.string()).optional(),
-        }
-    );
-
-    export type Outbound = {
-        modelFields?: string | null | undefined;
-        modelId?: string | null | undefined;
-        modelKey?: string | null | undefined;
-        modelUrl?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ModelAssetUploadOutput> =
-        z.object({
-            modelFields: z.nullable(z.string()).optional(),
-            modelId: z.nullable(z.string()).optional(),
-            modelKey: z.nullable(z.string()).optional(),
-            modelUrl: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `ModelAssetUploadOutput$inboundSchema` instead. */
+    export const inboundSchema = ModelAssetUploadOutput$inboundSchema;
+    /** @deprecated use `ModelAssetUploadOutput$outboundSchema` instead. */
+    export const outboundSchema = ModelAssetUploadOutput$outboundSchema;
+    /** @deprecated use `ModelAssetUploadOutput$Outbound` instead. */
+    export type Outbound = ModelAssetUploadOutput$Outbound;
 }
 
 /** @internal */
+export const UploadModelAssetResponseBody$inboundSchema: z.ZodType<
+    UploadModelAssetResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    uploadModelAsset: z.nullable(z.lazy(() => ModelAssetUploadOutput$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type UploadModelAssetResponseBody$Outbound = {
+    uploadModelAsset?: ModelAssetUploadOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const UploadModelAssetResponseBody$outboundSchema: z.ZodType<
+    UploadModelAssetResponseBody$Outbound,
+    z.ZodTypeDef,
+    UploadModelAssetResponseBody
+> = z.object({
+    uploadModelAsset: z.nullable(z.lazy(() => ModelAssetUploadOutput$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadModelAssetResponseBody$ {
-    export const inboundSchema: z.ZodType<UploadModelAssetResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            uploadModelAsset: z
-                .nullable(z.lazy(() => ModelAssetUploadOutput$.inboundSchema))
-                .optional(),
-        });
-
-    export type Outbound = {
-        uploadModelAsset?: ModelAssetUploadOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadModelAssetResponseBody> =
-        z.object({
-            uploadModelAsset: z
-                .nullable(z.lazy(() => ModelAssetUploadOutput$.outboundSchema))
-                .optional(),
-        });
+    /** @deprecated use `UploadModelAssetResponseBody$inboundSchema` instead. */
+    export const inboundSchema = UploadModelAssetResponseBody$inboundSchema;
+    /** @deprecated use `UploadModelAssetResponseBody$outboundSchema` instead. */
+    export const outboundSchema = UploadModelAssetResponseBody$outboundSchema;
+    /** @deprecated use `UploadModelAssetResponseBody$Outbound` instead. */
+    export type Outbound = UploadModelAssetResponseBody$Outbound;
 }
 
 /** @internal */
+export const UploadModelAssetResponse$inboundSchema: z.ZodType<
+    UploadModelAssetResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => UploadModelAssetResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type UploadModelAssetResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: UploadModelAssetResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const UploadModelAssetResponse$outboundSchema: z.ZodType<
+    UploadModelAssetResponse$Outbound,
+    z.ZodTypeDef,
+    UploadModelAssetResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => UploadModelAssetResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadModelAssetResponse$ {
-    export const inboundSchema: z.ZodType<UploadModelAssetResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => UploadModelAssetResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: UploadModelAssetResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadModelAssetResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => UploadModelAssetResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `UploadModelAssetResponse$inboundSchema` instead. */
+    export const inboundSchema = UploadModelAssetResponse$inboundSchema;
+    /** @deprecated use `UploadModelAssetResponse$outboundSchema` instead. */
+    export const outboundSchema = UploadModelAssetResponse$outboundSchema;
+    /** @deprecated use `UploadModelAssetResponse$Outbound` instead. */
+    export type Outbound = UploadModelAssetResponse$Outbound;
 }

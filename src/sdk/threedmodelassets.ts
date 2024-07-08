@@ -55,7 +55,7 @@ export class ThreeDModelAssets extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.Delete3DModelByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.Delete3DModelByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
@@ -110,7 +110,7 @@ export class ThreeDModelAssets extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.Delete3DModelByIdResponse>()
-            .json(200, operations.Delete3DModelByIdResponse$, { key: "object" })
+            .json(200, operations.Delete3DModelByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -131,7 +131,7 @@ export class ThreeDModelAssets extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.UploadModelAssetRequestBody$.outboundSchema.optional().parse(value$),
+                operations.UploadModelAssetRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -184,7 +184,7 @@ export class ThreeDModelAssets extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadModelAssetResponse>()
-            .json(200, operations.UploadModelAssetResponse$, { key: "object" })
+            .json(200, operations.UploadModelAssetResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

@@ -52,9 +52,9 @@ export class Texture extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.CreateTextureGenerationRequestBody$.outboundSchema
-                    .optional()
-                    .parse(value$),
+                operations.CreateTextureGenerationRequestBody$outboundSchema.optional().parse(
+                    value$
+                ),
             "Input validation failed"
         );
         const body$ =
@@ -107,7 +107,7 @@ export class Texture extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateTextureGenerationResponse>()
-            .json(200, operations.CreateTextureGenerationResponse$, { key: "object" })
+            .json(200, operations.CreateTextureGenerationResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -131,7 +131,7 @@ export class Texture extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteTextureGenerationByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteTextureGenerationByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
@@ -186,7 +186,9 @@ export class Texture extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteTextureGenerationByIdResponse>()
-            .json(200, operations.DeleteTextureGenerationByIdResponse$, { key: "object" })
+            .json(200, operations.DeleteTextureGenerationByIdResponse$inboundSchema, {
+                key: "object",
+            })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

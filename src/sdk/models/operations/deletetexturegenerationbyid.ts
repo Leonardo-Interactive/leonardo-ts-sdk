@@ -60,179 +60,242 @@ export type DeleteTextureGenerationByIdResponse = {
 };
 
 /** @internal */
+export const DeleteTextureGenerationByIdRequestBody$inboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type DeleteTextureGenerationByIdRequestBody$Outbound = {
+    id?: string | null | undefined;
+};
+
+/** @internal */
+export const DeleteTextureGenerationByIdRequestBody$outboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdRequestBody$Outbound,
+    z.ZodTypeDef,
+    DeleteTextureGenerationByIdRequestBody
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteTextureGenerationByIdRequestBody$ {
-    export const inboundSchema: z.ZodType<
-        DeleteTextureGenerationByIdRequestBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        id: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeleteTextureGenerationByIdRequestBody
-    > = z.object({
-        id: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `DeleteTextureGenerationByIdRequestBody$inboundSchema` instead. */
+    export const inboundSchema = DeleteTextureGenerationByIdRequestBody$inboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdRequestBody$outboundSchema` instead. */
+    export const outboundSchema = DeleteTextureGenerationByIdRequestBody$outboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdRequestBody$Outbound` instead. */
+    export type Outbound = DeleteTextureGenerationByIdRequestBody$Outbound;
 }
 
 /** @internal */
+export const DeleteTextureGenerationByIdRequest$inboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RequestBody: z.lazy(() => DeleteTextureGenerationByIdRequestBody$inboundSchema).optional(),
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequestBody: "requestBody",
+        });
+    });
+
+/** @internal */
+export type DeleteTextureGenerationByIdRequest$Outbound = {
+    RequestBody?: DeleteTextureGenerationByIdRequestBody$Outbound | undefined;
+    id: string;
+};
+
+/** @internal */
+export const DeleteTextureGenerationByIdRequest$outboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteTextureGenerationByIdRequest
+> = z
+    .object({
+        requestBody: z.lazy(() => DeleteTextureGenerationByIdRequestBody$outboundSchema).optional(),
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requestBody: "RequestBody",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteTextureGenerationByIdRequest$ {
-    export const inboundSchema: z.ZodType<
-        DeleteTextureGenerationByIdRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            RequestBody: z
-                .lazy(() => DeleteTextureGenerationByIdRequestBody$.inboundSchema)
-                .optional(),
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequestBody: "requestBody",
-            });
-        });
-
-    export type Outbound = {
-        RequestBody?: DeleteTextureGenerationByIdRequestBody$.Outbound | undefined;
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeleteTextureGenerationByIdRequest
-    > = z
-        .object({
-            requestBody: z
-                .lazy(() => DeleteTextureGenerationByIdRequestBody$.outboundSchema)
-                .optional(),
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requestBody: "RequestBody",
-            });
-        });
+    /** @deprecated use `DeleteTextureGenerationByIdRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteTextureGenerationByIdRequest$inboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteTextureGenerationByIdRequest$outboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdRequest$Outbound` instead. */
+    export type Outbound = DeleteTextureGenerationByIdRequest$Outbound;
 }
 
 /** @internal */
+export const ModelAssetTextureGenerations$inboundSchema: z.ZodType<
+    ModelAssetTextureGenerations,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type ModelAssetTextureGenerations$Outbound = {
+    id?: string | null | undefined;
+};
+
+/** @internal */
+export const ModelAssetTextureGenerations$outboundSchema: z.ZodType<
+    ModelAssetTextureGenerations$Outbound,
+    z.ZodTypeDef,
+    ModelAssetTextureGenerations
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ModelAssetTextureGenerations$ {
-    export const inboundSchema: z.ZodType<ModelAssetTextureGenerations, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ModelAssetTextureGenerations> =
-        z.object({
-            id: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `ModelAssetTextureGenerations$inboundSchema` instead. */
+    export const inboundSchema = ModelAssetTextureGenerations$inboundSchema;
+    /** @deprecated use `ModelAssetTextureGenerations$outboundSchema` instead. */
+    export const outboundSchema = ModelAssetTextureGenerations$outboundSchema;
+    /** @deprecated use `ModelAssetTextureGenerations$Outbound` instead. */
+    export type Outbound = ModelAssetTextureGenerations$Outbound;
 }
 
 /** @internal */
+export const DeleteTextureGenerationByIdResponseBody$inboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        delete_model_asset_texture_generations_by_pk: z
+            .nullable(z.lazy(() => ModelAssetTextureGenerations$inboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            delete_model_asset_texture_generations_by_pk: "deleteModelAssetTextureGenerationsByPk",
+        });
+    });
+
+/** @internal */
+export type DeleteTextureGenerationByIdResponseBody$Outbound = {
+    delete_model_asset_texture_generations_by_pk?:
+        | ModelAssetTextureGenerations$Outbound
+        | null
+        | undefined;
+};
+
+/** @internal */
+export const DeleteTextureGenerationByIdResponseBody$outboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdResponseBody$Outbound,
+    z.ZodTypeDef,
+    DeleteTextureGenerationByIdResponseBody
+> = z
+    .object({
+        deleteModelAssetTextureGenerationsByPk: z
+            .nullable(z.lazy(() => ModelAssetTextureGenerations$outboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            deleteModelAssetTextureGenerationsByPk: "delete_model_asset_texture_generations_by_pk",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteTextureGenerationByIdResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        DeleteTextureGenerationByIdResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            delete_model_asset_texture_generations_by_pk: z
-                .nullable(z.lazy(() => ModelAssetTextureGenerations$.inboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                delete_model_asset_texture_generations_by_pk:
-                    "deleteModelAssetTextureGenerationsByPk",
-            });
-        });
-
-    export type Outbound = {
-        delete_model_asset_texture_generations_by_pk?:
-            | ModelAssetTextureGenerations$.Outbound
-            | null
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeleteTextureGenerationByIdResponseBody
-    > = z
-        .object({
-            deleteModelAssetTextureGenerationsByPk: z
-                .nullable(z.lazy(() => ModelAssetTextureGenerations$.outboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                deleteModelAssetTextureGenerationsByPk:
-                    "delete_model_asset_texture_generations_by_pk",
-            });
-        });
+    /** @deprecated use `DeleteTextureGenerationByIdResponseBody$inboundSchema` instead. */
+    export const inboundSchema = DeleteTextureGenerationByIdResponseBody$inboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdResponseBody$outboundSchema` instead. */
+    export const outboundSchema = DeleteTextureGenerationByIdResponseBody$outboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdResponseBody$Outbound` instead. */
+    export type Outbound = DeleteTextureGenerationByIdResponseBody$Outbound;
 }
 
 /** @internal */
+export const DeleteTextureGenerationByIdResponse$inboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => DeleteTextureGenerationByIdResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type DeleteTextureGenerationByIdResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: DeleteTextureGenerationByIdResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const DeleteTextureGenerationByIdResponse$outboundSchema: z.ZodType<
+    DeleteTextureGenerationByIdResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteTextureGenerationByIdResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => DeleteTextureGenerationByIdResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteTextureGenerationByIdResponse$ {
-    export const inboundSchema: z.ZodType<
-        DeleteTextureGenerationByIdResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => DeleteTextureGenerationByIdResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: DeleteTextureGenerationByIdResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeleteTextureGenerationByIdResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z
-                .lazy(() => DeleteTextureGenerationByIdResponseBody$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `DeleteTextureGenerationByIdResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteTextureGenerationByIdResponse$inboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteTextureGenerationByIdResponse$outboundSchema;
+    /** @deprecated use `DeleteTextureGenerationByIdResponse$Outbound` instead. */
+    export type Outbound = DeleteTextureGenerationByIdResponse$Outbound;
 }

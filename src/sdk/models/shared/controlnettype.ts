@@ -16,8 +16,20 @@ export enum ControlnetType {
 }
 
 /** @internal */
+export const ControlnetType$inboundSchema: z.ZodNativeEnum<typeof ControlnetType> =
+    z.nativeEnum(ControlnetType);
+
+/** @internal */
+export const ControlnetType$outboundSchema: z.ZodNativeEnum<typeof ControlnetType> =
+    ControlnetType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ControlnetType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ControlnetType> =
-        z.nativeEnum(ControlnetType);
-    export const outboundSchema: z.ZodNativeEnum<typeof ControlnetType> = inboundSchema;
+    /** @deprecated use `ControlnetType$inboundSchema` instead. */
+    export const inboundSchema = ControlnetType$inboundSchema;
+    /** @deprecated use `ControlnetType$outboundSchema` instead. */
+    export const outboundSchema = ControlnetType$outboundSchema;
 }

@@ -15,7 +15,18 @@ export enum Strength {
 }
 
 /** @internal */
+export const Strength$inboundSchema: z.ZodNativeEnum<typeof Strength> = z.nativeEnum(Strength);
+
+/** @internal */
+export const Strength$outboundSchema: z.ZodNativeEnum<typeof Strength> = Strength$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Strength$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Strength> = z.nativeEnum(Strength);
-    export const outboundSchema: z.ZodNativeEnum<typeof Strength> = inboundSchema;
+    /** @deprecated use `Strength$inboundSchema` instead. */
+    export const inboundSchema = Strength$inboundSchema;
+    /** @deprecated use `Strength$outboundSchema` instead. */
+    export const outboundSchema = Strength$outboundSchema;
 }

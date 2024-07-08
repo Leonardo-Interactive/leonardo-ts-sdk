@@ -52,7 +52,7 @@ export class Variation extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.CreateUniversalUpscalerJobRequestBody$.outboundSchema.parse(value$),
+                operations.CreateUniversalUpscalerJobRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -104,7 +104,9 @@ export class Variation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateUniversalUpscalerJobResponse>()
-            .json(200, operations.CreateUniversalUpscalerJobResponse$, { key: "object" })
+            .json(200, operations.CreateUniversalUpscalerJobResponse$inboundSchema, {
+                key: "object",
+            })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -124,7 +126,7 @@ export class Variation extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateVariationNoBGRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.CreateVariationNoBGRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -176,7 +178,7 @@ export class Variation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateVariationNoBGResponse>()
-            .json(200, operations.CreateVariationNoBGResponse$, { key: "object" })
+            .json(200, operations.CreateVariationNoBGResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -197,9 +199,7 @@ export class Variation extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.CreateVariationUnzoomRequestBody$.outboundSchema
-                    .optional()
-                    .parse(value$),
+                operations.CreateVariationUnzoomRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
@@ -252,7 +252,7 @@ export class Variation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateVariationUnzoomResponse>()
-            .json(200, operations.CreateVariationUnzoomResponse$, { key: "object" })
+            .json(200, operations.CreateVariationUnzoomResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -273,9 +273,9 @@ export class Variation extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.CreateVariationUpscaleRequestBody$.outboundSchema
-                    .optional()
-                    .parse(value$),
+                operations.CreateVariationUpscaleRequestBody$outboundSchema.optional().parse(
+                    value$
+                ),
             "Input validation failed"
         );
         const body$ =
@@ -328,7 +328,7 @@ export class Variation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateVariationUpscaleResponse>()
-            .json(200, operations.CreateVariationUpscaleResponse$, { key: "object" })
+            .json(200, operations.CreateVariationUpscaleResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -350,7 +350,7 @@ export class Variation extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetVariationByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetVariationByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -404,7 +404,7 @@ export class Variation extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetVariationByIdResponse>()
-            .json(200, operations.GetVariationByIdResponse$, { key: "object" })
+            .json(200, operations.GetVariationByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

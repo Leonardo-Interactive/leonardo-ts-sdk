@@ -15,8 +15,20 @@ export enum UniversalUpscalerStyle {
 }
 
 /** @internal */
+export const UniversalUpscalerStyle$inboundSchema: z.ZodNativeEnum<typeof UniversalUpscalerStyle> =
+    z.nativeEnum(UniversalUpscalerStyle);
+
+/** @internal */
+export const UniversalUpscalerStyle$outboundSchema: z.ZodNativeEnum<typeof UniversalUpscalerStyle> =
+    UniversalUpscalerStyle$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UniversalUpscalerStyle$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof UniversalUpscalerStyle> =
-        z.nativeEnum(UniversalUpscalerStyle);
-    export const outboundSchema: z.ZodNativeEnum<typeof UniversalUpscalerStyle> = inboundSchema;
+    /** @deprecated use `UniversalUpscalerStyle$inboundSchema` instead. */
+    export const inboundSchema = UniversalUpscalerStyle$inboundSchema;
+    /** @deprecated use `UniversalUpscalerStyle$outboundSchema` instead. */
+    export const outboundSchema = UniversalUpscalerStyle$outboundSchema;
 }

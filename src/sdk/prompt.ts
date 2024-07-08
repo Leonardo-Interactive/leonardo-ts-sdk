@@ -51,7 +51,7 @@ export class Prompt extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.PromptImproveRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.PromptImproveRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -103,7 +103,7 @@ export class Prompt extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.PromptImproveResponse>()
-            .json(200, operations.PromptImproveResponse$, { key: "object" })
+            .json(200, operations.PromptImproveResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -161,7 +161,7 @@ export class Prompt extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.PromptRandomResponse>()
-            .json(200, operations.PromptRandomResponse$, { key: "object" })
+            .json(200, operations.PromptRandomResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

@@ -93,171 +93,224 @@ export type PerformAlchemyUpscaleLCMResponse = {
 };
 
 /** @internal */
+export const PerformAlchemyUpscaleLCMRequestBody$inboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    refineCreative: z.nullable(z.boolean()).optional(),
+    refineStrength: z.nullable(z.number()).optional(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$inboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/** @internal */
+export type PerformAlchemyUpscaleLCMRequestBody$Outbound = {
+    guidance?: number | null | undefined;
+    height: number | null;
+    imageDataUrl: string;
+    prompt: string;
+    refineCreative?: boolean | null | undefined;
+    refineStrength?: number | null | undefined;
+    requestTimestamp?: string | undefined;
+    seed?: number | null | undefined;
+    steps?: number | null | undefined;
+    strength?: number | null | undefined;
+    style?: string | null | undefined;
+    width: number | null;
+};
+
+/** @internal */
+export const PerformAlchemyUpscaleLCMRequestBody$outboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMRequestBody$Outbound,
+    z.ZodTypeDef,
+    PerformAlchemyUpscaleLCMRequestBody
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    refineCreative: z.nullable(z.boolean()).optional(),
+    refineStrength: z.nullable(z.number()).optional(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$outboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformAlchemyUpscaleLCMRequestBody$ {
-    export const inboundSchema: z.ZodType<
-        PerformAlchemyUpscaleLCMRequestBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        guidance: z.nullable(z.number()).optional(),
-        height: z.nullable(z.number().int().default(512)),
-        imageDataUrl: z.string(),
-        prompt: z.string(),
-        refineCreative: z.nullable(z.boolean()).optional(),
-        refineStrength: z.nullable(z.number()).optional(),
-        requestTimestamp: z.string().optional(),
-        seed: z.nullable(z.number().int()).optional(),
-        steps: z.nullable(z.number().int()).optional(),
-        strength: z.nullable(z.number()).optional(),
-        style: z.nullable(shared.LcmGenerationStyle$.inboundSchema).optional(),
-        width: z.nullable(z.number().int().default(512)),
-    });
-
-    export type Outbound = {
-        guidance?: number | null | undefined;
-        height: number | null;
-        imageDataUrl: string;
-        prompt: string;
-        refineCreative?: boolean | null | undefined;
-        refineStrength?: number | null | undefined;
-        requestTimestamp?: string | undefined;
-        seed?: number | null | undefined;
-        steps?: number | null | undefined;
-        strength?: number | null | undefined;
-        style?: string | null | undefined;
-        width: number | null;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformAlchemyUpscaleLCMRequestBody
-    > = z.object({
-        guidance: z.nullable(z.number()).optional(),
-        height: z.nullable(z.number().int().default(512)),
-        imageDataUrl: z.string(),
-        prompt: z.string(),
-        refineCreative: z.nullable(z.boolean()).optional(),
-        refineStrength: z.nullable(z.number()).optional(),
-        requestTimestamp: z.string().optional(),
-        seed: z.nullable(z.number().int()).optional(),
-        steps: z.nullable(z.number().int()).optional(),
-        strength: z.nullable(z.number()).optional(),
-        style: z.nullable(shared.LcmGenerationStyle$.outboundSchema).optional(),
-        width: z.nullable(z.number().int().default(512)),
-    });
+    /** @deprecated use `PerformAlchemyUpscaleLCMRequestBody$inboundSchema` instead. */
+    export const inboundSchema = PerformAlchemyUpscaleLCMRequestBody$inboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMRequestBody$outboundSchema` instead. */
+    export const outboundSchema = PerformAlchemyUpscaleLCMRequestBody$outboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMRequestBody$Outbound` instead. */
+    export type Outbound = PerformAlchemyUpscaleLCMRequestBody$Outbound;
 }
 
 /** @internal */
+export const PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMLCMGenerationOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    generatedImageId: z.string().optional(),
+    generationId: z.array(z.string()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+    variationId: z.array(z.string()).optional(),
+});
+
+/** @internal */
+export type PerformAlchemyUpscaleLCMLCMGenerationOutput$Outbound = {
+    apiCreditCost?: number | null | undefined;
+    generatedImageId?: string | undefined;
+    generationId?: Array<string> | undefined;
+    imageDataUrl?: Array<string> | undefined;
+    requestTimestamp?: string | undefined;
+    variationId?: Array<string> | undefined;
+};
+
+/** @internal */
+export const PerformAlchemyUpscaleLCMLCMGenerationOutput$outboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMLCMGenerationOutput$Outbound,
+    z.ZodTypeDef,
+    PerformAlchemyUpscaleLCMLCMGenerationOutput
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    generatedImageId: z.string().optional(),
+    generationId: z.array(z.string()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+    variationId: z.array(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformAlchemyUpscaleLCMLCMGenerationOutput$ {
-    export const inboundSchema: z.ZodType<
-        PerformAlchemyUpscaleLCMLCMGenerationOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        generatedImageId: z.string().optional(),
-        generationId: z.array(z.string()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-        variationId: z.array(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        apiCreditCost?: number | null | undefined;
-        generatedImageId?: string | undefined;
-        generationId?: Array<string> | undefined;
-        imageDataUrl?: Array<string> | undefined;
-        requestTimestamp?: string | undefined;
-        variationId?: Array<string> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformAlchemyUpscaleLCMLCMGenerationOutput
-    > = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        generatedImageId: z.string().optional(),
-        generationId: z.array(z.string()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-        variationId: z.array(z.string()).optional(),
-    });
+    /** @deprecated use `PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema` instead. */
+    export const inboundSchema = PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMLCMGenerationOutput$outboundSchema` instead. */
+    export const outboundSchema = PerformAlchemyUpscaleLCMLCMGenerationOutput$outboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMLCMGenerationOutput$Outbound` instead. */
+    export type Outbound = PerformAlchemyUpscaleLCMLCMGenerationOutput$Outbound;
 }
 
 /** @internal */
+export const PerformAlchemyUpscaleLCMResponseBody$inboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    lcmGenerationJob: z
+        .nullable(z.lazy(() => PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema))
+        .optional(),
+});
+
+/** @internal */
+export type PerformAlchemyUpscaleLCMResponseBody$Outbound = {
+    lcmGenerationJob?: PerformAlchemyUpscaleLCMLCMGenerationOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const PerformAlchemyUpscaleLCMResponseBody$outboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMResponseBody$Outbound,
+    z.ZodTypeDef,
+    PerformAlchemyUpscaleLCMResponseBody
+> = z.object({
+    lcmGenerationJob: z
+        .nullable(z.lazy(() => PerformAlchemyUpscaleLCMLCMGenerationOutput$outboundSchema))
+        .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformAlchemyUpscaleLCMResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        PerformAlchemyUpscaleLCMResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        lcmGenerationJob: z
-            .nullable(z.lazy(() => PerformAlchemyUpscaleLCMLCMGenerationOutput$.inboundSchema))
-            .optional(),
-    });
-
-    export type Outbound = {
-        lcmGenerationJob?: PerformAlchemyUpscaleLCMLCMGenerationOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformAlchemyUpscaleLCMResponseBody
-    > = z.object({
-        lcmGenerationJob: z
-            .nullable(z.lazy(() => PerformAlchemyUpscaleLCMLCMGenerationOutput$.outboundSchema))
-            .optional(),
-    });
+    /** @deprecated use `PerformAlchemyUpscaleLCMResponseBody$inboundSchema` instead. */
+    export const inboundSchema = PerformAlchemyUpscaleLCMResponseBody$inboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMResponseBody$outboundSchema` instead. */
+    export const outboundSchema = PerformAlchemyUpscaleLCMResponseBody$outboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMResponseBody$Outbound` instead. */
+    export type Outbound = PerformAlchemyUpscaleLCMResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace PerformAlchemyUpscaleLCMResponse$ {
-    export const inboundSchema: z.ZodType<PerformAlchemyUpscaleLCMResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                ContentType: z.string(),
-                StatusCode: z.number().int(),
-                RawResponse: z.instanceof(Response),
-                object: z
-                    .lazy(() => PerformAlchemyUpscaleLCMResponseBody$.inboundSchema)
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    ContentType: "contentType",
-                    StatusCode: "statusCode",
-                    RawResponse: "rawResponse",
-                });
-            });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: PerformAlchemyUpscaleLCMResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformAlchemyUpscaleLCMResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => PerformAlchemyUpscaleLCMResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+export const PerformAlchemyUpscaleLCMResponse$inboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => PerformAlchemyUpscaleLCMResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
+
+/** @internal */
+export type PerformAlchemyUpscaleLCMResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: PerformAlchemyUpscaleLCMResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const PerformAlchemyUpscaleLCMResponse$outboundSchema: z.ZodType<
+    PerformAlchemyUpscaleLCMResponse$Outbound,
+    z.ZodTypeDef,
+    PerformAlchemyUpscaleLCMResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => PerformAlchemyUpscaleLCMResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PerformAlchemyUpscaleLCMResponse$ {
+    /** @deprecated use `PerformAlchemyUpscaleLCMResponse$inboundSchema` instead. */
+    export const inboundSchema = PerformAlchemyUpscaleLCMResponse$inboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMResponse$outboundSchema` instead. */
+    export const outboundSchema = PerformAlchemyUpscaleLCMResponse$outboundSchema;
+    /** @deprecated use `PerformAlchemyUpscaleLCMResponse$Outbound` instead. */
+    export type Outbound = PerformAlchemyUpscaleLCMResponse$Outbound;
 }

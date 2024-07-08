@@ -56,105 +56,180 @@ export type CreateDatasetResponse = {
 };
 
 /** @internal */
+export const CreateDatasetRequestBody$inboundSchema: z.ZodType<
+    CreateDatasetRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    description: z.nullable(z.string()).optional(),
+    name: z.string(),
+});
+
+/** @internal */
+export type CreateDatasetRequestBody$Outbound = {
+    description?: string | null | undefined;
+    name: string;
+};
+
+/** @internal */
+export const CreateDatasetRequestBody$outboundSchema: z.ZodType<
+    CreateDatasetRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateDatasetRequestBody
+> = z.object({
+    description: z.nullable(z.string()).optional(),
+    name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDatasetRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateDatasetRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            description: z.nullable(z.string()).optional(),
-            name: z.string(),
-        });
-
-    export type Outbound = {
-        description?: string | null | undefined;
-        name: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDatasetRequestBody> =
-        z.object({
-            description: z.nullable(z.string()).optional(),
-            name: z.string(),
-        });
+    /** @deprecated use `CreateDatasetRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateDatasetRequestBody$inboundSchema;
+    /** @deprecated use `CreateDatasetRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateDatasetRequestBody$outboundSchema;
+    /** @deprecated use `CreateDatasetRequestBody$Outbound` instead. */
+    export type Outbound = CreateDatasetRequestBody$Outbound;
 }
 
 /** @internal */
+export const Datasets$inboundSchema: z.ZodType<Datasets, z.ZodTypeDef, unknown> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type Datasets$Outbound = {
+    id?: string | null | undefined;
+};
+
+/** @internal */
+export const Datasets$outboundSchema: z.ZodType<Datasets$Outbound, z.ZodTypeDef, Datasets> =
+    z.object({
+        id: z.nullable(z.string()).optional(),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Datasets$ {
-    export const inboundSchema: z.ZodType<Datasets, z.ZodTypeDef, unknown> = z.object({
-        id: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Datasets> = z.object({
-        id: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `Datasets$inboundSchema` instead. */
+    export const inboundSchema = Datasets$inboundSchema;
+    /** @deprecated use `Datasets$outboundSchema` instead. */
+    export const outboundSchema = Datasets$outboundSchema;
+    /** @deprecated use `Datasets$Outbound` instead. */
+    export type Outbound = Datasets$Outbound;
 }
 
 /** @internal */
+export const CreateDatasetResponseBody$inboundSchema: z.ZodType<
+    CreateDatasetResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        insert_datasets_one: z.nullable(z.lazy(() => Datasets$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            insert_datasets_one: "insertDatasetsOne",
+        });
+    });
+
+/** @internal */
+export type CreateDatasetResponseBody$Outbound = {
+    insert_datasets_one?: Datasets$Outbound | null | undefined;
+};
+
+/** @internal */
+export const CreateDatasetResponseBody$outboundSchema: z.ZodType<
+    CreateDatasetResponseBody$Outbound,
+    z.ZodTypeDef,
+    CreateDatasetResponseBody
+> = z
+    .object({
+        insertDatasetsOne: z.nullable(z.lazy(() => Datasets$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            insertDatasetsOne: "insert_datasets_one",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDatasetResponseBody$ {
-    export const inboundSchema: z.ZodType<CreateDatasetResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            insert_datasets_one: z.nullable(z.lazy(() => Datasets$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                insert_datasets_one: "insertDatasetsOne",
-            });
-        });
-
-    export type Outbound = {
-        insert_datasets_one?: Datasets$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDatasetResponseBody> = z
-        .object({
-            insertDatasetsOne: z.nullable(z.lazy(() => Datasets$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                insertDatasetsOne: "insert_datasets_one",
-            });
-        });
+    /** @deprecated use `CreateDatasetResponseBody$inboundSchema` instead. */
+    export const inboundSchema = CreateDatasetResponseBody$inboundSchema;
+    /** @deprecated use `CreateDatasetResponseBody$outboundSchema` instead. */
+    export const outboundSchema = CreateDatasetResponseBody$outboundSchema;
+    /** @deprecated use `CreateDatasetResponseBody$Outbound` instead. */
+    export type Outbound = CreateDatasetResponseBody$Outbound;
 }
 
 /** @internal */
+export const CreateDatasetResponse$inboundSchema: z.ZodType<
+    CreateDatasetResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => CreateDatasetResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CreateDatasetResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: CreateDatasetResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateDatasetResponse$outboundSchema: z.ZodType<
+    CreateDatasetResponse$Outbound,
+    z.ZodTypeDef,
+    CreateDatasetResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => CreateDatasetResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateDatasetResponse$ {
-    export const inboundSchema: z.ZodType<CreateDatasetResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => CreateDatasetResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: CreateDatasetResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateDatasetResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => CreateDatasetResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CreateDatasetResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateDatasetResponse$inboundSchema;
+    /** @deprecated use `CreateDatasetResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateDatasetResponse$outboundSchema;
+    /** @deprecated use `CreateDatasetResponse$Outbound` instead. */
+    export type Outbound = CreateDatasetResponse$Outbound;
 }

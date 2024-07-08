@@ -54,157 +54,218 @@ export type CreateTextureGenerationResponse = {
 };
 
 /** @internal */
+export const CreateTextureGenerationRequestBody$inboundSchema: z.ZodType<
+    CreateTextureGenerationRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        front_rotation_offset: z.nullable(z.number().int()).optional(),
+        modelAssetId: z.string().optional(),
+        negative_prompt: z.nullable(z.string()).optional(),
+        preview: z.nullable(z.boolean()).optional(),
+        preview_direction: z.nullable(z.string()).optional(),
+        prompt: z.string().optional(),
+        sd_version: z.nullable(z.string()).optional(),
+        seed: z.nullable(z.number().int()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            front_rotation_offset: "frontRotationOffset",
+            negative_prompt: "negativePrompt",
+            preview_direction: "previewDirection",
+            sd_version: "sdVersion",
+        });
+    });
+
+/** @internal */
+export type CreateTextureGenerationRequestBody$Outbound = {
+    front_rotation_offset?: number | null | undefined;
+    modelAssetId?: string | undefined;
+    negative_prompt?: string | null | undefined;
+    preview?: boolean | null | undefined;
+    preview_direction?: string | null | undefined;
+    prompt?: string | undefined;
+    sd_version?: string | null | undefined;
+    seed?: number | null | undefined;
+};
+
+/** @internal */
+export const CreateTextureGenerationRequestBody$outboundSchema: z.ZodType<
+    CreateTextureGenerationRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateTextureGenerationRequestBody
+> = z
+    .object({
+        frontRotationOffset: z.nullable(z.number().int()).optional(),
+        modelAssetId: z.string().optional(),
+        negativePrompt: z.nullable(z.string()).optional(),
+        preview: z.nullable(z.boolean()).optional(),
+        previewDirection: z.nullable(z.string()).optional(),
+        prompt: z.string().optional(),
+        sdVersion: z.nullable(z.string()).optional(),
+        seed: z.nullable(z.number().int()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            frontRotationOffset: "front_rotation_offset",
+            negativePrompt: "negative_prompt",
+            previewDirection: "preview_direction",
+            sdVersion: "sd_version",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateTextureGenerationRequestBody$ {
-    export const inboundSchema: z.ZodType<
-        CreateTextureGenerationRequestBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            front_rotation_offset: z.nullable(z.number().int()).optional(),
-            modelAssetId: z.string().optional(),
-            negative_prompt: z.nullable(z.string()).optional(),
-            preview: z.nullable(z.boolean()).optional(),
-            preview_direction: z.nullable(z.string()).optional(),
-            prompt: z.string().optional(),
-            sd_version: z.nullable(z.string()).optional(),
-            seed: z.nullable(z.number().int()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                front_rotation_offset: "frontRotationOffset",
-                negative_prompt: "negativePrompt",
-                preview_direction: "previewDirection",
-                sd_version: "sdVersion",
-            });
-        });
-
-    export type Outbound = {
-        front_rotation_offset?: number | null | undefined;
-        modelAssetId?: string | undefined;
-        negative_prompt?: string | null | undefined;
-        preview?: boolean | null | undefined;
-        preview_direction?: string | null | undefined;
-        prompt?: string | undefined;
-        sd_version?: string | null | undefined;
-        seed?: number | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateTextureGenerationRequestBody
-    > = z
-        .object({
-            frontRotationOffset: z.nullable(z.number().int()).optional(),
-            modelAssetId: z.string().optional(),
-            negativePrompt: z.nullable(z.string()).optional(),
-            preview: z.nullable(z.boolean()).optional(),
-            previewDirection: z.nullable(z.string()).optional(),
-            prompt: z.string().optional(),
-            sdVersion: z.nullable(z.string()).optional(),
-            seed: z.nullable(z.number().int()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                frontRotationOffset: "front_rotation_offset",
-                negativePrompt: "negative_prompt",
-                previewDirection: "preview_direction",
-                sdVersion: "sd_version",
-            });
-        });
+    /** @deprecated use `CreateTextureGenerationRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateTextureGenerationRequestBody$inboundSchema;
+    /** @deprecated use `CreateTextureGenerationRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateTextureGenerationRequestBody$outboundSchema;
+    /** @deprecated use `CreateTextureGenerationRequestBody$Outbound` instead. */
+    export type Outbound = CreateTextureGenerationRequestBody$Outbound;
 }
 
 /** @internal */
+export const TextureGenerationJobOutput$inboundSchema: z.ZodType<
+    TextureGenerationJobOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    id: z.string().optional(),
+});
+
+/** @internal */
+export type TextureGenerationJobOutput$Outbound = {
+    apiCreditCost?: number | null | undefined;
+    id?: string | undefined;
+};
+
+/** @internal */
+export const TextureGenerationJobOutput$outboundSchema: z.ZodType<
+    TextureGenerationJobOutput$Outbound,
+    z.ZodTypeDef,
+    TextureGenerationJobOutput
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    id: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TextureGenerationJobOutput$ {
-    export const inboundSchema: z.ZodType<TextureGenerationJobOutput, z.ZodTypeDef, unknown> =
-        z.object({
-            apiCreditCost: z.nullable(z.number().int()).optional(),
-            id: z.string().optional(),
-        });
-
-    export type Outbound = {
-        apiCreditCost?: number | null | undefined;
-        id?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TextureGenerationJobOutput> =
-        z.object({
-            apiCreditCost: z.nullable(z.number().int()).optional(),
-            id: z.string().optional(),
-        });
+    /** @deprecated use `TextureGenerationJobOutput$inboundSchema` instead. */
+    export const inboundSchema = TextureGenerationJobOutput$inboundSchema;
+    /** @deprecated use `TextureGenerationJobOutput$outboundSchema` instead. */
+    export const outboundSchema = TextureGenerationJobOutput$outboundSchema;
+    /** @deprecated use `TextureGenerationJobOutput$Outbound` instead. */
+    export type Outbound = TextureGenerationJobOutput$Outbound;
 }
 
 /** @internal */
+export const CreateTextureGenerationResponseBody$inboundSchema: z.ZodType<
+    CreateTextureGenerationResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    textureGenerationJob: z
+        .nullable(z.lazy(() => TextureGenerationJobOutput$inboundSchema))
+        .optional(),
+});
+
+/** @internal */
+export type CreateTextureGenerationResponseBody$Outbound = {
+    textureGenerationJob?: TextureGenerationJobOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const CreateTextureGenerationResponseBody$outboundSchema: z.ZodType<
+    CreateTextureGenerationResponseBody$Outbound,
+    z.ZodTypeDef,
+    CreateTextureGenerationResponseBody
+> = z.object({
+    textureGenerationJob: z
+        .nullable(z.lazy(() => TextureGenerationJobOutput$outboundSchema))
+        .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateTextureGenerationResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        CreateTextureGenerationResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        textureGenerationJob: z
-            .nullable(z.lazy(() => TextureGenerationJobOutput$.inboundSchema))
-            .optional(),
-    });
-
-    export type Outbound = {
-        textureGenerationJob?: TextureGenerationJobOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateTextureGenerationResponseBody
-    > = z.object({
-        textureGenerationJob: z
-            .nullable(z.lazy(() => TextureGenerationJobOutput$.outboundSchema))
-            .optional(),
-    });
+    /** @deprecated use `CreateTextureGenerationResponseBody$inboundSchema` instead. */
+    export const inboundSchema = CreateTextureGenerationResponseBody$inboundSchema;
+    /** @deprecated use `CreateTextureGenerationResponseBody$outboundSchema` instead. */
+    export const outboundSchema = CreateTextureGenerationResponseBody$outboundSchema;
+    /** @deprecated use `CreateTextureGenerationResponseBody$Outbound` instead. */
+    export type Outbound = CreateTextureGenerationResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace CreateTextureGenerationResponse$ {
-    export const inboundSchema: z.ZodType<CreateTextureGenerationResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                ContentType: z.string(),
-                StatusCode: z.number().int(),
-                RawResponse: z.instanceof(Response),
-                object: z.lazy(() => CreateTextureGenerationResponseBody$.inboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    ContentType: "contentType",
-                    StatusCode: "statusCode",
-                    RawResponse: "rawResponse",
-                });
-            });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: CreateTextureGenerationResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateTextureGenerationResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => CreateTextureGenerationResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+export const CreateTextureGenerationResponse$inboundSchema: z.ZodType<
+    CreateTextureGenerationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => CreateTextureGenerationResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
+
+/** @internal */
+export type CreateTextureGenerationResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: CreateTextureGenerationResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateTextureGenerationResponse$outboundSchema: z.ZodType<
+    CreateTextureGenerationResponse$Outbound,
+    z.ZodTypeDef,
+    CreateTextureGenerationResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => CreateTextureGenerationResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateTextureGenerationResponse$ {
+    /** @deprecated use `CreateTextureGenerationResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateTextureGenerationResponse$inboundSchema;
+    /** @deprecated use `CreateTextureGenerationResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateTextureGenerationResponse$outboundSchema;
+    /** @deprecated use `CreateTextureGenerationResponse$Outbound` instead. */
+    export type Outbound = CreateTextureGenerationResponse$Outbound;
 }

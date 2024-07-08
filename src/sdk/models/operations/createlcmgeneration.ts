@@ -82,130 +82,205 @@ export type CreateLCMGenerationResponse = {
 };
 
 /** @internal */
+export const CreateLCMGenerationRequestBody$inboundSchema: z.ZodType<
+    CreateLCMGenerationRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$inboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/** @internal */
+export type CreateLCMGenerationRequestBody$Outbound = {
+    guidance?: number | null | undefined;
+    height: number | null;
+    imageDataUrl: string;
+    prompt: string;
+    requestTimestamp?: string | undefined;
+    seed?: number | null | undefined;
+    steps?: number | null | undefined;
+    strength?: number | null | undefined;
+    style?: string | null | undefined;
+    width: number | null;
+};
+
+/** @internal */
+export const CreateLCMGenerationRequestBody$outboundSchema: z.ZodType<
+    CreateLCMGenerationRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateLCMGenerationRequestBody
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$outboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLCMGenerationRequestBody$ {
-    export const inboundSchema: z.ZodType<CreateLCMGenerationRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            guidance: z.nullable(z.number()).optional(),
-            height: z.nullable(z.number().int().default(512)),
-            imageDataUrl: z.string(),
-            prompt: z.string(),
-            requestTimestamp: z.string().optional(),
-            seed: z.nullable(z.number().int()).optional(),
-            steps: z.nullable(z.number().int()).optional(),
-            strength: z.nullable(z.number()).optional(),
-            style: z.nullable(shared.LcmGenerationStyle$.inboundSchema).optional(),
-            width: z.nullable(z.number().int().default(512)),
-        });
-
-    export type Outbound = {
-        guidance?: number | null | undefined;
-        height: number | null;
-        imageDataUrl: string;
-        prompt: string;
-        requestTimestamp?: string | undefined;
-        seed?: number | null | undefined;
-        steps?: number | null | undefined;
-        strength?: number | null | undefined;
-        style?: string | null | undefined;
-        width: number | null;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLCMGenerationRequestBody> =
-        z.object({
-            guidance: z.nullable(z.number()).optional(),
-            height: z.nullable(z.number().int().default(512)),
-            imageDataUrl: z.string(),
-            prompt: z.string(),
-            requestTimestamp: z.string().optional(),
-            seed: z.nullable(z.number().int()).optional(),
-            steps: z.nullable(z.number().int()).optional(),
-            strength: z.nullable(z.number()).optional(),
-            style: z.nullable(shared.LcmGenerationStyle$.outboundSchema).optional(),
-            width: z.nullable(z.number().int().default(512)),
-        });
+    /** @deprecated use `CreateLCMGenerationRequestBody$inboundSchema` instead. */
+    export const inboundSchema = CreateLCMGenerationRequestBody$inboundSchema;
+    /** @deprecated use `CreateLCMGenerationRequestBody$outboundSchema` instead. */
+    export const outboundSchema = CreateLCMGenerationRequestBody$outboundSchema;
+    /** @deprecated use `CreateLCMGenerationRequestBody$Outbound` instead. */
+    export type Outbound = CreateLCMGenerationRequestBody$Outbound;
 }
 
 /** @internal */
+export const LcmGenerationOutput$inboundSchema: z.ZodType<
+    LcmGenerationOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+});
+
+/** @internal */
+export type LcmGenerationOutput$Outbound = {
+    apiCreditCost?: number | null | undefined;
+    imageDataUrl?: Array<string> | undefined;
+    requestTimestamp?: string | undefined;
+};
+
+/** @internal */
+export const LcmGenerationOutput$outboundSchema: z.ZodType<
+    LcmGenerationOutput$Outbound,
+    z.ZodTypeDef,
+    LcmGenerationOutput
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LcmGenerationOutput$ {
-    export const inboundSchema: z.ZodType<LcmGenerationOutput, z.ZodTypeDef, unknown> = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-    });
-
-    export type Outbound = {
-        apiCreditCost?: number | null | undefined;
-        imageDataUrl?: Array<string> | undefined;
-        requestTimestamp?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LcmGenerationOutput> = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-    });
+    /** @deprecated use `LcmGenerationOutput$inboundSchema` instead. */
+    export const inboundSchema = LcmGenerationOutput$inboundSchema;
+    /** @deprecated use `LcmGenerationOutput$outboundSchema` instead. */
+    export const outboundSchema = LcmGenerationOutput$outboundSchema;
+    /** @deprecated use `LcmGenerationOutput$Outbound` instead. */
+    export type Outbound = LcmGenerationOutput$Outbound;
 }
 
 /** @internal */
+export const CreateLCMGenerationResponseBody$inboundSchema: z.ZodType<
+    CreateLCMGenerationResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    lcmGenerationJob: z.nullable(z.lazy(() => LcmGenerationOutput$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type CreateLCMGenerationResponseBody$Outbound = {
+    lcmGenerationJob?: LcmGenerationOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const CreateLCMGenerationResponseBody$outboundSchema: z.ZodType<
+    CreateLCMGenerationResponseBody$Outbound,
+    z.ZodTypeDef,
+    CreateLCMGenerationResponseBody
+> = z.object({
+    lcmGenerationJob: z.nullable(z.lazy(() => LcmGenerationOutput$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLCMGenerationResponseBody$ {
-    export const inboundSchema: z.ZodType<CreateLCMGenerationResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            lcmGenerationJob: z
-                .nullable(z.lazy(() => LcmGenerationOutput$.inboundSchema))
-                .optional(),
-        });
-
-    export type Outbound = {
-        lcmGenerationJob?: LcmGenerationOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateLCMGenerationResponseBody
-    > = z.object({
-        lcmGenerationJob: z.nullable(z.lazy(() => LcmGenerationOutput$.outboundSchema)).optional(),
-    });
+    /** @deprecated use `CreateLCMGenerationResponseBody$inboundSchema` instead. */
+    export const inboundSchema = CreateLCMGenerationResponseBody$inboundSchema;
+    /** @deprecated use `CreateLCMGenerationResponseBody$outboundSchema` instead. */
+    export const outboundSchema = CreateLCMGenerationResponseBody$outboundSchema;
+    /** @deprecated use `CreateLCMGenerationResponseBody$Outbound` instead. */
+    export type Outbound = CreateLCMGenerationResponseBody$Outbound;
 }
 
 /** @internal */
+export const CreateLCMGenerationResponse$inboundSchema: z.ZodType<
+    CreateLCMGenerationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => CreateLCMGenerationResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CreateLCMGenerationResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: CreateLCMGenerationResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateLCMGenerationResponse$outboundSchema: z.ZodType<
+    CreateLCMGenerationResponse$Outbound,
+    z.ZodTypeDef,
+    CreateLCMGenerationResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => CreateLCMGenerationResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLCMGenerationResponse$ {
-    export const inboundSchema: z.ZodType<CreateLCMGenerationResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => CreateLCMGenerationResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: CreateLCMGenerationResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLCMGenerationResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => CreateLCMGenerationResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CreateLCMGenerationResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateLCMGenerationResponse$inboundSchema;
+    /** @deprecated use `CreateLCMGenerationResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateLCMGenerationResponse$outboundSchema;
+    /** @deprecated use `CreateLCMGenerationResponse$Outbound` instead. */
+    export type Outbound = CreateLCMGenerationResponse$Outbound;
 }

@@ -53,98 +53,175 @@ export type PromptImproveResponse = {
 };
 
 /** @internal */
+export const PromptImproveRequestBody$inboundSchema: z.ZodType<
+    PromptImproveRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    prompt: z.string(),
+});
+
+/** @internal */
+export type PromptImproveRequestBody$Outbound = {
+    prompt: string;
+};
+
+/** @internal */
+export const PromptImproveRequestBody$outboundSchema: z.ZodType<
+    PromptImproveRequestBody$Outbound,
+    z.ZodTypeDef,
+    PromptImproveRequestBody
+> = z.object({
+    prompt: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PromptImproveRequestBody$ {
-    export const inboundSchema: z.ZodType<PromptImproveRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            prompt: z.string(),
-        });
-
-    export type Outbound = {
-        prompt: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PromptImproveRequestBody> =
-        z.object({
-            prompt: z.string(),
-        });
+    /** @deprecated use `PromptImproveRequestBody$inboundSchema` instead. */
+    export const inboundSchema = PromptImproveRequestBody$inboundSchema;
+    /** @deprecated use `PromptImproveRequestBody$outboundSchema` instead. */
+    export const outboundSchema = PromptImproveRequestBody$outboundSchema;
+    /** @deprecated use `PromptImproveRequestBody$Outbound` instead. */
+    export type Outbound = PromptImproveRequestBody$Outbound;
 }
 
 /** @internal */
+export const PromptGenerationOutput$inboundSchema: z.ZodType<
+    PromptGenerationOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.number().int().default(4),
+    prompt: z.string().default("The improved prompt."),
+});
+
+/** @internal */
+export type PromptGenerationOutput$Outbound = {
+    apiCreditCost: number;
+    prompt: string;
+};
+
+/** @internal */
+export const PromptGenerationOutput$outboundSchema: z.ZodType<
+    PromptGenerationOutput$Outbound,
+    z.ZodTypeDef,
+    PromptGenerationOutput
+> = z.object({
+    apiCreditCost: z.number().int().default(4),
+    prompt: z.string().default("The improved prompt."),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PromptGenerationOutput$ {
-    export const inboundSchema: z.ZodType<PromptGenerationOutput, z.ZodTypeDef, unknown> = z.object(
-        {
-            apiCreditCost: z.number().int().default(4),
-            prompt: z.string().default("The improved prompt."),
-        }
-    );
-
-    export type Outbound = {
-        apiCreditCost: number;
-        prompt: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PromptGenerationOutput> =
-        z.object({
-            apiCreditCost: z.number().int().default(4),
-            prompt: z.string().default("The improved prompt."),
-        });
+    /** @deprecated use `PromptGenerationOutput$inboundSchema` instead. */
+    export const inboundSchema = PromptGenerationOutput$inboundSchema;
+    /** @deprecated use `PromptGenerationOutput$outboundSchema` instead. */
+    export const outboundSchema = PromptGenerationOutput$outboundSchema;
+    /** @deprecated use `PromptGenerationOutput$Outbound` instead. */
+    export type Outbound = PromptGenerationOutput$Outbound;
 }
 
 /** @internal */
+export const PromptImproveResponseBody$inboundSchema: z.ZodType<
+    PromptImproveResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    promptGeneration: z.lazy(() => PromptGenerationOutput$inboundSchema).optional(),
+});
+
+/** @internal */
+export type PromptImproveResponseBody$Outbound = {
+    promptGeneration?: PromptGenerationOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const PromptImproveResponseBody$outboundSchema: z.ZodType<
+    PromptImproveResponseBody$Outbound,
+    z.ZodTypeDef,
+    PromptImproveResponseBody
+> = z.object({
+    promptGeneration: z.lazy(() => PromptGenerationOutput$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PromptImproveResponseBody$ {
-    export const inboundSchema: z.ZodType<PromptImproveResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            promptGeneration: z.lazy(() => PromptGenerationOutput$.inboundSchema).optional(),
-        });
-
-    export type Outbound = {
-        promptGeneration?: PromptGenerationOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PromptImproveResponseBody> =
-        z.object({
-            promptGeneration: z.lazy(() => PromptGenerationOutput$.outboundSchema).optional(),
-        });
+    /** @deprecated use `PromptImproveResponseBody$inboundSchema` instead. */
+    export const inboundSchema = PromptImproveResponseBody$inboundSchema;
+    /** @deprecated use `PromptImproveResponseBody$outboundSchema` instead. */
+    export const outboundSchema = PromptImproveResponseBody$outboundSchema;
+    /** @deprecated use `PromptImproveResponseBody$Outbound` instead. */
+    export type Outbound = PromptImproveResponseBody$Outbound;
 }
 
 /** @internal */
+export const PromptImproveResponse$inboundSchema: z.ZodType<
+    PromptImproveResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => PromptImproveResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type PromptImproveResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: PromptImproveResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const PromptImproveResponse$outboundSchema: z.ZodType<
+    PromptImproveResponse$Outbound,
+    z.ZodTypeDef,
+    PromptImproveResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => PromptImproveResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PromptImproveResponse$ {
-    export const inboundSchema: z.ZodType<PromptImproveResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => PromptImproveResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: PromptImproveResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PromptImproveResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => PromptImproveResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `PromptImproveResponse$inboundSchema` instead. */
+    export const inboundSchema = PromptImproveResponse$inboundSchema;
+    /** @deprecated use `PromptImproveResponse$outboundSchema` instead. */
+    export const outboundSchema = PromptImproveResponse$outboundSchema;
+    /** @deprecated use `PromptImproveResponse$Outbound` instead. */
+    export type Outbound = PromptImproveResponse$Outbound;
 }

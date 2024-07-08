@@ -75,99 +75,152 @@ export type ListElementsResponse = {
 };
 
 /** @internal */
+export const Loras$inboundSchema: z.ZodType<Loras, z.ZodTypeDef, unknown> = z.object({
+    akUUID: z.nullable(z.string()).optional(),
+    baseModel: shared.SdVersions$inboundSchema.optional(),
+    creatorName: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    urlImage: z.nullable(z.string()).optional(),
+    weightDefault: z.nullable(z.number().int()).optional(),
+    weightMax: z.nullable(z.number().int()).optional(),
+    weightMin: z.nullable(z.number().int()).optional(),
+});
+
+/** @internal */
+export type Loras$Outbound = {
+    akUUID?: string | null | undefined;
+    baseModel?: string | undefined;
+    creatorName?: string | null | undefined;
+    description?: string | null | undefined;
+    name?: string | null | undefined;
+    urlImage?: string | null | undefined;
+    weightDefault?: number | null | undefined;
+    weightMax?: number | null | undefined;
+    weightMin?: number | null | undefined;
+};
+
+/** @internal */
+export const Loras$outboundSchema: z.ZodType<Loras$Outbound, z.ZodTypeDef, Loras> = z.object({
+    akUUID: z.nullable(z.string()).optional(),
+    baseModel: shared.SdVersions$outboundSchema.optional(),
+    creatorName: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    urlImage: z.nullable(z.string()).optional(),
+    weightDefault: z.nullable(z.number().int()).optional(),
+    weightMax: z.nullable(z.number().int()).optional(),
+    weightMin: z.nullable(z.number().int()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Loras$ {
-    export const inboundSchema: z.ZodType<Loras, z.ZodTypeDef, unknown> = z.object({
-        akUUID: z.nullable(z.string()).optional(),
-        baseModel: shared.SdVersions$.inboundSchema.optional(),
-        creatorName: z.nullable(z.string()).optional(),
-        description: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        urlImage: z.nullable(z.string()).optional(),
-        weightDefault: z.nullable(z.number().int()).optional(),
-        weightMax: z.nullable(z.number().int()).optional(),
-        weightMin: z.nullable(z.number().int()).optional(),
-    });
-
-    export type Outbound = {
-        akUUID?: string | null | undefined;
-        baseModel?: string | undefined;
-        creatorName?: string | null | undefined;
-        description?: string | null | undefined;
-        name?: string | null | undefined;
-        urlImage?: string | null | undefined;
-        weightDefault?: number | null | undefined;
-        weightMax?: number | null | undefined;
-        weightMin?: number | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Loras> = z.object({
-        akUUID: z.nullable(z.string()).optional(),
-        baseModel: shared.SdVersions$.outboundSchema.optional(),
-        creatorName: z.nullable(z.string()).optional(),
-        description: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        urlImage: z.nullable(z.string()).optional(),
-        weightDefault: z.nullable(z.number().int()).optional(),
-        weightMax: z.nullable(z.number().int()).optional(),
-        weightMin: z.nullable(z.number().int()).optional(),
-    });
+    /** @deprecated use `Loras$inboundSchema` instead. */
+    export const inboundSchema = Loras$inboundSchema;
+    /** @deprecated use `Loras$outboundSchema` instead. */
+    export const outboundSchema = Loras$outboundSchema;
+    /** @deprecated use `Loras$Outbound` instead. */
+    export type Outbound = Loras$Outbound;
 }
 
 /** @internal */
+export const ListElementsResponseBody$inboundSchema: z.ZodType<
+    ListElementsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    loras: z.array(z.lazy(() => Loras$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type ListElementsResponseBody$Outbound = {
+    loras?: Array<Loras$Outbound> | undefined;
+};
+
+/** @internal */
+export const ListElementsResponseBody$outboundSchema: z.ZodType<
+    ListElementsResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListElementsResponseBody
+> = z.object({
+    loras: z.array(z.lazy(() => Loras$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListElementsResponseBody$ {
-    export const inboundSchema: z.ZodType<ListElementsResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            loras: z.array(z.lazy(() => Loras$.inboundSchema)).optional(),
-        });
-
-    export type Outbound = {
-        loras?: Array<Loras$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListElementsResponseBody> =
-        z.object({
-            loras: z.array(z.lazy(() => Loras$.outboundSchema)).optional(),
-        });
+    /** @deprecated use `ListElementsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListElementsResponseBody$inboundSchema;
+    /** @deprecated use `ListElementsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListElementsResponseBody$outboundSchema;
+    /** @deprecated use `ListElementsResponseBody$Outbound` instead. */
+    export type Outbound = ListElementsResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListElementsResponse$inboundSchema: z.ZodType<
+    ListElementsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => ListElementsResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type ListElementsResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: ListElementsResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListElementsResponse$outboundSchema: z.ZodType<
+    ListElementsResponse$Outbound,
+    z.ZodTypeDef,
+    ListElementsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => ListElementsResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListElementsResponse$ {
-    export const inboundSchema: z.ZodType<ListElementsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => ListElementsResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: ListElementsResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListElementsResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => ListElementsResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `ListElementsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListElementsResponse$inboundSchema;
+    /** @deprecated use `ListElementsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListElementsResponse$outboundSchema;
+    /** @deprecated use `ListElementsResponse$Outbound` instead. */
+    export type Outbound = ListElementsResponse$Outbound;
 }

@@ -60,135 +60,232 @@ export type UploadDatasetImageResponse = {
 };
 
 /** @internal */
+export const UploadDatasetImageRequestBody$inboundSchema: z.ZodType<
+    UploadDatasetImageRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    extension: z.string(),
+});
+
+/** @internal */
+export type UploadDatasetImageRequestBody$Outbound = {
+    extension: string;
+};
+
+/** @internal */
+export const UploadDatasetImageRequestBody$outboundSchema: z.ZodType<
+    UploadDatasetImageRequestBody$Outbound,
+    z.ZodTypeDef,
+    UploadDatasetImageRequestBody
+> = z.object({
+    extension: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadDatasetImageRequestBody$ {
-    export const inboundSchema: z.ZodType<UploadDatasetImageRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            extension: z.string(),
-        });
-
-    export type Outbound = {
-        extension: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadDatasetImageRequestBody> =
-        z.object({
-            extension: z.string(),
-        });
+    /** @deprecated use `UploadDatasetImageRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UploadDatasetImageRequestBody$inboundSchema;
+    /** @deprecated use `UploadDatasetImageRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UploadDatasetImageRequestBody$outboundSchema;
+    /** @deprecated use `UploadDatasetImageRequestBody$Outbound` instead. */
+    export type Outbound = UploadDatasetImageRequestBody$Outbound;
 }
 
 /** @internal */
+export const UploadDatasetImageRequest$inboundSchema: z.ZodType<
+    UploadDatasetImageRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        RequestBody: z.lazy(() => UploadDatasetImageRequestBody$inboundSchema),
+        datasetId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            RequestBody: "requestBody",
+        });
+    });
+
+/** @internal */
+export type UploadDatasetImageRequest$Outbound = {
+    RequestBody: UploadDatasetImageRequestBody$Outbound;
+    datasetId: string;
+};
+
+/** @internal */
+export const UploadDatasetImageRequest$outboundSchema: z.ZodType<
+    UploadDatasetImageRequest$Outbound,
+    z.ZodTypeDef,
+    UploadDatasetImageRequest
+> = z
+    .object({
+        requestBody: z.lazy(() => UploadDatasetImageRequestBody$outboundSchema),
+        datasetId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            requestBody: "RequestBody",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadDatasetImageRequest$ {
-    export const inboundSchema: z.ZodType<UploadDatasetImageRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            RequestBody: z.lazy(() => UploadDatasetImageRequestBody$.inboundSchema),
-            datasetId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                RequestBody: "requestBody",
-            });
-        });
-
-    export type Outbound = {
-        RequestBody: UploadDatasetImageRequestBody$.Outbound;
-        datasetId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadDatasetImageRequest> = z
-        .object({
-            requestBody: z.lazy(() => UploadDatasetImageRequestBody$.outboundSchema),
-            datasetId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                requestBody: "RequestBody",
-            });
-        });
+    /** @deprecated use `UploadDatasetImageRequest$inboundSchema` instead. */
+    export const inboundSchema = UploadDatasetImageRequest$inboundSchema;
+    /** @deprecated use `UploadDatasetImageRequest$outboundSchema` instead. */
+    export const outboundSchema = UploadDatasetImageRequest$outboundSchema;
+    /** @deprecated use `UploadDatasetImageRequest$Outbound` instead. */
+    export type Outbound = UploadDatasetImageRequest$Outbound;
 }
 
 /** @internal */
+export const DatasetUploadOutput$inboundSchema: z.ZodType<
+    DatasetUploadOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    fields: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    key: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type DatasetUploadOutput$Outbound = {
+    fields?: string | null | undefined;
+    id?: string | null | undefined;
+    key?: string | null | undefined;
+    url?: string | null | undefined;
+};
+
+/** @internal */
+export const DatasetUploadOutput$outboundSchema: z.ZodType<
+    DatasetUploadOutput$Outbound,
+    z.ZodTypeDef,
+    DatasetUploadOutput
+> = z.object({
+    fields: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    key: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DatasetUploadOutput$ {
-    export const inboundSchema: z.ZodType<DatasetUploadOutput, z.ZodTypeDef, unknown> = z.object({
-        fields: z.nullable(z.string()).optional(),
-        id: z.nullable(z.string()).optional(),
-        key: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id?: string | null | undefined;
-        key?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DatasetUploadOutput> = z.object({
-        fields: z.nullable(z.string()).optional(),
-        id: z.nullable(z.string()).optional(),
-        key: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `DatasetUploadOutput$inboundSchema` instead. */
+    export const inboundSchema = DatasetUploadOutput$inboundSchema;
+    /** @deprecated use `DatasetUploadOutput$outboundSchema` instead. */
+    export const outboundSchema = DatasetUploadOutput$outboundSchema;
+    /** @deprecated use `DatasetUploadOutput$Outbound` instead. */
+    export type Outbound = DatasetUploadOutput$Outbound;
 }
 
 /** @internal */
+export const UploadDatasetImageResponseBody$inboundSchema: z.ZodType<
+    UploadDatasetImageResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    uploadDatasetImage: z.nullable(z.lazy(() => DatasetUploadOutput$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type UploadDatasetImageResponseBody$Outbound = {
+    uploadDatasetImage?: DatasetUploadOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const UploadDatasetImageResponseBody$outboundSchema: z.ZodType<
+    UploadDatasetImageResponseBody$Outbound,
+    z.ZodTypeDef,
+    UploadDatasetImageResponseBody
+> = z.object({
+    uploadDatasetImage: z.nullable(z.lazy(() => DatasetUploadOutput$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadDatasetImageResponseBody$ {
-    export const inboundSchema: z.ZodType<UploadDatasetImageResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            uploadDatasetImage: z
-                .nullable(z.lazy(() => DatasetUploadOutput$.inboundSchema))
-                .optional(),
-        });
-
-    export type Outbound = {
-        uploadDatasetImage?: DatasetUploadOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadDatasetImageResponseBody> =
-        z.object({
-            uploadDatasetImage: z
-                .nullable(z.lazy(() => DatasetUploadOutput$.outboundSchema))
-                .optional(),
-        });
+    /** @deprecated use `UploadDatasetImageResponseBody$inboundSchema` instead. */
+    export const inboundSchema = UploadDatasetImageResponseBody$inboundSchema;
+    /** @deprecated use `UploadDatasetImageResponseBody$outboundSchema` instead. */
+    export const outboundSchema = UploadDatasetImageResponseBody$outboundSchema;
+    /** @deprecated use `UploadDatasetImageResponseBody$Outbound` instead. */
+    export type Outbound = UploadDatasetImageResponseBody$Outbound;
 }
 
 /** @internal */
+export const UploadDatasetImageResponse$inboundSchema: z.ZodType<
+    UploadDatasetImageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => UploadDatasetImageResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type UploadDatasetImageResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: UploadDatasetImageResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const UploadDatasetImageResponse$outboundSchema: z.ZodType<
+    UploadDatasetImageResponse$Outbound,
+    z.ZodTypeDef,
+    UploadDatasetImageResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => UploadDatasetImageResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadDatasetImageResponse$ {
-    export const inboundSchema: z.ZodType<UploadDatasetImageResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => UploadDatasetImageResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: UploadDatasetImageResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadDatasetImageResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => UploadDatasetImageResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `UploadDatasetImageResponse$inboundSchema` instead. */
+    export const inboundSchema = UploadDatasetImageResponse$inboundSchema;
+    /** @deprecated use `UploadDatasetImageResponse$outboundSchema` instead. */
+    export const outboundSchema = UploadDatasetImageResponse$outboundSchema;
+    /** @deprecated use `UploadDatasetImageResponse$Outbound` instead. */
+    export type Outbound = UploadDatasetImageResponse$Outbound;
 }

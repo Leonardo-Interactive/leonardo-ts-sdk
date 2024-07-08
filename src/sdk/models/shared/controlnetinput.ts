@@ -47,40 +47,84 @@ export type ControlnetInput = {
 };
 
 /** @internal */
+export const InitImageType$inboundSchema: z.ZodNativeEnum<typeof InitImageType> =
+    z.nativeEnum(InitImageType);
+
+/** @internal */
+export const InitImageType$outboundSchema: z.ZodNativeEnum<typeof InitImageType> =
+    InitImageType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InitImageType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof InitImageType> = z.nativeEnum(InitImageType);
-    export const outboundSchema: z.ZodNativeEnum<typeof InitImageType> = inboundSchema;
+    /** @deprecated use `InitImageType$inboundSchema` instead. */
+    export const inboundSchema = InitImageType$inboundSchema;
+    /** @deprecated use `InitImageType$outboundSchema` instead. */
+    export const outboundSchema = InitImageType$outboundSchema;
 }
 
 /** @internal */
+export const StrengthType$inboundSchema: z.ZodNativeEnum<typeof StrengthType> =
+    z.nativeEnum(StrengthType);
+
+/** @internal */
+export const StrengthType$outboundSchema: z.ZodNativeEnum<typeof StrengthType> =
+    StrengthType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StrengthType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof StrengthType> = z.nativeEnum(StrengthType);
-    export const outboundSchema: z.ZodNativeEnum<typeof StrengthType> = inboundSchema;
+    /** @deprecated use `StrengthType$inboundSchema` instead. */
+    export const inboundSchema = StrengthType$inboundSchema;
+    /** @deprecated use `StrengthType$outboundSchema` instead. */
+    export const outboundSchema = StrengthType$outboundSchema;
 }
 
 /** @internal */
+export const ControlnetInput$inboundSchema: z.ZodType<ControlnetInput, z.ZodTypeDef, unknown> =
+    z.object({
+        initImageId: z.string().optional(),
+        initImageType: InitImageType$inboundSchema.optional(),
+        preprocessorId: z.number().optional(),
+        strengthType: z.nullable(StrengthType$inboundSchema).optional(),
+        weight: z.nullable(z.number()).optional(),
+    });
+
+/** @internal */
+export type ControlnetInput$Outbound = {
+    initImageId?: string | undefined;
+    initImageType?: string | undefined;
+    preprocessorId?: number | undefined;
+    strengthType?: string | null | undefined;
+    weight?: number | null | undefined;
+};
+
+/** @internal */
+export const ControlnetInput$outboundSchema: z.ZodType<
+    ControlnetInput$Outbound,
+    z.ZodTypeDef,
+    ControlnetInput
+> = z.object({
+    initImageId: z.string().optional(),
+    initImageType: InitImageType$outboundSchema.optional(),
+    preprocessorId: z.number().optional(),
+    strengthType: z.nullable(StrengthType$outboundSchema).optional(),
+    weight: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ControlnetInput$ {
-    export const inboundSchema: z.ZodType<ControlnetInput, z.ZodTypeDef, unknown> = z.object({
-        initImageId: z.string().optional(),
-        initImageType: InitImageType$.inboundSchema.optional(),
-        preprocessorId: z.number().optional(),
-        strengthType: z.nullable(StrengthType$.inboundSchema).optional(),
-        weight: z.nullable(z.number()).optional(),
-    });
-
-    export type Outbound = {
-        initImageId?: string | undefined;
-        initImageType?: string | undefined;
-        preprocessorId?: number | undefined;
-        strengthType?: string | null | undefined;
-        weight?: number | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ControlnetInput> = z.object({
-        initImageId: z.string().optional(),
-        initImageType: InitImageType$.outboundSchema.optional(),
-        preprocessorId: z.number().optional(),
-        strengthType: z.nullable(StrengthType$.outboundSchema).optional(),
-        weight: z.nullable(z.number()).optional(),
-    });
+    /** @deprecated use `ControlnetInput$inboundSchema` instead. */
+    export const inboundSchema = ControlnetInput$inboundSchema;
+    /** @deprecated use `ControlnetInput$outboundSchema` instead. */
+    export const outboundSchema = ControlnetInput$outboundSchema;
+    /** @deprecated use `ControlnetInput$Outbound` instead. */
+    export type Outbound = ControlnetInput$Outbound;
 }

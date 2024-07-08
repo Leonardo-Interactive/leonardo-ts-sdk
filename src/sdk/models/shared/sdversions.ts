@@ -18,7 +18,20 @@ export enum SdVersions {
 }
 
 /** @internal */
+export const SdVersions$inboundSchema: z.ZodNativeEnum<typeof SdVersions> =
+    z.nativeEnum(SdVersions);
+
+/** @internal */
+export const SdVersions$outboundSchema: z.ZodNativeEnum<typeof SdVersions> =
+    SdVersions$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SdVersions$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof SdVersions> = z.nativeEnum(SdVersions);
-    export const outboundSchema: z.ZodNativeEnum<typeof SdVersions> = inboundSchema;
+    /** @deprecated use `SdVersions$inboundSchema` instead. */
+    export const inboundSchema = SdVersions$inboundSchema;
+    /** @deprecated use `SdVersions$outboundSchema` instead. */
+    export const outboundSchema = SdVersions$outboundSchema;
 }

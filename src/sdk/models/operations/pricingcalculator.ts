@@ -235,463 +235,649 @@ export type PricingCalculatorResponse = {
 };
 
 /** @internal */
+export const PricingCalculatorObject$inboundSchema: z.ZodType<
+    PricingCalculatorObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    imageHeight: z.number().int().optional(),
+    imageWidth: z.number().int().optional(),
+    numImages: z.number().int().optional(),
+});
+
+/** @internal */
+export type PricingCalculatorObject$Outbound = {
+    imageHeight?: number | undefined;
+    imageWidth?: number | undefined;
+    numImages?: number | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorObject$outboundSchema: z.ZodType<
+    PricingCalculatorObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorObject
+> = z.object({
+    imageHeight: z.number().int().optional(),
+    imageWidth: z.number().int().optional(),
+    numImages: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorObject$ {
-    export const inboundSchema: z.ZodType<PricingCalculatorObject, z.ZodTypeDef, unknown> =
-        z.object({
-            imageHeight: z.number().int().optional(),
-            imageWidth: z.number().int().optional(),
-            numImages: z.number().int().optional(),
-        });
-
-    export type Outbound = {
-        imageHeight?: number | undefined;
-        imageWidth?: number | undefined;
-        numImages?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PricingCalculatorObject> =
-        z.object({
-            imageHeight: z.number().int().optional(),
-            imageWidth: z.number().int().optional(),
-            numImages: z.number().int().optional(),
-        });
+    /** @deprecated use `PricingCalculatorObject$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorObject$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorObject$Outbound` instead. */
+    export type Outbound = PricingCalculatorObject$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorPricingCalculatorObject$inboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    alchemyMode: z.boolean().optional(),
+    controlnetsCost: z.nullable(z.number().int()).optional(),
+    highResolution: z.boolean().optional(),
+    imageHeight: z.number().int().optional(),
+    imageWidth: z.number().int().optional(),
+    inferenceSteps: z.number().int().optional(),
+    isModelCustom: z.nullable(z.boolean()).optional(),
+    isSDXL: z.nullable(z.boolean()).optional(),
+    isSDXLLightning: z.nullable(z.boolean()).optional(),
+    loraCount: z.nullable(z.number().int()).optional(),
+    numImages: z.number().int().optional(),
+    promptMagic: z.nullable(z.boolean()).optional(),
+    promptMagicStrength: z.nullable(z.number()).optional(),
+    promptMagicVersion: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type PricingCalculatorPricingCalculatorObject$Outbound = {
+    alchemyMode?: boolean | undefined;
+    controlnetsCost?: number | null | undefined;
+    highResolution?: boolean | undefined;
+    imageHeight?: number | undefined;
+    imageWidth?: number | undefined;
+    inferenceSteps?: number | undefined;
+    isModelCustom?: boolean | null | undefined;
+    isSDXL?: boolean | null | undefined;
+    isSDXLLightning?: boolean | null | undefined;
+    loraCount?: number | null | undefined;
+    numImages?: number | undefined;
+    promptMagic?: boolean | null | undefined;
+    promptMagicStrength?: number | null | undefined;
+    promptMagicVersion?: string | null | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorObject$outboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorObject
+> = z.object({
+    alchemyMode: z.boolean().optional(),
+    controlnetsCost: z.nullable(z.number().int()).optional(),
+    highResolution: z.boolean().optional(),
+    imageHeight: z.number().int().optional(),
+    imageWidth: z.number().int().optional(),
+    inferenceSteps: z.number().int().optional(),
+    isModelCustom: z.nullable(z.boolean()).optional(),
+    isSDXL: z.nullable(z.boolean()).optional(),
+    isSDXLLightning: z.nullable(z.boolean()).optional(),
+    loraCount: z.nullable(z.number().int()).optional(),
+    numImages: z.number().int().optional(),
+    promptMagic: z.nullable(z.boolean()).optional(),
+    promptMagicStrength: z.nullable(z.number()).optional(),
+    promptMagicVersion: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorPricingCalculatorObject$ {
-    export const inboundSchema: z.ZodType<
-        PricingCalculatorPricingCalculatorObject,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        alchemyMode: z.boolean().optional(),
-        controlnetsCost: z.nullable(z.number().int()).optional(),
-        highResolution: z.boolean().optional(),
-        imageHeight: z.number().int().optional(),
-        imageWidth: z.number().int().optional(),
-        inferenceSteps: z.number().int().optional(),
-        isModelCustom: z.nullable(z.boolean()).optional(),
-        isSDXL: z.nullable(z.boolean()).optional(),
-        isSDXLLightning: z.nullable(z.boolean()).optional(),
-        loraCount: z.nullable(z.number().int()).optional(),
-        numImages: z.number().int().optional(),
-        promptMagic: z.nullable(z.boolean()).optional(),
-        promptMagicStrength: z.nullable(z.number()).optional(),
-        promptMagicVersion: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        alchemyMode?: boolean | undefined;
-        controlnetsCost?: number | null | undefined;
-        highResolution?: boolean | undefined;
-        imageHeight?: number | undefined;
-        imageWidth?: number | undefined;
-        inferenceSteps?: number | undefined;
-        isModelCustom?: boolean | null | undefined;
-        isSDXL?: boolean | null | undefined;
-        isSDXLLightning?: boolean | null | undefined;
-        loraCount?: number | null | undefined;
-        numImages?: number | undefined;
-        promptMagic?: boolean | null | undefined;
-        promptMagicStrength?: number | null | undefined;
-        promptMagicVersion?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PricingCalculatorPricingCalculatorObject
-    > = z.object({
-        alchemyMode: z.boolean().optional(),
-        controlnetsCost: z.nullable(z.number().int()).optional(),
-        highResolution: z.boolean().optional(),
-        imageHeight: z.number().int().optional(),
-        imageWidth: z.number().int().optional(),
-        inferenceSteps: z.number().int().optional(),
-        isModelCustom: z.nullable(z.boolean()).optional(),
-        isSDXL: z.nullable(z.boolean()).optional(),
-        isSDXLLightning: z.nullable(z.boolean()).optional(),
-        loraCount: z.nullable(z.number().int()).optional(),
-        numImages: z.number().int().optional(),
-        promptMagic: z.nullable(z.boolean()).optional(),
-        promptMagicStrength: z.nullable(z.number()).optional(),
-        promptMagicVersion: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `PricingCalculatorPricingCalculatorObject$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorPricingCalculatorObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorObject$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorPricingCalculatorObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorObject$Outbound` instead. */
+    export type Outbound = PricingCalculatorPricingCalculatorObject$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorPricingCalculatorRequestObject$inboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    height: z.nullable(z.number().int()).optional(),
+    instantRefine: z.nullable(z.boolean()).optional(),
+    refine: z.nullable(z.boolean()).optional(),
+    width: z.nullable(z.number().int()).optional(),
+});
+
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestObject$Outbound = {
+    height?: number | null | undefined;
+    instantRefine?: boolean | null | undefined;
+    refine?: boolean | null | undefined;
+    width?: number | null | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestObject$outboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestObject
+> = z.object({
+    height: z.nullable(z.number().int()).optional(),
+    instantRefine: z.nullable(z.boolean()).optional(),
+    refine: z.nullable(z.boolean()).optional(),
+    width: z.nullable(z.number().int()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorPricingCalculatorRequestObject$ {
-    export const inboundSchema: z.ZodType<
-        PricingCalculatorPricingCalculatorRequestObject,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        height: z.nullable(z.number().int()).optional(),
-        instantRefine: z.nullable(z.boolean()).optional(),
-        refine: z.nullable(z.boolean()).optional(),
-        width: z.nullable(z.number().int()).optional(),
-    });
-
-    export type Outbound = {
-        height?: number | null | undefined;
-        instantRefine?: boolean | null | undefined;
-        refine?: boolean | null | undefined;
-        width?: number | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PricingCalculatorPricingCalculatorRequestObject
-    > = z.object({
-        height: z.nullable(z.number().int()).optional(),
-        instantRefine: z.nullable(z.boolean()).optional(),
-        refine: z.nullable(z.boolean()).optional(),
-        width: z.nullable(z.number().int()).optional(),
-    });
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestObject$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorPricingCalculatorRequestObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestObject$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorPricingCalculatorRequestObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestObject$Outbound` instead. */
+    export type Outbound = PricingCalculatorPricingCalculatorRequestObject$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    resolution: z.number().int().optional(),
+});
+
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound = {
+    resolution?: number | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestRequestBodyObject
+> = z.object({
+    resolution: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorPricingCalculatorRequestRequestBodyObject$ {
-    export const inboundSchema: z.ZodType<
-        PricingCalculatorPricingCalculatorRequestRequestBodyObject,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        resolution: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        resolution?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PricingCalculatorPricingCalculatorRequestRequestBodyObject
-    > = z.object({
-        resolution: z.number().int().optional(),
-    });
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema` instead. */
+    export const inboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema` instead. */
+    export const outboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound` instead. */
+    export type Outbound = PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    durationSeconds: z.number().int().optional(),
+});
+
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound = {
+    durationSeconds?: number | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject
+> = z.object({
+    durationSeconds: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$ {
-    export const inboundSchema: z.ZodType<
-        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        durationSeconds: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        durationSeconds?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject
-    > = z.object({
-        durationSeconds: z.number().int().optional(),
-    });
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema` instead. */
+    export const inboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema` instead. */
+    export const outboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound` instead. */
+    export type Outbound =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound;
 }
 
 /** @internal */
-export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$ {
-    export const inboundSchema: z.ZodType<
-        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        preview: z.boolean().optional(),
-    });
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$inboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    preview: z.boolean().optional(),
+});
 
-    export type Outbound = {
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound =
+    {
         preview?: boolean | undefined;
     };
 
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject
-    > = z.object({
-        preview: z.boolean().optional(),
-    });
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$outboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject
+> = z.object({
+    preview: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$ {
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$inboundSchema` instead. */
+    export const inboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$outboundSchema` instead. */
+    export const outboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound` instead. */
+    export type Outbound =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound;
 }
 
 /** @internal */
-export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$ {
-    export const inboundSchema: z.ZodType<
-        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        megapixel: z.number().int().optional(),
-    });
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$inboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    megapixel: z.number().int().optional(),
+});
 
-    export type Outbound = {
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound =
+    {
         megapixel?: number | undefined;
     };
 
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject
-    > = z.object({
-        megapixel: z.number().int().optional(),
-    });
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$outboundSchema: z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject
+> = z.object({
+    megapixel: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$ {
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$inboundSchema` instead. */
+    export const inboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$inboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$outboundSchema` instead. */
+    export const outboundSchema =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$outboundSchema;
+    /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound` instead. */
+    export type Outbound =
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound;
 }
 
 /** @internal */
+export const ObjectT$inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> = z
+    .object({
+        FANTASY_AVATAR_GENERATION: z
+            .nullable(z.lazy(() => PricingCalculatorObject$inboundSchema))
+            .optional(),
+        IMAGE_GENERATION: z
+            .nullable(z.lazy(() => PricingCalculatorPricingCalculatorObject$inboundSchema))
+            .optional(),
+        LCM_GENERATION: z
+            .nullable(z.lazy(() => PricingCalculatorPricingCalculatorRequestObject$inboundSchema))
+            .optional(),
+        MODEL_TRAINING: z
+            .nullable(
+                z.lazy(
+                    () => PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema
+                )
+            )
+            .optional(),
+        MOTION_GENERATION: z
+            .nullable(
+                z.lazy(
+                    () =>
+                        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema
+                )
+            )
+            .optional(),
+        TEXTURE_GENERATION: z
+            .nullable(
+                z.lazy(
+                    () =>
+                        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$inboundSchema
+                )
+            )
+            .optional(),
+        UNIVERSAL_UPSCALER: z
+            .nullable(
+                z.lazy(
+                    () =>
+                        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$inboundSchema
+                )
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            FANTASY_AVATAR_GENERATION: "fantasyAvatarGeneration",
+            IMAGE_GENERATION: "imageGeneration",
+            LCM_GENERATION: "lcmGeneration",
+            MODEL_TRAINING: "modelTraining",
+            MOTION_GENERATION: "motionGeneration",
+            TEXTURE_GENERATION: "textureGeneration",
+            UNIVERSAL_UPSCALER: "universalUpscaler",
+        });
+    });
+
+/** @internal */
+export type ObjectT$Outbound = {
+    FANTASY_AVATAR_GENERATION?: PricingCalculatorObject$Outbound | null | undefined;
+    IMAGE_GENERATION?: PricingCalculatorPricingCalculatorObject$Outbound | null | undefined;
+    LCM_GENERATION?: PricingCalculatorPricingCalculatorRequestObject$Outbound | null | undefined;
+    MODEL_TRAINING?:
+        | PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound
+        | null
+        | undefined;
+    MOTION_GENERATION?:
+        | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound
+        | null
+        | undefined;
+    TEXTURE_GENERATION?:
+        | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound
+        | null
+        | undefined;
+    UNIVERSAL_UPSCALER?:
+        | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound
+        | null
+        | undefined;
+};
+
+/** @internal */
+export const ObjectT$outboundSchema: z.ZodType<ObjectT$Outbound, z.ZodTypeDef, ObjectT> = z
+    .object({
+        fantasyAvatarGeneration: z
+            .nullable(z.lazy(() => PricingCalculatorObject$outboundSchema))
+            .optional(),
+        imageGeneration: z
+            .nullable(z.lazy(() => PricingCalculatorPricingCalculatorObject$outboundSchema))
+            .optional(),
+        lcmGeneration: z
+            .nullable(z.lazy(() => PricingCalculatorPricingCalculatorRequestObject$outboundSchema))
+            .optional(),
+        modelTraining: z
+            .nullable(
+                z.lazy(
+                    () => PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema
+                )
+            )
+            .optional(),
+        motionGeneration: z
+            .nullable(
+                z.lazy(
+                    () =>
+                        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema
+                )
+            )
+            .optional(),
+        textureGeneration: z
+            .nullable(
+                z.lazy(
+                    () =>
+                        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$outboundSchema
+                )
+            )
+            .optional(),
+        universalUpscaler: z
+            .nullable(
+                z.lazy(
+                    () =>
+                        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$outboundSchema
+                )
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fantasyAvatarGeneration: "FANTASY_AVATAR_GENERATION",
+            imageGeneration: "IMAGE_GENERATION",
+            lcmGeneration: "LCM_GENERATION",
+            modelTraining: "MODEL_TRAINING",
+            motionGeneration: "MOTION_GENERATION",
+            textureGeneration: "TEXTURE_GENERATION",
+            universalUpscaler: "UNIVERSAL_UPSCALER",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ObjectT$ {
-    export const inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> = z
-        .object({
-            FANTASY_AVATAR_GENERATION: z
-                .nullable(z.lazy(() => PricingCalculatorObject$.inboundSchema))
-                .optional(),
-            IMAGE_GENERATION: z
-                .nullable(z.lazy(() => PricingCalculatorPricingCalculatorObject$.inboundSchema))
-                .optional(),
-            LCM_GENERATION: z
-                .nullable(
-                    z.lazy(() => PricingCalculatorPricingCalculatorRequestObject$.inboundSchema)
-                )
-                .optional(),
-            MODEL_TRAINING: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyObject$.inboundSchema
-                    )
-                )
-                .optional(),
-            MOTION_GENERATION: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$.inboundSchema
-                    )
-                )
-                .optional(),
-            TEXTURE_GENERATION: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$.inboundSchema
-                    )
-                )
-                .optional(),
-            UNIVERSAL_UPSCALER: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$.inboundSchema
-                    )
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                FANTASY_AVATAR_GENERATION: "fantasyAvatarGeneration",
-                IMAGE_GENERATION: "imageGeneration",
-                LCM_GENERATION: "lcmGeneration",
-                MODEL_TRAINING: "modelTraining",
-                MOTION_GENERATION: "motionGeneration",
-                TEXTURE_GENERATION: "textureGeneration",
-                UNIVERSAL_UPSCALER: "universalUpscaler",
-            });
-        });
-
-    export type Outbound = {
-        FANTASY_AVATAR_GENERATION?: PricingCalculatorObject$.Outbound | null | undefined;
-        IMAGE_GENERATION?: PricingCalculatorPricingCalculatorObject$.Outbound | null | undefined;
-        LCM_GENERATION?:
-            | PricingCalculatorPricingCalculatorRequestObject$.Outbound
-            | null
-            | undefined;
-        MODEL_TRAINING?:
-            | PricingCalculatorPricingCalculatorRequestRequestBodyObject$.Outbound
-            | null
-            | undefined;
-        MOTION_GENERATION?:
-            | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$.Outbound
-            | null
-            | undefined;
-        TEXTURE_GENERATION?:
-            | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$.Outbound
-            | null
-            | undefined;
-        UNIVERSAL_UPSCALER?:
-            | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$.Outbound
-            | null
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ObjectT> = z
-        .object({
-            fantasyAvatarGeneration: z
-                .nullable(z.lazy(() => PricingCalculatorObject$.outboundSchema))
-                .optional(),
-            imageGeneration: z
-                .nullable(z.lazy(() => PricingCalculatorPricingCalculatorObject$.outboundSchema))
-                .optional(),
-            lcmGeneration: z
-                .nullable(
-                    z.lazy(() => PricingCalculatorPricingCalculatorRequestObject$.outboundSchema)
-                )
-                .optional(),
-            modelTraining: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyObject$.outboundSchema
-                    )
-                )
-                .optional(),
-            motionGeneration: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$.outboundSchema
-                    )
-                )
-                .optional(),
-            textureGeneration: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$.outboundSchema
-                    )
-                )
-                .optional(),
-            universalUpscaler: z
-                .nullable(
-                    z.lazy(
-                        () =>
-                            PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$.outboundSchema
-                    )
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fantasyAvatarGeneration: "FANTASY_AVATAR_GENERATION",
-                imageGeneration: "IMAGE_GENERATION",
-                lcmGeneration: "LCM_GENERATION",
-                modelTraining: "MODEL_TRAINING",
-                motionGeneration: "MOTION_GENERATION",
-                textureGeneration: "TEXTURE_GENERATION",
-                universalUpscaler: "UNIVERSAL_UPSCALER",
-            });
-        });
+    /** @deprecated use `ObjectT$inboundSchema` instead. */
+    export const inboundSchema = ObjectT$inboundSchema;
+    /** @deprecated use `ObjectT$outboundSchema` instead. */
+    export const outboundSchema = ObjectT$outboundSchema;
+    /** @deprecated use `ObjectT$Outbound` instead. */
+    export type Outbound = ObjectT$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorRequestBody$inboundSchema: z.ZodType<
+    PricingCalculatorRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    service: shared.PricingCalculatorServices$inboundSchema.optional(),
+    serviceParams: z.lazy(() => ObjectT$inboundSchema).optional(),
+});
+
+/** @internal */
+export type PricingCalculatorRequestBody$Outbound = {
+    service?: string | undefined;
+    serviceParams?: ObjectT$Outbound | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorRequestBody$outboundSchema: z.ZodType<
+    PricingCalculatorRequestBody$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorRequestBody
+> = z.object({
+    service: shared.PricingCalculatorServices$outboundSchema.optional(),
+    serviceParams: z.lazy(() => ObjectT$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorRequestBody$ {
-    export const inboundSchema: z.ZodType<PricingCalculatorRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            service: shared.PricingCalculatorServices$.inboundSchema.optional(),
-            serviceParams: z.lazy(() => ObjectT$.inboundSchema).optional(),
-        });
-
-    export type Outbound = {
-        service?: string | undefined;
-        serviceParams?: ObjectT$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PricingCalculatorRequestBody> =
-        z.object({
-            service: shared.PricingCalculatorServices$.outboundSchema.optional(),
-            serviceParams: z.lazy(() => ObjectT$.outboundSchema).optional(),
-        });
+    /** @deprecated use `PricingCalculatorRequestBody$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorRequestBody$inboundSchema;
+    /** @deprecated use `PricingCalculatorRequestBody$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorRequestBody$outboundSchema;
+    /** @deprecated use `PricingCalculatorRequestBody$Outbound` instead. */
+    export type Outbound = PricingCalculatorRequestBody$Outbound;
 }
 
 /** @internal */
+export const CalculateProductionApiServiceCost$inboundSchema: z.ZodType<
+    CalculateProductionApiServiceCost,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    cost: z.number().int().optional(),
+});
+
+/** @internal */
+export type CalculateProductionApiServiceCost$Outbound = {
+    cost?: number | undefined;
+};
+
+/** @internal */
+export const CalculateProductionApiServiceCost$outboundSchema: z.ZodType<
+    CalculateProductionApiServiceCost$Outbound,
+    z.ZodTypeDef,
+    CalculateProductionApiServiceCost
+> = z.object({
+    cost: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CalculateProductionApiServiceCost$ {
-    export const inboundSchema: z.ZodType<
-        CalculateProductionApiServiceCost,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        cost: z.number().int().optional(),
-    });
-
-    export type Outbound = {
-        cost?: number | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CalculateProductionApiServiceCost
-    > = z.object({
-        cost: z.number().int().optional(),
-    });
+    /** @deprecated use `CalculateProductionApiServiceCost$inboundSchema` instead. */
+    export const inboundSchema = CalculateProductionApiServiceCost$inboundSchema;
+    /** @deprecated use `CalculateProductionApiServiceCost$outboundSchema` instead. */
+    export const outboundSchema = CalculateProductionApiServiceCost$outboundSchema;
+    /** @deprecated use `CalculateProductionApiServiceCost$Outbound` instead. */
+    export type Outbound = CalculateProductionApiServiceCost$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorResponseBody$inboundSchema: z.ZodType<
+    PricingCalculatorResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    calculateProductionApiServiceCost: z
+        .nullable(z.lazy(() => CalculateProductionApiServiceCost$inboundSchema))
+        .optional(),
+});
+
+/** @internal */
+export type PricingCalculatorResponseBody$Outbound = {
+    calculateProductionApiServiceCost?:
+        | CalculateProductionApiServiceCost$Outbound
+        | null
+        | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorResponseBody$outboundSchema: z.ZodType<
+    PricingCalculatorResponseBody$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorResponseBody
+> = z.object({
+    calculateProductionApiServiceCost: z
+        .nullable(z.lazy(() => CalculateProductionApiServiceCost$outboundSchema))
+        .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorResponseBody$ {
-    export const inboundSchema: z.ZodType<PricingCalculatorResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            calculateProductionApiServiceCost: z
-                .nullable(z.lazy(() => CalculateProductionApiServiceCost$.inboundSchema))
-                .optional(),
-        });
-
-    export type Outbound = {
-        calculateProductionApiServiceCost?:
-            | CalculateProductionApiServiceCost$.Outbound
-            | null
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PricingCalculatorResponseBody> =
-        z.object({
-            calculateProductionApiServiceCost: z
-                .nullable(z.lazy(() => CalculateProductionApiServiceCost$.outboundSchema))
-                .optional(),
-        });
+    /** @deprecated use `PricingCalculatorResponseBody$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorResponseBody$inboundSchema;
+    /** @deprecated use `PricingCalculatorResponseBody$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorResponseBody$outboundSchema;
+    /** @deprecated use `PricingCalculatorResponseBody$Outbound` instead. */
+    export type Outbound = PricingCalculatorResponseBody$Outbound;
 }
 
 /** @internal */
+export const PricingCalculatorResponse$inboundSchema: z.ZodType<
+    PricingCalculatorResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => PricingCalculatorResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type PricingCalculatorResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: PricingCalculatorResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const PricingCalculatorResponse$outboundSchema: z.ZodType<
+    PricingCalculatorResponse$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => PricingCalculatorResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PricingCalculatorResponse$ {
-    export const inboundSchema: z.ZodType<PricingCalculatorResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => PricingCalculatorResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: PricingCalculatorResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PricingCalculatorResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => PricingCalculatorResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `PricingCalculatorResponse$inboundSchema` instead. */
+    export const inboundSchema = PricingCalculatorResponse$inboundSchema;
+    /** @deprecated use `PricingCalculatorResponse$outboundSchema` instead. */
+    export const outboundSchema = PricingCalculatorResponse$outboundSchema;
+    /** @deprecated use `PricingCalculatorResponse$Outbound` instead. */
+    export type Outbound = PricingCalculatorResponse$Outbound;
 }

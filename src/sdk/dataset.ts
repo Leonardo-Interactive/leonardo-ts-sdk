@@ -51,7 +51,7 @@ export class Dataset extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateDatasetRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.CreateDatasetRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -103,7 +103,7 @@ export class Dataset extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateDatasetResponse>()
-            .json(200, operations.CreateDatasetResponse$, { key: "object" })
+            .json(200, operations.CreateDatasetResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -125,7 +125,7 @@ export class Dataset extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteDatasetByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteDatasetByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -179,7 +179,7 @@ export class Dataset extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteDatasetByIdResponse>()
-            .json(200, operations.DeleteDatasetByIdResponse$, { key: "object" })
+            .json(200, operations.DeleteDatasetByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -201,7 +201,7 @@ export class Dataset extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetDatasetByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetDatasetByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -255,7 +255,7 @@ export class Dataset extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetDatasetByIdResponse>()
-            .json(200, operations.GetDatasetByIdResponse$, { key: "object" })
+            .json(200, operations.GetDatasetByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -279,7 +279,7 @@ export class Dataset extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UploadDatasetImageRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UploadDatasetImageRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
@@ -337,7 +337,7 @@ export class Dataset extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadDatasetImageResponse>()
-            .json(200, operations.UploadDatasetImageResponse$, { key: "object" })
+            .json(200, operations.UploadDatasetImageResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -361,7 +361,7 @@ export class Dataset extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UploadDatasetImageFromGenRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UploadDatasetImageFromGenRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
@@ -419,7 +419,9 @@ export class Dataset extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.UploadDatasetImageFromGenResponse>()
-            .json(200, operations.UploadDatasetImageFromGenResponse$, { key: "object" })
+            .json(200, operations.UploadDatasetImageFromGenResponse$inboundSchema, {
+                key: "object",
+            })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

@@ -25,8 +25,20 @@ export enum LcmGenerationStyle {
 }
 
 /** @internal */
+export const LcmGenerationStyle$inboundSchema: z.ZodNativeEnum<typeof LcmGenerationStyle> =
+    z.nativeEnum(LcmGenerationStyle);
+
+/** @internal */
+export const LcmGenerationStyle$outboundSchema: z.ZodNativeEnum<typeof LcmGenerationStyle> =
+    LcmGenerationStyle$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LcmGenerationStyle$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof LcmGenerationStyle> =
-        z.nativeEnum(LcmGenerationStyle);
-    export const outboundSchema: z.ZodNativeEnum<typeof LcmGenerationStyle> = inboundSchema;
+    /** @deprecated use `LcmGenerationStyle$inboundSchema` instead. */
+    export const inboundSchema = LcmGenerationStyle$inboundSchema;
+    /** @deprecated use `LcmGenerationStyle$outboundSchema` instead. */
+    export const outboundSchema = LcmGenerationStyle$outboundSchema;
 }

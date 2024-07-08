@@ -49,109 +49,177 @@ export type DeleteInitImageByIdResponse = {
 };
 
 /** @internal */
+export const DeleteInitImageByIdRequest$inboundSchema: z.ZodType<
+    DeleteInitImageByIdRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type DeleteInitImageByIdRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const DeleteInitImageByIdRequest$outboundSchema: z.ZodType<
+    DeleteInitImageByIdRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteInitImageByIdRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteInitImageByIdRequest$ {
-    export const inboundSchema: z.ZodType<DeleteInitImageByIdRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.string(),
-        });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteInitImageByIdRequest> =
-        z.object({
-            id: z.string(),
-        });
+    /** @deprecated use `DeleteInitImageByIdRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteInitImageByIdRequest$inboundSchema;
+    /** @deprecated use `DeleteInitImageByIdRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteInitImageByIdRequest$outboundSchema;
+    /** @deprecated use `DeleteInitImageByIdRequest$Outbound` instead. */
+    export type Outbound = DeleteInitImageByIdRequest$Outbound;
 }
 
 /** @internal */
+export const InitImages$inboundSchema: z.ZodType<InitImages, z.ZodTypeDef, unknown> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type InitImages$Outbound = {
+    id?: string | null | undefined;
+};
+
+/** @internal */
+export const InitImages$outboundSchema: z.ZodType<InitImages$Outbound, z.ZodTypeDef, InitImages> =
+    z.object({
+        id: z.nullable(z.string()).optional(),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InitImages$ {
-    export const inboundSchema: z.ZodType<InitImages, z.ZodTypeDef, unknown> = z.object({
-        id: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InitImages> = z.object({
-        id: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `InitImages$inboundSchema` instead. */
+    export const inboundSchema = InitImages$inboundSchema;
+    /** @deprecated use `InitImages$outboundSchema` instead. */
+    export const outboundSchema = InitImages$outboundSchema;
+    /** @deprecated use `InitImages$Outbound` instead. */
+    export type Outbound = InitImages$Outbound;
 }
 
 /** @internal */
+export const DeleteInitImageByIdResponseBody$inboundSchema: z.ZodType<
+    DeleteInitImageByIdResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        delete_init_images_by_pk: z.nullable(z.lazy(() => InitImages$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            delete_init_images_by_pk: "deleteInitImagesByPk",
+        });
+    });
+
+/** @internal */
+export type DeleteInitImageByIdResponseBody$Outbound = {
+    delete_init_images_by_pk?: InitImages$Outbound | null | undefined;
+};
+
+/** @internal */
+export const DeleteInitImageByIdResponseBody$outboundSchema: z.ZodType<
+    DeleteInitImageByIdResponseBody$Outbound,
+    z.ZodTypeDef,
+    DeleteInitImageByIdResponseBody
+> = z
+    .object({
+        deleteInitImagesByPk: z.nullable(z.lazy(() => InitImages$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            deleteInitImagesByPk: "delete_init_images_by_pk",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteInitImageByIdResponseBody$ {
-    export const inboundSchema: z.ZodType<DeleteInitImageByIdResponseBody, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                delete_init_images_by_pk: z
-                    .nullable(z.lazy(() => InitImages$.inboundSchema))
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    delete_init_images_by_pk: "deleteInitImagesByPk",
-                });
-            });
-
-    export type Outbound = {
-        delete_init_images_by_pk?: InitImages$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        DeleteInitImageByIdResponseBody
-    > = z
-        .object({
-            deleteInitImagesByPk: z.nullable(z.lazy(() => InitImages$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                deleteInitImagesByPk: "delete_init_images_by_pk",
-            });
-        });
+    /** @deprecated use `DeleteInitImageByIdResponseBody$inboundSchema` instead. */
+    export const inboundSchema = DeleteInitImageByIdResponseBody$inboundSchema;
+    /** @deprecated use `DeleteInitImageByIdResponseBody$outboundSchema` instead. */
+    export const outboundSchema = DeleteInitImageByIdResponseBody$outboundSchema;
+    /** @deprecated use `DeleteInitImageByIdResponseBody$Outbound` instead. */
+    export type Outbound = DeleteInitImageByIdResponseBody$Outbound;
 }
 
 /** @internal */
+export const DeleteInitImageByIdResponse$inboundSchema: z.ZodType<
+    DeleteInitImageByIdResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => DeleteInitImageByIdResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type DeleteInitImageByIdResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: DeleteInitImageByIdResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const DeleteInitImageByIdResponse$outboundSchema: z.ZodType<
+    DeleteInitImageByIdResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteInitImageByIdResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => DeleteInitImageByIdResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteInitImageByIdResponse$ {
-    export const inboundSchema: z.ZodType<DeleteInitImageByIdResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => DeleteInitImageByIdResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: DeleteInitImageByIdResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteInitImageByIdResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => DeleteInitImageByIdResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `DeleteInitImageByIdResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteInitImageByIdResponse$inboundSchema;
+    /** @deprecated use `DeleteInitImageByIdResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteInitImageByIdResponse$outboundSchema;
+    /** @deprecated use `DeleteInitImageByIdResponse$Outbound` instead. */
+    export type Outbound = DeleteInitImageByIdResponse$Outbound;
 }

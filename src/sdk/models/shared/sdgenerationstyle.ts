@@ -42,8 +42,20 @@ export enum SdGenerationStyle {
 }
 
 /** @internal */
+export const SdGenerationStyle$inboundSchema: z.ZodNativeEnum<typeof SdGenerationStyle> =
+    z.nativeEnum(SdGenerationStyle);
+
+/** @internal */
+export const SdGenerationStyle$outboundSchema: z.ZodNativeEnum<typeof SdGenerationStyle> =
+    SdGenerationStyle$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SdGenerationStyle$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof SdGenerationStyle> =
-        z.nativeEnum(SdGenerationStyle);
-    export const outboundSchema: z.ZodNativeEnum<typeof SdGenerationStyle> = inboundSchema;
+    /** @deprecated use `SdGenerationStyle$inboundSchema` instead. */
+    export const inboundSchema = SdGenerationStyle$inboundSchema;
+    /** @deprecated use `SdGenerationStyle$outboundSchema` instead. */
+    export const outboundSchema = SdGenerationStyle$outboundSchema;
 }

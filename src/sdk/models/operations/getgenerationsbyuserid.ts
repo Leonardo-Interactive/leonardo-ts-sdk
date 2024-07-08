@@ -194,384 +194,493 @@ export type GetGenerationsByUserIdResponse = {
 };
 
 /** @internal */
+export const GetGenerationsByUserIdRequest$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    limit: z.number().int().default(10),
+    offset: z.number().int().default(0),
+    userId: z.string(),
+});
+
+/** @internal */
+export type GetGenerationsByUserIdRequest$Outbound = {
+    limit: number;
+    offset: number;
+    userId: string;
+};
+
+/** @internal */
+export const GetGenerationsByUserIdRequest$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdRequest$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdRequest
+> = z.object({
+    limit: z.number().int().default(10),
+    offset: z.number().int().default(0),
+    userId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetGenerationsByUserIdRequest$ {
-    export const inboundSchema: z.ZodType<GetGenerationsByUserIdRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            limit: z.number().int().default(10),
-            offset: z.number().int().default(0),
-            userId: z.string(),
-        });
-
-    export type Outbound = {
-        limit: number;
-        offset: number;
-        userId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetGenerationsByUserIdRequest> =
-        z.object({
-            limit: z.number().int().default(10),
-            offset: z.number().int().default(0),
-            userId: z.string(),
-        });
+    /** @deprecated use `GetGenerationsByUserIdRequest$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdRequest$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdRequest$outboundSchema` instead. */
+    export const outboundSchema = GetGenerationsByUserIdRequest$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdRequest$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdRequest$Outbound;
 }
 
 /** @internal */
+export const GetGenerationsByUserIdGeneratedImageVariationGeneric$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdGeneratedImageVariationGeneric,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    transformType: shared.VariationType$inboundSchema.optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound = {
+    id?: string | null | undefined;
+    status?: string | undefined;
+    transformType?: string | undefined;
+    url?: string | null | undefined;
+};
+
+/** @internal */
+export const GetGenerationsByUserIdGeneratedImageVariationGeneric$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdGeneratedImageVariationGeneric
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+    status: shared.JobStatus$outboundSchema.optional(),
+    transformType: shared.VariationType$outboundSchema.optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetGenerationsByUserIdGeneratedImageVariationGeneric$ {
-    export const inboundSchema: z.ZodType<
-        GetGenerationsByUserIdGeneratedImageVariationGeneric,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        id: z.nullable(z.string()).optional(),
-        status: shared.JobStatus$.inboundSchema.optional(),
-        transformType: shared.VariationType$.inboundSchema.optional(),
-        url: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        status?: string | undefined;
-        transformType?: string | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetGenerationsByUserIdGeneratedImageVariationGeneric
-    > = z.object({
-        id: z.nullable(z.string()).optional(),
-        status: shared.JobStatus$.outboundSchema.optional(),
-        transformType: shared.VariationType$.outboundSchema.optional(),
-        url: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `GetGenerationsByUserIdGeneratedImageVariationGeneric$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdGeneratedImageVariationGeneric$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGeneratedImageVariationGeneric$outboundSchema` instead. */
+    export const outboundSchema =
+        GetGenerationsByUserIdGeneratedImageVariationGeneric$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound;
 }
 
 /** @internal */
+export const GetGenerationsByUserIdGeneratedImages$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdGeneratedImages,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        generated_image_variation_generics: z
+            .array(z.lazy(() => GetGenerationsByUserIdGeneratedImageVariationGeneric$inboundSchema))
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        imageToVideo: z.nullable(z.boolean()).optional(),
+        likeCount: z.number().int().optional(),
+        motion: z.nullable(z.boolean()).optional(),
+        motionMP4URL: z.nullable(z.string()).optional(),
+        motionModel: z.nullable(z.string()).optional(),
+        motionStrength: z.nullable(z.number().int()).optional(),
+        nsfw: z.boolean().optional(),
+        url: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            generated_image_variation_generics: "generatedImageVariationGenerics",
+            motionMP4URL: "motionMp4URL",
+        });
+    });
+
+/** @internal */
+export type GetGenerationsByUserIdGeneratedImages$Outbound = {
+    generated_image_variation_generics?:
+        | Array<GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound>
+        | undefined;
+    id?: string | null | undefined;
+    imageToVideo?: boolean | null | undefined;
+    likeCount?: number | undefined;
+    motion?: boolean | null | undefined;
+    motionMP4URL?: string | null | undefined;
+    motionModel?: string | null | undefined;
+    motionStrength?: number | null | undefined;
+    nsfw?: boolean | undefined;
+    url?: string | undefined;
+};
+
+/** @internal */
+export const GetGenerationsByUserIdGeneratedImages$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdGeneratedImages$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdGeneratedImages
+> = z
+    .object({
+        generatedImageVariationGenerics: z
+            .array(
+                z.lazy(() => GetGenerationsByUserIdGeneratedImageVariationGeneric$outboundSchema)
+            )
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        imageToVideo: z.nullable(z.boolean()).optional(),
+        likeCount: z.number().int().optional(),
+        motion: z.nullable(z.boolean()).optional(),
+        motionMp4URL: z.nullable(z.string()).optional(),
+        motionModel: z.nullable(z.string()).optional(),
+        motionStrength: z.nullable(z.number().int()).optional(),
+        nsfw: z.boolean().optional(),
+        url: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            generatedImageVariationGenerics: "generated_image_variation_generics",
+            motionMp4URL: "motionMP4URL",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetGenerationsByUserIdGeneratedImages$ {
-    export const inboundSchema: z.ZodType<
-        GetGenerationsByUserIdGeneratedImages,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            generated_image_variation_generics: z
-                .array(
-                    z.lazy(
-                        () => GetGenerationsByUserIdGeneratedImageVariationGeneric$.inboundSchema
-                    )
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            imageToVideo: z.nullable(z.boolean()).optional(),
-            likeCount: z.number().int().optional(),
-            motion: z.nullable(z.boolean()).optional(),
-            motionMP4URL: z.nullable(z.string()).optional(),
-            motionModel: z.nullable(z.string()).optional(),
-            motionStrength: z.nullable(z.number().int()).optional(),
-            nsfw: z.boolean().optional(),
-            url: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                generated_image_variation_generics: "generatedImageVariationGenerics",
-                motionMP4URL: "motionMp4URL",
-            });
-        });
-
-    export type Outbound = {
-        generated_image_variation_generics?:
-            | Array<GetGenerationsByUserIdGeneratedImageVariationGeneric$.Outbound>
-            | undefined;
-        id?: string | null | undefined;
-        imageToVideo?: boolean | null | undefined;
-        likeCount?: number | undefined;
-        motion?: boolean | null | undefined;
-        motionMP4URL?: string | null | undefined;
-        motionModel?: string | null | undefined;
-        motionStrength?: number | null | undefined;
-        nsfw?: boolean | undefined;
-        url?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetGenerationsByUserIdGeneratedImages
-    > = z
-        .object({
-            generatedImageVariationGenerics: z
-                .array(
-                    z.lazy(
-                        () => GetGenerationsByUserIdGeneratedImageVariationGeneric$.outboundSchema
-                    )
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            imageToVideo: z.nullable(z.boolean()).optional(),
-            likeCount: z.number().int().optional(),
-            motion: z.nullable(z.boolean()).optional(),
-            motionMp4URL: z.nullable(z.string()).optional(),
-            motionModel: z.nullable(z.string()).optional(),
-            motionStrength: z.nullable(z.number().int()).optional(),
-            nsfw: z.boolean().optional(),
-            url: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                generatedImageVariationGenerics: "generated_image_variation_generics",
-                motionMp4URL: "motionMP4URL",
-            });
-        });
+    /** @deprecated use `GetGenerationsByUserIdGeneratedImages$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdGeneratedImages$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGeneratedImages$outboundSchema` instead. */
+    export const outboundSchema = GetGenerationsByUserIdGeneratedImages$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGeneratedImages$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdGeneratedImages$Outbound;
 }
 
 /** @internal */
+export const Elements$inboundSchema: z.ZodType<Elements, z.ZodTypeDef, unknown> = z.object({
+    akUUID: z.nullable(z.string()).optional(),
+    baseModel: shared.SdVersions$inboundSchema.optional(),
+    description: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    urlImage: z.nullable(z.string()).optional(),
+    weightDefault: z.nullable(z.number().int()).optional(),
+    weightMax: z.nullable(z.number().int()).optional(),
+    weightMin: z.nullable(z.number().int()).optional(),
+});
+
+/** @internal */
+export type Elements$Outbound = {
+    akUUID?: string | null | undefined;
+    baseModel?: string | undefined;
+    description?: string | null | undefined;
+    name?: string | null | undefined;
+    urlImage?: string | null | undefined;
+    weightDefault?: number | null | undefined;
+    weightMax?: number | null | undefined;
+    weightMin?: number | null | undefined;
+};
+
+/** @internal */
+export const Elements$outboundSchema: z.ZodType<Elements$Outbound, z.ZodTypeDef, Elements> =
+    z.object({
+        akUUID: z.nullable(z.string()).optional(),
+        baseModel: shared.SdVersions$outboundSchema.optional(),
+        description: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        urlImage: z.nullable(z.string()).optional(),
+        weightDefault: z.nullable(z.number().int()).optional(),
+        weightMax: z.nullable(z.number().int()).optional(),
+        weightMin: z.nullable(z.number().int()).optional(),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Elements$ {
-    export const inboundSchema: z.ZodType<Elements, z.ZodTypeDef, unknown> = z.object({
-        akUUID: z.nullable(z.string()).optional(),
-        baseModel: shared.SdVersions$.inboundSchema.optional(),
-        description: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        urlImage: z.nullable(z.string()).optional(),
-        weightDefault: z.nullable(z.number().int()).optional(),
-        weightMax: z.nullable(z.number().int()).optional(),
-        weightMin: z.nullable(z.number().int()).optional(),
-    });
-
-    export type Outbound = {
-        akUUID?: string | null | undefined;
-        baseModel?: string | undefined;
-        description?: string | null | undefined;
-        name?: string | null | undefined;
-        urlImage?: string | null | undefined;
-        weightDefault?: number | null | undefined;
-        weightMax?: number | null | undefined;
-        weightMin?: number | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Elements> = z.object({
-        akUUID: z.nullable(z.string()).optional(),
-        baseModel: shared.SdVersions$.outboundSchema.optional(),
-        description: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        urlImage: z.nullable(z.string()).optional(),
-        weightDefault: z.nullable(z.number().int()).optional(),
-        weightMax: z.nullable(z.number().int()).optional(),
-        weightMin: z.nullable(z.number().int()).optional(),
-    });
+    /** @deprecated use `Elements$inboundSchema` instead. */
+    export const inboundSchema = Elements$inboundSchema;
+    /** @deprecated use `Elements$outboundSchema` instead. */
+    export const outboundSchema = Elements$outboundSchema;
+    /** @deprecated use `Elements$Outbound` instead. */
+    export type Outbound = Elements$Outbound;
 }
 
 /** @internal */
+export const GetGenerationsByUserIdGenerationElements$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdGenerationElements,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.nullable(z.number().int()).optional(),
+    lora: z.nullable(z.lazy(() => Elements$inboundSchema)).optional(),
+    weightApplied: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type GetGenerationsByUserIdGenerationElements$Outbound = {
+    id?: number | null | undefined;
+    lora?: Elements$Outbound | null | undefined;
+    weightApplied?: number | null | undefined;
+};
+
+/** @internal */
+export const GetGenerationsByUserIdGenerationElements$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdGenerationElements$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdGenerationElements
+> = z.object({
+    id: z.nullable(z.number().int()).optional(),
+    lora: z.nullable(z.lazy(() => Elements$outboundSchema)).optional(),
+    weightApplied: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetGenerationsByUserIdGenerationElements$ {
-    export const inboundSchema: z.ZodType<
-        GetGenerationsByUserIdGenerationElements,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        id: z.nullable(z.number().int()).optional(),
-        lora: z.nullable(z.lazy(() => Elements$.inboundSchema)).optional(),
-        weightApplied: z.nullable(z.number()).optional(),
-    });
-
-    export type Outbound = {
-        id?: number | null | undefined;
-        lora?: Elements$.Outbound | null | undefined;
-        weightApplied?: number | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetGenerationsByUserIdGenerationElements
-    > = z.object({
-        id: z.nullable(z.number().int()).optional(),
-        lora: z.nullable(z.lazy(() => Elements$.outboundSchema)).optional(),
-        weightApplied: z.nullable(z.number()).optional(),
-    });
+    /** @deprecated use `GetGenerationsByUserIdGenerationElements$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdGenerationElements$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGenerationElements$outboundSchema` instead. */
+    export const outboundSchema = GetGenerationsByUserIdGenerationElements$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGenerationElements$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdGenerationElements$Outbound;
 }
 
 /** @internal */
+export const GetGenerationsByUserIdGenerations$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdGenerations,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        createdAt: z.string().optional(),
+        generated_images: z
+            .array(z.lazy(() => GetGenerationsByUserIdGeneratedImages$inboundSchema))
+            .optional(),
+        generation_elements: z
+            .array(z.lazy(() => GetGenerationsByUserIdGenerationElements$inboundSchema))
+            .optional(),
+        guidanceScale: z.nullable(z.number()).optional(),
+        id: z.nullable(z.string()).optional(),
+        imageHeight: z.number().int().optional(),
+        imageWidth: z.number().int().optional(),
+        inferenceSteps: z.nullable(z.number().int()).optional(),
+        initStrength: z.nullable(z.number()).optional(),
+        modelId: z.nullable(z.string()).optional(),
+        negativePrompt: z.nullable(z.string()).optional(),
+        photoReal: z.nullable(z.boolean()).optional(),
+        photoRealStrength: z.nullable(z.number()).optional(),
+        presetStyle: z.nullable(
+            shared.SdGenerationStyle$inboundSchema.default(shared.SdGenerationStyle.Dynamic)
+        ),
+        prompt: z.string().optional(),
+        promptMagic: z.nullable(z.boolean()).optional(),
+        promptMagicStrength: z.nullable(z.number()).optional(),
+        promptMagicVersion: z.nullable(z.string()).optional(),
+        public: z.boolean().optional(),
+        scheduler: shared.SdGenerationSchedulers$inboundSchema.optional(),
+        sdVersion: shared.SdVersions$inboundSchema.optional(),
+        seed: z.nullable(z.number().int()).optional(),
+        status: shared.JobStatus$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            generated_images: "generatedImages",
+            generation_elements: "generationElements",
+        });
+    });
+
+/** @internal */
+export type GetGenerationsByUserIdGenerations$Outbound = {
+    createdAt?: string | undefined;
+    generated_images?: Array<GetGenerationsByUserIdGeneratedImages$Outbound> | undefined;
+    generation_elements?: Array<GetGenerationsByUserIdGenerationElements$Outbound> | undefined;
+    guidanceScale?: number | null | undefined;
+    id?: string | null | undefined;
+    imageHeight?: number | undefined;
+    imageWidth?: number | undefined;
+    inferenceSteps?: number | null | undefined;
+    initStrength?: number | null | undefined;
+    modelId?: string | null | undefined;
+    negativePrompt?: string | null | undefined;
+    photoReal?: boolean | null | undefined;
+    photoRealStrength?: number | null | undefined;
+    presetStyle: string | null;
+    prompt?: string | undefined;
+    promptMagic?: boolean | null | undefined;
+    promptMagicStrength?: number | null | undefined;
+    promptMagicVersion?: string | null | undefined;
+    public?: boolean | undefined;
+    scheduler?: string | undefined;
+    sdVersion?: string | undefined;
+    seed?: number | null | undefined;
+    status?: string | undefined;
+};
+
+/** @internal */
+export const GetGenerationsByUserIdGenerations$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdGenerations$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdGenerations
+> = z
+    .object({
+        createdAt: z.string().optional(),
+        generatedImages: z
+            .array(z.lazy(() => GetGenerationsByUserIdGeneratedImages$outboundSchema))
+            .optional(),
+        generationElements: z
+            .array(z.lazy(() => GetGenerationsByUserIdGenerationElements$outboundSchema))
+            .optional(),
+        guidanceScale: z.nullable(z.number()).optional(),
+        id: z.nullable(z.string()).optional(),
+        imageHeight: z.number().int().optional(),
+        imageWidth: z.number().int().optional(),
+        inferenceSteps: z.nullable(z.number().int()).optional(),
+        initStrength: z.nullable(z.number()).optional(),
+        modelId: z.nullable(z.string()).optional(),
+        negativePrompt: z.nullable(z.string()).optional(),
+        photoReal: z.nullable(z.boolean()).optional(),
+        photoRealStrength: z.nullable(z.number()).optional(),
+        presetStyle: z.nullable(
+            shared.SdGenerationStyle$outboundSchema.default(shared.SdGenerationStyle.Dynamic)
+        ),
+        prompt: z.string().optional(),
+        promptMagic: z.nullable(z.boolean()).optional(),
+        promptMagicStrength: z.nullable(z.number()).optional(),
+        promptMagicVersion: z.nullable(z.string()).optional(),
+        public: z.boolean().optional(),
+        scheduler: shared.SdGenerationSchedulers$outboundSchema.optional(),
+        sdVersion: shared.SdVersions$outboundSchema.optional(),
+        seed: z.nullable(z.number().int()).optional(),
+        status: shared.JobStatus$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            generatedImages: "generated_images",
+            generationElements: "generation_elements",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetGenerationsByUserIdGenerations$ {
-    export const inboundSchema: z.ZodType<
-        GetGenerationsByUserIdGenerations,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            createdAt: z.string().optional(),
-            generated_images: z
-                .array(z.lazy(() => GetGenerationsByUserIdGeneratedImages$.inboundSchema))
-                .optional(),
-            generation_elements: z
-                .array(z.lazy(() => GetGenerationsByUserIdGenerationElements$.inboundSchema))
-                .optional(),
-            guidanceScale: z.nullable(z.number()).optional(),
-            id: z.nullable(z.string()).optional(),
-            imageHeight: z.number().int().optional(),
-            imageWidth: z.number().int().optional(),
-            inferenceSteps: z.nullable(z.number().int()).optional(),
-            initStrength: z.nullable(z.number()).optional(),
-            modelId: z.nullable(z.string()).optional(),
-            negativePrompt: z.nullable(z.string()).optional(),
-            photoReal: z.nullable(z.boolean()).optional(),
-            photoRealStrength: z.nullable(z.number()).optional(),
-            presetStyle: z.nullable(
-                shared.SdGenerationStyle$.inboundSchema.default(shared.SdGenerationStyle.Dynamic)
-            ),
-            prompt: z.string().optional(),
-            promptMagic: z.nullable(z.boolean()).optional(),
-            promptMagicStrength: z.nullable(z.number()).optional(),
-            promptMagicVersion: z.nullable(z.string()).optional(),
-            public: z.boolean().optional(),
-            scheduler: shared.SdGenerationSchedulers$.inboundSchema.optional(),
-            sdVersion: shared.SdVersions$.inboundSchema.optional(),
-            seed: z.nullable(z.number().int()).optional(),
-            status: shared.JobStatus$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                generated_images: "generatedImages",
-                generation_elements: "generationElements",
-            });
-        });
-
-    export type Outbound = {
-        createdAt?: string | undefined;
-        generated_images?: Array<GetGenerationsByUserIdGeneratedImages$.Outbound> | undefined;
-        generation_elements?: Array<GetGenerationsByUserIdGenerationElements$.Outbound> | undefined;
-        guidanceScale?: number | null | undefined;
-        id?: string | null | undefined;
-        imageHeight?: number | undefined;
-        imageWidth?: number | undefined;
-        inferenceSteps?: number | null | undefined;
-        initStrength?: number | null | undefined;
-        modelId?: string | null | undefined;
-        negativePrompt?: string | null | undefined;
-        photoReal?: boolean | null | undefined;
-        photoRealStrength?: number | null | undefined;
-        presetStyle: string | null;
-        prompt?: string | undefined;
-        promptMagic?: boolean | null | undefined;
-        promptMagicStrength?: number | null | undefined;
-        promptMagicVersion?: string | null | undefined;
-        public?: boolean | undefined;
-        scheduler?: string | undefined;
-        sdVersion?: string | undefined;
-        seed?: number | null | undefined;
-        status?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetGenerationsByUserIdGenerations
-    > = z
-        .object({
-            createdAt: z.string().optional(),
-            generatedImages: z
-                .array(z.lazy(() => GetGenerationsByUserIdGeneratedImages$.outboundSchema))
-                .optional(),
-            generationElements: z
-                .array(z.lazy(() => GetGenerationsByUserIdGenerationElements$.outboundSchema))
-                .optional(),
-            guidanceScale: z.nullable(z.number()).optional(),
-            id: z.nullable(z.string()).optional(),
-            imageHeight: z.number().int().optional(),
-            imageWidth: z.number().int().optional(),
-            inferenceSteps: z.nullable(z.number().int()).optional(),
-            initStrength: z.nullable(z.number()).optional(),
-            modelId: z.nullable(z.string()).optional(),
-            negativePrompt: z.nullable(z.string()).optional(),
-            photoReal: z.nullable(z.boolean()).optional(),
-            photoRealStrength: z.nullable(z.number()).optional(),
-            presetStyle: z.nullable(
-                shared.SdGenerationStyle$.outboundSchema.default(shared.SdGenerationStyle.Dynamic)
-            ),
-            prompt: z.string().optional(),
-            promptMagic: z.nullable(z.boolean()).optional(),
-            promptMagicStrength: z.nullable(z.number()).optional(),
-            promptMagicVersion: z.nullable(z.string()).optional(),
-            public: z.boolean().optional(),
-            scheduler: shared.SdGenerationSchedulers$.outboundSchema.optional(),
-            sdVersion: shared.SdVersions$.outboundSchema.optional(),
-            seed: z.nullable(z.number().int()).optional(),
-            status: shared.JobStatus$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                generatedImages: "generated_images",
-                generationElements: "generation_elements",
-            });
-        });
+    /** @deprecated use `GetGenerationsByUserIdGenerations$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdGenerations$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGenerations$outboundSchema` instead. */
+    export const outboundSchema = GetGenerationsByUserIdGenerations$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdGenerations$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdGenerations$Outbound;
 }
 
 /** @internal */
+export const GetGenerationsByUserIdResponseBody$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    generations: z.array(z.lazy(() => GetGenerationsByUserIdGenerations$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type GetGenerationsByUserIdResponseBody$Outbound = {
+    generations?: Array<GetGenerationsByUserIdGenerations$Outbound> | undefined;
+};
+
+/** @internal */
+export const GetGenerationsByUserIdResponseBody$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdResponseBody$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdResponseBody
+> = z.object({
+    generations: z.array(z.lazy(() => GetGenerationsByUserIdGenerations$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetGenerationsByUserIdResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        GetGenerationsByUserIdResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        generations: z
-            .array(z.lazy(() => GetGenerationsByUserIdGenerations$.inboundSchema))
-            .optional(),
-    });
-
-    export type Outbound = {
-        generations?: Array<GetGenerationsByUserIdGenerations$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        GetGenerationsByUserIdResponseBody
-    > = z.object({
-        generations: z
-            .array(z.lazy(() => GetGenerationsByUserIdGenerations$.outboundSchema))
-            .optional(),
-    });
+    /** @deprecated use `GetGenerationsByUserIdResponseBody$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdResponseBody$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdResponseBody$outboundSchema` instead. */
+    export const outboundSchema = GetGenerationsByUserIdResponseBody$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdResponseBody$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace GetGenerationsByUserIdResponse$ {
-    export const inboundSchema: z.ZodType<GetGenerationsByUserIdResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => GetGenerationsByUserIdResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const GetGenerationsByUserIdResponse$inboundSchema: z.ZodType<
+    GetGenerationsByUserIdResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => GetGenerationsByUserIdResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: GetGenerationsByUserIdResponseBody$.Outbound | undefined;
-    };
+/** @internal */
+export type GetGenerationsByUserIdResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: GetGenerationsByUserIdResponseBody$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetGenerationsByUserIdResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-                object: z.lazy(() => GetGenerationsByUserIdResponseBody$.outboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const GetGenerationsByUserIdResponse$outboundSchema: z.ZodType<
+    GetGenerationsByUserIdResponse$Outbound,
+    z.ZodTypeDef,
+    GetGenerationsByUserIdResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => GetGenerationsByUserIdResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetGenerationsByUserIdResponse$ {
+    /** @deprecated use `GetGenerationsByUserIdResponse$inboundSchema` instead. */
+    export const inboundSchema = GetGenerationsByUserIdResponse$inboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdResponse$outboundSchema` instead. */
+    export const outboundSchema = GetGenerationsByUserIdResponse$outboundSchema;
+    /** @deprecated use `GetGenerationsByUserIdResponse$Outbound` instead. */
+    export type Outbound = GetGenerationsByUserIdResponse$Outbound;
 }

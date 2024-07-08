@@ -89,130 +89,202 @@ export type GetUserSelfResponse = {
 };
 
 /** @internal */
+export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z.object({
+    id: z.nullable(z.string()).optional(),
+    username: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type Users$Outbound = {
+    id?: string | null | undefined;
+    username?: string | null | undefined;
+};
+
+/** @internal */
+export const Users$outboundSchema: z.ZodType<Users$Outbound, z.ZodTypeDef, Users> = z.object({
+    id: z.nullable(z.string()).optional(),
+    username: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Users$ {
-    export const inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z.object({
-        id: z.nullable(z.string()).optional(),
-        username: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        username?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Users> = z.object({
-        id: z.nullable(z.string()).optional(),
-        username: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `Users$inboundSchema` instead. */
+    export const inboundSchema = Users$inboundSchema;
+    /** @deprecated use `Users$outboundSchema` instead. */
+    export const outboundSchema = Users$outboundSchema;
+    /** @deprecated use `Users$Outbound` instead. */
+    export type Outbound = Users$Outbound;
 }
 
 /** @internal */
+export const UserDetails$inboundSchema: z.ZodType<UserDetails, z.ZodTypeDef, unknown> = z.object({
+    apiConcurrencySlots: z.number().int().optional(),
+    apiPaidTokens: z.nullable(z.number().int()).optional(),
+    apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
+    apiSubscriptionTokens: z.number().int().optional(),
+    paidTokens: z.nullable(z.number().int()).optional(),
+    subscriptionGptTokens: z.number().int().optional(),
+    subscriptionModelTokens: z.number().int().optional(),
+    subscriptionTokens: z.number().int().optional(),
+    tokenRenewalDate: z.nullable(z.string()).optional(),
+    user: z.nullable(z.lazy(() => Users$inboundSchema)).optional(),
+});
+
+/** @internal */
+export type UserDetails$Outbound = {
+    apiConcurrencySlots?: number | undefined;
+    apiPaidTokens?: number | null | undefined;
+    apiPlanTokenRenewalDate?: string | null | undefined;
+    apiSubscriptionTokens?: number | undefined;
+    paidTokens?: number | null | undefined;
+    subscriptionGptTokens?: number | undefined;
+    subscriptionModelTokens?: number | undefined;
+    subscriptionTokens?: number | undefined;
+    tokenRenewalDate?: string | null | undefined;
+    user?: Users$Outbound | null | undefined;
+};
+
+/** @internal */
+export const UserDetails$outboundSchema: z.ZodType<
+    UserDetails$Outbound,
+    z.ZodTypeDef,
+    UserDetails
+> = z.object({
+    apiConcurrencySlots: z.number().int().optional(),
+    apiPaidTokens: z.nullable(z.number().int()).optional(),
+    apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
+    apiSubscriptionTokens: z.number().int().optional(),
+    paidTokens: z.nullable(z.number().int()).optional(),
+    subscriptionGptTokens: z.number().int().optional(),
+    subscriptionModelTokens: z.number().int().optional(),
+    subscriptionTokens: z.number().int().optional(),
+    tokenRenewalDate: z.nullable(z.string()).optional(),
+    user: z.nullable(z.lazy(() => Users$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UserDetails$ {
-    export const inboundSchema: z.ZodType<UserDetails, z.ZodTypeDef, unknown> = z.object({
-        apiConcurrencySlots: z.number().int().optional(),
-        apiPaidTokens: z.nullable(z.number().int()).optional(),
-        apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
-        apiSubscriptionTokens: z.number().int().optional(),
-        paidTokens: z.nullable(z.number().int()).optional(),
-        subscriptionGptTokens: z.number().int().optional(),
-        subscriptionModelTokens: z.number().int().optional(),
-        subscriptionTokens: z.number().int().optional(),
-        tokenRenewalDate: z.nullable(z.string()).optional(),
-        user: z.nullable(z.lazy(() => Users$.inboundSchema)).optional(),
-    });
-
-    export type Outbound = {
-        apiConcurrencySlots?: number | undefined;
-        apiPaidTokens?: number | null | undefined;
-        apiPlanTokenRenewalDate?: string | null | undefined;
-        apiSubscriptionTokens?: number | undefined;
-        paidTokens?: number | null | undefined;
-        subscriptionGptTokens?: number | undefined;
-        subscriptionModelTokens?: number | undefined;
-        subscriptionTokens?: number | undefined;
-        tokenRenewalDate?: string | null | undefined;
-        user?: Users$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UserDetails> = z.object({
-        apiConcurrencySlots: z.number().int().optional(),
-        apiPaidTokens: z.nullable(z.number().int()).optional(),
-        apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
-        apiSubscriptionTokens: z.number().int().optional(),
-        paidTokens: z.nullable(z.number().int()).optional(),
-        subscriptionGptTokens: z.number().int().optional(),
-        subscriptionModelTokens: z.number().int().optional(),
-        subscriptionTokens: z.number().int().optional(),
-        tokenRenewalDate: z.nullable(z.string()).optional(),
-        user: z.nullable(z.lazy(() => Users$.outboundSchema)).optional(),
-    });
+    /** @deprecated use `UserDetails$inboundSchema` instead. */
+    export const inboundSchema = UserDetails$inboundSchema;
+    /** @deprecated use `UserDetails$outboundSchema` instead. */
+    export const outboundSchema = UserDetails$outboundSchema;
+    /** @deprecated use `UserDetails$Outbound` instead. */
+    export type Outbound = UserDetails$Outbound;
 }
 
 /** @internal */
+export const GetUserSelfResponseBody$inboundSchema: z.ZodType<
+    GetUserSelfResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        user_details: z.array(z.lazy(() => UserDetails$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            user_details: "userDetails",
+        });
+    });
+
+/** @internal */
+export type GetUserSelfResponseBody$Outbound = {
+    user_details?: Array<UserDetails$Outbound> | undefined;
+};
+
+/** @internal */
+export const GetUserSelfResponseBody$outboundSchema: z.ZodType<
+    GetUserSelfResponseBody$Outbound,
+    z.ZodTypeDef,
+    GetUserSelfResponseBody
+> = z
+    .object({
+        userDetails: z.array(z.lazy(() => UserDetails$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            userDetails: "user_details",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetUserSelfResponseBody$ {
-    export const inboundSchema: z.ZodType<GetUserSelfResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            user_details: z.array(z.lazy(() => UserDetails$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                user_details: "userDetails",
-            });
-        });
-
-    export type Outbound = {
-        user_details?: Array<UserDetails$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetUserSelfResponseBody> = z
-        .object({
-            userDetails: z.array(z.lazy(() => UserDetails$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                userDetails: "user_details",
-            });
-        });
+    /** @deprecated use `GetUserSelfResponseBody$inboundSchema` instead. */
+    export const inboundSchema = GetUserSelfResponseBody$inboundSchema;
+    /** @deprecated use `GetUserSelfResponseBody$outboundSchema` instead. */
+    export const outboundSchema = GetUserSelfResponseBody$outboundSchema;
+    /** @deprecated use `GetUserSelfResponseBody$Outbound` instead. */
+    export type Outbound = GetUserSelfResponseBody$Outbound;
 }
 
 /** @internal */
+export const GetUserSelfResponse$inboundSchema: z.ZodType<
+    GetUserSelfResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => GetUserSelfResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type GetUserSelfResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: GetUserSelfResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const GetUserSelfResponse$outboundSchema: z.ZodType<
+    GetUserSelfResponse$Outbound,
+    z.ZodTypeDef,
+    GetUserSelfResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => GetUserSelfResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace GetUserSelfResponse$ {
-    export const inboundSchema: z.ZodType<GetUserSelfResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => GetUserSelfResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: GetUserSelfResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, GetUserSelfResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => GetUserSelfResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `GetUserSelfResponse$inboundSchema` instead. */
+    export const inboundSchema = GetUserSelfResponse$inboundSchema;
+    /** @deprecated use `GetUserSelfResponse$outboundSchema` instead. */
+    export const outboundSchema = GetUserSelfResponse$outboundSchema;
+    /** @deprecated use `GetUserSelfResponse$Outbound` instead. */
+    export type Outbound = GetUserSelfResponse$Outbound;
 }

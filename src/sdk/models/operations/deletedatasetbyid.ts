@@ -49,109 +49,188 @@ export type DeleteDatasetByIdResponse = {
 };
 
 /** @internal */
+export const DeleteDatasetByIdRequest$inboundSchema: z.ZodType<
+    DeleteDatasetByIdRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type DeleteDatasetByIdRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const DeleteDatasetByIdRequest$outboundSchema: z.ZodType<
+    DeleteDatasetByIdRequest$Outbound,
+    z.ZodTypeDef,
+    DeleteDatasetByIdRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDatasetByIdRequest$ {
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.string(),
-        });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDatasetByIdRequest> =
-        z.object({
-            id: z.string(),
-        });
+    /** @deprecated use `DeleteDatasetByIdRequest$inboundSchema` instead. */
+    export const inboundSchema = DeleteDatasetByIdRequest$inboundSchema;
+    /** @deprecated use `DeleteDatasetByIdRequest$outboundSchema` instead. */
+    export const outboundSchema = DeleteDatasetByIdRequest$outboundSchema;
+    /** @deprecated use `DeleteDatasetByIdRequest$Outbound` instead. */
+    export type Outbound = DeleteDatasetByIdRequest$Outbound;
 }
 
 /** @internal */
+export const DeleteDatasetByIdDatasets$inboundSchema: z.ZodType<
+    DeleteDatasetByIdDatasets,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type DeleteDatasetByIdDatasets$Outbound = {
+    id?: string | null | undefined;
+};
+
+/** @internal */
+export const DeleteDatasetByIdDatasets$outboundSchema: z.ZodType<
+    DeleteDatasetByIdDatasets$Outbound,
+    z.ZodTypeDef,
+    DeleteDatasetByIdDatasets
+> = z.object({
+    id: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDatasetByIdDatasets$ {
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdDatasets, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDatasetByIdDatasets> =
-        z.object({
-            id: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `DeleteDatasetByIdDatasets$inboundSchema` instead. */
+    export const inboundSchema = DeleteDatasetByIdDatasets$inboundSchema;
+    /** @deprecated use `DeleteDatasetByIdDatasets$outboundSchema` instead. */
+    export const outboundSchema = DeleteDatasetByIdDatasets$outboundSchema;
+    /** @deprecated use `DeleteDatasetByIdDatasets$Outbound` instead. */
+    export type Outbound = DeleteDatasetByIdDatasets$Outbound;
 }
 
 /** @internal */
+export const DeleteDatasetByIdResponseBody$inboundSchema: z.ZodType<
+    DeleteDatasetByIdResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        delete_datasets_by_pk: z
+            .nullable(z.lazy(() => DeleteDatasetByIdDatasets$inboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            delete_datasets_by_pk: "deleteDatasetsByPk",
+        });
+    });
+
+/** @internal */
+export type DeleteDatasetByIdResponseBody$Outbound = {
+    delete_datasets_by_pk?: DeleteDatasetByIdDatasets$Outbound | null | undefined;
+};
+
+/** @internal */
+export const DeleteDatasetByIdResponseBody$outboundSchema: z.ZodType<
+    DeleteDatasetByIdResponseBody$Outbound,
+    z.ZodTypeDef,
+    DeleteDatasetByIdResponseBody
+> = z
+    .object({
+        deleteDatasetsByPk: z
+            .nullable(z.lazy(() => DeleteDatasetByIdDatasets$outboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            deleteDatasetsByPk: "delete_datasets_by_pk",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDatasetByIdResponseBody$ {
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            delete_datasets_by_pk: z
-                .nullable(z.lazy(() => DeleteDatasetByIdDatasets$.inboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                delete_datasets_by_pk: "deleteDatasetsByPk",
-            });
-        });
-
-    export type Outbound = {
-        delete_datasets_by_pk?: DeleteDatasetByIdDatasets$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDatasetByIdResponseBody> =
-        z
-            .object({
-                deleteDatasetsByPk: z
-                    .nullable(z.lazy(() => DeleteDatasetByIdDatasets$.outboundSchema))
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    deleteDatasetsByPk: "delete_datasets_by_pk",
-                });
-            });
+    /** @deprecated use `DeleteDatasetByIdResponseBody$inboundSchema` instead. */
+    export const inboundSchema = DeleteDatasetByIdResponseBody$inboundSchema;
+    /** @deprecated use `DeleteDatasetByIdResponseBody$outboundSchema` instead. */
+    export const outboundSchema = DeleteDatasetByIdResponseBody$outboundSchema;
+    /** @deprecated use `DeleteDatasetByIdResponseBody$Outbound` instead. */
+    export type Outbound = DeleteDatasetByIdResponseBody$Outbound;
 }
 
 /** @internal */
+export const DeleteDatasetByIdResponse$inboundSchema: z.ZodType<
+    DeleteDatasetByIdResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => DeleteDatasetByIdResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type DeleteDatasetByIdResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: DeleteDatasetByIdResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const DeleteDatasetByIdResponse$outboundSchema: z.ZodType<
+    DeleteDatasetByIdResponse$Outbound,
+    z.ZodTypeDef,
+    DeleteDatasetByIdResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => DeleteDatasetByIdResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DeleteDatasetByIdResponse$ {
-    export const inboundSchema: z.ZodType<DeleteDatasetByIdResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => DeleteDatasetByIdResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: DeleteDatasetByIdResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DeleteDatasetByIdResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => DeleteDatasetByIdResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `DeleteDatasetByIdResponse$inboundSchema` instead. */
+    export const inboundSchema = DeleteDatasetByIdResponse$inboundSchema;
+    /** @deprecated use `DeleteDatasetByIdResponse$outboundSchema` instead. */
+    export const outboundSchema = DeleteDatasetByIdResponse$outboundSchema;
+    /** @deprecated use `DeleteDatasetByIdResponse$Outbound` instead. */
+    export type Outbound = DeleteDatasetByIdResponse$Outbound;
 }

@@ -87,7 +87,7 @@ export class Elements extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ListElementsResponse>()
-            .json(200, operations.ListElementsResponse$, { key: "object" })
+            .json(200, operations.ListElementsResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

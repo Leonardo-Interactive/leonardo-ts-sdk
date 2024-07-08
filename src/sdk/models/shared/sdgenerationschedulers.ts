@@ -18,8 +18,20 @@ export enum SdGenerationSchedulers {
 }
 
 /** @internal */
+export const SdGenerationSchedulers$inboundSchema: z.ZodNativeEnum<typeof SdGenerationSchedulers> =
+    z.nativeEnum(SdGenerationSchedulers);
+
+/** @internal */
+export const SdGenerationSchedulers$outboundSchema: z.ZodNativeEnum<typeof SdGenerationSchedulers> =
+    SdGenerationSchedulers$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SdGenerationSchedulers$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof SdGenerationSchedulers> =
-        z.nativeEnum(SdGenerationSchedulers);
-    export const outboundSchema: z.ZodNativeEnum<typeof SdGenerationSchedulers> = inboundSchema;
+    /** @deprecated use `SdGenerationSchedulers$inboundSchema` instead. */
+    export const inboundSchema = SdGenerationSchedulers$inboundSchema;
+    /** @deprecated use `SdGenerationSchedulers$outboundSchema` instead. */
+    export const outboundSchema = SdGenerationSchedulers$outboundSchema;
 }

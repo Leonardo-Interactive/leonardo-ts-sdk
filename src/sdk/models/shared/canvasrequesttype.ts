@@ -15,8 +15,20 @@ export enum CanvasRequestType {
 }
 
 /** @internal */
+export const CanvasRequestType$inboundSchema: z.ZodNativeEnum<typeof CanvasRequestType> =
+    z.nativeEnum(CanvasRequestType);
+
+/** @internal */
+export const CanvasRequestType$outboundSchema: z.ZodNativeEnum<typeof CanvasRequestType> =
+    CanvasRequestType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CanvasRequestType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof CanvasRequestType> =
-        z.nativeEnum(CanvasRequestType);
-    export const outboundSchema: z.ZodNativeEnum<typeof CanvasRequestType> = inboundSchema;
+    /** @deprecated use `CanvasRequestType$inboundSchema` instead. */
+    export const inboundSchema = CanvasRequestType$inboundSchema;
+    /** @deprecated use `CanvasRequestType$outboundSchema` instead. */
+    export const outboundSchema = CanvasRequestType$outboundSchema;
 }

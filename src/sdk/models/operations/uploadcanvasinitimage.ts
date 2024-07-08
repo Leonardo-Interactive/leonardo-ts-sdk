@@ -57,132 +57,200 @@ export type UploadCanvasInitImageResponse = {
 };
 
 /** @internal */
+export const UploadCanvasInitImageRequestBody$inboundSchema: z.ZodType<
+    UploadCanvasInitImageRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    initExtension: z.string(),
+    maskExtension: z.string(),
+});
+
+/** @internal */
+export type UploadCanvasInitImageRequestBody$Outbound = {
+    initExtension: string;
+    maskExtension: string;
+};
+
+/** @internal */
+export const UploadCanvasInitImageRequestBody$outboundSchema: z.ZodType<
+    UploadCanvasInitImageRequestBody$Outbound,
+    z.ZodTypeDef,
+    UploadCanvasInitImageRequestBody
+> = z.object({
+    initExtension: z.string(),
+    maskExtension: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadCanvasInitImageRequestBody$ {
-    export const inboundSchema: z.ZodType<UploadCanvasInitImageRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            initExtension: z.string(),
-            maskExtension: z.string(),
-        });
-
-    export type Outbound = {
-        initExtension: string;
-        maskExtension: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UploadCanvasInitImageRequestBody
-    > = z.object({
-        initExtension: z.string(),
-        maskExtension: z.string(),
-    });
+    /** @deprecated use `UploadCanvasInitImageRequestBody$inboundSchema` instead. */
+    export const inboundSchema = UploadCanvasInitImageRequestBody$inboundSchema;
+    /** @deprecated use `UploadCanvasInitImageRequestBody$outboundSchema` instead. */
+    export const outboundSchema = UploadCanvasInitImageRequestBody$outboundSchema;
+    /** @deprecated use `UploadCanvasInitImageRequestBody$Outbound` instead. */
+    export type Outbound = UploadCanvasInitImageRequestBody$Outbound;
 }
 
 /** @internal */
+export const CanvasInitImageUploadOutput$inboundSchema: z.ZodType<
+    CanvasInitImageUploadOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    initFields: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    initKey: z.nullable(z.string()).optional(),
+    initUrl: z.nullable(z.string()).optional(),
+    maskFields: z.nullable(z.string()).optional(),
+    maskImageId: z.nullable(z.string()).optional(),
+    maskKey: z.nullable(z.string()).optional(),
+    maskUrl: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type CanvasInitImageUploadOutput$Outbound = {
+    initFields?: string | null | undefined;
+    initImageId?: string | null | undefined;
+    initKey?: string | null | undefined;
+    initUrl?: string | null | undefined;
+    maskFields?: string | null | undefined;
+    maskImageId?: string | null | undefined;
+    maskKey?: string | null | undefined;
+    maskUrl?: string | null | undefined;
+};
+
+/** @internal */
+export const CanvasInitImageUploadOutput$outboundSchema: z.ZodType<
+    CanvasInitImageUploadOutput$Outbound,
+    z.ZodTypeDef,
+    CanvasInitImageUploadOutput
+> = z.object({
+    initFields: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    initKey: z.nullable(z.string()).optional(),
+    initUrl: z.nullable(z.string()).optional(),
+    maskFields: z.nullable(z.string()).optional(),
+    maskImageId: z.nullable(z.string()).optional(),
+    maskKey: z.nullable(z.string()).optional(),
+    maskUrl: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CanvasInitImageUploadOutput$ {
-    export const inboundSchema: z.ZodType<CanvasInitImageUploadOutput, z.ZodTypeDef, unknown> =
-        z.object({
-            initFields: z.nullable(z.string()).optional(),
-            initImageId: z.nullable(z.string()).optional(),
-            initKey: z.nullable(z.string()).optional(),
-            initUrl: z.nullable(z.string()).optional(),
-            maskFields: z.nullable(z.string()).optional(),
-            maskImageId: z.nullable(z.string()).optional(),
-            maskKey: z.nullable(z.string()).optional(),
-            maskUrl: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        initFields?: string | null | undefined;
-        initImageId?: string | null | undefined;
-        initKey?: string | null | undefined;
-        initUrl?: string | null | undefined;
-        maskFields?: string | null | undefined;
-        maskImageId?: string | null | undefined;
-        maskKey?: string | null | undefined;
-        maskUrl?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CanvasInitImageUploadOutput> =
-        z.object({
-            initFields: z.nullable(z.string()).optional(),
-            initImageId: z.nullable(z.string()).optional(),
-            initKey: z.nullable(z.string()).optional(),
-            initUrl: z.nullable(z.string()).optional(),
-            maskFields: z.nullable(z.string()).optional(),
-            maskImageId: z.nullable(z.string()).optional(),
-            maskKey: z.nullable(z.string()).optional(),
-            maskUrl: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `CanvasInitImageUploadOutput$inboundSchema` instead. */
+    export const inboundSchema = CanvasInitImageUploadOutput$inboundSchema;
+    /** @deprecated use `CanvasInitImageUploadOutput$outboundSchema` instead. */
+    export const outboundSchema = CanvasInitImageUploadOutput$outboundSchema;
+    /** @deprecated use `CanvasInitImageUploadOutput$Outbound` instead. */
+    export type Outbound = CanvasInitImageUploadOutput$Outbound;
 }
 
 /** @internal */
+export const UploadCanvasInitImageResponseBody$inboundSchema: z.ZodType<
+    UploadCanvasInitImageResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    uploadCanvasInitImage: z
+        .nullable(z.lazy(() => CanvasInitImageUploadOutput$inboundSchema))
+        .optional(),
+});
+
+/** @internal */
+export type UploadCanvasInitImageResponseBody$Outbound = {
+    uploadCanvasInitImage?: CanvasInitImageUploadOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const UploadCanvasInitImageResponseBody$outboundSchema: z.ZodType<
+    UploadCanvasInitImageResponseBody$Outbound,
+    z.ZodTypeDef,
+    UploadCanvasInitImageResponseBody
+> = z.object({
+    uploadCanvasInitImage: z
+        .nullable(z.lazy(() => CanvasInitImageUploadOutput$outboundSchema))
+        .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UploadCanvasInitImageResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        UploadCanvasInitImageResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        uploadCanvasInitImage: z
-            .nullable(z.lazy(() => CanvasInitImageUploadOutput$.inboundSchema))
-            .optional(),
-    });
-
-    export type Outbound = {
-        uploadCanvasInitImage?: CanvasInitImageUploadOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UploadCanvasInitImageResponseBody
-    > = z.object({
-        uploadCanvasInitImage: z
-            .nullable(z.lazy(() => CanvasInitImageUploadOutput$.outboundSchema))
-            .optional(),
-    });
+    /** @deprecated use `UploadCanvasInitImageResponseBody$inboundSchema` instead. */
+    export const inboundSchema = UploadCanvasInitImageResponseBody$inboundSchema;
+    /** @deprecated use `UploadCanvasInitImageResponseBody$outboundSchema` instead. */
+    export const outboundSchema = UploadCanvasInitImageResponseBody$outboundSchema;
+    /** @deprecated use `UploadCanvasInitImageResponseBody$Outbound` instead. */
+    export type Outbound = UploadCanvasInitImageResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace UploadCanvasInitImageResponse$ {
-    export const inboundSchema: z.ZodType<UploadCanvasInitImageResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => UploadCanvasInitImageResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const UploadCanvasInitImageResponse$inboundSchema: z.ZodType<
+    UploadCanvasInitImageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => UploadCanvasInitImageResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: UploadCanvasInitImageResponseBody$.Outbound | undefined;
-    };
+/** @internal */
+export type UploadCanvasInitImageResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: UploadCanvasInitImageResponseBody$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UploadCanvasInitImageResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-                object: z.lazy(() => UploadCanvasInitImageResponseBody$.outboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const UploadCanvasInitImageResponse$outboundSchema: z.ZodType<
+    UploadCanvasInitImageResponse$Outbound,
+    z.ZodTypeDef,
+    UploadCanvasInitImageResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => UploadCanvasInitImageResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UploadCanvasInitImageResponse$ {
+    /** @deprecated use `UploadCanvasInitImageResponse$inboundSchema` instead. */
+    export const inboundSchema = UploadCanvasInitImageResponse$inboundSchema;
+    /** @deprecated use `UploadCanvasInitImageResponse$outboundSchema` instead. */
+    export const outboundSchema = UploadCanvasInitImageResponse$outboundSchema;
+    /** @deprecated use `UploadCanvasInitImageResponse$Outbound` instead. */
+    export type Outbound = UploadCanvasInitImageResponse$Outbound;
 }

@@ -55,7 +55,7 @@ export class Image extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateGenerationRequestBody$.outboundSchema.parse(value$),
+            (value$) => operations.CreateGenerationRequestBody$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -107,7 +107,7 @@ export class Image extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateGenerationResponse>()
-            .json(200, operations.CreateGenerationResponse$, { key: "object" })
+            .json(200, operations.CreateGenerationResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -129,7 +129,7 @@ export class Image extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteGenerationByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteGenerationByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -183,7 +183,7 @@ export class Image extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DeleteGenerationByIdResponse>()
-            .json(200, operations.DeleteGenerationByIdResponse$, { key: "object" })
+            .json(200, operations.DeleteGenerationByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -205,7 +205,7 @@ export class Image extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetGenerationByIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetGenerationByIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -259,7 +259,7 @@ export class Image extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetGenerationByIdResponse>()
-            .json(200, operations.GetGenerationByIdResponse$, { key: "object" })
+            .json(200, operations.GetGenerationByIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -285,7 +285,7 @@ export class Image extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetGenerationsByUserIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.GetGenerationsByUserIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -345,7 +345,7 @@ export class Image extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.GetGenerationsByUserIdResponse>()
-            .json(200, operations.GetGenerationsByUserIdResponse$, { key: "object" })
+            .json(200, operations.GetGenerationsByUserIdResponse$inboundSchema, { key: "object" })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

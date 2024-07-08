@@ -82,143 +82,209 @@ export type PerformInstantRefineResponse = {
 };
 
 /** @internal */
+export const PerformInstantRefineRequestBody$inboundSchema: z.ZodType<
+    PerformInstantRefineRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$inboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/** @internal */
+export type PerformInstantRefineRequestBody$Outbound = {
+    guidance?: number | null | undefined;
+    height: number | null;
+    imageDataUrl: string;
+    prompt: string;
+    requestTimestamp?: string | undefined;
+    seed?: number | null | undefined;
+    steps?: number | null | undefined;
+    strength?: number | null | undefined;
+    style?: string | null | undefined;
+    width: number | null;
+};
+
+/** @internal */
+export const PerformInstantRefineRequestBody$outboundSchema: z.ZodType<
+    PerformInstantRefineRequestBody$Outbound,
+    z.ZodTypeDef,
+    PerformInstantRefineRequestBody
+> = z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$outboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInstantRefineRequestBody$ {
-    export const inboundSchema: z.ZodType<PerformInstantRefineRequestBody, z.ZodTypeDef, unknown> =
-        z.object({
-            guidance: z.nullable(z.number()).optional(),
-            height: z.nullable(z.number().int().default(512)),
-            imageDataUrl: z.string(),
-            prompt: z.string(),
-            requestTimestamp: z.string().optional(),
-            seed: z.nullable(z.number().int()).optional(),
-            steps: z.nullable(z.number().int()).optional(),
-            strength: z.nullable(z.number()).optional(),
-            style: z.nullable(shared.LcmGenerationStyle$.inboundSchema).optional(),
-            width: z.nullable(z.number().int().default(512)),
-        });
-
-    export type Outbound = {
-        guidance?: number | null | undefined;
-        height: number | null;
-        imageDataUrl: string;
-        prompt: string;
-        requestTimestamp?: string | undefined;
-        seed?: number | null | undefined;
-        steps?: number | null | undefined;
-        strength?: number | null | undefined;
-        style?: string | null | undefined;
-        width: number | null;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformInstantRefineRequestBody
-    > = z.object({
-        guidance: z.nullable(z.number()).optional(),
-        height: z.nullable(z.number().int().default(512)),
-        imageDataUrl: z.string(),
-        prompt: z.string(),
-        requestTimestamp: z.string().optional(),
-        seed: z.nullable(z.number().int()).optional(),
-        steps: z.nullable(z.number().int()).optional(),
-        strength: z.nullable(z.number()).optional(),
-        style: z.nullable(shared.LcmGenerationStyle$.outboundSchema).optional(),
-        width: z.nullable(z.number().int().default(512)),
-    });
+    /** @deprecated use `PerformInstantRefineRequestBody$inboundSchema` instead. */
+    export const inboundSchema = PerformInstantRefineRequestBody$inboundSchema;
+    /** @deprecated use `PerformInstantRefineRequestBody$outboundSchema` instead. */
+    export const outboundSchema = PerformInstantRefineRequestBody$outboundSchema;
+    /** @deprecated use `PerformInstantRefineRequestBody$Outbound` instead. */
+    export type Outbound = PerformInstantRefineRequestBody$Outbound;
 }
 
 /** @internal */
+export const PerformInstantRefineLcmGenerationOutput$inboundSchema: z.ZodType<
+    PerformInstantRefineLcmGenerationOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+});
+
+/** @internal */
+export type PerformInstantRefineLcmGenerationOutput$Outbound = {
+    apiCreditCost?: number | null | undefined;
+    imageDataUrl?: Array<string> | undefined;
+    requestTimestamp?: string | undefined;
+};
+
+/** @internal */
+export const PerformInstantRefineLcmGenerationOutput$outboundSchema: z.ZodType<
+    PerformInstantRefineLcmGenerationOutput$Outbound,
+    z.ZodTypeDef,
+    PerformInstantRefineLcmGenerationOutput
+> = z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    imageDataUrl: z.array(z.string()).optional(),
+    requestTimestamp: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInstantRefineLcmGenerationOutput$ {
-    export const inboundSchema: z.ZodType<
-        PerformInstantRefineLcmGenerationOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-    });
-
-    export type Outbound = {
-        apiCreditCost?: number | null | undefined;
-        imageDataUrl?: Array<string> | undefined;
-        requestTimestamp?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformInstantRefineLcmGenerationOutput
-    > = z.object({
-        apiCreditCost: z.nullable(z.number().int()).optional(),
-        imageDataUrl: z.array(z.string()).optional(),
-        requestTimestamp: z.string().optional(),
-    });
+    /** @deprecated use `PerformInstantRefineLcmGenerationOutput$inboundSchema` instead. */
+    export const inboundSchema = PerformInstantRefineLcmGenerationOutput$inboundSchema;
+    /** @deprecated use `PerformInstantRefineLcmGenerationOutput$outboundSchema` instead. */
+    export const outboundSchema = PerformInstantRefineLcmGenerationOutput$outboundSchema;
+    /** @deprecated use `PerformInstantRefineLcmGenerationOutput$Outbound` instead. */
+    export type Outbound = PerformInstantRefineLcmGenerationOutput$Outbound;
 }
 
 /** @internal */
+export const PerformInstantRefineResponseBody$inboundSchema: z.ZodType<
+    PerformInstantRefineResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    lcmGenerationJob: z
+        .nullable(z.lazy(() => PerformInstantRefineLcmGenerationOutput$inboundSchema))
+        .optional(),
+});
+
+/** @internal */
+export type PerformInstantRefineResponseBody$Outbound = {
+    lcmGenerationJob?: PerformInstantRefineLcmGenerationOutput$Outbound | null | undefined;
+};
+
+/** @internal */
+export const PerformInstantRefineResponseBody$outboundSchema: z.ZodType<
+    PerformInstantRefineResponseBody$Outbound,
+    z.ZodTypeDef,
+    PerformInstantRefineResponseBody
+> = z.object({
+    lcmGenerationJob: z
+        .nullable(z.lazy(() => PerformInstantRefineLcmGenerationOutput$outboundSchema))
+        .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInstantRefineResponseBody$ {
-    export const inboundSchema: z.ZodType<PerformInstantRefineResponseBody, z.ZodTypeDef, unknown> =
-        z.object({
-            lcmGenerationJob: z
-                .nullable(z.lazy(() => PerformInstantRefineLcmGenerationOutput$.inboundSchema))
-                .optional(),
-        });
-
-    export type Outbound = {
-        lcmGenerationJob?: PerformInstantRefineLcmGenerationOutput$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        PerformInstantRefineResponseBody
-    > = z.object({
-        lcmGenerationJob: z
-            .nullable(z.lazy(() => PerformInstantRefineLcmGenerationOutput$.outboundSchema))
-            .optional(),
-    });
+    /** @deprecated use `PerformInstantRefineResponseBody$inboundSchema` instead. */
+    export const inboundSchema = PerformInstantRefineResponseBody$inboundSchema;
+    /** @deprecated use `PerformInstantRefineResponseBody$outboundSchema` instead. */
+    export const outboundSchema = PerformInstantRefineResponseBody$outboundSchema;
+    /** @deprecated use `PerformInstantRefineResponseBody$Outbound` instead. */
+    export type Outbound = PerformInstantRefineResponseBody$Outbound;
 }
 
 /** @internal */
+export const PerformInstantRefineResponse$inboundSchema: z.ZodType<
+    PerformInstantRefineResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        object: z.lazy(() => PerformInstantRefineResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type PerformInstantRefineResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    object?: PerformInstantRefineResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const PerformInstantRefineResponse$outboundSchema: z.ZodType<
+    PerformInstantRefineResponse$Outbound,
+    z.ZodTypeDef,
+    PerformInstantRefineResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        object: z.lazy(() => PerformInstantRefineResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PerformInstantRefineResponse$ {
-    export const inboundSchema: z.ZodType<PerformInstantRefineResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            object: z.lazy(() => PerformInstantRefineResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        object?: PerformInstantRefineResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PerformInstantRefineResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            object: z.lazy(() => PerformInstantRefineResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `PerformInstantRefineResponse$inboundSchema` instead. */
+    export const inboundSchema = PerformInstantRefineResponse$inboundSchema;
+    /** @deprecated use `PerformInstantRefineResponse$outboundSchema` instead. */
+    export const outboundSchema = PerformInstantRefineResponse$outboundSchema;
+    /** @deprecated use `PerformInstantRefineResponse$Outbound` instead. */
+    export type Outbound = PerformInstantRefineResponse$Outbound;
 }

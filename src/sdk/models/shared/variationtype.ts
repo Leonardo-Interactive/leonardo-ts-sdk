@@ -16,7 +16,20 @@ export enum VariationType {
 }
 
 /** @internal */
+export const VariationType$inboundSchema: z.ZodNativeEnum<typeof VariationType> =
+    z.nativeEnum(VariationType);
+
+/** @internal */
+export const VariationType$outboundSchema: z.ZodNativeEnum<typeof VariationType> =
+    VariationType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace VariationType$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof VariationType> = z.nativeEnum(VariationType);
-    export const outboundSchema: z.ZodNativeEnum<typeof VariationType> = inboundSchema;
+    /** @deprecated use `VariationType$inboundSchema` instead. */
+    export const inboundSchema = VariationType$inboundSchema;
+    /** @deprecated use `VariationType$outboundSchema` instead. */
+    export const outboundSchema = VariationType$outboundSchema;
 }
