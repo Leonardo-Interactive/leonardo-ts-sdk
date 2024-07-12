@@ -89,11 +89,17 @@ export class Prompt extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, { context, errorCodes: [] });
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: [],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -147,11 +153,17 @@ export class Prompt extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, { context, errorCodes: [] });
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: [],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

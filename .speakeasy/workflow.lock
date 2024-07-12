@@ -1,9 +1,9 @@
-speakeasyVersion: 1.330.1
+speakeasyVersion: 1.334.0
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:75edc2a8c0bf7be5f1425b42f1356fb193e53beb4f3faec2a96c57577cd205f5
-        sourceBlobDigest: sha256:37b5f9fe99772ca1732ddc74c9ab3ba9cfd36b3afc9d84a5b475a4ec2c1fd114
+        sourceRevisionDigest: sha256:888f12aa033606ca0402ea3e8a65e89455cc11be39d4b58ade7ef791bd40b3e3
+        sourceBlobDigest: sha256:f784db02e64f4040d9b5faca3d378ae637a8dabba8d72f58be784335fc6f0072
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     leonardo-ts-sdk:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:75edc2a8c0bf7be5f1425b42f1356fb193e53beb4f3faec2a96c57577cd205f5
-        sourceBlobDigest: sha256:37b5f9fe99772ca1732ddc74c9ab3ba9cfd36b3afc9d84a5b475a4ec2c1fd114
+        sourceRevisionDigest: sha256:888f12aa033606ca0402ea3e8a65e89455cc11be39d4b58ade7ef791bd40b3e3
+        sourceBlobDigest: sha256:f784db02e64f4040d9b5faca3d378ae637a8dabba8d72f58be784335fc6f0072
         outLocation: ./
 workflow:
     workflowVersion: 1.0.0
