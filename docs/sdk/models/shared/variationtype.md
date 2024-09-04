@@ -2,6 +2,13 @@
 
 The type of variation.
 
+## Example Usage
+
+```typescript
+import { VariationType } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: VariationType = VariationType.Unzoom;
+```
 
 ## Values
 

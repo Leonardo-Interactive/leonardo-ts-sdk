@@ -1,5 +1,12 @@
 # SDTrainingOutput
 
+## Example Usage
+
+```typescript
+import { SDTrainingOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: SDTrainingOutput = {};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # UniversalUpscalerOutput
 
+## Example Usage
+
+```typescript
+import { UniversalUpscalerOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UniversalUpscalerOutput = {};
+```
 
 ## Fields
 

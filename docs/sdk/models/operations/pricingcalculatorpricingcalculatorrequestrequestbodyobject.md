@@ -2,6 +2,13 @@
 
 Parameters for MODEL_TRAINING service
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorPricingCalculatorRequestRequestBodyObject } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorPricingCalculatorRequestRequestBodyObject = {};
+```
 
 ## Fields
 

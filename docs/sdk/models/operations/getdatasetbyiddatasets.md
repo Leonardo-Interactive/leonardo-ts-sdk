@@ -2,6 +2,13 @@
 
 columns and relationships of "datasets"
 
+## Example Usage
+
+```typescript
+import { GetDatasetByIdDatasets } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetDatasetByIdDatasets = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 columns and relationships of "init_images"
 
+## Example Usage
+
+```typescript
+import { GetInitImageByIdInitImages } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetInitImageByIdInitImages = {};
+```
 
 ## Fields
 

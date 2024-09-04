@@ -1,5 +1,18 @@
 # PricingCalculatorResponse
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorResponse = {
+    contentType: "<value>",
+    statusCode: 368241,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

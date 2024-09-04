@@ -2,6 +2,13 @@
 
 Responses for DELETE /api/rest/v1/generations-texture/{id}
 
+## Example Usage
+
+```typescript
+import { DeleteTextureGenerationByIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DeleteTextureGenerationByIdResponseBody = {};
+```
 
 ## Fields
 

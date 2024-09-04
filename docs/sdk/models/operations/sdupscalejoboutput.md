@@ -1,5 +1,12 @@
 # SDUpscaleJobOutput
 
+## Example Usage
+
+```typescript
+import { SDUpscaleJobOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: SDUpscaleJobOutput = {};
+```
 
 ## Fields
 

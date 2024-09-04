@@ -1,5 +1,18 @@
 # UploadModelAssetResponse
 
+## Example Usage
+
+```typescript
+import { UploadModelAssetResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadModelAssetResponse = {
+    contentType: "<value>",
+    statusCode: 20218,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

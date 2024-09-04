@@ -1,5 +1,18 @@
 # ListPlatformModelsResponse
 
+## Example Usage
+
+```typescript
+import { ListPlatformModelsResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ListPlatformModelsResponse = {
+    contentType: "<value>",
+    statusCode: 87129,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

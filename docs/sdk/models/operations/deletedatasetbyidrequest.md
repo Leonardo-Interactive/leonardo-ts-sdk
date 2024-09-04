@@ -1,5 +1,14 @@
 # DeleteDatasetByIdRequest
 
+## Example Usage
+
+```typescript
+import { DeleteDatasetByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DeleteDatasetByIdRequest = {
+    id: "<id>",
+};
+```
 
 ## Fields
 

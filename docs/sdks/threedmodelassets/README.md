@@ -1,6 +1,8 @@
 # ThreeDModelAssets
 (*threeDModelAssets*)
 
+## Overview
+
 ### Available Operations
 
 * [delete3DModelById](#delete3dmodelbyid) - Delete 3D Model by ID
@@ -20,7 +22,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.threeDModelAssets.delete3DModelById("<value>", {});
+  const result = await leonardo.threeDModelAssets.delete3DModelById("<id>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { threeDModelAssetsDelete3DModelById } from "@leonardo-ai/sdk/funcs/threeDModelAssetsDelete3DModelById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await threeDModelAssetsDelete3DModelById(leonardo, "<id>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -39,15 +71,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.Delete3DModelByIdResponse](../../sdk/models/operations/delete3dmodelbyidresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## uploadModelAsset
 
@@ -63,7 +96,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.threeDModelAssets.uploadModelAsset({});
+  const result = await leonardo.threeDModelAssets.uploadModelAsset();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { threeDModelAssetsUploadModelAsset } from "@leonardo-ai/sdk/funcs/threeDModelAssetsUploadModelAsset.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await threeDModelAssetsUploadModelAsset(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -81,10 +144,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.UploadModelAssetResponse](../../sdk/models/operations/uploadmodelassetresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -1,6 +1,8 @@
 # Variation
 (*variation*)
 
+## Overview
+
 ### Available Operations
 
 * [createUniversalUpscalerJob](#createuniversalupscalerjob) - Create using Universal Upscaler
@@ -32,6 +34,36 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { variationCreateUniversalUpscalerJob } from "@leonardo-ai/sdk/funcs/variationCreateUniversalUpscalerJob.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await variationCreateUniversalUpscalerJob(leonardo, {});
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -41,15 +73,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateUniversalUpscalerJobResponse](../../sdk/models/operations/createuniversalupscalerjobresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createVariationNoBG
 
@@ -76,6 +109,38 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { variationCreateVariationNoBG } from "@leonardo-ai/sdk/funcs/variationCreateVariationNoBG.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await variationCreateVariationNoBG(leonardo, {
+    id: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -85,15 +150,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateVariationNoBGResponse](../../sdk/models/operations/createvariationnobgresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createVariationUnzoom
 
@@ -109,7 +175,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.variation.createVariationUnzoom({});
+  const result = await leonardo.variation.createVariationUnzoom();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { variationCreateVariationUnzoom } from "@leonardo-ai/sdk/funcs/variationCreateVariationUnzoom.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await variationCreateVariationUnzoom(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -127,15 +223,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateVariationUnzoomResponse](../../sdk/models/operations/createvariationunzoomresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createVariationUpscale
 
@@ -151,9 +248,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.variation.createVariationUpscale({
-    id: "<id>",
-  });
+  const result = await leonardo.variation.createVariationUpscale();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { variationCreateVariationUpscale } from "@leonardo-ai/sdk/funcs/variationCreateVariationUpscale.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await variationCreateVariationUpscale(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -171,15 +296,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateVariationUpscaleResponse](../../sdk/models/operations/createvariationupscaleresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getVariationById
 
@@ -195,7 +321,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.variation.getVariationById("<value>");
+  const result = await leonardo.variation.getVariationById("<id>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { variationGetVariationById } from "@leonardo-ai/sdk/funcs/variationGetVariationById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await variationGetVariationById(leonardo, "<id>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -213,10 +369,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetVariationByIdResponse](../../sdk/models/operations/getvariationbyidresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

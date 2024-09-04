@@ -2,6 +2,13 @@
 
 Parameters for LCM_GENERATION service
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorPricingCalculatorRequestObject } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorPricingCalculatorRequestObject = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 When training using the PIXEL_ART model type, this influences the training strength.
 
+## Example Usage
+
+```typescript
+import { Strength } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: Strength = Strength.Medium;
+```
 
 ## Values
 

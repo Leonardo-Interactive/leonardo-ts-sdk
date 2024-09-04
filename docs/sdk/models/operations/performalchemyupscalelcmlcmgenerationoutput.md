@@ -1,5 +1,12 @@
 # PerformAlchemyUpscaleLCMLCMGenerationOutput
 
+## Example Usage
+
+```typescript
+import { PerformAlchemyUpscaleLCMLCMGenerationOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformAlchemyUpscaleLCMLCMGenerationOutput = {};
+```
 
 ## Fields
 

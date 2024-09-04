@@ -2,6 +2,13 @@
 
 This table captures the elements that are applied to Generations.
 
+## Example Usage
+
+```typescript
+import { GenerationElements } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GenerationElements = {};
+```
 
 ## Fields
 

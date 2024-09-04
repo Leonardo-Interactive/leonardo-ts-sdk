@@ -1,5 +1,12 @@
 # ControlnetInput
 
+## Example Usage
+
+```typescript
+import { ControlnetInput } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: ControlnetInput = {};
+```
 
 ## Fields
 

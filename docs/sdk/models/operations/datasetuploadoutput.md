@@ -1,5 +1,12 @@
 # DatasetUploadOutput
 
+## Example Usage
+
+```typescript
+import { DatasetUploadOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DatasetUploadOutput = {};
+```
 
 ## Fields
 

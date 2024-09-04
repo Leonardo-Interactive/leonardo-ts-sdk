@@ -2,6 +2,13 @@
 
 Responses for GET /api/rest/v1/platformModels
 
+## Example Usage
+
+```typescript
+import { ListPlatformModelsResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ListPlatformModelsResponseBody = {};
+```
 
 ## Fields
 

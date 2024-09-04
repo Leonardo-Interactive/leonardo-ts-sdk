@@ -2,6 +2,13 @@
 
 Query parameters are provided in the request body as a JSON object
 
+## Example Usage
+
+```typescript
+import { CreateUniversalUpscalerJobRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateUniversalUpscalerJobRequestBody = {};
+```
 
 ## Fields
 

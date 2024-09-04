@@ -1,5 +1,18 @@
 # GetUserSelfResponse
 
+## Example Usage
+
+```typescript
+import { GetUserSelfResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetUserSelfResponse = {
+    contentType: "<value>",
+    statusCode: 925597,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

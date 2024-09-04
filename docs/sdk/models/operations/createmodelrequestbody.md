@@ -2,6 +2,17 @@
 
 Query parameters to be provided in the request body as a JSON object
 
+## Example Usage
+
+```typescript
+import { CreateModelRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateModelRequestBody = {
+    datasetId: "<value>",
+    instancePrompt: "<value>",
+    name: "<value>",
+};
+```
 
 ## Fields
 

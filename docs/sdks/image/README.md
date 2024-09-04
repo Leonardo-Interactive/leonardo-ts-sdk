@@ -1,6 +1,8 @@
 # Image
 (*image*)
 
+## Overview
+
 ### Available Operations
 
 * [createGeneration](#creategeneration) - Create a Generation of Images
@@ -31,6 +33,36 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { imageCreateGeneration } from "@leonardo-ai/sdk/funcs/imageCreateGeneration.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await imageCreateGeneration(leonardo, {});
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -40,15 +72,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateGenerationResponse](../../sdk/models/operations/creategenerationresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## deleteGenerationById
 
@@ -64,7 +97,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.image.deleteGenerationById("<value>");
+  const result = await leonardo.image.deleteGenerationById("<id>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { imageDeleteGenerationById } from "@leonardo-ai/sdk/funcs/imageDeleteGenerationById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await imageDeleteGenerationById(leonardo, "<id>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -82,15 +145,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.DeleteGenerationByIdResponse](../../sdk/models/operations/deletegenerationbyidresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getGenerationById
 
@@ -106,7 +170,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.image.getGenerationById("<value>");
+  const result = await leonardo.image.getGenerationById("<id>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { imageGetGenerationById } from "@leonardo-ai/sdk/funcs/imageGetGenerationById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await imageGetGenerationById(leonardo, "<id>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -124,15 +218,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetGenerationByIdResponse](../../sdk/models/operations/getgenerationbyidresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getGenerationsByUserId
 
@@ -148,7 +243,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.image.getGenerationsByUserId("<value>", 10, 0);
+  const result = await leonardo.image.getGenerationsByUserId("<value>");
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { imageGetGenerationsByUserId } from "@leonardo-ai/sdk/funcs/imageGetGenerationsByUserId.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await imageGetGenerationsByUserId(leonardo, "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -168,10 +293,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetGenerationsByUserIdResponse](../../sdk/models/operations/getgenerationsbyuseridresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

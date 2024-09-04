@@ -2,6 +2,13 @@
 
 Responses for POST /pricing-calculator
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorResponseBody = {};
+```
 
 ## Fields
 

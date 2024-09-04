@@ -1,5 +1,14 @@
 # DeleteTextureGenerationByIdRequest
 
+## Example Usage
+
+```typescript
+import { DeleteTextureGenerationByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DeleteTextureGenerationByIdRequest = {
+    id: "<id>",
+};
+```
 
 ## Fields
 

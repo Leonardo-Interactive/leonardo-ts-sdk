@@ -2,6 +2,13 @@
 
 Responses for POST /datasets
 
+## Example Usage
+
+```typescript
+import { CreateDatasetResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateDatasetResponseBody = {};
+```
 
 ## Fields
 

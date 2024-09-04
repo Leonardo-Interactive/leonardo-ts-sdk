@@ -2,6 +2,13 @@
 
 Element used for the generation.
 
+## Example Usage
+
+```typescript
+import { GetGenerationByIdLoras } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetGenerationByIdLoras = {};
+```
 
 ## Fields
 

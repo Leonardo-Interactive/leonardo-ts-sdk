@@ -1,6 +1,8 @@
 # RealtimeCanvas
 (*realtimeCanvas*)
 
+## Overview
+
 ### Available Operations
 
 * [createLCMGeneration](#createlcmgeneration) - Create LCM Generation
@@ -22,10 +24,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.realtimeCanvas.createLCMGeneration({
-    imageDataUrl: "<value>",
-    prompt: "<value>",
-  });
+  const result = await leonardo.realtimeCanvas.createLCMGeneration();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { realtimeCanvasCreateLCMGeneration } from "@leonardo-ai/sdk/funcs/realtimeCanvasCreateLCMGeneration.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await realtimeCanvasCreateLCMGeneration(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -43,15 +72,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.CreateLCMGenerationResponse](../../sdk/models/operations/createlcmgenerationresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## performAlchemyUpscaleLCM
 
@@ -67,10 +97,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.realtimeCanvas.performAlchemyUpscaleLCM({
-    imageDataUrl: "<value>",
-    prompt: "<value>",
-  });
+  const result = await leonardo.realtimeCanvas.performAlchemyUpscaleLCM();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { realtimeCanvasPerformAlchemyUpscaleLCM } from "@leonardo-ai/sdk/funcs/realtimeCanvasPerformAlchemyUpscaleLCM.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await realtimeCanvasPerformAlchemyUpscaleLCM(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -88,15 +145,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.PerformAlchemyUpscaleLCMResponse](../../sdk/models/operations/performalchemyupscalelcmresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## performInpaintingLCM
 
@@ -112,11 +170,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.realtimeCanvas.performInpaintingLCM({
-    imageDataUrl: "<value>",
-    maskDataUrl: "<value>",
-    prompt: "<value>",
-  });
+  const result = await leonardo.realtimeCanvas.performInpaintingLCM();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { realtimeCanvasPerformInpaintingLCM } from "@leonardo-ai/sdk/funcs/realtimeCanvasPerformInpaintingLCM.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await realtimeCanvasPerformInpaintingLCM(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -134,15 +218,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.PerformInpaintingLCMResponse](../../sdk/models/operations/performinpaintinglcmresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## performInstantRefine
 
@@ -158,10 +243,37 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.realtimeCanvas.performInstantRefine({
-    imageDataUrl: "<value>",
-    prompt: "<value>",
-  });
+  const result = await leonardo.realtimeCanvas.performInstantRefine();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { realtimeCanvasPerformInstantRefine } from "@leonardo-ai/sdk/funcs/realtimeCanvasPerformInstantRefine.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await realtimeCanvasPerformInstantRefine(leonardo);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -179,10 +291,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.PerformInstantRefineResponse](../../sdk/models/operations/performinstantrefineresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

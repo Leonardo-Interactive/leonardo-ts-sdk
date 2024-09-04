@@ -2,6 +2,13 @@
 
 Responses for POST /variations/nobg
 
+## Example Usage
+
+```typescript
+import { CreateVariationNoBGResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateVariationNoBGResponseBody = {};
+```
 
 ## Fields
 

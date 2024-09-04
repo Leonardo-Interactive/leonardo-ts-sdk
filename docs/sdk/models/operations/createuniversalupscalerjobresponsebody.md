@@ -2,6 +2,13 @@
 
 Responses for POST /variations/universal-upscaler
 
+## Example Usage
+
+```typescript
+import { CreateUniversalUpscalerJobResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateUniversalUpscalerJobResponseBody = {};
+```
 
 ## Fields
 

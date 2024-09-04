@@ -2,6 +2,13 @@
 
 columns and relationships of "generations"
 
+## Example Usage
+
+```typescript
+import { GetGenerationsByUserIdGenerations } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetGenerationsByUserIdGenerations = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 Responses for POST /init-image
 
+## Example Usage
+
+```typescript
+import { UploadInitImageResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadInitImageResponseBody = {};
+```
 
 ## Fields
 

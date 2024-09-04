@@ -2,6 +2,13 @@
 
 The services to be chosen for calculating the API credit cost.
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorServices } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: PricingCalculatorServices = PricingCalculatorServices.LcmGeneration;
+```
 
 ## Values
 

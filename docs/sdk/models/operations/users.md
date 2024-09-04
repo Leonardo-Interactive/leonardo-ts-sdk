@@ -2,6 +2,13 @@
 
 columns and relationships of "users"
 
+## Example Usage
+
+```typescript
+import { Users } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: Users = {};
+```
 
 ## Fields
 

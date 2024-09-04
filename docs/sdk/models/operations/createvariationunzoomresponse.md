@@ -1,5 +1,18 @@
 # CreateVariationUnzoomResponse
 
+## Example Usage
+
+```typescript
+import { CreateVariationUnzoomResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateVariationUnzoomResponse = {
+    contentType: "<value>",
+    statusCode: 870013,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

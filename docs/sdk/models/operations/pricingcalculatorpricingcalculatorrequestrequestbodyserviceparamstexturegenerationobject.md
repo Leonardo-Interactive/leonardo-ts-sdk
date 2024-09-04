@@ -2,6 +2,16 @@
 
 Parameters for TEXTURE_GENERATION service
 
+## Example Usage
+
+```typescript
+import {
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
+} from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject =
+    {};
+```
 
 ## Fields
 

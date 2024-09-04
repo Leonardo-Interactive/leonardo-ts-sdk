@@ -2,6 +2,13 @@
 
 Parameters for the service
 
+## Example Usage
+
+```typescript
+import { ObjectT } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ObjectT = {};
+```
 
 ## Fields
 

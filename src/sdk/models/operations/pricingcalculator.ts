@@ -57,6 +57,10 @@ export type PricingCalculatorPricingCalculatorObject = {
      */
     isModelCustom?: boolean | null | undefined;
     /**
+     * Enable to use Phoenix model.
+     */
+    isPhoenix?: boolean | null | undefined;
+    /**
      * Enable to use SDXL model.
      */
     isSDXL?: boolean | null | undefined;
@@ -289,6 +293,7 @@ export const PricingCalculatorPricingCalculatorObject$inboundSchema: z.ZodType<
     imageWidth: z.number().int().optional(),
     inferenceSteps: z.number().int().optional(),
     isModelCustom: z.nullable(z.boolean()).optional(),
+    isPhoenix: z.nullable(z.boolean()).optional(),
     isSDXL: z.nullable(z.boolean()).optional(),
     isSDXLLightning: z.nullable(z.boolean()).optional(),
     loraCount: z.nullable(z.number().int()).optional(),
@@ -307,6 +312,7 @@ export type PricingCalculatorPricingCalculatorObject$Outbound = {
     imageWidth?: number | undefined;
     inferenceSteps?: number | undefined;
     isModelCustom?: boolean | null | undefined;
+    isPhoenix?: boolean | null | undefined;
     isSDXL?: boolean | null | undefined;
     isSDXLLightning?: boolean | null | undefined;
     loraCount?: number | null | undefined;
@@ -329,6 +335,7 @@ export const PricingCalculatorPricingCalculatorObject$outboundSchema: z.ZodType<
     imageWidth: z.number().int().optional(),
     inferenceSteps: z.number().int().optional(),
     isModelCustom: z.nullable(z.boolean()).optional(),
+    isPhoenix: z.nullable(z.boolean()).optional(),
     isSDXL: z.nullable(z.boolean()).optional(),
     isSDXLLightning: z.nullable(z.boolean()).optional(),
     loraCount: z.nullable(z.number().int()).optional(),

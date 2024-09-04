@@ -1,5 +1,12 @@
 # TextureGenerationJobOutput
 
+## Example Usage
+
+```typescript
+import { TextureGenerationJobOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: TextureGenerationJobOutput = {};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CalculateProductionApiServiceCost
 
+## Example Usage
+
+```typescript
+import { CalculateProductionApiServiceCost } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CalculateProductionApiServiceCost = {};
+```
 
 ## Fields
 

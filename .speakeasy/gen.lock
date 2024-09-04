@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 3a41efc27f0622ed34034d315390d0f6
+  docChecksum: 4f2a40193a1ee14be648834f76a40ec4
   docVersion: v1.0.0
-  speakeasyVersion: 1.346.3
-  generationVersion: 2.379.6
-  releaseVersion: 4.14.2
-  configChecksum: 3926946790c8e7351f6d24ad3d3bae29
+  speakeasyVersion: 1.390.1
+  generationVersion: 2.409.0
+  releaseVersion: 4.15.0
+  configChecksum: b84f01af0008ac1b7a7605a35024c1b6
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,13 +14,14 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.11.10
+    constsAndDefaults: 0.1.11
+    core: 3.16.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
+    envVarSecurityUsage: 0.1.1
     flattening: 2.81.1
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -29,6 +30,42 @@ features:
     retries: 2.83.0
     sdkHooks: 0.1.0
 generatedFiles:
+  - src/funcs/initImagesDeleteInitImageById.ts
+  - src/funcs/initImagesGetInitImageById.ts
+  - src/funcs/initImagesUploadCanvasInitImage.ts
+  - src/funcs/initImagesUploadInitImage.ts
+  - src/funcs/datasetCreateDataset.ts
+  - src/funcs/datasetDeleteDatasetById.ts
+  - src/funcs/datasetGetDatasetById.ts
+  - src/funcs/datasetUploadDatasetImage.ts
+  - src/funcs/datasetUploadDatasetImageFromGen.ts
+  - src/funcs/elementsListElements.ts
+  - src/funcs/imageCreateGeneration.ts
+  - src/funcs/imageDeleteGenerationById.ts
+  - src/funcs/imageGetGenerationById.ts
+  - src/funcs/imageGetGenerationsByUserId.ts
+  - src/funcs/realtimeCanvasCreateLCMGeneration.ts
+  - src/funcs/realtimeCanvasPerformAlchemyUpscaleLCM.ts
+  - src/funcs/realtimeCanvasPerformInpaintingLCM.ts
+  - src/funcs/realtimeCanvasPerformInstantRefine.ts
+  - src/funcs/motionCreateSVDMotionGeneration.ts
+  - src/funcs/textureCreateTextureGeneration.ts
+  - src/funcs/textureDeleteTextureGenerationById.ts
+  - src/funcs/userGetUserSelf.ts
+  - src/funcs/modelsCreateModel.ts
+  - src/funcs/modelsDeleteModelById.ts
+  - src/funcs/modelsGetModelById.ts
+  - src/funcs/modelsListPlatformModels.ts
+  - src/funcs/threeDModelAssetsDelete3DModelById.ts
+  - src/funcs/threeDModelAssetsUploadModelAsset.ts
+  - src/funcs/pricingCalculatorPricingCalculator.ts
+  - src/funcs/promptPromptImprove.ts
+  - src/funcs/promptPromptRandom.ts
+  - src/funcs/variationCreateUniversalUpscalerJob.ts
+  - src/funcs/variationCreateVariationNoBG.ts
+  - src/funcs/variationCreateVariationUnzoom.ts
+  - src/funcs/variationCreateVariationUpscale.ts
+  - src/funcs/variationGetVariationById.ts
   - src/sdk/initimages.ts
   - src/sdk/dataset.ts
   - src/sdk/elements.ts
@@ -45,15 +82,21 @@ generatedFiles:
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
+  - FUNCTIONS.md
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
+  - src/lib/dlv.ts
   - src/lib/encodings.ts
+  - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
+  - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -61,13 +104,17 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
+  - src/sdk/models/errors/httpclienterrors.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
+  - src/sdk/types/constdatetime.ts
   - src/sdk/types/enums.ts
+  - src/sdk/types/fp.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
+  - src/sdk/types/streams.ts
   - tsconfig.json
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/getinitimagebyid.ts

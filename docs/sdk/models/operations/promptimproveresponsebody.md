@@ -2,6 +2,13 @@
 
 Responses for POST /prompt/improve
 
+## Example Usage
+
+```typescript
+import { PromptImproveResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PromptImproveResponseBody = {};
+```
 
 ## Fields
 

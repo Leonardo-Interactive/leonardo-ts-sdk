@@ -2,6 +2,13 @@
 
 Responses for DELETE /generations/{id}
 
+## Example Usage
+
+```typescript
+import { DeleteGenerationByIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DeleteGenerationByIdResponseBody = {};
+```
 
 ## Fields
 

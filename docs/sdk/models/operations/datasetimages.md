@@ -2,6 +2,13 @@
 
 columns and relationships of "dataset_images"
 
+## Example Usage
+
+```typescript
+import { DatasetImages } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DatasetImages = {};
+```
 
 ## Fields
 

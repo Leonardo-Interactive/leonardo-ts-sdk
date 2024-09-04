@@ -1,5 +1,12 @@
 # PricingCalculatorRequestBody
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorRequestBody = {};
+```
 
 ## Fields
 

@@ -1,5 +1,18 @@
 # CreateVariationNoBGResponse
 
+## Example Usage
+
+```typescript
+import { CreateVariationNoBGResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateVariationNoBGResponse = {
+    contentType: "<value>",
+    statusCode: 140350,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

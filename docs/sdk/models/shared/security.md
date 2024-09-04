@@ -1,5 +1,14 @@
 # Security
 
+## Example Usage
+
+```typescript
+import { Security } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: Security = {
+    bearerAuth: "<value>",
+};
+```
 
 ## Fields
 

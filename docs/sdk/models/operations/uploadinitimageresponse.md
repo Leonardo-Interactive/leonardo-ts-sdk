@@ -1,5 +1,18 @@
 # UploadInitImageResponse
 
+## Example Usage
+
+```typescript
+import { UploadInitImageResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadInitImageResponse = {
+    contentType: "<value>",
+    statusCode: 857946,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

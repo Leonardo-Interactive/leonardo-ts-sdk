@@ -7,8 +7,32 @@
    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
 </div>
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Rest Endpoints: Leonardo.Ai API OpenAPI specification.
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Requirements](#requirements)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Standalone functions](#standalone-functions)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
@@ -55,7 +79,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<value>");
+    const result = await leonardo.initImages.deleteInitImageById("<id>");
 
     // Handle the result
     console.log(result);
@@ -174,7 +198,7 @@ const leonardo = new Leonardo({
 async function run() {
     let result;
     try {
-        result = await leonardo.initImages.deleteInitImageById("<value>");
+        result = await leonardo.initImages.deleteInitImageById("<id>");
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -272,7 +296,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<value>");
+    const result = await leonardo.initImages.deleteInitImageById("<id>");
 
     // Handle the result
     console.log(result);
@@ -296,7 +320,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<value>");
+    const result = await leonardo.initImages.deleteInitImageById("<id>");
 
     // Handle the result
     console.log(result);
@@ -329,7 +353,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<value>");
+    const result = await leonardo.initImages.deleteInitImageById("<id>");
 
     // Handle the result
     console.log(result);
@@ -346,6 +370,62 @@ run();
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 <!-- End Requirements [requirements] -->
 
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [datasetCreateDataset](docs/sdks/dataset/README.md#createdataset)
+- [datasetDeleteDatasetById](docs/sdks/dataset/README.md#deletedatasetbyid)
+- [datasetGetDatasetById](docs/sdks/dataset/README.md#getdatasetbyid)
+- [datasetUploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen)
+- [datasetUploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage)
+- [elementsListElements](docs/sdks/elements/README.md#listelements)
+- [imageCreateGeneration](docs/sdks/image/README.md#creategeneration)
+- [imageDeleteGenerationById](docs/sdks/image/README.md#deletegenerationbyid)
+- [imageGetGenerationById](docs/sdks/image/README.md#getgenerationbyid)
+- [imageGetGenerationsByUserId](docs/sdks/image/README.md#getgenerationsbyuserid)
+- [initImagesDeleteInitImageById](docs/sdks/initimages/README.md#deleteinitimagebyid)
+- [initImagesGetInitImageById](docs/sdks/initimages/README.md#getinitimagebyid)
+- [initImagesUploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage)
+- [initImagesUploadInitImage](docs/sdks/initimages/README.md#uploadinitimage)
+- [modelsCreateModel](docs/sdks/models/README.md#createmodel)
+- [modelsDeleteModelById](docs/sdks/models/README.md#deletemodelbyid)
+- [modelsGetModelById](docs/sdks/models/README.md#getmodelbyid)
+- [modelsListPlatformModels](docs/sdks/models/README.md#listplatformmodels)
+- [motionCreateSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration)
+- [pricingCalculatorPricingCalculator](docs/sdks/pricingcalculator/README.md#pricingcalculator)
+- [promptPromptImprove](docs/sdks/prompt/README.md#promptimprove)
+- [promptPromptRandom](docs/sdks/prompt/README.md#promptrandom)
+- [realtimeCanvasCreateLCMGeneration](docs/sdks/realtimecanvas/README.md#createlcmgeneration)
+- [realtimeCanvasPerformAlchemyUpscaleLCM](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm)
+- [realtimeCanvasPerformInpaintingLCM](docs/sdks/realtimecanvas/README.md#performinpaintinglcm)
+- [realtimeCanvasPerformInstantRefine](docs/sdks/realtimecanvas/README.md#performinstantrefine)
+- [textureCreateTextureGeneration](docs/sdks/texture/README.md#createtexturegeneration)
+- [textureDeleteTextureGenerationById](docs/sdks/texture/README.md#deletetexturegenerationbyid)
+- [threeDModelAssetsDelete3DModelById](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid)
+- [threeDModelAssetsUploadModelAsset](docs/sdks/threedmodelassets/README.md#uploadmodelasset)
+- [userGetUserSelf](docs/sdks/user/README.md#getuserself)
+- [variationCreateUniversalUpscalerJob](docs/sdks/variation/README.md#createuniversalupscalerjob)
+- [variationCreateVariationNoBG](docs/sdks/variation/README.md#createvariationnobg)
+- [variationCreateVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom)
+- [variationCreateVariationUpscale](docs/sdks/variation/README.md#createvariationupscale)
+- [variationGetVariationById](docs/sdks/variation/README.md#getvariationbyid)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -360,7 +440,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<value>", {
+    const result = await leonardo.initImages.deleteInitImageById("<id>", {
         retries: {
             strategy: "backoff",
             backoff: {
@@ -400,7 +480,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<value>");
+    const result = await leonardo.initImages.deleteInitImageById("<id>");
 
     // Handle the result
     console.log(result);
@@ -410,6 +490,23 @@ run();
 
 ```
 <!-- End Retries [retries] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+You can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const sdk = new Leonardo({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

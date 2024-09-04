@@ -2,6 +2,13 @@
 
 Responses for DELETE /init-image/{id}
 
+## Example Usage
+
+```typescript
+import { DeleteInitImageByIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DeleteInitImageByIdResponseBody = {};
+```
 
 ## Fields
 

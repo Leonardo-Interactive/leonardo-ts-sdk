@@ -2,6 +2,13 @@
 
 columns and relationships of "generated_images"
 
+## Example Usage
+
+```typescript
+import { GeneratedImages } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GeneratedImages = {};
+```
 
 ## Fields
 

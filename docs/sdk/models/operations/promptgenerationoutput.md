@@ -1,5 +1,12 @@
 # PromptGenerationOutput
 
+## Example Usage
+
+```typescript
+import { PromptGenerationOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PromptGenerationOutput = {};
+```
 
 ## Fields
 

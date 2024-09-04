@@ -2,6 +2,13 @@
 
 The style to generate LCM images with.
 
+## Example Usage
+
+```typescript
+import { LcmGenerationStyle } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: LcmGenerationStyle = LcmGenerationStyle.Render3D;
+```
 
 ## Values
 

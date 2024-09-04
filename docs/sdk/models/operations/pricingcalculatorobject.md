@@ -2,6 +2,13 @@
 
 Parameters for FANTASY_AVATAR_GENERATION service
 
+## Example Usage
+
+```typescript
+import { PricingCalculatorObject } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PricingCalculatorObject = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 columns and relationships of "elements"
 
+## Example Usage
+
+```typescript
+import { Loras } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: Loras = {};
+```
 
 ## Fields
 
