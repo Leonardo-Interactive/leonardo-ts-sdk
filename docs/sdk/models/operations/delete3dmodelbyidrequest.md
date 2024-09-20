@@ -6,7 +6,7 @@
 import { Delete3DModelByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: Delete3DModelByIdRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

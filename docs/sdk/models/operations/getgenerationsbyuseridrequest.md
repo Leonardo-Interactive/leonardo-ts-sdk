@@ -6,7 +6,7 @@
 import { GetGenerationsByUserIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: GetGenerationsByUserIdRequest = {
-    userId: "<value>",
+  userId: "<value>",
 };
 ```
 

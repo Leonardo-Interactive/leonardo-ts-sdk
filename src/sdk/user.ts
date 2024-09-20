@@ -8,13 +8,18 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class User extends ClientSDK {
-    /**
-     * Get user information
-     *
-     * @remarks
-     * This endpoint will return your user information such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, and model training tokens
-     */
-    async getUserSelf(options?: RequestOptions): Promise<operations.GetUserSelfResponse> {
-        return unwrapAsync(userGetUserSelf(this, options));
-    }
+  /**
+   * Get user information
+   *
+   * @remarks
+   * This endpoint will return your user information such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, and model training tokens
+   */
+  async getUserSelf(
+    options?: RequestOptions,
+  ): Promise<operations.GetUserSelfResponse> {
+    return unwrapAsync(userGetUserSelf(
+      this,
+      options,
+    ));
+  }
 }

@@ -9,7 +9,8 @@ import {
   PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
 } from "@leonardo-ai/sdk/sdk/models/operations";
 
-let value: PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject =
+let value:
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject =
     {};
 ```
 

@@ -8,16 +8,20 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Motion extends ClientSDK {
-    /**
-     * Create SVD Motion Generation
-     *
-     * @remarks
-     * This endpoint will generate a SVD motion generation.
-     */
-    async createSVDMotionGeneration(
-        request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.CreateSVDMotionGenerationResponse> {
-        return unwrapAsync(motionCreateSVDMotionGeneration(this, request, options));
-    }
+  /**
+   * Create SVD Motion Generation
+   *
+   * @remarks
+   * This endpoint will generate a SVD motion generation.
+   */
+  async createSVDMotionGeneration(
+    request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.CreateSVDMotionGenerationResponse> {
+    return unwrapAsync(motionCreateSVDMotionGeneration(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -5,30 +5,32 @@
 import * as z from "zod";
 
 /**
- * The style to upscale images using universal upscaler with.
+ * The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
  */
 export enum UniversalUpscalerStyle {
-    General = "GENERAL",
-    Cinematic = "CINEMATIC",
-    TwoDARTAndILLUSTRATION = "2D ART & ILLUSTRATION",
-    CGARTAndGAMEASSETS = "CG ART & GAME ASSETS",
+  General = "GENERAL",
+  Cinematic = "CINEMATIC",
+  TwoDARTAndILLUSTRATION = "2D ART & ILLUSTRATION",
+  CGARTAndGAMEASSETS = "CG ART & GAME ASSETS",
 }
 
 /** @internal */
-export const UniversalUpscalerStyle$inboundSchema: z.ZodNativeEnum<typeof UniversalUpscalerStyle> =
-    z.nativeEnum(UniversalUpscalerStyle);
+export const UniversalUpscalerStyle$inboundSchema: z.ZodNativeEnum<
+  typeof UniversalUpscalerStyle
+> = z.nativeEnum(UniversalUpscalerStyle);
 
 /** @internal */
-export const UniversalUpscalerStyle$outboundSchema: z.ZodNativeEnum<typeof UniversalUpscalerStyle> =
-    UniversalUpscalerStyle$inboundSchema;
+export const UniversalUpscalerStyle$outboundSchema: z.ZodNativeEnum<
+  typeof UniversalUpscalerStyle
+> = UniversalUpscalerStyle$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UniversalUpscalerStyle$ {
-    /** @deprecated use `UniversalUpscalerStyle$inboundSchema` instead. */
-    export const inboundSchema = UniversalUpscalerStyle$inboundSchema;
-    /** @deprecated use `UniversalUpscalerStyle$outboundSchema` instead. */
-    export const outboundSchema = UniversalUpscalerStyle$outboundSchema;
+  /** @deprecated use `UniversalUpscalerStyle$inboundSchema` instead. */
+  export const inboundSchema = UniversalUpscalerStyle$inboundSchema;
+  /** @deprecated use `UniversalUpscalerStyle$outboundSchema` instead. */
+  export const outboundSchema = UniversalUpscalerStyle$outboundSchema;
 }

@@ -25,7 +25,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.image.createGeneration({});
-
+  
   // Handle the result
   console.log(result)
 }
@@ -98,7 +98,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.image.deleteGenerationById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -171,7 +171,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.image.getGenerationById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -244,7 +244,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.image.getGenerationsByUserId("<value>");
-
+  
   // Handle the result
   console.log(result)
 }

@@ -11,55 +11,71 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class RealtimeCanvas extends ClientSDK {
-    /**
-     * Create LCM Generation
-     *
-     * @remarks
-     * This endpoint will generate a LCM image generation.
-     */
-    async createLCMGeneration(
-        request?: operations.CreateLCMGenerationRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.CreateLCMGenerationResponse> {
-        return unwrapAsync(realtimeCanvasCreateLCMGeneration(this, request, options));
-    }
+  /**
+   * Create LCM Generation
+   *
+   * @remarks
+   * This endpoint will generate a LCM image generation.
+   */
+  async createLCMGeneration(
+    request?: operations.CreateLCMGenerationRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.CreateLCMGenerationResponse> {
+    return unwrapAsync(realtimeCanvasCreateLCMGeneration(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Perform Alchemy Upscale on a LCM image
-     *
-     * @remarks
-     * This endpoint will perform Alchemy Upscale on a LCM image
-     */
-    async performAlchemyUpscaleLCM(
-        request?: operations.PerformAlchemyUpscaleLCMRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PerformAlchemyUpscaleLCMResponse> {
-        return unwrapAsync(realtimeCanvasPerformAlchemyUpscaleLCM(this, request, options));
-    }
+  /**
+   * Perform Alchemy Upscale on a LCM image
+   *
+   * @remarks
+   * This endpoint will perform Alchemy Upscale on a LCM image
+   */
+  async performAlchemyUpscaleLCM(
+    request?: operations.PerformAlchemyUpscaleLCMRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PerformAlchemyUpscaleLCMResponse> {
+    return unwrapAsync(realtimeCanvasPerformAlchemyUpscaleLCM(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Perform inpainting on a LCM image
-     *
-     * @remarks
-     * This endpoint will perform a inpainting on a LCM image
-     */
-    async performInpaintingLCM(
-        request?: operations.PerformInpaintingLCMRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PerformInpaintingLCMResponse> {
-        return unwrapAsync(realtimeCanvasPerformInpaintingLCM(this, request, options));
-    }
+  /**
+   * Perform inpainting on a LCM image
+   *
+   * @remarks
+   * This endpoint will perform a inpainting on a LCM image
+   */
+  async performInpaintingLCM(
+    request?: operations.PerformInpaintingLCMRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PerformInpaintingLCMResponse> {
+    return unwrapAsync(realtimeCanvasPerformInpaintingLCM(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Perform instant refine on a LCM image
-     *
-     * @remarks
-     * This endpoint will perform instant refine on a LCM image
-     */
-    async performInstantRefine(
-        request?: operations.PerformInstantRefineRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PerformInstantRefineResponse> {
-        return unwrapAsync(realtimeCanvasPerformInstantRefine(this, request, options));
-    }
+  /**
+   * Perform instant refine on a LCM image
+   *
+   * @remarks
+   * This endpoint will perform instant refine on a LCM image
+   */
+  async performInstantRefine(
+    request?: operations.PerformInstantRefineRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PerformInstantRefineResponse> {
+    return unwrapAsync(realtimeCanvasPerformInstantRefine(
+      this,
+      request,
+      options,
+    ));
+  }
 }

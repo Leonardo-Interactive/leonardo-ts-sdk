@@ -26,7 +26,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.variation.createUniversalUpscalerJob({});
-
+  
   // Handle the result
   console.log(result)
 }
@@ -101,7 +101,7 @@ async function run() {
   const result = await leonardo.variation.createVariationNoBG({
     id: "<id>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -176,7 +176,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.variation.createVariationUnzoom();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -249,7 +249,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.variation.createVariationUpscale();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -322,7 +322,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.variation.getVariationById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }

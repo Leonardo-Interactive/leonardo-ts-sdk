@@ -18,68 +18,68 @@ import { User } from "./user.js";
 import { Variation } from "./variation.js";
 
 export class Leonardo extends ClientSDK {
-    private _initImages?: InitImages;
-    get initImages(): InitImages {
-        return (this._initImages ??= new InitImages(this.options$));
-    }
+  private _initImages?: InitImages;
+  get initImages(): InitImages {
+    return (this._initImages ??= new InitImages(this.options$));
+  }
 
-    private _dataset?: Dataset;
-    get dataset(): Dataset {
-        return (this._dataset ??= new Dataset(this.options$));
-    }
+  private _dataset?: Dataset;
+  get dataset(): Dataset {
+    return (this._dataset ??= new Dataset(this.options$));
+  }
 
-    private _elements?: Elements;
-    get elements(): Elements {
-        return (this._elements ??= new Elements(this.options$));
-    }
+  private _elements?: Elements;
+  get elements(): Elements {
+    return (this._elements ??= new Elements(this.options$));
+  }
 
-    private _image?: Image;
-    get image(): Image {
-        return (this._image ??= new Image(this.options$));
-    }
+  private _image?: Image;
+  get image(): Image {
+    return (this._image ??= new Image(this.options$));
+  }
 
-    private _realtimeCanvas?: RealtimeCanvas;
-    get realtimeCanvas(): RealtimeCanvas {
-        return (this._realtimeCanvas ??= new RealtimeCanvas(this.options$));
-    }
+  private _realtimeCanvas?: RealtimeCanvas;
+  get realtimeCanvas(): RealtimeCanvas {
+    return (this._realtimeCanvas ??= new RealtimeCanvas(this.options$));
+  }
 
-    private _motion?: Motion;
-    get motion(): Motion {
-        return (this._motion ??= new Motion(this.options$));
-    }
+  private _motion?: Motion;
+  get motion(): Motion {
+    return (this._motion ??= new Motion(this.options$));
+  }
 
-    private _texture?: Texture;
-    get texture(): Texture {
-        return (this._texture ??= new Texture(this.options$));
-    }
+  private _texture?: Texture;
+  get texture(): Texture {
+    return (this._texture ??= new Texture(this.options$));
+  }
 
-    private _user?: User;
-    get user(): User {
-        return (this._user ??= new User(this.options$));
-    }
+  private _user?: User;
+  get user(): User {
+    return (this._user ??= new User(this.options$));
+  }
 
-    private _models?: Models;
-    get models(): Models {
-        return (this._models ??= new Models(this.options$));
-    }
+  private _models?: Models;
+  get models(): Models {
+    return (this._models ??= new Models(this.options$));
+  }
 
-    private _threeDModelAssets?: ThreeDModelAssets;
-    get threeDModelAssets(): ThreeDModelAssets {
-        return (this._threeDModelAssets ??= new ThreeDModelAssets(this.options$));
-    }
+  private _threeDModelAssets?: ThreeDModelAssets;
+  get threeDModelAssets(): ThreeDModelAssets {
+    return (this._threeDModelAssets ??= new ThreeDModelAssets(this.options$));
+  }
 
-    private _pricingCalculator?: PricingCalculator;
-    get pricingCalculator(): PricingCalculator {
-        return (this._pricingCalculator ??= new PricingCalculator(this.options$));
-    }
+  private _pricingCalculator?: PricingCalculator;
+  get pricingCalculator(): PricingCalculator {
+    return (this._pricingCalculator ??= new PricingCalculator(this.options$));
+  }
 
-    private _prompt?: Prompt;
-    get prompt(): Prompt {
-        return (this._prompt ??= new Prompt(this.options$));
-    }
+  private _prompt?: Prompt;
+  get prompt(): Prompt {
+    return (this._prompt ??= new Prompt(this.options$));
+  }
 
-    private _variation?: Variation;
-    get variation(): Variation {
-        return (this._variation ??= new Variation(this.options$));
-    }
+  private _variation?: Variation;
+  get variation(): Variation {
+    return (this._variation ??= new Variation(this.options$));
+  }
 }

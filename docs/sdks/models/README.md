@@ -29,7 +29,7 @@ async function run() {
     instancePrompt: "<value>",
     name: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -106,7 +106,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.models.deleteModelById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -179,7 +179,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.models.getModelById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -252,7 +252,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.models.listPlatformModels();
-
+  
   // Handle the result
   console.log(result)
 }

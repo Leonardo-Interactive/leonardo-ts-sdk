@@ -6,11 +6,11 @@
 import { UploadCanvasInitImageResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: UploadCanvasInitImageResponse = {
-    contentType: "<value>",
-    statusCode: 715190,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 715190,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

@@ -12,68 +12,88 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Variation extends ClientSDK {
-    /**
-     * Create using Universal Upscaler
-     *
-     * @remarks
-     * This endpoint will create a high resolution image using Universal Upscaler
-     */
-    async createUniversalUpscalerJob(
-        request: operations.CreateUniversalUpscalerJobRequestBody,
-        options?: RequestOptions
-    ): Promise<operations.CreateUniversalUpscalerJobResponse> {
-        return unwrapAsync(variationCreateUniversalUpscalerJob(this, request, options));
-    }
+  /**
+   * Create using Universal Upscaler
+   *
+   * @remarks
+   * This endpoint will create a high resolution image using Universal Upscaler
+   */
+  async createUniversalUpscalerJob(
+    request: operations.CreateUniversalUpscalerJobRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.CreateUniversalUpscalerJobResponse> {
+    return unwrapAsync(variationCreateUniversalUpscalerJob(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create no background
-     *
-     * @remarks
-     * This endpoint will create a no background variation of the provided image ID
-     */
-    async createVariationNoBG(
-        request: operations.CreateVariationNoBGRequestBody,
-        options?: RequestOptions
-    ): Promise<operations.CreateVariationNoBGResponse> {
-        return unwrapAsync(variationCreateVariationNoBG(this, request, options));
-    }
+  /**
+   * Create no background
+   *
+   * @remarks
+   * This endpoint will create a no background variation of the provided image ID
+   */
+  async createVariationNoBG(
+    request: operations.CreateVariationNoBGRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.CreateVariationNoBGResponse> {
+    return unwrapAsync(variationCreateVariationNoBG(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create unzoom
-     *
-     * @remarks
-     * This endpoint will create an unzoom variation for the provided image ID
-     */
-    async createVariationUnzoom(
-        request?: operations.CreateVariationUnzoomRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.CreateVariationUnzoomResponse> {
-        return unwrapAsync(variationCreateVariationUnzoom(this, request, options));
-    }
+  /**
+   * Create unzoom
+   *
+   * @remarks
+   * This endpoint will create an unzoom variation for the provided image ID
+   */
+  async createVariationUnzoom(
+    request?: operations.CreateVariationUnzoomRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.CreateVariationUnzoomResponse> {
+    return unwrapAsync(variationCreateVariationUnzoom(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create upscale
-     *
-     * @remarks
-     * This endpoint will create an upscale for the provided image ID
-     */
-    async createVariationUpscale(
-        request?: operations.CreateVariationUpscaleRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.CreateVariationUpscaleResponse> {
-        return unwrapAsync(variationCreateVariationUpscale(this, request, options));
-    }
+  /**
+   * Create upscale
+   *
+   * @remarks
+   * This endpoint will create an upscale for the provided image ID
+   */
+  async createVariationUpscale(
+    request?: operations.CreateVariationUpscaleRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.CreateVariationUpscaleResponse> {
+    return unwrapAsync(variationCreateVariationUpscale(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get variation by ID
-     *
-     * @remarks
-     * This endpoint will get the variation by ID
-     */
-    async getVariationById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.GetVariationByIdResponse> {
-        return unwrapAsync(variationGetVariationById(this, id, options));
-    }
+  /**
+   * Get variation by ID
+   *
+   * @remarks
+   * This endpoint will get the variation by ID
+   */
+  async getVariationById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetVariationByIdResponse> {
+    return unwrapAsync(variationGetVariationById(
+      this,
+      id,
+      options,
+    ));
+  }
 }

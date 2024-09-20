@@ -75,14 +75,14 @@ To get access to the API and fetch an API key, please sign up for [access](https
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<id>");
+  const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -93,12 +93,8 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [initImages](docs/sdks/initimages/README.md)
-
-* [deleteInitImageById](docs/sdks/initimages/README.md#deleteinitimagebyid) - Delete init image
-* [getInitImageById](docs/sdks/initimages/README.md#getinitimagebyid) - Get single init image
-* [uploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
-* [uploadInitImage](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
+<details open>
+<summary>Available methods</summary>
 
 ### [dataset](docs/sdks/dataset/README.md)
 
@@ -119,25 +115,13 @@ run();
 * [getGenerationById](docs/sdks/image/README.md#getgenerationbyid) - Get a Single Generation
 * [getGenerationsByUserId](docs/sdks/image/README.md#getgenerationsbyuserid) - Get generations by user ID
 
-### [realtimeCanvas](docs/sdks/realtimecanvas/README.md)
+### [initImages](docs/sdks/initimages/README.md)
 
-* [createLCMGeneration](docs/sdks/realtimecanvas/README.md#createlcmgeneration) - Create LCM Generation
-* [performAlchemyUpscaleLCM](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
-* [performInpaintingLCM](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
-* [performInstantRefine](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
+* [deleteInitImageById](docs/sdks/initimages/README.md#deleteinitimagebyid) - Delete init image
+* [getInitImageById](docs/sdks/initimages/README.md#getinitimagebyid) - Get single init image
+* [uploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
+* [uploadInitImage](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
 
-### [motion](docs/sdks/motion/README.md)
-
-* [createSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
-
-### [texture](docs/sdks/texture/README.md)
-
-* [createTextureGeneration](docs/sdks/texture/README.md#createtexturegeneration) - Create Texture Generation
-* [deleteTextureGenerationById](docs/sdks/texture/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
-
-### [user](docs/sdks/user/README.md)
-
-* [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
 
 ### [models](docs/sdks/models/README.md)
 
@@ -146,10 +130,9 @@ run();
 * [getModelById](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
 * [listPlatformModels](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
 
-### [threeDModelAssets](docs/sdks/threedmodelassets/README.md)
+### [motion](docs/sdks/motion/README.md)
 
-* [delete3DModelById](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid) - Delete 3D Model by ID
-* [uploadModelAsset](docs/sdks/threedmodelassets/README.md#uploadmodelasset) - Upload 3D Model
+* [createSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
 
 ### [pricingCalculator](docs/sdks/pricingcalculator/README.md)
 
@@ -160,6 +143,27 @@ run();
 * [promptImprove](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
 * [promptRandom](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
 
+### [realtimeCanvas](docs/sdks/realtimecanvas/README.md)
+
+* [createLCMGeneration](docs/sdks/realtimecanvas/README.md#createlcmgeneration) - Create LCM Generation
+* [performAlchemyUpscaleLCM](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
+* [performInpaintingLCM](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
+* [performInstantRefine](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
+
+### [texture](docs/sdks/texture/README.md)
+
+* [createTextureGeneration](docs/sdks/texture/README.md#createtexturegeneration) - Create Texture Generation
+* [deleteTextureGenerationById](docs/sdks/texture/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
+
+### [threeDModelAssets](docs/sdks/threedmodelassets/README.md)
+
+* [delete3DModelById](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid) - Delete 3D Model by ID
+* [uploadModelAsset](docs/sdks/threedmodelassets/README.md#uploadmodelasset) - Upload 3D Model
+
+### [user](docs/sdks/user/README.md)
+
+* [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
+
 ### [variation](docs/sdks/variation/README.md)
 
 * [createUniversalUpscalerJob](docs/sdks/variation/README.md#createuniversalupscalerjob) - Create using Universal Upscaler
@@ -167,6 +171,8 @@ run();
 * [createVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -192,30 +198,30 @@ import { Leonardo } from "@leonardo-ai/sdk";
 import { SDKValidationError } from "@leonardo-ai/sdk/sdk/models/errors";
 
 const leonardo = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    let result;
-    try {
-        result = await leonardo.initImages.deleteInitImageById("<id>");
-    } catch (err) {
-        switch (true) {
-            case err instanceof SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
-    }
+  let result;
+  try {
+    result = await leonardo.initImages.deleteInitImageById("<id>");
 
     // Handle the result
     console.log(result);
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      default: {
+        throw err;
+      }
+    }
+  }
 }
 
 run();
@@ -291,15 +297,15 @@ You can override the default server globally by passing a server index to the `s
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    serverIdx: 0,
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  serverIdx: 0,
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<id>");
+  const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -315,15 +321,15 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    serverURL: "https://cloud.leonardo.ai/api/rest/v1",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  serverURL: "https://cloud.leonardo.ai/api/rest/v1",
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<id>");
+  const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -349,14 +355,14 @@ To authenticate with the API the `bearerAuth` parameter must be set when initial
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<id>");
+  const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -436,25 +442,25 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<id>", {
-        retries: {
-            strategy: "backoff",
-            backoff: {
-                initialInterval: 1,
-                maxInterval: 50,
-                exponent: 1.1,
-                maxElapsedTime: 100,
-            },
-            retryConnectionErrors: false,
-        },
-    });
+  const result = await leonardo.initImages.deleteInitImageById("<id>", {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -466,24 +472,24 @@ If you'd like to override the default retry strategy for all operations that sup
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    retryConnectionErrors: false,
+  },
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.initImages.deleteInitImageById("<id>");
+  const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

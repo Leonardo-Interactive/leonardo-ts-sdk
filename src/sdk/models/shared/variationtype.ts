@@ -8,28 +8,30 @@ import * as z from "zod";
  * The type of variation.
  */
 export enum VariationType {
-    Outpaint = "OUTPAINT",
-    Inpaint = "INPAINT",
-    Upscale = "UPSCALE",
-    Unzoom = "UNZOOM",
-    Nobg = "NOBG",
+  Outpaint = "OUTPAINT",
+  Inpaint = "INPAINT",
+  Upscale = "UPSCALE",
+  Unzoom = "UNZOOM",
+  Nobg = "NOBG",
 }
 
 /** @internal */
-export const VariationType$inboundSchema: z.ZodNativeEnum<typeof VariationType> =
-    z.nativeEnum(VariationType);
+export const VariationType$inboundSchema: z.ZodNativeEnum<
+  typeof VariationType
+> = z.nativeEnum(VariationType);
 
 /** @internal */
-export const VariationType$outboundSchema: z.ZodNativeEnum<typeof VariationType> =
-    VariationType$inboundSchema;
+export const VariationType$outboundSchema: z.ZodNativeEnum<
+  typeof VariationType
+> = VariationType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace VariationType$ {
-    /** @deprecated use `VariationType$inboundSchema` instead. */
-    export const inboundSchema = VariationType$inboundSchema;
-    /** @deprecated use `VariationType$outboundSchema` instead. */
-    export const outboundSchema = VariationType$outboundSchema;
+  /** @deprecated use `VariationType$inboundSchema` instead. */
+  export const inboundSchema = VariationType$inboundSchema;
+  /** @deprecated use `VariationType$outboundSchema` instead. */
+  export const outboundSchema = VariationType$outboundSchema;
 }

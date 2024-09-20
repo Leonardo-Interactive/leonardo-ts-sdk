@@ -22,7 +22,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.pricingCalculator.pricingCalculator();
-
+  
   // Handle the result
   console.log(result)
 }

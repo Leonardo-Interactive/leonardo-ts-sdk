@@ -1,6 +1,6 @@
 # UniversalUpscalerStyle
 
-The style to upscale images using universal upscaler with.
+The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
 
 ## Example Usage
 

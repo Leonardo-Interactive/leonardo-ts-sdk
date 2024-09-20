@@ -8,23 +8,24 @@ import * as z from "zod";
  * The services to be chosen for calculating the API credit cost.
  */
 export enum PricingCalculatorServices {
-    ImageGeneration = "IMAGE_GENERATION",
-    FantasyAvatarGeneration = "FANTASY_AVATAR_GENERATION",
-    MotionGeneration = "MOTION_GENERATION",
-    LcmGeneration = "LCM_GENERATION",
-    ModelTraining = "MODEL_TRAINING",
-    TextureGeneration = "TEXTURE_GENERATION",
-    UniversalUpscaler = "UNIVERSAL_UPSCALER",
+  ImageGeneration = "IMAGE_GENERATION",
+  FantasyAvatarGeneration = "FANTASY_AVATAR_GENERATION",
+  MotionGeneration = "MOTION_GENERATION",
+  LcmGeneration = "LCM_GENERATION",
+  ModelTraining = "MODEL_TRAINING",
+  TextureGeneration = "TEXTURE_GENERATION",
+  UniversalUpscaler = "UNIVERSAL_UPSCALER",
+  UniversalUpscalerUltra = "UNIVERSAL_UPSCALER_ULTRA",
 }
 
 /** @internal */
 export const PricingCalculatorServices$inboundSchema: z.ZodNativeEnum<
-    typeof PricingCalculatorServices
+  typeof PricingCalculatorServices
 > = z.nativeEnum(PricingCalculatorServices);
 
 /** @internal */
 export const PricingCalculatorServices$outboundSchema: z.ZodNativeEnum<
-    typeof PricingCalculatorServices
+  typeof PricingCalculatorServices
 > = PricingCalculatorServices$inboundSchema;
 
 /**
@@ -32,8 +33,8 @@ export const PricingCalculatorServices$outboundSchema: z.ZodNativeEnum<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace PricingCalculatorServices$ {
-    /** @deprecated use `PricingCalculatorServices$inboundSchema` instead. */
-    export const inboundSchema = PricingCalculatorServices$inboundSchema;
-    /** @deprecated use `PricingCalculatorServices$outboundSchema` instead. */
-    export const outboundSchema = PricingCalculatorServices$outboundSchema;
+  /** @deprecated use `PricingCalculatorServices$inboundSchema` instead. */
+  export const inboundSchema = PricingCalculatorServices$inboundSchema;
+  /** @deprecated use `PricingCalculatorServices$outboundSchema` instead. */
+  export const outboundSchema = PricingCalculatorServices$outboundSchema;
 }

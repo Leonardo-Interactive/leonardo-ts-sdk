@@ -9,26 +9,35 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Prompt extends ClientSDK {
-    /**
-     * Improve a Prompt
-     *
-     * @remarks
-     * This endpoint returns a improved prompt
-     */
-    async promptImprove(
-        request: operations.PromptImproveRequestBody,
-        options?: RequestOptions
-    ): Promise<operations.PromptImproveResponse> {
-        return unwrapAsync(promptPromptImprove(this, request, options));
-    }
+  /**
+   * Improve a Prompt
+   *
+   * @remarks
+   * This endpoint returns a improved prompt
+   */
+  async promptImprove(
+    request: operations.PromptImproveRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.PromptImproveResponse> {
+    return unwrapAsync(promptPromptImprove(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Generate a Random prompt
-     *
-     * @remarks
-     * This endpoint returns a random prompt
-     */
-    async promptRandom(options?: RequestOptions): Promise<operations.PromptRandomResponse> {
-        return unwrapAsync(promptPromptRandom(this, options));
-    }
+  /**
+   * Generate a Random prompt
+   *
+   * @remarks
+   * This endpoint returns a random prompt
+   */
+  async promptRandom(
+    options?: RequestOptions,
+  ): Promise<operations.PromptRandomResponse> {
+    return unwrapAsync(promptPromptRandom(
+      this,
+      options,
+    ));
+  }
 }

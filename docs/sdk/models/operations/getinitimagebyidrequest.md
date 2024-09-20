@@ -6,7 +6,7 @@
 import { GetInitImageByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: GetInitImageByIdRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

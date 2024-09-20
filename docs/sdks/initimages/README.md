@@ -25,7 +25,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.initImages.deleteInitImageById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -98,7 +98,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.initImages.getInitImageById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -174,7 +174,7 @@ async function run() {
     initExtension: "<value>",
     maskExtension: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -252,7 +252,7 @@ async function run() {
   const result = await leonardo.initImages.uploadInitImage({
     extension: "png",
   });
-
+  
   // Handle the result
   console.log(result)
 }

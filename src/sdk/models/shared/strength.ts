@@ -8,25 +8,27 @@ import * as z from "zod";
  * When training using the PIXEL_ART model type, this influences the training strength.
  */
 export enum Strength {
-    VeryLow = "VERY_LOW",
-    Low = "LOW",
-    Medium = "MEDIUM",
-    High = "HIGH",
+  VeryLow = "VERY_LOW",
+  Low = "LOW",
+  Medium = "MEDIUM",
+  High = "HIGH",
 }
 
 /** @internal */
-export const Strength$inboundSchema: z.ZodNativeEnum<typeof Strength> = z.nativeEnum(Strength);
+export const Strength$inboundSchema: z.ZodNativeEnum<typeof Strength> = z
+  .nativeEnum(Strength);
 
 /** @internal */
-export const Strength$outboundSchema: z.ZodNativeEnum<typeof Strength> = Strength$inboundSchema;
+export const Strength$outboundSchema: z.ZodNativeEnum<typeof Strength> =
+  Strength$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Strength$ {
-    /** @deprecated use `Strength$inboundSchema` instead. */
-    export const inboundSchema = Strength$inboundSchema;
-    /** @deprecated use `Strength$outboundSchema` instead. */
-    export const outboundSchema = Strength$outboundSchema;
+  /** @deprecated use `Strength$inboundSchema` instead. */
+  export const inboundSchema = Strength$inboundSchema;
+  /** @deprecated use `Strength$outboundSchema` instead. */
+  export const outboundSchema = Strength$outboundSchema;
 }

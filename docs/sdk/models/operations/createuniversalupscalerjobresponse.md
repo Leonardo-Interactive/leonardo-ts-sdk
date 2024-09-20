@@ -6,11 +6,11 @@
 import { CreateUniversalUpscalerJobResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: CreateUniversalUpscalerJobResponse = {
-    contentType: "<value>",
-    statusCode: 778157,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 778157,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

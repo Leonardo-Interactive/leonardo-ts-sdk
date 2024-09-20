@@ -12,70 +12,92 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Dataset extends ClientSDK {
-    /**
-     * Create a Dataset
-     *
-     * @remarks
-     * This endpoint creates a new dataset
-     */
-    async createDataset(
-        request: operations.CreateDatasetRequestBody,
-        options?: RequestOptions
-    ): Promise<operations.CreateDatasetResponse> {
-        return unwrapAsync(datasetCreateDataset(this, request, options));
-    }
+  /**
+   * Create a Dataset
+   *
+   * @remarks
+   * This endpoint creates a new dataset
+   */
+  async createDataset(
+    request: operations.CreateDatasetRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.CreateDatasetResponse> {
+    return unwrapAsync(datasetCreateDataset(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a Single Dataset by ID
-     *
-     * @remarks
-     * This endpoint deletes the specific dataset
-     */
-    async deleteDatasetById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.DeleteDatasetByIdResponse> {
-        return unwrapAsync(datasetDeleteDatasetById(this, id, options));
-    }
+  /**
+   * Delete a Single Dataset by ID
+   *
+   * @remarks
+   * This endpoint deletes the specific dataset
+   */
+  async deleteDatasetById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteDatasetByIdResponse> {
+    return unwrapAsync(datasetDeleteDatasetById(
+      this,
+      id,
+      options,
+    ));
+  }
 
-    /**
-     * Get a Single Dataset by ID
-     *
-     * @remarks
-     * This endpoint gets the specific dataset
-     */
-    async getDatasetById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.GetDatasetByIdResponse> {
-        return unwrapAsync(datasetGetDatasetById(this, id, options));
-    }
+  /**
+   * Get a Single Dataset by ID
+   *
+   * @remarks
+   * This endpoint gets the specific dataset
+   */
+  async getDatasetById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetDatasetByIdResponse> {
+    return unwrapAsync(datasetGetDatasetById(
+      this,
+      id,
+      options,
+    ));
+  }
 
-    /**
-     * Upload dataset image
-     *
-     * @remarks
-     * This endpoint returns presigned details to upload a dataset image to S3
-     */
-    async uploadDatasetImage(
-        requestBody: operations.UploadDatasetImageRequestBody,
-        datasetId: string,
-        options?: RequestOptions
-    ): Promise<operations.UploadDatasetImageResponse> {
-        return unwrapAsync(datasetUploadDatasetImage(this, requestBody, datasetId, options));
-    }
+  /**
+   * Upload dataset image
+   *
+   * @remarks
+   * This endpoint returns presigned details to upload a dataset image to S3
+   */
+  async uploadDatasetImage(
+    requestBody: operations.UploadDatasetImageRequestBody,
+    datasetId: string,
+    options?: RequestOptions,
+  ): Promise<operations.UploadDatasetImageResponse> {
+    return unwrapAsync(datasetUploadDatasetImage(
+      this,
+      requestBody,
+      datasetId,
+      options,
+    ));
+  }
 
-    /**
-     * Upload a Single Generated Image to a Dataset
-     *
-     * @remarks
-     * This endpoint will upload a previously generated image to the dataset
-     */
-    async uploadDatasetImageFromGen(
-        requestBody: operations.UploadDatasetImageFromGenRequestBody,
-        datasetId: string,
-        options?: RequestOptions
-    ): Promise<operations.UploadDatasetImageFromGenResponse> {
-        return unwrapAsync(datasetUploadDatasetImageFromGen(this, requestBody, datasetId, options));
-    }
+  /**
+   * Upload a Single Generated Image to a Dataset
+   *
+   * @remarks
+   * This endpoint will upload a previously generated image to the dataset
+   */
+  async uploadDatasetImageFromGen(
+    requestBody: operations.UploadDatasetImageFromGenRequestBody,
+    datasetId: string,
+    options?: RequestOptions,
+  ): Promise<operations.UploadDatasetImageFromGenResponse> {
+    return unwrapAsync(datasetUploadDatasetImageFromGen(
+      this,
+      requestBody,
+      datasetId,
+      options,
+    ));
+  }
 }

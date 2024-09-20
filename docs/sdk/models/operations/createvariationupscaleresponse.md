@@ -6,11 +6,11 @@
 import { CreateVariationUpscaleResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: CreateVariationUpscaleResponse = {
-    contentType: "<value>",
-    statusCode: 870088,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 870088,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

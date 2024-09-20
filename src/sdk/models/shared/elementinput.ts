@@ -5,36 +5,40 @@
 import * as z from "zod";
 
 export type ElementInput = {
-    /**
-     * Unique identifier for element. Elements can be found from the List Elements endpoint.
-     */
-    akUUID?: string | null | undefined;
-    /**
-     * Weight for the element
-     */
-    weight?: number | null | undefined;
+  /**
+   * Unique identifier for element. Elements can be found from the List Elements endpoint.
+   */
+  akUUID?: string | null | undefined;
+  /**
+   * Weight for the element
+   */
+  weight?: number | null | undefined;
 };
 
 /** @internal */
-export const ElementInput$inboundSchema: z.ZodType<ElementInput, z.ZodTypeDef, unknown> = z.object({
-    akUUID: z.nullable(z.string()).optional(),
-    weight: z.nullable(z.number()).optional(),
+export const ElementInput$inboundSchema: z.ZodType<
+  ElementInput,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  akUUID: z.nullable(z.string()).optional(),
+  weight: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type ElementInput$Outbound = {
-    akUUID?: string | null | undefined;
-    weight?: number | null | undefined;
+  akUUID?: string | null | undefined;
+  weight?: number | null | undefined;
 };
 
 /** @internal */
 export const ElementInput$outboundSchema: z.ZodType<
-    ElementInput$Outbound,
-    z.ZodTypeDef,
-    ElementInput
+  ElementInput$Outbound,
+  z.ZodTypeDef,
+  ElementInput
 > = z.object({
-    akUUID: z.nullable(z.string()).optional(),
-    weight: z.nullable(z.number()).optional(),
+  akUUID: z.nullable(z.string()).optional(),
+  weight: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -42,10 +46,10 @@ export const ElementInput$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ElementInput$ {
-    /** @deprecated use `ElementInput$inboundSchema` instead. */
-    export const inboundSchema = ElementInput$inboundSchema;
-    /** @deprecated use `ElementInput$outboundSchema` instead. */
-    export const outboundSchema = ElementInput$outboundSchema;
-    /** @deprecated use `ElementInput$Outbound` instead. */
-    export type Outbound = ElementInput$Outbound;
+  /** @deprecated use `ElementInput$inboundSchema` instead. */
+  export const inboundSchema = ElementInput$inboundSchema;
+  /** @deprecated use `ElementInput$outboundSchema` instead. */
+  export const outboundSchema = ElementInput$outboundSchema;
+  /** @deprecated use `ElementInput$Outbound` instead. */
+  export type Outbound = ElementInput$Outbound;
 }

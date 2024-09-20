@@ -16,4 +16,5 @@ export * from "./sdversions.js";
 export * from "./security.js";
 export * from "./strength.js";
 export * from "./universalupscalerstyle.js";
+export * from "./universalupscalerultrastyle.js";
 export * from "./variationtype.js";

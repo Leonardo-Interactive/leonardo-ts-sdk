@@ -23,7 +23,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.threeDModelAssets.delete3DModelById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }
@@ -97,7 +97,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.threeDModelAssets.uploadModelAsset();
-
+  
   // Handle the result
   console.log(result)
 }

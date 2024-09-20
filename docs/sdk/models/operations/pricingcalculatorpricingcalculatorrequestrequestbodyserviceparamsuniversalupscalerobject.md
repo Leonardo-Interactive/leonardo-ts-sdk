@@ -9,7 +9,8 @@ import {
   PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject,
 } from "@leonardo-ai/sdk/sdk/models/operations";
 
-let value: PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject =
+let value:
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject =
     {};
 ```
 

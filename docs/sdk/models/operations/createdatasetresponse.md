@@ -6,11 +6,11 @@
 import { CreateDatasetResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: CreateDatasetResponse = {
-    contentType: "<value>",
-    statusCode: 544883,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 544883,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

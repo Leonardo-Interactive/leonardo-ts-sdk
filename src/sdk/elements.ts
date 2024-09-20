@@ -8,13 +8,18 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Elements extends ClientSDK {
-    /**
-     * List Elements
-     *
-     * @remarks
-     * Get a list of public Elements available for use with generations.
-     */
-    async listElements(options?: RequestOptions): Promise<operations.ListElementsResponse> {
-        return unwrapAsync(elementsListElements(this, options));
-    }
+  /**
+   * List Elements
+   *
+   * @remarks
+   * Get a list of public Elements available for use with generations.
+   */
+  async listElements(
+    options?: RequestOptions,
+  ): Promise<operations.ListElementsResponse> {
+    return unwrapAsync(elementsListElements(
+      this,
+      options,
+    ));
+  }
 }

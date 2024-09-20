@@ -8,30 +8,30 @@ import * as z from "zod";
  * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
  */
 export enum SdVersions {
-    V15 = "v1_5",
-    V2 = "v2",
-    V3 = "v3",
-    Sdxl08 = "SDXL_0_8",
-    Sdxl09 = "SDXL_0_9",
-    Sdxl10 = "SDXL_1_0",
-    SdxlLightning = "SDXL_LIGHTNING",
+  V15 = "v1_5",
+  V2 = "v2",
+  V3 = "v3",
+  Sdxl08 = "SDXL_0_8",
+  Sdxl09 = "SDXL_0_9",
+  Sdxl10 = "SDXL_1_0",
+  SdxlLightning = "SDXL_LIGHTNING",
 }
 
 /** @internal */
-export const SdVersions$inboundSchema: z.ZodNativeEnum<typeof SdVersions> =
-    z.nativeEnum(SdVersions);
+export const SdVersions$inboundSchema: z.ZodNativeEnum<typeof SdVersions> = z
+  .nativeEnum(SdVersions);
 
 /** @internal */
 export const SdVersions$outboundSchema: z.ZodNativeEnum<typeof SdVersions> =
-    SdVersions$inboundSchema;
+  SdVersions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SdVersions$ {
-    /** @deprecated use `SdVersions$inboundSchema` instead. */
-    export const inboundSchema = SdVersions$inboundSchema;
-    /** @deprecated use `SdVersions$outboundSchema` instead. */
-    export const outboundSchema = SdVersions$outboundSchema;
+  /** @deprecated use `SdVersions$inboundSchema` instead. */
+  export const inboundSchema = SdVersions$inboundSchema;
+  /** @deprecated use `SdVersions$outboundSchema` instead. */
+  export const outboundSchema = SdVersions$outboundSchema;
 }

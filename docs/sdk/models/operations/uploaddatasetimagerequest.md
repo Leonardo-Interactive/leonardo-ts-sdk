@@ -6,10 +6,10 @@
 import { UploadDatasetImageRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: UploadDatasetImageRequest = {
-    requestBody: {
-        extension: "gif",
-    },
-    datasetId: "<value>",
+  requestBody: {
+    extension: "gif",
+  },
+  datasetId: "<value>",
 };
 ```
 

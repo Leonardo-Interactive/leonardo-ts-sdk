@@ -9,30 +9,39 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Texture extends ClientSDK {
-    /**
-     * Create Texture Generation
-     *
-     * @remarks
-     * This endpoint will generate a texture generation.
-     */
-    async createTextureGeneration(
-        request?: operations.CreateTextureGenerationRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.CreateTextureGenerationResponse> {
-        return unwrapAsync(textureCreateTextureGeneration(this, request, options));
-    }
+  /**
+   * Create Texture Generation
+   *
+   * @remarks
+   * This endpoint will generate a texture generation.
+   */
+  async createTextureGeneration(
+    request?: operations.CreateTextureGenerationRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.CreateTextureGenerationResponse> {
+    return unwrapAsync(textureCreateTextureGeneration(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete Texture Generation by ID
-     *
-     * @remarks
-     * This endpoint deletes the specific texture generation.
-     */
-    async deleteTextureGenerationById(
-        id: string,
-        requestBody?: operations.DeleteTextureGenerationByIdRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.DeleteTextureGenerationByIdResponse> {
-        return unwrapAsync(textureDeleteTextureGenerationById(this, id, requestBody, options));
-    }
+  /**
+   * Delete Texture Generation by ID
+   *
+   * @remarks
+   * This endpoint deletes the specific texture generation.
+   */
+  async deleteTextureGenerationById(
+    id: string,
+    requestBody?: operations.DeleteTextureGenerationByIdRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteTextureGenerationByIdResponse> {
+    return unwrapAsync(textureDeleteTextureGenerationById(
+      this,
+      id,
+      requestBody,
+      options,
+    ));
+  }
 }

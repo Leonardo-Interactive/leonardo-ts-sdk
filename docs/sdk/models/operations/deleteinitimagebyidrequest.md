@@ -6,7 +6,7 @@
 import { DeleteInitImageByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: DeleteInitImageByIdRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

@@ -11,54 +11,69 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Models extends ClientSDK {
-    /**
-     * Train a Custom Model
-     *
-     * @remarks
-     * This endpoint will train a new custom model
-     */
-    async createModel(
-        request: operations.CreateModelRequestBody,
-        options?: RequestOptions
-    ): Promise<operations.CreateModelResponse> {
-        return unwrapAsync(modelsCreateModel(this, request, options));
-    }
+  /**
+   * Train a Custom Model
+   *
+   * @remarks
+   * This endpoint will train a new custom model
+   */
+  async createModel(
+    request: operations.CreateModelRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.CreateModelResponse> {
+    return unwrapAsync(modelsCreateModel(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a Single Custom Model by ID
-     *
-     * @remarks
-     * This endpoint will delete a specific custom model
-     */
-    async deleteModelById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.DeleteModelByIdResponse> {
-        return unwrapAsync(modelsDeleteModelById(this, id, options));
-    }
+  /**
+   * Delete a Single Custom Model by ID
+   *
+   * @remarks
+   * This endpoint will delete a specific custom model
+   */
+  async deleteModelById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteModelByIdResponse> {
+    return unwrapAsync(modelsDeleteModelById(
+      this,
+      id,
+      options,
+    ));
+  }
 
-    /**
-     * Get a Single Custom Model by ID
-     *
-     * @remarks
-     * This endpoint gets the specific custom model
-     */
-    async getModelById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.GetModelByIdResponse> {
-        return unwrapAsync(modelsGetModelById(this, id, options));
-    }
+  /**
+   * Get a Single Custom Model by ID
+   *
+   * @remarks
+   * This endpoint gets the specific custom model
+   */
+  async getModelById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetModelByIdResponse> {
+    return unwrapAsync(modelsGetModelById(
+      this,
+      id,
+      options,
+    ));
+  }
 
-    /**
-     * List Platform Models
-     *
-     * @remarks
-     * Get a list of public Platform Models available for use with generations.
-     */
-    async listPlatformModels(
-        options?: RequestOptions
-    ): Promise<operations.ListPlatformModelsResponse> {
-        return unwrapAsync(modelsListPlatformModels(this, options));
-    }
+  /**
+   * List Platform Models
+   *
+   * @remarks
+   * Get a list of public Platform Models available for use with generations.
+   */
+  async listPlatformModels(
+    options?: RequestOptions,
+  ): Promise<operations.ListPlatformModelsResponse> {
+    return unwrapAsync(modelsListPlatformModels(
+      this,
+      options,
+    ));
+  }
 }

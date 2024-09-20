@@ -6,11 +6,11 @@
 import { ListElementsResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: ListElementsResponse = {
-    contentType: "<value>",
-    statusCode: 297534,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 297534,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

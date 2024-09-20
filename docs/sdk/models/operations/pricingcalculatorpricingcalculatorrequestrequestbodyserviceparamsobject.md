@@ -7,7 +7,8 @@ Parameters for MOTION_GENERATION service
 ```typescript
 import { PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject } from "@leonardo-ai/sdk/sdk/models/operations";
 
-let value: PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject = {};
+let value:
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject = {};
 ```
 
 ## Fields

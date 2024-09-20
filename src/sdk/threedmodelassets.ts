@@ -9,30 +9,39 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class ThreeDModelAssets extends ClientSDK {
-    /**
-     * Delete 3D Model by ID
-     *
-     * @remarks
-     * This endpoint deletes the specific 3D Model
-     */
-    async delete3DModelById(
-        id: string,
-        requestBody?: operations.Delete3DModelByIdRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.Delete3DModelByIdResponse> {
-        return unwrapAsync(threeDModelAssetsDelete3DModelById(this, id, requestBody, options));
-    }
+  /**
+   * Delete 3D Model by ID
+   *
+   * @remarks
+   * This endpoint deletes the specific 3D Model
+   */
+  async delete3DModelById(
+    id: string,
+    requestBody?: operations.Delete3DModelByIdRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.Delete3DModelByIdResponse> {
+    return unwrapAsync(threeDModelAssetsDelete3DModelById(
+      this,
+      id,
+      requestBody,
+      options,
+    ));
+  }
 
-    /**
-     * Upload 3D Model
-     *
-     * @remarks
-     * This endpoint returns presigned details to upload a 3D model to S3
-     */
-    async uploadModelAsset(
-        request?: operations.UploadModelAssetRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.UploadModelAssetResponse> {
-        return unwrapAsync(threeDModelAssetsUploadModelAsset(this, request, options));
-    }
+  /**
+   * Upload 3D Model
+   *
+   * @remarks
+   * This endpoint returns presigned details to upload a 3D model to S3
+   */
+  async uploadModelAsset(
+    request?: operations.UploadModelAssetRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.UploadModelAssetResponse> {
+    return unwrapAsync(threeDModelAssetsUploadModelAsset(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -23,7 +23,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.texture.createTextureGeneration();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -96,7 +96,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.texture.deleteTextureGenerationById("<id>");
-
+  
   // Handle the result
   console.log(result)
 }

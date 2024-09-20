@@ -25,7 +25,7 @@ async function run() {
   const result = await leonardo.prompt.promptImprove({
     prompt: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -100,7 +100,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.prompt.promptRandom();
-
+  
   // Handle the result
   console.log(result)
 }

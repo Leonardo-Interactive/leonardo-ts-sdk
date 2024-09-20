@@ -6,11 +6,11 @@
 import { Delete3DModelByIdResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: Delete3DModelByIdResponse = {
-    contentType: "<value>",
-    statusCode: 648172,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 648172,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

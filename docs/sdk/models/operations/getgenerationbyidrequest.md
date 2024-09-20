@@ -6,7 +6,7 @@
 import { GetGenerationByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: GetGenerationByIdRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

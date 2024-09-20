@@ -11,57 +11,75 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Image extends ClientSDK {
-    /**
-     * Create a Generation of Images
-     *
-     * @remarks
-     * This endpoint will generate images
-     */
-    async createGeneration(
-        request: operations.CreateGenerationRequestBody,
-        options?: RequestOptions
-    ): Promise<operations.CreateGenerationResponse> {
-        return unwrapAsync(imageCreateGeneration(this, request, options));
-    }
+  /**
+   * Create a Generation of Images
+   *
+   * @remarks
+   * This endpoint will generate images
+   */
+  async createGeneration(
+    request: operations.CreateGenerationRequestBody,
+    options?: RequestOptions,
+  ): Promise<operations.CreateGenerationResponse> {
+    return unwrapAsync(imageCreateGeneration(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete a Single Generation
-     *
-     * @remarks
-     * This endpoint deletes a specific generation
-     */
-    async deleteGenerationById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.DeleteGenerationByIdResponse> {
-        return unwrapAsync(imageDeleteGenerationById(this, id, options));
-    }
+  /**
+   * Delete a Single Generation
+   *
+   * @remarks
+   * This endpoint deletes a specific generation
+   */
+  async deleteGenerationById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteGenerationByIdResponse> {
+    return unwrapAsync(imageDeleteGenerationById(
+      this,
+      id,
+      options,
+    ));
+  }
 
-    /**
-     * Get a Single Generation
-     *
-     * @remarks
-     * This endpoint will provide information about a specific generation
-     */
-    async getGenerationById(
-        id: string,
-        options?: RequestOptions
-    ): Promise<operations.GetGenerationByIdResponse> {
-        return unwrapAsync(imageGetGenerationById(this, id, options));
-    }
+  /**
+   * Get a Single Generation
+   *
+   * @remarks
+   * This endpoint will provide information about a specific generation
+   */
+  async getGenerationById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetGenerationByIdResponse> {
+    return unwrapAsync(imageGetGenerationById(
+      this,
+      id,
+      options,
+    ));
+  }
 
-    /**
-     * Get generations by user ID
-     *
-     * @remarks
-     * This endpoint returns all generations by a specific user
-     */
-    async getGenerationsByUserId(
-        userId: string,
-        limit?: number | undefined,
-        offset?: number | undefined,
-        options?: RequestOptions
-    ): Promise<operations.GetGenerationsByUserIdResponse> {
-        return unwrapAsync(imageGetGenerationsByUserId(this, userId, limit, offset, options));
-    }
+  /**
+   * Get generations by user ID
+   *
+   * @remarks
+   * This endpoint returns all generations by a specific user
+   */
+  async getGenerationsByUserId(
+    userId: string,
+    limit?: number | undefined,
+    offset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.GetGenerationsByUserIdResponse> {
+    return unwrapAsync(imageGetGenerationsByUserId(
+      this,
+      userId,
+      limit,
+      offset,
+      options,
+    ));
+  }
 }

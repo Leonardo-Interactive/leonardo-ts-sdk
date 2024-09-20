@@ -8,8 +8,8 @@ Query parameters provided in the request body as a JSON object
 import { UploadCanvasInitImageRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: UploadCanvasInitImageRequestBody = {
-    initExtension: "<value>",
-    maskExtension: "<value>",
+  initExtension: "<value>",
+  maskExtension: "<value>",
 };
 ```
 

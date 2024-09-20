@@ -25,7 +25,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.realtimeCanvas.createLCMGeneration();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -98,7 +98,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.realtimeCanvas.performAlchemyUpscaleLCM();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -171,7 +171,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.realtimeCanvas.performInpaintingLCM();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -244,7 +244,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.realtimeCanvas.performInstantRefine();
-
+  
   // Handle the result
   console.log(result)
 }
