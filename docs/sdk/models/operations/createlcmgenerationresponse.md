@@ -7,7 +7,7 @@ import { CreateLCMGenerationResponse } from "@leonardo-ai/sdk/sdk/models/operati
 
 let value: CreateLCMGenerationResponse = {
   contentType: "<value>",
-  statusCode: 477665,
+  statusCode: 417,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

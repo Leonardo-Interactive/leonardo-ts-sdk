@@ -9,7 +9,7 @@ This parameter will be deprecated in September 2024. Please use the controlnets 
 ```typescript
 import { ControlnetType } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: ControlnetType = ControlnetType.Depth;
+let value: ControlnetType = ControlnetType.Pose;
 ```
 
 ## Values

@@ -7,7 +7,7 @@ The base version of stable diffusion to use if not using a custom model. v1_5 is
 ```typescript
 import { SdVersions } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: SdVersions = SdVersions.Sdxl08;
+let value: SdVersions = SdVersions.Sdxl09;
 ```
 
 ## Values

@@ -8,7 +8,7 @@ Query parameters provided in the request body as a JSON object
 import { UploadDatasetImageRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: UploadDatasetImageRequestBody = {
-  extension: "gif",
+  extension: "pdf",
 };
 ```
 

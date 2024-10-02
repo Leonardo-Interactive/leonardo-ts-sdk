@@ -3,7 +3,7 @@
  */
 
 import { LeonardoCore } from "../core.js";
-import * as m$ from "../lib/matchers.js";
+import * as M from "../lib/matchers.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -26,7 +26,7 @@ import { Result } from "../sdk/types/fp.js";
  * Get a list of public Elements available for use with generations.
  */
 export async function elementsListElements(
-  client$: LeonardoCore,
+  client: LeonardoCore,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -40,38 +40,38 @@ export async function elementsListElements(
     | ConnectionError
   >
 > {
-  const path$ = pathToFunc("/elements")();
+  const path = pathToFunc("/elements")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const bearerAuth$ = await extractSecurity(client$.options$.bearerAuth);
-  const security$ = bearerAuth$ == null ? {} : { bearerAuth: bearerAuth$ };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const context = {
     operationID: "listElements",
     oAuth2Scopes: [],
-    securitySource: client$.options$.bearerAuth,
+    securitySource: client._options.bearerAuth,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -79,7 +79,7 @@ export async function elementsListElements(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -87,7 +87,7 @@ export async function elementsListElements(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.ListElementsResponse,
     | SDKError
     | SDKValidationError
@@ -97,13 +97,13 @@ export async function elementsListElements(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.ListElementsResponse$inboundSchema, {
+    M.json(200, operations.ListElementsResponse$inboundSchema, {
       key: "object",
     }),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

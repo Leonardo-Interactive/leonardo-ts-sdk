@@ -7,7 +7,7 @@ import { UploadModelAssetResponse } from "@leonardo-ai/sdk/sdk/models/operations
 
 let value: UploadModelAssetResponse = {
   contentType: "<value>",
-  statusCode: 20218,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

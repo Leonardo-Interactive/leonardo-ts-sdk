@@ -7,7 +7,7 @@ import { ListPlatformModelsResponse } from "@leonardo-ai/sdk/sdk/models/operatio
 
 let value: ListPlatformModelsResponse = {
   contentType: "<value>",
-  statusCode: 87129,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

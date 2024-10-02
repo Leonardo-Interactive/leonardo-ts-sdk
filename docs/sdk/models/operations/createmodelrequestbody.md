@@ -8,7 +8,7 @@ Query parameters to be provided in the request body as a JSON object
 import { CreateModelRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: CreateModelRequestBody = {
-  datasetId: "<value>",
+  datasetId: "<id>",
   instancePrompt: "<value>",
   name: "<value>",
 };

@@ -7,7 +7,7 @@ Strength type for the controlnet. Can only be used for Style, Character and Cont
 ```typescript
 import { StrengthType } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: StrengthType = StrengthType.High;
+let value: StrengthType = StrengthType.Ultra;
 ```
 
 ## Values

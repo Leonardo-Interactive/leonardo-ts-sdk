@@ -7,9 +7,9 @@ import { UploadDatasetImageFromGenRequest } from "@leonardo-ai/sdk/sdk/models/op
 
 let value: UploadDatasetImageFromGenRequest = {
   requestBody: {
-    generatedImageId: "<value>",
+    generatedImageId: "<id>",
   },
-  datasetId: "<value>",
+  datasetId: "<id>",
 };
 ```
 

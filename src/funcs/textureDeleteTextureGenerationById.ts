@@ -3,12 +3,9 @@
  */
 
 import { LeonardoCore } from "../core.js";
-import {
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -31,7 +28,7 @@ import { Result } from "../sdk/types/fp.js";
  * This endpoint deletes the specific texture generation.
  */
 export async function textureDeleteTextureGenerationById(
-  client$: LeonardoCore,
+  client: LeonardoCore,
   id: string,
   requestBody?: operations.DeleteTextureGenerationByIdRequestBody | undefined,
   options?: RequestOptions,
@@ -47,66 +44,64 @@ export async function textureDeleteTextureGenerationById(
     | ConnectionError
   >
 > {
-  const input$: operations.DeleteTextureGenerationByIdRequest = {
+  const input: operations.DeleteTextureGenerationByIdRequest = {
     requestBody: requestBody,
     id: id,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.DeleteTextureGenerationByIdRequest$outboundSchema.parse(
-        value$,
-      ),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.DeleteTextureGenerationByIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.RequestBody, { explode: true });
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
-  const pathParams$ = {
-    id: encodeSimple$("id", payload$.id, {
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/generations-texture/{id}")(pathParams$);
+  const path = pathToFunc("/generations-texture/{id}")(pathParams);
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const bearerAuth$ = await extractSecurity(client$.options$.bearerAuth);
-  const security$ = bearerAuth$ == null ? {} : { bearerAuth: bearerAuth$ };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const context = {
     operationID: "deleteTextureGenerationById",
     oAuth2Scopes: [],
-    securitySource: client$.options$.bearerAuth,
+    securitySource: client._options.bearerAuth,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "DELETE",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -114,7 +109,7 @@ export async function textureDeleteTextureGenerationById(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -122,7 +117,7 @@ export async function textureDeleteTextureGenerationById(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.DeleteTextureGenerationByIdResponse,
     | SDKError
     | SDKValidationError
@@ -132,13 +127,13 @@ export async function textureDeleteTextureGenerationById(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.DeleteTextureGenerationByIdResponse$inboundSchema, {
+    M.json(200, operations.DeleteTextureGenerationByIdResponse$inboundSchema, {
       key: "object",
     }),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

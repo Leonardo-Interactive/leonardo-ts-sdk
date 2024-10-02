@@ -7,7 +7,7 @@ import { DeleteInitImageByIdResponse } from "@leonardo-ai/sdk/sdk/models/operati
 
 let value: DeleteInitImageByIdResponse = {
   contentType: "<value>",
-  statusCode: 548814,
+  statusCode: 306,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

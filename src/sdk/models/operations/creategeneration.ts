@@ -69,7 +69,7 @@ export type CreateGenerationRequestBody = {
    */
   guidanceScale?: number | null | undefined;
   /**
-   * The input height of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features.
+   * The input height of the images. Must be between 32 and 1536 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features.
    */
   height?: number | null | undefined;
   /**
@@ -186,7 +186,7 @@ export type CreateGenerationRequestBody = {
    */
   weighting?: number | null | undefined;
   /**
-   * The input width of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features.
+   * The input width of the images. Must be between 32 and 1536 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features.
    */
   width?: number | null | undefined;
 };

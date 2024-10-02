@@ -7,7 +7,7 @@ import { DeleteDatasetByIdResponse } from "@leonardo-ai/sdk/sdk/models/operation
 
 let value: DeleteDatasetByIdResponse = {
   contentType: "<value>",
-  statusCode: 847252,
+  statusCode: 305,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
