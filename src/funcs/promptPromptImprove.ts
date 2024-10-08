@@ -43,10 +43,8 @@ export async function promptPromptImprove(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.PromptImproveRequestBody$outboundSchema.parse(value),
     "Input validation failed",
   );

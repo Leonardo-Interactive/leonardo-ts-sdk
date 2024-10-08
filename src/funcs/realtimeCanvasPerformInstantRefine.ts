@@ -43,10 +43,8 @@ export async function realtimeCanvasPerformInstantRefine(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.PerformInstantRefineRequestBody$outboundSchema.optional()
         .parse(value),

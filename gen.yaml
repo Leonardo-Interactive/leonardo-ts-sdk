@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.17.0
+  version: 4.18.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -23,6 +23,7 @@ typescript:
   clientServerStatusCodesAsErrors: false
   enumFormat: enum
   flattenGlobalSecurity: true
+  flatteningOrder: body-first
   imports:
     option: openapi
     paths:

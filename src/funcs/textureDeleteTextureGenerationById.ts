@@ -45,8 +45,8 @@ export async function textureDeleteTextureGenerationById(
   >
 > {
   const input: operations.DeleteTextureGenerationByIdRequest = {
-    requestBody: requestBody,
     id: id,
+    requestBody: requestBody,
   };
 
   const parsed = safeParse(

@@ -43,10 +43,8 @@ export async function modelsCreateModel(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.CreateModelRequestBody$outboundSchema.parse(value),
     "Input validation failed",
   );

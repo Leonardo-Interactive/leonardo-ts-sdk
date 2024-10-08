@@ -43,10 +43,8 @@ export async function initImagesUploadCanvasInitImage(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.UploadCanvasInitImageRequestBody$outboundSchema.parse(value),
     "Input validation failed",

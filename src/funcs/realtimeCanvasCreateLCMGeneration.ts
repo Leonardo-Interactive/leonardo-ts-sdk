@@ -43,10 +43,8 @@ export async function realtimeCanvasCreateLCMGeneration(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateLCMGenerationRequestBody$outboundSchema.optional().parse(
         value,

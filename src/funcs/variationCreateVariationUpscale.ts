@@ -43,10 +43,8 @@ export async function variationCreateVariationUpscale(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateVariationUpscaleRequestBody$outboundSchema.optional()
         .parse(value),

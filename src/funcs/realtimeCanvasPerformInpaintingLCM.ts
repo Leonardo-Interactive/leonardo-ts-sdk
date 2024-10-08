@@ -43,10 +43,8 @@ export async function realtimeCanvasPerformInpaintingLCM(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.PerformInpaintingLCMRequestBody$outboundSchema.optional()
         .parse(value),

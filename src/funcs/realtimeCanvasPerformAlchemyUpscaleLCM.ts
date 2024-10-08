@@ -43,10 +43,8 @@ export async function realtimeCanvasPerformAlchemyUpscaleLCM(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.PerformAlchemyUpscaleLCMRequestBody$outboundSchema.optional()
         .parse(value),

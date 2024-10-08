@@ -45,8 +45,8 @@ export async function threeDModelAssetsDelete3DModelById(
   >
 > {
   const input: operations.Delete3DModelByIdRequest = {
-    requestBody: requestBody,
     id: id,
+    requestBody: requestBody,
   };
 
   const parsed = safeParse(

@@ -43,10 +43,8 @@ export async function threeDModelAssetsUploadModelAsset(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.UploadModelAssetRequestBody$outboundSchema.optional().parse(
         value,

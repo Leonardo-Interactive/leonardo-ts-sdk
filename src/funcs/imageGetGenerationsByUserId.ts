@@ -46,9 +46,9 @@ export async function imageGetGenerationsByUserId(
   >
 > {
   const input: operations.GetGenerationsByUserIdRequest = {
+    userId: userId,
     limit: limit,
     offset: offset,
-    userId: userId,
   };
 
   const parsed = safeParse(

@@ -43,10 +43,8 @@ export async function textureCreateTextureGeneration(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateTextureGenerationRequestBody$outboundSchema.optional()
         .parse(value),

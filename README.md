@@ -402,43 +402,42 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [datasetCreateDataset](docs/sdks/dataset/README.md#createdataset)
-- [datasetDeleteDatasetById](docs/sdks/dataset/README.md#deletedatasetbyid)
-- [datasetGetDatasetById](docs/sdks/dataset/README.md#getdatasetbyid)
-- [datasetUploadDatasetImageFromGen](docs/sdks/dataset/README.md#uploaddatasetimagefromgen)
-- [datasetUploadDatasetImage](docs/sdks/dataset/README.md#uploaddatasetimage)
-- [elementsListElements](docs/sdks/elements/README.md#listelements)
-- [imageCreateGeneration](docs/sdks/image/README.md#creategeneration)
-- [imageDeleteGenerationById](docs/sdks/image/README.md#deletegenerationbyid)
-- [imageGetGenerationById](docs/sdks/image/README.md#getgenerationbyid)
-- [imageGetGenerationsByUserId](docs/sdks/image/README.md#getgenerationsbyuserid)
-- [initImagesDeleteInitImageById](docs/sdks/initimages/README.md#deleteinitimagebyid)
-- [initImagesGetInitImageById](docs/sdks/initimages/README.md#getinitimagebyid)
-- [initImagesUploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage)
-- [initImagesUploadInitImage](docs/sdks/initimages/README.md#uploadinitimage)
-- [modelsCreateModel](docs/sdks/models/README.md#createmodel)
-- [modelsDeleteModelById](docs/sdks/models/README.md#deletemodelbyid)
-- [modelsGetModelById](docs/sdks/models/README.md#getmodelbyid)
-- [modelsListPlatformModels](docs/sdks/models/README.md#listplatformmodels)
-- [motionCreateSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration)
-- [pricingCalculatorPricingCalculator](docs/sdks/pricingcalculator/README.md#pricingcalculator)
-- [promptPromptImprove](docs/sdks/prompt/README.md#promptimprove)
-- [promptPromptRandom](docs/sdks/prompt/README.md#promptrandom)
-- [realtimeCanvasCreateLCMGeneration](docs/sdks/realtimecanvas/README.md#createlcmgeneration)
-- [realtimeCanvasPerformAlchemyUpscaleLCM](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm)
-- [realtimeCanvasPerformInpaintingLCM](docs/sdks/realtimecanvas/README.md#performinpaintinglcm)
-- [realtimeCanvasPerformInstantRefine](docs/sdks/realtimecanvas/README.md#performinstantrefine)
-- [textureCreateTextureGeneration](docs/sdks/texture/README.md#createtexturegeneration)
-- [textureDeleteTextureGenerationById](docs/sdks/texture/README.md#deletetexturegenerationbyid)
-- [threeDModelAssetsDelete3DModelById](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid)
-- [threeDModelAssetsUploadModelAsset](docs/sdks/threedmodelassets/README.md#uploadmodelasset)
-- [userGetUserSelf](docs/sdks/user/README.md#getuserself)
-- [variationCreateUniversalUpscalerJob](docs/sdks/variation/README.md#createuniversalupscalerjob)
-- [variationCreateVariationNoBG](docs/sdks/variation/README.md#createvariationnobg)
-- [variationCreateVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom)
-- [variationCreateVariationUpscale](docs/sdks/variation/README.md#createvariationupscale)
-- [variationGetVariationById](docs/sdks/variation/README.md#getvariationbyid)
-
+- [`datasetCreateDataset`](docs/sdks/dataset/README.md#createdataset) - Create a Dataset
+- [`datasetDeleteDatasetById`](docs/sdks/dataset/README.md#deletedatasetbyid) - Delete a Single Dataset by ID
+- [`datasetGetDatasetById`](docs/sdks/dataset/README.md#getdatasetbyid) - Get a Single Dataset by ID
+- [`datasetUploadDatasetImage`](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
+- [`datasetUploadDatasetImageFromGen`](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
+- [`elementsListElements`](docs/sdks/elements/README.md#listelements) - List Elements
+- [`imageCreateGeneration`](docs/sdks/image/README.md#creategeneration) - Create a Generation of Images
+- [`imageDeleteGenerationById`](docs/sdks/image/README.md#deletegenerationbyid) - Delete a Single Generation
+- [`imageGetGenerationById`](docs/sdks/image/README.md#getgenerationbyid) - Get a Single Generation
+- [`imageGetGenerationsByUserId`](docs/sdks/image/README.md#getgenerationsbyuserid) - Get generations by user ID
+- [`initImagesDeleteInitImageById`](docs/sdks/initimages/README.md#deleteinitimagebyid) - Delete init image
+- [`initImagesGetInitImageById`](docs/sdks/initimages/README.md#getinitimagebyid) - Get single init image
+- [`initImagesUploadCanvasInitImage`](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
+- [`initImagesUploadInitImage`](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
+- [`modelsCreateModel`](docs/sdks/models/README.md#createmodel) - Train a Custom Model
+- [`modelsDeleteModelById`](docs/sdks/models/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
+- [`modelsGetModelById`](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
+- [`modelsListPlatformModels`](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
+- [`motionCreateSVDMotionGeneration`](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
+- [`pricingCalculatorPricingCalculator`](docs/sdks/pricingcalculator/README.md#pricingcalculator) - Calculating API Cost
+- [`promptPromptImprove`](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
+- [`promptPromptRandom`](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
+- [`realtimeCanvasCreateLCMGeneration`](docs/sdks/realtimecanvas/README.md#createlcmgeneration) - Create LCM Generation
+- [`realtimeCanvasPerformAlchemyUpscaleLCM`](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
+- [`realtimeCanvasPerformInpaintingLCM`](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
+- [`realtimeCanvasPerformInstantRefine`](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
+- [`textureCreateTextureGeneration`](docs/sdks/texture/README.md#createtexturegeneration) - Create Texture Generation
+- [`textureDeleteTextureGenerationById`](docs/sdks/texture/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
+- [`threeDModelAssetsDelete3DModelById`](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid) - Delete 3D Model by ID
+- [`threeDModelAssetsUploadModelAsset`](docs/sdks/threedmodelassets/README.md#uploadmodelasset) - Upload 3D Model
+- [`userGetUserSelf`](docs/sdks/user/README.md#getuserself) - Get user information
+- [`variationCreateUniversalUpscalerJob`](docs/sdks/variation/README.md#createuniversalupscalerjob) - Create using Universal Upscaler
+- [`variationCreateVariationNoBG`](docs/sdks/variation/README.md#createvariationnobg) - Create no background
+- [`variationCreateVariationUnzoom`](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
+- [`variationCreateVariationUpscale`](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
+- [`variationGetVariationById`](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

@@ -43,10 +43,8 @@ export async function variationCreateVariationUnzoom(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateVariationUnzoomRequestBody$outboundSchema.optional()
         .parse(value),

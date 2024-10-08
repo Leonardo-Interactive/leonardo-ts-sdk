@@ -43,10 +43,8 @@ export async function pricingCalculatorPricingCalculator(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.PricingCalculatorRequestBody$outboundSchema.optional().parse(
         value,

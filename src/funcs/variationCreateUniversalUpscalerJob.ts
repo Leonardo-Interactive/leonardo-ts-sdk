@@ -43,10 +43,8 @@ export async function variationCreateUniversalUpscalerJob(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateUniversalUpscalerJobRequestBody$outboundSchema.parse(
         value,

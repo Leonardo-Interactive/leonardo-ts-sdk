@@ -43,10 +43,8 @@ export async function motionCreateSVDMotionGeneration(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateSVDMotionGenerationRequestBody$outboundSchema.optional()
         .parse(value),

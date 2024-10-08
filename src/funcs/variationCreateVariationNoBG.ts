@@ -43,10 +43,8 @@ export async function variationCreateVariationNoBG(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateVariationNoBGRequestBody$outboundSchema.parse(value),
     "Input validation failed",

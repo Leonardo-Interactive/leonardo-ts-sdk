@@ -43,10 +43,8 @@ export async function imageCreateGeneration(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.CreateGenerationRequestBody$outboundSchema.parse(value),
     "Input validation failed",
