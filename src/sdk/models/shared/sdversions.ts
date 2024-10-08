@@ -15,6 +15,7 @@ export enum SdVersions {
   Sdxl09 = "SDXL_0_9",
   Sdxl10 = "SDXL_1_0",
   SdxlLightning = "SDXL_LIGHTNING",
+  Phoenix = "PHOENIX",
 }
 
 /** @internal */
