@@ -1,5 +1,18 @@
 # DeleteInitImageByIdResponse
 
+## Example Usage
+
+```typescript
+import { DeleteInitImageByIdResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: DeleteInitImageByIdResponse = {
+  contentType: "<value>",
+  statusCode: 306,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

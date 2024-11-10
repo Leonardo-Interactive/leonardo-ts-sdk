@@ -1,5 +1,12 @@
 # ElementInput
 
+## Example Usage
+
+```typescript
+import { ElementInput } from "@leonardo-ai/sdk/sdk/models/shared";
+
+let value: ElementInput = {};
+```
 
 ## Fields
 

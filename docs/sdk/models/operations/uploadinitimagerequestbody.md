@@ -2,6 +2,15 @@
 
 Query parameters provided in the request body as a JSON object
 
+## Example Usage
+
+```typescript
+import { UploadInitImageRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadInitImageRequestBody = {
+  extension: "png",
+};
+```
 
 ## Fields
 

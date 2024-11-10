@@ -2,6 +2,13 @@
 
 Responses for GET /me
 
+## Example Usage
+
+```typescript
+import { GetUserSelfResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetUserSelfResponseBody = {};
+```
 
 ## Fields
 

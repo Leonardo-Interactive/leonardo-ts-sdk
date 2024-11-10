@@ -2,6 +2,13 @@
 
 Responses for POST /lcm-instant-refine
 
+## Example Usage
+
+```typescript
+import { PerformInstantRefineResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformInstantRefineResponseBody = {};
+```
 
 ## Fields
 

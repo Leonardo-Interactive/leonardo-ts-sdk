@@ -2,6 +2,13 @@
 
 columns and relationships of "user_details"
 
+## Example Usage
+
+```typescript
+import { UserDetails } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UserDetails = {};
+```
 
 ## Fields
 

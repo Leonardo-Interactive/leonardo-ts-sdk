@@ -2,6 +2,13 @@
 
 Responses for POST /prompt/random
 
+## Example Usage
+
+```typescript
+import { PromptRandomResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PromptRandomResponseBody = {};
+```
 
 ## Fields
 

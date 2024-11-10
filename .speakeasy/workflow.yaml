@@ -1,0 +1,16 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    my-source:
+        inputs:
+            - location: https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+        registry:
+            location: registry.speakeasyapi.dev/leonardo-ai/leonardo-ai/my-source
+targets:
+    leonardo-ts-sdk:
+        target: typescript
+        source: my-source
+        output: ./
+        publish:
+            npm:
+                token: $NPM_TOKEN

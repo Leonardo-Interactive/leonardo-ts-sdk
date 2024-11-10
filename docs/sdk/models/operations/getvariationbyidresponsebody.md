@@ -2,6 +2,13 @@
 
 Responses for GET /variations/{id}
 
+## Example Usage
+
+```typescript
+import { GetVariationByIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetVariationByIdResponseBody = {};
+```
 
 ## Fields
 

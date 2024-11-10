@@ -1,5 +1,14 @@
 # GetDatasetByIdRequest
 
+## Example Usage
+
+```typescript
+import { GetDatasetByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetDatasetByIdRequest = {
+  id: "<id>",
+};
+```
 
 ## Fields
 

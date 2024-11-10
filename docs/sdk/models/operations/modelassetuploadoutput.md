@@ -1,5 +1,12 @@
 # ModelAssetUploadOutput
 
+## Example Usage
+
+```typescript
+import { ModelAssetUploadOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ModelAssetUploadOutput = {};
+```
 
 ## Fields
 

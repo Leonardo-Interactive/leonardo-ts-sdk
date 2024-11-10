@@ -5,3 +5,6 @@
 
 /.eslintrc.js
 /cjs
+/.tshy
+/.tshy-*
+/__tests__

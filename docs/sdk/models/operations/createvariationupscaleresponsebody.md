@@ -2,6 +2,13 @@
 
 Responses for POST /variations/upscale
 
+## Example Usage
+
+```typescript
+import { CreateVariationUpscaleResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateVariationUpscaleResponseBody = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 Responses for GET /models/{id}
 
+## Example Usage
+
+```typescript
+import { GetModelByIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetModelByIdResponseBody = {};
+```
 
 ## Fields
 

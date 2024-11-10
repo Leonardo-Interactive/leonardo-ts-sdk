@@ -2,6 +2,16 @@
 
 Query parameters can also be provided in the request body as a JSON object
 
+## Example Usage
+
+```typescript
+import { PerformAlchemyUpscaleLCMRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformAlchemyUpscaleLCMRequestBody = {
+  imageDataUrl: "https://responsible-fort.info",
+  prompt: "<value>",
+};
+```
 
 ## Fields
 

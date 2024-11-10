@@ -2,6 +2,13 @@
 
 columns and relationships of "generated_images"
 
+## Example Usage
+
+```typescript
+import { ListPlatformModelsGeneratedImages } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ListPlatformModelsGeneratedImages = {};
+```
 
 ## Fields
 

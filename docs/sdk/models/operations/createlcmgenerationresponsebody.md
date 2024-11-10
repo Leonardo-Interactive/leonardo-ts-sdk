@@ -2,6 +2,13 @@
 
 Responses for POST /generations-lcm
 
+## Example Usage
+
+```typescript
+import { CreateLCMGenerationResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateLCMGenerationResponseBody = {};
+```
 
 ## Fields
 

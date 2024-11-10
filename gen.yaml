@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.5.8
+  version: 4.18.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -23,6 +23,7 @@ typescript:
   clientServerStatusCodesAsErrors: false
   enumFormat: enum
   flattenGlobalSecurity: true
+  flatteningOrder: body-first
   imports:
     option: openapi
     paths:
@@ -33,7 +34,10 @@ typescript:
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
   maxMethodParams: 5
+  methodArguments: require-security-and-request
+  moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@leonardo-ai/sdk'
   responseFormat: envelope
   templateVersion: v2
+  useIndexModules: true

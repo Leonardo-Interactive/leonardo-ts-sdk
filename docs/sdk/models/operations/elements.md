@@ -2,6 +2,13 @@
 
 Element used for the generation.
 
+## Example Usage
+
+```typescript
+import { Elements } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: Elements = {};
+```
 
 ## Fields
 

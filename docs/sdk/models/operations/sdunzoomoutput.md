@@ -1,5 +1,12 @@
 # SDUnzoomOutput
 
+## Example Usage
+
+```typescript
+import { SDUnzoomOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: SDUnzoomOutput = {};
+```
 
 ## Fields
 

@@ -2,6 +2,15 @@
 
 Query parameters to be provided in the request body as a JSON object
 
+## Example Usage
+
+```typescript
+import { UploadDatasetImageFromGenRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadDatasetImageFromGenRequestBody = {
+  generatedImageId: "<id>",
+};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 Responses for POST /datasets/{datasetId}/upload/gen
 
+## Example Usage
+
+```typescript
+import { UploadDatasetImageFromGenResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadDatasetImageFromGenResponseBody = {};
+```
 
 ## Fields
 

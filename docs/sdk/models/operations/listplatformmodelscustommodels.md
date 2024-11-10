@@ -2,6 +2,13 @@
 
 columns and relationships of "custom_models"
 
+## Example Usage
+
+```typescript
+import { ListPlatformModelsCustomModels } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ListPlatformModelsCustomModels = {};
+```
 
 ## Fields
 

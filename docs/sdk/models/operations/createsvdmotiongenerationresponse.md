@@ -1,5 +1,18 @@
 # CreateSVDMotionGenerationResponse
 
+## Example Usage
+
+```typescript
+import { CreateSVDMotionGenerationResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateSVDMotionGenerationResponse = {
+  contentType: "<value>",
+  statusCode: 100,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

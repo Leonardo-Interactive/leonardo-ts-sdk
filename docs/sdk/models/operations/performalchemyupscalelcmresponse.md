@@ -1,5 +1,18 @@
 # PerformAlchemyUpscaleLCMResponse
 
+## Example Usage
+
+```typescript
+import { PerformAlchemyUpscaleLCMResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformAlchemyUpscaleLCMResponse = {
+  contentType: "<value>",
+  statusCode: 401,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

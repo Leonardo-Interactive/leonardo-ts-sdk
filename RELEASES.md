@@ -2040,3 +2040,453 @@ Based on:
 - [typescript v4.5.8] .
 ### Releases
 - [NPM v4.5.8] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.5.8 - .
+
+## 2024-04-18 17:01:54
+### Changes
+Based on:
+- OpenAPI Doc v1.0.0 https://api-docs-nine-delta.vercel.app/cloud/openapi.json
+- Speakeasy CLI 1.260.0 (2.311.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.6.0] .
+### Releases
+- [NPM v4.6.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.6.0 - .
+
+## 2024-04-22 06:01:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.267.0 (2.312.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.6.1] ./
+### Releases
+- [NPM v4.6.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.6.1 - ./
+
+## 2024-04-22 10:01:52
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.267.1 (2.312.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.6.1] ./
+### Releases
+- [NPM v4.6.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.6.1 - ./
+
+## 2024-04-22 16:02:16
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.267.2 (2.312.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.6.1] ./
+### Releases
+- [NPM v4.6.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.6.1 - ./
+
+## 2024-04-22 19:01:39
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.268.0 (2.312.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.6.1] ./
+### Releases
+- [NPM v4.6.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.6.1 - ./
+
+## 2024-04-22 23:01:40
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.269.1 (2.312.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.6.1] ./
+### Releases
+- [NPM v4.6.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.6.1 - ./
+
+## 2024-04-26 04:01:38
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.274.1 (2.314.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.7.0] ./
+### Releases
+- [NPM v4.7.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.7.0 - ./
+
+## 2024-04-29 06:01:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.276.0 (2.314.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.7.1] ./
+### Releases
+- [NPM v4.7.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.7.1 - ./
+
+## 2024-04-29 11:01:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.277.0 (2.317.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.7.2] ./
+### Releases
+- [NPM v4.7.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.7.2 - ./
+
+## 2024-05-02 15:01:42
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.277.8 (2.319.10) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.7.3] ./
+### Releases
+- [NPM v4.7.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.7.3 - ./
+
+## 2024-05-07 15:01:38
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.282.0 (2.326.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.8.0] ./
+### Releases
+- [NPM v4.8.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.8.0 - ./
+
+## 2024-05-07 22:01:42
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.283.1 (2.324.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.9.0] ./
+### Releases
+- [NPM v4.9.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.9.0 - ./
+
+## 2024-05-08 15:01:37
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.284.0 (2.326.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.0] ./
+### Releases
+- [NPM v4.10.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.0 - ./
+
+## 2024-05-09 06:01:59
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.285.1 (2.326.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.1] ./
+### Releases
+- [NPM v4.10.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.1 - ./
+
+## 2024-05-13 17:01:39
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.286.1 (2.329.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.2] ./
+### Releases
+- [NPM v4.10.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.2 - ./
+
+## 2024-05-16 05:01:36
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.291.0 (2.332.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.3] ./
+### Releases
+- [NPM v4.10.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.3 - ./
+
+## 2024-05-21 04:01:51
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.294.0 (2.333.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.4] ./
+### Releases
+- [NPM v4.10.4] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.4 - ./
+
+## 2024-05-22 20:01:46
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.295.1 (2.335.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.5] ./
+### Releases
+- [NPM v4.10.5] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.5 - ./
+
+## 2024-05-24 18:01:51
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.296.0 (2.337.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.6] ./
+### Releases
+- [NPM v4.10.6] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.6 - ./
+
+## 2024-05-24 22:01:42
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.296.1 (2.338.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.10.7] ./
+### Releases
+- [NPM v4.10.7] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.10.7 - ./
+
+## 2024-05-27 02:13:23
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.296.1 (2.338.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.0] ./
+### Releases
+- [NPM v4.11.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.0 - ./
+
+## 2024-05-30 00:04:34
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.299.1 (2.338.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.1] ./
+### Releases
+- [NPM v4.11.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.1 - ./
+
+## 2024-05-30 02:13:35
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.299.1 (2.338.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.2] ./
+### Releases
+- [NPM v4.11.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.2 - ./
+
+## 2024-06-03 17:01:44
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.299.6 (2.338.12) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.3] ./
+### Releases
+- [NPM v4.11.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.3 - ./
+
+## 2024-06-05 11:01:42
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.299.10 (2.338.14) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.4] ./
+### Releases
+- [NPM v4.11.4] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.4 - ./
+
+## 2024-06-11 12:02:11
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.303.4 (2.340.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.5] ./
+### Releases
+- [NPM v4.11.5] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.5 - ./
+
+## 2024-06-12 03:02:02
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.305.0 (2.340.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.6] ./
+### Releases
+- [NPM v4.11.6] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.6 - ./
+
+## 2024-06-13 11:02:35
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.307.0 (2.342.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.11.7] ./
+### Releases
+- [NPM v4.11.7] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.11.7 - ./
+
+## 2024-06-19 10:01:49
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.309.0 (2.347.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.12.0] ./
+### Releases
+- [NPM v4.12.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.12.0 - ./
+
+## 2024-06-20 17:01:34
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.310.1 (2.347.8) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.12.1] ./
+### Releases
+- [NPM v4.12.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.12.1 - ./
+
+## 2024-06-21 16:01:40
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.314.1 (2.349.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.12.2] ./
+### Releases
+- [NPM v4.12.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.12.2 - ./
+
+## 2024-06-26 08:01:52
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.318.0 (2.352.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.12.3] ./
+### Releases
+- [NPM v4.12.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.12.3 - ./
+
+## 2024-07-02 12:02:17
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.325.1 (2.358.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.13.0] ./
+### Releases
+- [NPM v4.13.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.13.0 - ./
+
+## 2024-07-04 00:04:08
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.326.0 (2.359.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.13.1] ./
+### Releases
+- [NPM v4.13.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.13.1 - ./
+
+## 2024-07-04 19:01:36
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.326.3 (2.359.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.13.2] ./
+### Releases
+- [NPM v4.13.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.13.2 - ./
+
+## 2024-07-08 20:01:53
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.329.0 (2.361.8) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.13.3] ./
+### Releases
+- [NPM v4.13.3] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.13.3 - ./
+
+## 2024-07-10 19:01:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.330.1 (2.364.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.13.4] ./
+### Releases
+- [NPM v4.13.4] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.13.4 - ./
+
+## 2024-07-12 09:01:41
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.334.0 (2.369.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.14.0] ./
+### Releases
+- [NPM v4.14.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.14.0 - ./
+
+## 2024-07-24 15:45:45
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.345.4 (2.378.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.14.1] 
+### Releases
+- [NPM v4.14.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.14.1 - 
+
+## 2024-07-29 02:16:31
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.346.3 (2.379.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.14.2] 
+### Releases
+- [NPM v4.14.2] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.14.2 - 
+
+## 2024-09-04 01:28:24
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.390.1 (2.409.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.15.0] .
+### Releases
+- [NPM v4.15.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.15.0 - .
+
+## 2024-09-20 06:02:01
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.400.1 (2.420.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.16.0] .
+### Releases
+- [NPM v4.16.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.16.0 - .
+
+## 2024-10-02 03:05:40
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.405.6 (2.428.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.17.0] .
+### Releases
+- [NPM v4.17.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.17.0 - .
+
+## 2024-10-08 07:20:05
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.411.1 (2.436.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.18.0] .
+### Releases
+- [NPM v4.18.0] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.18.0 - .
+
+## 2024-10-08 07:58:10
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.411.1 (2.436.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v4.18.1] .
+### Releases
+- [NPM v4.18.1] https://www.npmjs.com/package/@leonardo-ai/sdk/v/4.18.1 - .

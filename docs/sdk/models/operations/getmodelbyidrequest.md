@@ -1,5 +1,14 @@
 # GetModelByIdRequest
 
+## Example Usage
+
+```typescript
+import { GetModelByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetModelByIdRequest = {
+  id: "<id>",
+};
+```
 
 ## Fields
 

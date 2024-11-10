@@ -2,6 +2,13 @@
 
 This table captures the elements that are applied to a Generations, also the order and weightings used when applied.
 
+## Example Usage
+
+```typescript
+import { GetGenerationsByUserIdGenerationElements } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetGenerationsByUserIdGenerationElements = {};
+```
 
 ## Fields
 

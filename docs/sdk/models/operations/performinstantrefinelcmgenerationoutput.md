@@ -1,5 +1,12 @@
 # PerformInstantRefineLcmGenerationOutput
 
+## Example Usage
+
+```typescript
+import { PerformInstantRefineLcmGenerationOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformInstantRefineLcmGenerationOutput = {};
+```
 
 ## Fields
 

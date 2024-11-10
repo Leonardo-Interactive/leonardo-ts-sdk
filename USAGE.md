@@ -3,16 +3,14 @@
 import { Leonardo } from "@leonardo-ai/sdk";
 
 const leonardo = new Leonardo({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await leonardo.dataset.createDataset({
-        name: "<value>",
-    });
+  const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

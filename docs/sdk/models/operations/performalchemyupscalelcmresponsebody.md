@@ -2,6 +2,13 @@
 
 Responses for POST /lcm-upscale
 
+## Example Usage
+
+```typescript
+import { PerformAlchemyUpscaleLCMResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformAlchemyUpscaleLCMResponseBody = {};
+```
 
 ## Fields
 

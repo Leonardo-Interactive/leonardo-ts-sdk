@@ -1,5 +1,18 @@
 # GetGenerationsByUserIdResponse
 
+## Example Usage
+
+```typescript
+import { GetGenerationsByUserIdResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetGenerationsByUserIdResponse = {
+  contentType: "<value>",
+  statusCode: 207,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

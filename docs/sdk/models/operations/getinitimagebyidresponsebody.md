@@ -2,6 +2,13 @@
 
 Responses for GET /init-image/{id}
 
+## Example Usage
+
+```typescript
+import { GetInitImageByIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetInitImageByIdResponseBody = {};
+```
 
 ## Fields
 

@@ -1,5 +1,18 @@
 # CreateTextureGenerationResponse
 
+## Example Usage
+
+```typescript
+import { CreateTextureGenerationResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateTextureGenerationResponse = {
+  contentType: "<value>",
+  statusCode: 404,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

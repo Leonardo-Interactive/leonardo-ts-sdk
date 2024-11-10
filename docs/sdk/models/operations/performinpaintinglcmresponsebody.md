@@ -2,6 +2,13 @@
 
 Responses for POST /lcm-inpainting
 
+## Example Usage
+
+```typescript
+import { PerformInpaintingLCMResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformInpaintingLCMResponseBody = {};
+```
 
 ## Fields
 

@@ -1,5 +1,18 @@
 # CreateModelResponse
 
+## Example Usage
+
+```typescript
+import { CreateModelResponse } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: CreateModelResponse = {
+  contentType: "<value>",
+  statusCode: 501,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
+};
+```
 
 ## Fields
 

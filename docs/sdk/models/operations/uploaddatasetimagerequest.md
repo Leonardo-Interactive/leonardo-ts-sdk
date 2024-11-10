@@ -1,5 +1,17 @@
 # UploadDatasetImageRequest
 
+## Example Usage
+
+```typescript
+import { UploadDatasetImageRequest } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: UploadDatasetImageRequest = {
+  requestBody: {
+    extension: "pdf",
+  },
+  datasetId: "<id>",
+};
+```
 
 ## Fields
 

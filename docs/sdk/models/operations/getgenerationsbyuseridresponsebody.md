@@ -2,6 +2,13 @@
 
 Responses for GET /generations/user/{userId}
 
+## Example Usage
+
+```typescript
+import { GetGenerationsByUserIdResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GetGenerationsByUserIdResponseBody = {};
+```
 
 ## Fields
 

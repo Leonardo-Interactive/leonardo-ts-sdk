@@ -1,5 +1,12 @@
 # PerformInpaintingLCMLCMGenerationOutput
 
+## Example Usage
+
+```typescript
+import { PerformInpaintingLCMLCMGenerationOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: PerformInpaintingLCMLCMGenerationOutput = {};
+```
 
 ## Fields
 

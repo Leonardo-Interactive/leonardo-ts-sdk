@@ -1,5 +1,12 @@
 # InitImageUploadOutput
 
+## Example Usage
+
+```typescript
+import { InitImageUploadOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: InitImageUploadOutput = {};
+```
 
 ## Fields
 

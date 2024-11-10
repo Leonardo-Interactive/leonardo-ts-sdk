@@ -1,6 +1,8 @@
 # Dataset
 (*dataset*)
 
+## Overview
+
 ### Available Operations
 
 * [createDataset](#createdataset) - Create a Dataset
@@ -28,7 +30,39 @@ async function run() {
   });
 
   // Handle the result
-  console.log(result)
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { datasetCreateDataset } from "@leonardo-ai/sdk/funcs/datasetCreateDataset.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await datasetCreateDataset(leonardo, {
+    name: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -41,16 +75,17 @@ run();
 | `request`                                                                                                                                                                      | [operations.CreateDatasetRequestBody](../../sdk/models/operations/createdatasetrequestbody.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise<[operations.CreateDatasetResponse](../../sdk/models/operations/createdatasetresponse.md)>**
+**Promise\<[operations.CreateDatasetResponse](../../sdk/models/operations/createdatasetresponse.md)\>**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## deleteDatasetById
 
@@ -66,12 +101,40 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.dataset.deleteDatasetById(id);
+  const result = await leonardo.dataset.deleteDatasetById("<id>");
 
   // Handle the result
-  console.log(result)
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { datasetDeleteDatasetById } from "@leonardo-ai/sdk/funcs/datasetDeleteDatasetById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await datasetDeleteDatasetById(leonardo, "<id>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -84,16 +147,17 @@ run();
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the dataset to delete.                                                                                                                                               |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise<[operations.DeleteDatasetByIdResponse](../../sdk/models/operations/deletedatasetbyidresponse.md)>**
+**Promise\<[operations.DeleteDatasetByIdResponse](../../sdk/models/operations/deletedatasetbyidresponse.md)\>**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getDatasetById
 
@@ -109,12 +173,40 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const id = "<value>";
-  
-  const result = await leonardo.dataset.getDatasetById(id);
+  const result = await leonardo.dataset.getDatasetById("<id>");
 
   // Handle the result
-  console.log(result)
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { datasetGetDatasetById } from "@leonardo-ai/sdk/funcs/datasetGetDatasetById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await datasetGetDatasetById(leonardo, "<id>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -127,16 +219,17 @@ run();
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the dataset to return.                                                                                                                                               |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise<[operations.GetDatasetByIdResponse](../../sdk/models/operations/getdatasetbyidresponse.md)>**
+**Promise\<[operations.GetDatasetByIdResponse](../../sdk/models/operations/getdatasetbyidresponse.md)\>**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## uploadDatasetImage
 
@@ -152,15 +245,44 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const requestBody = {
+  const result = await leonardo.dataset.uploadDatasetImage({
     extension: "mpg4",
-  };
-  const datasetId = "<value>";
-  
-  const result = await leonardo.dataset.uploadDatasetImage(requestBody, datasetId);
+  }, "<value>");
 
   // Handle the result
-  console.log(result)
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { datasetUploadDatasetImage } from "@leonardo-ai/sdk/funcs/datasetUploadDatasetImage.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await datasetUploadDatasetImage(leonardo, {
+    extension: "mpg4",
+  }, "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -174,16 +296,17 @@ run();
 | `datasetId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | _"datasetId" is required                                                                                                                                                       |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise<[operations.UploadDatasetImageResponse](../../sdk/models/operations/uploaddatasetimageresponse.md)>**
+**Promise\<[operations.UploadDatasetImageResponse](../../sdk/models/operations/uploaddatasetimageresponse.md)\>**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## uploadDatasetImageFromGen
 
@@ -199,15 +322,44 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const requestBody = {
+  const result = await leonardo.dataset.uploadDatasetImageFromGen({
     generatedImageId: "<value>",
-  };
-  const datasetId = "<value>";
-  
-  const result = await leonardo.dataset.uploadDatasetImageFromGen(requestBody, datasetId);
+  }, "<value>");
 
   // Handle the result
-  console.log(result)
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { datasetUploadDatasetImageFromGen } from "@leonardo-ai/sdk/funcs/datasetUploadDatasetImageFromGen.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await datasetUploadDatasetImageFromGen(leonardo, {
+    generatedImageId: "<value>",
+  }, "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -221,13 +373,14 @@ run();
 | `datasetId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the dataset to upload the image to.                                                                                                                                  |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise<[operations.UploadDatasetImageFromGenResponse](../../sdk/models/operations/uploaddatasetimagefromgenresponse.md)>**
+**Promise\<[operations.UploadDatasetImageFromGenResponse](../../sdk/models/operations/uploaddatasetimagefromgenresponse.md)\>**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

@@ -1,5 +1,12 @@
 # MotionSvdGenerationOutput
 
+## Example Usage
+
+```typescript
+import { MotionSvdGenerationOutput } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: MotionSvdGenerationOutput = {};
+```
 
 ## Fields
 

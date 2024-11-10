@@ -2,6 +2,13 @@
 
 Responses for GET /api/rest/v1/elements
 
+## Example Usage
+
+```typescript
+import { ListElementsResponseBody } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: ListElementsResponseBody = {};
+```
 
 ## Fields
 

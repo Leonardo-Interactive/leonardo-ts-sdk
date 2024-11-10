@@ -2,6 +2,13 @@
 
 columns and relationships of "generated_image_variation_generic"
 
+## Example Usage
+
+```typescript
+import { GeneratedImageVariationGeneric } from "@leonardo-ai/sdk/sdk/models/operations";
+
+let value: GeneratedImageVariationGeneric = {};
+```
 
 ## Fields
 
