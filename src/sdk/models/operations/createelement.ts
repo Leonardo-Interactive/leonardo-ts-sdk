@@ -16,7 +16,7 @@ export type CreateElementRequestBody = {
   /**
    * The ID of the dataset to train the element on.
    */
-  datasetId: string;
+  datasetId?: string | undefined;
   /**
    * The description of the element.
    */
@@ -24,7 +24,7 @@ export type CreateElementRequestBody = {
   /**
    * The instance prompt to use during training.
    */
-  instancePrompt: string;
+  instancePrompt?: string | undefined;
   /**
    * The speed of element learns.
    */
@@ -36,7 +36,7 @@ export type CreateElementRequestBody = {
   /**
    * The name of the element.
    */
-  name: string;
+  name?: string | undefined;
   /**
    * The number of times the entire training dataset is passed through the element.
    */
@@ -48,7 +48,7 @@ export type CreateElementRequestBody = {
   /**
    * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
    */
-  sdVersion?: shared.SdVersions | undefined;
+  sdVersion: shared.SdVersions;
   /**
    * Whether or not encode the train text.
    */
@@ -95,23 +95,24 @@ export const CreateElementRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  datasetId: z.string(),
+  datasetId: z.string().default(""),
   description: z.nullable(z.string().default("")),
-  instance_prompt: z.string(),
+  instance_prompt: z.string().default(""),
   learning_rate: z.number().default(0.000001),
   lora_focus: z.string().default("General"),
-  name: z.string(),
+  name: z.string().default(""),
   num_train_epochs: z.number().int().default(100),
   resolution: z.nullable(z.number().int().default(1024)),
-  sd_Version: shared.SdVersions$inboundSchema.optional(),
-  trainTextEncoder: z.boolean().default(true),
+  sd_version: shared.SdVersions$inboundSchema,
+  train_text_encoder: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     "instance_prompt": "instancePrompt",
     "learning_rate": "learningRate",
     "lora_focus": "loraFocus",
     "num_train_epochs": "numTrainEpochs",
-    "sd_Version": "sdVersion",
+    "sd_version": "sdVersion",
+    "train_text_encoder": "trainTextEncoder",
   });
 });
 
@@ -125,8 +126,8 @@ export type CreateElementRequestBody$Outbound = {
   name: string;
   num_train_epochs: number;
   resolution: number | null;
-  sd_Version?: string | undefined;
-  trainTextEncoder: boolean;
+  sd_version: string;
+  train_text_encoder: boolean;
 };
 
 /** @internal */
@@ -135,15 +136,15 @@ export const CreateElementRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateElementRequestBody
 > = z.object({
-  datasetId: z.string(),
+  datasetId: z.string().default(""),
   description: z.nullable(z.string().default("")),
-  instancePrompt: z.string(),
+  instancePrompt: z.string().default(""),
   learningRate: z.number().default(0.000001),
   loraFocus: z.string().default("General"),
-  name: z.string(),
+  name: z.string().default(""),
   numTrainEpochs: z.number().int().default(100),
   resolution: z.nullable(z.number().int().default(1024)),
-  sdVersion: shared.SdVersions$outboundSchema.optional(),
+  sdVersion: shared.SdVersions$outboundSchema,
   trainTextEncoder: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
@@ -151,7 +152,8 @@ export const CreateElementRequestBody$outboundSchema: z.ZodType<
     learningRate: "learning_rate",
     loraFocus: "lora_focus",
     numTrainEpochs: "num_train_epochs",
-    sdVersion: "sd_Version",
+    sdVersion: "sd_version",
+    trainTextEncoder: "train_text_encoder",
   });
 });
 

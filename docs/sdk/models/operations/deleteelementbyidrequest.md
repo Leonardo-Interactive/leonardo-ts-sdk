@@ -6,7 +6,7 @@
 import { DeleteElementByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: DeleteElementByIdRequest = {
-  id: 780529,
+  id: 118274,
 };
 ```
 

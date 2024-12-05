@@ -7,7 +7,7 @@ import { CreateUniversalUpscalerJobResponse } from "@leonardo-ai/sdk/sdk/models/
 
 let value: CreateUniversalUpscalerJobResponse = {
   contentType: "<value>",
-  statusCode: 201,
+  statusCode: 102,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

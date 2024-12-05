@@ -7,7 +7,7 @@ import { CreateElementResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: CreateElementResponse = {
   contentType: "<value>",
-  statusCode: 413,
+  statusCode: 307,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

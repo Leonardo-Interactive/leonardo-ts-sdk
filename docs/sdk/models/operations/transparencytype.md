@@ -7,7 +7,7 @@ Which type of transparency this image should use
 ```typescript
 import { TransparencyType } from "@leonardo-ai/sdk/sdk/models/operations";
 
-let value: TransparencyType = TransparencyType.ForegroundOnly;
+let value: TransparencyType = TransparencyType.Disabled;
 ```
 
 ## Values

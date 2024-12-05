@@ -7,7 +7,7 @@ import { DeleteElementByIdResponse } from "@leonardo-ai/sdk/sdk/models/operation
 
 let value: DeleteElementByIdResponse = {
   contentType: "<value>",
-  statusCode: 102,
+  statusCode: 404,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

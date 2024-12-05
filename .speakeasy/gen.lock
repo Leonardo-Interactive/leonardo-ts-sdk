@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 0ebe374a20152b66b70baa53d8da3358
+  docChecksum: d083569ccca6b9d30c9dc29c78a5fd11
   docVersion: v1.0.0
   speakeasyVersion: 1.451.6
   generationVersion: 2.471.2
-  releaseVersion: 4.19.0
-  configChecksum: 6057f9d5f9228396fee0a88ee86382f9
+  releaseVersion: 4.19.1
+  configChecksum: e83238cee4121fbe16eee4f9ec9ed463
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -532,7 +532,7 @@ examples:
   createElement:
     speakeasy-default-create-element:
       requestBody:
-        application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>"}
+        application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>", "sd_version": "SDXL_LIGHTNING"}
   deleteElementById:
     speakeasy-default-delete-element-by-id:
       parameters:

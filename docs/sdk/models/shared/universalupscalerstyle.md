@@ -7,8 +7,7 @@ The style to upscale images using universal upscaler with. Can not be used with 
 ```typescript
 import { UniversalUpscalerStyle } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: UniversalUpscalerStyle =
-  UniversalUpscalerStyle.TwoDARTAndILLUSTRATION;
+let value: UniversalUpscalerStyle = UniversalUpscalerStyle.CGARTAndGAMEASSETS;
 ```
 
 ## Values

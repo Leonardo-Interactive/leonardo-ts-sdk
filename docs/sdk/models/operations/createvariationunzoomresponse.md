@@ -7,7 +7,7 @@ import { CreateVariationUnzoomResponse } from "@leonardo-ai/sdk/sdk/models/opera
 
 let value: CreateVariationUnzoomResponse = {
   contentType: "<value>",
-  statusCode: 500,
+  statusCode: 102,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
