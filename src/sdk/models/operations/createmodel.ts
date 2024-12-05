@@ -10,6 +10,14 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
+ * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
+ */
+export enum CreateModelSdVersions {
+  V15 = "v1_5",
+  V2 = "v2",
+}
+
+/**
  * Query parameters to be provided in the request body as a JSON object
  */
 export type CreateModelRequestBody = {
@@ -42,9 +50,9 @@ export type CreateModelRequestBody = {
    */
   resolution?: number | null | undefined;
   /**
-   * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
+   * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
    */
-  sdVersion?: shared.SdVersions | undefined;
+  sdVersion?: CreateModelSdVersions | null | undefined;
   /**
    * When training using the PIXEL_ART model type, this influences the training strength.
    */
@@ -86,6 +94,27 @@ export type CreateModelResponse = {
 };
 
 /** @internal */
+export const CreateModelSdVersions$inboundSchema: z.ZodNativeEnum<
+  typeof CreateModelSdVersions
+> = z.nativeEnum(CreateModelSdVersions);
+
+/** @internal */
+export const CreateModelSdVersions$outboundSchema: z.ZodNativeEnum<
+  typeof CreateModelSdVersions
+> = CreateModelSdVersions$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateModelSdVersions$ {
+  /** @deprecated use `CreateModelSdVersions$inboundSchema` instead. */
+  export const inboundSchema = CreateModelSdVersions$inboundSchema;
+  /** @deprecated use `CreateModelSdVersions$outboundSchema` instead. */
+  export const outboundSchema = CreateModelSdVersions$outboundSchema;
+}
+
+/** @internal */
 export const CreateModelRequestBody$inboundSchema: z.ZodType<
   CreateModelRequestBody,
   z.ZodTypeDef,
@@ -100,7 +129,7 @@ export const CreateModelRequestBody$inboundSchema: z.ZodType<
   name: z.string(),
   nsfw: z.nullable(z.boolean().default(false)),
   resolution: z.nullable(z.number().int().default(512)),
-  sd_Version: shared.SdVersions$inboundSchema.optional(),
+  sd_Version: z.nullable(CreateModelSdVersions$inboundSchema).optional(),
   strength: shared.Strength$inboundSchema.default(shared.Strength.Medium),
 }).transform((v) => {
   return remap$(v, {
@@ -118,7 +147,7 @@ export type CreateModelRequestBody$Outbound = {
   name: string;
   nsfw: boolean | null;
   resolution: number | null;
-  sd_Version?: string | undefined;
+  sd_Version?: string | null | undefined;
   strength: string;
 };
 
@@ -137,7 +166,7 @@ export const CreateModelRequestBody$outboundSchema: z.ZodType<
   name: z.string(),
   nsfw: z.nullable(z.boolean().default(false)),
   resolution: z.nullable(z.number().int().default(512)),
-  sdVersion: shared.SdVersions$outboundSchema.optional(),
+  sdVersion: z.nullable(CreateModelSdVersions$outboundSchema).optional(),
   strength: shared.Strength$outboundSchema.default(shared.Strength.Medium),
 }).transform((v) => {
   return remap$(v, {

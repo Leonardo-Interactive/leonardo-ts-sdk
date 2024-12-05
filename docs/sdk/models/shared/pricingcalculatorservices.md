@@ -7,7 +7,8 @@ The services to be chosen for calculating the API credit cost.
 ```typescript
 import { PricingCalculatorServices } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: PricingCalculatorServices = PricingCalculatorServices.ModelTraining;
+let value: PricingCalculatorServices =
+  PricingCalculatorServices.UniversalUpscalerUltra;
 ```
 
 ## Values

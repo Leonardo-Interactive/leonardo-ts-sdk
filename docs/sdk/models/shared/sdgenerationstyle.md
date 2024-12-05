@@ -7,7 +7,7 @@ The style to generate images with. When photoReal is enabled, refer to the Guide
 ```typescript
 import { SdGenerationStyle } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: SdGenerationStyle = SdGenerationStyle.Environment;
+let value: SdGenerationStyle = SdGenerationStyle.Vibrant;
 ```
 
 ## Values

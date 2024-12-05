@@ -7,7 +7,8 @@ The scheduler to generate images with. Defaults to EULER_DISCRETE if not specifi
 ```typescript
 import { SdGenerationSchedulers } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: SdGenerationSchedulers = SdGenerationSchedulers.DpmSolver;
+let value: SdGenerationSchedulers =
+  SdGenerationSchedulers.EulerAncestralDiscrete;
 ```
 
 ## Values

@@ -7,7 +7,7 @@ When training using the PIXEL_ART model type, this influences the training stren
 ```typescript
 import { Strength } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: Strength = Strength.Low;
+let value: Strength = Strength.High;
 ```
 
 ## Values

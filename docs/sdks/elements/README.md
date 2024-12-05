@@ -18,7 +18,7 @@ This endpoint will train a new custom element.
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { SdVersions } from "@leonardo-ai/sdk/sdk/models/shared";
+import { SdVersions } from "@leonardo-ai/sdk/sdk/models/operations";
 
 const leonardo = new Leonardo({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -29,7 +29,7 @@ async function run() {
     datasetId: "<id>",
     instancePrompt: "<value>",
     name: "<value>",
-    sdVersion: SdVersions.SdxlLightning,
+    sdVersion: SdVersions.KinoXl,
   });
 
   // Handle the result
@@ -46,7 +46,7 @@ The standalone function version of this method:
 ```typescript
 import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
 import { elementsCreateElement } from "@leonardo-ai/sdk/funcs/elementsCreateElement.js";
-import { SdVersions } from "@leonardo-ai/sdk/sdk/models/shared";
+import { SdVersions } from "@leonardo-ai/sdk/sdk/models/operations";
 
 // Use `LeonardoCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -59,7 +59,7 @@ async function run() {
     datasetId: "<id>",
     instancePrompt: "<value>",
     name: "<value>",
-    sdVersion: SdVersions.SdxlLightning,
+    sdVersion: SdVersions.KinoXl,
   });
 
   if (!res.ok) {

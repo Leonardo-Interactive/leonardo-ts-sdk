@@ -7,7 +7,19 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as shared from "../shared/index.js";
+
+/**
+ * The base version of stable diffusion to use if not using a custom model.
+ */
+export enum SdVersions {
+  Sdxl09 = "SDXL_0_9",
+  Sdxl10 = "SDXL_1_0",
+  LeonardoDiffusionXl = "LEONARDO_DIFFUSION_XL",
+  LeonardoLightningXl = "LEONARDO_LIGHTNING_XL",
+  VisionXl = "VISION_XL",
+  KinoXl = "KINO_XL",
+  AlbedoXl = "ALBEDO_XL",
+}
 
 /**
  * Query parameters to be provided in the request body as a JSON object.
@@ -22,7 +34,7 @@ export type CreateElementRequestBody = {
    */
   description?: string | null | undefined;
   /**
-   * The instance prompt to use during training.
+   * The instance prompt to use during training.Try “a” by a noun. E.g. a castle
    */
   instancePrompt?: string | undefined;
   /**
@@ -46,9 +58,9 @@ export type CreateElementRequestBody = {
    */
   resolution?: number | null | undefined;
   /**
-   * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
+   * The base version of stable diffusion to use if not using a custom model.
    */
-  sdVersion: shared.SdVersions;
+  sdVersion?: SdVersions | undefined;
   /**
    * Whether or not encode the train text.
    */
@@ -90,6 +102,25 @@ export type CreateElementResponse = {
 };
 
 /** @internal */
+export const SdVersions$inboundSchema: z.ZodNativeEnum<typeof SdVersions> = z
+  .nativeEnum(SdVersions);
+
+/** @internal */
+export const SdVersions$outboundSchema: z.ZodNativeEnum<typeof SdVersions> =
+  SdVersions$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SdVersions$ {
+  /** @deprecated use `SdVersions$inboundSchema` instead. */
+  export const inboundSchema = SdVersions$inboundSchema;
+  /** @deprecated use `SdVersions$outboundSchema` instead. */
+  export const outboundSchema = SdVersions$outboundSchema;
+}
+
+/** @internal */
 export const CreateElementRequestBody$inboundSchema: z.ZodType<
   CreateElementRequestBody,
   z.ZodTypeDef,
@@ -97,13 +128,13 @@ export const CreateElementRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   datasetId: z.string().default(""),
   description: z.nullable(z.string().default("")),
-  instance_prompt: z.string().default(""),
+  instance_prompt: z.string().default("a character"),
   learning_rate: z.number().default(0.000001),
   lora_focus: z.string().default("General"),
-  name: z.string().default(""),
+  name: z.string().default("placeholder"),
   num_train_epochs: z.number().int().default(100),
   resolution: z.nullable(z.number().int().default(1024)),
-  sd_version: shared.SdVersions$inboundSchema,
+  sd_version: SdVersions$inboundSchema.default(SdVersions.Sdxl09),
   train_text_encoder: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
@@ -138,13 +169,13 @@ export const CreateElementRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   datasetId: z.string().default(""),
   description: z.nullable(z.string().default("")),
-  instancePrompt: z.string().default(""),
+  instancePrompt: z.string().default("a character"),
   learningRate: z.number().default(0.000001),
   loraFocus: z.string().default("General"),
-  name: z.string().default(""),
+  name: z.string().default("placeholder"),
   numTrainEpochs: z.number().int().default(100),
   resolution: z.nullable(z.number().int().default(1024)),
-  sdVersion: shared.SdVersions$outboundSchema,
+  sdVersion: SdVersions$outboundSchema.default(SdVersions.Sdxl09),
   trainTextEncoder: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {

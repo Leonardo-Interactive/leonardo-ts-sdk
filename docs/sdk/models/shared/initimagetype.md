@@ -7,7 +7,7 @@ Type indicating whether the init image is uploaded or generated.
 ```typescript
 import { InitImageType } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: InitImageType = InitImageType.Uploaded;
+let value: InitImageType = InitImageType.Generated;
 ```
 
 ## Values

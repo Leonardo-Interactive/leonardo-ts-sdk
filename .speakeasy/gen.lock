@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: d083569ccca6b9d30c9dc29c78a5fd11
+  docChecksum: d6c4acafa723bb485bfcf1d95b96b12a
   docVersion: v1.0.0
-  speakeasyVersion: 1.451.6
+  speakeasyVersion: 1.451.7
   generationVersion: 2.471.2
-  releaseVersion: 4.19.1
-  configChecksum: e83238cee4121fbe16eee4f9ec9ed463
+  releaseVersion: 4.19.2
+  configChecksum: fac15ae01bfbf98ced059c3235e5cceb
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -60,6 +60,7 @@ generatedFiles:
   - docs/sdk/models/operations/createmodelresponse.md
   - docs/sdk/models/operations/createmodelresponsebody.md
   - docs/sdk/models/operations/createmodelsdtrainingoutput.md
+  - docs/sdk/models/operations/createmodelsdversions.md
   - docs/sdk/models/operations/createsvdmotiongenerationrequestbody.md
   - docs/sdk/models/operations/createsvdmotiongenerationresponse.md
   - docs/sdk/models/operations/createsvdmotiongenerationresponsebody.md
@@ -196,6 +197,7 @@ generatedFiles:
   - docs/sdk/models/operations/sdtrainingoutput.md
   - docs/sdk/models/operations/sdunzoomoutput.md
   - docs/sdk/models/operations/sdupscalejoboutput.md
+  - docs/sdk/models/operations/sdversions.md
   - docs/sdk/models/operations/texturegenerationjoboutput.md
   - docs/sdk/models/operations/transparencytype.md
   - docs/sdk/models/operations/universalupscaleroutput.md
@@ -532,7 +534,7 @@ examples:
   createElement:
     speakeasy-default-create-element:
       requestBody:
-        application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>", "sd_version": "SDXL_LIGHTNING"}
+        application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>", "sd_version": "KINO_XL"}
   deleteElementById:
     speakeasy-default-delete-element-by-id:
       parameters:
