@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters to be provided in the request body as a JSON object
@@ -94,6 +97,27 @@ export namespace UploadDatasetImageFromGenRequestBody$ {
   export type Outbound = UploadDatasetImageFromGenRequestBody$Outbound;
 }
 
+export function uploadDatasetImageFromGenRequestBodyToJSON(
+  uploadDatasetImageFromGenRequestBody: UploadDatasetImageFromGenRequestBody,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageFromGenRequestBody$outboundSchema.parse(
+      uploadDatasetImageFromGenRequestBody,
+    ),
+  );
+}
+
+export function uploadDatasetImageFromGenRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageFromGenRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadDatasetImageFromGenRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageFromGenRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadDatasetImageFromGenRequest$inboundSchema: z.ZodType<
   UploadDatasetImageFromGenRequest,
@@ -143,6 +167,26 @@ export namespace UploadDatasetImageFromGenRequest$ {
   export type Outbound = UploadDatasetImageFromGenRequest$Outbound;
 }
 
+export function uploadDatasetImageFromGenRequestToJSON(
+  uploadDatasetImageFromGenRequest: UploadDatasetImageFromGenRequest,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageFromGenRequest$outboundSchema.parse(
+      uploadDatasetImageFromGenRequest,
+    ),
+  );
+}
+
+export function uploadDatasetImageFromGenRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageFromGenRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDatasetImageFromGenRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageFromGenRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DatasetGenUploadOutput$inboundSchema: z.ZodType<
   DatasetGenUploadOutput,
@@ -177,6 +221,24 @@ export namespace DatasetGenUploadOutput$ {
   export const outboundSchema = DatasetGenUploadOutput$outboundSchema;
   /** @deprecated use `DatasetGenUploadOutput$Outbound` instead. */
   export type Outbound = DatasetGenUploadOutput$Outbound;
+}
+
+export function datasetGenUploadOutputToJSON(
+  datasetGenUploadOutput: DatasetGenUploadOutput,
+): string {
+  return JSON.stringify(
+    DatasetGenUploadOutput$outboundSchema.parse(datasetGenUploadOutput),
+  );
+}
+
+export function datasetGenUploadOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<DatasetGenUploadOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DatasetGenUploadOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DatasetGenUploadOutput' from JSON`,
+  );
 }
 
 /** @internal */
@@ -222,6 +284,27 @@ export namespace UploadDatasetImageFromGenResponseBody$ {
     UploadDatasetImageFromGenResponseBody$outboundSchema;
   /** @deprecated use `UploadDatasetImageFromGenResponseBody$Outbound` instead. */
   export type Outbound = UploadDatasetImageFromGenResponseBody$Outbound;
+}
+
+export function uploadDatasetImageFromGenResponseBodyToJSON(
+  uploadDatasetImageFromGenResponseBody: UploadDatasetImageFromGenResponseBody,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageFromGenResponseBody$outboundSchema.parse(
+      uploadDatasetImageFromGenResponseBody,
+    ),
+  );
+}
+
+export function uploadDatasetImageFromGenResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageFromGenResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadDatasetImageFromGenResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageFromGenResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -284,4 +367,24 @@ export namespace UploadDatasetImageFromGenResponse$ {
     UploadDatasetImageFromGenResponse$outboundSchema;
   /** @deprecated use `UploadDatasetImageFromGenResponse$Outbound` instead. */
   export type Outbound = UploadDatasetImageFromGenResponse$Outbound;
+}
+
+export function uploadDatasetImageFromGenResponseToJSON(
+  uploadDatasetImageFromGenResponse: UploadDatasetImageFromGenResponse,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageFromGenResponse$outboundSchema.parse(
+      uploadDatasetImageFromGenResponse,
+    ),
+  );
+}
+
+export function uploadDatasetImageFromGenResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageFromGenResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDatasetImageFromGenResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageFromGenResponse' from JSON`,
+  );
 }

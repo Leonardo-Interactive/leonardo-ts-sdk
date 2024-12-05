@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteGenerationByIdRequest = {
   /**
@@ -84,6 +87,26 @@ export namespace DeleteGenerationByIdRequest$ {
   export type Outbound = DeleteGenerationByIdRequest$Outbound;
 }
 
+export function deleteGenerationByIdRequestToJSON(
+  deleteGenerationByIdRequest: DeleteGenerationByIdRequest,
+): string {
+  return JSON.stringify(
+    DeleteGenerationByIdRequest$outboundSchema.parse(
+      deleteGenerationByIdRequest,
+    ),
+  );
+}
+
+export function deleteGenerationByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteGenerationByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteGenerationByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteGenerationByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const Generations$inboundSchema: z.ZodType<
   Generations,
@@ -118,6 +141,20 @@ export namespace Generations$ {
   export const outboundSchema = Generations$outboundSchema;
   /** @deprecated use `Generations$Outbound` instead. */
   export type Outbound = Generations$Outbound;
+}
+
+export function generationsToJSON(generations: Generations): string {
+  return JSON.stringify(Generations$outboundSchema.parse(generations));
+}
+
+export function generationsFromJSON(
+  jsonString: string,
+): SafeParseResult<Generations, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Generations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Generations' from JSON`,
+  );
 }
 
 /** @internal */
@@ -164,6 +201,26 @@ export namespace DeleteGenerationByIdResponseBody$ {
   export const outboundSchema = DeleteGenerationByIdResponseBody$outboundSchema;
   /** @deprecated use `DeleteGenerationByIdResponseBody$Outbound` instead. */
   export type Outbound = DeleteGenerationByIdResponseBody$Outbound;
+}
+
+export function deleteGenerationByIdResponseBodyToJSON(
+  deleteGenerationByIdResponseBody: DeleteGenerationByIdResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteGenerationByIdResponseBody$outboundSchema.parse(
+      deleteGenerationByIdResponseBody,
+    ),
+  );
+}
+
+export function deleteGenerationByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteGenerationByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteGenerationByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteGenerationByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -225,4 +282,24 @@ export namespace DeleteGenerationByIdResponse$ {
   export const outboundSchema = DeleteGenerationByIdResponse$outboundSchema;
   /** @deprecated use `DeleteGenerationByIdResponse$Outbound` instead. */
   export type Outbound = DeleteGenerationByIdResponse$Outbound;
+}
+
+export function deleteGenerationByIdResponseToJSON(
+  deleteGenerationByIdResponse: DeleteGenerationByIdResponse,
+): string {
+  return JSON.stringify(
+    DeleteGenerationByIdResponse$outboundSchema.parse(
+      deleteGenerationByIdResponse,
+    ),
+  );
+}
+
+export function deleteGenerationByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteGenerationByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteGenerationByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteGenerationByIdResponse' from JSON`,
+  );
 }

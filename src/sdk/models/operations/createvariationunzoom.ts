@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters can also be provided in the request body as a JSON object
@@ -86,6 +89,26 @@ export namespace CreateVariationUnzoomRequestBody$ {
   export type Outbound = CreateVariationUnzoomRequestBody$Outbound;
 }
 
+export function createVariationUnzoomRequestBodyToJSON(
+  createVariationUnzoomRequestBody: CreateVariationUnzoomRequestBody,
+): string {
+  return JSON.stringify(
+    CreateVariationUnzoomRequestBody$outboundSchema.parse(
+      createVariationUnzoomRequestBody,
+    ),
+  );
+}
+
+export function createVariationUnzoomRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationUnzoomRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationUnzoomRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationUnzoomRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const SDUnzoomOutput$inboundSchema: z.ZodType<
   SDUnzoomOutput,
@@ -125,6 +148,20 @@ export namespace SDUnzoomOutput$ {
   export type Outbound = SDUnzoomOutput$Outbound;
 }
 
+export function sdUnzoomOutputToJSON(sdUnzoomOutput: SDUnzoomOutput): string {
+  return JSON.stringify(SDUnzoomOutput$outboundSchema.parse(sdUnzoomOutput));
+}
+
+export function sdUnzoomOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<SDUnzoomOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SDUnzoomOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SDUnzoomOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateVariationUnzoomResponseBody$inboundSchema: z.ZodType<
   CreateVariationUnzoomResponseBody,
@@ -162,6 +199,26 @@ export namespace CreateVariationUnzoomResponseBody$ {
     CreateVariationUnzoomResponseBody$outboundSchema;
   /** @deprecated use `CreateVariationUnzoomResponseBody$Outbound` instead. */
   export type Outbound = CreateVariationUnzoomResponseBody$Outbound;
+}
+
+export function createVariationUnzoomResponseBodyToJSON(
+  createVariationUnzoomResponseBody: CreateVariationUnzoomResponseBody,
+): string {
+  return JSON.stringify(
+    CreateVariationUnzoomResponseBody$outboundSchema.parse(
+      createVariationUnzoomResponseBody,
+    ),
+  );
+}
+
+export function createVariationUnzoomResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationUnzoomResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationUnzoomResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationUnzoomResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -223,4 +280,24 @@ export namespace CreateVariationUnzoomResponse$ {
   export const outboundSchema = CreateVariationUnzoomResponse$outboundSchema;
   /** @deprecated use `CreateVariationUnzoomResponse$Outbound` instead. */
   export type Outbound = CreateVariationUnzoomResponse$Outbound;
+}
+
+export function createVariationUnzoomResponseToJSON(
+  createVariationUnzoomResponse: CreateVariationUnzoomResponse,
+): string {
+  return JSON.stringify(
+    CreateVariationUnzoomResponse$outboundSchema.parse(
+      createVariationUnzoomResponse,
+    ),
+  );
+}
+
+export function createVariationUnzoomResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationUnzoomResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationUnzoomResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationUnzoomResponse' from JSON`,
+  );
 }

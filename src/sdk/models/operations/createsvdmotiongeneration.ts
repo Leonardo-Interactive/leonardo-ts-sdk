@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters can also be provided in the request body as a JSON object
@@ -115,6 +118,27 @@ export namespace CreateSVDMotionGenerationRequestBody$ {
   export type Outbound = CreateSVDMotionGenerationRequestBody$Outbound;
 }
 
+export function createSVDMotionGenerationRequestBodyToJSON(
+  createSVDMotionGenerationRequestBody: CreateSVDMotionGenerationRequestBody,
+): string {
+  return JSON.stringify(
+    CreateSVDMotionGenerationRequestBody$outboundSchema.parse(
+      createSVDMotionGenerationRequestBody,
+    ),
+  );
+}
+
+export function createSVDMotionGenerationRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSVDMotionGenerationRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSVDMotionGenerationRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSVDMotionGenerationRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const MotionSvdGenerationOutput$inboundSchema: z.ZodType<
   MotionSvdGenerationOutput,
@@ -152,6 +176,24 @@ export namespace MotionSvdGenerationOutput$ {
   export const outboundSchema = MotionSvdGenerationOutput$outboundSchema;
   /** @deprecated use `MotionSvdGenerationOutput$Outbound` instead. */
   export type Outbound = MotionSvdGenerationOutput$Outbound;
+}
+
+export function motionSvdGenerationOutputToJSON(
+  motionSvdGenerationOutput: MotionSvdGenerationOutput,
+): string {
+  return JSON.stringify(
+    MotionSvdGenerationOutput$outboundSchema.parse(motionSvdGenerationOutput),
+  );
+}
+
+export function motionSvdGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<MotionSvdGenerationOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MotionSvdGenerationOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MotionSvdGenerationOutput' from JSON`,
+  );
 }
 
 /** @internal */
@@ -194,6 +236,27 @@ export namespace CreateSVDMotionGenerationResponseBody$ {
     CreateSVDMotionGenerationResponseBody$outboundSchema;
   /** @deprecated use `CreateSVDMotionGenerationResponseBody$Outbound` instead. */
   export type Outbound = CreateSVDMotionGenerationResponseBody$Outbound;
+}
+
+export function createSVDMotionGenerationResponseBodyToJSON(
+  createSVDMotionGenerationResponseBody: CreateSVDMotionGenerationResponseBody,
+): string {
+  return JSON.stringify(
+    CreateSVDMotionGenerationResponseBody$outboundSchema.parse(
+      createSVDMotionGenerationResponseBody,
+    ),
+  );
+}
+
+export function createSVDMotionGenerationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSVDMotionGenerationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateSVDMotionGenerationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSVDMotionGenerationResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -256,4 +319,24 @@ export namespace CreateSVDMotionGenerationResponse$ {
     CreateSVDMotionGenerationResponse$outboundSchema;
   /** @deprecated use `CreateSVDMotionGenerationResponse$Outbound` instead. */
   export type Outbound = CreateSVDMotionGenerationResponse$Outbound;
+}
+
+export function createSVDMotionGenerationResponseToJSON(
+  createSVDMotionGenerationResponse: CreateSVDMotionGenerationResponse,
+): string {
+  return JSON.stringify(
+    CreateSVDMotionGenerationResponse$outboundSchema.parse(
+      createSVDMotionGenerationResponse,
+    ),
+  );
+}
+
+export function createSVDMotionGenerationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSVDMotionGenerationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateSVDMotionGenerationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSVDMotionGenerationResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -48,7 +51,7 @@ export type CreateModelRequestBody = {
   strength?: shared.Strength | undefined;
 };
 
-export type SDTrainingOutput = {
+export type CreateModelSDTrainingOutput = {
   /**
    * API Credits Cost for Model Training. Available for Production API Users.
    */
@@ -60,7 +63,7 @@ export type SDTrainingOutput = {
  * Responses for POST /models
  */
 export type CreateModelResponseBody = {
-  sdTrainingJob?: SDTrainingOutput | null | undefined;
+  sdTrainingJob?: CreateModelSDTrainingOutput | null | undefined;
 };
 
 export type CreateModelResponse = {
@@ -156,9 +159,27 @@ export namespace CreateModelRequestBody$ {
   export type Outbound = CreateModelRequestBody$Outbound;
 }
 
+export function createModelRequestBodyToJSON(
+  createModelRequestBody: CreateModelRequestBody,
+): string {
+  return JSON.stringify(
+    CreateModelRequestBody$outboundSchema.parse(createModelRequestBody),
+  );
+}
+
+export function createModelRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateModelRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateModelRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateModelRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
-export const SDTrainingOutput$inboundSchema: z.ZodType<
-  SDTrainingOutput,
+export const CreateModelSDTrainingOutput$inboundSchema: z.ZodType<
+  CreateModelSDTrainingOutput,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -167,16 +188,16 @@ export const SDTrainingOutput$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SDTrainingOutput$Outbound = {
+export type CreateModelSDTrainingOutput$Outbound = {
   apiCreditCost?: number | null | undefined;
   customModelId?: string | undefined;
 };
 
 /** @internal */
-export const SDTrainingOutput$outboundSchema: z.ZodType<
-  SDTrainingOutput$Outbound,
+export const CreateModelSDTrainingOutput$outboundSchema: z.ZodType<
+  CreateModelSDTrainingOutput$Outbound,
   z.ZodTypeDef,
-  SDTrainingOutput
+  CreateModelSDTrainingOutput
 > = z.object({
   apiCreditCost: z.nullable(z.number().int()).optional(),
   customModelId: z.string().optional(),
@@ -186,13 +207,33 @@ export const SDTrainingOutput$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SDTrainingOutput$ {
-  /** @deprecated use `SDTrainingOutput$inboundSchema` instead. */
-  export const inboundSchema = SDTrainingOutput$inboundSchema;
-  /** @deprecated use `SDTrainingOutput$outboundSchema` instead. */
-  export const outboundSchema = SDTrainingOutput$outboundSchema;
-  /** @deprecated use `SDTrainingOutput$Outbound` instead. */
-  export type Outbound = SDTrainingOutput$Outbound;
+export namespace CreateModelSDTrainingOutput$ {
+  /** @deprecated use `CreateModelSDTrainingOutput$inboundSchema` instead. */
+  export const inboundSchema = CreateModelSDTrainingOutput$inboundSchema;
+  /** @deprecated use `CreateModelSDTrainingOutput$outboundSchema` instead. */
+  export const outboundSchema = CreateModelSDTrainingOutput$outboundSchema;
+  /** @deprecated use `CreateModelSDTrainingOutput$Outbound` instead. */
+  export type Outbound = CreateModelSDTrainingOutput$Outbound;
+}
+
+export function createModelSDTrainingOutputToJSON(
+  createModelSDTrainingOutput: CreateModelSDTrainingOutput,
+): string {
+  return JSON.stringify(
+    CreateModelSDTrainingOutput$outboundSchema.parse(
+      createModelSDTrainingOutput,
+    ),
+  );
+}
+
+export function createModelSDTrainingOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateModelSDTrainingOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateModelSDTrainingOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateModelSDTrainingOutput' from JSON`,
+  );
 }
 
 /** @internal */
@@ -201,13 +242,14 @@ export const CreateModelResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sdTrainingJob: z.nullable(z.lazy(() => SDTrainingOutput$inboundSchema))
-    .optional(),
+  sdTrainingJob: z.nullable(
+    z.lazy(() => CreateModelSDTrainingOutput$inboundSchema),
+  ).optional(),
 });
 
 /** @internal */
 export type CreateModelResponseBody$Outbound = {
-  sdTrainingJob?: SDTrainingOutput$Outbound | null | undefined;
+  sdTrainingJob?: CreateModelSDTrainingOutput$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -216,8 +258,9 @@ export const CreateModelResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateModelResponseBody
 > = z.object({
-  sdTrainingJob: z.nullable(z.lazy(() => SDTrainingOutput$outboundSchema))
-    .optional(),
+  sdTrainingJob: z.nullable(
+    z.lazy(() => CreateModelSDTrainingOutput$outboundSchema),
+  ).optional(),
 });
 
 /**
@@ -231,6 +274,24 @@ export namespace CreateModelResponseBody$ {
   export const outboundSchema = CreateModelResponseBody$outboundSchema;
   /** @deprecated use `CreateModelResponseBody$Outbound` instead. */
   export type Outbound = CreateModelResponseBody$Outbound;
+}
+
+export function createModelResponseBodyToJSON(
+  createModelResponseBody: CreateModelResponseBody,
+): string {
+  return JSON.stringify(
+    CreateModelResponseBody$outboundSchema.parse(createModelResponseBody),
+  );
+}
+
+export function createModelResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateModelResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateModelResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateModelResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -290,4 +351,22 @@ export namespace CreateModelResponse$ {
   export const outboundSchema = CreateModelResponse$outboundSchema;
   /** @deprecated use `CreateModelResponse$Outbound` instead. */
   export type Outbound = CreateModelResponse$Outbound;
+}
+
+export function createModelResponseToJSON(
+  createModelResponse: CreateModelResponse,
+): string {
+  return JSON.stringify(
+    CreateModelResponse$outboundSchema.parse(createModelResponse),
+  );
+}
+
+export function createModelResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateModelResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateModelResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateModelResponse' from JSON`,
+  );
 }

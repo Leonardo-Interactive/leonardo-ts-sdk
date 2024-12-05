@@ -7,7 +7,7 @@ The style to generate LCM images with.
 ```typescript
 import { LcmGenerationStyle } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: LcmGenerationStyle = LcmGenerationStyle.Render3D;
+let value: LcmGenerationStyle = LcmGenerationStyle.Environment;
 ```
 
 ## Values

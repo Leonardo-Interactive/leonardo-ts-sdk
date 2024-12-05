@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters are provided in the request body as a JSON object
@@ -83,6 +86,26 @@ export namespace CreateVariationUpscaleRequestBody$ {
   export type Outbound = CreateVariationUpscaleRequestBody$Outbound;
 }
 
+export function createVariationUpscaleRequestBodyToJSON(
+  createVariationUpscaleRequestBody: CreateVariationUpscaleRequestBody,
+): string {
+  return JSON.stringify(
+    CreateVariationUpscaleRequestBody$outboundSchema.parse(
+      createVariationUpscaleRequestBody,
+    ),
+  );
+}
+
+export function createVariationUpscaleRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationUpscaleRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationUpscaleRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationUpscaleRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateVariationUpscaleSDUpscaleJobOutput$inboundSchema: z.ZodType<
   CreateVariationUpscaleSDUpscaleJobOutput,
@@ -122,6 +145,33 @@ export namespace CreateVariationUpscaleSDUpscaleJobOutput$ {
     CreateVariationUpscaleSDUpscaleJobOutput$outboundSchema;
   /** @deprecated use `CreateVariationUpscaleSDUpscaleJobOutput$Outbound` instead. */
   export type Outbound = CreateVariationUpscaleSDUpscaleJobOutput$Outbound;
+}
+
+export function createVariationUpscaleSDUpscaleJobOutputToJSON(
+  createVariationUpscaleSDUpscaleJobOutput:
+    CreateVariationUpscaleSDUpscaleJobOutput,
+): string {
+  return JSON.stringify(
+    CreateVariationUpscaleSDUpscaleJobOutput$outboundSchema.parse(
+      createVariationUpscaleSDUpscaleJobOutput,
+    ),
+  );
+}
+
+export function createVariationUpscaleSDUpscaleJobOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateVariationUpscaleSDUpscaleJobOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateVariationUpscaleSDUpscaleJobOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateVariationUpscaleSDUpscaleJobOutput' from JSON`,
+  );
 }
 
 /** @internal */
@@ -166,6 +216,27 @@ export namespace CreateVariationUpscaleResponseBody$ {
     CreateVariationUpscaleResponseBody$outboundSchema;
   /** @deprecated use `CreateVariationUpscaleResponseBody$Outbound` instead. */
   export type Outbound = CreateVariationUpscaleResponseBody$Outbound;
+}
+
+export function createVariationUpscaleResponseBodyToJSON(
+  createVariationUpscaleResponseBody: CreateVariationUpscaleResponseBody,
+): string {
+  return JSON.stringify(
+    CreateVariationUpscaleResponseBody$outboundSchema.parse(
+      createVariationUpscaleResponseBody,
+    ),
+  );
+}
+
+export function createVariationUpscaleResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationUpscaleResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateVariationUpscaleResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationUpscaleResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -227,4 +298,24 @@ export namespace CreateVariationUpscaleResponse$ {
   export const outboundSchema = CreateVariationUpscaleResponse$outboundSchema;
   /** @deprecated use `CreateVariationUpscaleResponse$Outbound` instead. */
   export type Outbound = CreateVariationUpscaleResponse$Outbound;
+}
+
+export function createVariationUpscaleResponseToJSON(
+  createVariationUpscaleResponse: CreateVariationUpscaleResponse,
+): string {
+  return JSON.stringify(
+    CreateVariationUpscaleResponse$outboundSchema.parse(
+      createVariationUpscaleResponse,
+    ),
+  );
+}
+
+export function createVariationUpscaleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationUpscaleResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationUpscaleResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationUpscaleResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Type indicating whether the init image is uploaded or generated.
@@ -132,4 +135,20 @@ export namespace ControlnetInput$ {
   export const outboundSchema = ControlnetInput$outboundSchema;
   /** @deprecated use `ControlnetInput$Outbound` instead. */
   export type Outbound = ControlnetInput$Outbound;
+}
+
+export function controlnetInputToJSON(
+  controlnetInput: ControlnetInput,
+): string {
+  return JSON.stringify(ControlnetInput$outboundSchema.parse(controlnetInput));
+}
+
+export function controlnetInputFromJSON(
+  jsonString: string,
+): SafeParseResult<ControlnetInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ControlnetInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ControlnetInput' from JSON`,
+  );
 }

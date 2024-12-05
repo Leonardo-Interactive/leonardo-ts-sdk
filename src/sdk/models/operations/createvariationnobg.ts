@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters are provided in the request body as a JSON object
@@ -86,6 +89,26 @@ export namespace CreateVariationNoBGRequestBody$ {
   export type Outbound = CreateVariationNoBGRequestBody$Outbound;
 }
 
+export function createVariationNoBGRequestBodyToJSON(
+  createVariationNoBGRequestBody: CreateVariationNoBGRequestBody,
+): string {
+  return JSON.stringify(
+    CreateVariationNoBGRequestBody$outboundSchema.parse(
+      createVariationNoBGRequestBody,
+    ),
+  );
+}
+
+export function createVariationNoBGRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationNoBGRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationNoBGRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationNoBGRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const SDUpscaleJobOutput$inboundSchema: z.ZodType<
   SDUpscaleJobOutput,
@@ -125,6 +148,24 @@ export namespace SDUpscaleJobOutput$ {
   export type Outbound = SDUpscaleJobOutput$Outbound;
 }
 
+export function sdUpscaleJobOutputToJSON(
+  sdUpscaleJobOutput: SDUpscaleJobOutput,
+): string {
+  return JSON.stringify(
+    SDUpscaleJobOutput$outboundSchema.parse(sdUpscaleJobOutput),
+  );
+}
+
+export function sdUpscaleJobOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<SDUpscaleJobOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SDUpscaleJobOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SDUpscaleJobOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateVariationNoBGResponseBody$inboundSchema: z.ZodType<
   CreateVariationNoBGResponseBody,
@@ -159,6 +200,26 @@ export namespace CreateVariationNoBGResponseBody$ {
   export const outboundSchema = CreateVariationNoBGResponseBody$outboundSchema;
   /** @deprecated use `CreateVariationNoBGResponseBody$Outbound` instead. */
   export type Outbound = CreateVariationNoBGResponseBody$Outbound;
+}
+
+export function createVariationNoBGResponseBodyToJSON(
+  createVariationNoBGResponseBody: CreateVariationNoBGResponseBody,
+): string {
+  return JSON.stringify(
+    CreateVariationNoBGResponseBody$outboundSchema.parse(
+      createVariationNoBGResponseBody,
+    ),
+  );
+}
+
+export function createVariationNoBGResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationNoBGResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationNoBGResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationNoBGResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -220,4 +281,24 @@ export namespace CreateVariationNoBGResponse$ {
   export const outboundSchema = CreateVariationNoBGResponse$outboundSchema;
   /** @deprecated use `CreateVariationNoBGResponse$Outbound` instead. */
   export type Outbound = CreateVariationNoBGResponse$Outbound;
+}
+
+export function createVariationNoBGResponseToJSON(
+  createVariationNoBGResponse: CreateVariationNoBGResponse,
+): string {
+  return JSON.stringify(
+    CreateVariationNoBGResponse$outboundSchema.parse(
+      createVariationNoBGResponse,
+    ),
+  );
+}
+
+export function createVariationNoBGResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateVariationNoBGResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateVariationNoBGResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateVariationNoBGResponse' from JSON`,
+  );
 }

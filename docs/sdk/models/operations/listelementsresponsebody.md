@@ -1,6 +1,6 @@
 # ListElementsResponseBody
 
-Responses for GET /api/rest/v1/elements
+Responses for GET /api/rest/v1/elements.
 
 ## Example Usage
 

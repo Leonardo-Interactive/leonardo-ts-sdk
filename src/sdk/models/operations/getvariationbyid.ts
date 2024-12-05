@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetVariationByIdRequest = {
@@ -94,6 +97,24 @@ export namespace GetVariationByIdRequest$ {
   export type Outbound = GetVariationByIdRequest$Outbound;
 }
 
+export function getVariationByIdRequestToJSON(
+  getVariationByIdRequest: GetVariationByIdRequest,
+): string {
+  return JSON.stringify(
+    GetVariationByIdRequest$outboundSchema.parse(getVariationByIdRequest),
+  );
+}
+
+export function getVariationByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVariationByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVariationByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVariationByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GeneratedImageVariationGeneric$inboundSchema: z.ZodType<
   GeneratedImageVariationGeneric,
@@ -140,6 +161,26 @@ export namespace GeneratedImageVariationGeneric$ {
   export const outboundSchema = GeneratedImageVariationGeneric$outboundSchema;
   /** @deprecated use `GeneratedImageVariationGeneric$Outbound` instead. */
   export type Outbound = GeneratedImageVariationGeneric$Outbound;
+}
+
+export function generatedImageVariationGenericToJSON(
+  generatedImageVariationGeneric: GeneratedImageVariationGeneric,
+): string {
+  return JSON.stringify(
+    GeneratedImageVariationGeneric$outboundSchema.parse(
+      generatedImageVariationGeneric,
+    ),
+  );
+}
+
+export function generatedImageVariationGenericFromJSON(
+  jsonString: string,
+): SafeParseResult<GeneratedImageVariationGeneric, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GeneratedImageVariationGeneric$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GeneratedImageVariationGeneric' from JSON`,
+  );
 }
 
 /** @internal */
@@ -190,6 +231,26 @@ export namespace GetVariationByIdResponseBody$ {
   export const outboundSchema = GetVariationByIdResponseBody$outboundSchema;
   /** @deprecated use `GetVariationByIdResponseBody$Outbound` instead. */
   export type Outbound = GetVariationByIdResponseBody$Outbound;
+}
+
+export function getVariationByIdResponseBodyToJSON(
+  getVariationByIdResponseBody: GetVariationByIdResponseBody,
+): string {
+  return JSON.stringify(
+    GetVariationByIdResponseBody$outboundSchema.parse(
+      getVariationByIdResponseBody,
+    ),
+  );
+}
+
+export function getVariationByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVariationByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVariationByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVariationByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -249,4 +310,22 @@ export namespace GetVariationByIdResponse$ {
   export const outboundSchema = GetVariationByIdResponse$outboundSchema;
   /** @deprecated use `GetVariationByIdResponse$Outbound` instead. */
   export type Outbound = GetVariationByIdResponse$Outbound;
+}
+
+export function getVariationByIdResponseToJSON(
+  getVariationByIdResponse: GetVariationByIdResponse,
+): string {
+  return JSON.stringify(
+    GetVariationByIdResponse$outboundSchema.parse(getVariationByIdResponse),
+  );
+}
+
+export function getVariationByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVariationByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVariationByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVariationByIdResponse' from JSON`,
+  );
 }

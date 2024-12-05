@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * columns and relationships of "generated_images"
@@ -94,6 +97,26 @@ export namespace ListPlatformModelsGeneratedImages$ {
   export type Outbound = ListPlatformModelsGeneratedImages$Outbound;
 }
 
+export function listPlatformModelsGeneratedImagesToJSON(
+  listPlatformModelsGeneratedImages: ListPlatformModelsGeneratedImages,
+): string {
+  return JSON.stringify(
+    ListPlatformModelsGeneratedImages$outboundSchema.parse(
+      listPlatformModelsGeneratedImages,
+    ),
+  );
+}
+
+export function listPlatformModelsGeneratedImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPlatformModelsGeneratedImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPlatformModelsGeneratedImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPlatformModelsGeneratedImages' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListPlatformModelsCustomModels$inboundSchema: z.ZodType<
   ListPlatformModelsCustomModels,
@@ -160,6 +183,26 @@ export namespace ListPlatformModelsCustomModels$ {
   export type Outbound = ListPlatformModelsCustomModels$Outbound;
 }
 
+export function listPlatformModelsCustomModelsToJSON(
+  listPlatformModelsCustomModels: ListPlatformModelsCustomModels,
+): string {
+  return JSON.stringify(
+    ListPlatformModelsCustomModels$outboundSchema.parse(
+      listPlatformModelsCustomModels,
+    ),
+  );
+}
+
+export function listPlatformModelsCustomModelsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPlatformModelsCustomModels, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPlatformModelsCustomModels$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPlatformModelsCustomModels' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListPlatformModelsResponseBody$inboundSchema: z.ZodType<
   ListPlatformModelsResponseBody,
@@ -206,6 +249,26 @@ export namespace ListPlatformModelsResponseBody$ {
   export const outboundSchema = ListPlatformModelsResponseBody$outboundSchema;
   /** @deprecated use `ListPlatformModelsResponseBody$Outbound` instead. */
   export type Outbound = ListPlatformModelsResponseBody$Outbound;
+}
+
+export function listPlatformModelsResponseBodyToJSON(
+  listPlatformModelsResponseBody: ListPlatformModelsResponseBody,
+): string {
+  return JSON.stringify(
+    ListPlatformModelsResponseBody$outboundSchema.parse(
+      listPlatformModelsResponseBody,
+    ),
+  );
+}
+
+export function listPlatformModelsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPlatformModelsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPlatformModelsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPlatformModelsResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -266,4 +329,22 @@ export namespace ListPlatformModelsResponse$ {
   export const outboundSchema = ListPlatformModelsResponse$outboundSchema;
   /** @deprecated use `ListPlatformModelsResponse$Outbound` instead. */
   export type Outbound = ListPlatformModelsResponse$Outbound;
+}
+
+export function listPlatformModelsResponseToJSON(
+  listPlatformModelsResponse: ListPlatformModelsResponse,
+): string {
+  return JSON.stringify(
+    ListPlatformModelsResponse$outboundSchema.parse(listPlatformModelsResponse),
+  );
+}
+
+export function listPlatformModelsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPlatformModelsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPlatformModelsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPlatformModelsResponse' from JSON`,
+  );
 }

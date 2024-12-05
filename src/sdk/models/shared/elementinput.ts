@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ElementInput = {
   /**
@@ -52,4 +55,18 @@ export namespace ElementInput$ {
   export const outboundSchema = ElementInput$outboundSchema;
   /** @deprecated use `ElementInput$Outbound` instead. */
   export type Outbound = ElementInput$Outbound;
+}
+
+export function elementInputToJSON(elementInput: ElementInput): string {
+  return JSON.stringify(ElementInput$outboundSchema.parse(elementInput));
+}
+
+export function elementInputFromJSON(
+  jsonString: string,
+): SafeParseResult<ElementInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ElementInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ElementInput' from JSON`,
+  );
 }

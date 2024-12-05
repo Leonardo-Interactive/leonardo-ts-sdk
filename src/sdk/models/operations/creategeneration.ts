@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -452,6 +455,26 @@ export namespace CreateGenerationRequestBody$ {
   export type Outbound = CreateGenerationRequestBody$Outbound;
 }
 
+export function createGenerationRequestBodyToJSON(
+  createGenerationRequestBody: CreateGenerationRequestBody,
+): string {
+  return JSON.stringify(
+    CreateGenerationRequestBody$outboundSchema.parse(
+      createGenerationRequestBody,
+    ),
+  );
+}
+
+export function createGenerationRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateGenerationRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateGenerationRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateGenerationRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const SDGenerationOutput$inboundSchema: z.ZodType<
   SDGenerationOutput,
@@ -491,6 +514,24 @@ export namespace SDGenerationOutput$ {
   export type Outbound = SDGenerationOutput$Outbound;
 }
 
+export function sdGenerationOutputToJSON(
+  sdGenerationOutput: SDGenerationOutput,
+): string {
+  return JSON.stringify(
+    SDGenerationOutput$outboundSchema.parse(sdGenerationOutput),
+  );
+}
+
+export function sdGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<SDGenerationOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SDGenerationOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SDGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateGenerationResponseBody$inboundSchema: z.ZodType<
   CreateGenerationResponseBody,
@@ -527,6 +568,26 @@ export namespace CreateGenerationResponseBody$ {
   export const outboundSchema = CreateGenerationResponseBody$outboundSchema;
   /** @deprecated use `CreateGenerationResponseBody$Outbound` instead. */
   export type Outbound = CreateGenerationResponseBody$Outbound;
+}
+
+export function createGenerationResponseBodyToJSON(
+  createGenerationResponseBody: CreateGenerationResponseBody,
+): string {
+  return JSON.stringify(
+    CreateGenerationResponseBody$outboundSchema.parse(
+      createGenerationResponseBody,
+    ),
+  );
+}
+
+export function createGenerationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateGenerationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateGenerationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateGenerationResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -586,4 +647,22 @@ export namespace CreateGenerationResponse$ {
   export const outboundSchema = CreateGenerationResponse$outboundSchema;
   /** @deprecated use `CreateGenerationResponse$Outbound` instead. */
   export type Outbound = CreateGenerationResponse$Outbound;
+}
+
+export function createGenerationResponseToJSON(
+  createGenerationResponse: CreateGenerationResponse,
+): string {
+  return JSON.stringify(
+    CreateGenerationResponse$outboundSchema.parse(createGenerationResponse),
+  );
+}
+
+export function createGenerationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateGenerationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateGenerationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateGenerationResponse' from JSON`,
+  );
 }

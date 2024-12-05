@@ -8,7 +8,7 @@ The services to be chosen for calculating the API credit cost.
 import { PricingCalculatorServices } from "@leonardo-ai/sdk/sdk/models/shared";
 
 let value: PricingCalculatorServices =
-  PricingCalculatorServices.FantasyAvatarGeneration;
+  PricingCalculatorServices.UniversalUpscalerUltra;
 ```
 
 ## Values

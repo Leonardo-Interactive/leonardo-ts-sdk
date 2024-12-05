@@ -7,7 +7,7 @@ import { GetUserSelfResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: GetUserSelfResponse = {
   contentType: "<value>",
-  statusCode: 501,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

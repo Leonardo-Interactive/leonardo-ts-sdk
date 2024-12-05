@@ -7,7 +7,7 @@ import { CreateSVDMotionGenerationResponse } from "@leonardo-ai/sdk/sdk/models/o
 
 let value: CreateSVDMotionGenerationResponse = {
   contentType: "<value>",
-  statusCode: 100,
+  statusCode: 501,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

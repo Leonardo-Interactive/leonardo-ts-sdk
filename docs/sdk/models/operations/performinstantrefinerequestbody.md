@@ -8,7 +8,7 @@ Query parameters can also be provided in the request body as a JSON object
 import { PerformInstantRefineRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: PerformInstantRefineRequestBody = {
-  imageDataUrl: "https://damaged-pendant.biz/",
+  imageDataUrl: "https://content-costume.info",
   prompt: "<value>",
 };
 ```

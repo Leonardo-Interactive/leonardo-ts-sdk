@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters provided in the request body as a JSON object
@@ -95,6 +98,26 @@ export namespace UploadDatasetImageRequestBody$ {
   export type Outbound = UploadDatasetImageRequestBody$Outbound;
 }
 
+export function uploadDatasetImageRequestBodyToJSON(
+  uploadDatasetImageRequestBody: UploadDatasetImageRequestBody,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageRequestBody$outboundSchema.parse(
+      uploadDatasetImageRequestBody,
+    ),
+  );
+}
+
+export function uploadDatasetImageRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDatasetImageRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadDatasetImageRequest$inboundSchema: z.ZodType<
   UploadDatasetImageRequest,
@@ -142,6 +165,24 @@ export namespace UploadDatasetImageRequest$ {
   export type Outbound = UploadDatasetImageRequest$Outbound;
 }
 
+export function uploadDatasetImageRequestToJSON(
+  uploadDatasetImageRequest: UploadDatasetImageRequest,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageRequest$outboundSchema.parse(uploadDatasetImageRequest),
+  );
+}
+
+export function uploadDatasetImageRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDatasetImageRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DatasetUploadOutput$inboundSchema: z.ZodType<
   DatasetUploadOutput,
@@ -187,6 +228,24 @@ export namespace DatasetUploadOutput$ {
   export type Outbound = DatasetUploadOutput$Outbound;
 }
 
+export function datasetUploadOutputToJSON(
+  datasetUploadOutput: DatasetUploadOutput,
+): string {
+  return JSON.stringify(
+    DatasetUploadOutput$outboundSchema.parse(datasetUploadOutput),
+  );
+}
+
+export function datasetUploadOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<DatasetUploadOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DatasetUploadOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DatasetUploadOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadDatasetImageResponseBody$inboundSchema: z.ZodType<
   UploadDatasetImageResponseBody,
@@ -225,6 +284,26 @@ export namespace UploadDatasetImageResponseBody$ {
   export const outboundSchema = UploadDatasetImageResponseBody$outboundSchema;
   /** @deprecated use `UploadDatasetImageResponseBody$Outbound` instead. */
   export type Outbound = UploadDatasetImageResponseBody$Outbound;
+}
+
+export function uploadDatasetImageResponseBodyToJSON(
+  uploadDatasetImageResponseBody: UploadDatasetImageResponseBody,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageResponseBody$outboundSchema.parse(
+      uploadDatasetImageResponseBody,
+    ),
+  );
+}
+
+export function uploadDatasetImageResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDatasetImageResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -285,4 +364,22 @@ export namespace UploadDatasetImageResponse$ {
   export const outboundSchema = UploadDatasetImageResponse$outboundSchema;
   /** @deprecated use `UploadDatasetImageResponse$Outbound` instead. */
   export type Outbound = UploadDatasetImageResponse$Outbound;
+}
+
+export function uploadDatasetImageResponseToJSON(
+  uploadDatasetImageResponse: UploadDatasetImageResponse,
+): string {
+  return JSON.stringify(
+    UploadDatasetImageResponse$outboundSchema.parse(uploadDatasetImageResponse),
+  );
+}
+
+export function uploadDatasetImageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadDatasetImageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadDatasetImageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadDatasetImageResponse' from JSON`,
+  );
 }

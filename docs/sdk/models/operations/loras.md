@@ -1,6 +1,6 @@
 # Loras
 
-columns and relationships of "elements"
+columns and relationships of "elements".
 
 ## Example Usage
 

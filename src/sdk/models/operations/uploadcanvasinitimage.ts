@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters provided in the request body as a JSON object
@@ -95,6 +98,26 @@ export namespace UploadCanvasInitImageRequestBody$ {
   export type Outbound = UploadCanvasInitImageRequestBody$Outbound;
 }
 
+export function uploadCanvasInitImageRequestBodyToJSON(
+  uploadCanvasInitImageRequestBody: UploadCanvasInitImageRequestBody,
+): string {
+  return JSON.stringify(
+    UploadCanvasInitImageRequestBody$outboundSchema.parse(
+      uploadCanvasInitImageRequestBody,
+    ),
+  );
+}
+
+export function uploadCanvasInitImageRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadCanvasInitImageRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadCanvasInitImageRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadCanvasInitImageRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CanvasInitImageUploadOutput$inboundSchema: z.ZodType<
   CanvasInitImageUploadOutput,
@@ -152,6 +175,26 @@ export namespace CanvasInitImageUploadOutput$ {
   export type Outbound = CanvasInitImageUploadOutput$Outbound;
 }
 
+export function canvasInitImageUploadOutputToJSON(
+  canvasInitImageUploadOutput: CanvasInitImageUploadOutput,
+): string {
+  return JSON.stringify(
+    CanvasInitImageUploadOutput$outboundSchema.parse(
+      canvasInitImageUploadOutput,
+    ),
+  );
+}
+
+export function canvasInitImageUploadOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<CanvasInitImageUploadOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CanvasInitImageUploadOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CanvasInitImageUploadOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadCanvasInitImageResponseBody$inboundSchema: z.ZodType<
   UploadCanvasInitImageResponseBody,
@@ -194,6 +237,26 @@ export namespace UploadCanvasInitImageResponseBody$ {
     UploadCanvasInitImageResponseBody$outboundSchema;
   /** @deprecated use `UploadCanvasInitImageResponseBody$Outbound` instead. */
   export type Outbound = UploadCanvasInitImageResponseBody$Outbound;
+}
+
+export function uploadCanvasInitImageResponseBodyToJSON(
+  uploadCanvasInitImageResponseBody: UploadCanvasInitImageResponseBody,
+): string {
+  return JSON.stringify(
+    UploadCanvasInitImageResponseBody$outboundSchema.parse(
+      uploadCanvasInitImageResponseBody,
+    ),
+  );
+}
+
+export function uploadCanvasInitImageResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadCanvasInitImageResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadCanvasInitImageResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadCanvasInitImageResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -255,4 +318,24 @@ export namespace UploadCanvasInitImageResponse$ {
   export const outboundSchema = UploadCanvasInitImageResponse$outboundSchema;
   /** @deprecated use `UploadCanvasInitImageResponse$Outbound` instead. */
   export type Outbound = UploadCanvasInitImageResponse$Outbound;
+}
+
+export function uploadCanvasInitImageResponseToJSON(
+  uploadCanvasInitImageResponse: UploadCanvasInitImageResponse,
+): string {
+  return JSON.stringify(
+    UploadCanvasInitImageResponse$outboundSchema.parse(
+      uploadCanvasInitImageResponse,
+    ),
+  );
+}
+
+export function uploadCanvasInitImageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadCanvasInitImageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadCanvasInitImageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadCanvasInitImageResponse' from JSON`,
+  );
 }

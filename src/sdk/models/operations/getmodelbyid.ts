@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetModelByIdRequest = {
@@ -105,6 +108,24 @@ export namespace GetModelByIdRequest$ {
   export type Outbound = GetModelByIdRequest$Outbound;
 }
 
+export function getModelByIdRequestToJSON(
+  getModelByIdRequest: GetModelByIdRequest,
+): string {
+  return JSON.stringify(
+    GetModelByIdRequest$outboundSchema.parse(getModelByIdRequest),
+  );
+}
+
+export function getModelByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetModelByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetModelByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetModelByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetModelByIdCustomModels$inboundSchema: z.ZodType<
   GetModelByIdCustomModels,
@@ -178,6 +199,24 @@ export namespace GetModelByIdCustomModels$ {
   export type Outbound = GetModelByIdCustomModels$Outbound;
 }
 
+export function getModelByIdCustomModelsToJSON(
+  getModelByIdCustomModels: GetModelByIdCustomModels,
+): string {
+  return JSON.stringify(
+    GetModelByIdCustomModels$outboundSchema.parse(getModelByIdCustomModels),
+  );
+}
+
+export function getModelByIdCustomModelsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetModelByIdCustomModels, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetModelByIdCustomModels$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetModelByIdCustomModels' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetModelByIdResponseBody$inboundSchema: z.ZodType<
   GetModelByIdResponseBody,
@@ -224,6 +263,24 @@ export namespace GetModelByIdResponseBody$ {
   export const outboundSchema = GetModelByIdResponseBody$outboundSchema;
   /** @deprecated use `GetModelByIdResponseBody$Outbound` instead. */
   export type Outbound = GetModelByIdResponseBody$Outbound;
+}
+
+export function getModelByIdResponseBodyToJSON(
+  getModelByIdResponseBody: GetModelByIdResponseBody,
+): string {
+  return JSON.stringify(
+    GetModelByIdResponseBody$outboundSchema.parse(getModelByIdResponseBody),
+  );
+}
+
+export function getModelByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetModelByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetModelByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetModelByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -283,4 +340,22 @@ export namespace GetModelByIdResponse$ {
   export const outboundSchema = GetModelByIdResponse$outboundSchema;
   /** @deprecated use `GetModelByIdResponse$Outbound` instead. */
   export type Outbound = GetModelByIdResponse$Outbound;
+}
+
+export function getModelByIdResponseToJSON(
+  getModelByIdResponse: GetModelByIdResponse,
+): string {
+  return JSON.stringify(
+    GetModelByIdResponse$outboundSchema.parse(getModelByIdResponse),
+  );
+}
+
+export function getModelByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetModelByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetModelByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetModelByIdResponse' from JSON`,
+  );
 }

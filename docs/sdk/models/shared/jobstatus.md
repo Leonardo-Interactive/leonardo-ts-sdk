@@ -7,7 +7,7 @@ The status of the current task.
 ```typescript
 import { JobStatus } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: JobStatus = JobStatus.Failed;
+let value: JobStatus = JobStatus.Complete;
 ```
 
 ## Values

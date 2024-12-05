@@ -3,6 +3,7 @@
  */
 
 export * from "./createdataset.js";
+export * from "./createelement.js";
 export * from "./creategeneration.js";
 export * from "./createlcmgeneration.js";
 export * from "./createmodel.js";
@@ -14,11 +15,13 @@ export * from "./createvariationunzoom.js";
 export * from "./createvariationupscale.js";
 export * from "./delete3dmodelbyid.js";
 export * from "./deletedatasetbyid.js";
+export * from "./deleteelementbyid.js";
 export * from "./deletegenerationbyid.js";
 export * from "./deleteinitimagebyid.js";
 export * from "./deletemodelbyid.js";
 export * from "./deletetexturegenerationbyid.js";
 export * from "./getdatasetbyid.js";
+export * from "./getelementbyid.js";
 export * from "./getgenerationbyid.js";
 export * from "./getgenerationsbyuserid.js";
 export * from "./getinitimagebyid.js";

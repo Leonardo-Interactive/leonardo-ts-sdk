@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters to be provided in the request body as a JSON object
@@ -94,6 +97,24 @@ export namespace CreateDatasetRequestBody$ {
   export type Outbound = CreateDatasetRequestBody$Outbound;
 }
 
+export function createDatasetRequestBodyToJSON(
+  createDatasetRequestBody: CreateDatasetRequestBody,
+): string {
+  return JSON.stringify(
+    CreateDatasetRequestBody$outboundSchema.parse(createDatasetRequestBody),
+  );
+}
+
+export function createDatasetRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDatasetRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDatasetRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDatasetRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const Datasets$inboundSchema: z.ZodType<
   Datasets,
@@ -128,6 +149,20 @@ export namespace Datasets$ {
   export const outboundSchema = Datasets$outboundSchema;
   /** @deprecated use `Datasets$Outbound` instead. */
   export type Outbound = Datasets$Outbound;
+}
+
+export function datasetsToJSON(datasets: Datasets): string {
+  return JSON.stringify(Datasets$outboundSchema.parse(datasets));
+}
+
+export function datasetsFromJSON(
+  jsonString: string,
+): SafeParseResult<Datasets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Datasets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Datasets' from JSON`,
+  );
 }
 
 /** @internal */
@@ -174,6 +209,24 @@ export namespace CreateDatasetResponseBody$ {
   export const outboundSchema = CreateDatasetResponseBody$outboundSchema;
   /** @deprecated use `CreateDatasetResponseBody$Outbound` instead. */
   export type Outbound = CreateDatasetResponseBody$Outbound;
+}
+
+export function createDatasetResponseBodyToJSON(
+  createDatasetResponseBody: CreateDatasetResponseBody,
+): string {
+  return JSON.stringify(
+    CreateDatasetResponseBody$outboundSchema.parse(createDatasetResponseBody),
+  );
+}
+
+export function createDatasetResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDatasetResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDatasetResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDatasetResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -233,4 +286,22 @@ export namespace CreateDatasetResponse$ {
   export const outboundSchema = CreateDatasetResponse$outboundSchema;
   /** @deprecated use `CreateDatasetResponse$Outbound` instead. */
   export type Outbound = CreateDatasetResponse$Outbound;
+}
+
+export function createDatasetResponseToJSON(
+  createDatasetResponse: CreateDatasetResponse,
+): string {
+  return JSON.stringify(
+    CreateDatasetResponse$outboundSchema.parse(createDatasetResponse),
+  );
+}
+
+export function createDatasetResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDatasetResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDatasetResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDatasetResponse' from JSON`,
+  );
 }

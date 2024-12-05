@@ -7,7 +7,7 @@ The style to generate images with. When photoReal is enabled, refer to the Guide
 ```typescript
 import { SdGenerationStyle } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: SdGenerationStyle = SdGenerationStyle.Retro;
+let value: SdGenerationStyle = SdGenerationStyle.Monochrome;
 ```
 
 ## Values

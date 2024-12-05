@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -151,6 +154,26 @@ export namespace PerformInpaintingLCMRequestBody$ {
   export type Outbound = PerformInpaintingLCMRequestBody$Outbound;
 }
 
+export function performInpaintingLCMRequestBodyToJSON(
+  performInpaintingLCMRequestBody: PerformInpaintingLCMRequestBody,
+): string {
+  return JSON.stringify(
+    PerformInpaintingLCMRequestBody$outboundSchema.parse(
+      performInpaintingLCMRequestBody,
+    ),
+  );
+}
+
+export function performInpaintingLCMRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformInpaintingLCMRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformInpaintingLCMRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformInpaintingLCMRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const PerformInpaintingLCMLCMGenerationOutput$inboundSchema: z.ZodType<
   PerformInpaintingLCMLCMGenerationOutput,
@@ -195,6 +218,33 @@ export namespace PerformInpaintingLCMLCMGenerationOutput$ {
   export type Outbound = PerformInpaintingLCMLCMGenerationOutput$Outbound;
 }
 
+export function performInpaintingLCMLCMGenerationOutputToJSON(
+  performInpaintingLCMLCMGenerationOutput:
+    PerformInpaintingLCMLCMGenerationOutput,
+): string {
+  return JSON.stringify(
+    PerformInpaintingLCMLCMGenerationOutput$outboundSchema.parse(
+      performInpaintingLCMLCMGenerationOutput,
+    ),
+  );
+}
+
+export function performInpaintingLCMLCMGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PerformInpaintingLCMLCMGenerationOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PerformInpaintingLCMLCMGenerationOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PerformInpaintingLCMLCMGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const PerformInpaintingLCMResponseBody$inboundSchema: z.ZodType<
   PerformInpaintingLCMResponseBody,
@@ -236,6 +286,26 @@ export namespace PerformInpaintingLCMResponseBody$ {
   export const outboundSchema = PerformInpaintingLCMResponseBody$outboundSchema;
   /** @deprecated use `PerformInpaintingLCMResponseBody$Outbound` instead. */
   export type Outbound = PerformInpaintingLCMResponseBody$Outbound;
+}
+
+export function performInpaintingLCMResponseBodyToJSON(
+  performInpaintingLCMResponseBody: PerformInpaintingLCMResponseBody,
+): string {
+  return JSON.stringify(
+    PerformInpaintingLCMResponseBody$outboundSchema.parse(
+      performInpaintingLCMResponseBody,
+    ),
+  );
+}
+
+export function performInpaintingLCMResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformInpaintingLCMResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformInpaintingLCMResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformInpaintingLCMResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -297,4 +367,24 @@ export namespace PerformInpaintingLCMResponse$ {
   export const outboundSchema = PerformInpaintingLCMResponse$outboundSchema;
   /** @deprecated use `PerformInpaintingLCMResponse$Outbound` instead. */
   export type Outbound = PerformInpaintingLCMResponse$Outbound;
+}
+
+export function performInpaintingLCMResponseToJSON(
+  performInpaintingLCMResponse: PerformInpaintingLCMResponse,
+): string {
+  return JSON.stringify(
+    PerformInpaintingLCMResponse$outboundSchema.parse(
+      performInpaintingLCMResponse,
+    ),
+  );
+}
+
+export function performInpaintingLCMResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformInpaintingLCMResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformInpaintingLCMResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformInpaintingLCMResponse' from JSON`,
+  );
 }

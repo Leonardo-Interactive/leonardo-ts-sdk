@@ -14,3 +14,7 @@ targets:
         publish:
             npm:
                 token: $NPM_TOKEN
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/leonardo-ai/leonardo-ai/my-source-typescript-code-samples
+            blocking: false

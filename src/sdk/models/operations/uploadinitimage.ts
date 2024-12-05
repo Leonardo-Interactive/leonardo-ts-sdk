@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters provided in the request body as a JSON object
@@ -84,6 +87,24 @@ export namespace UploadInitImageRequestBody$ {
   export type Outbound = UploadInitImageRequestBody$Outbound;
 }
 
+export function uploadInitImageRequestBodyToJSON(
+  uploadInitImageRequestBody: UploadInitImageRequestBody,
+): string {
+  return JSON.stringify(
+    UploadInitImageRequestBody$outboundSchema.parse(uploadInitImageRequestBody),
+  );
+}
+
+export function uploadInitImageRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadInitImageRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadInitImageRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadInitImageRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const InitImageUploadOutput$inboundSchema: z.ZodType<
   InitImageUploadOutput,
@@ -129,6 +150,24 @@ export namespace InitImageUploadOutput$ {
   export type Outbound = InitImageUploadOutput$Outbound;
 }
 
+export function initImageUploadOutputToJSON(
+  initImageUploadOutput: InitImageUploadOutput,
+): string {
+  return JSON.stringify(
+    InitImageUploadOutput$outboundSchema.parse(initImageUploadOutput),
+  );
+}
+
+export function initImageUploadOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<InitImageUploadOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InitImageUploadOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InitImageUploadOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadInitImageResponseBody$inboundSchema: z.ZodType<
   UploadInitImageResponseBody,
@@ -166,6 +205,26 @@ export namespace UploadInitImageResponseBody$ {
   export const outboundSchema = UploadInitImageResponseBody$outboundSchema;
   /** @deprecated use `UploadInitImageResponseBody$Outbound` instead. */
   export type Outbound = UploadInitImageResponseBody$Outbound;
+}
+
+export function uploadInitImageResponseBodyToJSON(
+  uploadInitImageResponseBody: UploadInitImageResponseBody,
+): string {
+  return JSON.stringify(
+    UploadInitImageResponseBody$outboundSchema.parse(
+      uploadInitImageResponseBody,
+    ),
+  );
+}
+
+export function uploadInitImageResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadInitImageResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadInitImageResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadInitImageResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -225,4 +284,22 @@ export namespace UploadInitImageResponse$ {
   export const outboundSchema = UploadInitImageResponse$outboundSchema;
   /** @deprecated use `UploadInitImageResponse$Outbound` instead. */
   export type Outbound = UploadInitImageResponse$Outbound;
+}
+
+export function uploadInitImageResponseToJSON(
+  uploadInitImageResponse: UploadInitImageResponse,
+): string {
+  return JSON.stringify(
+    UploadInitImageResponse$outboundSchema.parse(uploadInitImageResponse),
+  );
+}
+
+export function uploadInitImageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadInitImageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadInitImageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadInitImageResponse' from JSON`,
+  );
 }

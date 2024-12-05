@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetGenerationsByUserIdRequest = {
@@ -241,6 +244,26 @@ export namespace GetGenerationsByUserIdRequest$ {
   export type Outbound = GetGenerationsByUserIdRequest$Outbound;
 }
 
+export function getGenerationsByUserIdRequestToJSON(
+  getGenerationsByUserIdRequest: GetGenerationsByUserIdRequest,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdRequest$outboundSchema.parse(
+      getGenerationsByUserIdRequest,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationsByUserIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationsByUserIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationsByUserIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetGenerationsByUserIdGeneratedImageVariationGeneric$inboundSchema:
   z.ZodType<
@@ -289,6 +312,33 @@ export namespace GetGenerationsByUserIdGeneratedImageVariationGeneric$ {
   /** @deprecated use `GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound` instead. */
   export type Outbound =
     GetGenerationsByUserIdGeneratedImageVariationGeneric$Outbound;
+}
+
+export function getGenerationsByUserIdGeneratedImageVariationGenericToJSON(
+  getGenerationsByUserIdGeneratedImageVariationGeneric:
+    GetGenerationsByUserIdGeneratedImageVariationGeneric,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdGeneratedImageVariationGeneric$outboundSchema.parse(
+      getGenerationsByUserIdGeneratedImageVariationGeneric,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdGeneratedImageVariationGenericFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetGenerationsByUserIdGeneratedImageVariationGeneric,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetGenerationsByUserIdGeneratedImageVariationGeneric$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetGenerationsByUserIdGeneratedImageVariationGeneric' from JSON`,
+  );
 }
 
 /** @internal */
@@ -376,6 +426,27 @@ export namespace GetGenerationsByUserIdGeneratedImages$ {
   export type Outbound = GetGenerationsByUserIdGeneratedImages$Outbound;
 }
 
+export function getGenerationsByUserIdGeneratedImagesToJSON(
+  getGenerationsByUserIdGeneratedImages: GetGenerationsByUserIdGeneratedImages,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdGeneratedImages$outboundSchema.parse(
+      getGenerationsByUserIdGeneratedImages,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdGeneratedImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationsByUserIdGeneratedImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetGenerationsByUserIdGeneratedImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationsByUserIdGeneratedImages' from JSON`,
+  );
+}
+
 /** @internal */
 export const Elements$inboundSchema: z.ZodType<
   Elements,
@@ -433,6 +504,20 @@ export namespace Elements$ {
   export type Outbound = Elements$Outbound;
 }
 
+export function elementsToJSON(elements: Elements): string {
+  return JSON.stringify(Elements$outboundSchema.parse(elements));
+}
+
+export function elementsFromJSON(
+  jsonString: string,
+): SafeParseResult<Elements, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Elements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Elements' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetGenerationsByUserIdGenerationElements$inboundSchema: z.ZodType<
   GetGenerationsByUserIdGenerationElements,
@@ -475,6 +560,33 @@ export namespace GetGenerationsByUserIdGenerationElements$ {
     GetGenerationsByUserIdGenerationElements$outboundSchema;
   /** @deprecated use `GetGenerationsByUserIdGenerationElements$Outbound` instead. */
   export type Outbound = GetGenerationsByUserIdGenerationElements$Outbound;
+}
+
+export function getGenerationsByUserIdGenerationElementsToJSON(
+  getGenerationsByUserIdGenerationElements:
+    GetGenerationsByUserIdGenerationElements,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdGenerationElements$outboundSchema.parse(
+      getGenerationsByUserIdGenerationElements,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdGenerationElementsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetGenerationsByUserIdGenerationElements,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetGenerationsByUserIdGenerationElements$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetGenerationsByUserIdGenerationElements' from JSON`,
+  );
 }
 
 /** @internal */
@@ -613,6 +725,26 @@ export namespace GetGenerationsByUserIdGenerations$ {
   export type Outbound = GetGenerationsByUserIdGenerations$Outbound;
 }
 
+export function getGenerationsByUserIdGenerationsToJSON(
+  getGenerationsByUserIdGenerations: GetGenerationsByUserIdGenerations,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdGenerations$outboundSchema.parse(
+      getGenerationsByUserIdGenerations,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdGenerationsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationsByUserIdGenerations, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationsByUserIdGenerations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationsByUserIdGenerations' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetGenerationsByUserIdResponseBody$inboundSchema: z.ZodType<
   GetGenerationsByUserIdResponseBody,
@@ -652,6 +784,27 @@ export namespace GetGenerationsByUserIdResponseBody$ {
     GetGenerationsByUserIdResponseBody$outboundSchema;
   /** @deprecated use `GetGenerationsByUserIdResponseBody$Outbound` instead. */
   export type Outbound = GetGenerationsByUserIdResponseBody$Outbound;
+}
+
+export function getGenerationsByUserIdResponseBodyToJSON(
+  getGenerationsByUserIdResponseBody: GetGenerationsByUserIdResponseBody,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdResponseBody$outboundSchema.parse(
+      getGenerationsByUserIdResponseBody,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationsByUserIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetGenerationsByUserIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationsByUserIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -713,4 +866,24 @@ export namespace GetGenerationsByUserIdResponse$ {
   export const outboundSchema = GetGenerationsByUserIdResponse$outboundSchema;
   /** @deprecated use `GetGenerationsByUserIdResponse$Outbound` instead. */
   export type Outbound = GetGenerationsByUserIdResponse$Outbound;
+}
+
+export function getGenerationsByUserIdResponseToJSON(
+  getGenerationsByUserIdResponse: GetGenerationsByUserIdResponse,
+): string {
+  return JSON.stringify(
+    GetGenerationsByUserIdResponse$outboundSchema.parse(
+      getGenerationsByUserIdResponse,
+    ),
+  );
+}
+
+export function getGenerationsByUserIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationsByUserIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationsByUserIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationsByUserIdResponse' from JSON`,
+  );
 }

@@ -4,10 +4,13 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * columns and relationships of "elements"
+ * columns and relationships of "elements".
  */
 export type Loras = {
   /**
@@ -49,7 +52,7 @@ export type Loras = {
 };
 
 /**
- * Responses for GET /api/rest/v1/elements
+ * Responses for GET /api/rest/v1/elements.
  */
 export type ListElementsResponseBody = {
   loras?: Array<Loras> | undefined;
@@ -69,7 +72,7 @@ export type ListElementsResponse = {
    */
   rawResponse: Response;
   /**
-   * Responses for GET /api/rest/v1/elements
+   * Responses for GET /api/rest/v1/elements.
    */
   object?: ListElementsResponseBody | undefined;
 };
@@ -131,6 +134,20 @@ export namespace Loras$ {
   export type Outbound = Loras$Outbound;
 }
 
+export function lorasToJSON(loras: Loras): string {
+  return JSON.stringify(Loras$outboundSchema.parse(loras));
+}
+
+export function lorasFromJSON(
+  jsonString: string,
+): SafeParseResult<Loras, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Loras$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Loras' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListElementsResponseBody$inboundSchema: z.ZodType<
   ListElementsResponseBody,
@@ -165,6 +182,24 @@ export namespace ListElementsResponseBody$ {
   export const outboundSchema = ListElementsResponseBody$outboundSchema;
   /** @deprecated use `ListElementsResponseBody$Outbound` instead. */
   export type Outbound = ListElementsResponseBody$Outbound;
+}
+
+export function listElementsResponseBodyToJSON(
+  listElementsResponseBody: ListElementsResponseBody,
+): string {
+  return JSON.stringify(
+    ListElementsResponseBody$outboundSchema.parse(listElementsResponseBody),
+  );
+}
+
+export function listElementsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListElementsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListElementsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListElementsResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -224,4 +259,22 @@ export namespace ListElementsResponse$ {
   export const outboundSchema = ListElementsResponse$outboundSchema;
   /** @deprecated use `ListElementsResponse$Outbound` instead. */
   export type Outbound = ListElementsResponse$Outbound;
+}
+
+export function listElementsResponseToJSON(
+  listElementsResponse: ListElementsResponse,
+): string {
+  return JSON.stringify(
+    ListElementsResponse$outboundSchema.parse(listElementsResponse),
+  );
+}
+
+export function listElementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListElementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListElementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListElementsResponse' from JSON`,
+  );
 }

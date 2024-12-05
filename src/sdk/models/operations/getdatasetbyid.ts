@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDatasetByIdRequest = {
   /**
@@ -98,6 +101,24 @@ export namespace GetDatasetByIdRequest$ {
   export type Outbound = GetDatasetByIdRequest$Outbound;
 }
 
+export function getDatasetByIdRequestToJSON(
+  getDatasetByIdRequest: GetDatasetByIdRequest,
+): string {
+  return JSON.stringify(
+    GetDatasetByIdRequest$outboundSchema.parse(getDatasetByIdRequest),
+  );
+}
+
+export function getDatasetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDatasetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDatasetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDatasetByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DatasetImages$inboundSchema: z.ZodType<
   DatasetImages,
@@ -138,6 +159,20 @@ export namespace DatasetImages$ {
   export const outboundSchema = DatasetImages$outboundSchema;
   /** @deprecated use `DatasetImages$Outbound` instead. */
   export type Outbound = DatasetImages$Outbound;
+}
+
+export function datasetImagesToJSON(datasetImages: DatasetImages): string {
+  return JSON.stringify(DatasetImages$outboundSchema.parse(datasetImages));
+}
+
+export function datasetImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<DatasetImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DatasetImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DatasetImages' from JSON`,
+  );
 }
 
 /** @internal */
@@ -199,6 +234,24 @@ export namespace GetDatasetByIdDatasets$ {
   export type Outbound = GetDatasetByIdDatasets$Outbound;
 }
 
+export function getDatasetByIdDatasetsToJSON(
+  getDatasetByIdDatasets: GetDatasetByIdDatasets,
+): string {
+  return JSON.stringify(
+    GetDatasetByIdDatasets$outboundSchema.parse(getDatasetByIdDatasets),
+  );
+}
+
+export function getDatasetByIdDatasetsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDatasetByIdDatasets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDatasetByIdDatasets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDatasetByIdDatasets' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetDatasetByIdResponseBody$inboundSchema: z.ZodType<
   GetDatasetByIdResponseBody,
@@ -243,6 +296,24 @@ export namespace GetDatasetByIdResponseBody$ {
   export const outboundSchema = GetDatasetByIdResponseBody$outboundSchema;
   /** @deprecated use `GetDatasetByIdResponseBody$Outbound` instead. */
   export type Outbound = GetDatasetByIdResponseBody$Outbound;
+}
+
+export function getDatasetByIdResponseBodyToJSON(
+  getDatasetByIdResponseBody: GetDatasetByIdResponseBody,
+): string {
+  return JSON.stringify(
+    GetDatasetByIdResponseBody$outboundSchema.parse(getDatasetByIdResponseBody),
+  );
+}
+
+export function getDatasetByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDatasetByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDatasetByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDatasetByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -302,4 +373,22 @@ export namespace GetDatasetByIdResponse$ {
   export const outboundSchema = GetDatasetByIdResponse$outboundSchema;
   /** @deprecated use `GetDatasetByIdResponse$Outbound` instead. */
   export type Outbound = GetDatasetByIdResponse$Outbound;
+}
+
+export function getDatasetByIdResponseToJSON(
+  getDatasetByIdResponse: GetDatasetByIdResponse,
+): string {
+  return JSON.stringify(
+    GetDatasetByIdResponse$outboundSchema.parse(getDatasetByIdResponse),
+  );
+}
+
+export function getDatasetByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDatasetByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDatasetByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDatasetByIdResponse' from JSON`,
+  );
 }

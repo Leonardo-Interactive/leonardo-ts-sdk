@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * columns and relationships of "users"
@@ -124,6 +127,20 @@ export namespace Users$ {
   export type Outbound = Users$Outbound;
 }
 
+export function usersToJSON(users: Users): string {
+  return JSON.stringify(Users$outboundSchema.parse(users));
+}
+
+export function usersFromJSON(
+  jsonString: string,
+): SafeParseResult<Users, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Users$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Users' from JSON`,
+  );
+}
+
 /** @internal */
 export const UserDetails$inboundSchema: z.ZodType<
   UserDetails,
@@ -187,6 +204,20 @@ export namespace UserDetails$ {
   export type Outbound = UserDetails$Outbound;
 }
 
+export function userDetailsToJSON(userDetails: UserDetails): string {
+  return JSON.stringify(UserDetails$outboundSchema.parse(userDetails));
+}
+
+export function userDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<UserDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetUserSelfResponseBody$inboundSchema: z.ZodType<
   GetUserSelfResponseBody,
@@ -229,6 +260,24 @@ export namespace GetUserSelfResponseBody$ {
   export const outboundSchema = GetUserSelfResponseBody$outboundSchema;
   /** @deprecated use `GetUserSelfResponseBody$Outbound` instead. */
   export type Outbound = GetUserSelfResponseBody$Outbound;
+}
+
+export function getUserSelfResponseBodyToJSON(
+  getUserSelfResponseBody: GetUserSelfResponseBody,
+): string {
+  return JSON.stringify(
+    GetUserSelfResponseBody$outboundSchema.parse(getUserSelfResponseBody),
+  );
+}
+
+export function getUserSelfResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUserSelfResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUserSelfResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUserSelfResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -288,4 +337,22 @@ export namespace GetUserSelfResponse$ {
   export const outboundSchema = GetUserSelfResponse$outboundSchema;
   /** @deprecated use `GetUserSelfResponse$Outbound` instead. */
   export type Outbound = GetUserSelfResponse$Outbound;
+}
+
+export function getUserSelfResponseToJSON(
+  getUserSelfResponse: GetUserSelfResponse,
+): string {
+  return JSON.stringify(
+    GetUserSelfResponse$outboundSchema.parse(getUserSelfResponse),
+  );
+}
+
+export function getUserSelfResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUserSelfResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUserSelfResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUserSelfResponse' from JSON`,
+  );
 }

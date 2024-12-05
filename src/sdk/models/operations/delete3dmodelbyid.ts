@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters can also be provided in the request body as a JSON object
@@ -95,6 +98,26 @@ export namespace Delete3DModelByIdRequestBody$ {
   export type Outbound = Delete3DModelByIdRequestBody$Outbound;
 }
 
+export function delete3DModelByIdRequestBodyToJSON(
+  delete3DModelByIdRequestBody: Delete3DModelByIdRequestBody,
+): string {
+  return JSON.stringify(
+    Delete3DModelByIdRequestBody$outboundSchema.parse(
+      delete3DModelByIdRequestBody,
+    ),
+  );
+}
+
+export function delete3DModelByIdRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<Delete3DModelByIdRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Delete3DModelByIdRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delete3DModelByIdRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const Delete3DModelByIdRequest$inboundSchema: z.ZodType<
   Delete3DModelByIdRequest,
@@ -144,6 +167,24 @@ export namespace Delete3DModelByIdRequest$ {
   export type Outbound = Delete3DModelByIdRequest$Outbound;
 }
 
+export function delete3DModelByIdRequestToJSON(
+  delete3DModelByIdRequest: Delete3DModelByIdRequest,
+): string {
+  return JSON.stringify(
+    Delete3DModelByIdRequest$outboundSchema.parse(delete3DModelByIdRequest),
+  );
+}
+
+export function delete3DModelByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<Delete3DModelByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Delete3DModelByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delete3DModelByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ModelAssets$inboundSchema: z.ZodType<
   ModelAssets,
@@ -178,6 +219,20 @@ export namespace ModelAssets$ {
   export const outboundSchema = ModelAssets$outboundSchema;
   /** @deprecated use `ModelAssets$Outbound` instead. */
   export type Outbound = ModelAssets$Outbound;
+}
+
+export function modelAssetsToJSON(modelAssets: ModelAssets): string {
+  return JSON.stringify(ModelAssets$outboundSchema.parse(modelAssets));
+}
+
+export function modelAssetsFromJSON(
+  jsonString: string,
+): SafeParseResult<ModelAssets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ModelAssets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ModelAssets' from JSON`,
+  );
 }
 
 /** @internal */
@@ -224,6 +279,26 @@ export namespace Delete3DModelByIdResponseBody$ {
   export const outboundSchema = Delete3DModelByIdResponseBody$outboundSchema;
   /** @deprecated use `Delete3DModelByIdResponseBody$Outbound` instead. */
   export type Outbound = Delete3DModelByIdResponseBody$Outbound;
+}
+
+export function delete3DModelByIdResponseBodyToJSON(
+  delete3DModelByIdResponseBody: Delete3DModelByIdResponseBody,
+): string {
+  return JSON.stringify(
+    Delete3DModelByIdResponseBody$outboundSchema.parse(
+      delete3DModelByIdResponseBody,
+    ),
+  );
+}
+
+export function delete3DModelByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<Delete3DModelByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Delete3DModelByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delete3DModelByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -283,4 +358,22 @@ export namespace Delete3DModelByIdResponse$ {
   export const outboundSchema = Delete3DModelByIdResponse$outboundSchema;
   /** @deprecated use `Delete3DModelByIdResponse$Outbound` instead. */
   export type Outbound = Delete3DModelByIdResponse$Outbound;
+}
+
+export function delete3DModelByIdResponseToJSON(
+  delete3DModelByIdResponse: Delete3DModelByIdResponse,
+): string {
+  return JSON.stringify(
+    Delete3DModelByIdResponse$outboundSchema.parse(delete3DModelByIdResponse),
+  );
+}
+
+export function delete3DModelByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<Delete3DModelByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Delete3DModelByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delete3DModelByIdResponse' from JSON`,
+  );
 }

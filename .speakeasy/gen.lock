@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 588dbc24f8067737fe66a440c824796b
+  docChecksum: 0ebe374a20152b66b70baa53d8da3358
   docVersion: v1.0.0
-  speakeasyVersion: 1.411.1
-  generationVersion: 2.436.1
-  releaseVersion: 4.18.1
-  configChecksum: cdf7fa51a35ce59fa23d6bbb1bd19263
+  speakeasyVersion: 1.451.6
+  generationVersion: 2.471.2
+  releaseVersion: 4.19.0
+  configChecksum: 6057f9d5f9228396fee0a88ee86382f9
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -15,12 +15,12 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.2
+    core: 3.18.8
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
-    envVarSecurityUsage: 0.1.1
+    envVarSecurityUsage: 0.1.2
     flattening: 2.82.0
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
@@ -29,7 +29,7 @@ features:
     nullables: 0.1.0
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
+    sdkHooks: 0.2.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -47,6 +47,9 @@ generatedFiles:
   - docs/sdk/models/operations/createdatasetrequestbody.md
   - docs/sdk/models/operations/createdatasetresponse.md
   - docs/sdk/models/operations/createdatasetresponsebody.md
+  - docs/sdk/models/operations/createelementrequestbody.md
+  - docs/sdk/models/operations/createelementresponse.md
+  - docs/sdk/models/operations/createelementresponsebody.md
   - docs/sdk/models/operations/creategenerationrequestbody.md
   - docs/sdk/models/operations/creategenerationresponse.md
   - docs/sdk/models/operations/creategenerationresponsebody.md
@@ -56,6 +59,7 @@ generatedFiles:
   - docs/sdk/models/operations/createmodelrequestbody.md
   - docs/sdk/models/operations/createmodelresponse.md
   - docs/sdk/models/operations/createmodelresponsebody.md
+  - docs/sdk/models/operations/createmodelsdtrainingoutput.md
   - docs/sdk/models/operations/createsvdmotiongenerationrequestbody.md
   - docs/sdk/models/operations/createsvdmotiongenerationresponse.md
   - docs/sdk/models/operations/createsvdmotiongenerationresponsebody.md
@@ -88,6 +92,9 @@ generatedFiles:
   - docs/sdk/models/operations/deletedatasetbyidrequest.md
   - docs/sdk/models/operations/deletedatasetbyidresponse.md
   - docs/sdk/models/operations/deletedatasetbyidresponsebody.md
+  - docs/sdk/models/operations/deleteelementbyidrequest.md
+  - docs/sdk/models/operations/deleteelementbyidresponse.md
+  - docs/sdk/models/operations/deleteelementbyidresponsebody.md
   - docs/sdk/models/operations/deletegenerationbyidrequest.md
   - docs/sdk/models/operations/deletegenerationbyidresponse.md
   - docs/sdk/models/operations/deletegenerationbyidresponsebody.md
@@ -110,6 +117,10 @@ generatedFiles:
   - docs/sdk/models/operations/getdatasetbyidrequest.md
   - docs/sdk/models/operations/getdatasetbyidresponse.md
   - docs/sdk/models/operations/getdatasetbyidresponsebody.md
+  - docs/sdk/models/operations/getelementbyidrequest.md
+  - docs/sdk/models/operations/getelementbyidresponse.md
+  - docs/sdk/models/operations/getelementbyidresponsebody.md
+  - docs/sdk/models/operations/getelementbyiduserloras.md
   - docs/sdk/models/operations/getgenerationbyidgeneratedimagevariationgeneric.md
   - docs/sdk/models/operations/getgenerationbyidgenerations.md
   - docs/sdk/models/operations/getgenerationbyidloras.md
@@ -206,6 +217,7 @@ generatedFiles:
   - docs/sdk/models/operations/uploadmodelassetresponse.md
   - docs/sdk/models/operations/uploadmodelassetresponsebody.md
   - docs/sdk/models/operations/userdetails.md
+  - docs/sdk/models/operations/userloras.md
   - docs/sdk/models/operations/users.md
   - docs/sdk/models/shared/canvasrequesttype.md
   - docs/sdk/models/shared/controlnetinput.md
@@ -247,6 +259,9 @@ generatedFiles:
   - src/funcs/datasetGetDatasetById.ts
   - src/funcs/datasetUploadDatasetImage.ts
   - src/funcs/datasetUploadDatasetImageFromGen.ts
+  - src/funcs/elementsCreateElement.ts
+  - src/funcs/elementsDeleteElementById.ts
+  - src/funcs/elementsGetElementById.ts
   - src/funcs/elementsListElements.ts
   - src/funcs/imageCreateGeneration.ts
   - src/funcs/imageDeleteGenerationById.ts
@@ -308,6 +323,7 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/models/operations/createdataset.ts
+  - src/sdk/models/operations/createelement.ts
   - src/sdk/models/operations/creategeneration.ts
   - src/sdk/models/operations/createlcmgeneration.ts
   - src/sdk/models/operations/createmodel.ts
@@ -319,11 +335,13 @@ generatedFiles:
   - src/sdk/models/operations/createvariationupscale.ts
   - src/sdk/models/operations/delete3dmodelbyid.ts
   - src/sdk/models/operations/deletedatasetbyid.ts
+  - src/sdk/models/operations/deleteelementbyid.ts
   - src/sdk/models/operations/deletegenerationbyid.ts
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/deletemodelbyid.ts
   - src/sdk/models/operations/deletetexturegenerationbyid.ts
   - src/sdk/models/operations/getdatasetbyid.ts
+  - src/sdk/models/operations/getelementbyid.ts
   - src/sdk/models/operations/getgenerationbyid.ts
   - src/sdk/models/operations/getgenerationsbyuserid.ts
   - src/sdk/models/operations/getinitimagebyid.ts
@@ -511,3 +529,18 @@ examples:
       parameters:
         path:
           id: "<id>"
+  createElement:
+    speakeasy-default-create-element:
+      requestBody:
+        application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>"}
+  deleteElementById:
+    speakeasy-default-delete-element-by-id:
+      parameters:
+        path:
+          id: 39024
+  getElementById:
+    speakeasy-default-get-element-by-id:
+      parameters:
+        path:
+          id: 665696
+generatedTests: {}

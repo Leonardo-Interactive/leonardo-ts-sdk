@@ -15,18 +15,20 @@ Rest Endpoints: Leonardo.Ai API OpenAPI specification.
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+  * [SDK Installation](#sdk-installation)
+  * [Authentication](#authentication)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Error Handling](#error-handling)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Server Selection](#server-selection)
+  * [Authentication](#authentication-1)
+  * [Requirements](#requirements)
+  * [Standalone functions](#standalone-functions)
+  * [Retries](#retries)
+  * [Debugging](#debugging)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -106,6 +108,9 @@ run();
 
 ### [elements](docs/sdks/elements/README.md)
 
+* [createElement](docs/sdks/elements/README.md#createelement) - Train a Custom Element
+* [deleteElementById](docs/sdks/elements/README.md#deleteelementbyid) - Delete a Single Custom Element by ID
+* [getElementById](docs/sdks/elements/README.md#getelementbyid) - Get a Single Custom Element by ID
 * [listElements](docs/sdks/elements/README.md#listelements) - List Elements
 
 ### [image](docs/sdks/image/README.md)
@@ -198,9 +203,9 @@ If a HTTP request fails, an operation my also throw an error from the `sdk/model
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `deleteInitImageById` method may throw the following errors:
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type      | Status Code | Content Type |
+| --------------- | ----------- | ------------ |
+| errors.SDKError | 4XX, 5XX    | \*/\*        |
 
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
@@ -296,38 +301,9 @@ const sdk = new Leonardo({ httpClient });
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://cloud.leonardo.ai/api/rest/v1` | None |
-
-```typescript
-import { Leonardo } from "@leonardo-ai/sdk";
-
-const leonardo = new Leonardo({
-  serverIdx: 0,
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await leonardo.initImages.deleteInitImageById("<id>");
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -357,9 +333,9 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type         | Scheme       |
-| ------------ | ------------ | ------------ |
-| `bearerAuth` | http         | HTTP Bearer  |
+| Name         | Type | Scheme      |
+| ------------ | ---- | ----------- |
+| `bearerAuth` | http | HTTP Bearer |
 
 To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
@@ -407,6 +383,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`datasetGetDatasetById`](docs/sdks/dataset/README.md#getdatasetbyid) - Get a Single Dataset by ID
 - [`datasetUploadDatasetImage`](docs/sdks/dataset/README.md#uploaddatasetimage) - Upload dataset image
 - [`datasetUploadDatasetImageFromGen`](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
+- [`elementsCreateElement`](docs/sdks/elements/README.md#createelement) - Train a Custom Element
+- [`elementsDeleteElementById`](docs/sdks/elements/README.md#deleteelementbyid) - Delete a Single Custom Element by ID
+- [`elementsGetElementById`](docs/sdks/elements/README.md#getelementbyid) - Get a Single Custom Element by ID
 - [`elementsListElements`](docs/sdks/elements/README.md#listelements) - List Elements
 - [`imageCreateGeneration`](docs/sdks/image/README.md#creategeneration) - Create a Generation of Images
 - [`imageDeleteGenerationById`](docs/sdks/image/README.md#deletegenerationbyid) - Delete a Single Generation

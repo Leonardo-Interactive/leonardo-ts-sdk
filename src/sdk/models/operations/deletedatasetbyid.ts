@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteDatasetByIdRequest = {
   /**
@@ -84,6 +87,24 @@ export namespace DeleteDatasetByIdRequest$ {
   export type Outbound = DeleteDatasetByIdRequest$Outbound;
 }
 
+export function deleteDatasetByIdRequestToJSON(
+  deleteDatasetByIdRequest: DeleteDatasetByIdRequest,
+): string {
+  return JSON.stringify(
+    DeleteDatasetByIdRequest$outboundSchema.parse(deleteDatasetByIdRequest),
+  );
+}
+
+export function deleteDatasetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteDatasetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteDatasetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteDatasetByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteDatasetByIdDatasets$inboundSchema: z.ZodType<
   DeleteDatasetByIdDatasets,
@@ -118,6 +139,24 @@ export namespace DeleteDatasetByIdDatasets$ {
   export const outboundSchema = DeleteDatasetByIdDatasets$outboundSchema;
   /** @deprecated use `DeleteDatasetByIdDatasets$Outbound` instead. */
   export type Outbound = DeleteDatasetByIdDatasets$Outbound;
+}
+
+export function deleteDatasetByIdDatasetsToJSON(
+  deleteDatasetByIdDatasets: DeleteDatasetByIdDatasets,
+): string {
+  return JSON.stringify(
+    DeleteDatasetByIdDatasets$outboundSchema.parse(deleteDatasetByIdDatasets),
+  );
+}
+
+export function deleteDatasetByIdDatasetsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteDatasetByIdDatasets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteDatasetByIdDatasets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteDatasetByIdDatasets' from JSON`,
+  );
 }
 
 /** @internal */
@@ -166,6 +205,26 @@ export namespace DeleteDatasetByIdResponseBody$ {
   export const outboundSchema = DeleteDatasetByIdResponseBody$outboundSchema;
   /** @deprecated use `DeleteDatasetByIdResponseBody$Outbound` instead. */
   export type Outbound = DeleteDatasetByIdResponseBody$Outbound;
+}
+
+export function deleteDatasetByIdResponseBodyToJSON(
+  deleteDatasetByIdResponseBody: DeleteDatasetByIdResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteDatasetByIdResponseBody$outboundSchema.parse(
+      deleteDatasetByIdResponseBody,
+    ),
+  );
+}
+
+export function deleteDatasetByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteDatasetByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteDatasetByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteDatasetByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -225,4 +284,22 @@ export namespace DeleteDatasetByIdResponse$ {
   export const outboundSchema = DeleteDatasetByIdResponse$outboundSchema;
   /** @deprecated use `DeleteDatasetByIdResponse$Outbound` instead. */
   export type Outbound = DeleteDatasetByIdResponse$Outbound;
+}
+
+export function deleteDatasetByIdResponseToJSON(
+  deleteDatasetByIdResponse: DeleteDatasetByIdResponse,
+): string {
+  return JSON.stringify(
+    DeleteDatasetByIdResponse$outboundSchema.parse(deleteDatasetByIdResponse),
+  );
+}
+
+export function deleteDatasetByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteDatasetByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteDatasetByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteDatasetByIdResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -166,6 +169,27 @@ export namespace PerformAlchemyUpscaleLCMRequestBody$ {
   export type Outbound = PerformAlchemyUpscaleLCMRequestBody$Outbound;
 }
 
+export function performAlchemyUpscaleLCMRequestBodyToJSON(
+  performAlchemyUpscaleLCMRequestBody: PerformAlchemyUpscaleLCMRequestBody,
+): string {
+  return JSON.stringify(
+    PerformAlchemyUpscaleLCMRequestBody$outboundSchema.parse(
+      performAlchemyUpscaleLCMRequestBody,
+    ),
+  );
+}
+
+export function performAlchemyUpscaleLCMRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformAlchemyUpscaleLCMRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PerformAlchemyUpscaleLCMRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformAlchemyUpscaleLCMRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema:
   z.ZodType<
@@ -221,6 +245,33 @@ export namespace PerformAlchemyUpscaleLCMLCMGenerationOutput$ {
   export type Outbound = PerformAlchemyUpscaleLCMLCMGenerationOutput$Outbound;
 }
 
+export function performAlchemyUpscaleLCMLCMGenerationOutputToJSON(
+  performAlchemyUpscaleLCMLCMGenerationOutput:
+    PerformAlchemyUpscaleLCMLCMGenerationOutput,
+): string {
+  return JSON.stringify(
+    PerformAlchemyUpscaleLCMLCMGenerationOutput$outboundSchema.parse(
+      performAlchemyUpscaleLCMLCMGenerationOutput,
+    ),
+  );
+}
+
+export function performAlchemyUpscaleLCMLCMGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PerformAlchemyUpscaleLCMLCMGenerationOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PerformAlchemyUpscaleLCMLCMGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const PerformAlchemyUpscaleLCMResponseBody$inboundSchema: z.ZodType<
   PerformAlchemyUpscaleLCMResponseBody,
@@ -264,6 +315,27 @@ export namespace PerformAlchemyUpscaleLCMResponseBody$ {
     PerformAlchemyUpscaleLCMResponseBody$outboundSchema;
   /** @deprecated use `PerformAlchemyUpscaleLCMResponseBody$Outbound` instead. */
   export type Outbound = PerformAlchemyUpscaleLCMResponseBody$Outbound;
+}
+
+export function performAlchemyUpscaleLCMResponseBodyToJSON(
+  performAlchemyUpscaleLCMResponseBody: PerformAlchemyUpscaleLCMResponseBody,
+): string {
+  return JSON.stringify(
+    PerformAlchemyUpscaleLCMResponseBody$outboundSchema.parse(
+      performAlchemyUpscaleLCMResponseBody,
+    ),
+  );
+}
+
+export function performAlchemyUpscaleLCMResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformAlchemyUpscaleLCMResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PerformAlchemyUpscaleLCMResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformAlchemyUpscaleLCMResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -325,4 +397,24 @@ export namespace PerformAlchemyUpscaleLCMResponse$ {
   export const outboundSchema = PerformAlchemyUpscaleLCMResponse$outboundSchema;
   /** @deprecated use `PerformAlchemyUpscaleLCMResponse$Outbound` instead. */
   export type Outbound = PerformAlchemyUpscaleLCMResponse$Outbound;
+}
+
+export function performAlchemyUpscaleLCMResponseToJSON(
+  performAlchemyUpscaleLCMResponse: PerformAlchemyUpscaleLCMResponse,
+): string {
+  return JSON.stringify(
+    PerformAlchemyUpscaleLCMResponse$outboundSchema.parse(
+      performAlchemyUpscaleLCMResponse,
+    ),
+  );
+}
+
+export function performAlchemyUpscaleLCMResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformAlchemyUpscaleLCMResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformAlchemyUpscaleLCMResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformAlchemyUpscaleLCMResponse' from JSON`,
+  );
 }

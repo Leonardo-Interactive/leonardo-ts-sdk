@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type GetGenerationByIdRequest = {
@@ -241,6 +244,24 @@ export namespace GetGenerationByIdRequest$ {
   export type Outbound = GetGenerationByIdRequest$Outbound;
 }
 
+export function getGenerationByIdRequestToJSON(
+  getGenerationByIdRequest: GetGenerationByIdRequest,
+): string {
+  return JSON.stringify(
+    GetGenerationByIdRequest$outboundSchema.parse(getGenerationByIdRequest),
+  );
+}
+
+export function getGenerationByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetGenerationByIdGeneratedImageVariationGeneric$inboundSchema:
   z.ZodType<
@@ -289,6 +310,33 @@ export namespace GetGenerationByIdGeneratedImageVariationGeneric$ {
   /** @deprecated use `GetGenerationByIdGeneratedImageVariationGeneric$Outbound` instead. */
   export type Outbound =
     GetGenerationByIdGeneratedImageVariationGeneric$Outbound;
+}
+
+export function getGenerationByIdGeneratedImageVariationGenericToJSON(
+  getGenerationByIdGeneratedImageVariationGeneric:
+    GetGenerationByIdGeneratedImageVariationGeneric,
+): string {
+  return JSON.stringify(
+    GetGenerationByIdGeneratedImageVariationGeneric$outboundSchema.parse(
+      getGenerationByIdGeneratedImageVariationGeneric,
+    ),
+  );
+}
+
+export function getGenerationByIdGeneratedImageVariationGenericFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetGenerationByIdGeneratedImageVariationGeneric,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetGenerationByIdGeneratedImageVariationGeneric$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetGenerationByIdGeneratedImageVariationGeneric' from JSON`,
+  );
 }
 
 /** @internal */
@@ -375,6 +423,22 @@ export namespace GeneratedImages$ {
   export type Outbound = GeneratedImages$Outbound;
 }
 
+export function generatedImagesToJSON(
+  generatedImages: GeneratedImages,
+): string {
+  return JSON.stringify(GeneratedImages$outboundSchema.parse(generatedImages));
+}
+
+export function generatedImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<GeneratedImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GeneratedImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GeneratedImages' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetGenerationByIdLoras$inboundSchema: z.ZodType<
   GetGenerationByIdLoras,
@@ -432,6 +496,24 @@ export namespace GetGenerationByIdLoras$ {
   export type Outbound = GetGenerationByIdLoras$Outbound;
 }
 
+export function getGenerationByIdLorasToJSON(
+  getGenerationByIdLoras: GetGenerationByIdLoras,
+): string {
+  return JSON.stringify(
+    GetGenerationByIdLoras$outboundSchema.parse(getGenerationByIdLoras),
+  );
+}
+
+export function getGenerationByIdLorasFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationByIdLoras, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationByIdLoras$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationByIdLoras' from JSON`,
+  );
+}
+
 /** @internal */
 export const GenerationElements$inboundSchema: z.ZodType<
   GenerationElements,
@@ -474,6 +556,24 @@ export namespace GenerationElements$ {
   export const outboundSchema = GenerationElements$outboundSchema;
   /** @deprecated use `GenerationElements$Outbound` instead. */
   export type Outbound = GenerationElements$Outbound;
+}
+
+export function generationElementsToJSON(
+  generationElements: GenerationElements,
+): string {
+  return JSON.stringify(
+    GenerationElements$outboundSchema.parse(generationElements),
+  );
+}
+
+export function generationElementsFromJSON(
+  jsonString: string,
+): SafeParseResult<GenerationElements, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenerationElements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenerationElements' from JSON`,
+  );
 }
 
 /** @internal */
@@ -603,6 +703,26 @@ export namespace GetGenerationByIdGenerations$ {
   export type Outbound = GetGenerationByIdGenerations$Outbound;
 }
 
+export function getGenerationByIdGenerationsToJSON(
+  getGenerationByIdGenerations: GetGenerationByIdGenerations,
+): string {
+  return JSON.stringify(
+    GetGenerationByIdGenerations$outboundSchema.parse(
+      getGenerationByIdGenerations,
+    ),
+  );
+}
+
+export function getGenerationByIdGenerationsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationByIdGenerations, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationByIdGenerations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationByIdGenerations' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetGenerationByIdResponseBody$inboundSchema: z.ZodType<
   GetGenerationByIdResponseBody,
@@ -649,6 +769,26 @@ export namespace GetGenerationByIdResponseBody$ {
   export const outboundSchema = GetGenerationByIdResponseBody$outboundSchema;
   /** @deprecated use `GetGenerationByIdResponseBody$Outbound` instead. */
   export type Outbound = GetGenerationByIdResponseBody$Outbound;
+}
+
+export function getGenerationByIdResponseBodyToJSON(
+  getGenerationByIdResponseBody: GetGenerationByIdResponseBody,
+): string {
+  return JSON.stringify(
+    GetGenerationByIdResponseBody$outboundSchema.parse(
+      getGenerationByIdResponseBody,
+    ),
+  );
+}
+
+export function getGenerationByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -708,4 +848,22 @@ export namespace GetGenerationByIdResponse$ {
   export const outboundSchema = GetGenerationByIdResponse$outboundSchema;
   /** @deprecated use `GetGenerationByIdResponse$Outbound` instead. */
   export type Outbound = GetGenerationByIdResponse$Outbound;
+}
+
+export function getGenerationByIdResponseToJSON(
+  getGenerationByIdResponse: GetGenerationByIdResponse,
+): string {
+  return JSON.stringify(
+    GetGenerationByIdResponse$outboundSchema.parse(getGenerationByIdResponse),
+  );
+}
+
+export function getGenerationByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetGenerationByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetGenerationByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetGenerationByIdResponse' from JSON`,
+  );
 }

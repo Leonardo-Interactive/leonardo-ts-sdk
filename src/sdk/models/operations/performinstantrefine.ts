@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -144,6 +147,26 @@ export namespace PerformInstantRefineRequestBody$ {
   export type Outbound = PerformInstantRefineRequestBody$Outbound;
 }
 
+export function performInstantRefineRequestBodyToJSON(
+  performInstantRefineRequestBody: PerformInstantRefineRequestBody,
+): string {
+  return JSON.stringify(
+    PerformInstantRefineRequestBody$outboundSchema.parse(
+      performInstantRefineRequestBody,
+    ),
+  );
+}
+
+export function performInstantRefineRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformInstantRefineRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformInstantRefineRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformInstantRefineRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const PerformInstantRefineLcmGenerationOutput$inboundSchema: z.ZodType<
   PerformInstantRefineLcmGenerationOutput,
@@ -188,6 +211,33 @@ export namespace PerformInstantRefineLcmGenerationOutput$ {
   export type Outbound = PerformInstantRefineLcmGenerationOutput$Outbound;
 }
 
+export function performInstantRefineLcmGenerationOutputToJSON(
+  performInstantRefineLcmGenerationOutput:
+    PerformInstantRefineLcmGenerationOutput,
+): string {
+  return JSON.stringify(
+    PerformInstantRefineLcmGenerationOutput$outboundSchema.parse(
+      performInstantRefineLcmGenerationOutput,
+    ),
+  );
+}
+
+export function performInstantRefineLcmGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PerformInstantRefineLcmGenerationOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PerformInstantRefineLcmGenerationOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PerformInstantRefineLcmGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const PerformInstantRefineResponseBody$inboundSchema: z.ZodType<
   PerformInstantRefineResponseBody,
@@ -229,6 +279,26 @@ export namespace PerformInstantRefineResponseBody$ {
   export const outboundSchema = PerformInstantRefineResponseBody$outboundSchema;
   /** @deprecated use `PerformInstantRefineResponseBody$Outbound` instead. */
   export type Outbound = PerformInstantRefineResponseBody$Outbound;
+}
+
+export function performInstantRefineResponseBodyToJSON(
+  performInstantRefineResponseBody: PerformInstantRefineResponseBody,
+): string {
+  return JSON.stringify(
+    PerformInstantRefineResponseBody$outboundSchema.parse(
+      performInstantRefineResponseBody,
+    ),
+  );
+}
+
+export function performInstantRefineResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformInstantRefineResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformInstantRefineResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformInstantRefineResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -290,4 +360,24 @@ export namespace PerformInstantRefineResponse$ {
   export const outboundSchema = PerformInstantRefineResponse$outboundSchema;
   /** @deprecated use `PerformInstantRefineResponse$Outbound` instead. */
   export type Outbound = PerformInstantRefineResponse$Outbound;
+}
+
+export function performInstantRefineResponseToJSON(
+  performInstantRefineResponse: PerformInstantRefineResponse,
+): string {
+  return JSON.stringify(
+    PerformInstantRefineResponse$outboundSchema.parse(
+      performInstantRefineResponse,
+    ),
+  );
+}
+
+export function performInstantRefineResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PerformInstantRefineResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PerformInstantRefineResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PerformInstantRefineResponse' from JSON`,
+  );
 }

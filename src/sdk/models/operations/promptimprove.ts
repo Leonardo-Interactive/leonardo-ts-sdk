@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters to be provided in the request body as a JSON object
@@ -88,6 +91,24 @@ export namespace PromptImproveRequestBody$ {
   export type Outbound = PromptImproveRequestBody$Outbound;
 }
 
+export function promptImproveRequestBodyToJSON(
+  promptImproveRequestBody: PromptImproveRequestBody,
+): string {
+  return JSON.stringify(
+    PromptImproveRequestBody$outboundSchema.parse(promptImproveRequestBody),
+  );
+}
+
+export function promptImproveRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptImproveRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptImproveRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptImproveRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const PromptGenerationOutput$inboundSchema: z.ZodType<
   PromptGenerationOutput,
@@ -127,6 +148,24 @@ export namespace PromptGenerationOutput$ {
   export type Outbound = PromptGenerationOutput$Outbound;
 }
 
+export function promptGenerationOutputToJSON(
+  promptGenerationOutput: PromptGenerationOutput,
+): string {
+  return JSON.stringify(
+    PromptGenerationOutput$outboundSchema.parse(promptGenerationOutput),
+  );
+}
+
+export function promptGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptGenerationOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptGenerationOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const PromptImproveResponseBody$inboundSchema: z.ZodType<
   PromptImproveResponseBody,
@@ -163,6 +202,24 @@ export namespace PromptImproveResponseBody$ {
   export const outboundSchema = PromptImproveResponseBody$outboundSchema;
   /** @deprecated use `PromptImproveResponseBody$Outbound` instead. */
   export type Outbound = PromptImproveResponseBody$Outbound;
+}
+
+export function promptImproveResponseBodyToJSON(
+  promptImproveResponseBody: PromptImproveResponseBody,
+): string {
+  return JSON.stringify(
+    PromptImproveResponseBody$outboundSchema.parse(promptImproveResponseBody),
+  );
+}
+
+export function promptImproveResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptImproveResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptImproveResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptImproveResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -222,4 +279,22 @@ export namespace PromptImproveResponse$ {
   export const outboundSchema = PromptImproveResponse$outboundSchema;
   /** @deprecated use `PromptImproveResponse$Outbound` instead. */
   export type Outbound = PromptImproveResponse$Outbound;
+}
+
+export function promptImproveResponseToJSON(
+  promptImproveResponse: PromptImproveResponse,
+): string {
+  return JSON.stringify(
+    PromptImproveResponse$outboundSchema.parse(promptImproveResponse),
+  );
+}
+
+export function promptImproveResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptImproveResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptImproveResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptImproveResponse' from JSON`,
+  );
 }

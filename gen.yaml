@@ -12,8 +12,9 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 4.18.1
+  version: 4.19.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -21,6 +22,8 @@ typescript:
   additionalPackageJSON: {}
   author: leonardoai
   clientServerStatusCodesAsErrors: false
+  defaultErrorName: SDKError
+  enableReactQuery: false
   enumFormat: enum
   flattenGlobalSecurity: true
   flatteningOrder: body-first

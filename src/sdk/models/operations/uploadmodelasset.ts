@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters can also be provided in the request body as a JSON object
@@ -85,6 +88,26 @@ export namespace UploadModelAssetRequestBody$ {
   export type Outbound = UploadModelAssetRequestBody$Outbound;
 }
 
+export function uploadModelAssetRequestBodyToJSON(
+  uploadModelAssetRequestBody: UploadModelAssetRequestBody,
+): string {
+  return JSON.stringify(
+    UploadModelAssetRequestBody$outboundSchema.parse(
+      uploadModelAssetRequestBody,
+    ),
+  );
+}
+
+export function uploadModelAssetRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadModelAssetRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadModelAssetRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadModelAssetRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ModelAssetUploadOutput$inboundSchema: z.ZodType<
   ModelAssetUploadOutput,
@@ -130,6 +153,24 @@ export namespace ModelAssetUploadOutput$ {
   export type Outbound = ModelAssetUploadOutput$Outbound;
 }
 
+export function modelAssetUploadOutputToJSON(
+  modelAssetUploadOutput: ModelAssetUploadOutput,
+): string {
+  return JSON.stringify(
+    ModelAssetUploadOutput$outboundSchema.parse(modelAssetUploadOutput),
+  );
+}
+
+export function modelAssetUploadOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<ModelAssetUploadOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ModelAssetUploadOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ModelAssetUploadOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const UploadModelAssetResponseBody$inboundSchema: z.ZodType<
   UploadModelAssetResponseBody,
@@ -168,6 +209,26 @@ export namespace UploadModelAssetResponseBody$ {
   export const outboundSchema = UploadModelAssetResponseBody$outboundSchema;
   /** @deprecated use `UploadModelAssetResponseBody$Outbound` instead. */
   export type Outbound = UploadModelAssetResponseBody$Outbound;
+}
+
+export function uploadModelAssetResponseBodyToJSON(
+  uploadModelAssetResponseBody: UploadModelAssetResponseBody,
+): string {
+  return JSON.stringify(
+    UploadModelAssetResponseBody$outboundSchema.parse(
+      uploadModelAssetResponseBody,
+    ),
+  );
+}
+
+export function uploadModelAssetResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadModelAssetResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadModelAssetResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadModelAssetResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -227,4 +288,22 @@ export namespace UploadModelAssetResponse$ {
   export const outboundSchema = UploadModelAssetResponse$outboundSchema;
   /** @deprecated use `UploadModelAssetResponse$Outbound` instead. */
   export type Outbound = UploadModelAssetResponse$Outbound;
+}
+
+export function uploadModelAssetResponseToJSON(
+  uploadModelAssetResponse: UploadModelAssetResponse,
+): string {
+  return JSON.stringify(
+    UploadModelAssetResponse$outboundSchema.parse(uploadModelAssetResponse),
+  );
+}
+
+export function uploadModelAssetResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadModelAssetResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadModelAssetResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadModelAssetResponse' from JSON`,
+  );
 }

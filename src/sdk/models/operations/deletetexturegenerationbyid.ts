@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters can also be provided in the request body as a JSON object
@@ -100,6 +103,28 @@ export namespace DeleteTextureGenerationByIdRequestBody$ {
   export type Outbound = DeleteTextureGenerationByIdRequestBody$Outbound;
 }
 
+export function deleteTextureGenerationByIdRequestBodyToJSON(
+  deleteTextureGenerationByIdRequestBody:
+    DeleteTextureGenerationByIdRequestBody,
+): string {
+  return JSON.stringify(
+    DeleteTextureGenerationByIdRequestBody$outboundSchema.parse(
+      deleteTextureGenerationByIdRequestBody,
+    ),
+  );
+}
+
+export function deleteTextureGenerationByIdRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteTextureGenerationByIdRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteTextureGenerationByIdRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteTextureGenerationByIdRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeleteTextureGenerationByIdRequest$inboundSchema: z.ZodType<
   DeleteTextureGenerationByIdRequest,
@@ -152,6 +177,27 @@ export namespace DeleteTextureGenerationByIdRequest$ {
   export type Outbound = DeleteTextureGenerationByIdRequest$Outbound;
 }
 
+export function deleteTextureGenerationByIdRequestToJSON(
+  deleteTextureGenerationByIdRequest: DeleteTextureGenerationByIdRequest,
+): string {
+  return JSON.stringify(
+    DeleteTextureGenerationByIdRequest$outboundSchema.parse(
+      deleteTextureGenerationByIdRequest,
+    ),
+  );
+}
+
+export function deleteTextureGenerationByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteTextureGenerationByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteTextureGenerationByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteTextureGenerationByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ModelAssetTextureGenerations$inboundSchema: z.ZodType<
   ModelAssetTextureGenerations,
@@ -186,6 +232,26 @@ export namespace ModelAssetTextureGenerations$ {
   export const outboundSchema = ModelAssetTextureGenerations$outboundSchema;
   /** @deprecated use `ModelAssetTextureGenerations$Outbound` instead. */
   export type Outbound = ModelAssetTextureGenerations$Outbound;
+}
+
+export function modelAssetTextureGenerationsToJSON(
+  modelAssetTextureGenerations: ModelAssetTextureGenerations,
+): string {
+  return JSON.stringify(
+    ModelAssetTextureGenerations$outboundSchema.parse(
+      modelAssetTextureGenerations,
+    ),
+  );
+}
+
+export function modelAssetTextureGenerationsFromJSON(
+  jsonString: string,
+): SafeParseResult<ModelAssetTextureGenerations, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ModelAssetTextureGenerations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ModelAssetTextureGenerations' from JSON`,
+  );
 }
 
 /** @internal */
@@ -241,6 +307,33 @@ export namespace DeleteTextureGenerationByIdResponseBody$ {
     DeleteTextureGenerationByIdResponseBody$outboundSchema;
   /** @deprecated use `DeleteTextureGenerationByIdResponseBody$Outbound` instead. */
   export type Outbound = DeleteTextureGenerationByIdResponseBody$Outbound;
+}
+
+export function deleteTextureGenerationByIdResponseBodyToJSON(
+  deleteTextureGenerationByIdResponseBody:
+    DeleteTextureGenerationByIdResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteTextureGenerationByIdResponseBody$outboundSchema.parse(
+      deleteTextureGenerationByIdResponseBody,
+    ),
+  );
+}
+
+export function deleteTextureGenerationByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteTextureGenerationByIdResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteTextureGenerationByIdResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteTextureGenerationByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -304,4 +397,25 @@ export namespace DeleteTextureGenerationByIdResponse$ {
     DeleteTextureGenerationByIdResponse$outboundSchema;
   /** @deprecated use `DeleteTextureGenerationByIdResponse$Outbound` instead. */
   export type Outbound = DeleteTextureGenerationByIdResponse$Outbound;
+}
+
+export function deleteTextureGenerationByIdResponseToJSON(
+  deleteTextureGenerationByIdResponse: DeleteTextureGenerationByIdResponse,
+): string {
+  return JSON.stringify(
+    DeleteTextureGenerationByIdResponse$outboundSchema.parse(
+      deleteTextureGenerationByIdResponse,
+    ),
+  );
+}
+
+export function deleteTextureGenerationByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteTextureGenerationByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteTextureGenerationByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteTextureGenerationByIdResponse' from JSON`,
+  );
 }

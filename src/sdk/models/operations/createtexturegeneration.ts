@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters can also be provided in the request body as a JSON object
@@ -125,6 +128,27 @@ export namespace CreateTextureGenerationRequestBody$ {
   export type Outbound = CreateTextureGenerationRequestBody$Outbound;
 }
 
+export function createTextureGenerationRequestBodyToJSON(
+  createTextureGenerationRequestBody: CreateTextureGenerationRequestBody,
+): string {
+  return JSON.stringify(
+    CreateTextureGenerationRequestBody$outboundSchema.parse(
+      createTextureGenerationRequestBody,
+    ),
+  );
+}
+
+export function createTextureGenerationRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTextureGenerationRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateTextureGenerationRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTextureGenerationRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const TextureGenerationJobOutput$inboundSchema: z.ZodType<
   TextureGenerationJobOutput,
@@ -162,6 +186,24 @@ export namespace TextureGenerationJobOutput$ {
   export const outboundSchema = TextureGenerationJobOutput$outboundSchema;
   /** @deprecated use `TextureGenerationJobOutput$Outbound` instead. */
   export type Outbound = TextureGenerationJobOutput$Outbound;
+}
+
+export function textureGenerationJobOutputToJSON(
+  textureGenerationJobOutput: TextureGenerationJobOutput,
+): string {
+  return JSON.stringify(
+    TextureGenerationJobOutput$outboundSchema.parse(textureGenerationJobOutput),
+  );
+}
+
+export function textureGenerationJobOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<TextureGenerationJobOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TextureGenerationJobOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TextureGenerationJobOutput' from JSON`,
+  );
 }
 
 /** @internal */
@@ -204,6 +246,27 @@ export namespace CreateTextureGenerationResponseBody$ {
     CreateTextureGenerationResponseBody$outboundSchema;
   /** @deprecated use `CreateTextureGenerationResponseBody$Outbound` instead. */
   export type Outbound = CreateTextureGenerationResponseBody$Outbound;
+}
+
+export function createTextureGenerationResponseBodyToJSON(
+  createTextureGenerationResponseBody: CreateTextureGenerationResponseBody,
+): string {
+  return JSON.stringify(
+    CreateTextureGenerationResponseBody$outboundSchema.parse(
+      createTextureGenerationResponseBody,
+    ),
+  );
+}
+
+export function createTextureGenerationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTextureGenerationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateTextureGenerationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTextureGenerationResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -265,4 +328,24 @@ export namespace CreateTextureGenerationResponse$ {
   export const outboundSchema = CreateTextureGenerationResponse$outboundSchema;
   /** @deprecated use `CreateTextureGenerationResponse$Outbound` instead. */
   export type Outbound = CreateTextureGenerationResponse$Outbound;
+}
+
+export function createTextureGenerationResponseToJSON(
+  createTextureGenerationResponse: CreateTextureGenerationResponse,
+): string {
+  return JSON.stringify(
+    CreateTextureGenerationResponse$outboundSchema.parse(
+      createTextureGenerationResponse,
+    ),
+  );
+}
+
+export function createTextureGenerationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTextureGenerationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTextureGenerationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTextureGenerationResponse' from JSON`,
+  );
 }

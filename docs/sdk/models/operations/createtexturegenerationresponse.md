@@ -7,7 +7,7 @@ import { CreateTextureGenerationResponse } from "@leonardo-ai/sdk/sdk/models/ope
 
 let value: CreateTextureGenerationResponse = {
   contentType: "<value>",
-  statusCode: 404,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

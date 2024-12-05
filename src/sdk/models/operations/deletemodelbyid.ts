@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteModelByIdRequest = {
   /**
@@ -84,6 +87,24 @@ export namespace DeleteModelByIdRequest$ {
   export type Outbound = DeleteModelByIdRequest$Outbound;
 }
 
+export function deleteModelByIdRequestToJSON(
+  deleteModelByIdRequest: DeleteModelByIdRequest,
+): string {
+  return JSON.stringify(
+    DeleteModelByIdRequest$outboundSchema.parse(deleteModelByIdRequest),
+  );
+}
+
+export function deleteModelByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteModelByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteModelByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteModelByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomModels$inboundSchema: z.ZodType<
   CustomModels,
@@ -118,6 +139,20 @@ export namespace CustomModels$ {
   export const outboundSchema = CustomModels$outboundSchema;
   /** @deprecated use `CustomModels$Outbound` instead. */
   export type Outbound = CustomModels$Outbound;
+}
+
+export function customModelsToJSON(customModels: CustomModels): string {
+  return JSON.stringify(CustomModels$outboundSchema.parse(customModels));
+}
+
+export function customModelsFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomModels, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomModels$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomModels' from JSON`,
+  );
 }
 
 /** @internal */
@@ -165,6 +200,26 @@ export namespace DeleteModelByIdResponseBody$ {
   export const outboundSchema = DeleteModelByIdResponseBody$outboundSchema;
   /** @deprecated use `DeleteModelByIdResponseBody$Outbound` instead. */
   export type Outbound = DeleteModelByIdResponseBody$Outbound;
+}
+
+export function deleteModelByIdResponseBodyToJSON(
+  deleteModelByIdResponseBody: DeleteModelByIdResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteModelByIdResponseBody$outboundSchema.parse(
+      deleteModelByIdResponseBody,
+    ),
+  );
+}
+
+export function deleteModelByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteModelByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteModelByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteModelByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -224,4 +279,22 @@ export namespace DeleteModelByIdResponse$ {
   export const outboundSchema = DeleteModelByIdResponse$outboundSchema;
   /** @deprecated use `DeleteModelByIdResponse$Outbound` instead. */
   export type Outbound = DeleteModelByIdResponse$Outbound;
+}
+
+export function deleteModelByIdResponseToJSON(
+  deleteModelByIdResponse: DeleteModelByIdResponse,
+): string {
+  return JSON.stringify(
+    DeleteModelByIdResponse$outboundSchema.parse(deleteModelByIdResponse),
+  );
+}
+
+export function deleteModelByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteModelByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteModelByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteModelByIdResponse' from JSON`,
+  );
 }

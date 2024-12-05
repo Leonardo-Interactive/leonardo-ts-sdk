@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -144,6 +147,26 @@ export namespace CreateLCMGenerationRequestBody$ {
   export type Outbound = CreateLCMGenerationRequestBody$Outbound;
 }
 
+export function createLCMGenerationRequestBodyToJSON(
+  createLCMGenerationRequestBody: CreateLCMGenerationRequestBody,
+): string {
+  return JSON.stringify(
+    CreateLCMGenerationRequestBody$outboundSchema.parse(
+      createLCMGenerationRequestBody,
+    ),
+  );
+}
+
+export function createLCMGenerationRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLCMGenerationRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLCMGenerationRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLCMGenerationRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const LcmGenerationOutput$inboundSchema: z.ZodType<
   LcmGenerationOutput,
@@ -186,6 +209,24 @@ export namespace LcmGenerationOutput$ {
   export type Outbound = LcmGenerationOutput$Outbound;
 }
 
+export function lcmGenerationOutputToJSON(
+  lcmGenerationOutput: LcmGenerationOutput,
+): string {
+  return JSON.stringify(
+    LcmGenerationOutput$outboundSchema.parse(lcmGenerationOutput),
+  );
+}
+
+export function lcmGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<LcmGenerationOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LcmGenerationOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LcmGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateLCMGenerationResponseBody$inboundSchema: z.ZodType<
   CreateLCMGenerationResponseBody,
@@ -222,6 +263,26 @@ export namespace CreateLCMGenerationResponseBody$ {
   export const outboundSchema = CreateLCMGenerationResponseBody$outboundSchema;
   /** @deprecated use `CreateLCMGenerationResponseBody$Outbound` instead. */
   export type Outbound = CreateLCMGenerationResponseBody$Outbound;
+}
+
+export function createLCMGenerationResponseBodyToJSON(
+  createLCMGenerationResponseBody: CreateLCMGenerationResponseBody,
+): string {
+  return JSON.stringify(
+    CreateLCMGenerationResponseBody$outboundSchema.parse(
+      createLCMGenerationResponseBody,
+    ),
+  );
+}
+
+export function createLCMGenerationResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLCMGenerationResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLCMGenerationResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLCMGenerationResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -283,4 +344,24 @@ export namespace CreateLCMGenerationResponse$ {
   export const outboundSchema = CreateLCMGenerationResponse$outboundSchema;
   /** @deprecated use `CreateLCMGenerationResponse$Outbound` instead. */
   export type Outbound = CreateLCMGenerationResponse$Outbound;
+}
+
+export function createLCMGenerationResponseToJSON(
+  createLCMGenerationResponse: CreateLCMGenerationResponse,
+): string {
+  return JSON.stringify(
+    CreateLCMGenerationResponse$outboundSchema.parse(
+      createLCMGenerationResponse,
+    ),
+  );
+}
+
+export function createLCMGenerationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLCMGenerationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLCMGenerationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLCMGenerationResponse' from JSON`,
+  );
 }

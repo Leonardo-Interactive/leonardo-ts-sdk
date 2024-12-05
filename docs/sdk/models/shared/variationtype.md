@@ -7,7 +7,7 @@ The type of variation.
 ```typescript
 import { VariationType } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: VariationType = VariationType.Inpaint;
+let value: VariationType = VariationType.Unzoom;
 ```
 
 ## Values

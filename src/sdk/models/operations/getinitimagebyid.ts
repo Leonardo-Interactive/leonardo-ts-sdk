@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetInitImageByIdRequest = {
   /**
@@ -86,6 +89,24 @@ export namespace GetInitImageByIdRequest$ {
   export type Outbound = GetInitImageByIdRequest$Outbound;
 }
 
+export function getInitImageByIdRequestToJSON(
+  getInitImageByIdRequest: GetInitImageByIdRequest,
+): string {
+  return JSON.stringify(
+    GetInitImageByIdRequest$outboundSchema.parse(getInitImageByIdRequest),
+  );
+}
+
+export function getInitImageByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInitImageByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInitImageByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInitImageByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetInitImageByIdInitImages$inboundSchema: z.ZodType<
   GetInitImageByIdInitImages,
@@ -126,6 +147,24 @@ export namespace GetInitImageByIdInitImages$ {
   export const outboundSchema = GetInitImageByIdInitImages$outboundSchema;
   /** @deprecated use `GetInitImageByIdInitImages$Outbound` instead. */
   export type Outbound = GetInitImageByIdInitImages$Outbound;
+}
+
+export function getInitImageByIdInitImagesToJSON(
+  getInitImageByIdInitImages: GetInitImageByIdInitImages,
+): string {
+  return JSON.stringify(
+    GetInitImageByIdInitImages$outboundSchema.parse(getInitImageByIdInitImages),
+  );
+}
+
+export function getInitImageByIdInitImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInitImageByIdInitImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInitImageByIdInitImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInitImageByIdInitImages' from JSON`,
+  );
 }
 
 /** @internal */
@@ -174,6 +213,26 @@ export namespace GetInitImageByIdResponseBody$ {
   export const outboundSchema = GetInitImageByIdResponseBody$outboundSchema;
   /** @deprecated use `GetInitImageByIdResponseBody$Outbound` instead. */
   export type Outbound = GetInitImageByIdResponseBody$Outbound;
+}
+
+export function getInitImageByIdResponseBodyToJSON(
+  getInitImageByIdResponseBody: GetInitImageByIdResponseBody,
+): string {
+  return JSON.stringify(
+    GetInitImageByIdResponseBody$outboundSchema.parse(
+      getInitImageByIdResponseBody,
+    ),
+  );
+}
+
+export function getInitImageByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInitImageByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInitImageByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInitImageByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -233,4 +292,22 @@ export namespace GetInitImageByIdResponse$ {
   export const outboundSchema = GetInitImageByIdResponse$outboundSchema;
   /** @deprecated use `GetInitImageByIdResponse$Outbound` instead. */
   export type Outbound = GetInitImageByIdResponse$Outbound;
+}
+
+export function getInitImageByIdResponseToJSON(
+  getInitImageByIdResponse: GetInitImageByIdResponse,
+): string {
+  return JSON.stringify(
+    GetInitImageByIdResponse$outboundSchema.parse(getInitImageByIdResponse),
+  );
+}
+
+export function getInitImageByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetInitImageByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetInitImageByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetInitImageByIdResponse' from JSON`,
+  );
 }

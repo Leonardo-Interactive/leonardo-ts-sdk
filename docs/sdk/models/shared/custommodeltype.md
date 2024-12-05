@@ -7,7 +7,7 @@ The category the most accurately reflects the model.
 ```typescript
 import { CustomModelType } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: CustomModelType = CustomModelType.Photography;
+let value: CustomModelType = CustomModelType.Illustrations;
 ```
 
 ## Values

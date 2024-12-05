@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -320,6 +323,24 @@ export namespace PricingCalculatorObject$ {
   export type Outbound = PricingCalculatorObject$Outbound;
 }
 
+export function pricingCalculatorObjectToJSON(
+  pricingCalculatorObject: PricingCalculatorObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorObject$outboundSchema.parse(pricingCalculatorObject),
+  );
+}
+
+export function pricingCalculatorObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<PricingCalculatorObject, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PricingCalculatorObject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorObject' from JSON`,
+  );
+}
+
 /** @internal */
 export const PricingCalculatorPricingCalculatorObject$inboundSchema: z.ZodType<
   PricingCalculatorPricingCalculatorObject,
@@ -403,6 +424,33 @@ export namespace PricingCalculatorPricingCalculatorObject$ {
   export type Outbound = PricingCalculatorPricingCalculatorObject$Outbound;
 }
 
+export function pricingCalculatorPricingCalculatorObjectToJSON(
+  pricingCalculatorPricingCalculatorObject:
+    PricingCalculatorPricingCalculatorObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorObject$outboundSchema.parse(
+      pricingCalculatorPricingCalculatorObject,
+    ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorObject$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PricingCalculatorPricingCalculatorObject' from JSON`,
+  );
+}
+
 /** @internal */
 export const PricingCalculatorPricingCalculatorRequestObject$inboundSchema:
   z.ZodType<
@@ -453,6 +501,33 @@ export namespace PricingCalculatorPricingCalculatorRequestObject$ {
     PricingCalculatorPricingCalculatorRequestObject$Outbound;
 }
 
+export function pricingCalculatorPricingCalculatorRequestObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestObject:
+    PricingCalculatorPricingCalculatorRequestObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestObject$outboundSchema.parse(
+      pricingCalculatorPricingCalculatorRequestObject,
+    ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestObject$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestObject' from JSON`,
+  );
+}
+
 /** @internal */
 export const PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema:
   z.ZodType<
@@ -493,6 +568,31 @@ export namespace PricingCalculatorPricingCalculatorRequestRequestBodyObject$ {
   /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound` instead. */
   export type Outbound =
     PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound;
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema
+      .parse(pricingCalculatorPricingCalculatorRequestRequestBodyObject),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyObject' from JSON`,
+  );
 }
 
 /** @internal */
@@ -537,6 +637,33 @@ export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServicePara
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound;
 }
 
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema
+      .parse(
+        pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject,
+      ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject' from JSON`,
+  );
+}
+
 /** @internal */
 export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$inboundSchema:
   z.ZodType<
@@ -579,6 +706,33 @@ export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServicePara
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound;
 }
 
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$outboundSchema
+      .parse(
+        pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
+      ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject' from JSON`,
+  );
+}
+
 /** @internal */
 export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$inboundSchema:
   z.ZodType<
@@ -619,6 +773,33 @@ export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServicePara
   /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound` instead. */
   export type Outbound =
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound;
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$outboundSchema
+      .parse(
+        pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject,
+      ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject' from JSON`,
+  );
 }
 
 /** @internal */
@@ -667,6 +848,33 @@ export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServicePara
   /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$Outbound` instead. */
   export type Outbound =
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$Outbound;
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$outboundSchema
+      .parse(
+        pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject,
+      ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject' from JSON`,
+  );
 }
 
 /** @internal */
@@ -825,6 +1033,20 @@ export namespace ObjectT$ {
   export type Outbound = ObjectT$Outbound;
 }
 
+export function objectToJSON(objectT: ObjectT): string {
+  return JSON.stringify(ObjectT$outboundSchema.parse(objectT));
+}
+
+export function objectFromJSON(
+  jsonString: string,
+): SafeParseResult<ObjectT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ObjectT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ObjectT' from JSON`,
+  );
+}
+
 /** @internal */
 export const PricingCalculatorRequestBody$inboundSchema: z.ZodType<
   PricingCalculatorRequestBody,
@@ -864,6 +1086,26 @@ export namespace PricingCalculatorRequestBody$ {
   export type Outbound = PricingCalculatorRequestBody$Outbound;
 }
 
+export function pricingCalculatorRequestBodyToJSON(
+  pricingCalculatorRequestBody: PricingCalculatorRequestBody,
+): string {
+  return JSON.stringify(
+    PricingCalculatorRequestBody$outboundSchema.parse(
+      pricingCalculatorRequestBody,
+    ),
+  );
+}
+
+export function pricingCalculatorRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PricingCalculatorRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PricingCalculatorRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const CalculateProductionApiServiceCost$inboundSchema: z.ZodType<
   CalculateProductionApiServiceCost,
@@ -899,6 +1141,26 @@ export namespace CalculateProductionApiServiceCost$ {
     CalculateProductionApiServiceCost$outboundSchema;
   /** @deprecated use `CalculateProductionApiServiceCost$Outbound` instead. */
   export type Outbound = CalculateProductionApiServiceCost$Outbound;
+}
+
+export function calculateProductionApiServiceCostToJSON(
+  calculateProductionApiServiceCost: CalculateProductionApiServiceCost,
+): string {
+  return JSON.stringify(
+    CalculateProductionApiServiceCost$outboundSchema.parse(
+      calculateProductionApiServiceCost,
+    ),
+  );
+}
+
+export function calculateProductionApiServiceCostFromJSON(
+  jsonString: string,
+): SafeParseResult<CalculateProductionApiServiceCost, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CalculateProductionApiServiceCost$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CalculateProductionApiServiceCost' from JSON`,
+  );
 }
 
 /** @internal */
@@ -942,6 +1204,26 @@ export namespace PricingCalculatorResponseBody$ {
   export const outboundSchema = PricingCalculatorResponseBody$outboundSchema;
   /** @deprecated use `PricingCalculatorResponseBody$Outbound` instead. */
   export type Outbound = PricingCalculatorResponseBody$Outbound;
+}
+
+export function pricingCalculatorResponseBodyToJSON(
+  pricingCalculatorResponseBody: PricingCalculatorResponseBody,
+): string {
+  return JSON.stringify(
+    PricingCalculatorResponseBody$outboundSchema.parse(
+      pricingCalculatorResponseBody,
+    ),
+  );
+}
+
+export function pricingCalculatorResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PricingCalculatorResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PricingCalculatorResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1001,4 +1283,22 @@ export namespace PricingCalculatorResponse$ {
   export const outboundSchema = PricingCalculatorResponse$outboundSchema;
   /** @deprecated use `PricingCalculatorResponse$Outbound` instead. */
   export type Outbound = PricingCalculatorResponse$Outbound;
+}
+
+export function pricingCalculatorResponseToJSON(
+  pricingCalculatorResponse: PricingCalculatorResponse,
+): string {
+  return JSON.stringify(
+    PricingCalculatorResponse$outboundSchema.parse(pricingCalculatorResponse),
+  );
+}
+
+export function pricingCalculatorResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PricingCalculatorResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PricingCalculatorResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorResponse' from JSON`,
+  );
 }

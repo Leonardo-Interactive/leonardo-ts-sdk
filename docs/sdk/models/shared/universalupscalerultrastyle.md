@@ -7,7 +7,7 @@ The ultra style to upscale images using universal upscaler with. Can not be used
 ```typescript
 import { UniversalUpscalerUltraStyle } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: UniversalUpscalerUltraStyle = UniversalUpscalerUltraStyle.Artistic;
+let value: UniversalUpscalerUltraStyle = UniversalUpscalerUltraStyle.Realistic;
 ```
 
 ## Values

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -163,6 +166,27 @@ export namespace CreateUniversalUpscalerJobRequestBody$ {
   export type Outbound = CreateUniversalUpscalerJobRequestBody$Outbound;
 }
 
+export function createUniversalUpscalerJobRequestBodyToJSON(
+  createUniversalUpscalerJobRequestBody: CreateUniversalUpscalerJobRequestBody,
+): string {
+  return JSON.stringify(
+    CreateUniversalUpscalerJobRequestBody$outboundSchema.parse(
+      createUniversalUpscalerJobRequestBody,
+    ),
+  );
+}
+
+export function createUniversalUpscalerJobRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateUniversalUpscalerJobRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateUniversalUpscalerJobRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateUniversalUpscalerJobRequestBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const UniversalUpscalerOutput$inboundSchema: z.ZodType<
   UniversalUpscalerOutput,
@@ -200,6 +224,24 @@ export namespace UniversalUpscalerOutput$ {
   export const outboundSchema = UniversalUpscalerOutput$outboundSchema;
   /** @deprecated use `UniversalUpscalerOutput$Outbound` instead. */
   export type Outbound = UniversalUpscalerOutput$Outbound;
+}
+
+export function universalUpscalerOutputToJSON(
+  universalUpscalerOutput: UniversalUpscalerOutput,
+): string {
+  return JSON.stringify(
+    UniversalUpscalerOutput$outboundSchema.parse(universalUpscalerOutput),
+  );
+}
+
+export function universalUpscalerOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UniversalUpscalerOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UniversalUpscalerOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UniversalUpscalerOutput' from JSON`,
+  );
 }
 
 /** @internal */
@@ -240,6 +282,28 @@ export namespace CreateUniversalUpscalerJobResponseBody$ {
     CreateUniversalUpscalerJobResponseBody$outboundSchema;
   /** @deprecated use `CreateUniversalUpscalerJobResponseBody$Outbound` instead. */
   export type Outbound = CreateUniversalUpscalerJobResponseBody$Outbound;
+}
+
+export function createUniversalUpscalerJobResponseBodyToJSON(
+  createUniversalUpscalerJobResponseBody:
+    CreateUniversalUpscalerJobResponseBody,
+): string {
+  return JSON.stringify(
+    CreateUniversalUpscalerJobResponseBody$outboundSchema.parse(
+      createUniversalUpscalerJobResponseBody,
+    ),
+  );
+}
+
+export function createUniversalUpscalerJobResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateUniversalUpscalerJobResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateUniversalUpscalerJobResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateUniversalUpscalerJobResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -302,4 +366,25 @@ export namespace CreateUniversalUpscalerJobResponse$ {
     CreateUniversalUpscalerJobResponse$outboundSchema;
   /** @deprecated use `CreateUniversalUpscalerJobResponse$Outbound` instead. */
   export type Outbound = CreateUniversalUpscalerJobResponse$Outbound;
+}
+
+export function createUniversalUpscalerJobResponseToJSON(
+  createUniversalUpscalerJobResponse: CreateUniversalUpscalerJobResponse,
+): string {
+  return JSON.stringify(
+    CreateUniversalUpscalerJobResponse$outboundSchema.parse(
+      createUniversalUpscalerJobResponse,
+    ),
+  );
+}
+
+export function createUniversalUpscalerJobResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateUniversalUpscalerJobResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateUniversalUpscalerJobResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateUniversalUpscalerJobResponse' from JSON`,
+  );
 }

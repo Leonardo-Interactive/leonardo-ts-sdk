@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PromptRandomPromptGenerationOutput = {
   /**
@@ -82,6 +85,27 @@ export namespace PromptRandomPromptGenerationOutput$ {
   export type Outbound = PromptRandomPromptGenerationOutput$Outbound;
 }
 
+export function promptRandomPromptGenerationOutputToJSON(
+  promptRandomPromptGenerationOutput: PromptRandomPromptGenerationOutput,
+): string {
+  return JSON.stringify(
+    PromptRandomPromptGenerationOutput$outboundSchema.parse(
+      promptRandomPromptGenerationOutput,
+    ),
+  );
+}
+
+export function promptRandomPromptGenerationOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptRandomPromptGenerationOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PromptRandomPromptGenerationOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptRandomPromptGenerationOutput' from JSON`,
+  );
+}
+
 /** @internal */
 export const PromptRandomResponseBody$inboundSchema: z.ZodType<
   PromptRandomResponseBody,
@@ -120,6 +144,24 @@ export namespace PromptRandomResponseBody$ {
   export const outboundSchema = PromptRandomResponseBody$outboundSchema;
   /** @deprecated use `PromptRandomResponseBody$Outbound` instead. */
   export type Outbound = PromptRandomResponseBody$Outbound;
+}
+
+export function promptRandomResponseBodyToJSON(
+  promptRandomResponseBody: PromptRandomResponseBody,
+): string {
+  return JSON.stringify(
+    PromptRandomResponseBody$outboundSchema.parse(promptRandomResponseBody),
+  );
+}
+
+export function promptRandomResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptRandomResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptRandomResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptRandomResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -179,4 +221,22 @@ export namespace PromptRandomResponse$ {
   export const outboundSchema = PromptRandomResponse$outboundSchema;
   /** @deprecated use `PromptRandomResponse$Outbound` instead. */
   export type Outbound = PromptRandomResponse$Outbound;
+}
+
+export function promptRandomResponseToJSON(
+  promptRandomResponse: PromptRandomResponse,
+): string {
+  return JSON.stringify(
+    PromptRandomResponse$outboundSchema.parse(promptRandomResponse),
+  );
+}
+
+export function promptRandomResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptRandomResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptRandomResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptRandomResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteInitImageByIdRequest = {
   /**
@@ -84,6 +87,24 @@ export namespace DeleteInitImageByIdRequest$ {
   export type Outbound = DeleteInitImageByIdRequest$Outbound;
 }
 
+export function deleteInitImageByIdRequestToJSON(
+  deleteInitImageByIdRequest: DeleteInitImageByIdRequest,
+): string {
+  return JSON.stringify(
+    DeleteInitImageByIdRequest$outboundSchema.parse(deleteInitImageByIdRequest),
+  );
+}
+
+export function deleteInitImageByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteInitImageByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteInitImageByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteInitImageByIdRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const InitImages$inboundSchema: z.ZodType<
   InitImages,
@@ -118,6 +139,20 @@ export namespace InitImages$ {
   export const outboundSchema = InitImages$outboundSchema;
   /** @deprecated use `InitImages$Outbound` instead. */
   export type Outbound = InitImages$Outbound;
+}
+
+export function initImagesToJSON(initImages: InitImages): string {
+  return JSON.stringify(InitImages$outboundSchema.parse(initImages));
+}
+
+export function initImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<InitImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InitImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InitImages' from JSON`,
+  );
 }
 
 /** @internal */
@@ -164,6 +199,26 @@ export namespace DeleteInitImageByIdResponseBody$ {
   export const outboundSchema = DeleteInitImageByIdResponseBody$outboundSchema;
   /** @deprecated use `DeleteInitImageByIdResponseBody$Outbound` instead. */
   export type Outbound = DeleteInitImageByIdResponseBody$Outbound;
+}
+
+export function deleteInitImageByIdResponseBodyToJSON(
+  deleteInitImageByIdResponseBody: DeleteInitImageByIdResponseBody,
+): string {
+  return JSON.stringify(
+    DeleteInitImageByIdResponseBody$outboundSchema.parse(
+      deleteInitImageByIdResponseBody,
+    ),
+  );
+}
+
+export function deleteInitImageByIdResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteInitImageByIdResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteInitImageByIdResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteInitImageByIdResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -225,4 +280,24 @@ export namespace DeleteInitImageByIdResponse$ {
   export const outboundSchema = DeleteInitImageByIdResponse$outboundSchema;
   /** @deprecated use `DeleteInitImageByIdResponse$Outbound` instead. */
   export type Outbound = DeleteInitImageByIdResponse$Outbound;
+}
+
+export function deleteInitImageByIdResponseToJSON(
+  deleteInitImageByIdResponse: DeleteInitImageByIdResponse,
+): string {
+  return JSON.stringify(
+    DeleteInitImageByIdResponse$outboundSchema.parse(
+      deleteInitImageByIdResponse,
+    ),
+  );
+}
+
+export function deleteInitImageByIdResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteInitImageByIdResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteInitImageByIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteInitImageByIdResponse' from JSON`,
+  );
 }
