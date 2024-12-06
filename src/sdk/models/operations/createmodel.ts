@@ -129,12 +129,12 @@ export const CreateModelRequestBody$inboundSchema: z.ZodType<
   name: z.string(),
   nsfw: z.nullable(z.boolean().default(false)),
   resolution: z.nullable(z.number().int().default(512)),
-  sd_Version: z.nullable(CreateModelSdVersions$inboundSchema).optional(),
+  sd_version: z.nullable(CreateModelSdVersions$inboundSchema).optional(),
   strength: shared.Strength$inboundSchema.default(shared.Strength.Medium),
 }).transform((v) => {
   return remap$(v, {
     "instance_prompt": "instancePrompt",
-    "sd_Version": "sdVersion",
+    "sd_version": "sdVersion",
   });
 });
 
@@ -147,7 +147,7 @@ export type CreateModelRequestBody$Outbound = {
   name: string;
   nsfw: boolean | null;
   resolution: number | null;
-  sd_Version?: string | null | undefined;
+  sd_version?: string | null | undefined;
   strength: string;
 };
 
@@ -171,7 +171,7 @@ export const CreateModelRequestBody$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     instancePrompt: "instance_prompt",
-    sdVersion: "sd_Version",
+    sdVersion: "sd_version",
   });
 });
 
