@@ -16,6 +16,10 @@ export type PromptImproveRequestBody = {
    * The prompt to improve.
    */
   prompt: string;
+  /**
+   * The prompt is improved based on the given instructions.
+   */
+  promptInstructions?: string | null | undefined;
 };
 
 export type PromptGenerationOutput = {
@@ -62,11 +66,13 @@ export const PromptImproveRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   prompt: z.string(),
+  promptInstructions: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type PromptImproveRequestBody$Outbound = {
   prompt: string;
+  promptInstructions?: string | null | undefined;
 };
 
 /** @internal */
@@ -76,6 +82,7 @@ export const PromptImproveRequestBody$outboundSchema: z.ZodType<
   PromptImproveRequestBody
 > = z.object({
   prompt: z.string(),
+  promptInstructions: z.nullable(z.string()).optional(),
 });
 
 /**

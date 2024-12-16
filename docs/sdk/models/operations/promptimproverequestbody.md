@@ -14,6 +14,7 @@ let value: PromptImproveRequestBody = {
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `prompt`               | *string*               | :heavy_check_mark:     | The prompt to improve. |
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `prompt`                                                | *string*                                                | :heavy_check_mark:                                      | The prompt to improve.                                  |
+| `promptInstructions`                                    | *string*                                                | :heavy_minus_sign:                                      | The prompt is improved based on the given instructions. |
