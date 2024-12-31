@@ -190,6 +190,7 @@ export type CreateGenerationRequestBody = {
    * How much the image should be upscaled. (Enterprise Only)
    */
   upscaleRatio?: number | null | undefined;
+  userElements?: Array<shared.UserElementsInput> | null | undefined;
   /**
    * This parameter will be deprecated in September 2024. Please use the controlnets array instead.
    *
@@ -316,6 +317,8 @@ export const CreateGenerationRequestBody$inboundSchema: z.ZodType<
   unzoom: z.nullable(z.boolean()).optional(),
   unzoomAmount: z.nullable(z.number()).optional(),
   upscaleRatio: z.nullable(z.number()).optional(),
+  userElements: z.nullable(z.array(shared.UserElementsInput$inboundSchema))
+    .optional(),
   weighting: z.nullable(z.number()).optional(),
   width: z.nullable(z.number().int().default(1024)),
 }).transform((v) => {
@@ -378,6 +381,7 @@ export type CreateGenerationRequestBody$Outbound = {
   unzoom?: boolean | null | undefined;
   unzoomAmount?: number | null | undefined;
   upscaleRatio?: number | null | undefined;
+  userElements?: Array<shared.UserElementsInput$Outbound> | null | undefined;
   weighting?: number | null | undefined;
   width: number | null;
 };
@@ -441,6 +445,8 @@ export const CreateGenerationRequestBody$outboundSchema: z.ZodType<
   unzoom: z.nullable(z.boolean()).optional(),
   unzoomAmount: z.nullable(z.number()).optional(),
   upscaleRatio: z.nullable(z.number()).optional(),
+  userElements: z.nullable(z.array(shared.UserElementsInput$outboundSchema))
+    .optional(),
   weighting: z.nullable(z.number()).optional(),
   width: z.nullable(z.number().int().default(1024)),
 }).transform((v) => {

@@ -4,6 +4,7 @@
 
 import { elementsCreateElement } from "../funcs/elementsCreateElement.js";
 import { elementsDeleteElementById } from "../funcs/elementsDeleteElementById.js";
+import { elementsGetCustomElementsByUserId } from "../funcs/elementsGetCustomElementsByUserId.js";
 import { elementsGetElementById } from "../funcs/elementsGetElementById.js";
 import { elementsListElements } from "../funcs/elementsListElements.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -41,6 +42,23 @@ export class Elements extends ClientSDK {
     return unwrapAsync(elementsDeleteElementById(
       this,
       id,
+      options,
+    ));
+  }
+
+  /**
+   * Get a list of Custom Elements by User ID
+   *
+   * @remarks
+   * This endpoint gets the list of custom elements belongs to the user.
+   */
+  async getCustomElementsByUserId(
+    userId: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetCustomElementsByUserIdResponse> {
+    return unwrapAsync(elementsGetCustomElementsByUserId(
+      this,
+      userId,
       options,
     ));
   }

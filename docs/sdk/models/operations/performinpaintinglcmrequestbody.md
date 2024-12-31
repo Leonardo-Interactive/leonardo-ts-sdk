@@ -8,8 +8,8 @@ Query parameters can also be provided in the request body as a JSON object
 import { PerformInpaintingLCMRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: PerformInpaintingLCMRequestBody = {
-  imageDataUrl: "https://dual-cod.name/",
-  maskDataUrl: "https://lighthearted-developing.com/",
+  imageDataUrl: "https://quarrelsome-disappointment.info/",
+  maskDataUrl: "https://cumbersome-calculus.name/",
   prompt: "<value>",
 };
 ```

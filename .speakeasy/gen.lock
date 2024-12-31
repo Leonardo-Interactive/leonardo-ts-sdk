@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 0eb8574bd95da2d1c115594014d40a94
+  docChecksum: 425bdb54a16c9f5e43a50131707f7269
   docVersion: v1.0.0
-  speakeasyVersion: 1.455.3
-  generationVersion: 2.479.3
-  releaseVersion: 4.19.4
-  configChecksum: 118cbb29c8410dfaef73567dc32f4a2a
+  speakeasyVersion: 1.460.3
+  generationVersion: 2.484.0
+  releaseVersion: 4.19.5
+  configChecksum: 63139aa074628dfd77382d25ad71ae46
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -15,14 +15,14 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.9
+    core: 3.18.12
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     flattening: 2.82.1
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -114,6 +114,14 @@ generatedFiles:
   - docs/sdk/models/operations/generatedimagevariationgeneric.md
   - docs/sdk/models/operations/generationelements.md
   - docs/sdk/models/operations/generations.md
+  - docs/sdk/models/operations/getcustomelementsbyuseridrequest.md
+  - docs/sdk/models/operations/getcustomelementsbyuseridresponse.md
+  - docs/sdk/models/operations/getcustomelementsbyuseridresponsebody.md
+  - docs/sdk/models/operations/getcustomelementsbyuseriduserloras.md
+  - docs/sdk/models/operations/getcustommodelsbyuseridcustommodels.md
+  - docs/sdk/models/operations/getcustommodelsbyuseridrequest.md
+  - docs/sdk/models/operations/getcustommodelsbyuseridresponse.md
+  - docs/sdk/models/operations/getcustommodelsbyuseridresponsebody.md
   - docs/sdk/models/operations/getdatasetbyiddatasets.md
   - docs/sdk/models/operations/getdatasetbyidrequest.md
   - docs/sdk/models/operations/getdatasetbyidresponse.md
@@ -238,6 +246,7 @@ generatedFiles:
   - docs/sdk/models/shared/strengthtype.md
   - docs/sdk/models/shared/universalupscalerstyle.md
   - docs/sdk/models/shared/universalupscalerultrastyle.md
+  - docs/sdk/models/shared/userelementsinput.md
   - docs/sdk/models/shared/variationtype.md
   - docs/sdks/dataset/README.md
   - docs/sdks/elements/README.md
@@ -263,6 +272,7 @@ generatedFiles:
   - src/funcs/datasetUploadDatasetImageFromGen.ts
   - src/funcs/elementsCreateElement.ts
   - src/funcs/elementsDeleteElementById.ts
+  - src/funcs/elementsGetCustomElementsByUserId.ts
   - src/funcs/elementsGetElementById.ts
   - src/funcs/elementsListElements.ts
   - src/funcs/imageCreateGeneration.ts
@@ -275,6 +285,7 @@ generatedFiles:
   - src/funcs/initImagesUploadInitImage.ts
   - src/funcs/modelsCreateModel.ts
   - src/funcs/modelsDeleteModelById.ts
+  - src/funcs/modelsGetCustomModelsByUserId.ts
   - src/funcs/modelsGetModelById.ts
   - src/funcs/modelsListPlatformModels.ts
   - src/funcs/motionCreateSVDMotionGeneration.ts
@@ -342,6 +353,8 @@ generatedFiles:
   - src/sdk/models/operations/deleteinitimagebyid.ts
   - src/sdk/models/operations/deletemodelbyid.ts
   - src/sdk/models/operations/deletetexturegenerationbyid.ts
+  - src/sdk/models/operations/getcustomelementsbyuserid.ts
+  - src/sdk/models/operations/getcustommodelsbyuserid.ts
   - src/sdk/models/operations/getdatasetbyid.ts
   - src/sdk/models/operations/getelementbyid.ts
   - src/sdk/models/operations/getgenerationbyid.ts
@@ -380,6 +393,7 @@ generatedFiles:
   - src/sdk/models/shared/strength.ts
   - src/sdk/models/shared/universalupscalerstyle.ts
   - src/sdk/models/shared/universalupscalerultrastyle.ts
+  - src/sdk/models/shared/userelementsinput.ts
   - src/sdk/models/shared/variationtype.ts
   - src/sdk/motion.ts
   - src/sdk/pricingcalculator.ts
@@ -405,33 +419,54 @@ examples:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getInitImageById:
     speakeasy-default-get-init-image-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   uploadCanvasInitImage:
     speakeasy-default-upload-canvas-init-image:
       requestBody:
         application/json: {"initExtension": "<value>", "maskExtension": "<value>"}
+      responses:
+        "200":
+          application/json: {}
   uploadInitImage:
     speakeasy-default-upload-init-image:
       requestBody:
         application/json: {"extension": "png"}
+      responses:
+        "200":
+          application/json: {}
   createDataset:
     speakeasy-default-create-dataset:
       requestBody:
         application/json: {"name": "<value>"}
+      responses:
+        "200":
+          application/json: {}
   deleteDatasetById:
     speakeasy-default-delete-dataset-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getDatasetById:
     speakeasy-default-get-dataset-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   uploadDatasetImage:
     speakeasy-default-upload-dataset-image:
       parameters:
@@ -439,6 +474,9 @@ examples:
           datasetId: "<value>"
       requestBody:
         application/json: {"extension": "mpg4"}
+      responses:
+        "200":
+          application/json: {}
   uploadDatasetImageFromGen:
     speakeasy-default-upload-dataset-image-from-gen:
       parameters:
@@ -446,103 +484,212 @@ examples:
           datasetId: "<value>"
       requestBody:
         application/json: {"generatedImageId": "<value>"}
+      responses:
+        "200":
+          application/json: {}
   listElements:
-    speakeasy-default-list-elements: {}
+    speakeasy-default-list-elements:
+      responses:
+        "200":
+          application/json: {}
   createGeneration:
-    speakeasy-default-create-generation: {}
+    speakeasy-default-create-generation:
+      responses:
+        "200":
+          application/json: {}
   deleteGenerationById:
     speakeasy-default-delete-generation-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getGenerationById:
     speakeasy-default-get-generation-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getGenerationsByUserId:
     speakeasy-default-get-generations-by-user-id:
       parameters:
         path:
           userId: "<value>"
         query: {}
+      responses:
+        "200":
+          application/json: {}
   createLCMGeneration:
-    speakeasy-default-create-LCM-generation: {}
+    speakeasy-default-create-LCM-generation:
+      responses:
+        "200":
+          application/json: {}
   performAlchemyUpscaleLCM:
-    speakeasy-default-perform-alchemy-upscale-LCM: {}
+    speakeasy-default-perform-alchemy-upscale-LCM:
+      responses:
+        "200":
+          application/json: {}
   performInpaintingLCM:
-    speakeasy-default-perform-inpainting-LCM: {}
+    speakeasy-default-perform-inpainting-LCM:
+      responses:
+        "200":
+          application/json: {}
   performInstantRefine:
-    speakeasy-default-perform-instant-refine: {}
+    speakeasy-default-perform-instant-refine:
+      responses:
+        "200":
+          application/json: {}
   createSVDMotionGeneration:
-    speakeasy-default-create-SVD-motion-generation: {}
+    speakeasy-default-create-SVD-motion-generation:
+      responses:
+        "200":
+          application/json: {}
   createTextureGeneration:
-    speakeasy-default-create-texture-generation: {}
+    speakeasy-default-create-texture-generation:
+      responses:
+        "200":
+          application/json: {}
   deleteTextureGenerationById:
     speakeasy-default-delete-texture-generation-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getUserSelf:
-    speakeasy-default-get-user-self: {}
+    speakeasy-default-get-user-self:
+      responses:
+        "200":
+          application/json: {}
   createModel:
     speakeasy-default-create-model:
       requestBody:
         application/json: {"datasetId": "<value>", "instance_prompt": "<value>", "name": "<value>"}
+      responses:
+        "200":
+          application/json: {}
   deleteModelById:
     speakeasy-default-delete-model-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getModelById:
     speakeasy-default-get-model-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   listPlatformModels:
-    speakeasy-default-list-platform-models: {}
+    speakeasy-default-list-platform-models:
+      responses:
+        "200":
+          application/json: {}
   delete3DModelById:
     speakeasy-default-delete3-D-model-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   uploadModelAsset:
-    speakeasy-default-upload-model-asset: {}
+    speakeasy-default-upload-model-asset:
+      responses:
+        "200":
+          application/json: {}
   pricingCalculator:
-    speakeasy-default-pricing-calculator: {}
+    speakeasy-default-pricing-calculator:
+      responses:
+        "200":
+          application/json: {}
   promptImprove:
     speakeasy-default-prompt-improve:
       requestBody:
         application/json: {"prompt": "<value>"}
+      responses:
+        "200":
+          application/json: {}
   promptRandom:
-    speakeasy-default-prompt-random: {}
+    speakeasy-default-prompt-random:
+      responses:
+        "200":
+          application/json: {}
   CreateUniversalUpscalerJob:
-    speakeasy-default-create-universal-upscaler-job: {}
+    speakeasy-default-create-universal-upscaler-job:
+      responses:
+        "200":
+          application/json: {}
   createVariationNoBG:
     speakeasy-default-create-variation-no-BG:
       requestBody:
         application/json: {"id": "<id>"}
+      responses:
+        "200":
+          application/json: {}
   createVariationUnzoom:
-    speakeasy-default-create-variation-unzoom: {}
+    speakeasy-default-create-variation-unzoom:
+      responses:
+        "200":
+          application/json: {}
   createVariationUpscale:
-    speakeasy-default-create-variation-upscale: {}
+    speakeasy-default-create-variation-upscale:
+      responses:
+        "200":
+          application/json: {}
   getVariationById:
     speakeasy-default-get-variation-by-id:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   createElement:
     speakeasy-default-create-element:
       requestBody:
         application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>", "sd_version": "KINO_XL"}
+      responses:
+        "200":
+          application/json: {}
   deleteElementById:
     speakeasy-default-delete-element-by-id:
       parameters:
         path:
           id: 39024
+      responses:
+        "200":
+          application/json: {}
   getElementById:
     speakeasy-default-get-element-by-id:
       parameters:
         path:
           id: 665696
+      responses:
+        "200":
+          application/json: {}
+  getCustomElementsByUserId:
+    speakeasy-default-get-custom-elements-by-user-id:
+      parameters:
+        path:
+          userId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+  getCustomModelsByUserId:
+    speakeasy-default-get-custom-models-by-user-id:
+      parameters:
+        path:
+          userId: "<id>"
+      responses:
+        "200":
+          application/json: {}
 generatedTests: {}

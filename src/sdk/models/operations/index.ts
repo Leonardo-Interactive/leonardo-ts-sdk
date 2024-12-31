@@ -20,6 +20,8 @@ export * from "./deletegenerationbyid.js";
 export * from "./deleteinitimagebyid.js";
 export * from "./deletemodelbyid.js";
 export * from "./deletetexturegenerationbyid.js";
+export * from "./getcustomelementsbyuserid.js";
+export * from "./getcustommodelsbyuserid.js";
 export * from "./getdatasetbyid.js";
 export * from "./getelementbyid.js";
 export * from "./getgenerationbyid.js";

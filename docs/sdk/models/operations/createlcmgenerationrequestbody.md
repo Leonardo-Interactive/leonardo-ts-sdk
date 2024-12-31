@@ -8,7 +8,7 @@ Query parameters can also be provided in the request body as a JSON object
 import { CreateLCMGenerationRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: CreateLCMGenerationRequestBody = {
-  imageDataUrl: "https://ruddy-bandwidth.net/",
+  imageDataUrl: "https://rare-pillbox.biz/",
   prompt: "<value>",
 };
 ```

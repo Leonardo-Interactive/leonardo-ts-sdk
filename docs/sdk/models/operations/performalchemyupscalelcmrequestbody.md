@@ -8,7 +8,7 @@ Query parameters can also be provided in the request body as a JSON object
 import { PerformAlchemyUpscaleLCMRequestBody } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: PerformAlchemyUpscaleLCMRequestBody = {
-  imageDataUrl: "https://gigantic-freezing.name/",
+  imageDataUrl: "https://oily-hundred.org/",
   prompt: "<value>",
 };
 ```

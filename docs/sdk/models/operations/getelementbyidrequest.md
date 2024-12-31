@@ -6,7 +6,7 @@
 import { GetElementByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: GetElementByIdRequest = {
-  id: 944669,
+  id: 414662,
 };
 ```
 

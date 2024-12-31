@@ -110,6 +110,7 @@ run();
 
 * [createElement](docs/sdks/elements/README.md#createelement) - Train a Custom Element
 * [deleteElementById](docs/sdks/elements/README.md#deleteelementbyid) - Delete a Single Custom Element by ID
+* [getCustomElementsByUserId](docs/sdks/elements/README.md#getcustomelementsbyuserid) - Get a list of Custom Elements by User ID
 * [getElementById](docs/sdks/elements/README.md#getelementbyid) - Get a Single Custom Element by ID
 * [listElements](docs/sdks/elements/README.md#listelements) - List Elements
 
@@ -132,6 +133,7 @@ run();
 
 * [createModel](docs/sdks/models/README.md#createmodel) - Train a Custom Model
 * [deleteModelById](docs/sdks/models/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
+* [getCustomModelsByUserId](docs/sdks/models/README.md#getcustommodelsbyuserid) - Get a list of Custom Models by User ID
 * [getModelById](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
 * [listPlatformModels](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
 
@@ -393,6 +395,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`datasetUploadDatasetImageFromGen`](docs/sdks/dataset/README.md#uploaddatasetimagefromgen) - Upload a Single Generated Image to a Dataset
 - [`elementsCreateElement`](docs/sdks/elements/README.md#createelement) - Train a Custom Element
 - [`elementsDeleteElementById`](docs/sdks/elements/README.md#deleteelementbyid) - Delete a Single Custom Element by ID
+- [`elementsGetCustomElementsByUserId`](docs/sdks/elements/README.md#getcustomelementsbyuserid) - Get a list of Custom Elements by User ID
 - [`elementsGetElementById`](docs/sdks/elements/README.md#getelementbyid) - Get a Single Custom Element by ID
 - [`elementsListElements`](docs/sdks/elements/README.md#listelements) - List Elements
 - [`imageCreateGeneration`](docs/sdks/image/README.md#creategeneration) - Create a Generation of Images
@@ -405,6 +408,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`initImagesUploadInitImage`](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
 - [`modelsCreateModel`](docs/sdks/models/README.md#createmodel) - Train a Custom Model
 - [`modelsDeleteModelById`](docs/sdks/models/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
+- [`modelsGetCustomModelsByUserId`](docs/sdks/models/README.md#getcustommodelsbyuserid) - Get a list of Custom Models by User ID
 - [`modelsGetModelById`](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
 - [`modelsListPlatformModels`](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
 - [`motionCreateSVDMotionGeneration`](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation

@@ -4,6 +4,7 @@
 
 import { modelsCreateModel } from "../funcs/modelsCreateModel.js";
 import { modelsDeleteModelById } from "../funcs/modelsDeleteModelById.js";
+import { modelsGetCustomModelsByUserId } from "../funcs/modelsGetCustomModelsByUserId.js";
 import { modelsGetModelById } from "../funcs/modelsGetModelById.js";
 import { modelsListPlatformModels } from "../funcs/modelsListPlatformModels.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -41,6 +42,23 @@ export class Models extends ClientSDK {
     return unwrapAsync(modelsDeleteModelById(
       this,
       id,
+      options,
+    ));
+  }
+
+  /**
+   * Get a list of Custom Models by User ID
+   *
+   * @remarks
+   * This endpoint gets the list of custom models belongs to the user.
+   */
+  async getCustomModelsByUserId(
+    userId: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetCustomModelsByUserIdResponse> {
+    return unwrapAsync(modelsGetCustomModelsByUserId(
+      this,
+      userId,
       options,
     ));
   }

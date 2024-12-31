@@ -7,7 +7,7 @@ The type of request for the Canvas Editor.
 ```typescript
 import { CanvasRequestType } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: CanvasRequestType = CanvasRequestType.Outpaint;
+let value: CanvasRequestType = CanvasRequestType.Sketch2Img;
 ```
 
 ## Values

@@ -7,7 +7,7 @@ import { CreateGenerationResponse } from "@leonardo-ai/sdk/sdk/models/operations
 
 let value: CreateGenerationResponse = {
   contentType: "<value>",
-  statusCode: 300,
+  statusCode: 417,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
