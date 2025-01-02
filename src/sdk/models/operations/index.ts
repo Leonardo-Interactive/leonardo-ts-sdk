@@ -32,6 +32,7 @@ export * from "./getuserself.js";
 export * from "./getvariationbyid.js";
 export * from "./listelements.js";
 export * from "./listplatformmodels.js";
+export * from "./listplatformstyles.js";
 export * from "./performalchemyupscalelcm.js";
 export * from "./performinpaintinglcm.js";
 export * from "./performinstantrefine.js";
