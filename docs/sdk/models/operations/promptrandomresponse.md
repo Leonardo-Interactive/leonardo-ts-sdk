@@ -7,7 +7,7 @@ import { PromptRandomResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: PromptRandomResponse = {
   contentType: "<value>",
-  statusCode: 407,
+  statusCode: 500,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

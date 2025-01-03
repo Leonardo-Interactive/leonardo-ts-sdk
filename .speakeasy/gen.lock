@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 9b390b8d42528c384715226813f07ea1
+  docChecksum: 425bdb54a16c9f5e43a50131707f7269
   docVersion: v1.0.0
-  speakeasyVersion: 1.460.3
+  speakeasyVersion: 1.460.4
   generationVersion: 2.484.0
-  releaseVersion: 4.19.6
-  configChecksum: 4a0f06a251e8649f55418d5447fc13d6
+  releaseVersion: 4.19.7
+  configChecksum: 719cdd536c498996b986a23ca058efc8
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -165,8 +165,6 @@ generatedFiles:
   - docs/sdk/models/operations/listplatformmodelsgeneratedimages.md
   - docs/sdk/models/operations/listplatformmodelsresponse.md
   - docs/sdk/models/operations/listplatformmodelsresponsebody.md
-  - docs/sdk/models/operations/listplatformstylesresponse.md
-  - docs/sdk/models/operations/listplatformstylesresponsebody.md
   - docs/sdk/models/operations/loras.md
   - docs/sdk/models/operations/modelassets.md
   - docs/sdk/models/operations/modelassettexturegenerations.md
@@ -208,7 +206,6 @@ generatedFiles:
   - docs/sdk/models/operations/sdunzoomoutput.md
   - docs/sdk/models/operations/sdupscalejoboutput.md
   - docs/sdk/models/operations/sdversions.md
-  - docs/sdk/models/operations/style.md
   - docs/sdk/models/operations/texturegenerationjoboutput.md
   - docs/sdk/models/operations/transparencytype.md
   - docs/sdk/models/operations/universalupscaleroutput.md
@@ -261,7 +258,6 @@ generatedFiles:
   - docs/sdks/pricingcalculator/README.md
   - docs/sdks/prompt/README.md
   - docs/sdks/realtimecanvas/README.md
-  - docs/sdks/styles/README.md
   - docs/sdks/texture/README.md
   - docs/sdks/threedmodelassets/README.md
   - docs/sdks/user/README.md
@@ -300,7 +296,6 @@ generatedFiles:
   - src/funcs/realtimeCanvasPerformAlchemyUpscaleLCM.ts
   - src/funcs/realtimeCanvasPerformInpaintingLCM.ts
   - src/funcs/realtimeCanvasPerformInstantRefine.ts
-  - src/funcs/stylesListPlatformStyles.ts
   - src/funcs/textureCreateTextureGeneration.ts
   - src/funcs/textureDeleteTextureGenerationById.ts
   - src/funcs/threeDModelAssetsDelete3DModelById.ts
@@ -371,7 +366,6 @@ generatedFiles:
   - src/sdk/models/operations/index.ts
   - src/sdk/models/operations/listelements.ts
   - src/sdk/models/operations/listplatformmodels.ts
-  - src/sdk/models/operations/listplatformstyles.ts
   - src/sdk/models/operations/performalchemyupscalelcm.ts
   - src/sdk/models/operations/performinpaintinglcm.ts
   - src/sdk/models/operations/performinstantrefine.ts
@@ -406,7 +400,6 @@ generatedFiles:
   - src/sdk/prompt.ts
   - src/sdk/realtimecanvas.ts
   - src/sdk/sdk.ts
-  - src/sdk/styles.ts
   - src/sdk/texture.ts
   - src/sdk/threedmodelassets.ts
   - src/sdk/types/blobs.ts

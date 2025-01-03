@@ -12,7 +12,6 @@ import { Motion } from "./motion.js";
 import { PricingCalculator } from "./pricingcalculator.js";
 import { Prompt } from "./prompt.js";
 import { RealtimeCanvas } from "./realtimecanvas.js";
-import { Styles } from "./styles.js";
 import { Texture } from "./texture.js";
 import { ThreeDModelAssets } from "./threedmodelassets.js";
 import { User } from "./user.js";
@@ -67,11 +66,6 @@ export class Leonardo extends ClientSDK {
   private _threeDModelAssets?: ThreeDModelAssets;
   get threeDModelAssets(): ThreeDModelAssets {
     return (this._threeDModelAssets ??= new ThreeDModelAssets(this._options));
-  }
-
-  private _styles?: Styles;
-  get styles(): Styles {
-    return (this._styles ??= new Styles(this._options));
   }
 
   private _pricingCalculator?: PricingCalculator;
