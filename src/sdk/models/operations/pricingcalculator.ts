@@ -80,6 +80,18 @@ export type PricingCalculatorPricingCalculatorObject = {
    */
   numImages?: number | undefined;
   /**
+   * Enable to use PhotoReal. Requires enabling alchemy.
+   */
+  photoRealMode?: boolean | null | undefined;
+  /**
+   * Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified.
+   */
+  photoRealStrength?: number | null | undefined;
+  /**
+   * The version of photoReal to use. Must be v1 or v2.
+   */
+  photoRealVersion?: string | null | undefined;
+  /**
    * Enable to use Prompt Magic.
    */
   promptMagic?: boolean | null | undefined;
@@ -359,6 +371,9 @@ export const PricingCalculatorPricingCalculatorObject$inboundSchema: z.ZodType<
   isSDXLLightning: z.nullable(z.boolean()).optional(),
   loraCount: z.nullable(z.number().int()).optional(),
   numImages: z.number().int().optional(),
+  photoRealMode: z.nullable(z.boolean()).optional(),
+  photoRealStrength: z.nullable(z.number()).optional(),
+  photoRealVersion: z.nullable(z.string()).optional(),
   promptMagic: z.nullable(z.boolean()).optional(),
   promptMagicStrength: z.nullable(z.number()).optional(),
   promptMagicVersion: z.nullable(z.string()).optional(),
@@ -379,6 +394,9 @@ export type PricingCalculatorPricingCalculatorObject$Outbound = {
   isSDXLLightning?: boolean | null | undefined;
   loraCount?: number | null | undefined;
   numImages?: number | undefined;
+  photoRealMode?: boolean | null | undefined;
+  photoRealStrength?: number | null | undefined;
+  photoRealVersion?: string | null | undefined;
   promptMagic?: boolean | null | undefined;
   promptMagicStrength?: number | null | undefined;
   promptMagicVersion?: string | null | undefined;
@@ -403,6 +421,9 @@ export const PricingCalculatorPricingCalculatorObject$outboundSchema: z.ZodType<
   isSDXLLightning: z.nullable(z.boolean()).optional(),
   loraCount: z.nullable(z.number().int()).optional(),
   numImages: z.number().int().optional(),
+  photoRealMode: z.nullable(z.boolean()).optional(),
+  photoRealStrength: z.nullable(z.number()).optional(),
+  photoRealVersion: z.nullable(z.string()).optional(),
   promptMagic: z.nullable(z.boolean()).optional(),
   promptMagicStrength: z.nullable(z.number()).optional(),
   promptMagicVersion: z.nullable(z.string()).optional(),
