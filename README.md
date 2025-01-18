@@ -5,6 +5,7 @@
    <a href="https://docs.leonardo.ai/"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
    <a href="https://discord.gg/leonardo-ai"><img src="https://img.shields.io/static/v1?label=Discord&message=Join&color=7289da&style=for-the-badge" /></a>
    <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
+  <a href="https://app.codeanywhere.com/#https://github.com/Leonardo-Interactive/leonardo-ts-sdk/tree/main"><img src="https://codeanywhere.com/img/open-in-codeanywhere-btn.svg" alt=""></a>
 </div>
 
 <!-- Start Summary [summary] -->
