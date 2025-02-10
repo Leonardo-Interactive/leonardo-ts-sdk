@@ -1,10 +1,10 @@
-
 <div align="center">
     <a href="https://codespaces.new/Leonardo-Interactive/leonardo-ts-sdk.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
+    <a href="https://app.codeanywhere.com/#https://github.com/Leonardo-Interactive/leonardo-ts-sdk/tree/main"><img src="https://codeanywhere.com/img/open-in-codeanywhere-btn.svg" alt=""></a>
 </div>
 <br>
 
-> **Remember to shutdown a GitHub Codespace when it is not in use!**
+> **Remember to shutdown a GitHub Codespace or stop workspaces on Codeanywhere when not in use!**
 
 # Dev Containers Quick Start
 
