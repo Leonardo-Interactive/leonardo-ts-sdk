@@ -13,8 +13,8 @@ targets:
         output: ./
         publish:
             npm:
-                token: $NPM_TOKEN
+                token: $npm_token
         codeSamples:
+            output: ""
             registry:
                 location: registry.speakeasyapi.dev/leonardo-ai/leonardo-ai/my-source-typescript-code-samples
-            blocking: false
