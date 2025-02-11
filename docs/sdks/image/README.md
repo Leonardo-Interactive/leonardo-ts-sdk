@@ -240,7 +240,7 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.image.getGenerationsByUserId("<value>");
+  const result = await leonardo.image.getGenerationsByUserId("<id>");
 
   // Handle the result
   console.log(result);
@@ -264,7 +264,7 @@ const leonardo = new LeonardoCore({
 });
 
 async function run() {
-  const res = await imageGetGenerationsByUserId(leonardo, "<value>");
+  const res = await imageGetGenerationsByUserId(leonardo, "<id>");
 
   if (!res.ok) {
     throw res.error;

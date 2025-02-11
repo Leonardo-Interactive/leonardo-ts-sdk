@@ -246,8 +246,8 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.dataset.uploadDatasetImage({
-    extension: "mpg4",
-  }, "<value>");
+    extension: "mp4v",
+  }, "<id>");
 
   // Handle the result
   console.log(result);
@@ -272,8 +272,8 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await datasetUploadDatasetImage(leonardo, {
-    extension: "mpg4",
-  }, "<value>");
+    extension: "mp4v",
+  }, "<id>");
 
   if (!res.ok) {
     throw res.error;
@@ -323,8 +323,8 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.dataset.uploadDatasetImageFromGen({
-    generatedImageId: "<value>",
-  }, "<value>");
+    generatedImageId: "<id>",
+  }, "<id>");
 
   // Handle the result
   console.log(result);
@@ -349,8 +349,8 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await datasetUploadDatasetImageFromGen(leonardo, {
-    generatedImageId: "<value>",
-  }, "<value>");
+    generatedImageId: "<id>",
+  }, "<id>");
 
   if (!res.ok) {
     throw res.error;
