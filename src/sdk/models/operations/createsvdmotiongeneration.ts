@@ -46,7 +46,7 @@ export type MotionSvdGenerationOutput = {
  * Responses for POST /generations-motion-svd
  */
 export type CreateSVDMotionGenerationResponseBody = {
-  sdGenerationJob?: MotionSvdGenerationOutput | null | undefined;
+  motionSvdGenerationJob?: MotionSvdGenerationOutput | null | undefined;
 };
 
 export type CreateSVDMotionGenerationResponse = {
@@ -202,14 +202,17 @@ export const CreateSVDMotionGenerationResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sdGenerationJob: z.nullable(
+  motionSvdGenerationJob: z.nullable(
     z.lazy(() => MotionSvdGenerationOutput$inboundSchema),
   ).optional(),
 });
 
 /** @internal */
 export type CreateSVDMotionGenerationResponseBody$Outbound = {
-  sdGenerationJob?: MotionSvdGenerationOutput$Outbound | null | undefined;
+  motionSvdGenerationJob?:
+    | MotionSvdGenerationOutput$Outbound
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -218,7 +221,7 @@ export const CreateSVDMotionGenerationResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSVDMotionGenerationResponseBody
 > = z.object({
-  sdGenerationJob: z.nullable(
+  motionSvdGenerationJob: z.nullable(
     z.lazy(() => MotionSvdGenerationOutput$outboundSchema),
   ).optional(),
 });

@@ -15,6 +15,5 @@ targets:
             npm:
                 token: $npm_token
         codeSamples:
-            output: ""
             registry:
                 location: registry.speakeasyapi.dev/leonardo-ai/leonardo-ai/my-source-typescript-code-samples

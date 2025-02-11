@@ -30,6 +30,9 @@ export type PerformInstantRefineRequestBody = {
    */
   prompt: string;
   requestTimestamp?: string | undefined;
+  /**
+   * Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Flux and 9999999998 for other models
+   */
   seed?: number | null | undefined;
   /**
    * The number of steps to use for the generation. Must be between 4 and 16.

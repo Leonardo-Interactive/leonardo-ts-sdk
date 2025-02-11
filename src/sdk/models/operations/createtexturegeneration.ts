@@ -19,6 +19,9 @@ export type CreateTextureGenerationRequestBody = {
   previewDirection?: string | null | undefined;
   prompt?: string | undefined;
   sdVersion?: string | null | undefined;
+  /**
+   * Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Flux and 9999999998 for other models
+   */
   seed?: number | null | undefined;
 };
 

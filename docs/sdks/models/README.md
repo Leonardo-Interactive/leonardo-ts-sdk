@@ -26,7 +26,7 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.models.createModel({
-    datasetId: "<value>",
+    datasetId: "<id>",
     instancePrompt: "<value>",
     name: "<value>",
   });
@@ -54,7 +54,7 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await modelsCreateModel(leonardo, {
-    datasetId: "<value>",
+    datasetId: "<id>",
     instancePrompt: "<value>",
     name: "<value>",
   });

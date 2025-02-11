@@ -165,6 +165,9 @@ export type CreateGenerationRequestBody = {
    * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
    */
   sdVersion?: shared.SdVersions | undefined;
+  /**
+   * Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Flux and 9999999998 for other models
+   */
   seed?: number | null | undefined;
   /**
    * Whether the generated images should tile on all axis.

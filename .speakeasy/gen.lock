@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 8eaccb7072bac790061f8fdc3ef740e1
+  docChecksum: 4b74d250e4dae46c2d3e1dec7a2be5b9
   docVersion: v1.0.0
-  speakeasyVersion: 1.466.1
-  generationVersion: 2.488.4
-  releaseVersion: 4.19.9
-  configChecksum: 28f74de71d96f7ee10b4000fcd08ccd7
+  speakeasyVersion: 1.488.0
+  generationVersion: 2.506.0
+  releaseVersion: 4.20.0
+  configChecksum: 2794a3cde0dffa7f390e8e9b15b459a5
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.12
+    core: 3.19.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -34,10 +34,8 @@ generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
-  - .eslintrc.cjs
   - .gitattributes
   - .npmignore
-  - CONTRIBUTING.md
   - FUNCTIONS.md
   - RUNTIMES.md
   - USAGE.md
@@ -262,6 +260,7 @@ generatedFiles:
   - docs/sdks/threedmodelassets/README.md
   - docs/sdks/user/README.md
   - docs/sdks/variation/README.md
+  - eslint.config.mjs
   - jsr.json
   - package.json
   - src/core.ts
@@ -471,9 +470,9 @@ examples:
     speakeasy-default-upload-dataset-image:
       parameters:
         path:
-          datasetId: "<value>"
+          datasetId: "<id>"
       requestBody:
-        application/json: {"extension": "mpg4"}
+        application/json: {"extension": "mp4v"}
       responses:
         "200":
           application/json: {}
@@ -481,9 +480,40 @@ examples:
     speakeasy-default-upload-dataset-image-from-gen:
       parameters:
         path:
-          datasetId: "<value>"
+          datasetId: "<id>"
       requestBody:
-        application/json: {"generatedImageId": "<value>"}
+        application/json: {"generatedImageId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+  createElement:
+    speakeasy-default-create-element:
+      requestBody:
+        application/json: {"datasetId": "", "description": "", "instance_prompt": "a character", "learning_rate": 0.000001, "lora_focus": "General", "name": "placeholder", "num_train_epochs": 100, "resolution": 1024, "sd_version": "SDXL_0_9", "train_text_encoder": true}
+      responses:
+        "200":
+          application/json: {}
+  deleteElementById:
+    speakeasy-default-delete-element-by-id:
+      parameters:
+        path:
+          id: 39024
+      responses:
+        "200":
+          application/json: {}
+  getCustomElementsByUserId:
+    speakeasy-default-get-custom-elements-by-user-id:
+      parameters:
+        path:
+          userId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+  getElementById:
+    speakeasy-default-get-element-by-id:
+      parameters:
+        path:
+          id: 665696
       responses:
         "200":
           application/json: {}
@@ -494,6 +524,8 @@ examples:
           application/json: {}
   createGeneration:
     speakeasy-default-create-generation:
+      requestBody:
+        application/json: {"alchemy": true, "height": 768, "modelId": "b24e16ff-06e3-43eb-8d33-4416c2d75876", "num_images": 4, "presetStyle": "DYNAMIC", "prompt": "A majestic cat in the snow", "width": 1024}
       responses:
         "200":
           application/json: {}
@@ -517,8 +549,10 @@ examples:
     speakeasy-default-get-generations-by-user-id:
       parameters:
         path:
-          userId: "<value>"
-        query: {}
+          userId: "<id>"
+        query:
+          offset: 0
+          limit: 10
       responses:
         "200":
           application/json: {}
@@ -568,7 +602,7 @@ examples:
   createModel:
     speakeasy-default-create-model:
       requestBody:
-        application/json: {"datasetId": "<value>", "instance_prompt": "<value>", "name": "<value>"}
+        application/json: {"datasetId": "<id>", "description": "", "instance_prompt": "<value>", "modelType": "GENERAL", "name": "<value>", "nsfw": false, "resolution": 512, "strength": "MEDIUM"}
       responses:
         "200":
           application/json: {}
@@ -577,6 +611,14 @@ examples:
       parameters:
         path:
           id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+  getCustomModelsByUserId:
+    speakeasy-default-get-custom-models-by-user-id:
+      parameters:
+        path:
+          userId: "<id>"
       responses:
         "200":
           application/json: {}
@@ -625,6 +667,8 @@ examples:
           application/json: {}
   CreateUniversalUpscalerJob:
     speakeasy-default-create-universal-upscaler-job:
+      requestBody:
+        application/json: {"creativityStrength": 5, "upscaleMultiplier": 1.5, "upscalerStyle": "GENERAL"}
       responses:
         "200":
           application/json: {}
@@ -653,48 +697,5 @@ examples:
       responses:
         "200":
           application/json: {}
-  createElement:
-    speakeasy-default-create-element:
-      requestBody:
-        application/json: {"datasetId": "<id>", "instance_prompt": "<value>", "name": "<value>", "sd_version": "KINO_XL"}
-      responses:
-        "200":
-          application/json: {}
-  deleteElementById:
-    speakeasy-default-delete-element-by-id:
-      parameters:
-        path:
-          id: 39024
-      responses:
-        "200":
-          application/json: {}
-  getElementById:
-    speakeasy-default-get-element-by-id:
-      parameters:
-        path:
-          id: 665696
-      responses:
-        "200":
-          application/json: {}
-  getCustomElementsByUserId:
-    speakeasy-default-get-custom-elements-by-user-id:
-      parameters:
-        path:
-          userId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-  getCustomModelsByUserId:
-    speakeasy-default-get-custom-models-by-user-id:
-      parameters:
-        path:
-          userId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-  listPlatformStyles:
-    speakeasy-default-list-platform-styles:
-      responses:
-        "200":
-          application/json: {}
+examplesVersion: 1.0.0
 generatedTests: {}
