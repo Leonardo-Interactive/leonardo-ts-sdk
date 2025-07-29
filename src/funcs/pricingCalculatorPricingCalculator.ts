@@ -17,9 +17,11 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
-import { SDKError } from "../sdk/models/errors/sdkerror.js";
+import { LeonardoError } from "../sdk/models/errors/leonardoerror.js";
+import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
@@ -28,21 +30,49 @@ import { Result } from "../sdk/types/fp.js";
  * @remarks
  * This endpoint returns the cost used for generating images using a particular service type.
  */
-export async function pricingCalculatorPricingCalculator(
+export function pricingCalculatorPricingCalculator(
+  client: LeonardoCore,
+  request?: operations.PricingCalculatorRequestBody | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.PricingCalculatorResponse,
+    | LeonardoError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
   client: LeonardoCore,
   request?: operations.PricingCalculatorRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.PricingCalculatorResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      operations.PricingCalculatorResponse,
+      | LeonardoError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
   const parsed = safeParse(
     request,
@@ -53,7 +83,7 @@ export async function pricingCalculatorPricingCalculator(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = payload === undefined
@@ -72,6 +102,8 @@ export async function pricingCalculatorPricingCalculator(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "pricingCalculator",
     oAuth2Scopes: [],
 
@@ -91,10 +123,11 @@ export async function pricingCalculatorPricingCalculator(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -105,7 +138,7 @@ export async function pricingCalculatorPricingCalculator(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -119,21 +152,22 @@ export async function pricingCalculatorPricingCalculator(
 
   const [result] = await M.match<
     operations.PricingCalculatorResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | LeonardoError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, operations.PricingCalculatorResponse$inboundSchema, {
       key: "object",
     }),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

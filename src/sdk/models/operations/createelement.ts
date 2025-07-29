@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The base version of stable diffusion to use if not using a custom model.
+ * The base version to use if not using a custom model.
  */
 export enum SdVersions {
   Sdxl09 = "SDXL_0_9",
@@ -19,6 +19,7 @@ export enum SdVersions {
   VisionXl = "VISION_XL",
   KinoXl = "KINO_XL",
   AlbedoXl = "ALBEDO_XL",
+  FluxDev = "FLUX_DEV",
 }
 
 /**
@@ -34,31 +35,31 @@ export type CreateElementRequestBody = {
    */
   description?: string | null | undefined;
   /**
-   * The instance prompt to use during training.Try “a” by a noun. E.g. a castle
+   * Use a word that is closely related to what you're training that isn't too common. For example, instead of 'dog,' try something unique like 'jackthedog' or 'magicdonut'. Required for all non-FLUX_DEV models and FLUX_DEV Character model training.
    */
-  instancePrompt?: string | undefined;
+  instancePrompt?: string | null | undefined;
   /**
-   * The speed of element learns.
+   * The speed at which the model learns during training.<br><br><table><tr><th>Model Type</th><th>Lora Focus</th><th>Min</th><th>Max</th><th>Default</th></tr><tr><td>Default</td><td>General | Style | Character | Object</td><td>0.00000001</td><td>0.00001</td><td>0.000001</td></tr><tr><td rowspan='3'>FLUX_DEV</td><td>Style</td><td>0.000001</td><td>0.00003</td><td>0.00001</td></tr><tr><td>Object</td><td>0.00001</td><td>0.001</td><td>0.0004</td></tr><tr><td>Character</td><td>0.00001</td><td>0.001</td><td>0.0005</td></tr><tr><td>General</td><td colspan='3'>NA</td></tr></table>
    */
-  learningRate?: number | undefined;
+  learningRate: number;
   /**
-   * The category determines how the element will be trained. Options are 'General' | 'Character' | 'Style' | 'Object'.
+   * The category determines how the element will be trained. Options are 'General' | 'Character' | 'Style' | 'Object'. FLUX_DEV doesn't support General category.
    */
-  loraFocus?: string | undefined;
+  loraFocus: string;
   /**
    * The name of the element.
    */
   name?: string | undefined;
   /**
-   * The number of times the entire training dataset is passed through the element.
+   * The number of times the entire training dataset is passed through the element.<br><br><table><tr><th>Model Type</th><th>Lora Focus</th><th>Min</th><th>Max</th><th>Default</th></tr><tr><td>Default</td><td>General | Style | Character | Object</td><td>1</td><td>250</td><td>100</td></tr><tr><td rowspan='3'>FLUX_DEV</td><td>Style</td><td>30</td><td>120</td><td>60</td></tr><tr><td>Object</td><td>120</td><td>220</td><td>140</td></tr><tr><td>Character</td><td>100</td><td>200</td><td>135</td></tr><tr><td>General</td><td colspan='3'>NA</td></tr></table>
    */
-  numTrainEpochs?: number | undefined;
+  numTrainEpochs: number;
   /**
    * The resolution for training. Must be 1024.
    */
   resolution?: number | null | undefined;
   /**
-   * The base version of stable diffusion to use if not using a custom model.
+   * The base version to use if not using a custom model.
    */
   sdVersion?: SdVersions | undefined;
   /**
@@ -128,13 +129,13 @@ export const CreateElementRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   datasetId: z.string().default(""),
   description: z.nullable(z.string().default("")),
-  instance_prompt: z.string().default("a character"),
-  learning_rate: z.number().default(0.000001),
-  lora_focus: z.string().default("General"),
+  instance_prompt: z.nullable(z.string().default("")),
+  learning_rate: z.number(),
+  lora_focus: z.string(),
   name: z.string().default("placeholder"),
-  num_train_epochs: z.number().int().default(100),
+  num_train_epochs: z.number().int(),
   resolution: z.nullable(z.number().int().default(1024)),
-  sd_version: SdVersions$inboundSchema.default(SdVersions.Sdxl09),
+  sd_version: SdVersions$inboundSchema.default(SdVersions.FluxDev),
   train_text_encoder: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
@@ -151,7 +152,7 @@ export const CreateElementRequestBody$inboundSchema: z.ZodType<
 export type CreateElementRequestBody$Outbound = {
   datasetId: string;
   description: string | null;
-  instance_prompt: string;
+  instance_prompt: string | null;
   learning_rate: number;
   lora_focus: string;
   name: string;
@@ -169,13 +170,13 @@ export const CreateElementRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   datasetId: z.string().default(""),
   description: z.nullable(z.string().default("")),
-  instancePrompt: z.string().default("a character"),
-  learningRate: z.number().default(0.000001),
-  loraFocus: z.string().default("General"),
+  instancePrompt: z.nullable(z.string().default("")),
+  learningRate: z.number(),
+  loraFocus: z.string(),
   name: z.string().default("placeholder"),
-  numTrainEpochs: z.number().int().default(100),
+  numTrainEpochs: z.number().int(),
   resolution: z.nullable(z.number().int().default(1024)),
-  sdVersion: SdVersions$outboundSchema.default(SdVersions.Sdxl09),
+  sdVersion: SdVersions$outboundSchema.default(SdVersions.FluxDev),
   trainTextEncoder: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {

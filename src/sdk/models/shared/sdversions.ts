@@ -18,6 +18,7 @@ export enum SdVersions {
   Phoenix = "PHOENIX",
   Flux = "FLUX",
   FluxDev = "FLUX_DEV",
+  Kino20 = "KINO_2_0",
 }
 
 /** @internal */

@@ -2,7 +2,7 @@
 
 {
   "name": "@leonardo-ai/sdk",
-  "version": "4.20.0",
+  "version": "4.21.0",
   "exports": {
     ".": "./src/index.ts",    
     "./sdk/models/errors": "./src/sdk/models/errors/index.ts",    

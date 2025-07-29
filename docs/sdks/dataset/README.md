@@ -17,6 +17,7 @@ This endpoint creates a new dataset
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createDataset" method="post" path="/datasets" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -29,7 +30,6 @@ async function run() {
     name: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -54,15 +54,12 @@ async function run() {
   const res = await datasetCreateDataset(leonardo, {
     name: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("datasetCreateDataset failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -93,6 +90,7 @@ This endpoint deletes the specific dataset
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteDatasetById" method="delete" path="/datasets/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -103,7 +101,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.dataset.deleteDatasetById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -126,15 +123,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await datasetDeleteDatasetById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("datasetDeleteDatasetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -165,6 +159,7 @@ This endpoint gets the specific dataset
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDatasetById" method="get" path="/datasets/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -175,7 +170,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.dataset.getDatasetById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -198,15 +192,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await datasetGetDatasetById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("datasetGetDatasetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -237,6 +228,7 @@ This endpoint returns presigned details to upload a dataset image to S3
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadDatasetImage" method="post" path="/datasets/{datasetId}/upload" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -246,10 +238,9 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.dataset.uploadDatasetImage({
-    extension: "mp4v",
+    extension: "shtml",
   }, "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -272,17 +263,14 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await datasetUploadDatasetImage(leonardo, {
-    extension: "mp4v",
+    extension: "shtml",
   }, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("datasetUploadDatasetImage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -314,6 +302,7 @@ This endpoint will upload a previously generated image to the dataset
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadDatasetImageFromGen" method="post" path="/datasets/{datasetId}/upload/gen" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -326,7 +315,6 @@ async function run() {
     generatedImageId: "<id>",
   }, "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -351,15 +339,12 @@ async function run() {
   const res = await datasetUploadDatasetImageFromGen(leonardo, {
     generatedImageId: "<id>",
   }, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("datasetUploadDatasetImageFromGen failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

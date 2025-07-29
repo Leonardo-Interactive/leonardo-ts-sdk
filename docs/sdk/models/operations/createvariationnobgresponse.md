@@ -7,10 +7,7 @@ import { CreateVariationNoBGResponse } from "@leonardo-ai/sdk/sdk/models/operati
 
 let value: CreateVariationNoBGResponse = {
   contentType: "<value>",
-  statusCode: 431,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 120672,
 };
 ```
 

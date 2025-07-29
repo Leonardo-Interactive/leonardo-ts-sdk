@@ -13,6 +13,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type PromptImproveRequestBody = {
   /**
+   * Specifies whether the prompt is for a video generation. Defaults to false (image prompt).
+   */
+  isVideo?: boolean | null | undefined;
+  /**
    * The prompt to improve.
    */
   prompt: string;
@@ -65,12 +69,14 @@ export const PromptImproveRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isVideo: z.nullable(z.boolean()).optional(),
   prompt: z.string(),
   promptInstructions: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type PromptImproveRequestBody$Outbound = {
+  isVideo?: boolean | null | undefined;
   prompt: string;
   promptInstructions?: string | null | undefined;
 };
@@ -81,6 +87,7 @@ export const PromptImproveRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PromptImproveRequestBody
 > = z.object({
+  isVideo: z.nullable(z.boolean()).optional(),
   prompt: z.string(),
   promptInstructions: z.nullable(z.string()).optional(),
 });

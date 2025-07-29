@@ -42,7 +42,10 @@ export type GetCustomElementsByUserIdUserLoras = {
  * Responses for GET /elements/user/{userId}.
  */
 export type GetCustomElementsByUserIdResponseBody = {
-  userLoras?: Array<GetCustomElementsByUserIdUserLoras> | null | undefined;
+  userLoras?:
+    | Array<GetCustomElementsByUserIdUserLoras | null>
+    | null
+    | undefined;
 };
 
 export type GetCustomElementsByUserIdResponse = {
@@ -221,7 +224,9 @@ export const GetCustomElementsByUserIdResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   user_loras: z.nullable(
-    z.array(z.lazy(() => GetCustomElementsByUserIdUserLoras$inboundSchema)),
+    z.array(z.nullable(z.lazy(() =>
+      GetCustomElementsByUserIdUserLoras$inboundSchema
+    ))),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -232,7 +237,7 @@ export const GetCustomElementsByUserIdResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type GetCustomElementsByUserIdResponseBody$Outbound = {
   user_loras?:
-    | Array<GetCustomElementsByUserIdUserLoras$Outbound>
+    | Array<GetCustomElementsByUserIdUserLoras$Outbound | null>
     | null
     | undefined;
 };
@@ -244,7 +249,9 @@ export const GetCustomElementsByUserIdResponseBody$outboundSchema: z.ZodType<
   GetCustomElementsByUserIdResponseBody
 > = z.object({
   userLoras: z.nullable(
-    z.array(z.lazy(() => GetCustomElementsByUserIdUserLoras$outboundSchema)),
+    z.array(z.nullable(z.lazy(() =>
+      GetCustomElementsByUserIdUserLoras$outboundSchema
+    ))),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {

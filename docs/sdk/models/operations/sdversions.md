@@ -1,13 +1,13 @@
 # SdVersions
 
-The base version of stable diffusion to use if not using a custom model.
+The base version to use if not using a custom model.
 
 ## Example Usage
 
 ```typescript
 import { SdVersions } from "@leonardo-ai/sdk/sdk/models/operations";
 
-let value: SdVersions = SdVersions.KinoXl;
+let value: SdVersions = SdVersions.Sdxl10;
 ```
 
 ## Values
@@ -21,3 +21,4 @@ let value: SdVersions = SdVersions.KinoXl;
 | `VisionXl`            | VISION_XL             |
 | `KinoXl`              | KINO_XL               |
 | `AlbedoXl`            | ALBEDO_XL             |
+| `FluxDev`             | FLUX_DEV              |

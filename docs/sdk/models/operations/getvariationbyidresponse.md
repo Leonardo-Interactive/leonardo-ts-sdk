@@ -7,10 +7,7 @@ import { GetVariationByIdResponse } from "@leonardo-ai/sdk/sdk/models/operations
 
 let value: GetVariationByIdResponse = {
   contentType: "<value>",
-  statusCode: 226,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 951273,
 };
 ```
 

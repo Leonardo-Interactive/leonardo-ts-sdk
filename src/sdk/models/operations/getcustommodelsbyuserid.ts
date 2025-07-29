@@ -47,7 +47,10 @@ export type GetCustomModelsByUserIdCustomModels = {
  * Responses for GET /models/user/{userId}
  */
 export type GetCustomModelsByUserIdResponseBody = {
-  customModels?: Array<GetCustomModelsByUserIdCustomModels> | null | undefined;
+  customModels?:
+    | Array<GetCustomModelsByUserIdCustomModels | null>
+    | null
+    | undefined;
 };
 
 export type GetCustomModelsByUserIdResponse = {
@@ -228,7 +231,9 @@ export const GetCustomModelsByUserIdResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   custom_models: z.nullable(
-    z.array(z.lazy(() => GetCustomModelsByUserIdCustomModels$inboundSchema)),
+    z.array(z.nullable(z.lazy(() =>
+      GetCustomModelsByUserIdCustomModels$inboundSchema
+    ))),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -239,7 +244,7 @@ export const GetCustomModelsByUserIdResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type GetCustomModelsByUserIdResponseBody$Outbound = {
   custom_models?:
-    | Array<GetCustomModelsByUserIdCustomModels$Outbound>
+    | Array<GetCustomModelsByUserIdCustomModels$Outbound | null>
     | null
     | undefined;
 };
@@ -251,7 +256,9 @@ export const GetCustomModelsByUserIdResponseBody$outboundSchema: z.ZodType<
   GetCustomModelsByUserIdResponseBody
 > = z.object({
   customModels: z.nullable(
-    z.array(z.lazy(() => GetCustomModelsByUserIdCustomModels$outboundSchema)),
+    z.array(z.nullable(z.lazy(() =>
+      GetCustomModelsByUserIdCustomModels$outboundSchema
+    ))),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {

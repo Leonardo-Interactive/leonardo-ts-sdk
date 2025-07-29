@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
-  docChecksum: 4b74d250e4dae46c2d3e1dec7a2be5b9
+  docChecksum: f59b2f1aebae19c86b8a0afe4c2d1316
   docVersion: v1.0.0
-  speakeasyVersion: 1.488.0
-  generationVersion: 2.506.0
-  releaseVersion: 4.20.0
-  configChecksum: 2794a3cde0dffa7f390e8e9b15b459a5
+  speakeasyVersion: 1.592.1
+  generationVersion: 2.667.0
+  releaseVersion: 4.21.0
+  configChecksum: 0739a22a6e3f954b5c29ba19e62d2bb4
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
@@ -14,22 +14,22 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
-    core: 3.19.0
+    constsAndDefaults: 0.1.12
+    core: 3.21.16
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     flattening: 2.82.1
-    globalSecurity: 2.82.12
+    globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.4
-    nullables: 0.1.0
+    globalServerURLs: 2.82.5
+    nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.2.0
+    sdkHooks: 0.3.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -51,6 +51,10 @@ generatedFiles:
   - docs/sdk/models/operations/creategenerationrequestbody.md
   - docs/sdk/models/operations/creategenerationresponse.md
   - docs/sdk/models/operations/creategenerationresponsebody.md
+  - docs/sdk/models/operations/createimagetovideogenerationrequestbody.md
+  - docs/sdk/models/operations/createimagetovideogenerationresponse.md
+  - docs/sdk/models/operations/createimagetovideogenerationresponsebody.md
+  - docs/sdk/models/operations/createimagetovideogenerationstring.md
   - docs/sdk/models/operations/createlcmgenerationrequestbody.md
   - docs/sdk/models/operations/createlcmgenerationresponse.md
   - docs/sdk/models/operations/createlcmgenerationresponsebody.md
@@ -62,6 +66,12 @@ generatedFiles:
   - docs/sdk/models/operations/createsvdmotiongenerationrequestbody.md
   - docs/sdk/models/operations/createsvdmotiongenerationresponse.md
   - docs/sdk/models/operations/createsvdmotiongenerationresponsebody.md
+  - docs/sdk/models/operations/createtexttovideogenerationmotionstring.md
+  - docs/sdk/models/operations/createtexttovideogenerationmotionvideogenerationoutput.md
+  - docs/sdk/models/operations/createtexttovideogenerationrequestbody.md
+  - docs/sdk/models/operations/createtexttovideogenerationresponse.md
+  - docs/sdk/models/operations/createtexttovideogenerationresponsebody.md
+  - docs/sdk/models/operations/createtexttovideogenerationstring.md
   - docs/sdk/models/operations/createtexturegenerationrequestbody.md
   - docs/sdk/models/operations/createtexturegenerationresponse.md
   - docs/sdk/models/operations/createtexturegenerationresponsebody.md
@@ -78,6 +88,11 @@ generatedFiles:
   - docs/sdk/models/operations/createvariationupscaleresponse.md
   - docs/sdk/models/operations/createvariationupscaleresponsebody.md
   - docs/sdk/models/operations/createvariationupscalesdupscalejoboutput.md
+  - docs/sdk/models/operations/createvideoupscalemotionvideogenerationoutput.md
+  - docs/sdk/models/operations/createvideoupscalerequestbody.md
+  - docs/sdk/models/operations/createvideoupscaleresponse.md
+  - docs/sdk/models/operations/createvideoupscaleresponsebody.md
+  - docs/sdk/models/operations/createvideoupscalestring.md
   - docs/sdk/models/operations/custommodels.md
   - docs/sdk/models/operations/datasetgenuploadoutput.md
   - docs/sdk/models/operations/datasetimages.md
@@ -110,6 +125,7 @@ generatedFiles:
   - docs/sdk/models/operations/elements.md
   - docs/sdk/models/operations/generatedimages.md
   - docs/sdk/models/operations/generatedimagevariationgeneric.md
+  - docs/sdk/models/operations/generatedimagevariationmotion.md
   - docs/sdk/models/operations/generationelements.md
   - docs/sdk/models/operations/generations.md
   - docs/sdk/models/operations/getcustomelementsbyuseridrequest.md
@@ -149,11 +165,15 @@ generatedFiles:
   - docs/sdk/models/operations/getmodelbyidrequest.md
   - docs/sdk/models/operations/getmodelbyidresponse.md
   - docs/sdk/models/operations/getmodelbyidresponsebody.md
+  - docs/sdk/models/operations/getmotionvariationbyidrequest.md
+  - docs/sdk/models/operations/getmotionvariationbyidresponse.md
+  - docs/sdk/models/operations/getmotionvariationbyidresponsebody.md
   - docs/sdk/models/operations/getuserselfresponse.md
   - docs/sdk/models/operations/getuserselfresponsebody.md
   - docs/sdk/models/operations/getvariationbyidrequest.md
   - docs/sdk/models/operations/getvariationbyidresponse.md
   - docs/sdk/models/operations/getvariationbyidresponsebody.md
+  - docs/sdk/models/operations/imagetype.md
   - docs/sdk/models/operations/initimages.md
   - docs/sdk/models/operations/initimageuploadoutput.md
   - docs/sdk/models/operations/lcmgenerationoutput.md
@@ -168,6 +188,7 @@ generatedFiles:
   - docs/sdk/models/operations/modelassettexturegenerations.md
   - docs/sdk/models/operations/modelassetuploadoutput.md
   - docs/sdk/models/operations/motionsvdgenerationoutput.md
+  - docs/sdk/models/operations/motionvideogenerationoutput.md
   - docs/sdk/models/operations/objectt.md
   - docs/sdk/models/operations/performalchemyupscalelcmlcmgenerationoutput.md
   - docs/sdk/models/operations/performalchemyupscalelcmrequestbody.md
@@ -185,13 +206,16 @@ generatedFiles:
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorobject.md
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestobject.md
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsmotionvideogenerationobject.md
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsobject.md
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamstexturegenerationobject.md
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsuniversalupscalerobject.md
   - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsuniversalupscalerultraobject.md
+  - docs/sdk/models/operations/pricingcalculatorpricingcalculatorrequestrequestbodyserviceparamsveo3motionvideogenerationobject.md
   - docs/sdk/models/operations/pricingcalculatorrequestbody.md
   - docs/sdk/models/operations/pricingcalculatorresponse.md
   - docs/sdk/models/operations/pricingcalculatorresponsebody.md
+  - docs/sdk/models/operations/pricingcalculatorstring.md
   - docs/sdk/models/operations/promptgenerationoutput.md
   - docs/sdk/models/operations/promptimproverequestbody.md
   - docs/sdk/models/operations/promptimproveresponse.md
@@ -203,7 +227,9 @@ generatedFiles:
   - docs/sdk/models/operations/sdtrainingoutput.md
   - docs/sdk/models/operations/sdunzoomoutput.md
   - docs/sdk/models/operations/sdupscalejoboutput.md
+  - docs/sdk/models/operations/sdversion.md
   - docs/sdk/models/operations/sdversions.md
+  - docs/sdk/models/operations/string.md
   - docs/sdk/models/operations/texturegenerationjoboutput.md
   - docs/sdk/models/operations/transparencytype.md
   - docs/sdk/models/operations/universalupscaleroutput.md
@@ -235,6 +261,8 @@ generatedFiles:
   - docs/sdk/models/shared/initimagetype.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/lcmgenerationstyle.md
+  - docs/sdk/models/shared/motionresolution.md
+  - docs/sdk/models/shared/motionvariationtype.md
   - docs/sdk/models/shared/pricingcalculatorservices.md
   - docs/sdk/models/shared/sdgenerationschedulers.md
   - docs/sdk/models/shared/sdgenerationstyle.md
@@ -261,6 +289,10 @@ generatedFiles:
   - docs/sdks/user/README.md
   - docs/sdks/variation/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/initImagesDeleteInitImageById.example.ts
+  - examples/package.json
   - jsr.json
   - package.json
   - src/core.ts
@@ -287,7 +319,10 @@ generatedFiles:
   - src/funcs/modelsGetCustomModelsByUserId.ts
   - src/funcs/modelsGetModelById.ts
   - src/funcs/modelsListPlatformModels.ts
+  - src/funcs/motionCreateImageToVideoGeneration.ts
   - src/funcs/motionCreateSVDMotionGeneration.ts
+  - src/funcs/motionCreateTextToVideoGeneration.ts
+  - src/funcs/motionCreateVideoUpscale.ts
   - src/funcs/pricingCalculatorPricingCalculator.ts
   - src/funcs/promptPromptImprove.ts
   - src/funcs/promptPromptRandom.ts
@@ -304,6 +339,7 @@ generatedFiles:
   - src/funcs/variationCreateVariationNoBG.ts
   - src/funcs/variationCreateVariationUnzoom.ts
   - src/funcs/variationCreateVariationUpscale.ts
+  - src/funcs/variationGetMotionVariationById.ts
   - src/funcs/variationGetVariationById.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
@@ -332,19 +368,24 @@ generatedFiles:
   - src/sdk/models.ts
   - src/sdk/models/errors/httpclienterrors.ts
   - src/sdk/models/errors/index.ts
+  - src/sdk/models/errors/leonardoerror.ts
+  - src/sdk/models/errors/responsevalidationerror.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/models/operations/createdataset.ts
   - src/sdk/models/operations/createelement.ts
   - src/sdk/models/operations/creategeneration.ts
+  - src/sdk/models/operations/createimagetovideogeneration.ts
   - src/sdk/models/operations/createlcmgeneration.ts
   - src/sdk/models/operations/createmodel.ts
   - src/sdk/models/operations/createsvdmotiongeneration.ts
+  - src/sdk/models/operations/createtexttovideogeneration.ts
   - src/sdk/models/operations/createtexturegeneration.ts
   - src/sdk/models/operations/createuniversalupscalerjob.ts
   - src/sdk/models/operations/createvariationnobg.ts
   - src/sdk/models/operations/createvariationunzoom.ts
   - src/sdk/models/operations/createvariationupscale.ts
+  - src/sdk/models/operations/createvideoupscale.ts
   - src/sdk/models/operations/delete3dmodelbyid.ts
   - src/sdk/models/operations/deletedatasetbyid.ts
   - src/sdk/models/operations/deleteelementbyid.ts
@@ -360,6 +401,7 @@ generatedFiles:
   - src/sdk/models/operations/getgenerationsbyuserid.ts
   - src/sdk/models/operations/getinitimagebyid.ts
   - src/sdk/models/operations/getmodelbyid.ts
+  - src/sdk/models/operations/getmotionvariationbyid.ts
   - src/sdk/models/operations/getuserself.ts
   - src/sdk/models/operations/getvariationbyid.ts
   - src/sdk/models/operations/index.ts
@@ -384,6 +426,8 @@ generatedFiles:
   - src/sdk/models/shared/index.ts
   - src/sdk/models/shared/jobstatus.ts
   - src/sdk/models/shared/lcmgenerationstyle.ts
+  - src/sdk/models/shared/motionresolution.ts
+  - src/sdk/models/shared/motionvariationtype.ts
   - src/sdk/models/shared/pricingcalculatorservices.ts
   - src/sdk/models/shared/sdgenerationschedulers.ts
   - src/sdk/models/shared/sdgenerationstyle.ts
@@ -401,6 +445,7 @@ generatedFiles:
   - src/sdk/sdk.ts
   - src/sdk/texture.ts
   - src/sdk/threedmodelassets.ts
+  - src/sdk/types/async.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/constdatetime.ts
   - src/sdk/types/enums.ts
@@ -439,7 +484,7 @@ examples:
   uploadInitImage:
     speakeasy-default-upload-init-image:
       requestBody:
-        application/json: {"extension": "png"}
+        application/json: {"extension": "gif"}
       responses:
         "200":
           application/json: {}
@@ -472,7 +517,7 @@ examples:
         path:
           datasetId: "<id>"
       requestBody:
-        application/json: {"extension": "mp4v"}
+        application/json: {"extension": "shtml"}
       responses:
         "200":
           application/json: {}
@@ -489,7 +534,7 @@ examples:
   createElement:
     speakeasy-default-create-element:
       requestBody:
-        application/json: {"datasetId": "", "description": "", "instance_prompt": "a character", "learning_rate": 0.000001, "lora_focus": "General", "name": "placeholder", "num_train_epochs": 100, "resolution": 1024, "sd_version": "SDXL_0_9", "train_text_encoder": true}
+        application/json: {"datasetId": "", "description": "", "instance_prompt": "", "learning_rate": 3344.47, "lora_focus": "<value>", "name": "placeholder", "num_train_epochs": 543724, "resolution": 1024, "sd_version": "FLUX_DEV", "train_text_encoder": true}
       responses:
         "200":
           application/json: {}
@@ -497,7 +542,7 @@ examples:
     speakeasy-default-delete-element-by-id:
       parameters:
         path:
-          id: 39024
+          id: 709546
       responses:
         "200":
           application/json: {}
@@ -513,7 +558,7 @@ examples:
     speakeasy-default-get-element-by-id:
       parameters:
         path:
-          id: 665696
+          id: 320312
       responses:
         "200":
           application/json: {}
@@ -525,7 +570,7 @@ examples:
   createGeneration:
     speakeasy-default-create-generation:
       requestBody:
-        application/json: {"alchemy": true, "height": 768, "modelId": "b24e16ff-06e3-43eb-8d33-4416c2d75876", "num_images": 4, "presetStyle": "DYNAMIC", "prompt": "A majestic cat in the snow", "width": 1024}
+        application/json: {"alchemy": true, "contrast": 3.5, "height": 768, "modelId": "b24e16ff-06e3-43eb-8d33-4416c2d75876", "num_images": 4, "presetStyle": "DYNAMIC", "prompt": "A majestic cat in the snow", "width": 1024}
       responses:
         "200":
           application/json: {}
@@ -556,6 +601,26 @@ examples:
       responses:
         "200":
           application/json: {}
+  createImageToVideoGeneration:
+    speakeasy-default-create-image-to-video-generation:
+      responses:
+        "200":
+          application/json: {}
+  createSVDMotionGeneration:
+    speakeasy-default-create-SVD-motion-generation:
+      responses:
+        "200":
+          application/json: {}
+  createTextToVideoGeneration:
+    speakeasy-default-create-text-to-video-generation:
+      responses:
+        "200":
+          application/json: {}
+  createVideoUpscale:
+    speakeasy-default-create-video-upscale:
+      responses:
+        "200":
+          application/json: {}
   createLCMGeneration:
     speakeasy-default-create-LCM-generation:
       responses:
@@ -573,11 +638,6 @@ examples:
           application/json: {}
   performInstantRefine:
     speakeasy-default-perform-instant-refine:
-      responses:
-        "200":
-          application/json: {}
-  createSVDMotionGeneration:
-    speakeasy-default-create-SVD-motion-generation:
       responses:
         "200":
           application/json: {}
@@ -648,23 +708,6 @@ examples:
       responses:
         "200":
           application/json: {}
-  pricingCalculator:
-    speakeasy-default-pricing-calculator:
-      responses:
-        "200":
-          application/json: {}
-  promptImprove:
-    speakeasy-default-prompt-improve:
-      requestBody:
-        application/json: {"prompt": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-  promptRandom:
-    speakeasy-default-prompt-random:
-      responses:
-        "200":
-          application/json: {}
   CreateUniversalUpscalerJob:
     speakeasy-default-create-universal-upscaler-job:
       requestBody:
@@ -689,6 +732,14 @@ examples:
       responses:
         "200":
           application/json: {}
+  getMotionVariationById:
+    speakeasy-default-get-motion-variation-by-id:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {}
   getVariationById:
     speakeasy-default-get-variation-by-id:
       parameters:
@@ -697,5 +748,22 @@ examples:
       responses:
         "200":
           application/json: {}
-examplesVersion: 1.0.0
+  pricingCalculator:
+    speakeasy-default-pricing-calculator:
+      responses:
+        "200":
+          application/json: {}
+  promptImprove:
+    speakeasy-default-prompt-improve:
+      requestBody:
+        application/json: {"isVideo": true, "prompt": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+  promptRandom:
+    speakeasy-default-prompt-random:
+      responses:
+        "200":
+          application/json: {}
+examplesVersion: 1.0.2
 generatedTests: {}

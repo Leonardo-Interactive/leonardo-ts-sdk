@@ -1,6 +1,6 @@
 # PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject
 
-Parameters for MOTION_GENERATION service
+Parameters for MOTION_SVD_GENERATION service
 
 ## Example Usage
 
@@ -13,6 +13,5 @@ let value:
 
 ## Fields
 
-| Field                                                   | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `durationSeconds`                                       | *number*                                                | :heavy_minus_sign:                                      | The total duration of the motion generation in seconds. |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

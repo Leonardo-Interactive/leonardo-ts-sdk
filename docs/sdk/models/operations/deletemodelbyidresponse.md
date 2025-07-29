@@ -7,10 +7,7 @@ import { DeleteModelByIdResponse } from "@leonardo-ai/sdk/sdk/models/operations"
 
 let value: DeleteModelByIdResponse = {
   contentType: "<value>",
-  statusCode: 102,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 140091,
 };
 ```
 
