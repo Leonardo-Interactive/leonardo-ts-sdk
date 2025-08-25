@@ -17,9 +17,11 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
-import { SDKError } from "../sdk/models/errors/sdkerror.js";
+import { LeonardoError } from "../sdk/models/errors/leonardoerror.js";
+import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
@@ -28,21 +30,49 @@ import { Result } from "../sdk/types/fp.js";
  * @remarks
  * This endpoint returns presigned details to upload an init image and a mask image to S3
  */
-export async function initImagesUploadCanvasInitImage(
+export function initImagesUploadCanvasInitImage(
+  client: LeonardoCore,
+  request: operations.UploadCanvasInitImageRequestBody,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UploadCanvasInitImageResponse,
+    | LeonardoError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
   client: LeonardoCore,
   request: operations.UploadCanvasInitImageRequestBody,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.UploadCanvasInitImageResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      operations.UploadCanvasInitImageResponse,
+      | LeonardoError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
   const parsed = safeParse(
     request,
@@ -51,7 +81,7 @@ export async function initImagesUploadCanvasInitImage(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
@@ -68,6 +98,8 @@ export async function initImagesUploadCanvasInitImage(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "uploadCanvasInitImage",
     oAuth2Scopes: [],
 
@@ -87,10 +119,11 @@ export async function initImagesUploadCanvasInitImage(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -101,7 +134,7 @@ export async function initImagesUploadCanvasInitImage(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -115,21 +148,22 @@ export async function initImagesUploadCanvasInitImage(
 
   const [result] = await M.match<
     operations.UploadCanvasInitImageResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | LeonardoError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, operations.UploadCanvasInitImageResponse$inboundSchema, {
       key: "object",
     }),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -132,24 +132,45 @@ export type PricingCalculatorPricingCalculatorRequestObject = {
 };
 
 /**
+ * The model for the training. Can be set to 'FLUX_DEV' for FLUX_DEV specific pricing or can be omitted.
+ */
+export enum SdVersion {
+  FluxDev = "FLUX_DEV",
+}
+
+/**
  * Parameters for MODEL_TRAINING service
  */
 export type PricingCalculatorPricingCalculatorRequestRequestBodyObject = {
   /**
-   * The resolution for training. Must be 512 or 768.
+   * The number of images in the training dataset when sd_version is set to 'FLUX_DEV'. Must be between 1 and 50.
+   */
+  datasetImageCount?: number | null | undefined;
+  /**
+   * The resolution for training. Must be 512, 768, or 1024.
    */
   resolution?: number | undefined;
+  /**
+   * The model for the training. Can be set to 'FLUX_DEV' for FLUX_DEV specific pricing or can be omitted.
+   */
+  sdVersion?: SdVersion | null | undefined;
 };
 
 /**
- * Parameters for MOTION_GENERATION service
+ * Parameters for MOTION_SVD_GENERATION service
  */
 export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject =
+  {};
+
+/**
+ * Parameters for MOTION_VIDEO_GENERATION service
+ */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject =
   {
     /**
-     * The total duration of the motion generation in seconds.
+     * The resolution of the video. Must be RESOLUTION_480 or RESOLUTION_720.
      */
-    durationSeconds?: number | undefined;
+    resolution?: string | undefined;
   };
 
 /**
@@ -191,6 +212,24 @@ export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNI
   };
 
 /**
+ * The resolution of the video. Supported resolution for VEO3 is RESOLUTION_720.
+ */
+export enum PricingCalculatorString {
+  Resolution720 = "RESOLUTION_720",
+}
+
+/**
+ * Parameters for VEO3_MOTION_VIDEO_GENERATION service
+ */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject =
+  {
+    /**
+     * The resolution of the video. Supported resolution for VEO3 is RESOLUTION_720.
+     */
+    resolution?: PricingCalculatorString | undefined;
+  };
+
+/**
  * Parameters for the service
  */
 export type ObjectT = {
@@ -217,10 +256,17 @@ export type ObjectT = {
     | null
     | undefined;
   /**
-   * Parameters for MOTION_GENERATION service
+   * Parameters for MOTION_SVD_GENERATION service
    */
-  motionGeneration?:
+  motionSvdGeneration?:
     | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject
+    | null
+    | undefined;
+  /**
+   * Parameters for MOTION_VIDEO_GENERATION service
+   */
+  motionVideoGeneration?:
+    | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject
     | null
     | undefined;
   /**
@@ -242,6 +288,13 @@ export type ObjectT = {
    */
   universalUpscalerUltra?:
     | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject
+    | null
+    | undefined;
+  /**
+   * Parameters for VEO3_MOTION_VIDEO_GENERATION service
+   */
+  veo3MotionVideoGeneration?:
+    | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject
     | null
     | undefined;
 };
@@ -550,19 +603,46 @@ export function pricingCalculatorPricingCalculatorRequestObjectFromJSON(
 }
 
 /** @internal */
+export const SdVersion$inboundSchema: z.ZodNativeEnum<typeof SdVersion> = z
+  .nativeEnum(SdVersion);
+
+/** @internal */
+export const SdVersion$outboundSchema: z.ZodNativeEnum<typeof SdVersion> =
+  SdVersion$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SdVersion$ {
+  /** @deprecated use `SdVersion$inboundSchema` instead. */
+  export const inboundSchema = SdVersion$inboundSchema;
+  /** @deprecated use `SdVersion$outboundSchema` instead. */
+  export const outboundSchema = SdVersion$outboundSchema;
+}
+
+/** @internal */
 export const PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema:
   z.ZodType<
     PricingCalculatorPricingCalculatorRequestRequestBodyObject,
     z.ZodTypeDef,
     unknown
   > = z.object({
+    datasetImageCount: z.nullable(z.number().int()).optional(),
     resolution: z.number().int().optional(),
+    sd_version: z.nullable(SdVersion$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sd_version": "sdVersion",
+    });
   });
 
 /** @internal */
 export type PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound =
   {
+    datasetImageCount?: number | null | undefined;
     resolution?: number | undefined;
+    sd_version?: string | null | undefined;
   };
 
 /** @internal */
@@ -572,7 +652,13 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyObject$outbound
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyObject
   > = z.object({
+    datasetImageCount: z.nullable(z.number().int()).optional(),
     resolution: z.number().int().optional(),
+    sdVersion: z.nullable(SdVersion$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sdVersion: "sd_version",
+    });
   });
 
 /**
@@ -622,15 +708,11 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsOb
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    durationSeconds: z.number().int().optional(),
-  });
+  > = z.object({});
 
 /** @internal */
 export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound =
-  {
-    durationSeconds?: number | undefined;
-  };
+  {};
 
 /** @internal */
 export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema:
@@ -638,9 +720,7 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsOb
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject
-  > = z.object({
-    durationSeconds: z.number().int().optional(),
-  });
+  > = z.object({});
 
 /**
  * @internal
@@ -682,6 +762,75 @@ export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParam
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema
         .parse(JSON.parse(x)),
     `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject' from JSON`,
+  );
+}
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$inboundSchema:
+  z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    resolution: z.string().optional(),
+  });
+
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$Outbound =
+  {
+    resolution?: string | undefined;
+  };
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$outboundSchema:
+  z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject
+  > = z.object({
+    resolution: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$ {
+  /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$inboundSchema` instead. */
+  export const inboundSchema =
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$inboundSchema;
+  /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$outboundSchema` instead. */
+  export const outboundSchema =
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$outboundSchema;
+  /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$Outbound` instead. */
+  export type Outbound =
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$Outbound;
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$outboundSchema
+      .parse(
+        pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject,
+      ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject' from JSON`,
   );
 }
 
@@ -832,7 +981,7 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUN
   > = z.object({
     inputHeight: z.number().int().optional(),
     inputWidth: z.number().int().optional(),
-    upscaleMultiplier: z.number().default(1.5),
+    upscaleMultiplier: z.number().optional(),
   });
 
 /** @internal */
@@ -840,7 +989,7 @@ export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNI
   {
     inputHeight?: number | undefined;
     inputWidth?: number | undefined;
-    upscaleMultiplier: number;
+    upscaleMultiplier?: number | undefined;
   };
 
 /** @internal */
@@ -852,7 +1001,7 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUN
   > = z.object({
     inputHeight: z.number().int().optional(),
     inputWidth: z.number().int().optional(),
-    upscaleMultiplier: z.number().default(1.5),
+    upscaleMultiplier: z.number().optional(),
   });
 
 /**
@@ -899,6 +1048,96 @@ export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParam
 }
 
 /** @internal */
+export const PricingCalculatorString$inboundSchema: z.ZodNativeEnum<
+  typeof PricingCalculatorString
+> = z.nativeEnum(PricingCalculatorString);
+
+/** @internal */
+export const PricingCalculatorString$outboundSchema: z.ZodNativeEnum<
+  typeof PricingCalculatorString
+> = PricingCalculatorString$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PricingCalculatorString$ {
+  /** @deprecated use `PricingCalculatorString$inboundSchema` instead. */
+  export const inboundSchema = PricingCalculatorString$inboundSchema;
+  /** @deprecated use `PricingCalculatorString$outboundSchema` instead. */
+  export const outboundSchema = PricingCalculatorString$outboundSchema;
+}
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$inboundSchema:
+  z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    resolution: PricingCalculatorString$inboundSchema.optional(),
+  });
+
+/** @internal */
+export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound =
+  {
+    resolution?: string | undefined;
+  };
+
+/** @internal */
+export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$outboundSchema:
+  z.ZodType<
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound,
+    z.ZodTypeDef,
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject
+  > = z.object({
+    resolution: PricingCalculatorString$outboundSchema.optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$ {
+  /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$inboundSchema` instead. */
+  export const inboundSchema =
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$inboundSchema;
+  /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$outboundSchema` instead. */
+  export const outboundSchema =
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$outboundSchema;
+  /** @deprecated use `PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound` instead. */
+  export type Outbound =
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound;
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObjectToJSON(
+  pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject:
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject,
+): string {
+  return JSON.stringify(
+    PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$outboundSchema
+      .parse(
+        pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject,
+      ),
+  );
+}
+
+export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObjectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject' from JSON`,
+  );
+}
+
+/** @internal */
 export const ObjectT$inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> =
   z.object({
     FANTASY_AVATAR_GENERATION: z.nullable(
@@ -917,9 +1156,14 @@ export const ObjectT$inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> =
         PricingCalculatorPricingCalculatorRequestRequestBodyObject$inboundSchema
       ),
     ).optional(),
-    MOTION_GENERATION: z.nullable(
+    MOTION_SVD_GENERATION: z.nullable(
       z.lazy(() =>
         PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$inboundSchema
+      ),
+    ).optional(),
+    MOTION_VIDEO_GENERATION: z.nullable(
+      z.lazy(() =>
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$inboundSchema
       ),
     ).optional(),
     TEXTURE_GENERATION: z.nullable(
@@ -937,16 +1181,23 @@ export const ObjectT$inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> =
         PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$inboundSchema
       ),
     ).optional(),
+    VEO3_MOTION_VIDEO_GENERATION: z.nullable(
+      z.lazy(() =>
+        PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$inboundSchema
+      ),
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "FANTASY_AVATAR_GENERATION": "fantasyAvatarGeneration",
       "IMAGE_GENERATION": "imageGeneration",
       "LCM_GENERATION": "lcmGeneration",
       "MODEL_TRAINING": "modelTraining",
-      "MOTION_GENERATION": "motionGeneration",
+      "MOTION_SVD_GENERATION": "motionSvdGeneration",
+      "MOTION_VIDEO_GENERATION": "motionVideoGeneration",
       "TEXTURE_GENERATION": "textureGeneration",
       "UNIVERSAL_UPSCALER": "universalUpscaler",
       "UNIVERSAL_UPSCALER_ULTRA": "universalUpscalerUltra",
+      "VEO3_MOTION_VIDEO_GENERATION": "veo3MotionVideoGeneration",
     });
   });
 
@@ -968,8 +1219,12 @@ export type ObjectT$Outbound = {
     | PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound
     | null
     | undefined;
-  MOTION_GENERATION?:
+  MOTION_SVD_GENERATION?:
     | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound
+    | null
+    | undefined;
+  MOTION_VIDEO_GENERATION?:
+    | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$Outbound
     | null
     | undefined;
   TEXTURE_GENERATION?:
@@ -982,6 +1237,10 @@ export type ObjectT$Outbound = {
     | undefined;
   UNIVERSAL_UPSCALER_ULTRA?:
     | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$Outbound
+    | null
+    | undefined;
+  VEO3_MOTION_VIDEO_GENERATION?:
+    | PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound
     | null
     | undefined;
 };
@@ -1008,9 +1267,14 @@ export const ObjectT$outboundSchema: z.ZodType<
       PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema
     ),
   ).optional(),
-  motionGeneration: z.nullable(
+  motionSvdGeneration: z.nullable(
     z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema
+    ),
+  ).optional(),
+  motionVideoGeneration: z.nullable(
+    z.lazy(() =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$outboundSchema
     ),
   ).optional(),
   textureGeneration: z.nullable(
@@ -1028,16 +1292,23 @@ export const ObjectT$outboundSchema: z.ZodType<
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$outboundSchema
     ),
   ).optional(),
+  veo3MotionVideoGeneration: z.nullable(
+    z.lazy(() =>
+      PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$outboundSchema
+    ),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     fantasyAvatarGeneration: "FANTASY_AVATAR_GENERATION",
     imageGeneration: "IMAGE_GENERATION",
     lcmGeneration: "LCM_GENERATION",
     modelTraining: "MODEL_TRAINING",
-    motionGeneration: "MOTION_GENERATION",
+    motionSvdGeneration: "MOTION_SVD_GENERATION",
+    motionVideoGeneration: "MOTION_VIDEO_GENERATION",
     textureGeneration: "TEXTURE_GENERATION",
     universalUpscaler: "UNIVERSAL_UPSCALER",
     universalUpscalerUltra: "UNIVERSAL_UPSCALER_ULTRA",
+    veo3MotionVideoGeneration: "VEO3_MOTION_VIDEO_GENERATION",
   });
 });
 

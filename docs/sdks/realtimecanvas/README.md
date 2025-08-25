@@ -16,6 +16,7 @@ This endpoint will generate a LCM image generation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createLCMGeneration" method="post" path="/generations-lcm" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -26,7 +27,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.realtimeCanvas.createLCMGeneration();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,15 +49,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await realtimeCanvasCreateLCMGeneration(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("realtimeCanvasCreateLCMGeneration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -88,6 +85,7 @@ This endpoint will perform Alchemy Upscale on a LCM image
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="performAlchemyUpscaleLCM" method="post" path="/lcm-upscale" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -98,7 +96,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.realtimeCanvas.performAlchemyUpscaleLCM();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -121,15 +118,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await realtimeCanvasPerformAlchemyUpscaleLCM(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("realtimeCanvasPerformAlchemyUpscaleLCM failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -160,6 +154,7 @@ This endpoint will perform a inpainting on a LCM image
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="performInpaintingLCM" method="post" path="/lcm-inpainting" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -170,7 +165,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.realtimeCanvas.performInpaintingLCM();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -193,15 +187,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await realtimeCanvasPerformInpaintingLCM(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("realtimeCanvasPerformInpaintingLCM failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -232,6 +223,7 @@ This endpoint will perform instant refine on a LCM image
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="performInstantRefine" method="post" path="/lcm-instant-refine" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -242,7 +234,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.realtimeCanvas.performInstantRefine();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -265,15 +256,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await realtimeCanvasPerformInstantRefine(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("realtimeCanvasPerformInstantRefine failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

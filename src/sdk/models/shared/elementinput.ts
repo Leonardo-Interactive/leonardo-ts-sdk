@@ -11,7 +11,7 @@ export type ElementInput = {
   /**
    * Unique identifier for element. Elements can be found from the List Elements endpoint.
    */
-  akUUID?: string | null | undefined;
+  akUUID: string;
   /**
    * Weight for the element
    */
@@ -24,14 +24,14 @@ export const ElementInput$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  akUUID: z.nullable(z.string()).optional(),
-  weight: z.nullable(z.number()).optional(),
+  akUUID: z.string(),
+  weight: z.nullable(z.number().default(1)),
 });
 
 /** @internal */
 export type ElementInput$Outbound = {
-  akUUID?: string | null | undefined;
-  weight?: number | null | undefined;
+  akUUID: string;
+  weight: number | null;
 };
 
 /** @internal */
@@ -40,8 +40,8 @@ export const ElementInput$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ElementInput
 > = z.object({
-  akUUID: z.nullable(z.string()).optional(),
-  weight: z.nullable(z.number()).optional(),
+  akUUID: z.string(),
+  weight: z.nullable(z.number().default(1)),
 });
 
 /**

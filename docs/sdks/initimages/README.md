@@ -16,6 +16,7 @@ This endpoint deletes an init image
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteInitImageById" method="delete" path="/init-image/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -26,7 +27,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,15 +49,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await initImagesDeleteInitImageById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("initImagesDeleteInitImageById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -88,6 +85,7 @@ This endpoint will return a single init image
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getInitImageById" method="get" path="/init-image/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -98,7 +96,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.initImages.getInitImageById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -121,15 +118,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await initImagesGetInitImageById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("initImagesGetInitImageById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -160,6 +154,7 @@ This endpoint returns presigned details to upload an init image and a mask image
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadCanvasInitImage" method="post" path="/canvas-init-image" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -173,7 +168,6 @@ async function run() {
     maskExtension: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -199,15 +193,12 @@ async function run() {
     initExtension: "<value>",
     maskExtension: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("initImagesUploadCanvasInitImage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -238,6 +229,7 @@ This endpoint returns presigned details to upload an init image to S3
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadInitImage" method="post" path="/init-image" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -247,10 +239,9 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.initImages.uploadInitImage({
-    extension: "png",
+    extension: "gif",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -273,17 +264,14 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await initImagesUploadInitImage(leonardo, {
-    extension: "png",
+    extension: "gif",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("initImagesUploadInitImage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

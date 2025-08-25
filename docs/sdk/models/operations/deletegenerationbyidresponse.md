@@ -7,10 +7,7 @@ import { DeleteGenerationByIdResponse } from "@leonardo-ai/sdk/sdk/models/operat
 
 let value: DeleteGenerationByIdResponse = {
   contentType: "<value>",
-  statusCode: 431,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 732608,
 };
 ```
 

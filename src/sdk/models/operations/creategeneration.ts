@@ -42,6 +42,10 @@ export type CreateGenerationRequestBody = {
    */
   canvasRequestType?: shared.CanvasRequestType | null | undefined;
   /**
+   * Adjusts the contrast level of the generated image. Used in Phoenix and Flux models. Accepts values [1.0, 1.3, 1.8, 2.5, 3, 3.5, 4, 4.5]. For Phoenix, if alchemy is true, contrast needs to be 2.5 or higher.
+   */
+  contrast?: number | null | undefined;
+  /**
    * Contrast Ratio to use with Alchemy. Must be a float between 0 and 1 inclusive.
    */
   contrastRatio?: number | null | undefined;
@@ -92,7 +96,7 @@ export type CreateGenerationRequestBody = {
    */
   highResolution?: boolean | null | undefined;
   imagePromptWeight?: number | null | undefined;
-  imagePrompts?: Array<string> | null | undefined;
+  imagePrompts?: Array<string | null> | null | undefined;
   /**
    * The ID of an existing image to use in image2image.
    */
@@ -273,6 +277,7 @@ export const CreateGenerationRequestBody$inboundSchema: z.ZodType<
   canvasRequest: z.nullable(z.boolean()).optional(),
   canvasRequestType: z.nullable(shared.CanvasRequestType$inboundSchema)
     .optional(),
+  contrast: z.nullable(z.number()).optional(),
   contrastRatio: z.nullable(z.number()).optional(),
   controlNet: z.nullable(z.boolean()).optional(),
   controlNetType: shared.ControlnetType$inboundSchema.optional(),
@@ -288,7 +293,7 @@ export const CreateGenerationRequestBody$inboundSchema: z.ZodType<
   highContrast: z.nullable(z.boolean()).optional(),
   highResolution: z.nullable(z.boolean()).optional(),
   imagePromptWeight: z.nullable(z.number()).optional(),
-  imagePrompts: z.nullable(z.array(z.string())).optional(),
+  imagePrompts: z.nullable(z.array(z.nullable(z.string()))).optional(),
   init_generation_image_id: z.nullable(z.string()).optional(),
   init_image_id: z.nullable(z.string()).optional(),
   init_strength: z.nullable(z.number()).optional(),
@@ -344,6 +349,7 @@ export type CreateGenerationRequestBody$Outbound = {
   canvasMaskId?: string | null | undefined;
   canvasRequest?: boolean | null | undefined;
   canvasRequestType?: string | null | undefined;
+  contrast?: number | null | undefined;
   contrastRatio?: number | null | undefined;
   controlNet?: boolean | null | undefined;
   controlNetType?: string | undefined;
@@ -358,7 +364,7 @@ export type CreateGenerationRequestBody$Outbound = {
   highContrast?: boolean | null | undefined;
   highResolution?: boolean | null | undefined;
   imagePromptWeight?: number | null | undefined;
-  imagePrompts?: Array<string> | null | undefined;
+  imagePrompts?: Array<string | null> | null | undefined;
   init_generation_image_id?: string | null | undefined;
   init_image_id?: string | null | undefined;
   init_strength?: number | null | undefined;
@@ -401,6 +407,7 @@ export const CreateGenerationRequestBody$outboundSchema: z.ZodType<
   canvasRequest: z.nullable(z.boolean()).optional(),
   canvasRequestType: z.nullable(shared.CanvasRequestType$outboundSchema)
     .optional(),
+  contrast: z.nullable(z.number()).optional(),
   contrastRatio: z.nullable(z.number()).optional(),
   controlNet: z.nullable(z.boolean()).optional(),
   controlNetType: shared.ControlnetType$outboundSchema.optional(),
@@ -416,7 +423,7 @@ export const CreateGenerationRequestBody$outboundSchema: z.ZodType<
   highContrast: z.nullable(z.boolean()).optional(),
   highResolution: z.nullable(z.boolean()).optional(),
   imagePromptWeight: z.nullable(z.number()).optional(),
-  imagePrompts: z.nullable(z.array(z.string())).optional(),
+  imagePrompts: z.nullable(z.array(z.nullable(z.string()))).optional(),
   initGenerationImageId: z.nullable(z.string()).optional(),
   initImageId: z.nullable(z.string()).optional(),
   initStrength: z.nullable(z.number()).optional(),

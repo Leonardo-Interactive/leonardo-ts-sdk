@@ -10,7 +10,9 @@ import * as z from "zod";
 export enum PricingCalculatorServices {
   ImageGeneration = "IMAGE_GENERATION",
   FantasyAvatarGeneration = "FANTASY_AVATAR_GENERATION",
-  MotionGeneration = "MOTION_GENERATION",
+  MotionSvdGeneration = "MOTION_SVD_GENERATION",
+  MotionVideoGeneration = "MOTION_VIDEO_GENERATION",
+  Veo3MotionVideoGeneration = "VEO3_MOTION_VIDEO_GENERATION",
   LcmGeneration = "LCM_GENERATION",
   ModelTraining = "MODEL_TRAINING",
   TextureGeneration = "TEXTURE_GENERATION",
