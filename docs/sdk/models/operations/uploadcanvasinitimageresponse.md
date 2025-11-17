@@ -7,10 +7,7 @@ import { UploadCanvasInitImageResponse } from "@leonardo-ai/sdk/sdk/models/opera
 
 let value: UploadCanvasInitImageResponse = {
   contentType: "<value>",
-  statusCode: 305,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 999556,
 };
 ```
 

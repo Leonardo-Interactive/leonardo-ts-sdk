@@ -38,14 +38,14 @@ export class Leonardo extends ClientSDK {
     return (this._image ??= new Image(this._options));
   }
 
-  private _realtimeCanvas?: RealtimeCanvas;
-  get realtimeCanvas(): RealtimeCanvas {
-    return (this._realtimeCanvas ??= new RealtimeCanvas(this._options));
-  }
-
   private _motion?: Motion;
   get motion(): Motion {
     return (this._motion ??= new Motion(this._options));
+  }
+
+  private _realtimeCanvas?: RealtimeCanvas;
+  get realtimeCanvas(): RealtimeCanvas {
+    return (this._realtimeCanvas ??= new RealtimeCanvas(this._options));
   }
 
   private _texture?: Texture;
@@ -68,6 +68,11 @@ export class Leonardo extends ClientSDK {
     return (this._threeDModelAssets ??= new ThreeDModelAssets(this._options));
   }
 
+  private _variation?: Variation;
+  get variation(): Variation {
+    return (this._variation ??= new Variation(this._options));
+  }
+
   private _pricingCalculator?: PricingCalculator;
   get pricingCalculator(): PricingCalculator {
     return (this._pricingCalculator ??= new PricingCalculator(this._options));
@@ -76,10 +81,5 @@ export class Leonardo extends ClientSDK {
   private _prompt?: Prompt;
   get prompt(): Prompt {
     return (this._prompt ??= new Prompt(this._options));
-  }
-
-  private _variation?: Variation;
-  get variation(): Variation {
-    return (this._variation ??= new Variation(this._options));
   }
 }

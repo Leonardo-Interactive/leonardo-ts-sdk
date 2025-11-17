@@ -7,10 +7,7 @@ import { PerformInstantRefineResponse } from "@leonardo-ai/sdk/sdk/models/operat
 
 let value: PerformInstantRefineResponse = {
   contentType: "<value>",
-  statusCode: 103,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 718566,
 };
 ```
 

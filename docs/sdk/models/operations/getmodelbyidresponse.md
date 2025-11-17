@@ -7,10 +7,7 @@ import { GetModelByIdResponse } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: GetModelByIdResponse = {
   contentType: "<value>",
-  statusCode: 300,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 138182,
 };
 ```
 

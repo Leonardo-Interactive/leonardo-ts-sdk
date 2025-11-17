@@ -7,10 +7,7 @@ import { DeleteTextureGenerationByIdResponse } from "@leonardo-ai/sdk/sdk/models
 
 let value: DeleteTextureGenerationByIdResponse = {
   contentType: "<value>",
-  statusCode: 101,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 255340,
 };
 ```
 

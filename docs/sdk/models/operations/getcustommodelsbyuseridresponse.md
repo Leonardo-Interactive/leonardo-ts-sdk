@@ -7,10 +7,7 @@ import { GetCustomModelsByUserIdResponse } from "@leonardo-ai/sdk/sdk/models/ope
 
 let value: GetCustomModelsByUserIdResponse = {
   contentType: "<value>",
-  statusCode: 302,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 798938,
 };
 ```
 

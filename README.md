@@ -57,10 +57,7 @@ bun add @leonardo-ai/sdk
 ### Yarn
 
 ```bash
-yarn add @leonardo-ai/sdk zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add @leonardo-ai/sdk
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -83,7 +80,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -128,7 +124,6 @@ run();
 * [uploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
 * [uploadInitImage](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
 
-
 ### [models](docs/sdks/models/README.md)
 
 * [createModel](docs/sdks/models/README.md#createmodel) - Train a Custom Model
@@ -139,7 +134,10 @@ run();
 
 ### [motion](docs/sdks/motion/README.md)
 
+* [createImageToVideoGeneration](docs/sdks/motion/README.md#createimagetovideogeneration) - Create a video generation from an image
 * [createSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
+* [createTextToVideoGeneration](docs/sdks/motion/README.md#createtexttovideogeneration) - Create a video generation from a text prompt
+* [createVideoUpscale](docs/sdks/motion/README.md#createvideoupscale) - Upscale a generated video
 
 ### [pricingCalculator](docs/sdks/pricingcalculator/README.md)
 
@@ -177,6 +175,7 @@ run();
 * [createVariationNoBG](docs/sdks/variation/README.md#createvariationnobg) - Create no background
 * [createVariationUnzoom](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
 * [createVariationUpscale](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
+* [getMotionVariationById](docs/sdks/variation/README.md#getmotionvariationbyid) - Get motion variation by ID
 * [getVariationById](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
 
 </details>
@@ -191,49 +190,36 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-If the request fails due to, for example 4XX or 5XX status codes, it will throw a `SDKError`.
+[`LeonardoError`](./src/sdk/models/errors/leonardoerror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-| Error Type      | Status Code | Content Type |
-| --------------- | ----------- | ------------ |
-| errors.SDKError | 4XX, 5XX    | \*/\*        |
+| Property            | Type       | Description                                            |
+| ------------------- | ---------- | ------------------------------------------------------ |
+| `error.message`     | `string`   | Error message                                          |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                     |
+| `error.headers`     | `Headers`  | HTTP response headers                                  |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned. |
+| `error.rawResponse` | `Response` | Raw HTTP response                                      |
 
+### Example
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { SDKValidationError } from "@leonardo-ai/sdk/sdk/models/errors";
+import * as errors from "@leonardo-ai/sdk/sdk/models/errors";
 
 const leonardo = new Leonardo({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  let result;
   try {
-    result = await leonardo.initImages.deleteInitImageById("<id>");
+    const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      // The server response does not match the expected SDK schema
-      case (err instanceof SDKValidationError):
-        {
-          // Pretty-print will provide a human-readable multi-line error message
-          console.error(err.pretty());
-          // Raw value may also be inspected
-          console.error(err.rawValue);
-          return;
-        }
-        sdkerror.js;
-      // Server returned an error status code or an unknown content type
-      case (err instanceof SDKError): {
-        console.error(err.statusCode);
-        console.error(err.rawResponse.body);
-        return;
-      }
-      default: {
-        // Other errors such as network errors, see HTTPClientErrors for more details
-        throw err;
-      }
+  } catch (error) {
+    if (error instanceof errors.LeonardoError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.headers);
     }
   }
 }
@@ -242,17 +228,26 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+### Error Classes
+**Primary error:**
+* [`LeonardoError`](./src/sdk/models/errors/leonardoerror.ts): The base class for HTTP error responses.
 
-In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `sdk/models/errors/httpclienterrors.ts` module:
+<details><summary>Less common errors (6)</summary>
 
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/sdk/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/sdk/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`LeonardoError`](./src/sdk/models/errors/leonardoerror.ts)**:
+* [`ResponseValidationError`](./src/sdk/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 
@@ -302,7 +297,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Leonardo({ httpClient });
+const sdk = new Leonardo({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -313,7 +308,7 @@ const sdk = new Leonardo({ httpClient });
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -325,7 +320,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -358,7 +352,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -411,7 +404,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`modelsGetCustomModelsByUserId`](docs/sdks/models/README.md#getcustommodelsbyuserid) - Get a list of Custom Models by User ID
 - [`modelsGetModelById`](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
 - [`modelsListPlatformModels`](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
+- [`motionCreateImageToVideoGeneration`](docs/sdks/motion/README.md#createimagetovideogeneration) - Create a video generation from an image
 - [`motionCreateSVDMotionGeneration`](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
+- [`motionCreateTextToVideoGeneration`](docs/sdks/motion/README.md#createtexttovideogeneration) - Create a video generation from a text prompt
+- [`motionCreateVideoUpscale`](docs/sdks/motion/README.md#createvideoupscale) - Upscale a generated video
 - [`pricingCalculatorPricingCalculator`](docs/sdks/pricingcalculator/README.md#pricingcalculator) - Calculating API Cost
 - [`promptPromptImprove`](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
 - [`promptPromptRandom`](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
@@ -428,6 +424,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`variationCreateVariationNoBG`](docs/sdks/variation/README.md#createvariationnobg) - Create no background
 - [`variationCreateVariationUnzoom`](docs/sdks/variation/README.md#createvariationunzoom) - Create unzoom
 - [`variationCreateVariationUpscale`](docs/sdks/variation/README.md#createvariationupscale) - Create upscale
+- [`variationGetMotionVariationById`](docs/sdks/variation/README.md#getmotionvariationbyid) - Get motion variation by ID
 - [`variationGetVariationById`](docs/sdks/variation/README.md#getvariationbyid) - Get variation by ID
 
 </details>
@@ -460,7 +457,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -489,7 +485,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.initImages.deleteInitImageById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
