@@ -14,6 +14,7 @@ This endpoint will generate a texture generation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTextureGeneration" method="post" path="/generations-texture" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -24,7 +25,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.texture.createTextureGeneration();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,15 +47,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await textureCreateTextureGeneration(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("textureCreateTextureGeneration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -86,6 +83,7 @@ This endpoint deletes the specific texture generation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteTextureGenerationById" method="delete" path="/generations-texture/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -96,7 +94,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.texture.deleteTextureGenerationById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -119,15 +116,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await textureDeleteTextureGenerationById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("textureDeleteTextureGenerationById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

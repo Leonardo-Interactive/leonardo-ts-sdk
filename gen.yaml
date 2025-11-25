@@ -6,28 +6,48 @@ generation:
   sdkClassName: Leonardo
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 typescript:
-  version: 4.20.0
+  version: 4.21.0
+  acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: leonardoai
+  baseErrorName: LeonardoError
   clientServerStatusCodesAsErrors: false
+  constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
+  enableMCPServer: false
   enableReactQuery: false
   enumFormat: enum
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  forwardCompatibleEnumsByDefault: false
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -37,11 +57,18 @@ typescript:
       shared: sdk/models/shared
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
+  jsonpath: legacy
+  laxMode: strict
   maxMethodParams: 5
   methodArguments: require-security-and-request
+  modelPropertyCasing: camel
   moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@leonardo-ai/sdk'
   responseFormat: envelope
+  sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
+  usageSDKInitImports: []
   useIndexModules: true
+  zodVersion: v3

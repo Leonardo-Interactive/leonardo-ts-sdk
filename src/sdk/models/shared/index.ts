@@ -9,6 +9,8 @@ export * from "./custommodeltype.js";
 export * from "./elementinput.js";
 export * from "./jobstatus.js";
 export * from "./lcmgenerationstyle.js";
+export * from "./motionresolution.js";
+export * from "./motionvariationtype.js";
 export * from "./pricingcalculatorservices.js";
 export * from "./sdgenerationschedulers.js";
 export * from "./sdgenerationstyle.js";

@@ -7,10 +7,7 @@ import { UploadDatasetImageFromGenResponse } from "@leonardo-ai/sdk/sdk/models/o
 
 let value: UploadDatasetImageFromGenResponse = {
   contentType: "<value>",
-  statusCode: 511,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 752836,
 };
 ```
 

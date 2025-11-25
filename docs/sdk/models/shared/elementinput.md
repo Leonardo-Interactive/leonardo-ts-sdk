@@ -5,12 +5,14 @@
 ```typescript
 import { ElementInput } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: ElementInput = {};
+let value: ElementInput = {
+  akUUID: "<id>",
+};
 ```
 
 ## Fields
 
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `akUUID`                                                                              | *string*                                                                              | :heavy_minus_sign:                                                                    | Unique identifier for element. Elements can be found from the List Elements endpoint. |
+| `akUUID`                                                                              | *string*                                                                              | :heavy_check_mark:                                                                    | Unique identifier for element. Elements can be found from the List Elements endpoint. |
 | `weight`                                                                              | *number*                                                                              | :heavy_minus_sign:                                                                    | Weight for the element                                                                |
