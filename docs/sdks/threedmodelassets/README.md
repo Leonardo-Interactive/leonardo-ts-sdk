@@ -1,5 +1,4 @@
 # ThreeDModelAssets
-(*threeDModelAssets*)
 
 ## Overview
 
@@ -14,6 +13,7 @@ This endpoint deletes the specific 3D Model
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete3DModelById" method="delete" path="/models-3d/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -24,7 +24,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.threeDModelAssets.delete3DModelById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,15 +46,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await threeDModelAssetsDelete3DModelById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("threeDModelAssetsDelete3DModelById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -87,6 +83,7 @@ This endpoint returns presigned details to upload a 3D model to S3
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadModelAsset" method="post" path="/models-3d/upload" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -97,7 +94,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.threeDModelAssets.uploadModelAsset();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -120,15 +116,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await threeDModelAssetsUploadModelAsset(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("threeDModelAssetsUploadModelAsset failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

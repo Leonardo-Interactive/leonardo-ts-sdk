@@ -20,8 +20,8 @@ specific category of applications.
 
 ```typescript
 import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
-import { initImagesDeleteInitImageById } from "@leonardo-ai/sdk/funcs/initImagesDeleteInitImageById.js";
-import { SDKValidationError } from "@leonardo-ai/sdk/sdk/models/errors/sdkvalidationerror.js";
+import { blueprintsExecuteBlueprint } from "@leonardo-ai/sdk/funcs/blueprintsExecuteBlueprint.js";
+import { SettingName } from "@leonardo-ai/sdk/sdk/models/shared";
 
 // Use `LeonardoCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -30,29 +30,45 @@ const leonardo = new LeonardoCore({
 });
 
 async function run() {
-  const res = await initImagesDeleteInitImageById(leonardo, "<id>");
-
-  switch (true) {
-    case res.ok:
-      // The success case will be handled outside of the switch block
-      break;
-    case res.error instanceof SDKValidationError:
-      // Pretty-print validation errors.
-      return console.log(res.error.pretty());
-    case res.error instanceof Error:
-      return console.log(res.error);
-    default:
-      // TypeScript's type checking will fail on the following line if the above
-      // cases were not exhaustive.
-      res.error satisfies never;
-      throw new Error("Assertion failed: expected error checks to be exhaustive: " + res.error);
+  const res = await blueprintsExecuteBlueprint(leonardo, {
+    blueprintVersionId: "550e8400-e29b-41d4-a716-446655440000",
+    input: {
+      collectionIds: [],
+      nodeInputs: [
+        {
+          nodeId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          settingName: SettingName.Text,
+          value: "A futuristic cityscape at sunset",
+        },
+        {
+          nodeId: "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+          settingName: SettingName.TextVariables,
+          value: [
+            {
+              name: "characterName",
+              value: "Luna",
+            },
+            {
+              name: "outfit",
+              value: "cyberpunk armor",
+            },
+          ],
+        },
+        {
+          nodeId: "c3d4e5f6-a7b8-9012-cdef-123456789012",
+          settingName: SettingName.ImageUrl,
+          value: "https://cdn.leonardo.ai/users/example/image.png",
+        },
+      ],
+      public: false,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsExecuteBlueprint failed:", res.error);
   }
-
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

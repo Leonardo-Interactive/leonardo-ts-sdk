@@ -1,5 +1,4 @@
 # Image
-(*image*)
 
 ## Overview
 
@@ -16,6 +15,7 @@ This endpoint will generate images
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createGeneration" method="post" path="/generations" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -24,9 +24,10 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.image.createGeneration({});
+  const result = await leonardo.image.createGeneration({
+    contrast: 3.5,
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,16 +49,15 @@ const leonardo = new LeonardoCore({
 });
 
 async function run() {
-  const res = await imageCreateGeneration(leonardo, {});
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await imageCreateGeneration(leonardo, {
+    contrast: 3.5,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("imageCreateGeneration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -88,6 +88,7 @@ This endpoint deletes a specific generation
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteGenerationById" method="delete" path="/generations/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -98,7 +99,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.image.deleteGenerationById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -121,15 +121,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await imageDeleteGenerationById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("imageDeleteGenerationById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -160,6 +157,7 @@ This endpoint will provide information about a specific generation
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getGenerationById" method="get" path="/generations/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -170,7 +168,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.image.getGenerationById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -193,15 +190,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await imageGetGenerationById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("imageGetGenerationById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -232,6 +226,7 @@ This endpoint returns all generations by a specific user
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getGenerationsByUserId" method="get" path="/generations/user/{userId}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -242,7 +237,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.image.getGenerationsByUserId("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -265,15 +259,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await imageGetGenerationsByUserId(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("imageGetGenerationsByUserId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

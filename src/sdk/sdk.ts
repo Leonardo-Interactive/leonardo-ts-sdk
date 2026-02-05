@@ -3,6 +3,7 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Blueprints } from "./blueprints.js";
 import { Dataset } from "./dataset.js";
 import { Elements } from "./elements.js";
 import { Image } from "./image.js";
@@ -18,6 +19,11 @@ import { User } from "./user.js";
 import { Variation } from "./variation.js";
 
 export class Leonardo extends ClientSDK {
+  private _blueprints?: Blueprints;
+  get blueprints(): Blueprints {
+    return (this._blueprints ??= new Blueprints(this._options));
+  }
+
   private _initImages?: InitImages;
   get initImages(): InitImages {
     return (this._initImages ??= new InitImages(this._options));
@@ -38,14 +44,14 @@ export class Leonardo extends ClientSDK {
     return (this._image ??= new Image(this._options));
   }
 
-  private _realtimeCanvas?: RealtimeCanvas;
-  get realtimeCanvas(): RealtimeCanvas {
-    return (this._realtimeCanvas ??= new RealtimeCanvas(this._options));
-  }
-
   private _motion?: Motion;
   get motion(): Motion {
     return (this._motion ??= new Motion(this._options));
+  }
+
+  private _realtimeCanvas?: RealtimeCanvas;
+  get realtimeCanvas(): RealtimeCanvas {
+    return (this._realtimeCanvas ??= new RealtimeCanvas(this._options));
   }
 
   private _texture?: Texture;
@@ -68,6 +74,11 @@ export class Leonardo extends ClientSDK {
     return (this._threeDModelAssets ??= new ThreeDModelAssets(this._options));
   }
 
+  private _variation?: Variation;
+  get variation(): Variation {
+    return (this._variation ??= new Variation(this._options));
+  }
+
   private _pricingCalculator?: PricingCalculator;
   get pricingCalculator(): PricingCalculator {
     return (this._pricingCalculator ??= new PricingCalculator(this._options));
@@ -76,10 +87,5 @@ export class Leonardo extends ClientSDK {
   private _prompt?: Prompt;
   get prompt(): Prompt {
     return (this._prompt ??= new Prompt(this._options));
-  }
-
-  private _variation?: Variation;
-  get variation(): Variation {
-    return (this._variation ??= new Variation(this._options));
   }
 }

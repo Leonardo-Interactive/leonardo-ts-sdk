@@ -7,10 +7,7 @@ import { UploadDatasetImageResponse } from "@leonardo-ai/sdk/sdk/models/operatio
 
 let value: UploadDatasetImageResponse = {
   contentType: "<value>",
-  statusCode: 508,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 807042,
 };
 ```
 

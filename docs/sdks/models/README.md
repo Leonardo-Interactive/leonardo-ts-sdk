@@ -1,5 +1,4 @@
 # Models
-(*models*)
 
 ## Overview
 
@@ -17,6 +16,7 @@ This endpoint will train a new custom model
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createModel" method="post" path="/models" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -31,7 +31,6 @@ async function run() {
     name: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -58,15 +57,12 @@ async function run() {
     instancePrompt: "<value>",
     name: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("modelsCreateModel failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -97,6 +93,7 @@ This endpoint will delete a specific custom model
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteModelById" method="delete" path="/models/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -107,7 +104,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.models.deleteModelById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -130,15 +126,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await modelsDeleteModelById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("modelsDeleteModelById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -169,6 +162,7 @@ This endpoint gets the list of custom models belongs to the user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCustomModelsByUserId" method="get" path="/models/user/{userId}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -179,7 +173,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.models.getCustomModelsByUserId("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -202,15 +195,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await modelsGetCustomModelsByUserId(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("modelsGetCustomModelsByUserId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -241,6 +231,7 @@ This endpoint gets the specific custom model
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getModelById" method="get" path="/models/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -251,7 +242,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.models.getModelById("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -274,15 +264,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await modelsGetModelById(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("modelsGetModelById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -313,6 +300,7 @@ Get a list of public Platform Models available for use with generations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPlatformModels" method="get" path="/platformModels" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -323,7 +311,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.models.listPlatformModels();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -346,15 +333,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await modelsListPlatformModels(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("modelsListPlatformModels failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

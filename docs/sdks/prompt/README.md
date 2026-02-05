@@ -1,5 +1,4 @@
 # Prompt
-(*prompt*)
 
 ## Overview
 
@@ -14,6 +13,7 @@ This endpoint returns a improved prompt
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="promptImprove" method="post" path="/prompt/improve" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -23,10 +23,10 @@ const leonardo = new Leonardo({
 
 async function run() {
   const result = await leonardo.prompt.promptImprove({
+    isVideo: true,
     prompt: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,17 +49,15 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await promptPromptImprove(leonardo, {
+    isVideo: true,
     prompt: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptPromptImprove failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -90,6 +88,7 @@ This endpoint returns a random prompt
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="promptRandom" method="post" path="/prompt/random" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -100,7 +99,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.prompt.promptRandom();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -123,15 +121,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await promptPromptRandom(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptPromptRandom failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

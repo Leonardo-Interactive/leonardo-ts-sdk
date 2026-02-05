@@ -7,10 +7,7 @@ import { PricingCalculatorResponse } from "@leonardo-ai/sdk/sdk/models/operation
 
 let value: PricingCalculatorResponse = {
   contentType: "<value>",
-  statusCode: 201,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 669796,
 };
 ```
 

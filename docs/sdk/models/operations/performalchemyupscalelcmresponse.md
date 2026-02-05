@@ -7,10 +7,7 @@ import { PerformAlchemyUpscaleLCMResponse } from "@leonardo-ai/sdk/sdk/models/op
 
 let value: PerformAlchemyUpscaleLCMResponse = {
   contentType: "<value>",
-  statusCode: 100,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 424681,
 };
 ```
 
