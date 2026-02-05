@@ -17,9 +17,11 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
-import { SDKError } from "../sdk/models/errors/sdkerror.js";
+import { LeonardoError } from "../sdk/models/errors/leonardoerror.js";
+import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
@@ -28,21 +30,49 @@ import { Result } from "../sdk/types/fp.js";
  * @remarks
  * This endpoint will generate a SVD motion generation.
  */
-export async function motionCreateSVDMotionGeneration(
+export function motionCreateSVDMotionGeneration(
+  client: LeonardoCore,
+  request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateSVDMotionGenerationResponse,
+    | LeonardoError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
   client: LeonardoCore,
   request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.CreateSVDMotionGenerationResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      operations.CreateSVDMotionGenerationResponse,
+      | LeonardoError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
   const parsed = safeParse(
     request,
@@ -52,7 +82,7 @@ export async function motionCreateSVDMotionGeneration(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = payload === undefined
@@ -71,8 +101,10 @@ export async function motionCreateSVDMotionGeneration(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "createSVDMotionGeneration",
-    oAuth2Scopes: [],
+    oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
@@ -90,10 +122,11 @@ export async function motionCreateSVDMotionGeneration(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -104,7 +137,7 @@ export async function motionCreateSVDMotionGeneration(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -118,21 +151,22 @@ export async function motionCreateSVDMotionGeneration(
 
   const [result] = await M.match<
     operations.CreateSVDMotionGenerationResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | LeonardoError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, operations.CreateSVDMotionGenerationResponse$inboundSchema, {
       key: "object",
     }),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

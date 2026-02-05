@@ -7,10 +7,7 @@ import { GetCustomElementsByUserIdResponse } from "@leonardo-ai/sdk/sdk/models/o
 
 let value: GetCustomElementsByUserIdResponse = {
   contentType: "<value>",
-  statusCode: 505,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
+  statusCode: 999133,
 };
 ```
 

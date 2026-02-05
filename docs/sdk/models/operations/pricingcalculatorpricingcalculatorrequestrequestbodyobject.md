@@ -1,6 +1,6 @@
 # PricingCalculatorPricingCalculatorRequestRequestBodyObject
 
-Parameters for MODEL_TRAINING service
+Parameters for LCM_GENERATION service
 
 ## Example Usage
 
@@ -12,6 +12,9 @@ let value: PricingCalculatorPricingCalculatorRequestRequestBodyObject = {};
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `resolution`                                     | *number*                                         | :heavy_minus_sign:                               | The resolution for training. Must be 512 or 768. |
+| Field                                                     | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `height`                                                  | *number*                                                  | :heavy_minus_sign:                                        | The output height of the image. Must be 512, 640 or 1024. |
+| `instantRefine`                                           | *boolean*                                                 | :heavy_minus_sign:                                        | Enable for instant upscale                                |
+| `refine`                                                  | *boolean*                                                 | :heavy_minus_sign:                                        | Enable for normal alchemy upscale                         |
+| `width`                                                   | *number*                                                  | :heavy_minus_sign:                                        | The output width of the image. Must be 512, 640 or 1024.  |

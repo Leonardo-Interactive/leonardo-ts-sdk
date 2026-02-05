@@ -1,5 +1,4 @@
 # PricingCalculator
-(*pricingCalculator*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ This endpoint returns the cost used for generating images using a particular ser
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="pricingCalculator" method="post" path="/pricing-calculator" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -23,7 +23,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.pricingCalculator.pricingCalculator();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -46,15 +45,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await pricingCalculatorPricingCalculator(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("pricingCalculatorPricingCalculator failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

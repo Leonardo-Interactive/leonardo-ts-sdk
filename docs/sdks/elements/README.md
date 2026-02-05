@@ -1,5 +1,4 @@
 # Elements
-(*elements*)
 
 ## Overview
 
@@ -17,6 +16,7 @@ This endpoint will train a new custom element.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createElement" method="post" path="/elements" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -25,9 +25,12 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.elements.createElement({});
+  const result = await leonardo.elements.createElement({
+    learningRate: 3344.47,
+    loraFocus: "<value>",
+    numTrainEpochs: 543724,
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,16 +52,17 @@ const leonardo = new LeonardoCore({
 });
 
 async function run() {
-  const res = await elementsCreateElement(leonardo, {});
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await elementsCreateElement(leonardo, {
+    learningRate: 3344.47,
+    loraFocus: "<value>",
+    numTrainEpochs: 543724,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("elementsCreateElement failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -89,6 +93,7 @@ This endpoint will delete a specific custom model.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteElementById" method="delete" path="/elements/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -97,9 +102,8 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.elements.deleteElementById(39024);
+  const result = await leonardo.elements.deleteElementById(709546);
 
-  // Handle the result
   console.log(result);
 }
 
@@ -121,16 +125,13 @@ const leonardo = new LeonardoCore({
 });
 
 async function run() {
-  const res = await elementsDeleteElementById(leonardo, 39024);
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await elementsDeleteElementById(leonardo, 709546);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("elementsDeleteElementById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -161,6 +162,7 @@ This endpoint gets the list of custom elements belongs to the user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCustomElementsByUserId" method="get" path="/elements/user/{userId}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -171,7 +173,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.elements.getCustomElementsByUserId("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -194,15 +195,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await elementsGetCustomElementsByUserId(leonardo, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("elementsGetCustomElementsByUserId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -233,6 +231,7 @@ This endpoint gets the specific custom element.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getElementById" method="get" path="/elements/{id}" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -241,9 +240,8 @@ const leonardo = new Leonardo({
 });
 
 async function run() {
-  const result = await leonardo.elements.getElementById(665696);
+  const result = await leonardo.elements.getElementById(320312);
 
-  // Handle the result
   console.log(result);
 }
 
@@ -265,16 +263,13 @@ const leonardo = new LeonardoCore({
 });
 
 async function run() {
-  const res = await elementsGetElementById(leonardo, 665696);
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await elementsGetElementById(leonardo, 320312);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("elementsGetElementById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -305,6 +300,7 @@ Get a list of public Elements available for use with generations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listElements" method="get" path="/elements" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -315,7 +311,6 @@ const leonardo = new Leonardo({
 async function run() {
   const result = await leonardo.elements.listElements();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -338,15 +333,12 @@ const leonardo = new LeonardoCore({
 
 async function run() {
   const res = await elementsListElements(leonardo);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("elementsListElements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -6,6 +6,7 @@ import { variationCreateUniversalUpscalerJob } from "../funcs/variationCreateUni
 import { variationCreateVariationNoBG } from "../funcs/variationCreateVariationNoBG.js";
 import { variationCreateVariationUnzoom } from "../funcs/variationCreateVariationUnzoom.js";
 import { variationCreateVariationUpscale } from "../funcs/variationCreateVariationUpscale.js";
+import { variationGetMotionVariationById } from "../funcs/variationGetMotionVariationById.js";
 import { variationGetVariationById } from "../funcs/variationGetVariationById.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
@@ -76,6 +77,23 @@ export class Variation extends ClientSDK {
     return unwrapAsync(variationCreateVariationUpscale(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Get motion variation by ID
+   *
+   * @remarks
+   * This endpoint will get the motion variation by ID
+   */
+  async getMotionVariationById(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetMotionVariationByIdResponse> {
+    return unwrapAsync(variationGetMotionVariationById(
+      this,
+      id,
       options,
     ));
   }

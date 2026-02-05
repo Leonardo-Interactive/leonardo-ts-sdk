@@ -7,7 +7,7 @@ The base version of stable diffusion to use if not using a custom model. v1_5 is
 ```typescript
 import { SdVersions } from "@leonardo-ai/sdk/sdk/models/shared";
 
-let value: SdVersions = SdVersions.Flux;
+let value: SdVersions = SdVersions.V2;
 ```
 
 ## Values
@@ -24,3 +24,4 @@ let value: SdVersions = SdVersions.Flux;
 | `Phoenix`       | PHOENIX         |
 | `Flux`          | FLUX            |
 | `FluxDev`       | FLUX_DEV        |
+| `Kino20`        | KINO_2_0        |
