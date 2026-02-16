@@ -3,18 +3,18 @@ id: edadaac9-e645-4ef4-a6c7-a1f73bc19385
 management:
   docChecksum: ef42142a2d3c5d69f0d59a720a30a040
   docVersion: v1.0.0
-  speakeasyVersion: 1.704.0
-  generationVersion: 2.806.4
-  releaseVersion: 4.21.0
-  configChecksum: 6dbbcf4de19b54c682d44bade5d746da
+  speakeasyVersion: 1.718.0
+  generationVersion: 2.824.1
+  releaseVersion: 4.21.1
+  configChecksum: 5113d0654779434909f158c8e17c96e1
   repoURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
   published: true
 persistentEdits:
-  generation_id: d2b7a0db-ec2e-4efd-8dfb-6bca0169707e
-  pristine_commit_hash: 524d97ae9f2551d025a62d6378cc1b3a23f94db3
-  pristine_tree_hash: f8591090c9c28d3a70f3f724a79dc17ba5027f5b
+  generation_id: 97e81d5c-3fd0-4b72-8082-cdc57951fb70
+  pristine_commit_hash: a6f410445fcb45d76947d8cbe8e54316b84f60fd
+  pristine_tree_hash: 7e7652b607169ed8ca786aa4cde3aa846e9e5cc7
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -26,7 +26,7 @@ features:
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     flattening: 2.82.1
-    globalSecurity: 2.82.14
+    globalSecurity: 2.82.15
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.83.0
@@ -1222,8 +1222,8 @@ trackedFiles:
     pristine_git_object: 3a6a2214d67bb7e1a519cf60cff38a2a77b8747f
   docs/sdks/blueprints/README.md:
     id: 43596dbb889b
-    last_write_checksum: sha1:4ef872c3570cd5310ab27719f52befa2f8f20ebf
-    pristine_git_object: ddfac5f6b705e1bd0c3cde03e275cb5749fff2a6
+    last_write_checksum: sha1:98b6470553dd3db82ccd66e949f055b83e2b1f73
+    pristine_git_object: dc934f2265bcf72d6b189dfd5aa2a0869475c320
   docs/sdks/dataset/README.md:
     id: 500cff374f02
     last_write_checksum: sha1:2aa9e324a8825a0ff3fbdb2dbd972d19049399b4
@@ -1298,12 +1298,12 @@ trackedFiles:
     pristine_git_object: 0742f02855b8c84a9d67d61c9388e7c1a66884fb
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:62a9a1f6096ded244e6ac86ee41546f90681d54e
-    pristine_git_object: 2783dc5ad881ea029ea30af89acb11730b871393
+    last_write_checksum: sha1:7a95ac4bd397b5415977c5e27432324665cd2a6f
+    pristine_git_object: 161826e962851353d5ef262be407a19013b6ff34
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:8b6a0251c243db3c336e96f9f8c62afbe265dde7
-    pristine_git_object: bc80800a0dd224908f5c022c05f5a7d453e91aa9
+    last_write_checksum: sha1:cea1b69a43551738b3d136af118880be59076d67
+    pristine_git_object: e088b917d151e711757429da90a84d0f399ef893
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:520b6884f378217645e8ad2ff50e8b7e45d128ef
@@ -1530,8 +1530,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:70b49ab6379bd89394f7d59069266b8fdb97fb06
-    pristine_git_object: e439c095b5a60c44b20ad9ee8c090337ddd05b99
+    last_write_checksum: sha1:4776969c9d4827830f324ec13999edb752671e5b
+    pristine_git_object: 6a3859ca9cd5ac76a06c31fc390c3ed56b6f5497
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2475,7 +2475,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `leonardo.elements.createElement()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.sdTrainingJob.cost` **Added**\n* `leonardo.pricingCalculator.pricingCalculator()`:  `request` **Changed** (Breaking ⚠️)\n* `leonardo.models.getModelById()`:  `response.customModelsByPk.sdVersion.enum(kino20)` **Added** (Breaking ⚠️)\n* `leonardo.models.getCustomModelsByUserId()`:  `response.customModels[].sdVersion.enum(kino20)` **Added** (Breaking ⚠️)\n* `leonardo.image.getGenerationsByUserId()`:  `response.generations[].generationElements[].lora.baseModel.enum(kino20)` **Added** (Breaking ⚠️)\n* `leonardo.image.getGenerationById()`:  `response.generationsByPk.generationElements[].lora.baseModel.enum(kino20)` **Added** (Breaking ⚠️)\n* `leonardo.image.createGeneration()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.sdGenerationJob.cost` **Added**\n* `leonardo.elements.listElements()`:  `response.loras[].baseModel.enum(kino20)` **Added** (Breaking ⚠️)\n* `leonardo.motion.createVideoUpscale()`: **Added**\n* `leonardo.texture.createTextureGeneration()`:  `response.textureGenerationJob.cost` **Added**\n* `leonardo.blueprints.executeBlueprint()`: **Added**\n* `leonardo.motion.createTextToVideoGeneration()`: **Added**\n* `leonardo.motion.createImageToVideoGeneration()`: **Added**\n* `leonardo.blueprints.getBlueprintVersionsByBlueprintId()`: **Added**\n* `leonardo.realtimeCanvas.createLcmGeneration()`:  `response.lcmGenerationJob.cost` **Added**\n* `leonardo.realtimeCanvas.performAlchemyUpscaleLcm()`:  `response.lcmGenerationJob.cost` **Added**\n* `leonardo.realtimeCanvas.performInpaintingLcm()`:  `response.lcmGenerationJob.cost` **Added**\n* `leonardo.realtimeCanvas.performInstantRefine()`:  `response.lcmGenerationJob.cost` **Added**\n* `leonardo.motion.createSvdMotionGeneration()`:  `response.motionSvdGenerationJob.cost` **Added**\n* `leonardo.variation.getMotionVariationById()`: **Added**\n* `leonardo.models.createModel()`:  `response.sdTrainingJob.cost` **Added**\n* `leonardo.blueprints.getBlueprintExecutionGenerations()`: **Added**\n* `leonardo.blueprints.getBlueprintExecution()`: **Added**\n* `leonardo.blueprints.getBlueprintById()`: **Added**\n* `leonardo.prompt.promptImprove()`: \n  *  `request.isVideo` **Added**\n  *  `response.promptGeneration.cost` **Added**\n* `leonardo.prompt.promptRandom()`:  `response.promptGeneration.cost` **Added**\n* `leonardo.variation.createUniversalUpscalerJob()`:  `response.universalUpscaler.cost` **Added**\n* `leonardo.variation.createVariationNoBg()`:  `response.sdNobgJob.cost` **Added**\n* `leonardo.variation.createVariationUnzoom()`:  `response.sdUnzoomJob.cost` **Added**\n* `leonardo.variation.createVariationUpscale()`:  `response.sdUpscaleJob.cost` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
