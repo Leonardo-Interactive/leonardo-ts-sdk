@@ -4,6 +4,7 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
+  id-token: write
 "on":
   push:
     branches:
@@ -16,5 +17,4 @@ jobs:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      npm_token: ${{ secrets.NPM_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
