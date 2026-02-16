@@ -14,12 +14,11 @@
 
 Execute a Blueprint Version with custom node inputs. This endpoint triggers the execution of the specified Blueprint Version and returns a Blueprint Execution ID to track the job.
 
-### Example Usage
+### Example Usage: error
 
-<!-- UsageSnippet language="typescript" operationID="executeBlueprint" method="post" path="/blueprint-executions" -->
+<!-- UsageSnippet language="typescript" operationID="executeBlueprint" method="post" path="/blueprint-executions" example="error" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
-import { SettingName } from "@leonardo-ai/sdk/sdk/models/shared";
 
 const leonardo = new Leonardo({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -30,32 +29,7 @@ async function run() {
     blueprintVersionId: "550e8400-e29b-41d4-a716-446655440000",
     input: {
       collectionIds: [],
-      nodeInputs: [
-        {
-          nodeId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          settingName: SettingName.Text,
-          value: "A futuristic cityscape at sunset",
-        },
-        {
-          nodeId: "b2c3d4e5-f6a7-8901-bcde-f12345678901",
-          settingName: SettingName.TextVariables,
-          value: [
-            {
-              name: "characterName",
-              value: "Luna",
-            },
-            {
-              name: "outfit",
-              value: "cyberpunk armor",
-            },
-          ],
-        },
-        {
-          nodeId: "c3d4e5f6-a7b8-9012-cdef-123456789012",
-          settingName: SettingName.ImageUrl,
-          value: "https://cdn.leonardo.ai/users/example/image.png",
-        },
-      ],
+      nodeInputs: [],
       public: false,
     },
   });
@@ -73,7 +47,6 @@ The standalone function version of this method:
 ```typescript
 import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
 import { blueprintsExecuteBlueprint } from "@leonardo-ai/sdk/funcs/blueprintsExecuteBlueprint.js";
-import { SettingName } from "@leonardo-ai/sdk/sdk/models/shared";
 
 // Use `LeonardoCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -86,32 +59,66 @@ async function run() {
     blueprintVersionId: "550e8400-e29b-41d4-a716-446655440000",
     input: {
       collectionIds: [],
-      nodeInputs: [
-        {
-          nodeId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          settingName: SettingName.Text,
-          value: "A futuristic cityscape at sunset",
-        },
-        {
-          nodeId: "b2c3d4e5-f6a7-8901-bcde-f12345678901",
-          settingName: SettingName.TextVariables,
-          value: [
-            {
-              name: "characterName",
-              value: "Luna",
-            },
-            {
-              name: "outfit",
-              value: "cyberpunk armor",
-            },
-          ],
-        },
-        {
-          nodeId: "c3d4e5f6-a7b8-9012-cdef-123456789012",
-          settingName: SettingName.ImageUrl,
-          value: "https://cdn.leonardo.ai/users/example/image.png",
-        },
-      ],
+      nodeInputs: [],
+      public: false,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsExecuteBlueprint failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: success
+
+<!-- UsageSnippet language="typescript" operationID="executeBlueprint" method="post" path="/blueprint-executions" example="success" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.executeBlueprint({
+    blueprintVersionId: "550e8400-e29b-41d4-a716-446655440000",
+    input: {
+      collectionIds: [],
+      nodeInputs: [],
+      public: false,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsExecuteBlueprint } from "@leonardo-ai/sdk/funcs/blueprintsExecuteBlueprint.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsExecuteBlueprint(leonardo, {
+    blueprintVersionId: "550e8400-e29b-41d4-a716-446655440000",
+    input: {
+      collectionIds: [],
+      nodeInputs: [],
       public: false,
     },
   });
@@ -149,9 +156,99 @@ run();
 
 Returns a single Blueprint by its akUUID
 
-### Example Usage
+### Example Usage: badRequest
 
-<!-- UsageSnippet language="typescript" operationID="getBlueprintById" method="get" path="/blueprints/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getBlueprintById" method="get" path="/blueprints/{id}" example="badRequest" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintById("8f161ed5-dc84-4f5b-8ef5-4f3e5821df56");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintById } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintById(leonardo, "8f161ed5-dc84-4f5b-8ef5-4f3e5821df56");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintById failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: notFound
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintById" method="get" path="/blueprints/{id}" example="notFound" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintById("d5f01775-fb53-4c5c-8d08-df840b5a6c71");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintById } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintById.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintById(leonardo, "d5f01775-fb53-4c5c-8d08-df840b5a6c71");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintById failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: success
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintById" method="get" path="/blueprints/{id}" example="success" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -218,9 +315,99 @@ run();
 
 Retrieves details of a specific Blueprint Execution by its akUUID
 
-### Example Usage
+### Example Usage: badRequest
 
-<!-- UsageSnippet language="typescript" operationID="getBlueprintExecution" method="get" path="/blueprint-executions/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getBlueprintExecution" method="get" path="/blueprint-executions/{id}" example="badRequest" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintExecution("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintExecution } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintExecution.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintExecution(leonardo, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintExecution failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: notFound
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintExecution" method="get" path="/blueprint-executions/{id}" example="notFound" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintExecution("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintExecution } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintExecution.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintExecution(leonardo, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintExecution failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: success
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintExecution" method="get" path="/blueprint-executions/{id}" example="success" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -287,9 +474,99 @@ run();
 
 Retrieves paginated generations for a specific Blueprint Execution, including their statuses and any prompt moderation failure details.
 
-### Example Usage
+### Example Usage: notAccessible
 
-<!-- UsageSnippet language="typescript" operationID="getBlueprintExecutionGenerations" method="get" path="/blueprint-executions/{id}/generations" -->
+<!-- UsageSnippet language="typescript" operationID="getBlueprintExecutionGenerations" method="get" path="/blueprint-executions/{id}/generations" example="notAccessible" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintExecutionGenerations("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintExecutionGenerations } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintExecutionGenerations.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintExecutionGenerations(leonardo, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintExecutionGenerations failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: promptModerationFailure
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintExecutionGenerations" method="get" path="/blueprint-executions/{id}/generations" example="promptModerationFailure" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintExecutionGenerations("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintExecutionGenerations } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintExecutionGenerations.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintExecutionGenerations(leonardo, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintExecutionGenerations failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: success
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintExecutionGenerations" method="get" path="/blueprint-executions/{id}/generations" example="success" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
@@ -360,9 +637,99 @@ run();
 
 Returns all versions of a Blueprint by its akUUID
 
-### Example Usage
+### Example Usage: badRequest
 
-<!-- UsageSnippet language="typescript" operationID="getBlueprintVersionsByBlueprintId" method="get" path="/blueprints/{id}/versions" -->
+<!-- UsageSnippet language="typescript" operationID="getBlueprintVersionsByBlueprintId" method="get" path="/blueprints/{id}/versions" example="badRequest" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintVersionsByBlueprintId("a6daa51b-6406-4e13-93f8-b7c8344fad6c");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintVersionsByBlueprintId } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintVersionsByBlueprintId.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintVersionsByBlueprintId(leonardo, "a6daa51b-6406-4e13-93f8-b7c8344fad6c");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintVersionsByBlueprintId failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: notFound
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintVersionsByBlueprintId" method="get" path="/blueprints/{id}/versions" example="notFound" -->
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk";
+
+const leonardo = new Leonardo({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await leonardo.blueprints.getBlueprintVersionsByBlueprintId("7b44812d-6ac6-40b5-ad08-7c47a3f9807c");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LeonardoCore } from "@leonardo-ai/sdk/core.js";
+import { blueprintsGetBlueprintVersionsByBlueprintId } from "@leonardo-ai/sdk/funcs/blueprintsGetBlueprintVersionsByBlueprintId.js";
+
+// Use `LeonardoCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const leonardo = new LeonardoCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await blueprintsGetBlueprintVersionsByBlueprintId(leonardo, "7b44812d-6ac6-40b5-ad08-7c47a3f9807c");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("blueprintsGetBlueprintVersionsByBlueprintId failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: success
+
+<!-- UsageSnippet language="typescript" operationID="getBlueprintVersionsByBlueprintId" method="get" path="/blueprints/{id}/versions" example="success" -->
 ```typescript
 import { Leonardo } from "@leonardo-ai/sdk";
 
