@@ -170,6 +170,12 @@ run();
 * [uploadCanvasInitImage](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
 * [uploadInitImage](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
 
+### [Media](docs/sdks/media/README.md)
+
+* [deleteUploadedMediaById](docs/sdks/media/README.md#deleteuploadedmediabyid) - Delete uploaded media
+* [getUploadedMediaById](docs/sdks/media/README.md#getuploadedmediabyid) - Get uploaded media
+* [uploadMedia](docs/sdks/media/README.md#uploadmedia) - Upload media
+
 ### [Models](docs/sdks/models/README.md)
 
 * [createModel](docs/sdks/models/README.md#createmodel) - Train a Custom Model
@@ -548,6 +554,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`initImagesGetInitImageById`](docs/sdks/initimages/README.md#getinitimagebyid) - Get single init image
 - [`initImagesUploadCanvasInitImage`](docs/sdks/initimages/README.md#uploadcanvasinitimage) - Upload Canvas Editor init and mask image
 - [`initImagesUploadInitImage`](docs/sdks/initimages/README.md#uploadinitimage) - Upload init image
+- [`mediaDeleteUploadedMediaById`](docs/sdks/media/README.md#deleteuploadedmediabyid) - Delete uploaded media
+- [`mediaGetUploadedMediaById`](docs/sdks/media/README.md#getuploadedmediabyid) - Get uploaded media
+- [`mediaUploadMedia`](docs/sdks/media/README.md#uploadmedia) - Upload media
 - [`modelsCreateModel`](docs/sdks/models/README.md#createmodel) - Train a Custom Model
 - [`modelsDeleteModelById`](docs/sdks/models/README.md#deletemodelbyid) - Delete a Single Custom Model by ID
 - [`modelsGetCustomModelsByUserId`](docs/sdks/models/README.md#getcustommodelsbyuserid) - Get a list of Custom Models by User ID

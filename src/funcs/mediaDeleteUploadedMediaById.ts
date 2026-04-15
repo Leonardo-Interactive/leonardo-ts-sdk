@@ -25,18 +25,18 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Delete init image
+ * Delete uploaded media
  *
  * @remarks
- * This endpoint deletes an init image
+ * This endpoint deletes an uploaded media record and removes the associated file from S3
  */
-export function initImagesDeleteInitImageById(
+export function mediaDeleteUploadedMediaById(
   client: LeonardoCore,
   id: string,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeleteInitImageByIdResponse,
+    operations.DeleteUploadedMediaByIdResponse,
     | LeonardoError
     | ResponseValidationError
     | ConnectionError
@@ -61,7 +61,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteInitImageByIdResponse,
+      operations.DeleteUploadedMediaByIdResponse,
       | LeonardoError
       | ResponseValidationError
       | ConnectionError
@@ -74,14 +74,14 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.DeleteInitImageByIdRequest = {
+  const input: operations.DeleteUploadedMediaByIdRequest = {
     id: id,
   };
 
   const parsed = safeParse(
     input,
     (value) =>
-      operations.DeleteInitImageByIdRequest$outboundSchema.parse(value),
+      operations.DeleteUploadedMediaByIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -96,7 +96,7 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/init-image/{id}")(pathParams);
+  const path = pathToFunc("/media/{id}")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -109,7 +109,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "deleteInitImageById",
+    operationID: "deleteUploadedMediaById",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -156,7 +156,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeleteInitImageByIdResponse,
+    operations.DeleteUploadedMediaByIdResponse,
     | LeonardoError
     | ResponseValidationError
     | ConnectionError
@@ -166,7 +166,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.DeleteInitImageByIdResponse$inboundSchema, {
+    M.json(200, operations.DeleteUploadedMediaByIdResponse$inboundSchema, {
       key: "object",
     }),
   )(response, req, { extraFields: responseFields });
