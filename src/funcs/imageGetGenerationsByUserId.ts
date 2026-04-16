@@ -104,7 +104,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/generations/user/{userId}")(pathParams);
 
   const query = encodeFormQuery({

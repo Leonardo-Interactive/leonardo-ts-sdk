@@ -8,6 +8,7 @@ import { Dataset } from "./dataset.js";
 import { Elements } from "./elements.js";
 import { Image } from "./image.js";
 import { InitImages } from "./initimages.js";
+import { Media } from "./media.js";
 import { Models } from "./models.js";
 import { Motion } from "./motion.js";
 import { PricingCalculator } from "./pricingcalculator.js";
@@ -62,6 +63,11 @@ export class Leonardo extends ClientSDK {
   private _user?: User;
   get user(): User {
     return (this._user ??= new User(this._options));
+  }
+
+  private _media?: Media;
+  get media(): Media {
+    return (this._media ??= new Media(this._options));
   }
 
   private _models?: Models;

@@ -99,7 +99,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/datasets/{datasetId}/upload")(pathParams);
 
   const headers = new Headers(compactMap({

@@ -114,7 +114,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/blueprint-executions/{id}/generations")(pathParams);
 
   const query = encodeFormQuery({
