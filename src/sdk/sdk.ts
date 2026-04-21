@@ -14,7 +14,6 @@ import { Motion } from "./motion.js";
 import { PricingCalculator } from "./pricingcalculator.js";
 import { Prompt } from "./prompt.js";
 import { RealtimeCanvas } from "./realtimecanvas.js";
-import { Texture } from "./texture.js";
 import { ThreeDModelAssets } from "./threedmodelassets.js";
 import { User } from "./user.js";
 import { Variation } from "./variation.js";
@@ -53,11 +52,6 @@ export class Leonardo extends ClientSDK {
   private _realtimeCanvas?: RealtimeCanvas;
   get realtimeCanvas(): RealtimeCanvas {
     return (this._realtimeCanvas ??= new RealtimeCanvas(this._options));
-  }
-
-  private _texture?: Texture;
-  get texture(): Texture {
-    return (this._texture ??= new Texture(this._options));
   }
 
   private _user?: User;

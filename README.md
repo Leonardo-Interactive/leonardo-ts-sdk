@@ -207,11 +207,6 @@ run();
 * [performInpaintingLCM](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
 * [performInstantRefine](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
 
-### [Texture](docs/sdks/texture/README.md)
-
-* [createTextureGeneration](docs/sdks/texture/README.md#createtexturegeneration) - Create Texture Generation
-* [deleteTextureGenerationById](docs/sdks/texture/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
-
 ### [User](docs/sdks/user/README.md)
 
 * [getUserSelf](docs/sdks/user/README.md#getuserself) - Get user information
@@ -573,8 +568,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`realtimeCanvasPerformAlchemyUpscaleLCM`](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
 - [`realtimeCanvasPerformInpaintingLCM`](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
 - [`realtimeCanvasPerformInstantRefine`](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
-- [`textureCreateTextureGeneration`](docs/sdks/texture/README.md#createtexturegeneration) - Create Texture Generation
-- [`textureDeleteTextureGenerationById`](docs/sdks/texture/README.md#deletetexturegenerationbyid) - Delete Texture Generation by ID
 - [`threeDModelAssetsDelete3DModelById`](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid) - Delete 3D Model by ID
 - [`threeDModelAssetsUploadModelAsset`](docs/sdks/threedmodelassets/README.md#uploadmodelasset) - Upload 3D Model
 - [`userGetUserSelf`](docs/sdks/user/README.md#getuserself) - Get user information
