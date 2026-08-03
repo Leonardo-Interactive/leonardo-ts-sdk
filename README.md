@@ -10,7 +10,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Rest Endpoints: Leonardo.Ai API OpenAPI specification.
+Rest Endpoints: Leonardo.Ai API OpenAPI specification (v1.0).
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -187,9 +187,7 @@ run();
 ### [Motion](docs/sdks/motion/README.md)
 
 * [createImageToVideoGeneration](docs/sdks/motion/README.md#createimagetovideogeneration) - Create a video generation from an image
-* [createSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
 * [createTextToVideoGeneration](docs/sdks/motion/README.md#createtexttovideogeneration) - Create a video generation from a text prompt
-* [createVideoUpscale](docs/sdks/motion/README.md#createvideoupscale) - Upscale a generated video
 
 ### [PricingCalculator](docs/sdks/pricingcalculator/README.md)
 
@@ -558,9 +556,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`modelsGetModelById`](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
 - [`modelsListPlatformModels`](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
 - [`motionCreateImageToVideoGeneration`](docs/sdks/motion/README.md#createimagetovideogeneration) - Create a video generation from an image
-- [`motionCreateSVDMotionGeneration`](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
 - [`motionCreateTextToVideoGeneration`](docs/sdks/motion/README.md#createtexttovideogeneration) - Create a video generation from a text prompt
-- [`motionCreateVideoUpscale`](docs/sdks/motion/README.md#createvideoupscale) - Upscale a generated video
 - [`pricingCalculatorPricingCalculator`](docs/sdks/pricingcalculator/README.md#pricingcalculator) - Calculating API Cost
 - [`promptPromptImprove`](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
 - [`promptPromptRandom`](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
