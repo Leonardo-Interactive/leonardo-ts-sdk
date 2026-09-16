@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 4.21.3
+  version: 4.22.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -38,6 +38,7 @@ typescript:
   additionalPackageJSON: {}
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: leonardoai
   baseErrorName: LeonardoError
   clientServerStatusCodesAsErrors: false
@@ -47,6 +48,7 @@ typescript:
   enableMCPServer: false
   enableReactQuery: false
   enumFormat: enum
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
   fixEnumNameSanitization: false
   flatAdditionalProperties: false
@@ -78,6 +80,8 @@ typescript:
   packageName: '@leonardo-ai/sdk'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: envelope
   sseFlatResponse: false
   templateVersion: v2

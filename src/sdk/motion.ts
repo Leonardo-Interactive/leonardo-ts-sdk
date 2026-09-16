@@ -3,9 +3,7 @@
  */
 
 import { motionCreateImageToVideoGeneration } from "../funcs/motionCreateImageToVideoGeneration.js";
-import { motionCreateSVDMotionGeneration } from "../funcs/motionCreateSVDMotionGeneration.js";
 import { motionCreateTextToVideoGeneration } from "../funcs/motionCreateTextToVideoGeneration.js";
-import { motionCreateVideoUpscale } from "../funcs/motionCreateVideoUpscale.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
@@ -29,23 +27,6 @@ export class Motion extends ClientSDK {
   }
 
   /**
-   * Create SVD Motion Generation
-   *
-   * @remarks
-   * This endpoint will generate a SVD motion generation.
-   */
-  async createSVDMotionGeneration(
-    request?: operations.CreateSVDMotionGenerationRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.CreateSVDMotionGenerationResponse> {
-    return unwrapAsync(motionCreateSVDMotionGeneration(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Create a video generation from a text prompt
    *
    * @remarks
@@ -56,23 +37,6 @@ export class Motion extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreateTextToVideoGenerationResponse> {
     return unwrapAsync(motionCreateTextToVideoGeneration(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Upscale a generated video
-   *
-   * @remarks
-   * This endpoint will upscale a generated video to a higher resolution.
-   */
-  async createVideoUpscale(
-    request?: operations.CreateVideoUpscaleRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.CreateVideoUpscaleResponse> {
-    return unwrapAsync(motionCreateVideoUpscale(
       this,
       request,
       options,
