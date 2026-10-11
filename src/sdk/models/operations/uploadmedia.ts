@@ -13,9 +13,17 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type UploadMediaRequestBody = {
   /**
-   * The file extension of the media file to upload. Supported extensions: mp4, mov.
+   * The file extension of the media file to upload. Supported extensions for video: `mp4`, `mov`. Supported for audio: `mp3`, `wav`.
    */
   extension: string;
+  /**
+   * Original file name for display. Required for audio uploads (`mp3`, `wav`). Optional for video.
+   */
+  originalFilename?: string | null | undefined;
+  /**
+   * Optional team UUID. When set, the upload is associated with that team and the caller must be a member.
+   */
+  teamId?: string | null | undefined;
 };
 
 export type MediaUploadOutput = {
@@ -53,6 +61,8 @@ export type UploadMediaResponse = {
 /** @internal */
 export type UploadMediaRequestBody$Outbound = {
   extension: string;
+  originalFilename?: string | null | undefined;
+  teamId?: string | null | undefined;
 };
 
 /** @internal */
@@ -62,6 +72,8 @@ export const UploadMediaRequestBody$outboundSchema: z.ZodType<
   UploadMediaRequestBody
 > = z.object({
   extension: z.string(),
+  originalFilename: z.nullable(z.string()).optional(),
+  teamId: z.nullable(z.string()).optional(),
 });
 
 export function uploadMediaRequestBodyToJSON(
