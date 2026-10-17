@@ -48,7 +48,7 @@ export class Media extends ClientSDK {
    * Upload media
    *
    * @remarks
-   * This endpoint returns presigned details to upload a media file to S3
+   * This endpoint returns presigned POST credentials to upload a video or audio file directly to S3.
    */
   async uploadMedia(
     request: operations.UploadMediaRequestBody,
