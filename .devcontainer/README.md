@@ -8,6 +8,8 @@
 
 # Dev Containers Quick Start
 
+The devcontainer installs Node.js 22.23.4. Rebuild an existing devcontainer to apply this version.
+
 The default location for usage snippets is the `samples` directory.
 
 ## Running a Usage Sample
