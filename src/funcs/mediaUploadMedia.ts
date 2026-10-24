@@ -29,7 +29,7 @@ import { Result } from "../sdk/types/fp.js";
  * Upload media
  *
  * @remarks
- * This endpoint returns presigned details to upload a media file to S3
+ * This endpoint returns presigned POST credentials to upload a video or audio file directly to S3.
  */
 export function mediaUploadMedia(
   client: LeonardoCore,
