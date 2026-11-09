@@ -14,7 +14,7 @@ permissions:
       - '*/RELEASES.md'
 jobs:
   publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@c318ea1153f3ea3f59a81f949094d17895a9d577 # v15
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
