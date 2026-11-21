@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -60,10 +60,12 @@ export const UploadModelAssetRequestBody$outboundSchema: z.ZodType<
   UploadModelAssetRequestBody$Outbound,
   z.ZodTypeDef,
   UploadModelAssetRequestBody
-> = z.object({
-  modelExtension: z.string().optional(),
-  name: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    modelExtension: z.string().optional(),
+    name: z.nullable(z.string()).optional(),
+  })
+);
 
 export function uploadModelAssetRequestBodyToJSON(
   uploadModelAssetRequestBody: UploadModelAssetRequestBody,
@@ -80,12 +82,14 @@ export const ModelAssetUploadOutput$inboundSchema: z.ZodType<
   ModelAssetUploadOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  modelFields: z.nullable(z.string()).optional(),
-  modelId: z.nullable(z.string()).optional(),
-  modelKey: z.nullable(z.string()).optional(),
-  modelUrl: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    modelFields: z.nullable(z.string()).optional(),
+    modelId: z.nullable(z.string()).optional(),
+    modelKey: z.nullable(z.string()).optional(),
+    modelUrl: z.nullable(z.string()).optional(),
+  })
+);
 
 export function modelAssetUploadOutputFromJSON(
   jsonString: string,
@@ -102,11 +106,13 @@ export const UploadModelAssetResponseBody$inboundSchema: z.ZodType<
   UploadModelAssetResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadModelAsset: z.nullable(
-    z.lazy(() => ModelAssetUploadOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadModelAsset: z.nullable(
+      z.lazy(() => ModelAssetUploadOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function uploadModelAssetResponseBodyFromJSON(
   jsonString: string,
@@ -123,18 +129,20 @@ export const UploadModelAssetResponse$inboundSchema: z.ZodType<
   UploadModelAssetResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => UploadModelAssetResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => UploadModelAssetResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function uploadModelAssetResponseFromJSON(
   jsonString: string,

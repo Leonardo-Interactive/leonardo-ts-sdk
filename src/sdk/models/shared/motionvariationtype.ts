@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The type of motion variation.
@@ -14,4 +15,4 @@ export enum MotionVariationType {
 /** @internal */
 export const MotionVariationType$inboundSchema: z.ZodNativeEnum<
   typeof MotionVariationType
-> = z.nativeEnum(MotionVariationType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MotionVariationType));

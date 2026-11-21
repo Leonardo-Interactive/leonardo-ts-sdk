@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,9 +64,19 @@ export const DeleteModelByIdRequest$outboundSchema: z.ZodType<
   DeleteModelByIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteModelByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function deleteModelByIdRequestToJSON(
   deleteModelByIdRequest: DeleteModelByIdRequest,
@@ -78,9 +91,11 @@ export const CustomModels$inboundSchema: z.ZodType<
   CustomModels,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function customModelsFromJSON(
   jsonString: string,
@@ -97,15 +112,17 @@ export const DeleteModelByIdResponseBody$inboundSchema: z.ZodType<
   DeleteModelByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_custom_models_by_pk: z.nullable(
-    z.lazy(() => CustomModels$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_custom_models_by_pk": "deleteCustomModelsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_custom_models_by_pk: z.nullable(
+      z.lazy(() => CustomModels$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_custom_models_by_pk": "deleteCustomModelsByPk",
+    });
+  })
+);
 
 export function deleteModelByIdResponseBodyFromJSON(
   jsonString: string,
@@ -122,18 +139,20 @@ export const DeleteModelByIdResponse$inboundSchema: z.ZodType<
   DeleteModelByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => DeleteModelByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => DeleteModelByIdResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function deleteModelByIdResponseFromJSON(
   jsonString: string,

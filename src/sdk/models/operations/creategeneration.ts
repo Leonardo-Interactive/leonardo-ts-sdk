@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -253,7 +253,7 @@ export type CreateGenerationResponse = {
 /** @internal */
 export const TransparencyType$outboundSchema: z.ZodNativeEnum<
   typeof TransparencyType
-> = z.nativeEnum(TransparencyType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TransparencyType));
 
 /** @internal */
 export type CreateGenerationRequestBody$Outbound = {
@@ -313,77 +313,80 @@ export const CreateGenerationRequestBody$outboundSchema: z.ZodType<
   CreateGenerationRequestBody$Outbound,
   z.ZodTypeDef,
   CreateGenerationRequestBody
-> = z.object({
-  alchemy: z.nullable(z.boolean().default(true)),
-  canvasInitId: z.nullable(z.string()).optional(),
-  canvasMaskId: z.nullable(z.string()).optional(),
-  canvasRequest: z.nullable(z.boolean()).optional(),
-  canvasRequestType: z.nullable(shared.CanvasRequestType$outboundSchema)
-    .optional(),
-  contrast: z.nullable(z.number()).optional(),
-  contrastRatio: z.nullable(z.number()).optional(),
-  controlNet: z.nullable(z.boolean()).optional(),
-  controlNetType: shared.ControlnetType$outboundSchema.optional(),
-  controlnets: z.nullable(z.array(shared.ControlnetInput$outboundSchema))
-    .optional(),
-  elements: z.nullable(z.array(shared.ElementInput$outboundSchema)).optional(),
-  enhancePrompt: z.nullable(z.boolean()).optional(),
-  enhancePromptInstruction: z.nullable(z.string()).optional(),
-  expandedDomain: z.nullable(z.boolean()).optional(),
-  fantasyAvatar: z.nullable(z.boolean()).optional(),
-  guidanceScale: z.nullable(z.number()).optional(),
-  height: z.nullable(z.number().int().default(768)),
-  highContrast: z.nullable(z.boolean()).optional(),
-  highResolution: z.nullable(z.boolean()).optional(),
-  imagePromptWeight: z.nullable(z.number()).optional(),
-  imagePrompts: z.nullable(z.array(z.nullable(z.string()))).optional(),
-  initGenerationImageId: z.nullable(z.string()).optional(),
-  initImageId: z.nullable(z.string()).optional(),
-  initStrength: z.nullable(z.number()).optional(),
-  modelId: z.nullable(
-    z.string().default("b24e16ff-06e3-43eb-8d33-4416c2d75876"),
-  ),
-  negativePrompt: z.nullable(z.string()).optional(),
-  numImages: z.nullable(z.number().int().default(4)),
-  numInferenceSteps: z.nullable(z.number().int()).optional(),
-  photoReal: z.nullable(z.boolean()).optional(),
-  photoRealStrength: z.nullable(z.number()).optional(),
-  photoRealVersion: z.nullable(z.string()).optional(),
-  presetStyle: z.nullable(
-    shared.SdGenerationStyle$outboundSchema.default(
-      shared.SdGenerationStyle.Dynamic,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alchemy: z.nullable(z.boolean().default(true)),
+    canvasInitId: z.nullable(z.string()).optional(),
+    canvasMaskId: z.nullable(z.string()).optional(),
+    canvasRequest: z.nullable(z.boolean()).optional(),
+    canvasRequestType: z.nullable(shared.CanvasRequestType$outboundSchema)
+      .optional(),
+    contrast: z.nullable(z.number()).optional(),
+    contrastRatio: z.nullable(z.number()).optional(),
+    controlNet: z.nullable(z.boolean()).optional(),
+    controlNetType: shared.ControlnetType$outboundSchema.optional(),
+    controlnets: z.nullable(z.array(shared.ControlnetInput$outboundSchema))
+      .optional(),
+    elements: z.nullable(z.array(shared.ElementInput$outboundSchema))
+      .optional(),
+    enhancePrompt: z.nullable(z.boolean()).optional(),
+    enhancePromptInstruction: z.nullable(z.string()).optional(),
+    expandedDomain: z.nullable(z.boolean()).optional(),
+    fantasyAvatar: z.nullable(z.boolean()).optional(),
+    guidanceScale: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(768)),
+    highContrast: z.nullable(z.boolean()).optional(),
+    highResolution: z.nullable(z.boolean()).optional(),
+    imagePromptWeight: z.nullable(z.number()).optional(),
+    imagePrompts: z.nullable(z.array(z.nullable(z.string()))).optional(),
+    initGenerationImageId: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    initStrength: z.nullable(z.number()).optional(),
+    modelId: z.nullable(
+      z.string().default("b24e16ff-06e3-43eb-8d33-4416c2d75876"),
     ),
-  ),
-  prompt: z.string().default("A majestic cat in the snow"),
-  promptMagic: z.nullable(z.boolean()).optional(),
-  promptMagicStrength: z.nullable(z.number()).optional(),
-  promptMagicVersion: z.nullable(z.string()).optional(),
-  public: z.nullable(z.boolean()).optional(),
-  scheduler: shared.SdGenerationSchedulers$outboundSchema.optional(),
-  sdVersion: shared.SdVersions$outboundSchema.optional(),
-  seed: z.nullable(z.number().int()).optional(),
-  tiling: z.nullable(z.boolean()).optional(),
-  transparency: z.nullable(TransparencyType$outboundSchema).optional(),
-  ultra: z.nullable(z.boolean()).optional(),
-  unzoom: z.nullable(z.boolean()).optional(),
-  unzoomAmount: z.nullable(z.number()).optional(),
-  upscaleRatio: z.nullable(z.number()).optional(),
-  userElements: z.nullable(z.array(shared.UserElementsInput$outboundSchema))
-    .optional(),
-  weighting: z.nullable(z.number()).optional(),
-  width: z.nullable(z.number().int().default(1024)),
-}).transform((v) => {
-  return remap$(v, {
-    guidanceScale: "guidance_scale",
-    initGenerationImageId: "init_generation_image_id",
-    initImageId: "init_image_id",
-    initStrength: "init_strength",
-    negativePrompt: "negative_prompt",
-    numImages: "num_images",
-    numInferenceSteps: "num_inference_steps",
-    sdVersion: "sd_version",
-  });
-});
+    negativePrompt: z.nullable(z.string()).optional(),
+    numImages: z.nullable(z.number().int().default(4)),
+    numInferenceSteps: z.nullable(z.number().int()).optional(),
+    photoReal: z.nullable(z.boolean()).optional(),
+    photoRealStrength: z.nullable(z.number()).optional(),
+    photoRealVersion: z.nullable(z.string()).optional(),
+    presetStyle: z.nullable(
+      shared.SdGenerationStyle$outboundSchema.default(
+        shared.SdGenerationStyle.Dynamic,
+      ),
+    ),
+    prompt: z.string().default("A majestic cat in the snow"),
+    promptMagic: z.nullable(z.boolean()).optional(),
+    promptMagicStrength: z.nullable(z.number()).optional(),
+    promptMagicVersion: z.nullable(z.string()).optional(),
+    public: z.nullable(z.boolean()).optional(),
+    scheduler: shared.SdGenerationSchedulers$outboundSchema.optional(),
+    sdVersion: shared.SdVersions$outboundSchema.optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    tiling: z.nullable(z.boolean()).optional(),
+    transparency: z.nullable(TransparencyType$outboundSchema).optional(),
+    ultra: z.nullable(z.boolean()).optional(),
+    unzoom: z.nullable(z.boolean()).optional(),
+    unzoomAmount: z.nullable(z.number()).optional(),
+    upscaleRatio: z.nullable(z.number()).optional(),
+    userElements: z.nullable(z.array(shared.UserElementsInput$outboundSchema))
+      .optional(),
+    weighting: z.nullable(z.number()).optional(),
+    width: z.nullable(z.number().int().default(1024)),
+  }).transform((v) => {
+    return remap$(v, {
+      guidanceScale: "guidance_scale",
+      initGenerationImageId: "init_generation_image_id",
+      initImageId: "init_image_id",
+      initStrength: "init_strength",
+      negativePrompt: "negative_prompt",
+      numImages: "num_images",
+      numInferenceSteps: "num_inference_steps",
+      sdVersion: "sd_version",
+    });
+  })
+);
 
 export function createGenerationRequestBodyToJSON(
   createGenerationRequestBody: CreateGenerationRequestBody,
@@ -400,11 +403,13 @@ export const SDGenerationOutput$inboundSchema: z.ZodType<
   SDGenerationOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  generationId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    generationId: z.string().optional(),
+  })
+);
 
 export function sdGenerationOutputFromJSON(
   jsonString: string,
@@ -421,10 +426,12 @@ export const CreateGenerationResponseBody$inboundSchema: z.ZodType<
   CreateGenerationResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sdGenerationJob: z.nullable(z.lazy(() => SDGenerationOutput$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdGenerationJob: z.nullable(z.lazy(() => SDGenerationOutput$inboundSchema))
+      .optional(),
+  })
+);
 
 export function createGenerationResponseBodyFromJSON(
   jsonString: string,
@@ -441,18 +448,20 @@ export const CreateGenerationResponse$inboundSchema: z.ZodType<
   CreateGenerationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateGenerationResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateGenerationResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createGenerationResponseFromJSON(
   jsonString: string,

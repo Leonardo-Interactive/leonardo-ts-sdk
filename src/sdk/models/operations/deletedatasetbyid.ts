@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,9 +64,19 @@ export const DeleteDatasetByIdRequest$outboundSchema: z.ZodType<
   DeleteDatasetByIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteDatasetByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function deleteDatasetByIdRequestToJSON(
   deleteDatasetByIdRequest: DeleteDatasetByIdRequest,
@@ -78,9 +91,11 @@ export const DeleteDatasetByIdDatasets$inboundSchema: z.ZodType<
   DeleteDatasetByIdDatasets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function deleteDatasetByIdDatasetsFromJSON(
   jsonString: string,
@@ -97,15 +112,17 @@ export const DeleteDatasetByIdResponseBody$inboundSchema: z.ZodType<
   DeleteDatasetByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_datasets_by_pk: z.nullable(
-    z.lazy(() => DeleteDatasetByIdDatasets$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_datasets_by_pk": "deleteDatasetsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_datasets_by_pk: z.nullable(
+      z.lazy(() => DeleteDatasetByIdDatasets$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_datasets_by_pk": "deleteDatasetsByPk",
+    });
+  })
+);
 
 export function deleteDatasetByIdResponseBodyFromJSON(
   jsonString: string,
@@ -122,18 +139,21 @@ export const DeleteDatasetByIdResponse$inboundSchema: z.ZodType<
   DeleteDatasetByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => DeleteDatasetByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => DeleteDatasetByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function deleteDatasetByIdResponseFromJSON(
   jsonString: string,

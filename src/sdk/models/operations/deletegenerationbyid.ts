@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,9 +64,19 @@ export const DeleteGenerationByIdRequest$outboundSchema: z.ZodType<
   DeleteGenerationByIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteGenerationByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function deleteGenerationByIdRequestToJSON(
   deleteGenerationByIdRequest: DeleteGenerationByIdRequest,
@@ -80,9 +93,11 @@ export const Generations$inboundSchema: z.ZodType<
   Generations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function generationsFromJSON(
   jsonString: string,
@@ -99,14 +114,17 @@ export const DeleteGenerationByIdResponseBody$inboundSchema: z.ZodType<
   DeleteGenerationByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_generations_by_pk: z.nullable(z.lazy(() => Generations$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_generations_by_pk": "deleteGenerationsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_generations_by_pk: z.nullable(
+      z.lazy(() => Generations$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_generations_by_pk": "deleteGenerationsByPk",
+    });
+  })
+);
 
 export function deleteGenerationByIdResponseBodyFromJSON(
   jsonString: string,
@@ -123,19 +141,21 @@ export const DeleteGenerationByIdResponse$inboundSchema: z.ZodType<
   DeleteGenerationByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => DeleteGenerationByIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => DeleteGenerationByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function deleteGenerationByIdResponseFromJSON(
   jsonString: string,

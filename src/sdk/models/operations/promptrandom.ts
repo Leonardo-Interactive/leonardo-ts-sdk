@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -57,11 +57,13 @@ export const PromptRandomPromptGenerationOutput$inboundSchema: z.ZodType<
   PromptRandomPromptGenerationOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.number().int().default(4),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  prompt: z.string().default("The random prompt generated."),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.number().int().default(4),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    prompt: z.string().default("The random prompt generated."),
+  })
+);
 
 export function promptRandomPromptGenerationOutputFromJSON(
   jsonString: string,
@@ -79,11 +81,13 @@ export const PromptRandomResponseBody$inboundSchema: z.ZodType<
   PromptRandomResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  promptGeneration: z.lazy(() =>
-    PromptRandomPromptGenerationOutput$inboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    promptGeneration: z.lazy(() =>
+      PromptRandomPromptGenerationOutput$inboundSchema
+    ).optional(),
+  })
+);
 
 export function promptRandomResponseBodyFromJSON(
   jsonString: string,
@@ -100,18 +104,20 @@ export const PromptRandomResponse$inboundSchema: z.ZodType<
   PromptRandomResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => PromptRandomResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => PromptRandomResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function promptRandomResponseFromJSON(
   jsonString: string,

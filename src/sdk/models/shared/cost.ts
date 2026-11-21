@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -30,16 +30,17 @@ export type Cost = {
 };
 
 /** @internal */
-export const Unit$inboundSchema: z.ZodNativeEnum<typeof Unit> = z.nativeEnum(
-  Unit,
-);
+export const Unit$inboundSchema: z.ZodNativeEnum<typeof Unit> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Unit));
 
 /** @internal */
-export const Cost$inboundSchema: z.ZodType<Cost, z.ZodTypeDef, unknown> = z
-  .object({
-    amount: z.string().optional(),
-    unit: Unit$inboundSchema.optional(),
-  });
+export const Cost$inboundSchema: z.ZodType<Cost, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: z.string().optional(),
+      unit: Unit$inboundSchema.optional(),
+    })
+  );
 
 export function costFromJSON(
   jsonString: string,

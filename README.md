@@ -10,7 +10,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Rest Endpoints: Leonardo.Ai API OpenAPI specification.
+Rest Endpoints: Leonardo.Ai API OpenAPI specification (v1.0).
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -187,9 +187,7 @@ run();
 ### [Motion](docs/sdks/motion/README.md)
 
 * [createImageToVideoGeneration](docs/sdks/motion/README.md#createimagetovideogeneration) - Create a video generation from an image
-* [createSVDMotionGeneration](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
 * [createTextToVideoGeneration](docs/sdks/motion/README.md#createtexttovideogeneration) - Create a video generation from a text prompt
-* [createVideoUpscale](docs/sdks/motion/README.md#createvideoupscale) - Upscale a generated video
 
 ### [PricingCalculator](docs/sdks/pricingcalculator/README.md)
 
@@ -204,7 +202,6 @@ run();
 
 * [createLCMGeneration](docs/sdks/realtimecanvas/README.md#createlcmgeneration) - Create LCM Generation
 * [performAlchemyUpscaleLCM](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
-* [performInpaintingLCM](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
 * [performInstantRefine](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
 
 ### [User](docs/sdks/user/README.md)
@@ -509,6 +506,26 @@ run();
 ## Requirements
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+
+### Lazy operation loading in Node.js
+
+The `/node` entry point and its lazy SDK classes are generated for every SDK. No `gen.yaml` flag is needed; Node.js applications opt in to loading operation functions on first use by changing their import:
+
+```typescript
+import { Leonardo } from "@leonardo-ai/sdk/node";
+
+const sdk = new Leonardo();
+```
+
+The `/node` entry point keeps the same method signatures, pagination behaviour, and response helpers. Operation modules load through dynamic imports when a method is called. Models and error classes are shared with the standard entry points, rather than bundled into separate copies.
+
+The standard package entry point and SDK subpaths retain their static imports. Keep using those entry points in browser bundles, including IIFE and UMD builds, to avoid dynamic-import chunks. Custom root exports may still load additional modules.
+
+The Node SDK classes live in `src/sdk/*.lazy.ts`. Custom code regions in the standard SDK classes are not copied to these classes; apply any required customisations to their separate regions. Accept-header enums have the same values, but their enum objects are specific to each entry point.
+
+Generated model schemas are constructed synchronously and cached on first use with either entry point. Importing a model does not construct its schema; parsing or inspecting a schema does. This does not require changing the configured Zod version.
+
+`Object.freeze`, `Object.seal`, and `Object.preventExtensions` construct the schema and apply to the cached Zod object. Zod's own restrictions on frozen schemas still apply, including methods that install properties on first access.
 <!-- End Requirements [requirements] -->
 
 <!-- Start Standalone functions [standalone-funcs] -->
@@ -558,15 +575,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`modelsGetModelById`](docs/sdks/models/README.md#getmodelbyid) - Get a Single Custom Model by ID
 - [`modelsListPlatformModels`](docs/sdks/models/README.md#listplatformmodels) - List Platform Models
 - [`motionCreateImageToVideoGeneration`](docs/sdks/motion/README.md#createimagetovideogeneration) - Create a video generation from an image
-- [`motionCreateSVDMotionGeneration`](docs/sdks/motion/README.md#createsvdmotiongeneration) - Create SVD Motion Generation
 - [`motionCreateTextToVideoGeneration`](docs/sdks/motion/README.md#createtexttovideogeneration) - Create a video generation from a text prompt
-- [`motionCreateVideoUpscale`](docs/sdks/motion/README.md#createvideoupscale) - Upscale a generated video
 - [`pricingCalculatorPricingCalculator`](docs/sdks/pricingcalculator/README.md#pricingcalculator) - Calculating API Cost
 - [`promptPromptImprove`](docs/sdks/prompt/README.md#promptimprove) - Improve a Prompt
 - [`promptPromptRandom`](docs/sdks/prompt/README.md#promptrandom) - Generate a Random prompt
 - [`realtimeCanvasCreateLCMGeneration`](docs/sdks/realtimecanvas/README.md#createlcmgeneration) - Create LCM Generation
 - [`realtimeCanvasPerformAlchemyUpscaleLCM`](docs/sdks/realtimecanvas/README.md#performalchemyupscalelcm) - Perform Alchemy Upscale on a LCM image
-- [`realtimeCanvasPerformInpaintingLCM`](docs/sdks/realtimecanvas/README.md#performinpaintinglcm) - Perform inpainting on a LCM image
 - [`realtimeCanvasPerformInstantRefine`](docs/sdks/realtimecanvas/README.md#performinstantrefine) - Perform instant refine on a LCM image
 - [`threeDModelAssetsDelete3DModelById`](docs/sdks/threedmodelassets/README.md#delete3dmodelbyid) - Delete 3D Model by ID
 - [`threeDModelAssetsUploadModelAsset`](docs/sdks/threedmodelassets/README.md#uploadmodelasset) - Upload 3D Model

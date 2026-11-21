@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -138,12 +138,16 @@ export type CreateTextToVideoGenerationResponse = {
 /** @internal */
 export const CreateTextToVideoGenerationString$outboundSchema: z.ZodNativeEnum<
   typeof CreateTextToVideoGenerationString
-> = z.nativeEnum(CreateTextToVideoGenerationString);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateTextToVideoGenerationString)
+);
 
 /** @internal */
 export const CreateTextToVideoGenerationMotionString$outboundSchema:
-  z.ZodNativeEnum<typeof CreateTextToVideoGenerationMotionString> = z
-    .nativeEnum(CreateTextToVideoGenerationMotionString);
+  z.ZodNativeEnum<typeof CreateTextToVideoGenerationMotionString> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateTextToVideoGenerationMotionString)
+    );
 
 /** @internal */
 export type CreateTextToVideoGenerationRequestBody$Outbound = {
@@ -168,27 +172,31 @@ export const CreateTextToVideoGenerationRequestBody$outboundSchema: z.ZodType<
   CreateTextToVideoGenerationRequestBody$Outbound,
   z.ZodTypeDef,
   CreateTextToVideoGenerationRequestBody
-> = z.object({
-  duration: z.nullable(z.number().int().default(8)),
-  elements: z.nullable(z.array(shared.ElementInput$outboundSchema)).optional(),
-  frameInterpolation: z.nullable(z.boolean()).optional(),
-  height: z.nullable(z.number().int()).optional(),
-  isPublic: z.nullable(z.boolean()).optional(),
-  model: z.nullable(
-    CreateTextToVideoGenerationString$outboundSchema.default(
-      CreateTextToVideoGenerationString.Motion2,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: z.nullable(z.number().int().default(8)),
+    elements: z.nullable(z.array(shared.ElementInput$outboundSchema))
+      .optional(),
+    frameInterpolation: z.nullable(z.boolean()).optional(),
+    height: z.nullable(z.number().int()).optional(),
+    isPublic: z.nullable(z.boolean()).optional(),
+    model: z.nullable(
+      CreateTextToVideoGenerationString$outboundSchema.default(
+        CreateTextToVideoGenerationString.Motion2,
+      ),
     ),
-  ),
-  negativePrompt: z.nullable(z.string()).optional(),
-  prompt: z.string(),
-  promptEnhance: z.nullable(z.boolean()).optional(),
-  promptEnhanceInstruction: z.nullable(z.string()).optional(),
-  resolution: z.nullable(CreateTextToVideoGenerationMotionString$outboundSchema)
-    .optional(),
-  seed: z.nullable(z.number().int()).optional(),
-  styleIds: z.nullable(z.array(z.string())).optional(),
-  width: z.nullable(z.number().int()).optional(),
-});
+    negativePrompt: z.nullable(z.string()).optional(),
+    prompt: z.string(),
+    promptEnhance: z.nullable(z.boolean()).optional(),
+    promptEnhanceInstruction: z.nullable(z.string()).optional(),
+    resolution: z.nullable(
+      CreateTextToVideoGenerationMotionString$outboundSchema,
+    ).optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    styleIds: z.nullable(z.array(z.string())).optional(),
+    width: z.nullable(z.number().int()).optional(),
+  })
+);
 
 export function createTextToVideoGenerationRequestBodyToJSON(
   createTextToVideoGenerationRequestBody:
@@ -207,11 +215,13 @@ export const CreateTextToVideoGenerationMotionVideoGenerationOutput$inboundSchem
     CreateTextToVideoGenerationMotionVideoGenerationOutput,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    apiCreditCost: z.nullable(z.number().int()).optional(),
-    cost: z.nullable(shared.Cost$inboundSchema).optional(),
-    generationId: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      apiCreditCost: z.nullable(z.number().int()).optional(),
+      cost: z.nullable(shared.Cost$inboundSchema).optional(),
+      generationId: z.string().optional(),
+    })
+  );
 
 export function createTextToVideoGenerationMotionVideoGenerationOutputFromJSON(
   jsonString: string,
@@ -233,13 +243,13 @@ export const CreateTextToVideoGenerationResponseBody$inboundSchema: z.ZodType<
   CreateTextToVideoGenerationResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  motionVideoGenerationJob: z.nullable(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    motionVideoGenerationJob: z.nullable(z.lazy(() =>
       CreateTextToVideoGenerationMotionVideoGenerationOutput$inboundSchema
-    ),
-  ).optional(),
-});
+    )).optional(),
+  })
+);
 
 export function createTextToVideoGenerationResponseBodyFromJSON(
   jsonString: string,
@@ -262,19 +272,21 @@ export const CreateTextToVideoGenerationResponse$inboundSchema: z.ZodType<
   CreateTextToVideoGenerationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateTextToVideoGenerationResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateTextToVideoGenerationResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createTextToVideoGenerationResponseFromJSON(
   jsonString: string,

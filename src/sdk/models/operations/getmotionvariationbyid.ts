@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -75,9 +78,19 @@ export const GetMotionVariationByIdRequest$outboundSchema: z.ZodType<
   GetMotionVariationByIdRequest$Outbound,
   z.ZodTypeDef,
   GetMotionVariationByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getMotionVariationByIdRequestToJSON(
   getMotionVariationByIdRequest: GetMotionVariationByIdRequest,
@@ -94,14 +107,16 @@ export const GeneratedImageVariationMotion$inboundSchema: z.ZodType<
   GeneratedImageVariationMotion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  id: z.nullable(z.string()).optional(),
-  motionTransformType: shared.MotionVariationType$inboundSchema.optional(),
-  resolution: shared.MotionResolution$inboundSchema.optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  url: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    motionTransformType: shared.MotionVariationType$inboundSchema.optional(),
+    resolution: shared.MotionResolution$inboundSchema.optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    url: z.nullable(z.string()).optional(),
+  })
+);
 
 export function generatedImageVariationMotionFromJSON(
   jsonString: string,
@@ -118,15 +133,17 @@ export const GetMotionVariationByIdResponseBody$inboundSchema: z.ZodType<
   GetMotionVariationByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  generated_image_variation_motion: z.array(
-    z.lazy(() => GeneratedImageVariationMotion$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "generated_image_variation_motion": "generatedImageVariationMotion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    generated_image_variation_motion: z.array(
+      z.lazy(() => GeneratedImageVariationMotion$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "generated_image_variation_motion": "generatedImageVariationMotion",
+    });
+  })
+);
 
 export function getMotionVariationByIdResponseBodyFromJSON(
   jsonString: string,
@@ -144,19 +161,21 @@ export const GetMotionVariationByIdResponse$inboundSchema: z.ZodType<
   GetMotionVariationByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetMotionVariationByIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetMotionVariationByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getMotionVariationByIdResponseFromJSON(
   jsonString: string,

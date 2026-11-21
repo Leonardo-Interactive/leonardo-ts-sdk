@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -95,11 +95,13 @@ export const Input$outboundSchema: z.ZodType<
   Input$Outbound,
   z.ZodTypeDef,
   Input
-> = z.object({
-  collectionIds: z.array(z.nullable(z.number().int())).optional(),
-  nodeInputs: z.array(shared.NodeInput$outboundSchema),
-  public: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collectionIds: z.array(z.nullable(z.number().int())).optional(),
+    nodeInputs: z.array(shared.NodeInput$outboundSchema),
+    public: z.boolean(),
+  })
+);
 
 export function inputToJSON(input: Input): string {
   return JSON.stringify(Input$outboundSchema.parse(input));
@@ -116,10 +118,12 @@ export const ExecuteBlueprintRequestBody$outboundSchema: z.ZodType<
   ExecuteBlueprintRequestBody$Outbound,
   z.ZodTypeDef,
   ExecuteBlueprintRequestBody
-> = z.object({
-  blueprintVersionId: z.string(),
-  input: z.lazy(() => Input$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blueprintVersionId: z.string(),
+    input: z.lazy(() => Input$outboundSchema),
+  })
+);
 
 export function executeBlueprintRequestBodyToJSON(
   executeBlueprintRequestBody: ExecuteBlueprintRequestBody,
@@ -136,9 +140,11 @@ export const ExecuteBlueprintBlueprintsResponseBody$inboundSchema: z.ZodType<
   ExecuteBlueprintBlueprintsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.string().optional(),
+  })
+);
 
 export function executeBlueprintBlueprintsResponseBodyFromJSON(
   jsonString: string,
@@ -156,9 +162,11 @@ export const ExecuteBlueprint$inboundSchema: z.ZodType<
   ExecuteBlueprint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  akUUID: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    akUUID: z.string(),
+  })
+);
 
 export function executeBlueprintFromJSON(
   jsonString: string,
@@ -175,9 +183,11 @@ export const SuccessResponse$inboundSchema: z.ZodType<
   SuccessResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  executeBlueprint: z.lazy(() => ExecuteBlueprint$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    executeBlueprint: z.lazy(() => ExecuteBlueprint$inboundSchema),
+  })
+);
 
 export function successResponseFromJSON(
   jsonString: string,
@@ -194,10 +204,12 @@ export const ExecuteBlueprintResponseBody$inboundSchema: z.ZodType<
   ExecuteBlueprintResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => SuccessResponse$inboundSchema),
-  z.array(shared.ApiError$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => SuccessResponse$inboundSchema),
+    z.array(shared.ApiError$inboundSchema),
+  ])
+);
 
 export function executeBlueprintResponseBodyFromJSON(
   jsonString: string,
@@ -214,23 +226,25 @@ export const ExecuteBlueprintResponse$inboundSchema: z.ZodType<
   ExecuteBlueprintResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => ExecuteBlueprintBlueprintsResponseBody$inboundSchema)
-    .optional(),
-  oneOf: z.union([
-    z.lazy(() => SuccessResponse$inboundSchema),
-    z.array(shared.ApiError$inboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => ExecuteBlueprintBlueprintsResponseBody$inboundSchema)
+      .optional(),
+    oneOf: z.union([
+      z.lazy(() => SuccessResponse$inboundSchema),
+      z.array(shared.ApiError$inboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function executeBlueprintResponseFromJSON(
   jsonString: string,

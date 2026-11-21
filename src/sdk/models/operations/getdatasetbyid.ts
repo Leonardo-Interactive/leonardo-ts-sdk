@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -75,9 +78,19 @@ export const GetDatasetByIdRequest$outboundSchema: z.ZodType<
   GetDatasetByIdRequest$Outbound,
   z.ZodTypeDef,
   GetDatasetByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getDatasetByIdRequestToJSON(
   getDatasetByIdRequest: GetDatasetByIdRequest,
@@ -92,11 +105,13 @@ export const DatasetImages$inboundSchema: z.ZodType<
   DatasetImages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  id: z.nullable(z.string()).optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function datasetImagesFromJSON(
   jsonString: string,
@@ -113,18 +128,21 @@ export const GetDatasetByIdDatasets$inboundSchema: z.ZodType<
   GetDatasetByIdDatasets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  dataset_images: z.array(z.lazy(() => DatasetImages$inboundSchema)).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.string().optional(),
-  updatedAt: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "dataset_images": "datasetImages",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    dataset_images: z.array(z.lazy(() => DatasetImages$inboundSchema))
+      .optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    name: z.string().optional(),
+    updatedAt: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "dataset_images": "datasetImages",
+    });
+  })
+);
 
 export function getDatasetByIdDatasetsFromJSON(
   jsonString: string,
@@ -141,14 +159,17 @@ export const GetDatasetByIdResponseBody$inboundSchema: z.ZodType<
   GetDatasetByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  datasets_by_pk: z.nullable(z.lazy(() => GetDatasetByIdDatasets$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "datasets_by_pk": "datasetsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasets_by_pk: z.nullable(
+      z.lazy(() => GetDatasetByIdDatasets$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "datasets_by_pk": "datasetsByPk",
+    });
+  })
+);
 
 export function getDatasetByIdResponseBodyFromJSON(
   jsonString: string,
@@ -165,18 +186,20 @@ export const GetDatasetByIdResponse$inboundSchema: z.ZodType<
   GetDatasetByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetDatasetByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetDatasetByIdResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getDatasetByIdResponseFromJSON(
   jsonString: string,

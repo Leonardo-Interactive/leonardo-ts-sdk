@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -66,9 +66,11 @@ export const CreateVariationUpscaleRequestBody$outboundSchema: z.ZodType<
   CreateVariationUpscaleRequestBody$Outbound,
   z.ZodTypeDef,
   CreateVariationUpscaleRequestBody
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 
 export function createVariationUpscaleRequestBodyToJSON(
   createVariationUpscaleRequestBody: CreateVariationUpscaleRequestBody,
@@ -85,11 +87,13 @@ export const CreateVariationUpscaleSDUpscaleJobOutput$inboundSchema: z.ZodType<
   CreateVariationUpscaleSDUpscaleJobOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    id: z.string().optional(),
+  })
+);
 
 export function createVariationUpscaleSDUpscaleJobOutputFromJSON(
   jsonString: string,
@@ -112,11 +116,13 @@ export const CreateVariationUpscaleResponseBody$inboundSchema: z.ZodType<
   CreateVariationUpscaleResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sdUpscaleJob: z.nullable(
-    z.lazy(() => CreateVariationUpscaleSDUpscaleJobOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdUpscaleJob: z.nullable(
+      z.lazy(() => CreateVariationUpscaleSDUpscaleJobOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function createVariationUpscaleResponseBodyFromJSON(
   jsonString: string,
@@ -134,19 +140,21 @@ export const CreateVariationUpscaleResponse$inboundSchema: z.ZodType<
   CreateVariationUpscaleResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateVariationUpscaleResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateVariationUpscaleResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createVariationUpscaleResponseFromJSON(
   jsonString: string,

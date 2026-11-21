@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
@@ -22,8 +23,8 @@ export enum SdVersions {
 }
 
 /** @internal */
-export const SdVersions$inboundSchema: z.ZodNativeEnum<typeof SdVersions> = z
-  .nativeEnum(SdVersions);
+export const SdVersions$inboundSchema: z.ZodNativeEnum<typeof SdVersions> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SdVersions));
 /** @internal */
 export const SdVersions$outboundSchema: z.ZodNativeEnum<typeof SdVersions> =
   SdVersions$inboundSchema;

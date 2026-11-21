@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * When training using the PIXEL_ART model type, this influences the training strength.
@@ -15,5 +16,5 @@ export enum Strength {
 }
 
 /** @internal */
-export const Strength$outboundSchema: z.ZodNativeEnum<typeof Strength> = z
-  .nativeEnum(Strength);
+export const Strength$outboundSchema: z.ZodNativeEnum<typeof Strength> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Strength));
