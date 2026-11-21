@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The status of the current task.
@@ -14,5 +15,5 @@ export enum JobStatus {
 }
 
 /** @internal */
-export const JobStatus$inboundSchema: z.ZodNativeEnum<typeof JobStatus> = z
-  .nativeEnum(JobStatus);
+export const JobStatus$inboundSchema: z.ZodNativeEnum<typeof JobStatus> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(JobStatus));

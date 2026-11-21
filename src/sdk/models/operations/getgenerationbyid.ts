@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -221,9 +224,19 @@ export const GetGenerationByIdRequest$outboundSchema: z.ZodType<
   GetGenerationByIdRequest$Outbound,
   z.ZodTypeDef,
   GetGenerationByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getGenerationByIdRequestToJSON(
   getGenerationByIdRequest: GetGenerationByIdRequest,
@@ -239,12 +252,14 @@ export const GetGenerationByIdGeneratedImageVariationGeneric$inboundSchema:
     GetGenerationByIdGeneratedImageVariationGeneric,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    status: shared.JobStatus$inboundSchema.optional(),
-    transformType: shared.VariationType$inboundSchema.optional(),
-    url: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.nullable(z.string()).optional(),
+      status: shared.JobStatus$inboundSchema.optional(),
+      transformType: shared.VariationType$inboundSchema.optional(),
+      url: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function getGenerationByIdGeneratedImageVariationGenericFromJSON(
   jsonString: string,
@@ -267,26 +282,30 @@ export const GeneratedImages$inboundSchema: z.ZodType<
   GeneratedImages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fantasyAvatar: z.nullable(z.boolean()).optional(),
-  generated_image_variation_generics: z.array(
-    z.lazy(() => GetGenerationByIdGeneratedImageVariationGeneric$inboundSchema),
-  ).optional(),
-  id: z.nullable(z.string()).optional(),
-  imageToVideo: z.nullable(z.boolean()).optional(),
-  likeCount: z.number().int().optional(),
-  motion: z.nullable(z.boolean()).optional(),
-  motionMP4URL: z.nullable(z.string()).optional(),
-  motionModel: z.nullable(z.string()).optional(),
-  motionStrength: z.nullable(z.number().int()).optional(),
-  nsfw: z.boolean().optional(),
-  url: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "generated_image_variation_generics": "generatedImageVariationGenerics",
-    "motionMP4URL": "motionMp4URL",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fantasyAvatar: z.nullable(z.boolean()).optional(),
+    generated_image_variation_generics: z.array(
+      z.lazy(() =>
+        GetGenerationByIdGeneratedImageVariationGeneric$inboundSchema
+      ),
+    ).optional(),
+    id: z.nullable(z.string()).optional(),
+    imageToVideo: z.nullable(z.boolean()).optional(),
+    likeCount: z.number().int().optional(),
+    motion: z.nullable(z.boolean()).optional(),
+    motionMP4URL: z.nullable(z.string()).optional(),
+    motionModel: z.nullable(z.string()).optional(),
+    motionStrength: z.nullable(z.number().int()).optional(),
+    nsfw: z.boolean().optional(),
+    url: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "generated_image_variation_generics": "generatedImageVariationGenerics",
+      "motionMP4URL": "motionMp4URL",
+    });
+  })
+);
 
 export function generatedImagesFromJSON(
   jsonString: string,
@@ -303,16 +322,18 @@ export const GetGenerationByIdLoras$inboundSchema: z.ZodType<
   GetGenerationByIdLoras,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  akUUID: z.nullable(z.string()).optional(),
-  baseModel: shared.SdVersions$inboundSchema.optional(),
-  description: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  urlImage: z.nullable(z.string()).optional(),
-  weightDefault: z.nullable(z.number().int()).optional(),
-  weightMax: z.nullable(z.number().int()).optional(),
-  weightMin: z.nullable(z.number().int()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    akUUID: z.nullable(z.string()).optional(),
+    baseModel: shared.SdVersions$inboundSchema.optional(),
+    description: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    urlImage: z.nullable(z.string()).optional(),
+    weightDefault: z.nullable(z.number().int()).optional(),
+    weightMax: z.nullable(z.number().int()).optional(),
+    weightMin: z.nullable(z.number().int()).optional(),
+  })
+);
 
 export function getGenerationByIdLorasFromJSON(
   jsonString: string,
@@ -329,12 +350,14 @@ export const GenerationElements$inboundSchema: z.ZodType<
   GenerationElements,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.number().int()).optional(),
-  lora: z.nullable(z.lazy(() => GetGenerationByIdLoras$inboundSchema))
-    .optional(),
-  weightApplied: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.number().int()).optional(),
+    lora: z.nullable(z.lazy(() => GetGenerationByIdLoras$inboundSchema))
+      .optional(),
+    weightApplied: z.nullable(z.number()).optional(),
+  })
+);
 
 export function generationElementsFromJSON(
   jsonString: string,
@@ -351,43 +374,45 @@ export const GetGenerationByIdGenerations$inboundSchema: z.ZodType<
   GetGenerationByIdGenerations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  generated_images: z.array(z.lazy(() => GeneratedImages$inboundSchema))
-    .optional(),
-  generation_elements: z.array(z.lazy(() => GenerationElements$inboundSchema))
-    .optional(),
-  guidanceScale: z.nullable(z.number()).optional(),
-  id: z.nullable(z.string()).optional(),
-  imageHeight: z.number().int().optional(),
-  imageWidth: z.number().int().optional(),
-  inferenceSteps: z.nullable(z.number().int()).optional(),
-  initStrength: z.nullable(z.number()).optional(),
-  modelId: z.nullable(z.string()).optional(),
-  negativePrompt: z.nullable(z.string()).optional(),
-  photoReal: z.nullable(z.boolean()).optional(),
-  photoRealStrength: z.nullable(z.number()).optional(),
-  presetStyle: z.nullable(
-    shared.SdGenerationStyle$inboundSchema.default(
-      shared.SdGenerationStyle.Dynamic,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    generated_images: z.array(z.lazy(() => GeneratedImages$inboundSchema))
+      .optional(),
+    generation_elements: z.array(z.lazy(() => GenerationElements$inboundSchema))
+      .optional(),
+    guidanceScale: z.nullable(z.number()).optional(),
+    id: z.nullable(z.string()).optional(),
+    imageHeight: z.number().int().optional(),
+    imageWidth: z.number().int().optional(),
+    inferenceSteps: z.nullable(z.number().int()).optional(),
+    initStrength: z.nullable(z.number()).optional(),
+    modelId: z.nullable(z.string()).optional(),
+    negativePrompt: z.nullable(z.string()).optional(),
+    photoReal: z.nullable(z.boolean()).optional(),
+    photoRealStrength: z.nullable(z.number()).optional(),
+    presetStyle: z.nullable(
+      shared.SdGenerationStyle$inboundSchema.default(
+        shared.SdGenerationStyle.Dynamic,
+      ),
     ),
-  ),
-  prompt: z.string().optional(),
-  promptMagic: z.nullable(z.boolean()).optional(),
-  promptMagicStrength: z.nullable(z.number()).optional(),
-  promptMagicVersion: z.nullable(z.string()).optional(),
-  public: z.boolean().optional(),
-  scheduler: shared.SdGenerationSchedulers$inboundSchema.optional(),
-  sdVersion: shared.SdVersions$inboundSchema.optional(),
-  seed: z.nullable(z.number().int()).optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  ultra: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "generated_images": "generatedImages",
-    "generation_elements": "generationElements",
-  });
-});
+    prompt: z.string().optional(),
+    promptMagic: z.nullable(z.boolean()).optional(),
+    promptMagicStrength: z.nullable(z.number()).optional(),
+    promptMagicVersion: z.nullable(z.string()).optional(),
+    public: z.boolean().optional(),
+    scheduler: shared.SdGenerationSchedulers$inboundSchema.optional(),
+    sdVersion: shared.SdVersions$inboundSchema.optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    ultra: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "generated_images": "generatedImages",
+      "generation_elements": "generationElements",
+    });
+  })
+);
 
 export function getGenerationByIdGenerationsFromJSON(
   jsonString: string,
@@ -404,15 +429,17 @@ export const GetGenerationByIdResponseBody$inboundSchema: z.ZodType<
   GetGenerationByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  generations_by_pk: z.nullable(
-    z.lazy(() => GetGenerationByIdGenerations$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "generations_by_pk": "generationsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    generations_by_pk: z.nullable(
+      z.lazy(() => GetGenerationByIdGenerations$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "generations_by_pk": "generationsByPk",
+    });
+  })
+);
 
 export function getGenerationByIdResponseBodyFromJSON(
   jsonString: string,
@@ -429,18 +456,21 @@ export const GetGenerationByIdResponse$inboundSchema: z.ZodType<
   GetGenerationByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetGenerationByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetGenerationByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getGenerationByIdResponseFromJSON(
   jsonString: string,

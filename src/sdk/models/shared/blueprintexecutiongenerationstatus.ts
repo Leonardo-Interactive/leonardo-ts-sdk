@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The status of a Blueprint Execution Generation
@@ -16,4 +17,6 @@ export enum BlueprintExecutionGenerationStatus {
 /** @internal */
 export const BlueprintExecutionGenerationStatus$inboundSchema: z.ZodNativeEnum<
   typeof BlueprintExecutionGenerationStatus
-> = z.nativeEnum(BlueprintExecutionGenerationStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(BlueprintExecutionGenerationStatus)
+);

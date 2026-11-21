@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -72,9 +72,11 @@ export const UploadDatasetImageRequestBody$outboundSchema: z.ZodType<
   UploadDatasetImageRequestBody$Outbound,
   z.ZodTypeDef,
   UploadDatasetImageRequestBody
-> = z.object({
-  extension: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    extension: z.string(),
+  })
+);
 
 export function uploadDatasetImageRequestBodyToJSON(
   uploadDatasetImageRequestBody: UploadDatasetImageRequestBody,
@@ -97,14 +99,16 @@ export const UploadDatasetImageRequest$outboundSchema: z.ZodType<
   UploadDatasetImageRequest$Outbound,
   z.ZodTypeDef,
   UploadDatasetImageRequest
-> = z.object({
-  requestBody: z.lazy(() => UploadDatasetImageRequestBody$outboundSchema),
-  datasetId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestBody: z.lazy(() => UploadDatasetImageRequestBody$outboundSchema),
+    datasetId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function uploadDatasetImageRequestToJSON(
   uploadDatasetImageRequest: UploadDatasetImageRequest,
@@ -119,12 +123,14 @@ export const DatasetUploadOutput$inboundSchema: z.ZodType<
   DatasetUploadOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  key: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fields: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    key: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+  })
+);
 
 export function datasetUploadOutputFromJSON(
   jsonString: string,
@@ -141,11 +147,13 @@ export const UploadDatasetImageResponseBody$inboundSchema: z.ZodType<
   UploadDatasetImageResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadDatasetImage: z.nullable(
-    z.lazy(() => DatasetUploadOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadDatasetImage: z.nullable(
+      z.lazy(() => DatasetUploadOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function uploadDatasetImageResponseBodyFromJSON(
   jsonString: string,
@@ -162,18 +170,21 @@ export const UploadDatasetImageResponse$inboundSchema: z.ZodType<
   UploadDatasetImageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => UploadDatasetImageResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => UploadDatasetImageResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function uploadDatasetImageResponseFromJSON(
   jsonString: string,

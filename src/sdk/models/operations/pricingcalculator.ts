@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -377,11 +377,13 @@ export const PricingCalculatorPricingCalculatorObject$outboundSchema: z.ZodType<
   PricingCalculatorPricingCalculatorObject$Outbound,
   z.ZodTypeDef,
   PricingCalculatorPricingCalculatorObject
-> = z.object({
-  imageHeight: z.number().int().optional(),
-  imageWidth: z.number().int().optional(),
-  numImages: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    imageHeight: z.number().int().optional(),
+    imageWidth: z.number().int().optional(),
+    numImages: z.number().int().optional(),
+  })
+);
 
 export function pricingCalculatorPricingCalculatorObjectToJSON(
   pricingCalculatorPricingCalculatorObject:
@@ -426,30 +428,32 @@ export const PricingCalculatorPricingCalculatorRequestObject$outboundSchema:
     PricingCalculatorPricingCalculatorRequestObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestObject
-  > = z.object({
-    alchemyMode: z.boolean().optional(),
-    controlnetsCost: z.nullable(z.number().int()).optional(),
-    highResolution: z.boolean().optional(),
-    imageHeight: z.number().int().optional(),
-    imageWidth: z.number().int().optional(),
-    inferenceSteps: z.number().int().optional(),
-    isFluxDev: z.nullable(z.boolean()).optional(),
-    isFluxKontext: z.nullable(z.boolean()).optional(),
-    isFluxSchnell: z.nullable(z.boolean()).optional(),
-    isModelCustom: z.nullable(z.boolean()).optional(),
-    isPhoenix: z.nullable(z.boolean()).optional(),
-    isSDXL: z.nullable(z.boolean()).optional(),
-    isSDXLLightning: z.nullable(z.boolean()).optional(),
-    isUltra: z.nullable(z.boolean()).optional(),
-    loraCount: z.nullable(z.number().int()).optional(),
-    numImages: z.number().int().optional(),
-    photoRealMode: z.nullable(z.boolean()).optional(),
-    photoRealStrength: z.nullable(z.number()).optional(),
-    photoRealVersion: z.nullable(z.string()).optional(),
-    promptMagic: z.nullable(z.boolean()).optional(),
-    promptMagicStrength: z.nullable(z.number()).optional(),
-    promptMagicVersion: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      alchemyMode: z.boolean().optional(),
+      controlnetsCost: z.nullable(z.number().int()).optional(),
+      highResolution: z.boolean().optional(),
+      imageHeight: z.number().int().optional(),
+      imageWidth: z.number().int().optional(),
+      inferenceSteps: z.number().int().optional(),
+      isFluxDev: z.nullable(z.boolean()).optional(),
+      isFluxKontext: z.nullable(z.boolean()).optional(),
+      isFluxSchnell: z.nullable(z.boolean()).optional(),
+      isModelCustom: z.nullable(z.boolean()).optional(),
+      isPhoenix: z.nullable(z.boolean()).optional(),
+      isSDXL: z.nullable(z.boolean()).optional(),
+      isSDXLLightning: z.nullable(z.boolean()).optional(),
+      isUltra: z.nullable(z.boolean()).optional(),
+      loraCount: z.nullable(z.number().int()).optional(),
+      numImages: z.number().int().optional(),
+      photoRealMode: z.nullable(z.boolean()).optional(),
+      photoRealStrength: z.nullable(z.number()).optional(),
+      photoRealVersion: z.nullable(z.string()).optional(),
+      promptMagic: z.nullable(z.boolean()).optional(),
+      promptMagicStrength: z.nullable(z.number()).optional(),
+      promptMagicVersion: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestObjectToJSON(
   pricingCalculatorPricingCalculatorRequestObject:
@@ -477,12 +481,14 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyObject$outbound
     PricingCalculatorPricingCalculatorRequestRequestBodyObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyObject
-  > = z.object({
-    height: z.nullable(z.number().int()).optional(),
-    instantRefine: z.nullable(z.boolean()).optional(),
-    refine: z.nullable(z.boolean()).optional(),
-    width: z.nullable(z.number().int()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      height: z.nullable(z.number().int()).optional(),
+      instantRefine: z.nullable(z.boolean()).optional(),
+      refine: z.nullable(z.boolean()).optional(),
+      width: z.nullable(z.number().int()).optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyObject:
@@ -495,8 +501,8 @@ export function pricingCalculatorPricingCalculatorRequestRequestBodyObjectToJSON
 }
 
 /** @internal */
-export const SdVersion$outboundSchema: z.ZodNativeEnum<typeof SdVersion> = z
-  .nativeEnum(SdVersion);
+export const SdVersion$outboundSchema: z.ZodNativeEnum<typeof SdVersion> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SdVersion));
 
 /** @internal */
 export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound =
@@ -512,15 +518,17 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsOb
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject
-  > = z.object({
-    datasetImageCount: z.nullable(z.number().int()).optional(),
-    resolution: z.number().int().optional(),
-    sdVersion: z.nullable(SdVersion$outboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      sdVersion: "sd_version",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      datasetImageCount: z.nullable(z.number().int()).optional(),
+      resolution: z.number().int().optional(),
+      sdVersion: z.nullable(SdVersion$outboundSchema).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        sdVersion: "sd_version",
+      });
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject:
@@ -544,7 +552,7 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMO
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONSVDGENERATIONObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONSVDGENERATIONObject
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONSVDGENERATIONObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONSVDGENERATIONObject:
@@ -570,9 +578,11 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMO
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject
-  > = z.object({
-    resolution: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      resolution: z.string().optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject:
@@ -598,9 +608,11 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTE
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject
-  > = z.object({
-    preview: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      preview: z.boolean().optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject:
@@ -626,9 +638,11 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUN
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject
-  > = z.object({
-    megapixel: z.number().int().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      megapixel: z.number().int().optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject:
@@ -656,11 +670,13 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUN
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject
-  > = z.object({
-    inputHeight: z.number().int().optional(),
-    inputWidth: z.number().int().optional(),
-    upscaleMultiplier: z.number().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      inputHeight: z.number().int().optional(),
+      inputWidth: z.number().int().optional(),
+      upscaleMultiplier: z.number().optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject:
@@ -677,7 +693,7 @@ export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParam
 /** @internal */
 export const PricingCalculatorString$outboundSchema: z.ZodNativeEnum<
   typeof PricingCalculatorString
-> = z.nativeEnum(PricingCalculatorString);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PricingCalculatorString));
 
 /** @internal */
 export type PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound =
@@ -691,9 +707,11 @@ export const PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVe
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$Outbound,
     z.ZodTypeDef,
     PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject
-  > = z.object({
-    resolution: PricingCalculatorString$outboundSchema.optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      resolution: PricingCalculatorString$outboundSchema.optional(),
+    })
+  );
 
 export function pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObjectToJSON(
   pricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject:
@@ -756,69 +774,53 @@ export const PricingCalculatorObject$outboundSchema: z.ZodType<
   PricingCalculatorObject$Outbound,
   z.ZodTypeDef,
   PricingCalculatorObject
-> = z.object({
-  fantasyAvatarGeneration: z.nullable(
-    z.lazy(() => PricingCalculatorPricingCalculatorObject$outboundSchema),
-  ).optional(),
-  imageGeneration: z.nullable(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fantasyAvatarGeneration: z.nullable(
+      z.lazy(() => PricingCalculatorPricingCalculatorObject$outboundSchema),
+    ).optional(),
+    imageGeneration: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestObject$outboundSchema
-    ),
-  ).optional(),
-  lcmGeneration: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    lcmGeneration: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyObject$outboundSchema
-    ),
-  ).optional(),
-  modelTraining: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    modelTraining: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsObject$outboundSchema
-    ),
-  ).optional(),
-  motionSvdGeneration: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    motionSvdGeneration: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONSVDGENERATIONObject$outboundSchema
-    ),
-  ).optional(),
-  motionVideoGeneration: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    motionVideoGeneration: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsMOTIONVIDEOGENERATIONObject$outboundSchema
-    ),
-  ).optional(),
-  textureGeneration: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    textureGeneration: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsTEXTUREGENERATIONObject$outboundSchema
-    ),
-  ).optional(),
-  universalUpscaler: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    universalUpscaler: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERObject$outboundSchema
-    ),
-  ).optional(),
-  universalUpscalerUltra: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    universalUpscalerUltra: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsUNIVERSALUPSCALERULTRAObject$outboundSchema
-    ),
-  ).optional(),
-  veo3MotionVideoGeneration: z.nullable(
-    z.lazy(() =>
+    )).optional(),
+    veo3MotionVideoGeneration: z.nullable(z.lazy(() =>
       PricingCalculatorPricingCalculatorRequestRequestBodyServiceParamsVeo3MOTIONVIDEOGENERATIONObject$outboundSchema
-    ),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    fantasyAvatarGeneration: "FANTASY_AVATAR_GENERATION",
-    imageGeneration: "IMAGE_GENERATION",
-    lcmGeneration: "LCM_GENERATION",
-    modelTraining: "MODEL_TRAINING",
-    motionSvdGeneration: "MOTION_SVD_GENERATION",
-    motionVideoGeneration: "MOTION_VIDEO_GENERATION",
-    textureGeneration: "TEXTURE_GENERATION",
-    universalUpscaler: "UNIVERSAL_UPSCALER",
-    universalUpscalerUltra: "UNIVERSAL_UPSCALER_ULTRA",
-    veo3MotionVideoGeneration: "VEO3_MOTION_VIDEO_GENERATION",
-  });
-});
+    )).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      fantasyAvatarGeneration: "FANTASY_AVATAR_GENERATION",
+      imageGeneration: "IMAGE_GENERATION",
+      lcmGeneration: "LCM_GENERATION",
+      modelTraining: "MODEL_TRAINING",
+      motionSvdGeneration: "MOTION_SVD_GENERATION",
+      motionVideoGeneration: "MOTION_VIDEO_GENERATION",
+      textureGeneration: "TEXTURE_GENERATION",
+      universalUpscaler: "UNIVERSAL_UPSCALER",
+      universalUpscalerUltra: "UNIVERSAL_UPSCALER_ULTRA",
+      veo3MotionVideoGeneration: "VEO3_MOTION_VIDEO_GENERATION",
+    });
+  })
+);
 
 export function pricingCalculatorObjectToJSON(
   pricingCalculatorObject: PricingCalculatorObject,
@@ -839,11 +841,13 @@ export const PricingCalculatorRequestBody$outboundSchema: z.ZodType<
   PricingCalculatorRequestBody$Outbound,
   z.ZodTypeDef,
   PricingCalculatorRequestBody
-> = z.object({
-  service: shared.PricingCalculatorServices$outboundSchema.optional(),
-  serviceParams: z.lazy(() => PricingCalculatorObject$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    service: shared.PricingCalculatorServices$outboundSchema.optional(),
+    serviceParams: z.lazy(() => PricingCalculatorObject$outboundSchema)
+      .optional(),
+  })
+);
 
 export function pricingCalculatorRequestBodyToJSON(
   pricingCalculatorRequestBody: PricingCalculatorRequestBody,
@@ -860,9 +864,11 @@ export const CalculateProductionApiServiceCost$inboundSchema: z.ZodType<
   CalculateProductionApiServiceCost,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cost: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cost: z.number().int().optional(),
+  })
+);
 
 export function calculateProductionApiServiceCostFromJSON(
   jsonString: string,
@@ -879,11 +885,13 @@ export const PricingCalculatorResponseBody$inboundSchema: z.ZodType<
   PricingCalculatorResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  calculateProductionApiServiceCost: z.nullable(
-    z.lazy(() => CalculateProductionApiServiceCost$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    calculateProductionApiServiceCost: z.nullable(
+      z.lazy(() => CalculateProductionApiServiceCost$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function pricingCalculatorResponseBodyFromJSON(
   jsonString: string,
@@ -900,18 +908,21 @@ export const PricingCalculatorResponse$inboundSchema: z.ZodType<
   PricingCalculatorResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => PricingCalculatorResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => PricingCalculatorResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function pricingCalculatorResponseFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
@@ -14,4 +15,4 @@ export enum MotionResolution {
 /** @internal */
 export const MotionResolution$inboundSchema: z.ZodNativeEnum<
   typeof MotionResolution
-> = z.nativeEnum(MotionResolution);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MotionResolution));

@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -77,9 +80,19 @@ export const GetCustomElementsByUserIdRequest$outboundSchema: z.ZodType<
   GetCustomElementsByUserIdRequest$Outbound,
   z.ZodTypeDef,
   GetCustomElementsByUserIdRequest
-> = z.object({
-  userId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userId: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getCustomElementsByUserIdRequestToJSON(
   getCustomElementsByUserIdRequest: GetCustomElementsByUserIdRequest,
@@ -96,21 +109,23 @@ export const GetCustomElementsByUserIdUserLoras$inboundSchema: z.ZodType<
   GetCustomElementsByUserIdUserLoras,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  baseModel: z.string().optional(),
-  createdAt: z.string().optional(),
-  description: z.string().optional(),
-  focus: z.string().optional(),
-  id: z.number().int().optional(),
-  instancePrompt: z.nullable(z.string()).optional(),
-  learningRate: z.number().optional(),
-  name: z.string().optional(),
-  resolution: z.number().int().optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  trainTextEncoder: z.boolean().optional(),
-  trainingEpoch: z.number().int().optional(),
-  updatedAt: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    baseModel: z.string().optional(),
+    createdAt: z.string().optional(),
+    description: z.string().optional(),
+    focus: z.string().optional(),
+    id: z.number().int().optional(),
+    instancePrompt: z.nullable(z.string()).optional(),
+    learningRate: z.number().optional(),
+    name: z.string().optional(),
+    resolution: z.number().int().optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    trainTextEncoder: z.boolean().optional(),
+    trainingEpoch: z.number().int().optional(),
+    updatedAt: z.string().optional(),
+  })
+);
 
 export function getCustomElementsByUserIdUserLorasFromJSON(
   jsonString: string,
@@ -128,17 +143,17 @@ export const GetCustomElementsByUserIdResponseBody$inboundSchema: z.ZodType<
   GetCustomElementsByUserIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user_loras: z.nullable(
-    z.array(z.nullable(z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_loras: z.nullable(z.array(z.nullable(z.lazy(() =>
       GetCustomElementsByUserIdUserLoras$inboundSchema
-    ))),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "user_loras": "userLoras",
-  });
-});
+    )))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "user_loras": "userLoras",
+    });
+  })
+);
 
 export function getCustomElementsByUserIdResponseBodyFromJSON(
   jsonString: string,
@@ -156,19 +171,21 @@ export const GetCustomElementsByUserIdResponse$inboundSchema: z.ZodType<
   GetCustomElementsByUserIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetCustomElementsByUserIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetCustomElementsByUserIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getCustomElementsByUserIdResponseFromJSON(
   jsonString: string,

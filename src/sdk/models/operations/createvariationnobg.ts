@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -68,10 +68,12 @@ export const CreateVariationNoBGRequestBody$outboundSchema: z.ZodType<
   CreateVariationNoBGRequestBody$Outbound,
   z.ZodTypeDef,
   CreateVariationNoBGRequestBody
-> = z.object({
-  id: z.string(),
-  isVariation: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    isVariation: z.boolean().optional(),
+  })
+);
 
 export function createVariationNoBGRequestBodyToJSON(
   createVariationNoBGRequestBody: CreateVariationNoBGRequestBody,
@@ -88,11 +90,13 @@ export const SDUpscaleJobOutput$inboundSchema: z.ZodType<
   SDUpscaleJobOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function sdUpscaleJobOutputFromJSON(
   jsonString: string,
@@ -109,9 +113,11 @@ export const CreateVariationNoBGResponseBody$inboundSchema: z.ZodType<
   CreateVariationNoBGResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sdNobgJob: z.lazy(() => SDUpscaleJobOutput$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdNobgJob: z.lazy(() => SDUpscaleJobOutput$inboundSchema).optional(),
+  })
+);
 
 export function createVariationNoBGResponseBodyFromJSON(
   jsonString: string,
@@ -128,19 +134,21 @@ export const CreateVariationNoBGResponse$inboundSchema: z.ZodType<
   CreateVariationNoBGResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateVariationNoBGResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateVariationNoBGResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createVariationNoBGResponseFromJSON(
   jsonString: string,

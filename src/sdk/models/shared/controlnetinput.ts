@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * Type indicating whether the init image is uploaded or generated.
@@ -49,11 +50,11 @@ export type ControlnetInput = {
 /** @internal */
 export const InitImageType$outboundSchema: z.ZodNativeEnum<
   typeof InitImageType
-> = z.nativeEnum(InitImageType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InitImageType));
 
 /** @internal */
 export const StrengthType$outboundSchema: z.ZodNativeEnum<typeof StrengthType> =
-  z.nativeEnum(StrengthType);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StrengthType));
 
 /** @internal */
 export type ControlnetInput$Outbound = {
@@ -69,13 +70,15 @@ export const ControlnetInput$outboundSchema: z.ZodType<
   ControlnetInput$Outbound,
   z.ZodTypeDef,
   ControlnetInput
-> = z.object({
-  initImageId: z.string().optional(),
-  initImageType: InitImageType$outboundSchema.optional(),
-  preprocessorId: z.number().optional(),
-  strengthType: z.nullable(StrengthType$outboundSchema).optional(),
-  weight: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    initImageId: z.string().optional(),
+    initImageType: InitImageType$outboundSchema.optional(),
+    preprocessorId: z.number().optional(),
+    strengthType: z.nullable(StrengthType$outboundSchema).optional(),
+    weight: z.nullable(z.number()).optional(),
+  })
+);
 
 export function controlnetInputToJSON(
   controlnetInput: ControlnetInput,

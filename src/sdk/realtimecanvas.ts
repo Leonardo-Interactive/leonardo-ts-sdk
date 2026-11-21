@@ -4,7 +4,6 @@
 
 import { realtimeCanvasCreateLCMGeneration } from "../funcs/realtimeCanvasCreateLCMGeneration.js";
 import { realtimeCanvasPerformAlchemyUpscaleLCM } from "../funcs/realtimeCanvasPerformAlchemyUpscaleLCM.js";
-import { realtimeCanvasPerformInpaintingLCM } from "../funcs/realtimeCanvasPerformInpaintingLCM.js";
 import { realtimeCanvasPerformInstantRefine } from "../funcs/realtimeCanvasPerformInstantRefine.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
@@ -39,23 +38,6 @@ export class RealtimeCanvas extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.PerformAlchemyUpscaleLCMResponse> {
     return unwrapAsync(realtimeCanvasPerformAlchemyUpscaleLCM(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Perform inpainting on a LCM image
-   *
-   * @remarks
-   * This endpoint will perform a inpainting on a LCM image
-   */
-  async performInpaintingLCM(
-    request?: operations.PerformInpaintingLCMRequestBody | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.PerformInpaintingLCMResponse> {
-    return unwrapAsync(realtimeCanvasPerformInpaintingLCM(
       this,
       request,
       options,

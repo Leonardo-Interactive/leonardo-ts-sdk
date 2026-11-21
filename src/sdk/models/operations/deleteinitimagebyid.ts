@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,9 +64,19 @@ export const DeleteInitImageByIdRequest$outboundSchema: z.ZodType<
   DeleteInitImageByIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteInitImageByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function deleteInitImageByIdRequestToJSON(
   deleteInitImageByIdRequest: DeleteInitImageByIdRequest,
@@ -78,9 +91,11 @@ export const InitImages$inboundSchema: z.ZodType<
   InitImages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function initImagesFromJSON(
   jsonString: string,
@@ -97,14 +112,16 @@ export const DeleteInitImageByIdResponseBody$inboundSchema: z.ZodType<
   DeleteInitImageByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_init_images_by_pk: z.nullable(z.lazy(() => InitImages$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_init_images_by_pk": "deleteInitImagesByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_init_images_by_pk: z.nullable(z.lazy(() => InitImages$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_init_images_by_pk": "deleteInitImagesByPk",
+    });
+  })
+);
 
 export function deleteInitImageByIdResponseBodyFromJSON(
   jsonString: string,
@@ -121,19 +138,21 @@ export const DeleteInitImageByIdResponse$inboundSchema: z.ZodType<
   DeleteInitImageByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => DeleteInitImageByIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => DeleteInitImageByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function deleteInitImageByIdResponseFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -92,11 +92,13 @@ export type GetUserSelfResponse = {
 };
 
 /** @internal */
-export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.nullable(z.string()).optional(),
-    username: z.nullable(z.string()).optional(),
-  });
+export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.nullable(z.string()).optional(),
+      username: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function usersFromJSON(
   jsonString: string,
@@ -113,18 +115,20 @@ export const UserDetails$inboundSchema: z.ZodType<
   UserDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiConcurrencySlots: z.number().int().optional(),
-  apiPaidTokens: z.nullable(z.number().int()).optional(),
-  apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
-  apiSubscriptionTokens: z.number().int().optional(),
-  paidTokens: z.nullable(z.number().int()).optional(),
-  subscriptionGptTokens: z.number().int().optional(),
-  subscriptionModelTokens: z.number().int().optional(),
-  subscriptionTokens: z.number().int().optional(),
-  tokenRenewalDate: z.nullable(z.string()).optional(),
-  user: z.nullable(z.lazy(() => Users$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiConcurrencySlots: z.number().int().optional(),
+    apiPaidTokens: z.nullable(z.number().int()).optional(),
+    apiPlanTokenRenewalDate: z.nullable(z.string()).optional(),
+    apiSubscriptionTokens: z.number().int().optional(),
+    paidTokens: z.nullable(z.number().int()).optional(),
+    subscriptionGptTokens: z.number().int().optional(),
+    subscriptionModelTokens: z.number().int().optional(),
+    subscriptionTokens: z.number().int().optional(),
+    tokenRenewalDate: z.nullable(z.string()).optional(),
+    user: z.nullable(z.lazy(() => Users$inboundSchema)).optional(),
+  })
+);
 
 export function userDetailsFromJSON(
   jsonString: string,
@@ -141,13 +145,15 @@ export const GetUserSelfResponseBody$inboundSchema: z.ZodType<
   GetUserSelfResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user_details: z.array(z.lazy(() => UserDetails$inboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "user_details": "userDetails",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_details: z.array(z.lazy(() => UserDetails$inboundSchema)).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "user_details": "userDetails",
+    });
+  })
+);
 
 export function getUserSelfResponseBodyFromJSON(
   jsonString: string,
@@ -164,18 +170,20 @@ export const GetUserSelfResponse$inboundSchema: z.ZodType<
   GetUserSelfResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetUserSelfResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetUserSelfResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getUserSelfResponseFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The type of variation.
@@ -18,4 +19,4 @@ export enum VariationType {
 /** @internal */
 export const VariationType$inboundSchema: z.ZodNativeEnum<
   typeof VariationType
-> = z.nativeEnum(VariationType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VariationType));

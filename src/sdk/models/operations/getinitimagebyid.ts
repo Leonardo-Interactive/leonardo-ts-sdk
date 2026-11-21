@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -63,9 +66,19 @@ export const GetInitImageByIdRequest$outboundSchema: z.ZodType<
   GetInitImageByIdRequest$Outbound,
   z.ZodTypeDef,
   GetInitImageByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getInitImageByIdRequestToJSON(
   getInitImageByIdRequest: GetInitImageByIdRequest,
@@ -80,11 +93,13 @@ export const GetInitImageByIdInitImages$inboundSchema: z.ZodType<
   GetInitImageByIdInitImages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  id: z.nullable(z.string()).optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function getInitImageByIdInitImagesFromJSON(
   jsonString: string,
@@ -101,15 +116,17 @@ export const GetInitImageByIdResponseBody$inboundSchema: z.ZodType<
   GetInitImageByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  init_images_by_pk: z.nullable(
-    z.lazy(() => GetInitImageByIdInitImages$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "init_images_by_pk": "initImagesByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    init_images_by_pk: z.nullable(
+      z.lazy(() => GetInitImageByIdInitImages$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "init_images_by_pk": "initImagesByPk",
+    });
+  })
+);
 
 export function getInitImageByIdResponseBodyFromJSON(
   jsonString: string,
@@ -126,18 +143,20 @@ export const GetInitImageByIdResponse$inboundSchema: z.ZodType<
   GetInitImageByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetInitImageByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetInitImageByIdResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getInitImageByIdResponseFromJSON(
   jsonString: string,

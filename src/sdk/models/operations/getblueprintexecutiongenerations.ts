@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -77,13 +80,25 @@ export const GetBlueprintExecutionGenerationsRequest$outboundSchema: z.ZodType<
   GetBlueprintExecutionGenerationsRequest$Outbound,
   z.ZodTypeDef,
   GetBlueprintExecutionGenerationsRequest
-> = z.object({
-  after: z.string().optional(),
-  before: z.string().optional(),
-  first: z.number().int().optional(),
-  id: z.nullable(z.string()),
-  last: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    after: z.string().optional(),
+    before: z.string().optional(),
+    first: z.number().int().optional(),
+    id: z.nullable(
+      z.string().refine(
+        matchesPattern$(
+          "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+        ),
+        {
+          message:
+            "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+        },
+      ),
+    ),
+    last: z.number().int().optional(),
+  })
+);
 
 export function getBlueprintExecutionGenerationsRequestToJSON(
   getBlueprintExecutionGenerationsRequest:
@@ -102,10 +117,12 @@ export const GetBlueprintExecutionGenerationsResponseBody$inboundSchema:
     GetBlueprintExecutionGenerationsResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    blueprintExecutionGenerations: shared
-      .BlueprintExecutionGenerationsConnection$inboundSchema.optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      blueprintExecutionGenerations: shared
+        .BlueprintExecutionGenerationsConnection$inboundSchema.optional(),
+    })
+  );
 
 export function getBlueprintExecutionGenerationsResponseBodyFromJSON(
   jsonString: string,
@@ -128,20 +145,22 @@ export const GetBlueprintExecutionGenerationsResponse$inboundSchema: z.ZodType<
   GetBlueprintExecutionGenerationsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() =>
-    GetBlueprintExecutionGenerationsResponseBody$inboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() =>
+      GetBlueprintExecutionGenerationsResponseBody$inboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getBlueprintExecutionGenerationsResponseFromJSON(
   jsonString: string,
