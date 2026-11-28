@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -128,20 +128,22 @@ export const PerformAlchemyUpscaleLCMRequestBody$outboundSchema: z.ZodType<
   PerformAlchemyUpscaleLCMRequestBody$Outbound,
   z.ZodTypeDef,
   PerformAlchemyUpscaleLCMRequestBody
-> = z.object({
-  guidance: z.nullable(z.number()).optional(),
-  height: z.nullable(z.number().int().default(512)),
-  imageDataUrl: z.string(),
-  prompt: z.string(),
-  refineCreative: z.nullable(z.boolean()).optional(),
-  refineStrength: z.nullable(z.number()).optional(),
-  requestTimestamp: z.string().optional(),
-  seed: z.nullable(z.number().int()).optional(),
-  steps: z.nullable(z.number().int()).optional(),
-  strength: z.nullable(z.number()).optional(),
-  style: z.nullable(shared.LcmGenerationStyle$outboundSchema).optional(),
-  width: z.nullable(z.number().int().default(512)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    guidance: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int().default(512)),
+    imageDataUrl: z.string(),
+    prompt: z.string(),
+    refineCreative: z.nullable(z.boolean()).optional(),
+    refineStrength: z.nullable(z.number()).optional(),
+    requestTimestamp: z.string().optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.number().int()).optional(),
+    strength: z.nullable(z.number()).optional(),
+    style: z.nullable(shared.LcmGenerationStyle$outboundSchema).optional(),
+    width: z.nullable(z.number().int().default(512)),
+  })
+);
 
 export function performAlchemyUpscaleLCMRequestBodyToJSON(
   performAlchemyUpscaleLCMRequestBody: PerformAlchemyUpscaleLCMRequestBody,
@@ -159,15 +161,17 @@ export const PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema:
     PerformAlchemyUpscaleLCMLCMGenerationOutput,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    apiCreditCost: z.nullable(z.number().int()).optional(),
-    cost: z.nullable(shared.Cost$inboundSchema).optional(),
-    generatedImageId: z.string().optional(),
-    generationId: z.array(z.string()).optional(),
-    imageDataUrl: z.array(z.string()).optional(),
-    requestTimestamp: z.string().optional(),
-    variationId: z.array(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      apiCreditCost: z.nullable(z.number().int()).optional(),
+      cost: z.nullable(shared.Cost$inboundSchema).optional(),
+      generatedImageId: z.string().optional(),
+      generationId: z.array(z.string()).optional(),
+      imageDataUrl: z.array(z.string()).optional(),
+      requestTimestamp: z.string().optional(),
+      variationId: z.array(z.string()).optional(),
+    })
+  );
 
 export function performAlchemyUpscaleLCMLCMGenerationOutputFromJSON(
   jsonString: string,
@@ -190,11 +194,13 @@ export const PerformAlchemyUpscaleLCMResponseBody$inboundSchema: z.ZodType<
   PerformAlchemyUpscaleLCMResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  lcmGenerationJob: z.nullable(
-    z.lazy(() => PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lcmGenerationJob: z.nullable(
+      z.lazy(() => PerformAlchemyUpscaleLCMLCMGenerationOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function performAlchemyUpscaleLCMResponseBodyFromJSON(
   jsonString: string,
@@ -212,19 +218,21 @@ export const PerformAlchemyUpscaleLCMResponse$inboundSchema: z.ZodType<
   PerformAlchemyUpscaleLCMResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => PerformAlchemyUpscaleLCMResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => PerformAlchemyUpscaleLCMResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function performAlchemyUpscaleLCMResponseFromJSON(
   jsonString: string,

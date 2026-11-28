@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -66,15 +66,17 @@ export type NodeInput = {
 };
 
 /** @internal */
-export const SettingName$inboundSchema: z.ZodNativeEnum<typeof SettingName> = z
-  .nativeEnum(SettingName);
+export const SettingName$inboundSchema: z.ZodNativeEnum<typeof SettingName> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SettingName));
 /** @internal */
 export const SettingName$outboundSchema: z.ZodNativeEnum<typeof SettingName> =
   SettingName$inboundSchema;
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.array(TextVariable$inboundSchema)]);
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([z.string(), z.array(TextVariable$inboundSchema)])
+  );
 /** @internal */
 export type Value$Outbound = string | Array<TextVariable$Outbound>;
 
@@ -83,7 +85,9 @@ export const Value$outboundSchema: z.ZodType<
   Value$Outbound,
   z.ZodTypeDef,
   Value
-> = z.union([z.string(), z.array(TextVariable$outboundSchema)]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(TextVariable$outboundSchema)])
+);
 
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
@@ -103,11 +107,13 @@ export const NodeInput$inboundSchema: z.ZodType<
   NodeInput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  nodeId: z.string(),
-  settingName: SettingName$inboundSchema,
-  value: z.union([z.string(), z.array(TextVariable$inboundSchema)]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nodeId: z.string(),
+    settingName: SettingName$inboundSchema,
+    value: z.union([z.string(), z.array(TextVariable$inboundSchema)]),
+  })
+);
 /** @internal */
 export type NodeInput$Outbound = {
   nodeId: string;
@@ -120,11 +126,13 @@ export const NodeInput$outboundSchema: z.ZodType<
   NodeInput$Outbound,
   z.ZodTypeDef,
   NodeInput
-> = z.object({
-  nodeId: z.string(),
-  settingName: SettingName$outboundSchema,
-  value: z.union([z.string(), z.array(TextVariable$outboundSchema)]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nodeId: z.string(),
+    settingName: SettingName$outboundSchema,
+    value: z.union([z.string(), z.array(TextVariable$outboundSchema)]),
+  })
+);
 
 export function nodeInputToJSON(nodeInput: NodeInput): string {
   return JSON.stringify(NodeInput$outboundSchema.parse(nodeInput));

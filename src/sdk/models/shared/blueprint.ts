@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -58,10 +58,12 @@ export const Thumbnails$inboundSchema: z.ZodType<
   Thumbnails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function thumbnailsFromJSON(
   jsonString: string,
@@ -78,18 +80,20 @@ export const Blueprint$inboundSchema: z.ZodType<
   Blueprint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  akUUID: z.string().optional(),
-  createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  description: z.string().optional(),
-  name: z.string().optional(),
-  official: z.boolean().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  thumbnails: z.array(z.lazy(() => Thumbnails$inboundSchema)).optional(),
-  updatedAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    akUUID: z.string().optional(),
+    createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    description: z.string().optional(),
+    name: z.string().optional(),
+    official: z.boolean().optional(),
+    teamId: z.nullable(z.string()).optional(),
+    thumbnails: z.array(z.lazy(() => Thumbnails$inboundSchema)).optional(),
+    updatedAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+  })
+);
 
 export function blueprintFromJSON(
   jsonString: string,

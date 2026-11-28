@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -62,10 +62,12 @@ export const ListPlatformModelsGeneratedImages$inboundSchema: z.ZodType<
   ListPlatformModelsGeneratedImages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function listPlatformModelsGeneratedImagesFromJSON(
   jsonString: string,
@@ -82,20 +84,22 @@ export const ListPlatformModelsCustomModels$inboundSchema: z.ZodType<
   ListPlatformModelsCustomModels,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string().optional(),
-  featured: z.boolean().optional(),
-  generated_image: z.nullable(
-    z.lazy(() => ListPlatformModelsGeneratedImages$inboundSchema),
-  ).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.string().optional(),
-  nsfw: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "generated_image": "generatedImage",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string().optional(),
+    featured: z.boolean().optional(),
+    generated_image: z.nullable(
+      z.lazy(() => ListPlatformModelsGeneratedImages$inboundSchema),
+    ).optional(),
+    id: z.nullable(z.string()).optional(),
+    name: z.string().optional(),
+    nsfw: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "generated_image": "generatedImage",
+    });
+  })
+);
 
 export function listPlatformModelsCustomModelsFromJSON(
   jsonString: string,
@@ -112,15 +116,17 @@ export const ListPlatformModelsResponseBody$inboundSchema: z.ZodType<
   ListPlatformModelsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_models: z.array(
-    z.lazy(() => ListPlatformModelsCustomModels$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_models": "customModels",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_models: z.array(
+      z.lazy(() => ListPlatformModelsCustomModels$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_models": "customModels",
+    });
+  })
+);
 
 export function listPlatformModelsResponseBodyFromJSON(
   jsonString: string,
@@ -137,18 +143,21 @@ export const ListPlatformModelsResponse$inboundSchema: z.ZodType<
   ListPlatformModelsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => ListPlatformModelsResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => ListPlatformModelsResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function listPlatformModelsResponseFromJSON(
   jsonString: string,

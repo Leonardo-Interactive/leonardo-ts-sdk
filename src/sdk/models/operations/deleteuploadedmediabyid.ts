@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -55,9 +58,19 @@ export const DeleteUploadedMediaByIdRequest$outboundSchema: z.ZodType<
   DeleteUploadedMediaByIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteUploadedMediaByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function deleteUploadedMediaByIdRequestToJSON(
   deleteUploadedMediaByIdRequest: DeleteUploadedMediaByIdRequest,
@@ -74,9 +87,11 @@ export const UploadedMedia$inboundSchema: z.ZodType<
   UploadedMedia,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function uploadedMediaFromJSON(
   jsonString: string,
@@ -93,15 +108,17 @@ export const DeleteUploadedMediaByIdResponseBody$inboundSchema: z.ZodType<
   DeleteUploadedMediaByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_uploaded_media_by_pk: z.nullable(
-    z.lazy(() => UploadedMedia$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_uploaded_media_by_pk": "deleteUploadedMediaByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_uploaded_media_by_pk: z.nullable(
+      z.lazy(() => UploadedMedia$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_uploaded_media_by_pk": "deleteUploadedMediaByPk",
+    });
+  })
+);
 
 export function deleteUploadedMediaByIdResponseBodyFromJSON(
   jsonString: string,
@@ -119,19 +136,21 @@ export const DeleteUploadedMediaByIdResponse$inboundSchema: z.ZodType<
   DeleteUploadedMediaByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => DeleteUploadedMediaByIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => DeleteUploadedMediaByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function deleteUploadedMediaByIdResponseFromJSON(
   jsonString: string,

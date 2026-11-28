@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -44,7 +44,7 @@ export const Extensions$inboundSchema: z.ZodType<
   Extensions,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function extensionsFromJSON(
   jsonString: string,
@@ -61,10 +61,12 @@ export const Locations$inboundSchema: z.ZodType<
   Locations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  column: z.number().int().optional(),
-  line: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    column: z.number().int().optional(),
+    line: z.number().int().optional(),
+  })
+);
 
 export function locationsFromJSON(
   jsonString: string,
@@ -81,12 +83,14 @@ export const ApiError$inboundSchema: z.ZodType<
   ApiError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  extensions: z.lazy(() => Extensions$inboundSchema).optional(),
-  locations: z.array(z.lazy(() => Locations$inboundSchema)).optional(),
-  message: z.string(),
-  path: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    extensions: z.lazy(() => Extensions$inboundSchema).optional(),
+    locations: z.array(z.lazy(() => Locations$inboundSchema)).optional(),
+    message: z.string(),
+    path: z.array(z.string()).optional(),
+  })
+);
 
 export function apiErrorFromJSON(
   jsonString: string,

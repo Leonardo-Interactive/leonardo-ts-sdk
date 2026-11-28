@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -69,10 +69,12 @@ export const CreateDatasetRequestBody$outboundSchema: z.ZodType<
   CreateDatasetRequestBody$Outbound,
   z.ZodTypeDef,
   CreateDatasetRequestBody
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.nullable(z.string()).optional(),
+    name: z.string(),
+  })
+);
 
 export function createDatasetRequestBodyToJSON(
   createDatasetRequestBody: CreateDatasetRequestBody,
@@ -87,9 +89,11 @@ export const Datasets$inboundSchema: z.ZodType<
   Datasets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function datasetsFromJSON(
   jsonString: string,
@@ -106,14 +110,16 @@ export const CreateDatasetResponseBody$inboundSchema: z.ZodType<
   CreateDatasetResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  insert_datasets_one: z.nullable(z.lazy(() => Datasets$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "insert_datasets_one": "insertDatasetsOne",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    insert_datasets_one: z.nullable(z.lazy(() => Datasets$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "insert_datasets_one": "insertDatasetsOne",
+    });
+  })
+);
 
 export function createDatasetResponseBodyFromJSON(
   jsonString: string,
@@ -130,18 +136,20 @@ export const CreateDatasetResponse$inboundSchema: z.ZodType<
   CreateDatasetResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateDatasetResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateDatasetResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createDatasetResponseFromJSON(
   jsonString: string,

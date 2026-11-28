@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -114,24 +114,26 @@ export const CreateUniversalUpscalerJobRequestBody$outboundSchema: z.ZodType<
   CreateUniversalUpscalerJobRequestBody$Outbound,
   z.ZodTypeDef,
   CreateUniversalUpscalerJobRequestBody
-> = z.object({
-  creativityStrength: z.nullable(z.number().int().default(5)),
-  detailContrast: z.nullable(z.number().int()).optional(),
-  generatedImageId: z.nullable(z.string()).optional(),
-  initImageId: z.nullable(z.string()).optional(),
-  prompt: z.nullable(z.string()).optional(),
-  similarity: z.nullable(z.number().int()).optional(),
-  ultraUpscaleStyle: z.nullable(
-    shared.UniversalUpscalerUltraStyle$outboundSchema,
-  ).optional(),
-  upscaleMultiplier: z.nullable(z.number().default(1.5)),
-  upscalerStyle: z.nullable(
-    shared.UniversalUpscalerStyle$outboundSchema.default(
-      shared.UniversalUpscalerStyle.General,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    creativityStrength: z.nullable(z.number().int().default(5)),
+    detailContrast: z.nullable(z.number().int()).optional(),
+    generatedImageId: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    prompt: z.nullable(z.string()).optional(),
+    similarity: z.nullable(z.number().int()).optional(),
+    ultraUpscaleStyle: z.nullable(
+      shared.UniversalUpscalerUltraStyle$outboundSchema,
+    ).optional(),
+    upscaleMultiplier: z.nullable(z.number().default(1.5)),
+    upscalerStyle: z.nullable(
+      shared.UniversalUpscalerStyle$outboundSchema.default(
+        shared.UniversalUpscalerStyle.General,
+      ),
     ),
-  ),
-  variationId: z.nullable(z.string()).optional(),
-});
+    variationId: z.nullable(z.string()).optional(),
+  })
+);
 
 export function createUniversalUpscalerJobRequestBodyToJSON(
   createUniversalUpscalerJobRequestBody: CreateUniversalUpscalerJobRequestBody,
@@ -148,11 +150,13 @@ export const UniversalUpscalerOutput$inboundSchema: z.ZodType<
   UniversalUpscalerOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function universalUpscalerOutputFromJSON(
   jsonString: string,
@@ -169,10 +173,12 @@ export const CreateUniversalUpscalerJobResponseBody$inboundSchema: z.ZodType<
   CreateUniversalUpscalerJobResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  universalUpscaler: z.lazy(() => UniversalUpscalerOutput$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    universalUpscaler: z.lazy(() => UniversalUpscalerOutput$inboundSchema)
+      .optional(),
+  })
+);
 
 export function createUniversalUpscalerJobResponseBodyFromJSON(
   jsonString: string,
@@ -190,19 +196,21 @@ export const CreateUniversalUpscalerJobResponse$inboundSchema: z.ZodType<
   CreateUniversalUpscalerJobResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateUniversalUpscalerJobResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateUniversalUpscalerJobResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createUniversalUpscalerJobResponseFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -69,9 +69,11 @@ export const UploadDatasetImageFromGenRequestBody$outboundSchema: z.ZodType<
   UploadDatasetImageFromGenRequestBody$Outbound,
   z.ZodTypeDef,
   UploadDatasetImageFromGenRequestBody
-> = z.object({
-  generatedImageId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    generatedImageId: z.string(),
+  })
+);
 
 export function uploadDatasetImageFromGenRequestBodyToJSON(
   uploadDatasetImageFromGenRequestBody: UploadDatasetImageFromGenRequestBody,
@@ -94,16 +96,18 @@ export const UploadDatasetImageFromGenRequest$outboundSchema: z.ZodType<
   UploadDatasetImageFromGenRequest$Outbound,
   z.ZodTypeDef,
   UploadDatasetImageFromGenRequest
-> = z.object({
-  requestBody: z.lazy(() =>
-    UploadDatasetImageFromGenRequestBody$outboundSchema
-  ),
-  datasetId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestBody: z.lazy(() =>
+      UploadDatasetImageFromGenRequestBody$outboundSchema
+    ),
+    datasetId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function uploadDatasetImageFromGenRequestToJSON(
   uploadDatasetImageFromGenRequest: UploadDatasetImageFromGenRequest,
@@ -120,9 +124,11 @@ export const DatasetGenUploadOutput$inboundSchema: z.ZodType<
   DatasetGenUploadOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function datasetGenUploadOutputFromJSON(
   jsonString: string,
@@ -139,11 +145,13 @@ export const UploadDatasetImageFromGenResponseBody$inboundSchema: z.ZodType<
   UploadDatasetImageFromGenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadDatasetImageFromGen: z.nullable(
-    z.lazy(() => DatasetGenUploadOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadDatasetImageFromGen: z.nullable(
+      z.lazy(() => DatasetGenUploadOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function uploadDatasetImageFromGenResponseBodyFromJSON(
   jsonString: string,
@@ -161,19 +169,21 @@ export const UploadDatasetImageFromGenResponse$inboundSchema: z.ZodType<
   UploadDatasetImageFromGenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => UploadDatasetImageFromGenResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => UploadDatasetImageFromGenResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function uploadDatasetImageFromGenResponseFromJSON(
   jsonString: string,

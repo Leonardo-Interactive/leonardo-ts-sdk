@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -72,9 +75,11 @@ export const Delete3DModelByIdRequestBody$outboundSchema: z.ZodType<
   Delete3DModelByIdRequestBody$Outbound,
   z.ZodTypeDef,
   Delete3DModelByIdRequestBody
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function delete3DModelByIdRequestBodyToJSON(
   delete3DModelByIdRequestBody: Delete3DModelByIdRequestBody,
@@ -97,15 +102,25 @@ export const Delete3DModelByIdRequest$outboundSchema: z.ZodType<
   Delete3DModelByIdRequest$Outbound,
   z.ZodTypeDef,
   Delete3DModelByIdRequest
-> = z.object({
-  requestBody: z.lazy(() => Delete3DModelByIdRequestBody$outboundSchema)
-    .optional(),
-  id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestBody: z.lazy(() => Delete3DModelByIdRequestBody$outboundSchema)
+      .optional(),
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function delete3DModelByIdRequestToJSON(
   delete3DModelByIdRequest: Delete3DModelByIdRequest,
@@ -120,9 +135,11 @@ export const ModelAssets$inboundSchema: z.ZodType<
   ModelAssets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+  })
+);
 
 export function modelAssetsFromJSON(
   jsonString: string,
@@ -139,14 +156,17 @@ export const Delete3DModelByIdResponseBody$inboundSchema: z.ZodType<
   Delete3DModelByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_model_assets_by_pk: z.nullable(z.lazy(() => ModelAssets$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_model_assets_by_pk": "deleteModelAssetsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_model_assets_by_pk: z.nullable(
+      z.lazy(() => ModelAssets$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_model_assets_by_pk": "deleteModelAssetsByPk",
+    });
+  })
+);
 
 export function delete3DModelByIdResponseBodyFromJSON(
   jsonString: string,
@@ -163,18 +183,21 @@ export const Delete3DModelByIdResponse$inboundSchema: z.ZodType<
   Delete3DModelByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => Delete3DModelByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => Delete3DModelByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function delete3DModelByIdResponseFromJSON(
   jsonString: string,

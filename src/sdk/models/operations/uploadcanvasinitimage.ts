@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -70,10 +70,12 @@ export const UploadCanvasInitImageRequestBody$outboundSchema: z.ZodType<
   UploadCanvasInitImageRequestBody$Outbound,
   z.ZodTypeDef,
   UploadCanvasInitImageRequestBody
-> = z.object({
-  initExtension: z.string(),
-  maskExtension: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    initExtension: z.string(),
+    maskExtension: z.string(),
+  })
+);
 
 export function uploadCanvasInitImageRequestBodyToJSON(
   uploadCanvasInitImageRequestBody: UploadCanvasInitImageRequestBody,
@@ -90,16 +92,18 @@ export const CanvasInitImageUploadOutput$inboundSchema: z.ZodType<
   CanvasInitImageUploadOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  initFields: z.nullable(z.string()).optional(),
-  initImageId: z.nullable(z.string()).optional(),
-  initKey: z.nullable(z.string()).optional(),
-  initUrl: z.nullable(z.string()).optional(),
-  maskFields: z.nullable(z.string()).optional(),
-  maskImageId: z.nullable(z.string()).optional(),
-  maskKey: z.nullable(z.string()).optional(),
-  maskUrl: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    initFields: z.nullable(z.string()).optional(),
+    initImageId: z.nullable(z.string()).optional(),
+    initKey: z.nullable(z.string()).optional(),
+    initUrl: z.nullable(z.string()).optional(),
+    maskFields: z.nullable(z.string()).optional(),
+    maskImageId: z.nullable(z.string()).optional(),
+    maskKey: z.nullable(z.string()).optional(),
+    maskUrl: z.nullable(z.string()).optional(),
+  })
+);
 
 export function canvasInitImageUploadOutputFromJSON(
   jsonString: string,
@@ -116,11 +120,13 @@ export const UploadCanvasInitImageResponseBody$inboundSchema: z.ZodType<
   UploadCanvasInitImageResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadCanvasInitImage: z.nullable(
-    z.lazy(() => CanvasInitImageUploadOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadCanvasInitImage: z.nullable(
+      z.lazy(() => CanvasInitImageUploadOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function uploadCanvasInitImageResponseBodyFromJSON(
   jsonString: string,
@@ -137,19 +143,21 @@ export const UploadCanvasInitImageResponse$inboundSchema: z.ZodType<
   UploadCanvasInitImageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => UploadCanvasInitImageResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => UploadCanvasInitImageResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function uploadCanvasInitImageResponseFromJSON(
   jsonString: string,

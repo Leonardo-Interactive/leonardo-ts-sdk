@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * This parameter will be deprecated in September 2024. Please use the controlnets array instead.
@@ -18,4 +19,4 @@ export enum ControlnetType {
 /** @internal */
 export const ControlnetType$outboundSchema: z.ZodNativeEnum<
   typeof ControlnetType
-> = z.nativeEnum(ControlnetType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ControlnetType));

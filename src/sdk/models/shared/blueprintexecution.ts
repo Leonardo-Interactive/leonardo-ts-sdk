@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,13 +34,15 @@ export const BlueprintExecution$inboundSchema: z.ZodType<
   BlueprintExecution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  akUUID: z.string(),
-  createdAt: z.string(),
-  inputs: z.array(NodeInput$inboundSchema),
-  public: z.boolean(),
-  status: BlueprintExecutionStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    akUUID: z.string(),
+    createdAt: z.string(),
+    inputs: z.array(NodeInput$inboundSchema),
+    public: z.boolean(),
+    status: BlueprintExecutionStatus$inboundSchema,
+  })
+);
 
 export function blueprintExecutionFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,9 +61,11 @@ export const UploadInitImageRequestBody$outboundSchema: z.ZodType<
   UploadInitImageRequestBody$Outbound,
   z.ZodTypeDef,
   UploadInitImageRequestBody
-> = z.object({
-  extension: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    extension: z.string(),
+  })
+);
 
 export function uploadInitImageRequestBodyToJSON(
   uploadInitImageRequestBody: UploadInitImageRequestBody,
@@ -78,12 +80,14 @@ export const InitImageUploadOutput$inboundSchema: z.ZodType<
   InitImageUploadOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  key: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fields: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    key: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+  })
+);
 
 export function initImageUploadOutputFromJSON(
   jsonString: string,
@@ -100,10 +104,13 @@ export const UploadInitImageResponseBody$inboundSchema: z.ZodType<
   UploadInitImageResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadInitImage: z.nullable(z.lazy(() => InitImageUploadOutput$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadInitImage: z.nullable(
+      z.lazy(() => InitImageUploadOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function uploadInitImageResponseBodyFromJSON(
   jsonString: string,
@@ -120,18 +127,20 @@ export const UploadInitImageResponse$inboundSchema: z.ZodType<
   UploadInitImageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => UploadInitImageResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => UploadInitImageResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function uploadInitImageResponseFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -110,8 +110,8 @@ export type CreateElementResponse = {
 };
 
 /** @internal */
-export const SdVersions$outboundSchema: z.ZodNativeEnum<typeof SdVersions> = z
-  .nativeEnum(SdVersions);
+export const SdVersions$outboundSchema: z.ZodNativeEnum<typeof SdVersions> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SdVersions));
 
 /** @internal */
 export type CreateElementRequestBody$Outbound = {
@@ -132,27 +132,29 @@ export const CreateElementRequestBody$outboundSchema: z.ZodType<
   CreateElementRequestBody$Outbound,
   z.ZodTypeDef,
   CreateElementRequestBody
-> = z.object({
-  datasetId: z.string().default(""),
-  description: z.nullable(z.string().default("")),
-  instancePrompt: z.nullable(z.string().default("")),
-  learningRate: z.number(),
-  loraFocus: z.string(),
-  name: z.string().default("placeholder"),
-  numTrainEpochs: z.number().int(),
-  resolution: z.nullable(z.number().int().default(1024)),
-  sdVersion: SdVersions$outboundSchema.default(SdVersions.FluxDev),
-  trainTextEncoder: z.boolean().default(true),
-}).transform((v) => {
-  return remap$(v, {
-    instancePrompt: "instance_prompt",
-    learningRate: "learning_rate",
-    loraFocus: "lora_focus",
-    numTrainEpochs: "num_train_epochs",
-    sdVersion: "sd_version",
-    trainTextEncoder: "train_text_encoder",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasetId: z.string().default(""),
+    description: z.nullable(z.string().default("")),
+    instancePrompt: z.nullable(z.string().default("")),
+    learningRate: z.number(),
+    loraFocus: z.string(),
+    name: z.string().default("placeholder"),
+    numTrainEpochs: z.number().int(),
+    resolution: z.nullable(z.number().int().default(1024)),
+    sdVersion: SdVersions$outboundSchema.default(SdVersions.FluxDev),
+    trainTextEncoder: z.boolean().default(true),
+  }).transform((v) => {
+    return remap$(v, {
+      instancePrompt: "instance_prompt",
+      learningRate: "learning_rate",
+      loraFocus: "lora_focus",
+      numTrainEpochs: "num_train_epochs",
+      sdVersion: "sd_version",
+      trainTextEncoder: "train_text_encoder",
+    });
+  })
+);
 
 export function createElementRequestBodyToJSON(
   createElementRequestBody: CreateElementRequestBody,
@@ -167,11 +169,13 @@ export const SDTrainingOutput$inboundSchema: z.ZodType<
   SDTrainingOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  userLoraId: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    userLoraId: z.number().int().optional(),
+  })
+);
 
 export function sdTrainingOutputFromJSON(
   jsonString: string,
@@ -188,10 +192,12 @@ export const CreateElementResponseBody$inboundSchema: z.ZodType<
   CreateElementResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sdTrainingJob: z.nullable(z.lazy(() => SDTrainingOutput$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdTrainingJob: z.nullable(z.lazy(() => SDTrainingOutput$inboundSchema))
+      .optional(),
+  })
+);
 
 export function createElementResponseBodyFromJSON(
   jsonString: string,
@@ -208,18 +214,20 @@ export const CreateElementResponse$inboundSchema: z.ZodType<
   CreateElementResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateElementResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateElementResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createElementResponseFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified.
@@ -20,7 +21,7 @@ export enum SdGenerationSchedulers {
 /** @internal */
 export const SdGenerationSchedulers$inboundSchema: z.ZodNativeEnum<
   typeof SdGenerationSchedulers
-> = z.nativeEnum(SdGenerationSchedulers);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SdGenerationSchedulers));
 /** @internal */
 export const SdGenerationSchedulers$outboundSchema: z.ZodNativeEnum<
   typeof SdGenerationSchedulers

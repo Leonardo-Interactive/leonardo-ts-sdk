@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -13,9 +13,17 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type UploadMediaRequestBody = {
   /**
-   * The file extension of the media file to upload. Supported extensions: mp4, mov.
+   * The file extension of the media file to upload. Supported extensions for video: `mp4`, `mov`. Supported for audio: `mp3`, `wav`.
    */
   extension: string;
+  /**
+   * Original file name for display. Required for audio uploads (`mp3`, `wav`). Optional for video.
+   */
+  originalFilename?: string | null | undefined;
+  /**
+   * Optional team UUID. When set, the upload is associated with that team and the caller must be a member.
+   */
+  teamId?: string | null | undefined;
 };
 
 export type MediaUploadOutput = {
@@ -53,6 +61,8 @@ export type UploadMediaResponse = {
 /** @internal */
 export type UploadMediaRequestBody$Outbound = {
   extension: string;
+  originalFilename?: string | null | undefined;
+  teamId?: string | null | undefined;
 };
 
 /** @internal */
@@ -60,9 +70,13 @@ export const UploadMediaRequestBody$outboundSchema: z.ZodType<
   UploadMediaRequestBody$Outbound,
   z.ZodTypeDef,
   UploadMediaRequestBody
-> = z.object({
-  extension: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    extension: z.string(),
+    originalFilename: z.nullable(z.string()).optional(),
+    teamId: z.nullable(z.string()).optional(),
+  })
+);
 
 export function uploadMediaRequestBodyToJSON(
   uploadMediaRequestBody: UploadMediaRequestBody,
@@ -77,11 +91,13 @@ export const MediaUploadOutput$inboundSchema: z.ZodType<
   MediaUploadOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  uploadId: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fields: z.nullable(z.string()).optional(),
+    uploadId: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+  })
+);
 
 export function mediaUploadOutputFromJSON(
   jsonString: string,
@@ -98,10 +114,12 @@ export const UploadMediaResponseBody$inboundSchema: z.ZodType<
   UploadMediaResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadMedia: z.nullable(z.lazy(() => MediaUploadOutput$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadMedia: z.nullable(z.lazy(() => MediaUploadOutput$inboundSchema))
+      .optional(),
+  })
+);
 
 export function uploadMediaResponseBodyFromJSON(
   jsonString: string,
@@ -118,18 +136,20 @@ export const UploadMediaResponse$inboundSchema: z.ZodType<
   UploadMediaResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => UploadMediaResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => UploadMediaResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function uploadMediaResponseFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
@@ -17,4 +18,4 @@ export enum UniversalUpscalerStyle {
 /** @internal */
 export const UniversalUpscalerStyle$outboundSchema: z.ZodNativeEnum<
   typeof UniversalUpscalerStyle
-> = z.nativeEnum(UniversalUpscalerStyle);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UniversalUpscalerStyle));

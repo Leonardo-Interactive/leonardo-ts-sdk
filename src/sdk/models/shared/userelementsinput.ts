@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 export type UserElementsInput = {
   /**
@@ -26,10 +27,12 @@ export const UserElementsInput$outboundSchema: z.ZodType<
   UserElementsInput$Outbound,
   z.ZodTypeDef,
   UserElementsInput
-> = z.object({
-  userLoraId: z.nullable(z.number()).optional(),
-  weight: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userLoraId: z.nullable(z.number()).optional(),
+    weight: z.nullable(z.number()).optional(),
+  })
+);
 
 export function userElementsInputToJSON(
   userElementsInput: UserElementsInput,

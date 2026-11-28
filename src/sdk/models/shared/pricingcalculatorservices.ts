@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The services to be chosen for calculating the API credit cost.
@@ -23,4 +24,4 @@ export enum PricingCalculatorServices {
 /** @internal */
 export const PricingCalculatorServices$outboundSchema: z.ZodNativeEnum<
   typeof PricingCalculatorServices
-> = z.nativeEnum(PricingCalculatorServices);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PricingCalculatorServices));

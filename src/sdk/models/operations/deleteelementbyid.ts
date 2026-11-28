@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,9 +61,11 @@ export const DeleteElementByIdRequest$outboundSchema: z.ZodType<
   DeleteElementByIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteElementByIdRequest
-> = z.object({
-  id: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+  })
+);
 
 export function deleteElementByIdRequestToJSON(
   deleteElementByIdRequest: DeleteElementByIdRequest,
@@ -78,9 +80,11 @@ export const UserLoras$inboundSchema: z.ZodType<
   UserLoras,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int().optional(),
+  })
+);
 
 export function userLorasFromJSON(
   jsonString: string,
@@ -97,14 +101,16 @@ export const DeleteElementByIdResponseBody$inboundSchema: z.ZodType<
   DeleteElementByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_user_loras_by_pk: z.nullable(z.lazy(() => UserLoras$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_user_loras_by_pk": "deleteUserLorasByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_user_loras_by_pk: z.nullable(z.lazy(() => UserLoras$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_user_loras_by_pk": "deleteUserLorasByPk",
+    });
+  })
+);
 
 export function deleteElementByIdResponseBodyFromJSON(
   jsonString: string,
@@ -121,18 +127,21 @@ export const DeleteElementByIdResponse$inboundSchema: z.ZodType<
   DeleteElementByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => DeleteElementByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => DeleteElementByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function deleteElementByIdResponseFromJSON(
   jsonString: string,

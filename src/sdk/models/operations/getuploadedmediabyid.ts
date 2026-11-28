@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -65,9 +68,19 @@ export const GetUploadedMediaByIdRequest$outboundSchema: z.ZodType<
   GetUploadedMediaByIdRequest$Outbound,
   z.ZodTypeDef,
   GetUploadedMediaByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getUploadedMediaByIdRequestToJSON(
   getUploadedMediaByIdRequest: GetUploadedMediaByIdRequest,
@@ -84,23 +97,25 @@ export const GetUploadedMediaByIdUploadedMedia$inboundSchema: z.ZodType<
   GetUploadedMediaByIdUploadedMedia,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
-  height: z.nullable(z.number().int()).optional(),
-  id: z.nullable(z.string()).optional(),
-  mediaType: z.nullable(z.string()).optional(),
-  status: z.nullable(z.string()).optional(),
-  statusReason: z.nullable(z.string()).optional(),
-  thumbnailUrl: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-  video_fps: z.nullable(z.number()).optional(),
-  width: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "video_fps": "videoFps",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.nullable(z.string()).optional(),
+    duration: z.nullable(z.number()).optional(),
+    height: z.nullable(z.number().int()).optional(),
+    id: z.nullable(z.string()).optional(),
+    mediaType: z.nullable(z.string()).optional(),
+    status: z.nullable(z.string()).optional(),
+    statusReason: z.nullable(z.string()).optional(),
+    thumbnailUrl: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+    video_fps: z.nullable(z.number()).optional(),
+    width: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "video_fps": "videoFps",
+    });
+  })
+);
 
 export function getUploadedMediaByIdUploadedMediaFromJSON(
   jsonString: string,
@@ -117,15 +132,17 @@ export const GetUploadedMediaByIdResponseBody$inboundSchema: z.ZodType<
   GetUploadedMediaByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploaded_media_by_pk: z.nullable(
-    z.lazy(() => GetUploadedMediaByIdUploadedMedia$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "uploaded_media_by_pk": "uploadedMediaByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploaded_media_by_pk: z.nullable(
+      z.lazy(() => GetUploadedMediaByIdUploadedMedia$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "uploaded_media_by_pk": "uploadedMediaByPk",
+    });
+  })
+);
 
 export function getUploadedMediaByIdResponseBodyFromJSON(
   jsonString: string,
@@ -142,19 +159,21 @@ export const GetUploadedMediaByIdResponse$inboundSchema: z.ZodType<
   GetUploadedMediaByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetUploadedMediaByIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetUploadedMediaByIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getUploadedMediaByIdResponseFromJSON(
   jsonString: string,
