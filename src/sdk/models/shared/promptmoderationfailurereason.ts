@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -33,20 +33,21 @@ export type PromptModerationFailureReason = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Type));
 
 /** @internal */
 export const PromptModerationFailureReason$inboundSchema: z.ZodType<
   PromptModerationFailureReason,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  affectedOutputCount: z.number().int(),
-  message: z.string(),
-  type: Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    affectedOutputCount: z.number().int(),
+    message: z.string(),
+    type: Type$inboundSchema,
+  })
+);
 
 export function promptModerationFailureReasonFromJSON(
   jsonString: string,

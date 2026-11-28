@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The type of request for the Canvas Editor.
@@ -17,4 +18,4 @@ export enum CanvasRequestType {
 /** @internal */
 export const CanvasRequestType$outboundSchema: z.ZodNativeEnum<
   typeof CanvasRequestType
-> = z.nativeEnum(CanvasRequestType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CanvasRequestType));

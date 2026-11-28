@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -102,7 +102,7 @@ export type CreateModelResponse = {
 /** @internal */
 export const CreateModelSdVersions$outboundSchema: z.ZodNativeEnum<
   typeof CreateModelSdVersions
-> = z.nativeEnum(CreateModelSdVersions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateModelSdVersions));
 
 /** @internal */
 export type CreateModelRequestBody$Outbound = {
@@ -122,24 +122,26 @@ export const CreateModelRequestBody$outboundSchema: z.ZodType<
   CreateModelRequestBody$Outbound,
   z.ZodTypeDef,
   CreateModelRequestBody
-> = z.object({
-  datasetId: z.string(),
-  description: z.nullable(z.string().default("")),
-  instancePrompt: z.string(),
-  modelType: shared.CustomModelType$outboundSchema.default(
-    shared.CustomModelType.General,
-  ),
-  name: z.string(),
-  nsfw: z.nullable(z.boolean().default(false)),
-  resolution: z.nullable(z.number().int().default(512)),
-  sdVersion: z.nullable(CreateModelSdVersions$outboundSchema).optional(),
-  strength: shared.Strength$outboundSchema.default(shared.Strength.Medium),
-}).transform((v) => {
-  return remap$(v, {
-    instancePrompt: "instance_prompt",
-    sdVersion: "sd_version",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasetId: z.string(),
+    description: z.nullable(z.string().default("")),
+    instancePrompt: z.string(),
+    modelType: shared.CustomModelType$outboundSchema.default(
+      shared.CustomModelType.General,
+    ),
+    name: z.string(),
+    nsfw: z.nullable(z.boolean().default(false)),
+    resolution: z.nullable(z.number().int().default(512)),
+    sdVersion: z.nullable(CreateModelSdVersions$outboundSchema).optional(),
+    strength: shared.Strength$outboundSchema.default(shared.Strength.Medium),
+  }).transform((v) => {
+    return remap$(v, {
+      instancePrompt: "instance_prompt",
+      sdVersion: "sd_version",
+    });
+  })
+);
 
 export function createModelRequestBodyToJSON(
   createModelRequestBody: CreateModelRequestBody,
@@ -154,11 +156,13 @@ export const CreateModelSDTrainingOutput$inboundSchema: z.ZodType<
   CreateModelSDTrainingOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  customModelId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    customModelId: z.string().optional(),
+  })
+);
 
 export function createModelSDTrainingOutputFromJSON(
   jsonString: string,
@@ -175,11 +179,13 @@ export const CreateModelResponseBody$inboundSchema: z.ZodType<
   CreateModelResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sdTrainingJob: z.nullable(
-    z.lazy(() => CreateModelSDTrainingOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdTrainingJob: z.nullable(
+      z.lazy(() => CreateModelSDTrainingOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function createModelResponseBodyFromJSON(
   jsonString: string,
@@ -196,18 +202,20 @@ export const CreateModelResponse$inboundSchema: z.ZodType<
   CreateModelResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateModelResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateModelResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createModelResponseFromJSON(
   jsonString: string,

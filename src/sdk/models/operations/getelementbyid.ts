@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -77,9 +77,11 @@ export const GetElementByIdRequest$outboundSchema: z.ZodType<
   GetElementByIdRequest$Outbound,
   z.ZodTypeDef,
   GetElementByIdRequest
-> = z.object({
-  id: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+  })
+);
 
 export function getElementByIdRequestToJSON(
   getElementByIdRequest: GetElementByIdRequest,
@@ -94,21 +96,23 @@ export const GetElementByIdUserLoras$inboundSchema: z.ZodType<
   GetElementByIdUserLoras,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  baseModel: z.string().optional(),
-  createdAt: z.string().optional(),
-  description: z.string().optional(),
-  focus: z.string().optional(),
-  id: z.number().int().optional(),
-  instancePrompt: z.nullable(z.string()).optional(),
-  learningRate: z.number().optional(),
-  name: z.string().optional(),
-  resolution: z.number().int().optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  trainTextEncoder: z.boolean().optional(),
-  trainingEpoch: z.number().int().optional(),
-  updatedAt: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    baseModel: z.string().optional(),
+    createdAt: z.string().optional(),
+    description: z.string().optional(),
+    focus: z.string().optional(),
+    id: z.number().int().optional(),
+    instancePrompt: z.nullable(z.string()).optional(),
+    learningRate: z.number().optional(),
+    name: z.string().optional(),
+    resolution: z.number().int().optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    trainTextEncoder: z.boolean().optional(),
+    trainingEpoch: z.number().int().optional(),
+    updatedAt: z.string().optional(),
+  })
+);
 
 export function getElementByIdUserLorasFromJSON(
   jsonString: string,
@@ -125,15 +129,17 @@ export const GetElementByIdResponseBody$inboundSchema: z.ZodType<
   GetElementByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user_loras_by_pk: z.nullable(
-    z.lazy(() => GetElementByIdUserLoras$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "user_loras_by_pk": "userLorasByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_loras_by_pk: z.nullable(
+      z.lazy(() => GetElementByIdUserLoras$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "user_loras_by_pk": "userLorasByPk",
+    });
+  })
+);
 
 export function getElementByIdResponseBodyFromJSON(
   jsonString: string,
@@ -150,18 +156,20 @@ export const GetElementByIdResponse$inboundSchema: z.ZodType<
   GetElementByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetElementByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetElementByIdResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getElementByIdResponseFromJSON(
   jsonString: string,

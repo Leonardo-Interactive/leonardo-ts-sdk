@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -59,9 +59,11 @@ export type BlueprintVersion = {
 
 /** @internal */
 export const Reasons$inboundSchema: z.ZodType<Reasons, z.ZodTypeDef, unknown> =
-  z.object({
-    models: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      models: z.string().optional(),
+    })
+  );
 
 export function reasonsFromJSON(
   jsonString: string,
@@ -78,10 +80,12 @@ export const Executability$inboundSchema: z.ZodType<
   Executability,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isExecutable: z.boolean().optional(),
-  reasons: z.array(z.lazy(() => Reasons$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isExecutable: z.boolean().optional(),
+    reasons: z.array(z.lazy(() => Reasons$inboundSchema)).optional(),
+  })
+);
 
 export function executabilityFromJSON(
   jsonString: string,
@@ -94,8 +98,8 @@ export function executabilityFromJSON(
 }
 
 /** @internal */
-export const Inputs$inboundSchema: z.ZodType<Inputs, z.ZodTypeDef, unknown> = z
-  .object({});
+export const Inputs$inboundSchema: z.ZodType<Inputs, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function inputsFromJSON(
   jsonString: string,
@@ -109,7 +113,7 @@ export function inputsFromJSON(
 
 /** @internal */
 export const Outputs$inboundSchema: z.ZodType<Outputs, z.ZodTypeDef, unknown> =
-  z.object({});
+  /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function outputsFromJSON(
   jsonString: string,
@@ -126,10 +130,12 @@ export const UiMetadata$inboundSchema: z.ZodType<
   UiMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  inputs: z.array(z.lazy(() => Inputs$inboundSchema)).optional(),
-  outputs: z.array(z.lazy(() => Outputs$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inputs: z.array(z.lazy(() => Inputs$inboundSchema)).optional(),
+    outputs: z.array(z.lazy(() => Outputs$inboundSchema)).optional(),
+  })
+);
 
 export function uiMetadataFromJSON(
   jsonString: string,
@@ -142,19 +148,23 @@ export function uiMetadataFromJSON(
 }
 
 /** @internal */
-export const Node$inboundSchema: z.ZodType<Node, z.ZodTypeDef, unknown> = z
-  .object({
-    akUUID: z.string().optional(),
-    cost: z.number().int().optional(),
-    createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    executability: z.lazy(() => Executability$inboundSchema).optional(),
-    models: z.array(z.string()).optional(),
-    uiMetadata: z.lazy(() => UiMetadata$inboundSchema).optional(),
-    uiMetadataSchemaVersion: z.string().optional(),
-    updatedAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-  });
+export const Node$inboundSchema: z.ZodType<Node, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      akUUID: z.string().optional(),
+      cost: z.number().int().optional(),
+      createdAt: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      executability: z.lazy(() => Executability$inboundSchema).optional(),
+      models: z.array(z.string()).optional(),
+      uiMetadata: z.lazy(() => UiMetadata$inboundSchema).optional(),
+      uiMetadataSchemaVersion: z.string().optional(),
+      updatedAt: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+    })
+  );
 
 export function nodeFromJSON(
   jsonString: string,
@@ -167,11 +177,13 @@ export function nodeFromJSON(
 }
 
 /** @internal */
-export const Edges$inboundSchema: z.ZodType<Edges, z.ZodTypeDef, unknown> = z
-  .object({
-    cursor: z.string().optional(),
-    node: z.lazy(() => Node$inboundSchema).optional(),
-  });
+export const Edges$inboundSchema: z.ZodType<Edges, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cursor: z.string().optional(),
+      node: z.lazy(() => Node$inboundSchema).optional(),
+    })
+  );
 
 export function edgesFromJSON(
   jsonString: string,
@@ -188,12 +200,14 @@ export const BlueprintVersionPageInfo$inboundSchema: z.ZodType<
   BlueprintVersionPageInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endCursor: z.string().optional(),
-  hasNextPage: z.boolean().optional(),
-  hasPreviousPage: z.boolean().optional(),
-  startCursor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endCursor: z.string().optional(),
+    hasNextPage: z.boolean().optional(),
+    hasPreviousPage: z.boolean().optional(),
+    startCursor: z.string().optional(),
+  })
+);
 
 export function blueprintVersionPageInfoFromJSON(
   jsonString: string,
@@ -210,11 +224,13 @@ export const BlueprintVersion$inboundSchema: z.ZodType<
   BlueprintVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  edges: z.array(z.lazy(() => Edges$inboundSchema)).optional(),
-  pageInfo: z.lazy(() => BlueprintVersionPageInfo$inboundSchema).optional(),
-  totalCount: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edges: z.array(z.lazy(() => Edges$inboundSchema)).optional(),
+    pageInfo: z.lazy(() => BlueprintVersionPageInfo$inboundSchema).optional(),
+    totalCount: z.number().int().optional(),
+  })
+);
 
 export function blueprintVersionFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -62,9 +62,11 @@ export const GetBlueprintVersionsByBlueprintIdRequest$outboundSchema: z.ZodType<
   GetBlueprintVersionsByBlueprintIdRequest$Outbound,
   z.ZodTypeDef,
   GetBlueprintVersionsByBlueprintIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 
 export function getBlueprintVersionsByBlueprintIdRequestToJSON(
   getBlueprintVersionsByBlueprintIdRequest:
@@ -83,9 +85,11 @@ export const GetBlueprintVersionsByBlueprintIdSuccessResponse$inboundSchema:
     GetBlueprintVersionsByBlueprintIdSuccessResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    blueprintVersions: shared.BlueprintVersion$inboundSchema.optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      blueprintVersions: shared.BlueprintVersion$inboundSchema.optional(),
+    })
+  );
 
 export function getBlueprintVersionsByBlueprintIdSuccessResponseFromJSON(
   jsonString: string,
@@ -109,12 +113,14 @@ export const GetBlueprintVersionsByBlueprintIdResponseBody$inboundSchema:
     GetBlueprintVersionsByBlueprintIdResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() =>
-      GetBlueprintVersionsByBlueprintIdSuccessResponse$inboundSchema
-    ),
-    z.array(shared.ApiError$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        GetBlueprintVersionsByBlueprintIdSuccessResponse$inboundSchema
+      ),
+      z.array(shared.ApiError$inboundSchema),
+    ])
+  );
 
 export function getBlueprintVersionsByBlueprintIdResponseBodyFromJSON(
   jsonString: string,
@@ -137,23 +143,25 @@ export const GetBlueprintVersionsByBlueprintIdResponse$inboundSchema: z.ZodType<
   GetBlueprintVersionsByBlueprintIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  oneOf: z.union([
-    z.lazy(() =>
-      GetBlueprintVersionsByBlueprintIdSuccessResponse$inboundSchema
-    ),
-    z.array(shared.ApiError$inboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    oneOf: z.union([
+      z.lazy(() =>
+        GetBlueprintVersionsByBlueprintIdSuccessResponse$inboundSchema
+      ),
+      z.array(shared.ApiError$inboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getBlueprintVersionsByBlueprintIdResponseFromJSON(
   jsonString: string,

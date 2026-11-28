@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -68,10 +68,12 @@ export const CreateVariationUnzoomRequestBody$outboundSchema: z.ZodType<
   CreateVariationUnzoomRequestBody$Outbound,
   z.ZodTypeDef,
   CreateVariationUnzoomRequestBody
-> = z.object({
-  id: z.string().optional(),
-  isVariation: z.nullable(z.boolean()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    isVariation: z.nullable(z.boolean()).optional(),
+  })
+);
 
 export function createVariationUnzoomRequestBodyToJSON(
   createVariationUnzoomRequestBody: CreateVariationUnzoomRequestBody,
@@ -88,11 +90,13 @@ export const SDUnzoomOutput$inboundSchema: z.ZodType<
   SDUnzoomOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    id: z.string().optional(),
+  })
+);
 
 export function sdUnzoomOutputFromJSON(
   jsonString: string,
@@ -109,10 +113,12 @@ export const CreateVariationUnzoomResponseBody$inboundSchema: z.ZodType<
   CreateVariationUnzoomResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sdUnzoomJob: z.nullable(z.lazy(() => SDUnzoomOutput$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdUnzoomJob: z.nullable(z.lazy(() => SDUnzoomOutput$inboundSchema))
+      .optional(),
+  })
+);
 
 export function createVariationUnzoomResponseBodyFromJSON(
   jsonString: string,
@@ -129,19 +135,21 @@ export const CreateVariationUnzoomResponse$inboundSchema: z.ZodType<
   CreateVariationUnzoomResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateVariationUnzoomResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateVariationUnzoomResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createVariationUnzoomResponseFromJSON(
   jsonString: string,

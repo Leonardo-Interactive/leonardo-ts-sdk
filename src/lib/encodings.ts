@@ -3,7 +3,7 @@
  */
 
 import { bytesToBase64 } from "./base64.js";
-import { isPlainObject } from "./is-plain-object.js";
+import { isPlainObject } from "./primitives.js";
 
 export class EncodingError extends Error {
   constructor(message: string) {
@@ -12,10 +12,43 @@ export class EncodingError extends Error {
   }
 }
 
+export type CharEncoding = "percent" | "percentExceptReserved" | "none";
+
+const pathReservedEscapes = /%(2[46bcf]|3[abd]|40|5[bd])/gi;
+const queryReservedEscapes = /%(2[46bcf]|3[abdf]|40|5[bd])/gi;
+
+function encodeKeyChars(
+  v: string,
+  charEncoding: CharEncoding | undefined,
+): string {
+  return encodeChars(
+    v,
+    charEncoding === "percentExceptReserved" ? "percent" : charEncoding,
+  );
+}
+
+function encodeChars(
+  v: string,
+  charEncoding: CharEncoding | undefined,
+  reservedEscapes: RegExp = queryReservedEscapes,
+): string {
+  switch (charEncoding) {
+    case "percent":
+      return encodeURIComponent(v);
+    case "percentExceptReserved":
+      return encodeURIComponent(v).replace(
+        reservedEscapes,
+        (m) => decodeURIComponent(m),
+      );
+    default:
+      return v;
+  }
+}
+
 export function encodeMatrix(
   key: string,
   value: unknown,
-  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+  options?: { explode?: boolean; charEncoding?: CharEncoding },
 ): string | undefined {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
@@ -27,7 +60,7 @@ export function encodeMatrix(
   }
 
   const encodeString = (v: string) => {
-    return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+    return encodeChars(v, options?.charEncoding, pathReservedEscapes);
   };
   const encodeValue = (v: unknown) => encodeString(serializeValue(v));
 
@@ -52,7 +85,7 @@ export function encodeMatrix(
       return;
     }
 
-    const keyPrefix = encodeString(pk);
+    const keyPrefix = encodeKeyChars(pk, options?.charEncoding);
     tmp = `${keyPrefix}=${encValue}`;
     // trim trailing '=' if value was empty
     if (tmp === `${keyPrefix}=`) {
@@ -73,7 +106,7 @@ export function encodeMatrix(
 export function encodeLabel(
   key: string,
   value: unknown,
-  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+  options?: { explode?: boolean; charEncoding?: CharEncoding },
 ): string | undefined {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
@@ -85,7 +118,7 @@ export function encodeLabel(
   }
 
   const encodeString = (v: string) => {
-    return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+    return encodeChars(v, options?.charEncoding, pathReservedEscapes);
   };
   const encodeValue = (v: unknown) => encodeString(serializeValue(v));
 
@@ -103,7 +136,7 @@ export function encodeLabel(
       encValue = mapped?.join("").slice(1);
     } else {
       const k = options?.explode && isPlainObject(value)
-        ? `${encodeString(pk)}=`
+        ? `${encodeKeyChars(pk, options?.charEncoding)}=`
         : "";
       encValue = `${k}${encodeValue(pv)}`;
     }
@@ -117,14 +150,14 @@ export function encodeLabel(
 type FormEncoder = (
   key: string,
   value: unknown,
-  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+  options?: { explode?: boolean; charEncoding?: CharEncoding },
 ) => string | undefined;
 
 function formEncoder(sep: string): FormEncoder {
   return (
     key: string,
     value: unknown,
-    options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+    options?: { explode?: boolean; charEncoding?: CharEncoding },
   ) => {
     let out = "";
     const pairs: [string, unknown][] = options?.explode
@@ -136,7 +169,7 @@ function formEncoder(sep: string): FormEncoder {
     }
 
     const encodeString = (v: string) => {
-      return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+      return encodeChars(v, options?.charEncoding);
     };
 
     const encodeValue = (v: unknown) => encodeString(serializeValue(v));
@@ -163,7 +196,7 @@ function formEncoder(sep: string): FormEncoder {
         return;
       }
 
-      tmp = `${encodeString(pk)}=${encValue}`;
+      tmp = `${encodeKeyChars(pk, options?.charEncoding)}=${encValue}`;
 
       // If we end up with the nothing then skip forward
       if (!tmp || tmp === "=") {
@@ -184,7 +217,7 @@ export const encodePipeDelimited = formEncoder("|");
 export function encodeBodyForm(
   key: string,
   value: unknown,
-  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+  options?: { explode?: boolean; charEncoding?: CharEncoding },
 ): string {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
@@ -192,7 +225,7 @@ export function encodeBodyForm(
     : [[key, value]];
 
   const encodeString = (v: string) => {
-    return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+    return encodeChars(v, options?.charEncoding);
   };
 
   const encodeValue = (v: unknown) => encodeString(serializeValue(v));
@@ -211,7 +244,7 @@ export function encodeBodyForm(
       encValue = `${encodeValue(pv)}`;
     }
 
-    tmp = `${encodeString(pk)}=${encValue}`;
+    tmp = `${encodeKeyChars(pk, options?.charEncoding)}=${encValue}`;
 
     // If we end up with the nothing then skip forward
     if (!tmp || tmp === "=") {
@@ -227,7 +260,7 @@ export function encodeBodyForm(
 export function encodeDeepObject(
   key: string,
   value: unknown,
-  options?: { charEncoding?: "percent" | "none" },
+  options?: { charEncoding?: CharEncoding },
 ): string | undefined {
   if (value == null) {
     return;
@@ -245,7 +278,7 @@ export function encodeDeepObject(
 export function encodeDeepObjectObject(
   key: string,
   value: unknown,
-  options?: { charEncoding?: "percent" | "none" },
+  options?: { charEncoding?: CharEncoding },
 ): string | undefined {
   if (value == null) {
     return;
@@ -254,7 +287,7 @@ export function encodeDeepObjectObject(
   let out = "";
 
   const encodeString = (v: string) => {
-    return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+    return encodeChars(v, options?.charEncoding);
   };
 
   if (!isPlainObject(value)) {
@@ -278,7 +311,9 @@ export function encodeDeepObjectObject(
 
     const pairs: unknown[] = Array.isArray(cv) ? cv : [cv];
     const encoded = mapDefined(pairs, (v) => {
-      return `${encodeString(pk)}=${encodeString(serializeValue(v))}`;
+      return `${encodeKeyChars(pk, options?.charEncoding)}=${
+        encodeString(serializeValue(v))
+      }`;
     })?.join("&");
 
     out += encoded == null ? "" : `&${encoded}`;
@@ -290,25 +325,27 @@ export function encodeDeepObjectObject(
 export function encodeJSON(
   key: string,
   value: unknown,
-  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+  options?: { explode?: boolean; charEncoding?: CharEncoding },
 ): string | undefined {
   if (typeof value === "undefined") {
     return;
   }
 
   const encodeString = (v: string) => {
-    return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+    return encodeChars(v, options?.charEncoding);
   };
 
   const encVal = encodeString(JSON.stringify(value, jsonReplacer));
 
-  return options?.explode ? encVal : `${encodeString(key)}=${encVal}`;
+  return options?.explode
+    ? encVal
+    : `${encodeKeyChars(key, options?.charEncoding)}=${encVal}`;
 }
 
 export const encodeSimple = (
   key: string,
   value: unknown,
-  options?: { explode?: boolean; charEncoding?: "percent" | "none" },
+  options?: { explode?: boolean; charEncoding?: CharEncoding },
 ): string | undefined => {
   let out = "";
   const pairs: [string, unknown][] = options?.explode
@@ -320,7 +357,7 @@ export const encodeSimple = (
   }
 
   const encodeString = (v: string) => {
-    return options?.charEncoding === "percent" ? encodeURIComponent(v) : v;
+    return encodeChars(v, options?.charEncoding, pathReservedEscapes);
   };
   const encodeValue = (v: unknown) => encodeString(serializeValue(v));
 
@@ -426,7 +463,7 @@ export function queryJoin(...args: (string | undefined)[]): string {
 
 type QueryEncoderOptions = {
   explode?: boolean;
-  charEncoding?: "percent" | "none";
+  charEncoding?: CharEncoding;
   allowEmptyValue?: string[];
 };
 

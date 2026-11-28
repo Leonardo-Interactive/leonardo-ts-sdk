@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The style to generate LCM images with.
@@ -27,4 +28,4 @@ export enum LcmGenerationStyle {
 /** @internal */
 export const LcmGenerationStyle$outboundSchema: z.ZodNativeEnum<
   typeof LcmGenerationStyle
-> = z.nativeEnum(LcmGenerationStyle);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LcmGenerationStyle));

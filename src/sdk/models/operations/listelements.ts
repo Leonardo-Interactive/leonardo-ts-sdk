@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -78,18 +78,20 @@ export type ListElementsResponse = {
 };
 
 /** @internal */
-export const Loras$inboundSchema: z.ZodType<Loras, z.ZodTypeDef, unknown> = z
-  .object({
-    akUUID: z.nullable(z.string()).optional(),
-    baseModel: shared.SdVersions$inboundSchema.optional(),
-    creatorName: z.nullable(z.string()).optional(),
-    description: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    urlImage: z.nullable(z.string()).optional(),
-    weightDefault: z.nullable(z.number().int()).optional(),
-    weightMax: z.nullable(z.number().int()).optional(),
-    weightMin: z.nullable(z.number().int()).optional(),
-  });
+export const Loras$inboundSchema: z.ZodType<Loras, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      akUUID: z.nullable(z.string()).optional(),
+      baseModel: shared.SdVersions$inboundSchema.optional(),
+      creatorName: z.nullable(z.string()).optional(),
+      description: z.nullable(z.string()).optional(),
+      name: z.nullable(z.string()).optional(),
+      urlImage: z.nullable(z.string()).optional(),
+      weightDefault: z.nullable(z.number().int()).optional(),
+      weightMax: z.nullable(z.number().int()).optional(),
+      weightMin: z.nullable(z.number().int()).optional(),
+    })
+  );
 
 export function lorasFromJSON(
   jsonString: string,
@@ -106,9 +108,11 @@ export const ListElementsResponseBody$inboundSchema: z.ZodType<
   ListElementsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  loras: z.array(z.lazy(() => Loras$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    loras: z.array(z.lazy(() => Loras$inboundSchema)).optional(),
+  })
+);
 
 export function listElementsResponseBodyFromJSON(
   jsonString: string,
@@ -125,18 +129,20 @@ export const ListElementsResponse$inboundSchema: z.ZodType<
   ListElementsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => ListElementsResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => ListElementsResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function listElementsResponseFromJSON(
   jsonString: string,

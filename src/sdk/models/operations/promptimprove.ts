@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -82,11 +82,13 @@ export const PromptImproveRequestBody$outboundSchema: z.ZodType<
   PromptImproveRequestBody$Outbound,
   z.ZodTypeDef,
   PromptImproveRequestBody
-> = z.object({
-  isVideo: z.nullable(z.boolean()).optional(),
-  prompt: z.string(),
-  promptInstructions: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isVideo: z.nullable(z.boolean()).optional(),
+    prompt: z.string(),
+    promptInstructions: z.nullable(z.string()).optional(),
+  })
+);
 
 export function promptImproveRequestBodyToJSON(
   promptImproveRequestBody: PromptImproveRequestBody,
@@ -101,11 +103,13 @@ export const PromptGenerationOutput$inboundSchema: z.ZodType<
   PromptGenerationOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.number().int().default(4),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  prompt: z.string().default("The improved prompt."),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.number().int().default(4),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    prompt: z.string().default("The improved prompt."),
+  })
+);
 
 export function promptGenerationOutputFromJSON(
   jsonString: string,
@@ -122,10 +126,12 @@ export const PromptImproveResponseBody$inboundSchema: z.ZodType<
   PromptImproveResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  promptGeneration: z.lazy(() => PromptGenerationOutput$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    promptGeneration: z.lazy(() => PromptGenerationOutput$inboundSchema)
+      .optional(),
+  })
+);
 
 export function promptImproveResponseBodyFromJSON(
   jsonString: string,
@@ -142,18 +148,20 @@ export const PromptImproveResponse$inboundSchema: z.ZodType<
   PromptImproveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => PromptImproveResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => PromptImproveResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function promptImproveResponseFromJSON(
   jsonString: string,

@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -71,9 +74,19 @@ export const GetVariationByIdRequest$outboundSchema: z.ZodType<
   GetVariationByIdRequest$Outbound,
   z.ZodTypeDef,
   GetVariationByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getVariationByIdRequestToJSON(
   getVariationByIdRequest: GetVariationByIdRequest,
@@ -88,13 +101,15 @@ export const GeneratedImageVariationGeneric$inboundSchema: z.ZodType<
   GeneratedImageVariationGeneric,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  id: z.nullable(z.string()).optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  transformType: shared.VariationType$inboundSchema.optional(),
-  url: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    transformType: shared.VariationType$inboundSchema.optional(),
+    url: z.nullable(z.string()).optional(),
+  })
+);
 
 export function generatedImageVariationGenericFromJSON(
   jsonString: string,
@@ -111,15 +126,17 @@ export const GetVariationByIdResponseBody$inboundSchema: z.ZodType<
   GetVariationByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  generated_image_variation_generic: z.array(
-    z.lazy(() => GeneratedImageVariationGeneric$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "generated_image_variation_generic": "generatedImageVariationGeneric",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    generated_image_variation_generic: z.array(
+      z.lazy(() => GeneratedImageVariationGeneric$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "generated_image_variation_generic": "generatedImageVariationGeneric",
+    });
+  })
+);
 
 export function getVariationByIdResponseBodyFromJSON(
   jsonString: string,
@@ -136,18 +153,20 @@ export const GetVariationByIdResponse$inboundSchema: z.ZodType<
   GetVariationByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetVariationByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetVariationByIdResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getVariationByIdResponseFromJSON(
   jsonString: string,

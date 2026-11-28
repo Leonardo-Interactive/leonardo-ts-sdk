@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -82,9 +85,19 @@ export const GetCustomModelsByUserIdRequest$outboundSchema: z.ZodType<
   GetCustomModelsByUserIdRequest$Outbound,
   z.ZodTypeDef,
   GetCustomModelsByUserIdRequest
-> = z.object({
-  userId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userId: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getCustomModelsByUserIdRequestToJSON(
   getCustomModelsByUserIdRequest: GetCustomModelsByUserIdRequest,
@@ -101,22 +114,24 @@ export const GetCustomModelsByUserIdCustomModels$inboundSchema: z.ZodType<
   GetCustomModelsByUserIdCustomModels,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  description: z.string().optional(),
-  id: z.nullable(z.string()).optional(),
-  instancePrompt: z.nullable(z.string()).optional(),
-  modelHeight: z.number().int().optional(),
-  modelWidth: z.number().int().optional(),
-  name: z.string().optional(),
-  public: z.boolean().optional(),
-  sdVersion: shared.SdVersions$inboundSchema.optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  type: shared.CustomModelType$inboundSchema.default(
-    shared.CustomModelType.General,
-  ),
-  updatedAt: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    description: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    instancePrompt: z.nullable(z.string()).optional(),
+    modelHeight: z.number().int().optional(),
+    modelWidth: z.number().int().optional(),
+    name: z.string().optional(),
+    public: z.boolean().optional(),
+    sdVersion: shared.SdVersions$inboundSchema.optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    type: shared.CustomModelType$inboundSchema.default(
+      shared.CustomModelType.General,
+    ),
+    updatedAt: z.string().optional(),
+  })
+);
 
 export function getCustomModelsByUserIdCustomModelsFromJSON(
   jsonString: string,
@@ -134,17 +149,17 @@ export const GetCustomModelsByUserIdResponseBody$inboundSchema: z.ZodType<
   GetCustomModelsByUserIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_models: z.nullable(
-    z.array(z.nullable(z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_models: z.nullable(z.array(z.nullable(z.lazy(() =>
       GetCustomModelsByUserIdCustomModels$inboundSchema
-    ))),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_models": "customModels",
-  });
-});
+    )))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_models": "customModels",
+    });
+  })
+);
 
 export function getCustomModelsByUserIdResponseBodyFromJSON(
   jsonString: string,
@@ -162,19 +177,21 @@ export const GetCustomModelsByUserIdResponse$inboundSchema: z.ZodType<
   GetCustomModelsByUserIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetCustomModelsByUserIdResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetCustomModelsByUserIdResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getCustomModelsByUserIdResponseFromJSON(
   jsonString: string,

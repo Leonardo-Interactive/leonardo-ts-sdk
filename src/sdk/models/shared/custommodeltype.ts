@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The category the most accurately reflects the model.
@@ -27,7 +28,7 @@ export enum CustomModelType {
 /** @internal */
 export const CustomModelType$inboundSchema: z.ZodNativeEnum<
   typeof CustomModelType
-> = z.nativeEnum(CustomModelType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CustomModelType));
 /** @internal */
 export const CustomModelType$outboundSchema: z.ZodNativeEnum<
   typeof CustomModelType

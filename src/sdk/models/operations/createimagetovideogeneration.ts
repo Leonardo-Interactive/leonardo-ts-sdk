@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -175,8 +175,8 @@ export type CreateImageToVideoGenerationResponse = {
 };
 
 /** @internal */
-export const String$outboundSchema: z.ZodNativeEnum<typeof String> = z
-  .nativeEnum(String);
+export const String$outboundSchema: z.ZodNativeEnum<typeof String> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(String));
 
 /** @internal */
 export type ObjectT$Outbound = {
@@ -189,28 +189,34 @@ export const ObjectT$outboundSchema: z.ZodType<
   ObjectT$Outbound,
   z.ZodTypeDef,
   ObjectT
-> = z.object({
-  id: z.string(),
-  type: String$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: String$outboundSchema,
+  })
+);
 
 export function objectToJSON(objectT: ObjectT): string {
   return JSON.stringify(ObjectT$outboundSchema.parse(objectT));
 }
 
 /** @internal */
-export const ImageType$outboundSchema: z.ZodNativeEnum<typeof ImageType> = z
-  .nativeEnum(ImageType);
+export const ImageType$outboundSchema: z.ZodNativeEnum<typeof ImageType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ImageType));
 
 /** @internal */
 export const CreateImageToVideoGenerationString$outboundSchema: z.ZodNativeEnum<
   typeof CreateImageToVideoGenerationString
-> = z.nativeEnum(CreateImageToVideoGenerationString);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateImageToVideoGenerationString)
+);
 
 /** @internal */
 export const CreateImageToVideoGenerationMotionString$outboundSchema:
-  z.ZodNativeEnum<typeof CreateImageToVideoGenerationMotionString> = z
-    .nativeEnum(CreateImageToVideoGenerationMotionString);
+  z.ZodNativeEnum<typeof CreateImageToVideoGenerationMotionString> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateImageToVideoGenerationMotionString)
+    );
 
 /** @internal */
 export type CreateImageToVideoGenerationRequestBody$Outbound = {
@@ -238,31 +244,34 @@ export const CreateImageToVideoGenerationRequestBody$outboundSchema: z.ZodType<
   CreateImageToVideoGenerationRequestBody$Outbound,
   z.ZodTypeDef,
   CreateImageToVideoGenerationRequestBody
-> = z.object({
-  duration: z.nullable(z.number().int()).optional(),
-  elements: z.nullable(z.array(shared.ElementInput$outboundSchema)).optional(),
-  endFrameImage: z.nullable(z.lazy(() => ObjectT$outboundSchema)).optional(),
-  frameInterpolation: z.nullable(z.boolean()).optional(),
-  height: z.nullable(z.number().int()).optional(),
-  imageId: z.string(),
-  imageType: ImageType$outboundSchema,
-  isPublic: z.nullable(z.boolean()).optional(),
-  model: z.nullable(
-    CreateImageToVideoGenerationString$outboundSchema.default(
-      CreateImageToVideoGenerationString.Motion2,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: z.nullable(z.number().int()).optional(),
+    elements: z.nullable(z.array(shared.ElementInput$outboundSchema))
+      .optional(),
+    endFrameImage: z.nullable(z.lazy(() => ObjectT$outboundSchema)).optional(),
+    frameInterpolation: z.nullable(z.boolean()).optional(),
+    height: z.nullable(z.number().int()).optional(),
+    imageId: z.string(),
+    imageType: ImageType$outboundSchema,
+    isPublic: z.nullable(z.boolean()).optional(),
+    model: z.nullable(
+      CreateImageToVideoGenerationString$outboundSchema.default(
+        CreateImageToVideoGenerationString.Motion2,
+      ),
     ),
-  ),
-  negativePrompt: z.nullable(z.string()).optional(),
-  prompt: z.string(),
-  promptEnhance: z.nullable(z.boolean()).optional(),
-  promptEnhanceInstruction: z.nullable(z.string()).optional(),
-  resolution: z.nullable(
-    CreateImageToVideoGenerationMotionString$outboundSchema,
-  ).optional(),
-  seed: z.nullable(z.number().int()).optional(),
-  styleIds: z.nullable(z.array(z.string())).optional(),
-  width: z.nullable(z.number().int()).optional(),
-});
+    negativePrompt: z.nullable(z.string()).optional(),
+    prompt: z.string(),
+    promptEnhance: z.nullable(z.boolean()).optional(),
+    promptEnhanceInstruction: z.nullable(z.string()).optional(),
+    resolution: z.nullable(
+      CreateImageToVideoGenerationMotionString$outboundSchema,
+    ).optional(),
+    seed: z.nullable(z.number().int()).optional(),
+    styleIds: z.nullable(z.array(z.string())).optional(),
+    width: z.nullable(z.number().int()).optional(),
+  })
+);
 
 export function createImageToVideoGenerationRequestBodyToJSON(
   createImageToVideoGenerationRequestBody:
@@ -280,11 +289,13 @@ export const MotionVideoGenerationOutput$inboundSchema: z.ZodType<
   MotionVideoGenerationOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiCreditCost: z.nullable(z.number().int()).optional(),
-  cost: z.nullable(shared.Cost$inboundSchema).optional(),
-  generationId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiCreditCost: z.nullable(z.number().int()).optional(),
+    cost: z.nullable(shared.Cost$inboundSchema).optional(),
+    generationId: z.string().optional(),
+  })
+);
 
 export function motionVideoGenerationOutputFromJSON(
   jsonString: string,
@@ -301,11 +312,13 @@ export const CreateImageToVideoGenerationResponseBody$inboundSchema: z.ZodType<
   CreateImageToVideoGenerationResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  motionVideoGenerationJob: z.nullable(
-    z.lazy(() => MotionVideoGenerationOutput$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    motionVideoGenerationJob: z.nullable(
+      z.lazy(() => MotionVideoGenerationOutput$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function createImageToVideoGenerationResponseBodyFromJSON(
   jsonString: string,
@@ -328,19 +341,21 @@ export const CreateImageToVideoGenerationResponse$inboundSchema: z.ZodType<
   CreateImageToVideoGenerationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => CreateImageToVideoGenerationResponseBody$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => CreateImageToVideoGenerationResponseBody$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function createImageToVideoGenerationResponseFromJSON(
   jsonString: string,

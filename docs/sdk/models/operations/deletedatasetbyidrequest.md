@@ -6,7 +6,7 @@
 import { DeleteDatasetByIdRequest } from "@leonardo-ai/sdk/sdk/models/operations";
 
 let value: DeleteDatasetByIdRequest = {
-  id: "<id>",
+  id: "abcdef01-2345-4678-9abc-def012345678",
 };
 ```
 

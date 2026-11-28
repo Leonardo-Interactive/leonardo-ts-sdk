@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
@@ -82,9 +85,19 @@ export const GetModelByIdRequest$outboundSchema: z.ZodType<
   GetModelByIdRequest$Outbound,
   z.ZodTypeDef,
   GetModelByIdRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().refine(
+      matchesPattern$(
+        "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      ),
+      {
+        message:
+          "Value must match pattern [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+      },
+    ),
+  })
+);
 
 export function getModelByIdRequestToJSON(
   getModelByIdRequest: GetModelByIdRequest,
@@ -99,22 +112,24 @@ export const GetModelByIdCustomModels$inboundSchema: z.ZodType<
   GetModelByIdCustomModels,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.string().optional(),
-  description: z.string().optional(),
-  id: z.nullable(z.string()).optional(),
-  instancePrompt: z.nullable(z.string()).optional(),
-  modelHeight: z.number().int().optional(),
-  modelWidth: z.number().int().optional(),
-  name: z.string().optional(),
-  public: z.boolean().optional(),
-  sdVersion: shared.SdVersions$inboundSchema.optional(),
-  status: shared.JobStatus$inboundSchema.optional(),
-  type: shared.CustomModelType$inboundSchema.default(
-    shared.CustomModelType.General,
-  ),
-  updatedAt: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: z.string().optional(),
+    description: z.string().optional(),
+    id: z.nullable(z.string()).optional(),
+    instancePrompt: z.nullable(z.string()).optional(),
+    modelHeight: z.number().int().optional(),
+    modelWidth: z.number().int().optional(),
+    name: z.string().optional(),
+    public: z.boolean().optional(),
+    sdVersion: shared.SdVersions$inboundSchema.optional(),
+    status: shared.JobStatus$inboundSchema.optional(),
+    type: shared.CustomModelType$inboundSchema.default(
+      shared.CustomModelType.General,
+    ),
+    updatedAt: z.string().optional(),
+  })
+);
 
 export function getModelByIdCustomModelsFromJSON(
   jsonString: string,
@@ -131,15 +146,17 @@ export const GetModelByIdResponseBody$inboundSchema: z.ZodType<
   GetModelByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_models_by_pk: z.nullable(
-    z.lazy(() => GetModelByIdCustomModels$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_models_by_pk": "customModelsByPk",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_models_by_pk: z.nullable(
+      z.lazy(() => GetModelByIdCustomModels$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_models_by_pk": "customModelsByPk",
+    });
+  })
+);
 
 export function getModelByIdResponseBodyFromJSON(
   jsonString: string,
@@ -156,18 +173,20 @@ export const GetModelByIdResponse$inboundSchema: z.ZodType<
   GetModelByIdResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ContentType: z.string(),
-  StatusCode: z.number().int(),
-  RawResponse: z.instanceof(Response),
-  object: z.lazy(() => GetModelByIdResponseBody$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ContentType": "contentType",
-    "StatusCode": "statusCode",
-    "RawResponse": "rawResponse",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ContentType: z.string(),
+    StatusCode: z.number().int(),
+    RawResponse: z.instanceof(Response),
+    object: z.lazy(() => GetModelByIdResponseBody$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ContentType": "contentType",
+      "StatusCode": "statusCode",
+      "RawResponse": "rawResponse",
+    });
+  })
+);
 
 export function getModelByIdResponseFromJSON(
   jsonString: string,

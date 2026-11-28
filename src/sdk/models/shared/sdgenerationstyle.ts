@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../../lib/schemas.js";
 
 /**
  * The style to generate images with. When photoReal is enabled, refer to the Guide section for a full list. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
@@ -44,7 +45,7 @@ export enum SdGenerationStyle {
 /** @internal */
 export const SdGenerationStyle$inboundSchema: z.ZodNativeEnum<
   typeof SdGenerationStyle
-> = z.nativeEnum(SdGenerationStyle);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SdGenerationStyle));
 /** @internal */
 export const SdGenerationStyle$outboundSchema: z.ZodNativeEnum<
   typeof SdGenerationStyle
